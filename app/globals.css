@@ -1,13 +1,18 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+    --color-bar-purple: #4E69FA;
+    --color-black: #101010;
+    --color-button-hover: #797679;
+    --color-card-light: #F4D9B7;
+    --color-footer-heading: #D23C3C;
+    --color-form: #D9D9D9;
+    --color-link-active: #CC8B21;
+    --color-nintendo-gray: #9D99A0;
+    --color-nintendo-gray-light: #ADA8AD;
+    --color-table-head: rgb(228 240 245);
+    --color-table-row: rgb(237 238 242);
+    --color-white: #f0cca4;
 }
 
 html,
@@ -17,11 +22,57 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-white);
+    min-height: 100svh;
+
+    main {
+      flex: 5;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+}
+
+header {
+  display: flex;
+  background-color: var(--color-black);
+
+  #logoLink {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+      gap: 1rem;
+
+      h1 {
+          letter-spacing: 0.2rem;
+      }
+
+      h1:hover {
+          transform: scale(1.1);
+          transition: transform 0.3s ease;
+      }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-black);
+
+  #footerComponents {
+      display: flex;
+      justify-content: space-around;
+      height: 100%;
+      margin-top: 1rem;
+  }
+
+  #copyright {
+      align-self: center;
+      font-size-adjust: from-font;
+      margin: 1rem;
+  }
 }
 
 * {
@@ -31,12 +82,6 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--color-white);
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
