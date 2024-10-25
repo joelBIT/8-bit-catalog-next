@@ -1,0 +1,12 @@
+
+#searchInput {
+    display: flex;
+    align-self: center;
+    margin-top: 3rem;
+    gap: 2rem;
+    align-items: center;
+
+    #searchTitle {
+        padding-left: 0.5rem;
+    }
+}

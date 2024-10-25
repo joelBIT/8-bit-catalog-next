@@ -9,7 +9,7 @@
         list-style-type: none;
         gap: 3rem;
         height: 100%;
-        justify-content: end;
+        justify-content: flex-end;
         margin-right: 2rem;
 
         .li {

@@ -1,0 +1,28 @@
+
+#searchResult {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    .resultHeading {
+        display: flex;
+        gap: 1rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        font-size: 30px;
+        font-weight: bold;
+
+        .p {
+            font-weight: 100;
+        }
+    }
+    
+    #gameCards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin: 0 2rem;
+        justify-content: center;
+    }
+}

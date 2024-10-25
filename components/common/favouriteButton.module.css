@@ -1,0 +1,27 @@
+
+.isFavourite {
+    background-image: url("../../assets/isFavourite.png");
+    background-size: cover;
+    border: none;
+}
+
+.noFavourite {
+    background-image: url("../../assets/noFavourite.png");
+    background-size: cover;
+    border: none;
+}
+
+.favouriteButton {
+    height: 3rem;
+    min-width: 3rem;
+    align-self: self-end;
+    margin-right: 0.8rem;
+    margin-bottom: 0.8rem;
+    background-color: var(--color-nintendo-gray);
+    border: none;
+}
+  
+.favouriteButton:hover {
+    background-color: var(--color-nintendo-gray);
+    opacity: 0.7;
+}
