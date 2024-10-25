@@ -1,12 +1,12 @@
 'use client';
 
 import { ReactElement, useState } from "react";
-import { SearchForm } from "@/components/search/SearchForm";
-import { SearchResult } from "@/components/search/SearchResult";
 import { Game } from "@/interfaces/interfaces";
 import { getAllGames } from "@/data/game";
 import { ALL_OPTION_VALUE } from "@/utils/utils";
 import styles from "./search.module.css";
+import { SearchForm } from "@/components/search/SearchForm";
+import { SearchResult } from "@/components/search/SearchResult";
 
 export default function SearchPage(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
