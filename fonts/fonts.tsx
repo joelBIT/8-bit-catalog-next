@@ -1,4 +1,4 @@
-import { Blinker, Irish_Grover, Rancho, Silkscreen } from "next/font/google";
+import { Arima, Blinker, Irish_Grover, Rancho, Silkscreen } from "next/font/google";
 
 export const rancho = Rancho({
     subsets: ["latin"],
@@ -16,6 +16,11 @@ export const silkScreen = Silkscreen({
 });
 
 export const irishGrover = Irish_Grover({
+    subsets: ["latin"],
+    weight: "400"
+});
+
+export const arima = Arima({
     subsets: ["latin"],
     weight: "400"
 });

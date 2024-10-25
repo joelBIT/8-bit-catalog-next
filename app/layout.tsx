@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
 import { blinker } from "@/fonts/fonts";
+import { FavouritesContexProvider } from "@/contexts/FavouritesContextProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${blinker.className}`}>
         <Header />
-        {children}
+        <FavouritesContexProvider>{children}</FavouritesContexProvider>
         <Footer />
       </body>
     </html>

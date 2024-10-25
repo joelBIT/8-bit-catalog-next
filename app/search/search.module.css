@@ -1,0 +1,8 @@
+
+
+#searchPage {
+    background-image: url("../../assets/backgrounds/nes-controller-in-black.webp");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

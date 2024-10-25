@@ -1,0 +1,19 @@
+
+#pagination {
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    gap: 1rem;
+    align-items: center;
+
+    .pageNumber {
+        display: flex;
+        gap: 1rem;
+        font-size: 30px;
+        font-weight: 600;
+
+        .p {
+            font-weight: 100;
+        }
+    }
+}
