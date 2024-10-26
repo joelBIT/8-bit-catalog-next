@@ -1,3 +1,5 @@
+'use client';
+
 import { FormEvent, ReactElement, useState } from "react";
 import { createGame } from "../../data/game";
 import { Game } from "@/interfaces/interfaces";

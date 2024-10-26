@@ -1,15 +1,13 @@
-'use client';
-
 import { ReactElement } from "react";
 import styles from "./home.module.css";
 import { HeroCard } from "@/components/home/HeroCard";
-import { getAllGames } from "@/data/game";
+import { createGameList } from "@/data/data";
 
 /**
  * A random game is presented to the user every time the landing page is visited.
  */
 export default function Home(): ReactElement {
-  const games = getAllGames();
+  const games = createGameList();
   
   return (
       <main id={styles.landingPage}>
