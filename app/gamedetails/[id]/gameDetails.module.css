@@ -1,0 +1,7 @@
+
+#gameDetailsPage {
+    background-image: url("../../../assets/backgrounds/nostalgic-nes-controller.webp");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
