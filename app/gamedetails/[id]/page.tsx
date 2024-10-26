@@ -1,10 +1,10 @@
 'use client';
 
 import { FieldSetFrame } from "@/components/common/FieldSetFrame";
-import { GameDetailsCard } from "@/components/gamedetails/GameDetailsCard";
 import { getGame } from "@/data/game";
 import { ReactElement } from "react";
 import styles from "./gameDetails.module.css";
+import { GameDetailsCard } from "@/components/gamedetails/GameDetailsCard";
 
 export default function GameDetailsPage({ params }: { params: { id: string } }): ReactElement {
 
