@@ -1,7 +1,7 @@
 'use client';
 
 import { Game } from '@/interfaces/interfaces';
-import games from '../assets/database/games.json';
+import { getGames } from './data';
 
 /**
  * The game data source is created if it does not exist yet. Will be migrated to a database later.
@@ -23,7 +23,7 @@ export function storeAllGames(games: Game[]): void {
  */
 export function createGameData(): void {
     if (!localStorage.getItem('games')) {
-        const cartridges = games.map((game: any) => {
+        const cartridges = getGames().map((game: any) => {
             game.cover = game.cover ? game.cover : "notavailable.jpg";
             game.players = game.players ? game.players : 1;
             game.description = game.description ? game.description : [];

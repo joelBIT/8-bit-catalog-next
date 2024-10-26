@@ -1,5 +1,5 @@
 import { Game } from "@/interfaces/interfaces";
-import { COVER_URL, URL_GAME_DETAILS_PAGE } from "@/utils/utils";
+import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import Link from "next/link";
 import { ReactElement } from "react";
 import styles from "./heroCard.module.css";
