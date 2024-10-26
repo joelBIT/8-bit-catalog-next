@@ -1,3 +1,5 @@
+'use client';
+
 import { Game, GameRequest } from "@/interfaces/interfaces";
 import { getActiveUser } from "./user";
 

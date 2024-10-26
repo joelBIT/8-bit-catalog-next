@@ -1,3 +1,5 @@
+'use client';
+
 import { User } from "@/interfaces/interfaces";
 import { generateUserId } from "@/utils/utils";
 
