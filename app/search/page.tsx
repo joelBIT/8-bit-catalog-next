@@ -44,7 +44,16 @@ export default function SearchPage(): ReactElement {
      */
     function filter(list: Game[], filter: string, value: string): Game[] {
         if (value !== ALL_OPTION_VALUE) {
-            return list.filter((game: { [x: string]: any }) => game[filter]?.toLowerCase() === value.toLocaleLowerCase());
+            switch(filter) {
+                case 'category':
+                    return list.filter(game => game[filter]?.toLowerCase() === value.toLocaleLowerCase());
+                case 'publisher':
+                    return list.filter(game => game[filter]?.toLowerCase() === value.toLocaleLowerCase());
+                case 'developer':
+                    return list.filter(game => game[filter]?.toLowerCase() === value.toLocaleLowerCase());
+                default:
+                    return [];
+            }
         } else {
             return list;
         }

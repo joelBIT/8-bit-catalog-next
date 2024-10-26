@@ -2,14 +2,14 @@ import { ReactElement } from "react";
 import styles from "./pagination.module.css";
 import { arima } from "@/fonts/fonts";
 
-export function Pagination({ currentPage, setCurrentPage, totalPages }: { currentPage: number, setCurrentPage: Function, totalPages: number }): ReactElement {
+export function Pagination({ currentPage, setCurrentPage, totalPages }: { currentPage: number, setCurrentPage: (arg0: number) => void, totalPages: number }): ReactElement {
 
     function nextPage(): void {
-        setCurrentPage((page: number) => page + 1);
+        setCurrentPage(currentPage + 1);
     }
 
     function previousPage(): void {
-        setCurrentPage((page: number) => page - 1);
+        setCurrentPage(currentPage - 1);
     }
 
     return (
