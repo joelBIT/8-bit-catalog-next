@@ -7,7 +7,7 @@ import styles from "./searchResult.module.css";
 import { arima } from "@/fonts/fonts";
 
 export function SearchResult({ result, showHeading }: { result: Game[], showHeading: boolean }): ReactElement {
-    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [ currentPage, setCurrentPage ] = useState<number>(1);
     let totalPages = Math.floor(result.length / PAGINATION_PAGE_SIZE) + 1;
 
     /**

@@ -5,7 +5,6 @@ import { ACTION_OPTION_VALUE, createParagraphs, generateGameId, getPlayersList }
 import { DateInput } from "./input/DateInput";
 import { DescriptionInput } from "./input/DescriptionInput";
 import { DeveloperInput } from "./input/DeveloperInput";
-import { FileInput } from "./input/FileInput";
 import { PublisherInput } from "./input/PublisherInput";
 import { TitleInput } from "./input/TitleInput";
 import { SelectCategory } from "./SelectCategory";
@@ -15,7 +14,6 @@ export function GameForm({ buttonClass, onSubmit, errorText, successText }: { bu
     const [ players, setPlayers ] = useState<string>("1");
     const [ category, setCategory ] = useState<string>(ACTION_OPTION_VALUE);
     const [ date, setDate ] = useState<string>("");
-    const [ file, setFile ] = useState<File | null>(null);
     const [ message, setMessage ] = useState<string>("");
     const [ errorMessage, setErrorMessage ] = useState<string>("");
 
@@ -35,7 +33,8 @@ export function GameForm({ buttonClass, onSubmit, errorText, successText }: { bu
             onSubmit(game);
             setMessage(successText);
             setTimeout(() => setMessage(""), 5000);
-        } catch (error: any) {
+        } catch (error) {
+            console.log(error);
             setErrorMessage(errorText);
             setTimeout(() => setErrorMessage(""), 5000);
         }
@@ -53,7 +52,6 @@ export function GameForm({ buttonClass, onSubmit, errorText, successText }: { bu
             <SelectCategory defaultOption={ACTION_OPTION_VALUE} setCategory={setCategory} />
 
             <DescriptionInput form="gameForm" />
-            <FileInput id="gameCover" label="Cover" setFile={setFile} />
 
             <SelectPlayers defaultOption={getPlayersList()[0]} setPlayers={setPlayers} />
 

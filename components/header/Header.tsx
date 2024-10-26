@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ReactElement } from "react";
 import { Logo } from "./Logo";
 import { NavBar } from "./NavBar";
-import { irishGrover, rancho } from "@/fonts/fonts";
+import { irishGrover } from "@/fonts/fonts";
 
 export function Header(): ReactElement {
     return (
