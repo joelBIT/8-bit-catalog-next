@@ -1,5 +1,3 @@
-'use client';
-
 import { Game } from '@/interfaces/interfaces';
 import games from '../assets/database/games.json';
 
