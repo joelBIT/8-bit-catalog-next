@@ -10,11 +10,16 @@ import { getGames } from './data';
  */
 export function getAllGames(): Game[] {
     createGameData();
-    return JSON.parse(localStorage.getItem('games') || "[]");
+    if (typeof window !== 'undefined') {
+        return JSON.parse(localStorage.getItem('games') || "[]");    
+    }
+    return [];
 }
 
 export function storeAllGames(games: Game[]): void {
-    localStorage.setItem('games', JSON.stringify(games));
+    if (typeof window !== 'undefined') {
+        localStorage.setItem('games', JSON.stringify(games)); 
+    }
 }
 
 /**
@@ -22,7 +27,7 @@ export function storeAllGames(games: Game[]): void {
  * is read from a json file and transformed into Game objects before being added to local storage.
  */
 export function createGameData(): void {
-    if (!localStorage.getItem('games')) {
+    if (typeof window !== 'undefined' && !localStorage.getItem('games')) {
         const cartridges = getGames().map((game: any) => {
             game.cover = game.cover ? game.cover : "notavailable.jpg";
             game.players = game.players ? game.players : 1;
