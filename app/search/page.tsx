@@ -6,6 +6,7 @@ import { ALL_OPTION_VALUE } from "@/utils/utils";
 import styles from "./search.module.css";
 import { SearchForm } from "@/components/search/SearchForm";
 import { SearchResult } from "@/components/search/SearchResult";
+import { createGameList } from "@/data/data";
 
 export default function SearchPage(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
@@ -22,8 +23,7 @@ export default function SearchPage(): ReactElement {
      * @param developer     the developer of games
      */
     function search(title: string, category: string, publisher: string, developer: string): void {
-        //let games = createGameList();
-        let games = [{} as Game];
+        let games = createGameList();
 
         games = filter(games, "category", category);
         games = filter(games, "publisher", publisher);
