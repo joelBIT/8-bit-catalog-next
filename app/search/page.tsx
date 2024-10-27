@@ -22,15 +22,16 @@ export default function SearchPage(): ReactElement {
      * @param developer     the developer of games
      */
     function search(title: string, category: string, publisher: string, developer: string): void {
-        // let games = createGameList();
+        //let games = createGameList();
+        let games = [{} as Game];
 
-        // games = filter(games, "category", category);
-        // games = filter(games, "publisher", publisher);
-        // games = filter(games, "developer", developer);
-        // games = games.filter((game: { title: string; }) => game.title?.toLowerCase().includes(title.toLocaleLowerCase()));
+        games = filter(games, "category", category);
+        games = filter(games, "publisher", publisher);
+        games = filter(games, "developer", developer);
+        games = games.filter((game: { title: string; }) => game.title?.toLowerCase().includes(title.toLocaleLowerCase()));
         
-        // setShowHeading(true);
-        // setSearchResult(games);
+        setShowHeading(true);
+        setSearchResult(games);
     }
 
     /**
