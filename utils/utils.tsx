@@ -1,5 +1,4 @@
 import { getAllGames } from "@/data/game";
-import { getAllUsers } from "@/data/user";
 
 export const ACTION_OPTION_VALUE = "Action";
 export const ALL_OPTION_VALUE = "All";
@@ -90,15 +89,6 @@ export const fileTypes = [
  */
 export function generateGameId(): number {
     return getAllGames().map(game => game.id).reduce((a, b) => a > b ? a : b, 0) + 1;
-}
-
-/**
- * Generates a new user ID by adding 1 to the current maximum id.
- * 
- * @returns     a generated ID for a new user
- */
-export function generateUserId(): number {
-    return getAllUsers().map(user => user.id).reduce((a, b) => a > b ? a : b, 0) + 1;
 }
 
 export function joinParagraphs(text: string[]): string {

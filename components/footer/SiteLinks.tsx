@@ -23,7 +23,7 @@ export function SiteLinks(): ReactElement {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/account" className={pathname === "/account" ? `active ${styles.link}` : `${styles.link}`}>
+                    <Link href="/login" className={pathname === "/login" ? `active ${styles.link}` : `${styles.link}`}>
                         <h4 className={styles.h4}>Account</h4>
                     </Link>
                 </li>
