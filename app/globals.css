@@ -98,6 +98,10 @@ a:hover, button:hover {
   cursor: pointer;
 }
 
+.active {
+  color: var(--color-link-active);
+}
+
 input {
   height: 39px;
   font-size: x-large;

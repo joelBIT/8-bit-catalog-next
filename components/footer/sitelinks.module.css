@@ -10,10 +10,6 @@
         list-style: none;
         margin-top: 1rem;
 
-        .link.active {
-            color: var(--color-link-active);
-        }
-
         .link:hover {
             opacity: 0.7;
         }
