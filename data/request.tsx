@@ -1,28 +1,7 @@
 'use client';
 
 import { Game, GameRequest } from "@/interfaces/interfaces";
-import { getActiveUser } from "./user";
 
-/**
- * Creates a Request in Pending state and sets the active user as submitter. The ID becomes
- * the number of existing requests, no matter which state they are in.
- * 
- * @param game      the submitted game waiting to be processed
- */
-export function createRequest(game: Game): void {
-    const requests = getAllRequests();
-
-    const request = {
-        id: requests.length,
-        game: game,
-        submitter: getActiveUser(),
-        submitted: new Date().toJSON().slice(0, 10),
-        status: "Pending"
-    }
-
-    requests.push(request);
-    storeAllRequests(requests);
-}
 
 export function getAllPendingRequests(): GameRequest[] {
     return getAllRequests().filter(request => request.status === 'Pending');
