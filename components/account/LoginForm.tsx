@@ -16,6 +16,7 @@ export function LoginForm(): ReactElement {
     return (
         <section id={styles.loginCard} className={arima.className}>
             <h1 className={styles.h1}>Log in</h1>
+            {state?.message}
             
             <form id={styles.loginForm} action={formAction}>
                 <UsernameInput />

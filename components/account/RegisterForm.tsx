@@ -16,6 +16,7 @@ export function RegisterForm(): ReactElement {
     return (
         <section id={styles.registerCard} className={arima.className}>
             <h1 className={styles.h1}>Create Account</h1>
+            {state?.message}
 
             <form id={styles.registerForm} action={formAction}>
                 <UsernameInput />
