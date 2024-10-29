@@ -1,4 +1,4 @@
-import { getAllGames } from "@/data/game";
+import { getGames } from "@/data/data";
 
 export const ACTION_OPTION_VALUE = "Action";
 export const ALL_OPTION_VALUE = "All";
@@ -30,7 +30,7 @@ export const URL_SEARCH_PAGE = "/games";
  * @returns             a list containing option values of a game property sorted alphabetically
  */
 export function createSelectList(property: string): string[] {
-    let games = getAllGames().map((game: { [x: string]: any; }) => game[property]);
+    let games = getGames().map((game: { [x: string]: any; }) => game[property]);
     games.sort();
     games = games.filter((element: any) => element != null);
     return Array.from(new Set(games));
@@ -88,7 +88,7 @@ export const fileTypes = [
  * @returns     a generated ID for a new game
  */
 export function generateGameId(): number {
-    return getAllGames().map(game => game.id).reduce((a, b) => a > b ? a : b, 0) + 1;
+    return getGames().map(game => game.id).reduce((a, b) => a > b ? a : b, 0) + 1;
 }
 
 export function joinParagraphs(text: string[]): string {

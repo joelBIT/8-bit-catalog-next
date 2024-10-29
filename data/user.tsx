@@ -1,4 +1,3 @@
-
 export async function login(prevState: any, formData: FormData) {
     const username = formData.get('username');
     const password = formData.get('password');
