@@ -1,5 +1,3 @@
-'use client';
-
 import { arima } from "@/fonts/fonts";
 import { ReactElement } from "react";
 

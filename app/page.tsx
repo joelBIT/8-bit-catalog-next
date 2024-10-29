@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactElement } from "react";
 import styles from "./home.module.css";
 import { HeroCard } from "@/components/home/HeroCard";

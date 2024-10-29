@@ -1,3 +1,5 @@
+'use client';
+
 import { arima } from "@/fonts/fonts";
 import { ALL_OPTION_VALUE } from "@/utils/utils";
 import { ReactElement, useRef } from "react";
