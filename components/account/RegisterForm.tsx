@@ -6,9 +6,9 @@ import { UsernameInput } from "./input/UsernameInput";
 import { EmailInput } from "./input/EmailInput";
 import { PasswordInput } from "./input/PasswordInput";
 import { PasswordRepeatInput } from "./input/PasswordRepeatInput";
-import { register } from "@/data/user";
 import styles from "./registerForm.module.css";
 import { arima } from "@/fonts/fonts";
+import { register } from "@/actions/actions";
 
 export function RegisterForm(): ReactElement {
     const [state, formAction] = useFormState(register, null);

@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement} from "react";
-import { login } from "../../data/user";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
 import { UsernameInput } from "./input/UsernameInput";
 import { PasswordInput } from "./input/PasswordInput";
@@ -9,6 +8,7 @@ import Link from "next/link";
 import { useFormState } from "react-dom";
 import styles from "./loginForm.module.css";
 import { arima } from "@/fonts/fonts";
+import { login } from "@/actions/actions";
 
 export function LoginForm(): ReactElement {
     const [state, formAction] = useFormState(login, null);
