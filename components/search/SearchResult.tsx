@@ -1,5 +1,3 @@
-'use client';
-
 import { Game } from "@/interfaces/interfaces";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { ReactElement, useEffect, useState } from "react";

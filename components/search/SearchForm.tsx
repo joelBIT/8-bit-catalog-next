@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactElement, useState } from "react";
 import { CategoryFilter } from "./CategoryFilter";
 import { ALL_OPTION_VALUE } from "@/utils/utils";

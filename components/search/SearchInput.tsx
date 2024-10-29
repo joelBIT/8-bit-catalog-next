@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactElement, KeyboardEvent, useRef } from "react";
 import styles from "./searchInput.module.css";
 import { arima } from "@/fonts/fonts";

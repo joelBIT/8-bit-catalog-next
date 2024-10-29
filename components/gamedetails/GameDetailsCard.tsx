@@ -1,9 +1,12 @@
+'use client';
+
 import { ReactElement } from "react";
-import { Game } from "@/interfaces/interfaces";
 import styles from "./gameDetailsCard.module.css";
 import { silkScreen } from "@/fonts/fonts";
+import { getGame } from "@/data/game";
 
-export function GameDetailsCard({ game }: { game: Game }): ReactElement {
+export function GameDetailsCard({ id }: { id: number }): ReactElement {
+    const game = getGame(id);
 
     return (
         <section id={styles.gameDetailsCard}>
