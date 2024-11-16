@@ -2,12 +2,13 @@
 
 import { ReactElement, useState } from "react";
 import { CategoryFilter } from "./CategoryFilter";
-import { ALL_OPTION_VALUE } from "@/utils/utils";
 import { PublisherFilter } from "./PublisherFilter";
 import { DeveloperFilter } from "./DeveloperFilter";
 import { SearchInput } from "./SearchInput";
-import styles from "./searchForm.module.css";
 import { rancho } from "@/fonts/fonts";
+import { ALL_OPTION_VALUE } from "@/utils/utils";
+
+import "./SearchForm.css";
 
 export function SearchForm({ search }: { search: (title: string, category: string, publisher: string, developer: string) => void }): ReactElement {
     const [category, setCategory] = useState<string>(ALL_OPTION_VALUE);
@@ -23,9 +24,9 @@ export function SearchForm({ search }: { search: (title: string, category: strin
     }
 
     return (
-        <section id={styles.searchForm}>
-            <h1 className={`${styles.h1} ${rancho.className}`}>Search Games</h1>
-            <article id={styles.searchFilters}>
+        <section id="searchForm">
+            <h1 className={`searchForm__title ${rancho.className}`}>Search Games</h1>
+            <article id="searchFilters">
                 <CategoryFilter defaultOption={category} setCategory={setCategory} />
                 <PublisherFilter defaultOption={publisher} setPublisher={setPublisher} />
                 <DeveloperFilter defaultOption={developer} setDeveloper={setDeveloper} />

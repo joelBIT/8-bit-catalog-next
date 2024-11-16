@@ -5,7 +5,7 @@
     align-items: center;
     margin-bottom: 3rem;
 
-    .resultHeading {
+    .searchResult__title {
         display: flex;
         gap: 1rem;
         margin-top: 3rem;
@@ -13,7 +13,7 @@
         font-size: 30px;
         font-weight: bold;
 
-        .p {
+        .searchResult__games-found {
             font-weight: 100;
         }
     }

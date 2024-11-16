@@ -1,11 +1,9 @@
-
-
 #aboutPage {
     background-image: url("../../assets/backgrounds/nes-in-gray-carpet.webp");
     display: flex;
     justify-content: center;
 
-    .p {
+    .aboutPage__paragraph {
         font-size: 2rem;
         margin: 1rem;
     }

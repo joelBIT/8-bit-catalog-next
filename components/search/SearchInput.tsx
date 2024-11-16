@@ -1,8 +1,9 @@
 'use client';
 
 import { ReactElement, KeyboardEvent, useRef } from "react";
-import styles from "./searchInput.module.css";
 import { arima } from "@/fonts/fonts";
+
+import "./SearchInput.css";
 
 export function SearchInput({ onSearch }: { onSearch: (title: string) => void }): ReactElement {
     const searchRef = useRef<HTMLInputElement>(null);
@@ -24,9 +25,9 @@ export function SearchInput({ onSearch }: { onSearch: (title: string) => void })
     }
 
     return (
-        <article id={styles.searchInput}>
+        <article id="searchInput">
             <input 
-                id={styles.searchTitle}
+                id="searchTitle"
                 className={arima.className} 
                 type="text" 
                 placeholder="Game Title" 

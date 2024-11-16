@@ -5,9 +5,8 @@
     background-color: var(--color-form);
     border-radius: 8px;
     padding: 1rem 5rem 3rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-    .h1 {
+    .loginCard__heading {
         color: var(--color-black);
         text-align: center;
         font-size: 36px;
@@ -20,8 +19,8 @@
         gap: 1rem;
     }
 
-    .link {
-        color: #064D61;
+    .loginCard__create-account-link {
+        color: var(--color-link);
         font-size: 20px;
         font-weight: 600;
         align-self: end;

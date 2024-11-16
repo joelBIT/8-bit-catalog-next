@@ -1,10 +1,8 @@
-
-
 .navbar {
     align-self: center;
     width: 100%;
 
-    .ul {
+    .navbar__list {
         display: flex;
         list-style-type: none;
         gap: 3rem;
@@ -12,21 +10,21 @@
         justify-content: flex-end;
         margin-right: 2rem;
 
-        .li {
-            .link {
+        .navbar__list-element {
+            .navbar__list-element-link {
                 font-size: calc(1vw + 1vh + 2vmin);
                 
-                .h2 {
+                .navbar__list-element-title {
                     font-weight: 100;
                 }
             }
 
-            .link.active {
+            .navbar__list-element-link.active {
                 color: var(--color-link-active);
             }
         }
 
-        .li:hover {
+        .navbar__list-element:hover {
             transform: scale(1.1);
             transition: transform 0.3s ease;
         }

@@ -1,6 +1,5 @@
-
 #logo {
-    .img {
+    .logo__image {
         border-radius: 100%;
     }
 }

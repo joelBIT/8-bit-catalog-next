@@ -6,19 +6,20 @@ import { UsernameInput } from "./input/UsernameInput";
 import { EmailInput } from "./input/EmailInput";
 import { PasswordInput } from "./input/PasswordInput";
 import { PasswordRepeatInput } from "./input/PasswordRepeatInput";
-import styles from "./registerForm.module.css";
 import { arima } from "@/fonts/fonts";
 import { register } from "@/actions/actions";
+
+import "./RegisterForm.css";
 
 export function RegisterForm(): ReactElement {
     const [state, formAction] = useFormState(register, null);
 
     return (
-        <section id={styles.registerCard} className={arima.className}>
-            <h1 className={styles.h1}>Create Account</h1>
+        <section id="registerCard" className={arima.className}>
+            <h1 className="registerCard__title">Create Account</h1>
             {state?.message}
 
-            <form id={styles.registerForm} action={formAction}>
+            <form id="registerForm" action={formAction}>
                 <UsernameInput />
                 <EmailInput placeholder="Email" />
                 <PasswordInput />

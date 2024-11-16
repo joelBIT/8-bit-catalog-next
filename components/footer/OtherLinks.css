@@ -1,0 +1,24 @@
+#otherLinks {
+    .otherLinks__title {
+        color: var(--color-footer-heading);
+        font-weight: 500;
+    }
+
+    .otherLinks__list {
+        list-style: none;
+        margin-top: 1rem;
+        text-align: end;
+
+        .otherLinks__link.active {
+            color: var(--color-link-active);
+        }
+
+        .otherLinks__link:hover {
+            opacity: 0.7;
+        }
+        
+        .otherLinks__link-title {
+            font-weight: 500;
+        }
+    }
+}

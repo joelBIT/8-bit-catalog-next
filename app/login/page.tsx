@@ -1,10 +1,11 @@
-import { LoginForm } from "@/components/account/LoginForm";
 import { ReactElement } from "react";
-import styles from "./login.module.css";
+import { LoginForm } from "@/components/account/LoginForm";
+
+import "./page.css";
 
 export default function LoginPage(): ReactElement {
     return (
-        <main id={styles.loginPage}>
+        <main id="loginPage">
             <LoginForm />
         </main>
     );

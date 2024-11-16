@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
 import { blinker } from "@/fonts/fonts";
 import { FavouritesContexProvider } from "@/contexts/FavouritesContextProvider";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "The 8-bit Catalog",

@@ -1,25 +1,32 @@
 'use client';
 
-import Link from "next/link";
 import { ReactElement } from "react";
-import styles from "./navbar.module.css";
-import { rancho } from "@/fonts/fonts";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { rancho } from "@/fonts/fonts";
+
+import "./Navbar.css";
 
 export function NavBar(): ReactElement {
     const pathname = usePathname();
     
     return (
-        <nav className={styles.navbar}>
-            <ul className={styles.ul}>
-                <li className={styles.li}>
-                    <Link href="/search" className={pathname === "/search" ? `active ${styles.link}` : `${styles.link}`}>
-                        <h2 className={`${styles.h2} ${rancho.className}`}>Games</h2>
+        <nav className="navbar">
+            <ul className="navbar__list">
+                <li className="navbar__list-element">
+                    <Link 
+                        href="/search" 
+                        className={pathname === "/search" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                    >
+                        <h2 className={`navbar__list-element-title ${rancho.className}`}>Games</h2>
                     </Link>
                 </li>
-                <li className={styles.li}>
-                    <Link href="/favourites" className={pathname === "/favourites" ? `active ${styles.link}` : `${styles.link}`}>
-                        <h2 className={`${styles.h2} ${rancho.className}`}>Favourites</h2>
+                <li className="navbar__list-element">
+                    <Link 
+                        href="/favourites" 
+                        className={pathname === "/favourites" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                    >
+                        <h2 className={`navbar__list-element-title ${rancho.className}`}>Favourites</h2>
                     </Link>
                 </li>
             </ul>

@@ -1,18 +1,17 @@
-
-#pagination {
+.pagination {
     display: flex;
     margin-bottom: 2rem;
     margin-top: 2rem;
     gap: 1rem;
     align-items: center;
 
-    .pageNumber {
+    .pagination-page__text {
         display: flex;
         gap: 1rem;
         font-size: 30px;
         font-weight: 600;
 
-        .p {
+        .pagination-page__number {
             font-weight: 100;
         }
     }
