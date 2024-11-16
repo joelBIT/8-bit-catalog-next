@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import Link from "next/link";
+import { FavouriteButton } from "./FavouriteButton";
 import { Game } from "@/interfaces/interfaces";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
-import { FavouriteButton } from "./FavouriteButton";
 
 import "./GameCard.css";
 
