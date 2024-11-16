@@ -20,8 +20,8 @@ export function SiteLinks(): ReactElement {
             <h2 className="siteLinks__title">Site Links</h2>
             <ul className="siteLinks__list">
                 {
-                    SITELINKS.map(link => 
-                        <li>
+                    SITELINKS.map((link, index) => 
+                        <li key={index}>
                             <Link href={link.path} className={pathname === link.path ? `active siteLinks__link` : `siteLinks__link`}>
                                 <h4 className="siteLinks__link-title"> {link.title} </h4>
                             </Link>

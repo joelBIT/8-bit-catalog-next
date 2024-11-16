@@ -15,8 +15,8 @@ export function OtherLinks(): ReactElement {
             <h2 className="otherLinks__title">Other Links</h2>
             <ul className="otherLinks__list">
                 {
-                    OTHERLINKS.map((link) => 
-                        <li>
+                    OTHERLINKS.map((link, index) => 
+                        <li key={index}>
                             <a href={link.url} target="_blank" className="otherLinks__link">
                                 <h4 className="otherLinks__link-title"> {link.title} </h4>
                             </a>
