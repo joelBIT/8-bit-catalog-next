@@ -1,12 +1,14 @@
 import { ReactElement } from "react";
-import styles from "./fieldSetFrame.module.css";
 import { silkScreen } from "@/fonts/fonts";
 
+import "./FieldSetFrame.css";
+
 export function FieldSetFrame({ legend, body }: { legend: string, body: ReactElement }): ReactElement {
+    
     return (
-        <section id={styles.fieldSetFrame}>
-            <fieldset className={styles.fieldset}>
-                <legend className={`${styles.legend} ${silkScreen.className}`}>{legend}</legend>
+        <section id="fieldSetFrame">
+            <fieldset className="fieldset">
+                <legend className={`legend ${silkScreen.className}`}>{legend}</legend>
                 { body }
             </fieldset>
         </section>

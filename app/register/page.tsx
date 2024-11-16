@@ -1,10 +1,11 @@
-import { RegisterForm } from "@/components/account/RegisterForm";
 import { ReactElement } from "react";
-import styles from "./register.module.css";
+import { RegisterForm } from "@/components/account/RegisterForm";
+
+import "./page.css";
 
 export default function RegisterPage(): ReactElement {
     return (
-        <main id={styles.registerPage}>
+        <main id="registerPage">
             <RegisterForm />
         </main>
     );

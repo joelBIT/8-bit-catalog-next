@@ -1,0 +1,21 @@
+#fieldSetFrame {
+    display: flex;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    margin: 3rem 10rem;
+    border-radius: 8px;
+
+    .fieldset {
+        display: grid;
+        padding: 2rem;
+        border: 5px solid;
+        margin: 2rem;
+        border-color: var(--color-bar-purple);
+        border-radius: 8px;
+    
+        .legend {
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+}

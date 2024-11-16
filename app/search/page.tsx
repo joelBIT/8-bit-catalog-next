@@ -3,10 +3,11 @@
 import { ReactElement, useState } from "react";
 import { Game } from "@/interfaces/interfaces";
 import { ALL_OPTION_VALUE } from "@/utils/utils";
-import styles from "./search.module.css";
 import { SearchForm } from "@/components/search/SearchForm";
 import { SearchResult } from "@/components/search/SearchResult";
 import { createGameList } from "@/data/data";
+
+import "./page.css";
 
 export default function SearchPage(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
@@ -60,7 +61,7 @@ export default function SearchPage(): ReactElement {
     }
 
     return (
-        <main id={styles.searchPage}>
+        <main id="searchPage">
             <SearchForm search={search} />
             <SearchResult result={searchResult} showHeading={showHeading} />
         </main>

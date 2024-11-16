@@ -3,7 +3,8 @@
 import { ReactElement, useContext } from "react";
 import { Game } from "@/interfaces/interfaces";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
-import styles from "./favouriteButton.module.css";
+
+import "./FavouriteButton.css";
 
 export function FavouriteButton({ game }: { game: Game }): ReactElement {
     const {favouritesList, setFavouritesList} = useContext(FavouritesContext);
@@ -25,7 +26,7 @@ export function FavouriteButton({ game }: { game: Game }): ReactElement {
     
     return (
         <button 
-            className={ isFavorite ? `${styles.favouriteButton} ${styles.isFavourite}` : `${styles.favouriteButton} ${styles.noFavourite}` } 
+            className={ isFavorite ? `favouriteButton isFavourite` : `favouriteButton noFavourite` } 
             onClick={(event) => handleFavourites(event)}>
         </button>
     );

@@ -1,25 +1,18 @@
-
-
-#otherLinks {
-    .h2 {
+#siteLinks {
+    .siteLinks__title {
         color: var(--color-footer-heading);
         font-weight: 500;
     }
 
-    .ul {
+    .siteLinks__list {
         list-style: none;
         margin-top: 1rem;
-        text-align: end;
 
-        .link.active {
-            color: var(--color-link-active);
-        }
-
-        .link:hover {
+        .siteLinks__link:hover {
             opacity: 0.7;
         }
         
-        .h4 {
+        .siteLinks__link-title {
             font-weight: 500;
         }
     }

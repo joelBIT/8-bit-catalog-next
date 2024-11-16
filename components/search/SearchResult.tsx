@@ -1,12 +1,13 @@
 'use client';
 
-import { Game } from "@/interfaces/interfaces";
-import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { ReactElement, useEffect, useState } from "react";
 import { Pagination } from "./Pagination";
 import { GameCard } from "../common/GameCard";
-import styles from "./searchResult.module.css";
 import { arima } from "@/fonts/fonts";
+import { Game } from "@/interfaces/interfaces";
+import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
+
+import "./SearchResult.css";
 
 export function SearchResult({ result, showHeading }: { result: Game[], showHeading: boolean }): ReactElement {
     const [ currentPage, setCurrentPage ] = useState<number>(1);
@@ -40,11 +41,18 @@ export function SearchResult({ result, showHeading }: { result: Game[], showHead
     }
     
     return (
-        <section id={styles.searchResult}>
-            {showHeading ? <h1 className={`${styles.resultHeading} ${arima.className}`}>Games found: <p className={styles.p}>{result.length}</p></h1> : <></>}
+        <section id="searchResult">
+            { showHeading ? <h1 
+                                className={`searchResult__title ${arima.className}`}
+                            >
+                                Games found: <p className="searchResult__games-found">{result.length}</p>
+                            </h1> 
+                        : <></>
+            }
+
             {totalPages > 1 ? <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} /> : <></>}
 
-            <section id={styles.gameCards}>
+            <section id="gameCards">
                 {result.slice(from(), to()).map((game, index) => <GameCard key={index} game={game} />)}
             </section>
 

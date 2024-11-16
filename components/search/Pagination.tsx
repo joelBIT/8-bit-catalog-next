@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
-import styles from "./pagination.module.css";
 import { arima } from "@/fonts/fonts";
+
+import "./Pagination.css";
 
 export function Pagination({ currentPage, setCurrentPage, totalPages }: { currentPage: number, setCurrentPage: (arg0: number) => void, totalPages: number }): ReactElement {
 
@@ -13,7 +14,7 @@ export function Pagination({ currentPage, setCurrentPage, totalPages }: { curren
     }
 
     return (
-        <section id={styles.pagination}>
+        <section className="pagination">
             <button 
                 id="previous" 
                 className={`gameButton ${arima.className}`}
@@ -22,7 +23,7 @@ export function Pagination({ currentPage, setCurrentPage, totalPages }: { curren
                     Previous
             </button>
             
-            <div className={`${styles.pageNumber} ${arima.className}`}>Page <p className={styles.p}>{currentPage} / {totalPages} </p></div>
+            <div className={`pagination-page__text ${arima.className}`}>Page <p className="pagination-page__number">{currentPage} / {totalPages} </p></div>
             
             <button 
                 id="next" 

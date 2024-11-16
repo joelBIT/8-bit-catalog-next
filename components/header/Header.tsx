@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ReactElement } from "react";
+import Link from "next/link";
 import { Logo } from "./Logo";
 import { NavBar } from "./NavBar";
 import { irishGrover } from "@/fonts/fonts";

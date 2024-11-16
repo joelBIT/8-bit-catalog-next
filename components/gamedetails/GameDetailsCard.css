@@ -1,12 +1,11 @@
-
 #gameDetailsCard {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    .figure {
+    .gameDetailsCard__figure {
         width: 80%;
 
-        .img {
+        .gameDetailsCard__figure-cover {
             width: 100%;
         }
     }
@@ -15,18 +14,33 @@
         display: flex;
         flex-direction: column;
 
-        .h1 {
+        .gameDetails__title {
             font-size: 2.5rem;
             margin-bottom: 2rem;
         }
+
+        .gameDetails__metadata {
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+
+            .gameDetails__metadata-heading {
+                font-size: 2rem;
+            }
+        
+            .gameDetails__metadata-text {
+                font-weight: 100;
+                font-size: 2rem;
+            }
+        }
     }
 
-    #description {
+    #gameDetailsCard__description {
         grid-column: 1 / 3;
         font-size: 1.5rem;
         margin: 2rem 0;
         
-        .p {
+        .gameDetailsCard__description-paragraph {
             margin-top: 1rem;
         }
     }
@@ -43,14 +57,5 @@
 
     #deleteButton {
         height: fit-content;
-    }
-}
-
-.h2 {
-    display: flex;
-    gap: 1rem;
-
-    .p {
-        font-weight: 100;
     }
 }
