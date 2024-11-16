@@ -10,7 +10,9 @@
 :root {
     --color-bar-purple: #701296;
     --color-black: #101010;
-    --color-button-hover: #797679;
+    --color-gamebutton-hover: #797679;
+    --color-accountbutton-hover: #27a727;
+    --color-account-green: #34c334;
     --color-card-light: #F4D9B7;
     --color-footer-heading: #D23C3C;
     --color-form: #D9D9D9;
@@ -99,10 +101,6 @@ a:hover, button:hover {
     cursor: pointer;
 }
 
-.active {
-    color: var(--color-link-active);
-}
-
 input {
     height: 39px;
     font-size: x-large;
@@ -125,14 +123,6 @@ textarea {
     padding-left: 1rem;
 }
 
-.successMessage {
-    color: darkgreen;
-}
-
-.errorMessage {
-    color: red;
-}
-
 
 
 
@@ -148,25 +138,28 @@ textarea {
     font-family: "Arima Madurai", display;
     background-color: var(--color-nintendo-gray-light);
     border-width: thin;
+
+    &:hover {
+        background-color: var(--color-gamebutton-hover);
+    }
+
+    &:active { 
+        transform: scale(0.90); 
+    }
 }
 
 .accountButton {
     padding: 0.5rem 1rem;
     font-size: 1.5rem;
     border-radius: 8px;
-    background-color: lawngreen;
+    background-color: var(--color-account-green);
     font-weight: 600;
     margin-top: 1rem;
-}
 
-button:hover {
-    background-color: var(--color-button-hover);
+    &:hover {
+        background-color: var(--color-accountbutton-hover);
+    }
 }
-
-.gameButton:active { 
-    transform: scale(0.90); 
-}
-
 
 /************************
 * General Table Styling *
@@ -213,6 +206,18 @@ table {
 /******************
 * Utility Classes *
 *******************/
+
+.active {
+    color: var(--color-link-active);
+}
+
+.successMessage {
+    color: darkgreen;
+}
+
+.errorMessage {
+    color: red;
+}
 
 .box-shadow {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
