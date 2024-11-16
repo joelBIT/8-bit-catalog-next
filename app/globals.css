@@ -44,28 +44,6 @@ body {
     }
 }
 
-header {
-    display: flex;
-    background-color: var(--color-black);
-
-    #logoLink {
-        display: flex;
-        align-items: center;
-        margin-left: 1rem;
-        gap: 1rem;
-
-        h1 {
-            letter-spacing: 0.2rem;
-            font-weight: bold;
-        }
-
-        h1:hover {
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-        }
-    }
-}
-
 footer {
     display: flex;
     flex-direction: column;
