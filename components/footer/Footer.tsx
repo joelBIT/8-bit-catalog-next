@@ -3,6 +3,8 @@ import { SiteLinks } from "./SiteLinks";
 import { Contact } from "./Contact";
 import { OtherLinks } from "./OtherLinks";
 
+import "./Footer.css";
+
 export function Footer(): ReactElement {
     return (
         <footer>

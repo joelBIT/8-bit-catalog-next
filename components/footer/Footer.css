@@ -1,0 +1,19 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-black);
+
+    #footerComponents {
+        display: flex;
+        justify-content: space-around;
+        height: 100%;
+        margin-top: 1rem;
+    }
+
+    #copyright {
+        align-self: center;
+        font-size-adjust: from-font;
+        margin: 1rem;
+    }
+}

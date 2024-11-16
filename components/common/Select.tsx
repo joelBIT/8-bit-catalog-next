@@ -13,7 +13,8 @@ export function Select({ title, list, defaultOption, getOption }: { title: strin
         <section className="selectSection">
             <h2 className={`selectSection__title ${arima.className}`}>{title}</h2>
             <select 
-                id={`${title.toLocaleLowerCase()}`} 
+                id={`${title.toLocaleLowerCase()}`}
+                className="selectSection__select" 
                 defaultValue={defaultOption} 
                 ref={ref} 
                 onChange={() => getOption(ref.current ? ref.current.value : ALL_OPTION_VALUE)}
