@@ -114,46 +114,6 @@ textarea {
     }
 }
 
-/************************
-* General Table Styling *
-************************/
-
-table {
-    border-collapse: collapse;
-    border: 2px solid var(--color-nintendo-gray);
-    font-family: 'Blinker';
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    width: 100%;
-    margin-bottom: 3rem;
-
-    caption {
-        caption-side: bottom;
-        padding: 10px;
-        font-weight: bold;
-    }
-    
-    thead {
-        background-color: var(--color-table-head);
-        text-align: center;
-        font-weight: bold;
-    }
-      
-    th, td {
-        border: 1px solid var(--color-nintendo-gray);
-        padding: 8px 10px;
-    }
-      
-    td:last-of-type {
-        text-align: center;
-    }
-    
-    tbody > tr:nth-of-type(even) {
-        background-color: var(--color-table-row);
-    }
-}
-
-
 
 
 /******************
@@ -174,8 +134,4 @@ table {
 
 .box-shadow {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.bold-text {
-    font-weight: bold;
 }
