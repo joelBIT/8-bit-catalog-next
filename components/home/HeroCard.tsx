@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
+import Image from 'next/image';
 import { Game } from "@/interfaces/interfaces";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { silkScreen, singleDay } from "@/fonts/fonts";
@@ -21,10 +22,13 @@ export function HeroCard({ game }: { game: Game }): ReactElement {
             </article>
             
             <figure className="heroCard__figure">
-                <img 
-                    src={`../../covers/${game.cover}`} 
-                    alt="Random Game Cover" 
-                    className="heroCard__figure-cover" />
+                <Image 
+                    src={`/covers/${game.cover}`}
+                    className="heroCard__figure-cover"
+                    alt="Random Game Cover"
+                    width={100}
+                    height={300}
+                />
             </figure>
         </section>
     );

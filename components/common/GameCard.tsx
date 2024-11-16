@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
+import Image from 'next/image';
 import { FavouriteButton } from "./FavouriteButton";
 import { Game } from "@/interfaces/interfaces";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
@@ -19,7 +20,13 @@ export function GameCard({ game }: { game: Game }): ReactElement {
         <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`}>
             <section className="gameCard">
                 <figure className="gameCard-figure">
-                    <img src={`../../covers/${game.cover}`} className="gameCard-figure__cover" />
+                    <Image 
+                        src={`/covers/${game.cover}`}
+                        className="gameCard-figure__cover"
+                        alt="Game Cover"
+                        width={100}
+                        height={300}
+                    />
                 </figure>
                 <article id="gameCardTitle">
                     <h1 className="gameCardTitle__heading">{game.title}</h1>

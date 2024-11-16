@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactElement } from "react";
+import Image from 'next/image';
 import { silkScreen } from "@/fonts/fonts";
 import { getGame } from "@/data/game";
 
@@ -12,7 +13,13 @@ export function GameDetailsCard({ id }: { id: number }): ReactElement {
     return (
         <section id="gameDetailsCard">
             <figure className="gameDetailsCard__figure">
-                <img src={`../../covers/${game.cover}`} alt="Game Cover" className="gameDetailsCard__figure-cover" />
+                <Image 
+                    src={`/covers/${game.cover}`}
+                    className="gameDetailsCard__figure-cover"
+                    alt="Game Cover"
+                    width={500}
+                    height={600}
+                />
             </figure>
             
             <article id="gameDetails" className={silkScreen.className}>
@@ -65,14 +72,16 @@ export function GameDetailsCard({ id }: { id: number }): ReactElement {
             </article>
 
             <article id="gameDetailsCard__description">
-                { game.description ? game.description
-                                        .map((paragraph, index) => <p 
-                                                                        className="gameDetailsCard__description-paragraph" 
-                                                                        key={index}
-                                                                    >
-                                                                        {paragraph}
-                                                                    </p>) 
-                                    : <></>
+                { game.description ? 
+                        game.description
+                            .map((paragraph, index) => 
+                                <p 
+                                    className="gameDetailsCard__description-paragraph" 
+                                    key={index}
+                                >
+                                    {paragraph}
+                                </p>) 
+                            : <></>
                 }
             </article>
         </section>
