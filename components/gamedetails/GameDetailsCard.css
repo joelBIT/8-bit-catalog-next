@@ -3,10 +3,11 @@
     grid-template-columns: 1fr 1fr;
 
     .gameDetailsCard__figure {
-        width: 80%;
+        margin-right: 1rem;
 
         .gameDetailsCard__figure-cover {
             width: 100%;
+            height: auto;
         }
     }
 
@@ -57,5 +58,29 @@
 
     #deleteButton {
         height: fit-content;
+    }
+}
+
+@media (max-width: 1100px) {
+    #gameDetailsCard {
+        display: flex;
+        flex-direction: column;
+
+        .gameDetailsCard__figure {
+            align-self: center;
+            margin-right: 0;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    #gameDetailsCard {
+        #gameDetails {
+            .gameDetails__metadata {
+                flex-direction: column;
+                margin-bottom: 2rem;
+                gap: 0;
+            }
+        }        
     }
 }
