@@ -16,3 +16,10 @@
         }
     }
 }
+
+@media (max-width: 450px) {
+    .pagination {
+        display: flex;
+        flex-direction: column;
+    }
+}
