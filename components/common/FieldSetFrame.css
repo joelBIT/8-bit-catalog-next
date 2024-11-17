@@ -2,7 +2,6 @@
     display: flex;
     background-color: var(--color-black);
     color: var(--color-white);
-    margin: 3rem 10rem;
     border-radius: 8px;
 
     .fieldset {
