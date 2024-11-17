@@ -45,3 +45,28 @@
         }
     }
 }
+
+@media (max-width: 850px) {
+    #heroCard {
+        .heroCard__figure {
+            display: flex;
+
+            .heroCard__figure-cover {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #heroCard {
+        flex-direction: column-reverse;
+
+        .heroCard-wrapper {
+            .heroCard__title {
+                font-size: calc(4vw + 1vh + 2vmin);
+            }
+        }
+    }
+}
