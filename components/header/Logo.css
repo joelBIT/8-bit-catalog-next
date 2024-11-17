@@ -3,3 +3,14 @@
         border-radius: 100%;
     }
 }
+
+@media (max-width: 800px) {
+    #logo {
+        width: 10rem;
+
+        .logo__image {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

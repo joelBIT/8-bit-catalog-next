@@ -9,3 +9,11 @@
         padding: 0.2rem;
     }
 }
+
+@media (max-width: 450px) {
+    .selectSection {
+        .selectSection__select {
+            font-size: 1.2rem;
+        }
+    }
+}
