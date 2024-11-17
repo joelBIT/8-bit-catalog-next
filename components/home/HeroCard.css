@@ -41,20 +41,8 @@
         .heroCard__figure-cover {
             aspect-ratio: 1 / 1;
             width: 100%;
+            height: auto;
             border-radius: 100%;
-        }
-    }
-}
-
-@media (max-width: 850px) {
-    #heroCard {
-        .heroCard__figure {
-            display: flex;
-
-            .heroCard__figure-cover {
-                height: 100%;
-                width: 100%;
-            }
         }
     }
 }
