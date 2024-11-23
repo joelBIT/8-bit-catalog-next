@@ -1,0 +1,123 @@
+#editGameForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    color: var(--color-white);
+
+    & input {
+        grid-column: 1;
+        width: 90%;
+    }
+
+    #description {
+        grid-column: 1 / 3;
+    }
+
+    .selectSection, #coverSection, #releasedSection {
+        display: flex;
+        grid-column: 2;
+        align-items: center;
+        grid-row: 2;
+        gap: 1rem;
+
+        h2 {
+            font-weight: 900;
+        }
+    }
+
+    .categorySection {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    #coverSection {
+        grid-row: 1;
+    }
+
+    #releasedSection {
+        grid-row: 3;
+        align-items: self-start;
+
+        input {
+            width: auto;
+        }
+    }
+
+    & .editGameForm-buttons {
+        display: flex;
+        grid-column: 1 / 3;
+        justify-content: space-between;
+        margin-top: 2rem;
+
+        #cancelButton, #saveButton {
+            padding: 0.5rem 1rem;
+        }
+
+        #saveButton {
+            grid-column: 2;
+            justify-self: end;
+        }
+
+        #cancelButton {
+            grid-column: 1;
+            height: fit-content;
+        }
+    }
+}
+
+@media (max-width: 1150px) {
+    #editGameForm {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            margin: 0;
+        }
+    }
+}
+
+@media (max-width: 670px) {
+    #editGameForm {
+        textarea {
+            height: 25rem;
+        }
+
+        & input {
+            width: 80%;
+            align-self: center;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #editGameForm {
+        .selectSection, #coverSection, #releasedSection {
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        input {
+            width: 80%;
+            align-self: center;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #releasedSection {
+            align-items: center;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .selectSection {
+        & .selectSection__select {
+            font-size: 1.2rem;
+        }
+    }
+}

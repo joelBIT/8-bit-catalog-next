@@ -96,5 +96,5 @@ export function joinParagraphs(text: string[]): string {
 }
 
 export function createParagraphs(text: string): string[] {
-    return text.split('\n').filter((element: string) => element !== "");
+    return text.split('\n').filter((element: string) => element !== "" && element !== '\r').map((word: string) => word.replaceAll("\r", ""));
 }
