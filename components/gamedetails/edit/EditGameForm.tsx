@@ -1,9 +1,9 @@
 'use client';
 
-import { ChangeEvent, ReactElement, useState, useRef } from "react";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/interfaces/interfaces";
-import { ALL_OPTION_VALUE, createSelectList, fileTypes, getPlayersList, joinParagraphs } from "@/utils/utils";
+import { createSelectList, fileTypes, getPlayersList, joinParagraphs } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/actions";
 
@@ -11,8 +11,6 @@ import "./EditGameForm.css";
 
 export function EditGameForm({ game }: { game: Game }): ReactElement {
     const router = useRouter();
-    const [ players, setPlayers ] = useState<number>(game.players ? game.players : 1);
-    const [ category, setCategory ] = useState<string>(game.category);
     const [ title, setTitle ] = useState<string>(game.title);
     const [ file, setFile ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.releaseDate);
@@ -20,21 +18,11 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
     const [ developer, setDeveloper ] = useState<string>(game.developer);
     const [ publisher, setPublisher ] = useState<string>(game.publisher);
     const [ description, setDescription ] = useState<string>(joinParagraphs(game.description));
-    const categoryRef = useRef<HTMLSelectElement>(null);
-    const playersRef = useRef<HTMLSelectElement>(null);
 
     function handleFile(event: ChangeEvent<HTMLInputElement>): void {
         if (event.target.files) {
             setFile(event.target.files[0]);
         }
-    }
-
-    function handleCategory() {
-        setCategory(categoryRef.current ? categoryRef.current.value : ALL_OPTION_VALUE);
-    }
-
-    function handlePlayers(): void {
-        setPlayers(playersRef.current ? parseInt(playersRef.current.value) : 1);
     }
 
     function getDate(): string {
@@ -79,14 +67,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section className="selectSection categorySection">
                 <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
-                <select
-                    name="category"
-                    className="selectSection__select"
-                    defaultValue={category} 
-                    ref={categoryRef} 
-                    onChange={handleCategory}
-                >
-
+                <select name="category" className="selectSection__select" defaultValue={game.category}>
                     {createSelectList("category").map((element, index) => <option key={index} value={element}>{element}</option>)}
                 </select>
             </section>
@@ -109,14 +90,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section className="selectSection playersSection">
                 <h2 className={`selectSection__title ${arima.className}`}>Players</h2>
-                <select
-                    name="players"
-                    className="selectSection__select"
-                    defaultValue={players.toString()} 
-                    ref={playersRef} 
-                    onChange={handlePlayers}
-                >
-
+                <select name="players" className="selectSection__select" defaultValue={game.players?.toString()}>
                     { getPlayersList().map((element, index) => <option key={index} value={element}>{element}</option>) }
                 </select>
             </section>
