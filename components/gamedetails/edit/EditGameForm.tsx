@@ -1,4 +1,7 @@
+'use client';
+
 import { ChangeEvent, FormEvent, ReactElement, useState, useRef } from "react";
+import { useRouter } from 'next/navigation';
 import { Game } from "@/interfaces/interfaces";
 import { ALL_OPTION_VALUE, createParagraphs, createSelectList, fileTypes, getPlayersList, joinParagraphs } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
@@ -6,7 +9,8 @@ import { arima } from "@/fonts/fonts";
 import "./EditGameForm.css";
 
 export function EditGameForm({ game }: { game: Game }): ReactElement {
-    const [ players, setPlayers ] = useState<number>(game.players);
+    const router = useRouter();
+    const [ players, setPlayers ] = useState<number>(game.players ? game.players : 1);
     const [ category, setCategory ] = useState<string>(game.category);
     const [ title, setTitle ] = useState<string>(game.title);
     const [ file, setFile ] = useState<File>();
@@ -133,15 +137,8 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
                 <input id="releaseDate" type="date" value={getDate()} onChange={handleDate} required />
             </section>
 
-            <div>
-                <button 
-                    id="cancelButton" 
-                    className="gameButton" 
-                    type="button" 
-                >
-                        Cancel
-                </button>
-                
+            <div className="editGameForm-buttons">
+                <button id="cancelButton" className="gameButton" type="reset" onClick={() => router.push(`/gamedetails/${game.id}`)}> Cancel</button>
                 <button id="saveButton" className="gameButton" type="submit"> Save </button>
             </div>
         </form>
