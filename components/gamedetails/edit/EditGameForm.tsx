@@ -32,9 +32,11 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
     function handleDate(event: ChangeEvent<HTMLInputElement>): void {
         setDate(event.target.value);
     }
+
+    const updateGameWithId = updateGame.bind(null, game.id);
     
     return (
-        <form id="editGameForm" action={updateGame}>
+        <form id="editGameForm" action={updateGameWithId}>
             <input
                 name="title"
                 type="text" 

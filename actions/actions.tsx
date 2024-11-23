@@ -18,14 +18,13 @@ export async function register(prevState: any, formData: FormData) {
     return { message: 'Registered' };
 }
 
-export async function updateGame(formData: FormData) {
-    const description = formData.get("description")?.toString();
-
+export async function updateGame(id: number, formData: FormData) {
     const rawFormData = {
+        id: id,
         title: formData.get('title'),
         developer: formData.get('developer'),
         publisher: formData.get('publisher'),
-        description: createParagraphs(description || ""),
+        description: createParagraphs(formData.get("description")?.toString() || ""),
         players: formData.get('players'),
         released: formData.get('released'),
         cover: formData.get('cover'),
