@@ -1,10 +1,11 @@
 'use client';
 
-import { ChangeEvent, FormEvent, ReactElement, useState, useRef } from "react";
+import { ChangeEvent, ReactElement, useState, useRef } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/interfaces/interfaces";
-import { ALL_OPTION_VALUE, createParagraphs, createSelectList, fileTypes, getPlayersList, joinParagraphs } from "@/utils/utils";
+import { ALL_OPTION_VALUE, createSelectList, fileTypes, getPlayersList, joinParagraphs } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
+import { updateGame } from "@/actions/actions";
 
 import "./EditGameForm.css";
 
@@ -21,24 +22,6 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
     const [ description, setDescription ] = useState<string>(joinParagraphs(game.description));
     const categoryRef = useRef<HTMLSelectElement>(null);
     const playersRef = useRef<HTMLSelectElement>(null);
-
-    /**
-     * Updates all Game properties and store the updated game in the list of all games. Then a
-     * user is redirected to the details page of the updated game.
-     */
-    function saveChanges(event: FormEvent<HTMLFormElement>): void {
-        event.preventDefault();
-
-        game.title = title;
-        game.category = category;
-        game.players = players;
-        game.description = createParagraphs(description);
-        game.developer = developer;
-        game.publisher = publisher;
-        game.releaseDate = date;
-
-        //updateGame(game);
-    }
 
     function handleFile(event: ChangeEvent<HTMLInputElement>): void {
         if (event.target.files) {
@@ -63,8 +46,9 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
     }
     
     return (
-        <form id="editGameForm" onSubmit={saveChanges}>
-            <input 
+        <form id="editGameForm" action={updateGame}>
+            <input
+                name="title"
                 type="text" 
                 value={title} 
                 onChange={(e) => setTitle(e.target.value)} 
@@ -74,6 +58,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             />
 
             <input 
+                name="developer"
                 type="text" 
                 value={developer} 
                 onChange={(e) => setDeveloper(e.target.value)} 
@@ -83,6 +68,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             />
 
             <input 
+                name="publisher"
                 type="text" 
                 value={publisher} 
                 onChange={(e) => setPublisher(e.target.value)} 
@@ -94,6 +80,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             <section className="selectSection categorySection">
                 <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
                 <select
+                    name="category"
                     className="selectSection__select"
                     defaultValue={category} 
                     ref={categoryRef} 
@@ -106,6 +93,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <textarea 
                 id="description" 
+                name="description"
                 form="editGameForm"
                 value={description} 
                 onChange={(e) => setDescription(e.target.value)} 
@@ -116,12 +104,13 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="coverSection">
                 <h2 className={`coverSection__title ${arima.className}`}>Cover</h2>
-                <input type="file" accept={fileTypes.toString()} onChange={handleFile} required />
+                <input name="file" type="file" accept={fileTypes.toString()} onChange={handleFile} required />
             </section>
 
             <section className="selectSection playersSection">
                 <h2 className={`selectSection__title ${arima.className}`}>Players</h2>
                 <select
+                    name="players"
                     className="selectSection__select"
                     defaultValue={players.toString()} 
                     ref={playersRef} 
@@ -134,7 +123,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="releasedSection">
                 <h2 className={`releasedSection__title ${arima.className}`}>Released</h2>
-                <input id="releaseDate" type="date" value={getDate()} onChange={handleDate} required />
+                <input id="releaseDate" name="released" type="date" value={getDate()} onChange={handleDate} required />
             </section>
 
             <div className="editGameForm-buttons">
