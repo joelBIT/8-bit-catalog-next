@@ -77,7 +77,16 @@ textarea {
     padding-left: 1rem;
 }
 
+.selectSection {
+    & .selectSection__title {
+        font-weight: 900;
+    }
 
+    & .selectSection__select {
+        font-size: 1.4rem;
+        padding: 0.2rem;
+    }
+}
 
 
 /************************
