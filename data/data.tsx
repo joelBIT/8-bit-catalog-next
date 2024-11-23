@@ -1,5 +1,5 @@
 import { Game } from '@/interfaces/interfaces';
-import games from '../assets/database/games.json';
+import games from '../app/lib/games/data.json';
 
 export function getGames() {
     return games;

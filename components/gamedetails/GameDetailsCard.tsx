@@ -1,14 +1,11 @@
-'use client';
-
 import { ReactElement } from "react";
 import Image from 'next/image';
 import { silkScreen } from "@/fonts/fonts";
-import { getGame } from "@/data/game";
+import { Game } from "@/interfaces/interfaces";
 
 import "./GameDetailsCard.css";
 
-export function GameDetailsCard({ id }: { id: number }): ReactElement {
-    const game = getGame(id);
+export function GameDetailsCard({ game }: { game: Game }): ReactElement {
 
     return (
         <section id="gameDetailsCard">
