@@ -22,7 +22,7 @@ export async function getAllGames(): Promise<Game[]> {
     return [];
 }
 
-export function copyGame(game: Game): Game {
+function copyGame(game: Game): Game {
     return {
         id: game.id,
         title: game.title,
