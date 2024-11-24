@@ -13,19 +13,14 @@ export default function Home(): ReactElement {
     const [ randomGame, setRandomGame ] = useState<Game>();
 
     useEffect(() => {
-        getRandomGame();
-    }, []);
-
-    async function getRandomGame() {
-        try {
+        const fetchRandomGame = async () => {
             const response = await fetch(`/api/game?id=${randomID()}`);
             const data = await response.json();
             setRandomGame(data);
-
-        } catch (error) {
-            console.error(error);
         }
-    }
+        
+        fetchRandomGame();
+    }, []);
 
     function randomID() {
         return Math.floor(Math.random() * 970 + 1);

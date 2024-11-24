@@ -13,6 +13,5 @@ function databaseKey() {
 
 export async function GET() {
     const { data, error } = await supabase.from('games').select();
-
     return NextResponse.json(data);
 }

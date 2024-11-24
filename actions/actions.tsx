@@ -43,8 +43,7 @@ export async function updateGame(id: number, formData: FormData) {
         category: formData.get('category')
       };
 
-      const { data, error } = await supabase.from('games').select();
-      console.log(data);
+      await supabase.from('games').update({ description: rawFormData.description }).eq('id', id);
       
       console.log(rawFormData);
 }
