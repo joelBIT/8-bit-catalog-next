@@ -18,7 +18,7 @@ export function SearchForm({ search }: { search: (title: string, category: strin
 
     useEffect(() => {
         const fetchGames = async () => {
-            let games = await getAllGames();
+            const games = await getAllGames();
             setAllDevelopers(Array.from(new Set(addAllOption(createFilterList(games, "developer")))));
             setAllPublishers(Array.from(new Set(addAllOption(createFilterList(games, "publisher")))));
         }
