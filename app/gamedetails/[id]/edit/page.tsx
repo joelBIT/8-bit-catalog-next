@@ -11,19 +11,14 @@ export default function EditGamePage({ params }: { params: { id: string }}): Rea
     const [ game, setGame ] = useState<Game>();
 
     useEffect(() => {
-        getGame();
-    }, []);
-
-    async function getGame() {
-        try {
+        const fetchGame = async () => {
             const response = await fetch(`/api/game?id=${params.id}`);
             const data = await response.json();
             setGame(data);
-
-        } catch (error) {
-            console.error(error);
         }
-    }
+
+        fetchGame();
+    }, []);
     
     return (
         <main id="editGamePage">
