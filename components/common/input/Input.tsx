@@ -4,7 +4,8 @@ import { ReactElement } from "react";
 export function Input({ id, type, placeholder }: { id: string, type: string, placeholder: string }): ReactElement {
     return (
         <input 
-            id={id} 
+            id={id}
+            name={id} 
             type={type} 
             placeholder={placeholder}
             className={arima.className}
