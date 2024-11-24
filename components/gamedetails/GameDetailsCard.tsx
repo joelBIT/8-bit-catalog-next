@@ -69,17 +69,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
             </article>
 
             <article id="gameDetailsCard__description">
-                { game.description ? 
-                        game.description
-                            .map((paragraph, index) => 
-                                <p 
-                                    className="gameDetailsCard__description-paragraph" 
-                                    key={index}
-                                >
-                                    {paragraph}
-                                </p>) 
-                            : <></>
-                }
+                { game.description }
             </article>
         </section>
     );

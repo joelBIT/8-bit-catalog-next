@@ -3,7 +3,7 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/interfaces/interfaces";
-import { createSelectList, fileTypes, getPlayersList, joinParagraphs } from "@/utils/utils";
+import { createSelectList, fileTypes, getPlayersList } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/actions";
 
@@ -17,7 +17,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
     const [ year ] = useState<number>(game.releaseYear);
     const [ developer, setDeveloper ] = useState<string>(game.developer);
     const [ publisher, setPublisher ] = useState<string>(game.publisher);
-    const [ description, setDescription ] = useState<string>(joinParagraphs(game.description));
+    const [ description, setDescription ] = useState<string>(game.description);
 
     function handleFile(event: ChangeEvent<HTMLInputElement>): void {
         if (event.target.files) {

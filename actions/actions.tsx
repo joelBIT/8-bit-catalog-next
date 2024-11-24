@@ -1,7 +1,6 @@
 'use server';
 
 import { createClient } from '@supabase/supabase-js';
-import { createParagraphs } from "@/utils/utils";
 
 const supabase = createClient(databaseURL(), databaseKey());
 
@@ -36,7 +35,7 @@ export async function updateGame(id: number, formData: FormData) {
         title: formData.get('title'),
         developer: formData.get('developer'),
         publisher: formData.get('publisher'),
-        description: createParagraphs(formData.get("description")?.toString() || ""),
+        description: formData.get("description")?.toString() || "",
         players: formData.get('players'),
         released: formData.get('released'),
         cover: formData.get('cover'),

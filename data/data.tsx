@@ -12,7 +12,7 @@ export async function getAllGames(): Promise<Game[]> {
         const cartridges = data.map((game: any) => {
             game.cover = game.cover ? game.cover : "notavailable.jpg";
             game.players = game.players ? game.players : 1;
-            game.description = game.description ? game.description : [];
+            game.description = game.description ? game.description : "";
             game.releaseDate = game.releaseDate ? game.releaseDate : "";
             return copyGame(game);
         });
