@@ -1,9 +1,4 @@
 import { Game } from '@/interfaces/interfaces';
-import games from '../app/lib/games/data.json';
-
-export function getGames() {
-    return games;
-}
 
 export async function getAllGames(): Promise<Game[]> {
     try {
