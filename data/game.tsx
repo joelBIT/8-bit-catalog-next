@@ -17,7 +17,7 @@ export function copyGame(game: Game): Game {
 }
 
 export function createGame(id: number, title: string, category: string, publisher: string, developer: string, 
-                                releaseYear: number, releaseDate: string, description: string[], players = 1, cover = "notavailable.jpg"): Game {
+                                releaseYear: number, releaseDate: string, description: string, players = 1, cover = "notavailable.jpg"): Game {
     return {
         id: id,
         title: title,

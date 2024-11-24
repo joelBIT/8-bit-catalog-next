@@ -5,7 +5,7 @@ import { Game } from "@/interfaces/interfaces";
 import { ALL_OPTION_VALUE } from "@/utils/utils";
 import { SearchForm } from "@/components/search/SearchForm";
 import { SearchResult } from "@/components/search/SearchResult";
-import { createGameList } from "@/data/data";
+import { getAllGames } from "@/data/data";
 
 import "./page.css";
 
@@ -23,8 +23,8 @@ export default function SearchPage(): ReactElement {
      * @param publisher     the publisher of games
      * @param developer     the developer of games
      */
-    function search(title: string, category: string, publisher: string, developer: string): void {
-        let games = createGameList();
+    async function search(title: string, category: string, publisher: string, developer: string): Promise<void> {
+        let games = await getAllGames();
 
         games = filter(games, "category", category);
         games = filter(games, "publisher", publisher);

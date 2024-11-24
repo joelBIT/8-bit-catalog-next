@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
-import { getGame } from "@/data/game";
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(databaseURL(), databaseKey());
+
+function databaseURL() {
+    return process.env.SUPABASE_URL ? process.env.SUPABASE_URL : "";
+}
+
+function databaseKey() {
+    return process.env.SUPABASE_KEY ? process.env.SUPABASE_KEY : "";
+}
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
@@ -8,7 +18,7 @@ export async function GET(request: Request) {
     if (!gameId || !parseInt(gameId)) {
         return NextResponse.json({ error: false, message: "Supplied id is not a valid id" }, { status: 400 });
     } else {
-        const game = getGame(parseInt(gameId));
-        return NextResponse.json(game);
+        const { data } = await supabase.from('games').select().eq('id', gameId).single();
+        return NextResponse.json(data);
     }
 }

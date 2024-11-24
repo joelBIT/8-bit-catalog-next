@@ -90,11 +90,3 @@ export const fileTypes = [
 export function generateGameId(): number {
     return getGames().map(game => game.id).reduce((a, b) => a > b ? a : b, 0) + 1;
 }
-
-export function joinParagraphs(text: string[]): string {
-    return text ? text.join("\n\n") : text;
-}
-
-export function createParagraphs(text: string): string[] {
-    return text.split('\n').filter((element: string) => element !== "" && element !== '\r').map((word: string) => word.replaceAll("\r", ""));
-}

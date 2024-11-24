@@ -10,7 +10,7 @@ export interface Game {
     releaseDate: string,
     cover: string,
     players: number,
-    description: string[]
+    description: string
 }
 
 export interface User {

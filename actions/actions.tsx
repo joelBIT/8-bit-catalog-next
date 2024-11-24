@@ -1,6 +1,17 @@
 'use server';
 
-import { createParagraphs } from "@/utils/utils";
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(databaseURL(), databaseKey());
+
+function databaseURL() {
+    return process.env.SUPABASE_URL ? process.env.SUPABASE_URL : "";
+}
+
+function databaseKey() {
+    return process.env.SUPABASE_KEY ? process.env.SUPABASE_KEY : "";
+}
+
 
 export async function login(prevState: any, formData: FormData) {
     const username = formData.get('username');
@@ -24,12 +35,14 @@ export async function updateGame(id: number, formData: FormData) {
         title: formData.get('title'),
         developer: formData.get('developer'),
         publisher: formData.get('publisher'),
-        description: createParagraphs(formData.get("description")?.toString() || ""),
+        description: formData.get("description"),
         players: formData.get('players'),
         released: formData.get('released'),
         cover: formData.get('cover'),
         category: formData.get('category')
       };
+
+      await supabase.from('games').update({ description: rawFormData.description }).eq('id', id);
       
       console.log(rawFormData);
 }
