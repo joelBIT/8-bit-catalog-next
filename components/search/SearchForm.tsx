@@ -19,17 +19,16 @@ export function SearchForm({ search }: { search: (title: string, category: strin
     useEffect(() => {
         const fetchGames = async () => {
             const games = await getAllGames();
-            setAllDevelopers(Array.from(new Set(addAllOption(createFilterList(games, "developer")))));
-            setAllPublishers(Array.from(new Set(addAllOption(createFilterList(games, "publisher")))));
+            setAllDevelopers(Array.from(new Set(addAllOption(sortFilterList(games.map(game => game.developer))))));
+            setAllPublishers(Array.from(new Set(addAllOption(sortFilterList(games.map(game => game.publisher))))));
         }
         
         fetchGames();
     }, []);
 
-    function createFilterList(games: any[], property: string) {
-        const properties = games.map((game: { [x: string]: any; }) => game[property]);
-        properties.sort();
-        return properties.filter((element: any) => element != null);
+    function sortFilterList(list: string[]) {
+        list.sort();
+        return list.filter((element: string) => element != null);
     }
 
     /**
