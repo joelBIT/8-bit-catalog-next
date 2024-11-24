@@ -13,7 +13,7 @@ function databaseKey() {
 }
 
 
-export async function login(formData: FormData) {
+export async function login(prevState: any, formData: FormData) {
     const username = formData.get('username');
     const password = formData.get('password');
     console.log(username + ' ' + password);
@@ -21,7 +21,7 @@ export async function login(formData: FormData) {
     return { message: 'Logged in' };
 }
 
-export async function register(formData: FormData) {
+export async function register(prevState: any, formData: FormData) {
     const username = formData.get('username');
     const password = formData.get('password');
     console.log(username + ' ' + password);
