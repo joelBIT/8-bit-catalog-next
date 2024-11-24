@@ -1,8 +1,20 @@
 'use server';
 
+import { createClient } from '@supabase/supabase-js';
 import { createParagraphs } from "@/utils/utils";
 
-export async function login(prevState: any, formData: FormData) {
+const supabase = createClient(databaseURL(), databaseKey());
+
+function databaseURL() {
+    return process.env.SUPABASE_URL ? process.env.SUPABASE_URL : "";
+}
+
+function databaseKey() {
+    return process.env.SUPABASE_KEY ? process.env.SUPABASE_KEY : "";
+}
+
+
+export async function login(formData: FormData) {
     const username = formData.get('username');
     const password = formData.get('password');
     console.log(username + ' ' + password);
@@ -10,7 +22,7 @@ export async function login(prevState: any, formData: FormData) {
     return { message: 'Logged in' };
 }
 
-export async function register(prevState: any, formData: FormData) {
+export async function register(formData: FormData) {
     const username = formData.get('username');
     const password = formData.get('password');
     console.log(username + ' ' + password);
@@ -30,6 +42,9 @@ export async function updateGame(id: number, formData: FormData) {
         cover: formData.get('cover'),
         category: formData.get('category')
       };
+
+      const { data, error } = await supabase.from('games').select();
+      console.log(data);
       
       console.log(rawFormData);
 }
