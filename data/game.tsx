@@ -1,5 +1,4 @@
 import { Game } from '@/interfaces/interfaces';
-import { getGames } from './data';
 
 export function copyGame(game: Game): Game {
     return {
@@ -30,19 +29,4 @@ export function createGame(id: number, title: string, category: string, publishe
         releaseYear: releaseYear,
         releaseDate: releaseDate
     }
-}
-
-/**
- * Retrieves an existing game. Throws an error if no game is found.
- * 
- * @param id        the ID of the game to retrieve
- * @returns         the game or throws an error
- */
-export function getGame(id: number) {
-    const game =  getGames().find(game => game.id === id);
-    if (!game) {
-        throw new Error(`Game with id ${id} does not exist`);
-    }
-
-    return game;
 }

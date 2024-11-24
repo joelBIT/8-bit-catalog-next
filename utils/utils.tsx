@@ -1,5 +1,3 @@
-import { getGames } from "@/data/data";
-
 export const ACTION_OPTION_VALUE = "Action";
 export const ALL_OPTION_VALUE = "All";
 export const ASSETS_URL = "src/assets";
@@ -21,32 +19,6 @@ export const URL_REQUEST_PAGE = "/request";
 export const URL_REVIEW_PAGE = "/review";
 export const URL_SEARCH_PAGE = "/games";
 
-
-/**
- * Creates a list of option values for a Select component. The list of option values is sorted
- * alphabetically in the Select list, and empty values are removed.
- * 
- * @param property      the game property which values are to be included in an option values list
- * @returns             a list containing option values of a game property sorted alphabetically
- */
-export function createSelectList(property: string): string[] {
-    let games = getGames().map((game: { [x: string]: any; }) => game[property]);
-    games.sort();
-    games = games.filter((element: any) => element != null);
-    return Array.from(new Set(games));
-}
-
-/**
- * Creates a list of options for a Filter component. This list contains the 'ALL' option so that
- * filtering can be performed on all properties at the same time.
- * 
- * @param property      the game property which values are to be included in an option values list
- * @returns             a list containing option values (as well as 'ALL') of a game property sorted alphabetically
- */
-export function createFilterList(property: string): string[] {
-    return addAllOption(createSelectList(property));
-}
-
 /**
  * Adds the 'ALL' option to the list so that a search can be performed on all games.
  * 
@@ -66,6 +38,12 @@ export function getPlayersList(): string[] {
     return ["1", "2", "3", "4", "5", "6"];
 }
 
+export function getCategories(): string[] {
+    return ["Action", "Adult", "Adventure", "Educational", "Fighting", "Puzzle", "Racing", "Role-Playing",
+        "Shooter", "Simulation", "Sports", "Strategy", "Traditional", "Various"
+    ];
+}
+
 /**
  * The types of files that a user is permitted to upload.
  */
@@ -81,12 +59,3 @@ export const fileTypes = [
     'image/webp',
     `image/x-icon`
 ];
-
-/**
- * Generates a new game ID by adding 1 to the current maximum id.
- * 
- * @returns     a generated ID for a new game
- */
-export function generateGameId(): number {
-    return getGames().map(game => game.id).reduce((a, b) => a > b ? a : b, 0) + 1;
-}

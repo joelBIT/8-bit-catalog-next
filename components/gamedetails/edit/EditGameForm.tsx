@@ -3,7 +3,7 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/interfaces/interfaces";
-import { createSelectList, fileTypes, getPlayersList } from "@/utils/utils";
+import { fileTypes, getCategories, getPlayersList } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/actions";
 
@@ -70,7 +70,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             <section className="selectSection categorySection">
                 <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
                 <select name="category" className="selectSection__select" defaultValue={game.category}>
-                    {createSelectList("category").map((element, index) => <option key={index} value={element}>{element}</option>)}
+                    {getCategories().map((element, index) => <option key={index} value={element}>{element}</option>)}
                 </select>
             </section>
 
