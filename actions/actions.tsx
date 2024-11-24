@@ -35,7 +35,7 @@ export async function updateGame(id: number, formData: FormData) {
         title: formData.get('title'),
         developer: formData.get('developer'),
         publisher: formData.get('publisher'),
-        description: formData.get("description")?.toString() || "",
+        description: formData.get("description"),
         players: formData.get('players'),
         released: formData.get('released'),
         cover: formData.get('cover'),
