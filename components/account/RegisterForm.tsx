@@ -2,12 +2,9 @@
 
 import { ReactElement } from "react";
 import { useFormState } from "react-dom";
-import { UsernameInput } from "./input/UsernameInput";
-import { EmailInput } from "./input/EmailInput";
-import { PasswordInput } from "./input/PasswordInput";
-import { PasswordRepeatInput } from "./input/PasswordRepeatInput";
 import { arima } from "@/fonts/fonts";
 import { register } from "@/actions/actions";
+import { Input } from "../common/input/Input";
 
 import "./RegisterForm.css";
 
@@ -20,10 +17,10 @@ export function RegisterForm(): ReactElement {
             {state?.message}
 
             <form id="registerForm" action={formAction}>
-                <UsernameInput />
-                <EmailInput placeholder="Email" />
-                <PasswordInput />
-                <PasswordRepeatInput />
+                <Input id="username" type="text" placeholder="Username" />
+                <Input id="email" type="email" placeholder="Email" />
+                <Input id="password" type="password" placeholder="Password" />
+                <Input id="passwordRepeat" type="password" placeholder="Re-type Password" />
 
                 <button className="accountButton" type="submit">Register</button>
             </form>
