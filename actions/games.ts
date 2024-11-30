@@ -12,13 +12,13 @@ export async function updateGame(id: number, formData: FormData) {
         description: formData.get("description") as string,
         players: parseInt(formData.get('players') as string) || 1,
         releaseDate: formData.get('released') as string,
-        image: formData.get('cover') as File, 
         cover: (formData.get('cover') as File).name,
         category: formData.get('category') as string,
-        releaseYear: parseInt((formData.get('released') as string).slice(0, 4))
+        releaseYear: parseInt((formData.get('released') as string).slice(0, 4)),
+        imageLink: ""
     };
 
-    const { error } = await updateGameById(game);
+    const { error } = await updateGameById(game, formData.get('cover') as File);
     if (error) {
         console.log(error);
     }

@@ -12,7 +12,7 @@ import "./EditGameForm.css";
 export function EditGameForm({ game }: { game: Game }): ReactElement {
     const router = useRouter();
     const [ title, setTitle ] = useState<string>(game.title);
-    const [ cover, setCover ] = useState<File>(game.image);
+    const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.releaseDate);
     const [ year ] = useState<number>(game.releaseYear);
     const [ developer, setDeveloper ] = useState<string>(game.developer);

@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     if (!gameId || !parseInt(gameId)) {
         return NextResponse.json({ error: false, message: "Supplied id is not a valid id" }, { status: 400 });
     } else {
-        const { data } = await getGameById(parseInt(gameId));
-        return NextResponse.json(data);
+        const game = await getGameById(parseInt(gameId));
+        return NextResponse.json(game);
     }
 }

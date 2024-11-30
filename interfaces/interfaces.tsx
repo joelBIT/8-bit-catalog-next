@@ -9,7 +9,7 @@ export interface Game {
     releaseYear: number,
     releaseDate: string,
     cover: string,
-    image: File,
+    imageLink: string,
     players: number,
     description: string
 }

@@ -28,12 +28,12 @@ function copyGame(game: Game): Game {
         title: game.title,
         category: game.category,
         cover: game.cover,
-        image: game.image,
         publisher: game.publisher,
         description: game.description,
         developer: game.developer,
         players: game.players,
         releaseYear: game.releaseYear,
-        releaseDate: game.releaseDate
+        releaseDate: game.releaseDate,
+        imageLink: game.imageLink
     }
 }
