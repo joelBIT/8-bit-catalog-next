@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Game } from "@/interfaces/interfaces";
 import { fileTypes, getCategories, getPlayersList } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
-import { updateGame } from "@/actions/actions";
+import { updateGame } from "@/actions/games";
 
 import "./EditGameForm.css";
 
