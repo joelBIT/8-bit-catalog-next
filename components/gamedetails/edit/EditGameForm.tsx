@@ -12,16 +12,16 @@ import "./EditGameForm.css";
 export function EditGameForm({ game }: { game: Game }): ReactElement {
     const router = useRouter();
     const [ title, setTitle ] = useState<string>(game.title);
-    const [ file, setFile ] = useState<File>();
+    const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.releaseDate);
     const [ year ] = useState<number>(game.releaseYear);
     const [ developer, setDeveloper ] = useState<string>(game.developer);
     const [ publisher, setPublisher ] = useState<string>(game.publisher);
     const [ description, setDescription ] = useState<string>(game.description);
 
-    function handleFile(event: ChangeEvent<HTMLInputElement>): void {
+    function handleCover(event: ChangeEvent<HTMLInputElement>): void {
         if (event.target.files) {
-            setFile(event.target.files[0]);
+            setCover(event.target.files[0]);
         }
     }
 
@@ -87,7 +87,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="coverSection">
                 <h2 className={`coverSection__title ${arima.className}`}>Cover</h2>
-                <input name="cover" defaultValue={file?.name} type="file" accept={fileTypes.toString()} onChange={handleFile} required />
+                <input name="cover" defaultValue={cover?.name} type="file" accept={fileTypes.toString()} onChange={handleCover} required />
             </section>
 
             <section className="selectSection playersSection">

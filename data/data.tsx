@@ -1,14 +1,13 @@
 import { Game } from '@/interfaces/interfaces';
 
-export async function getAllGames(): Promise<Game[]> {
+export async function getAllGames() {
     try {
         const response = await fetch('/api/games');
         const data = await response.json();
         const cartridges = data.map((game: any) => {
-            game.cover = game.cover ? game.cover : "notavailable.jpg";
-            game.players = game.players ? game.players : 1;
-            game.description = game.description ? game.description : "";
-            game.releaseDate = game.releaseDate ? game.releaseDate : "";
+            game.players = game.players ? game.players : 1,
+            game.description = game.description as string,
+            game.releaseDate = game.releaseDate as string
             return copyGame(game);
         });
 
@@ -33,6 +32,7 @@ function copyGame(game: Game): Game {
         developer: game.developer,
         players: game.players,
         releaseYear: game.releaseYear,
-        releaseDate: game.releaseDate
+        releaseDate: game.releaseDate,
+        imageLink: game.imageLink
     }
 }
