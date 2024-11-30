@@ -8,7 +8,7 @@ function databaseURL() {
 }
 
 function databaseKey() {
-    return process.env.SUPABASE_KEY as string;
+    return process.env.SUPABASE_ANON_KEY as string;
 }
 
 export async function updateGameById(game: Game, file: File) {
