@@ -12,5 +12,20 @@ function databaseKey() {
 }
 
 export async function updateGameById(game: Game) {
+    const { error } = await databaseClient.storage.from('covers').upload(game.cover, game.image);
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(`Uploaded file ${game.image} successfully`);
+    }
+
     return await databaseClient.from('games').update(game).eq('id', game.id);
+}
+
+export async function getGames() {
+    return await databaseClient.from('games').select();
+}
+
+export async function getGameById(id: number) {
+    return await databaseClient.from('games').select().eq('id', id).single();
 }
