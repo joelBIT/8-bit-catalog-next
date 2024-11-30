@@ -28,7 +28,6 @@ export function HeroCard({ game }: { game: Game }): ReactElement {
                     alt="Random Game Cover"
                     width={100}
                     height={300}
-                    priority
                 />
             </figure>
         </section>
