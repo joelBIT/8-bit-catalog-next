@@ -79,7 +79,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="coverSection">
                 <h2 className={`coverSection__title ${arima.className}`}>Cover</h2>
-                <input name="cover" type="file" accept={fileTypes.toString()} onChange={handleCover} required />
+                <input name="cover" type="file" defaultValue={cover?.name} accept={fileTypes.toString()} onChange={handleCover} required />
             </section>
 
             <section className="selectSection playersSection">
