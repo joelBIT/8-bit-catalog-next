@@ -11,7 +11,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
         <section id="gameDetailsCard">
             <figure className="gameDetailsCard__figure">
                 <Image 
-                    src={`/covers/${game.cover}`}
+                    src={game.imageLink}
                     className="gameDetailsCard__figure-cover"
                     alt="Game Cover"
                     width={500}

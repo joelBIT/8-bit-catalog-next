@@ -9,6 +9,7 @@ export interface Game {
     releaseYear: number,
     releaseDate: string,
     cover: string,
+    imageLink: string,
     players: number,
     description: string
 }

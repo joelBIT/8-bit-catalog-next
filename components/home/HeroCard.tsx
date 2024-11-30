@@ -23,7 +23,7 @@ export function HeroCard({ game }: { game: Game }): ReactElement {
             
             <figure className="heroCard__figure">
                 <Image 
-                    src={`/covers/${game.cover}`}
+                    src={game.imageLink}
                     className="heroCard__figure-cover"
                     alt="Random Game Cover"
                     width={100}
