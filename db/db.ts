@@ -4,13 +4,13 @@ import { createClient } from '@supabase/supabase-js';
 const databaseClient = createClient(databaseURL(), databaseKey());
 
 function databaseURL() {
-    console.log(process.env.SUPABASE_URL as string);
-    return process.env.SUPABASE_URL as string;
+    console.log(process.env.NEXT_PUBLIC_SUPABASE_URL as string);
+    return process.env.NEXT_PUBLIC_SUPABASE_URL as string;
 }
 
 function databaseKey() {
-    console.log(process.env.SUPABASE_KEY as string);
-    return process.env.SUPABASE_KEY as string;
+    console.log(process.env.NEXT_PUBLIC_SUPABASE_KEY as string);
+    return process.env.NEXT_PUBLIC_SUPABASE_KEY as string;
 }
 
 export async function updateGameById(game: Game, file: File) {
