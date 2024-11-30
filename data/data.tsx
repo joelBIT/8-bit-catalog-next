@@ -1,6 +1,6 @@
 import { Game } from '@/interfaces/interfaces';
 
-export async function getAllGames() {
+export async function getAllGames(): Promise<Game[]> {
     try {
         const response = await fetch('/api/games');
         const data = await response.json();
