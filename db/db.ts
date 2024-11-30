@@ -28,7 +28,7 @@ export async function getGames() {
         console.log(error);
     } else {
         for (let i = 0; i < data.length; i++) {
-            data[i].imageLink = await getImageLink(data[i].cover);
+            data[i].imageLink = getImageLink(data[i].cover);
         }
     }
 
@@ -37,11 +37,11 @@ export async function getGames() {
 
 export async function getGameById(id: number) {
     const { data } = await databaseClient.from('games').select().eq('id', id).single();
-    data.imageLink = await getImageLink(data.cover);
+    data.imageLink = getImageLink(data.cover);
     return data;
 }
 
-export async function getImageLink(cover: string) {
+export function getImageLink(cover: string) {
     const { data } = databaseClient.storage.from('covers').getPublicUrl(cover);
     return data.publicUrl;
 }
