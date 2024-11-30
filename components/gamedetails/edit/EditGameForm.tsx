@@ -11,13 +11,9 @@ import "./EditGameForm.css";
 
 export function EditGameForm({ game }: { game: Game }): ReactElement {
     const router = useRouter();
-    const [ title, setTitle ] = useState<string>(game.title);
     const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.releaseDate);
     const [ year ] = useState<number>(game.releaseYear);
-    const [ developer, setDeveloper ] = useState<string>(game.developer);
-    const [ publisher, setPublisher ] = useState<string>(game.publisher);
-    const [ description, setDescription ] = useState<string>(game.description);
 
     function handleCover(event: ChangeEvent<HTMLInputElement>): void {
         if (event.target.files) {
@@ -40,8 +36,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             <input
                 name="title"
                 type="text" 
-                value={title} 
-                onChange={(e) => setTitle(e.target.value)} 
+                defaultValue={game.title}
                 placeholder="Game title" 
                 autoComplete="false" 
                 required 
@@ -50,8 +45,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             <input 
                 name="developer"
                 type="text" 
-                value={developer} 
-                onChange={(e) => setDeveloper(e.target.value)} 
+                defaultValue={game.developer}
                 placeholder="Developer" 
                 autoComplete="false" 
                 required 
@@ -60,8 +54,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             <input 
                 name="publisher"
                 type="text" 
-                value={publisher} 
-                onChange={(e) => setPublisher(e.target.value)} 
+                defaultValue={game.publisher}
                 placeholder="Publisher" 
                 autoComplete="false" 
                 required 
@@ -70,7 +63,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             <section className="selectSection categorySection">
                 <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
                 <select name="category" className="selectSection__select" defaultValue={game.category}>
-                    {getCategories().map((element, index) => <option key={index} value={element}>{element}</option>)}
+                    {getCategories().map((element, index) => <option key={index} value={element}> {element} </option>)}
                 </select>
             </section>
 
@@ -78,8 +71,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
                 id="description" 
                 name="description"
                 form="editGameForm"
-                value={description} 
-                onChange={(e) => setDescription(e.target.value)} 
+                defaultValue={game.description}
                 placeholder="Description" 
                 autoComplete="false" 
                 required 
@@ -87,13 +79,13 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="coverSection">
                 <h2 className={`coverSection__title ${arima.className}`}>Cover</h2>
-                <input name="cover" defaultValue={cover?.name} type="file" accept={fileTypes.toString()} onChange={handleCover} required />
+                <input name="cover" type="file" accept={fileTypes.toString()} onChange={handleCover} required />
             </section>
 
             <section className="selectSection playersSection">
                 <h2 className={`selectSection__title ${arima.className}`}>Players</h2>
                 <select name="players" className="selectSection__select" defaultValue={game.players?.toString()}>
-                    { getPlayersList().map((element, index) => <option key={index} value={element}>{element}</option>) }
+                    { getPlayersList().map((element, index) => <option key={index} value={element}> {element} </option>) }
                 </select>
             </section>
 
