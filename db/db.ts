@@ -23,7 +23,16 @@ export async function updateGameById(game: Game, file: File) {
 }
 
 export async function getGames() {
-    return await databaseClient.from('games').select();
+    const { data, error } = await databaseClient.from('games').select();
+    if (error) {
+        console.log(error);
+    } else {
+        for (let i = 0; i < data.length; i++) {
+            data[i].imageLink = await getImageLink(data[i].cover);
+        }
+    }
+
+    return data;
 }
 
 export async function getGameById(id: number): Promise<Game> {

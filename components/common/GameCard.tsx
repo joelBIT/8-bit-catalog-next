@@ -21,11 +21,12 @@ export function GameCard({ game }: { game: Game }): ReactElement {
             <section className="gameCard">
                 <figure className="gameCard-figure">
                     <Image 
-                        src={`/covers/${game.cover}`}
+                        src={game.imageLink}
                         className="gameCard-figure__cover"
                         alt="Game Cover"
                         width={100}
                         height={300}
+                        priority
                     />
                 </figure>
                 <article id="gameCardTitle">
