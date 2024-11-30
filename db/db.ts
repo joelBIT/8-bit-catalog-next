@@ -12,12 +12,12 @@ function databaseKey() {
 }
 
 export async function updateGameById(game: Game, file: File) {
-    const { error } = await databaseClient.storage.from('covers').upload(game.cover, file);
-    if (error) {
-        console.log(error);
-    } else {
-        console.log(`Uploaded file ${file} successfully`);
-    }
+    // const { error } = await databaseClient.storage.from('covers').upload(game.cover, file);
+    // if (error) {
+    //     console.log(error);
+    // } else {
+    //     console.log(`Uploaded file ${file} successfully`);
+    // }
 
     return await databaseClient.from('games').update(game).eq('id', game.id);
 }
@@ -42,6 +42,7 @@ export async function getGameById(id: number) {
 }
 
 export async function getImageLink(cover: string) {
-    const { data } = databaseClient.storage.from('covers').getPublicUrl(cover);
-    return data.publicUrl;
+    // const { data } = databaseClient.storage.from('covers').getPublicUrl(cover);
+    // return data.publicUrl;
+    return "";
 }
