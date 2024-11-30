@@ -35,7 +35,7 @@ export async function getGames() {
     return data;
 }
 
-export async function getGameById(id: number): Promise<Game> {
+export async function getGameById(id: number) {
     const { data } = await databaseClient.from('games').select().eq('id', id).single();
     data.imageLink = await getImageLink(data.cover);
     return data;
