@@ -26,7 +26,6 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                         alt="Game Cover"
                         width={100}
                         height={300}
-                        priority
                     />
                 </figure>
                 <article id="gameCardTitle">

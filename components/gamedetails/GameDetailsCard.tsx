@@ -16,7 +16,6 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                     alt="Game Cover"
                     width={500}
                     height={600}
-                    priority
                 />
             </figure>
             
