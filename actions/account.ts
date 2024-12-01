@@ -8,13 +8,13 @@ export async function login(prevState: any, formData: FormData) {
     const supabase = await createClient();
     
     const loginData = {
-        username: formData.get('username') as string,
+        email: formData.get('email') as string,
         password: formData.get('password') as string
     };
     console.log(loginData, prevState);
 
     const { data, error } = await supabase.auth.signInWithPassword({
-        email: loginData.username,
+        email: loginData.email,
         password: loginData.password
     });
 
@@ -35,12 +35,14 @@ export async function register(prevState: any, formData: FormData) {
     const supabase = await createClient();
 
     const registerData = {
-        username: formData.get('username') as string,
+        name: formData.get('username') as string,
         password: formData.get('password') as string,
         passwordRepeat: formData.get('passwordRepeat') as string,
         email: formData.get('email') as string
     };
     console.log(registerData, prevState);
+
+    // validate data
 
     const { data, error } = await supabase.auth.signUp(
         {
@@ -48,7 +50,7 @@ export async function register(prevState: any, formData: FormData) {
           password: registerData.password,
           options: {
             data: {
-              user_name: registerData.username
+              name: registerData.name
             }
           }
         }
