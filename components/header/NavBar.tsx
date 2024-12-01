@@ -31,7 +31,10 @@ export function NavBar() {
                     </Link>
                 </li>
                 { user ? <li className="navbar__list-element">
-                            <Link href="/account">
+                            <Link 
+                                href="/account"
+                                className={pathname === "/account" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                            >
                                 <span className="material-symbols-outlined wideScreen">account_circle</span>
                                 <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Account</h2>
                             </Link>

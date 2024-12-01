@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       const { data: authListener } = supabase.auth.onAuthStateChange(
         (event, session) => {
+          console.log(event);
           if (session?.user) {
             setUser({ email: session.user.email || '', authenticated: session.user.aud === "authenticated" });
           } else {
@@ -77,6 +78,6 @@ export const useAuth = () => {
     if (!context) {
         throw new Error('useAuth must be used within an AuthProvider');
     }
-    
+
     return context;
 };

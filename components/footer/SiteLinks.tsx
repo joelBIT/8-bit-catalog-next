@@ -3,16 +3,17 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 import "./SiteLinks.css";
 
 export function SiteLinks(): ReactElement {
     const pathname = usePathname();
+    const { user } = useAuth();
 
     const SITELINKS = [
         {path: "/", title: "Home"},
-        {path: "/about", title: "About"},
-        {path: "/login", title: "Account"}
+        {path: "/about", title: "About"}
     ];
 
     return (
@@ -28,6 +29,13 @@ export function SiteLinks(): ReactElement {
                         </li>
                     )
                 }
+                <li key={SITELINKS.length}>
+                    <Link 
+                        href={user ? "/account" : "/login"} 
+                        className={pathname === "/login" || pathname === "/account" ? `active siteLinks__link` : `siteLinks__link`}>
+                        <h4 className="siteLinks__link-title"> Account </h4>
+                    </Link>
+                </li>
             </ul>
         </section>
     );
