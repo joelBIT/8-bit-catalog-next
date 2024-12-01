@@ -1,0 +1,12 @@
+#accountPage {
+    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin-top: 3rem;
+        font-family: "Arima Madurai", display;
+    }
+}

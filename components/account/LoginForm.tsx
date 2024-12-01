@@ -19,7 +19,7 @@ export function LoginForm(): ReactElement {
             {state?.message}
             
             <form id="loginForm" action={formAction}>
-                <Input id="username" type="text" placeholder="Username" />
+                <Input id="email" type="email" placeholder="Email" />
                 <Input id="password" type="password" placeholder="Password" />
                 
                 <button className="accountButton" type="submit">Login</button>

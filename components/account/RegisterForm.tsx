@@ -17,11 +17,12 @@ export function RegisterForm(): ReactElement {
             {state?.message}
 
             <form id="registerForm" action={formAction}>
-                <Input id="username" type="text" placeholder="Username" />
                 <Input id="email" type="email" placeholder="Email" />
+                <Input id="name" type="text" placeholder="Name" />
                 <Input id="password" type="password" placeholder="Password" />
                 <Input id="passwordRepeat" type="password" placeholder="Re-type Password" />
 
+                <p className="confirmation-text">A confirmation link will be sent to your email</p>
                 <button className="accountButton" type="submit">Register</button>
             </form>
         </section>
