@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 
@@ -13,6 +13,7 @@ type AuthContextType = {
     user: User | null;
     loading: boolean;
     logout: () => Promise<void>;
+    setUser: Dispatch<SetStateAction<User | null>>
     getToken: () => Promise<string | null>;
 };
 
@@ -27,18 +28,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const supabase = createClient();
 
       const fetchUser = async () => {
-        const { data } = await supabase.auth.getUser();
-        if (data.user && data.user.email) {
-          setUser({ email: data.user.email, authenticated: data.user.aud === "authenticated" });
-        }
-        setLoading(false);
+          const { data } = await supabase.auth.getUser();
+          if (data.user && data.user.email) {
+              setUser({ email: data.user.email, authenticated: data.user.aud === "authenticated" });
+          }
+          setLoading(false);
       };
 
       fetchUser();
 
       const { data: authListener } = supabase.auth.onAuthStateChange(
         (event, session) => {
-          console.log(event);
           if (session?.user) {
             setUser({ email: session.user.email || '', authenticated: session.user.aud === "authenticated" });
           } else {
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, logout, getToken }}>
+        <AuthContext.Provider value={{ user, setUser, loading, logout, getToken }}>
             {children}
         </AuthContext.Provider>
     );

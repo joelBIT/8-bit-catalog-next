@@ -6,7 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 
 import "./page.css";
 
-export default function AccountPage(): ReactElement {
+export default function AccountPage({ params }: { params: { id: string } }): ReactElement {
     const supabase = createClient();
     const { setUser } = useAuth();
 
@@ -23,7 +23,7 @@ export default function AccountPage(): ReactElement {
 
     return (
         <main id="accountPage">
-            <h1>Logged in</h1>
+            <h1>ACCOUNT {params.id} </h1>
         </main>
     );
 }

@@ -11,24 +11,20 @@ export async function login(prevState: any, formData: FormData) {
         email: formData.get('email') as string,
         password: formData.get('password') as string
     };
-    console.log(loginData, prevState);
 
     const { data, error } = await supabase.auth.signInWithPassword({
         email: loginData.email,
         password: loginData.password
     });
 
-    console.log(data);  
-
     if (error) {
         //redirect('/error');
         console.log(error);
+        return { message: 'Could not log in' };
     }
 
     revalidatePath('/', 'layout');
-    redirect('/');
-
-    return { message: 'Logged in' };
+    redirect('/account');
 }
 
 export async function register(prevState: any, formData: FormData) {
@@ -40,31 +36,22 @@ export async function register(prevState: any, formData: FormData) {
         passwordRepeat: formData.get('passwordRepeat') as string,
         email: formData.get('email') as string
     };
-    console.log(registerData, prevState);
 
     // validate data
 
     const { data, error } = await supabase.auth.signUp(
         {
           email: registerData.email,
-          password: registerData.password,
-          options: {
-            data: {
-              name: registerData.name
-            }
-          }
+          password: registerData.password
         }
     );
-
-    console.log(data);
 
     if (error) {
       //redirect('/error');
       console.log(error);
+      return { message: 'Could not register account' };
     }
   
     revalidatePath('/', 'layout');
     redirect('/');
-
-    return { message: 'Registered' };
 }
