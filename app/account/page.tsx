@@ -19,7 +19,7 @@ export default function AccountPage(): ReactElement {
         }
         
         fetchUser();
-    });
+    }, []);
 
     return (
         <main id="accountPage">
