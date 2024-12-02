@@ -20,6 +20,10 @@
             font-weight: 500;
         }
 
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+
         .mail {
             color: white;
         }
