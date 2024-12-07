@@ -12,6 +12,10 @@
         margin-bottom: 2rem;
     }
 
+    .message-failure {
+        text-align: center;
+    }
+
     #loginForm {
         display: flex;
         flex-direction: column;
