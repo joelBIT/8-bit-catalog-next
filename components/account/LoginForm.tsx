@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement} from "react";
+import { ReactElement, useRef } from "react";
 import { useFormState } from "react-dom";
 import Link from "next/link";
 import { arima } from "@/fonts/fonts";
@@ -11,14 +11,22 @@ import { Input } from "../common/input/Input";
 import "./LoginForm.css";
 
 export function LoginForm(): ReactElement {
-    const [state, formAction] = useFormState(login, null);
+    const [state, formAction] = useFormState(login, { message: '', success: false });
+    const formRef = useRef<HTMLFormElement>(null);
+
+    if (formRef.current) {
+        formRef.current?.reset();
+    }
 
     return (
         <section id="loginCard" className={arima.className}>
             <h1 className="loginCard__heading">Log in</h1>
-            {state?.message}
             
-            <form id="loginForm" action={formAction}>
+            { state?.message ? <h2 className={state?.success ? "message-success" : "message-failure"}>
+                {state?.message}
+            </h2> : <></> }
+            
+            <form id="loginForm" ref={formRef} action={formAction}>
                 <Input id="email" type="email" placeholder="Email" />
                 <Input id="password" type="password" placeholder="Password" />
                 

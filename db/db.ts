@@ -75,7 +75,7 @@ export async function signIn(email: string, password: string) {
 
     if (error) {
         console.log(error);
-        throw new Error("Could not log in");
+        throw error;
     }
 }
 
@@ -88,6 +88,7 @@ export async function signUp(email: string, password: string) {
     });
 
     if (error) {
+        console.log(error);
         if (error instanceof AuthWeakPasswordError) {
             throw new Error('Password is to weak');
         }

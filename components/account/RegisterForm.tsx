@@ -30,7 +30,7 @@ export function RegisterForm(): ReactElement {
                 <Input id="password" type="password" placeholder="Password" />
                 <Input id="passwordRepeat" type="password" placeholder="Re-type Password" />
 
-                <p className="confirmation-text">A confirmation link will be sent to your email</p>
+                { state.success ? <p className="confirmation-text">A confirmation link will be sent to your email</p> : <></> }
                 <button className="accountButton" type="submit">Register</button>
             </form>
         </section>
