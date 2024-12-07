@@ -1,0 +1,15 @@
+#notFoundPage {
+    background-image: url("../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    & .not-found__title {
+        font-size: 4rem;
+    }
+
+    & .not-found__text {
+        font-size: 2rem;
+    }
+}
