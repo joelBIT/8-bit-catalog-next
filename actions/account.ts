@@ -1,25 +1,19 @@
 'use server';
 
-import { createClient } from "@/utils/supabase/server";
+import { signIn, signUp } from "@/db/db";
+import { AuthWeakPasswordError } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function login(prevState: any, formData: FormData) {
-    const supabase = await createClient();
-    
     const loginData = {
         email: formData.get('email') as string,
         password: formData.get('password') as string
     };
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email: loginData.email,
-        password: loginData.password
-    });
-
-    if (error) {
-        //redirect('/error');
-        console.log(error);
+    try {
+       await signIn(loginData.email, loginData.password); 
+    } catch (error) {
         return { message: 'Could not log in' };
     }
 
@@ -28,8 +22,6 @@ export async function login(prevState: any, formData: FormData) {
 }
 
 export async function register(prevState: any, formData: FormData) {
-    const supabase = await createClient();
-
     const registerData = {
         name: formData.get('username') as string,
         password: formData.get('password') as string,
@@ -37,21 +29,21 @@ export async function register(prevState: any, formData: FormData) {
         email: formData.get('email') as string
     };
 
+    if (registerData.password !== registerData.passwordRepeat) {
+        return { message: 'The entered passwords must be equal', success: false };
+    }
+
     // validate data
 
-    const { data, error } = await supabase.auth.signUp(
-        {
-          email: registerData.email,
-          password: registerData.password
+    try {
+        await signUp(registerData.email, registerData.password);
+    } catch (error) {
+        console.log(error);
+        if (error instanceof Error) {
+            return { message: error.message, success: false };
         }
-    );
-
-    if (error) {
-      //redirect('/error');
-      console.log(error);
-      return { message: 'Could not register account' };
+        return { message: 'Could not register account', success: false };
     }
-  
-    revalidatePath('/', 'layout');
-    redirect('/');
+
+    return { message: 'Account was successfully created', success: true };
 }

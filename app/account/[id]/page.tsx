@@ -1,13 +1,13 @@
 'use client';
 
 import { ReactElement, useEffect } from "react";
-import { createClient } from "@/utils/supabase/client";
+import { createAuthClient } from "@/utils/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 
 import "./page.css";
 
 export default function AccountPage({ params }: { params: { id: string } }): ReactElement {
-    const supabase = createClient();
+    const supabase = createAuthClient();
     const { setUser } = useAuth();
 
     useEffect(() => {

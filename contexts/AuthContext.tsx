@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/utils/supabase/client';
+import { createAuthClient } from '@/utils/supabase/client';
 
 type User = {
     email: string;
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [ loading, setLoading ] = useState<boolean>(true);
 
     useEffect(() => {
-      const supabase = createClient();
+      const supabase = createAuthClient();
 
       const fetchUser = async () => {
           const { data } = await supabase.auth.getUser();
@@ -54,14 +54,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const logout = async () => {
-        const supabase = createClient();
+        const supabase = createAuthClient();
         await supabase.auth.signOut();
         setUser(null);
         router.push('/');
     };
 
     const getToken = async () => {
-        const supabase = createClient();
+        const supabase = createAuthClient();
         const { data } = await supabase.auth.getSession();
         return data.session?.access_token || null;
     };

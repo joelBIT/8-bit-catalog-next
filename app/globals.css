@@ -23,6 +23,8 @@
     --color-table-head: rgb(228 240 245);
     --color-table-row: rgb(237 238 242);
     --color-white: #f0cca4;
+    --color-warning: #ff3737;
+    --color-success: #45ca4e;
 }
 
 html,
@@ -126,20 +128,41 @@ textarea {
 
 
 
+
+
+ /**********************************************
+  * Styling for messages when submitting forms *
+  **********************************************/
+
+.message-success, .message-failure {
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.message-success {
+    color: var(--color-success);
+    border: 2px solid var(--color-success);
+    background-color: hsl(from var(--color-success) h s l / 0.2);
+}
+
+.message-failure {
+    color: var(--color-warning);
+    border: 2px solid var(--color-warning);
+    background-color: hsl(from var(--color-warning) h s l / 0.2);
+}
+
+
+
+
 /******************
 * Utility Classes *
 *******************/
 
 .active {
     color: var(--color-link-active);
-}
-
-.successMessage {
-    color: darkgreen;
-}
-
-.errorMessage {
-    color: red;
 }
 
 .box-shadow {
