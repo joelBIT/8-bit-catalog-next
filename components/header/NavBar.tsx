@@ -45,7 +45,10 @@ export function NavBar() {
                             </Link>
                         </li> : <></> }
                 { !user ? <li className="navbar__list-element">
-                            <Link href="/login">
+                            <Link 
+                                href="/login"
+                                className={pathname === "/login" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                                >
                                 <span className="material-symbols-outlined wideScreen">login</span>
                                 <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Login</h2>
                             </Link>
