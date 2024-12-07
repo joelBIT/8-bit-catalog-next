@@ -1,19 +1,24 @@
 'use client';
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { rancho } from "@/fonts/fonts";
 import { useAuth } from '@/contexts/AuthContext';
+import close from "../../assets/close_icon.png";
+import hamburger from "../../assets/hamburger_icon.png";
 
 import "./Navbar.css";
 
 export function NavBar() {
+    const [ showMenu, setShowMenu ] = useState(false);
     const pathname = usePathname();
     const { user, logout } = useAuth();
     
     return (
         <nav className="navbar">
-            <ul className="navbar__list">
+            <ul className={showMenu ? "navbar__list showmenu" : "navbar__list"}>
                 <li className="navbar__list-element">
                     <Link 
                         href="/search" 
@@ -52,6 +57,10 @@ export function NavBar() {
                             </Link>
                         </li> : <></> }
             </ul>
+
+            <div id="hamburger" onClick={() => setShowMenu(!showMenu)}>
+                <Image src={showMenu ? close : hamburger} width={40} height={40} alt='Hamburger menu' />
+            </div>
         </nav>
     );
 }

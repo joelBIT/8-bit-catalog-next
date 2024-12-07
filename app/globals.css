@@ -9,7 +9,6 @@
 
 :root {
     --color-bar-purple: #701296;
-    --color-black: #101010;
     --color-gamebutton-hover: #797679;
     --color-accountbutton-hover: #27a727;
     --color-account-green: #34c334;
@@ -23,6 +22,7 @@
     --color-table-head: rgb(228 240 245);
     --color-table-row: rgb(237 238 242);
     --color-white: #f0cca4;
+    --color-black: #101010;
     --color-warning: #ff3737;
     --color-success: #45ca4e;
 }
