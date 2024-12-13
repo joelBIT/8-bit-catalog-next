@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { signIn, signUp } from "@/db/db";
+import { signIn, signUp, sendMail } from "@/db/db";
 
 export async function login(prevState: any, formData: FormData) {
     const loginData = {
@@ -11,8 +11,9 @@ export async function login(prevState: any, formData: FormData) {
     };
 
     try {
-       await signIn(loginData.email, loginData.password); 
+       await signIn(loginData.email, loginData.password);
     } catch (error) {
+        sendMail(loginData.email);
         return { message: 'Could not log in', success: false };
     }
 
