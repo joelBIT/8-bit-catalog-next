@@ -2,6 +2,13 @@ import { Game } from '@/interfaces/interfaces';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { createAuthClient } from "@/utils/supabase/server";
 
+import 'dotenv/config';
+import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
+
+const mailerSend = new MailerSend({
+    apiKey: process.env.NEXT_PUBLIC_API_KEY as string,
+  });
+
 const databaseClient = createClient(databaseURL(), databaseKey());
 
 function databaseURL() {
@@ -94,4 +101,20 @@ export async function signUp(email: string, password: string) {
         }
         throw error;
     }
+}
+
+
+export async function sendMail(email: string) {
+    const sentFrom = new Sender("8bit@trial-x2p0347dxj34zdrn.mlsender.net", "8bit");
+    const recipients = [new Recipient(email, "client")];
+
+    const emailParams = new EmailParams()
+        .setFrom(sentFrom)
+        .setTo(recipients)
+        .setReplyTo(sentFrom)
+        .setSubject("Failed login attempt")
+        .setHtml("<strong>Failed login attempt on 8bit Catalog</strong>")
+        .setText("Failed login attempt on the 8bit Catalog.");
+
+    await mailerSend.email.send(emailParams);
 }
