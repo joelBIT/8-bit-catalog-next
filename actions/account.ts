@@ -13,7 +13,7 @@ export async function login(prevState: any, formData: FormData) {
     try {
        await signIn(loginData.email, loginData.password);
     } catch (error) {
-        sendMail(loginData.email);
+        sendMail(loginData.email, "Failed login attempt", "Failed login attempt on 8bit Catalog");
         return { message: 'Could not log in', success: false };
     }
 
