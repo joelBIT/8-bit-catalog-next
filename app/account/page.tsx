@@ -28,7 +28,7 @@ export default function AccountPage(): ReactElement {
     );
 }
 
-export async function sendMail(email: string, subject: string, text: string) {
+async function sendMail(email: string, subject: string, text: string) {
     await fetch('/api/send', {
         method:'POST',
         body:JSON.stringify({
