@@ -32,9 +32,9 @@ export async function sendMail(email: string, subject: string, text: string) {
     await fetch('/api/send', {
         method:'POST',
         body:JSON.stringify({
-            'email':email,
-            'subject':subject,
-            'text':text
+            'email': email,
+            'subject': subject,
+            'text': text
         })
     });
 }
