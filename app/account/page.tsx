@@ -8,7 +8,7 @@ import "./page.css";
 
 export default function AccountPage(): ReactElement {
     const supabase = createAuthClient();
-    const { setUser } = useAuth();
+    const { user, setUser } = useAuth();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -17,13 +17,24 @@ export default function AccountPage(): ReactElement {
                 setUser({ email: data.user.email, authenticated: data.user.aud === "authenticated" });
             }
         }
-        
         fetchUser();
     }, []);
 
     return (
         <main id="accountPage">
             <h1>Logged in</h1>
+            <button onClick={() => sendMail(user ? user.email : '', "Failed login attempt", "Failed login attempt on 8bit Catalog")}>Skicka mail</button>
         </main>
     );
+}
+
+export async function sendMail(email: string, subject: string, text: string) {
+    await fetch('/api/send', {
+        method:'POST',
+        body:JSON.stringify({
+            'email':email,
+            'subject':subject,
+            'text':text
+        })
+    });
 }

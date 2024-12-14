@@ -2,18 +2,17 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { signIn, signUp, sendMail } from "@/db/db";
+import { signIn, signUp } from "@/db/db";
 
-export async function login(prevState: any, formData: FormData) {
+export async function login(_prevState: any, formData: FormData) {
     const loginData = {
         email: formData.get('email') as string,
         password: formData.get('password') as string
     };
 
     try {
-       await signIn(loginData.email, loginData.password);
+        await signIn(loginData.email, loginData.password);
     } catch (error) {
-        sendMail(loginData.email, "Failed login attempt", "Failed login attempt on 8bit Catalog");
         return { message: 'Could not log in', success: false };
     }
 
@@ -21,7 +20,7 @@ export async function login(prevState: any, formData: FormData) {
     redirect('/account');
 }
 
-export async function register(prevState: any, formData: FormData) {
+export async function register(_prevState: any, formData: FormData) {
     const registerData = {
         name: formData.get('username') as string,
         password: formData.get('password') as string,

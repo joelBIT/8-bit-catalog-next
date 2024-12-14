@@ -18,16 +18,6 @@ export function LoginForm(): ReactElement {
         formRef.current?.reset();
     }
 
-
-    const sendMail = async (email: string) => {
-        await fetch('/api/send', {
-            method:'POST',
-            body:JSON.stringify({
-                'email':email
-            })
-        });
-    }
-
     return (
         <section id="loginCard" className={arima.className}>
             <h1 className="loginCard__heading">Log in</h1>
@@ -40,7 +30,7 @@ export function LoginForm(): ReactElement {
                 <Input id="email" type="email" placeholder="Email" />
                 <Input id="password" type="password" placeholder="Password" />
                 
-                <button className="accountButton" type="submit" onClick={() => sendMail('joel')}>Login</button>
+                <button className="accountButton" type="submit">Login</button>
             </form>
             <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link">Create an Account</Link>
         </section>

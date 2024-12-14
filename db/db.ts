@@ -1,12 +1,6 @@
-import 'dotenv/config';
 import { Game } from '@/interfaces/interfaces';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { createAuthClient } from "@/utils/supabase/server";
-import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
-
-const mailerSend = new MailerSend({
-    apiKey: process.env.NEXT_PUBLIC_MAIL_API_KEY as string,
-  });
 
 const databaseClient = createClient(databaseURL(), databaseKey());
 
@@ -100,20 +94,4 @@ export async function signUp(email: string, password: string) {
         }
         throw error;
     }
-}
-
-
-export async function sendMail(email: string, subject: string, text: string) {
-    const sentFrom = new Sender(process.env.NEXT_PUBLIC_DOMAIN_SENT_FROM as string, "8bit");
-    const recipients = [new Recipient(email, "client")];
-
-    const emailParams = new EmailParams()
-        .setFrom(sentFrom)
-        .setTo(recipients)
-        .setReplyTo(sentFrom)
-        .setSubject(subject)
-        .setHtml(`<strong>${text}</strong>`)
-        .setText(`${text}`);
-
-    await mailerSend.email.send(emailParams);
 }
