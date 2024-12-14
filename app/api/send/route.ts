@@ -11,10 +11,10 @@ export async function POST(request: NextRequest) {
             'Authorization': `Bearer ${process.env.NEXT_PUBLIC_RESEND_API_KEY as string}`,
         },
         body: JSON.stringify({
-            from: 'Acme <onboarding@resend.dev>',
+            from: '8bit <onboarding@joel-rollny.eu>',
             to: ['joel.rollny@gmail.com'],
-            subject: 'hello world',
-            html: '<strong>it works!</strong>',
+            subject: 'Welcome',
+            html: '<strong>Welcome to the 8-bit Catalog</strong>',
         }),
     });
 
