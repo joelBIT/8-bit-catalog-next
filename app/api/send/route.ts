@@ -1,24 +1,18 @@
+import EmailTemplate from "@/components/email/EmailTemplate";
+import { Resend } from 'resend';
 import { NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
     const data = await request.json();
 
-    const response = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_RESEND_API_KEY as string}`,
-        },
-        body: JSON.stringify({
-            from: '8bit <onboarding@joel-rollny.eu>',
-            to: [data.email],
-            subject: data.subject,
-            html: `<strong>${data.text}</strong>`,
-        }),
+    const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY as string);
+
+    const response = await resend.emails.send({
+        from: '8bit <onboarding@joel-rollny.eu>',
+        to: [data.email],
+        subject: data.subject,
+        react: EmailTemplate(),
     });
 
-    if (response.ok) {
-        const data = await response.json();
-        return Response.json(data);
-    }
+    return Response.json(response);
 }
