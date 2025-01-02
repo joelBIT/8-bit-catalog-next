@@ -13,7 +13,7 @@ export function Footer(): ReactElement {
                 <Contact />
                 <OtherLinks />
             </section>
-            <h4 id="copyright"><span className="material-symbols-outlined">copyright</span> 2024 Joel Rollny</h4>
+            <h4 id="copyright"><span className="material-symbols-outlined">copyright</span> 2025 Joel Rollny</h4>
         </footer>
     );
 }
