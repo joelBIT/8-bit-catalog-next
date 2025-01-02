@@ -21,9 +21,9 @@ export default function EmailTemplate() {
                     <Column>
                         <Link href="#">
                             <Img
-                                alt="TRAINO logo"
+                                alt="Nintendo 8-bit console"
                                 height={80}
-                                src="https://res.cloudinary.com/dcm59rrie/image/upload/v1735830114/le4gc0ag5njk8mgnkfde.png"
+                                src="https://res.cloudinary.com/dcm59rrie/image/upload/v1735832417/vqbzbiirvatsyzy0qfkl.jpg"
                             />
                         </Link>
                     </Column>
