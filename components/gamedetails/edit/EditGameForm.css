@@ -33,6 +33,10 @@
 
     #coverSection {
         grid-row: 1;
+        
+        & .coverSection__title {
+            white-space: nowrap;
+        }
     }
 
     #releasedSection {

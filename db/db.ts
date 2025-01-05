@@ -1,4 +1,4 @@
-import { Game } from '@/interfaces/interfaces';
+import { Game } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { createAuthClient } from "@/utils/supabase/server";
 
@@ -24,14 +24,26 @@ const GAMES_TABLE = "games";
  *********/
 
 export async function updateGameById(game: Game, file: File) {
-    const { error } = await databaseClient.storage.from(COVERS_STORAGE).upload(game.cover, file);
+    if (file.name === 'undefined') {                            // No new cover was chosen for the game
+        const { cover, imageLink, ...data } = game;             // Remove cover property since the cover is not updated
+        return await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
+    }
+
+    await uploadFile(game.cover, file);
+
+    return await databaseClient.from(GAMES_TABLE).update(game).eq('id', game.id);
+}
+
+/**
+ * Uploads file to storage
+ */
+async function uploadFile(fileName: string, file: File) {
+    const { error } = await databaseClient.storage.from(COVERS_STORAGE).upload(fileName, file);
     if (error) {
         console.log(error);
     } else {
         console.log(`Uploaded file ${file} successfully`);
     }
-
-    return await databaseClient.from(GAMES_TABLE).update(game).eq('id', game.id);
 }
 
 export async function getGames() {
