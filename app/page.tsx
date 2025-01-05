@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import { HeroCard } from "@/components/home/HeroCard";
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 
 import "./page.css";
 

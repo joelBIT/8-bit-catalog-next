@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useState } from "react";
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { ALL_OPTION_VALUE } from "@/utils/utils";
 import { SearchForm } from "@/components/search/SearchForm";
 import { SearchResult } from "@/components/search/SearchResult";

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Image from 'next/image';
 import { silkScreen } from "@/fonts/fonts";
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { isAuthenticated } from "@/app/utils/utils";
 import { EditGameButton } from "../common/EditGameButton";
 

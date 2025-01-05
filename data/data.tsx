@@ -1,4 +1,4 @@
-import { Game } from '@/interfaces/interfaces';
+import { Game } from '@/types/types';
 
 export async function getAllGames(): Promise<Game[]> {
     try {

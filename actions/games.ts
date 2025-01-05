@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { updateGameById } from "@/db/db";
 import { Game } from "@/types/types";
 
@@ -23,4 +24,6 @@ export async function updateGame(id: number, formData: FormData) {
     if (error) {
         console.log(error);
     }
+
+    revalidatePath("/gamedetails/[id]", "page");
 }
