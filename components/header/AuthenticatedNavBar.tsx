@@ -2,17 +2,28 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { createAuthClient } from '@/utils/supabase/client';
 import { rancho } from "@/fonts/fonts";
 import close from "../../assets/close_icon.png";
 import hamburger from "../../assets/hamburger_icon.png";
 
-import "./NavBar.css";
+import "./AuthenticatedNavBar.css";
 
-export function NavBar() {
+export function AuthenticatedNavBar() {
     const [ showMenu, setShowMenu ] = useState(false);
     const pathname = usePathname();
+    const router = useRouter();
+
+    async function logout() {
+        const browserClient = createAuthClient();
+        const { error } = await browserClient.auth.signOut();
+        if (error) {
+            console.log(error);
+        }
+        router.refresh();
+    }
     
     return (
         <nav className="navbar">
@@ -35,11 +46,17 @@ export function NavBar() {
                 </li>
                 <li className="navbar__list-element">
                     <Link 
-                        href="/login"
-                        className={pathname === "/login" ? `active navbar__list-element-link` : `navbar__list-element-link`}
-                        >
-                        <span className="material-symbols-outlined wideScreen">login</span>
-                        <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Login</h2>
+                        href="/account"
+                        className={pathname === "/account" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                    >
+                        <span className="material-symbols-outlined wideScreen">account_circle</span>
+                        <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Account</h2>
+                    </Link>
+                </li>
+                <li className="navbar__list-element" onClick={logout}>
+                    <Link href="/">
+                        <span className="material-symbols-outlined wideScreen">logout</span>
+                        <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Logout</h2>
                     </Link>
                 </li>
             </ul>

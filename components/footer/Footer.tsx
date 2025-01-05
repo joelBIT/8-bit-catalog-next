@@ -2,14 +2,25 @@ import { ReactElement } from "react";
 import { SiteLinks } from "./SiteLinks";
 import { Contact } from "./Contact";
 import { OtherLinks } from "./OtherLinks";
+import { createAuthClient } from '@/utils/supabase/server';
 
 import "./Footer.css";
 
-export function Footer(): ReactElement {
+export async function Footer(): Promise<ReactElement> {
+
+    async function isAuthenticated() {
+        const serverClient = await createAuthClient();
+        const { data: { user } } = await serverClient.auth.getUser();
+        if (user) {
+            return user.role === "authenticated";
+        }
+        return false;
+    }
+
     return (
         <footer>
             <section id="footerComponents">
-                <SiteLinks />
+                <SiteLinks authenticated={await isAuthenticated()} />
                 <Contact />
                 <OtherLinks />
             </section>

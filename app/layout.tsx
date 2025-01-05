@@ -3,7 +3,6 @@ import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
 import { blinker } from "@/fonts/fonts";
 import { FavouritesContexProvider } from "@/contexts/FavouritesContextProvider";
-import { AuthProvider } from "@/contexts/AuthContext";
 
 import "./globals.css";
 
@@ -20,11 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${blinker.className}`}>
-        <AuthProvider>
           <Header />
           <FavouritesContexProvider>{children}</FavouritesContexProvider>
           <Footer />
-        </AuthProvider>
       </body>
     </html>
   );
