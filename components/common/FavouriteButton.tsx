@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useContext } from "react";
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 
 import "./FavouriteButton.css";

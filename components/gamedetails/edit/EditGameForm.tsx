@@ -2,7 +2,7 @@
 
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useRouter } from 'next/navigation';
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { fileTypes, getCategories, getPlayersList } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/games";
@@ -78,8 +78,8 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             />
 
             <section id="coverSection">
-                <h2 className={`coverSection__title ${arima.className}`}>Cover</h2>
-                <input name="cover" type="file" defaultValue={cover?.name} accept={fileTypes.toString()} onChange={handleCover} required />
+                <h2 className={`coverSection__title ${arima.className}`}>New Cover</h2>
+                <input name="cover" type="file" defaultValue={cover?.name} accept={fileTypes.toString()} onChange={handleCover} />
             </section>
 
             <section className="selectSection playersSection">

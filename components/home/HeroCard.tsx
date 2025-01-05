@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { silkScreen, singleDay } from "@/fonts/fonts";
 

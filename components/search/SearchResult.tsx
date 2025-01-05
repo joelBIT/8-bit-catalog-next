@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { Pagination } from "./Pagination";
 import { GameCard } from "../common/GameCard";
 import { arima } from "@/fonts/fonts";
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 
 import "./SearchResult.css";

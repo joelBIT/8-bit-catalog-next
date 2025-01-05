@@ -1,6 +1,7 @@
 'use client';
 
-import { FavouritesContextProvider, ContextProviderChildren, Game } from "@/interfaces/interfaces";
+import { FavouritesContextProvider, ContextProviderChildren } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { createContext, ReactElement, useState } from "react";
 
 export const FavouritesContext = createContext<FavouritesContextProvider>({} as FavouritesContextProvider);

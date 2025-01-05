@@ -1,11 +1,13 @@
 import { ReactElement } from "react";
 import Image from 'next/image';
 import { silkScreen } from "@/fonts/fonts";
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
+import { isAuthenticated } from "@/app/utils/utils";
+import { EditGameButton } from "../common/EditGameButton";
 
 import "./GameDetailsCard.css";
 
-export function GameDetailsCard({ game }: { game: Game }): ReactElement {
+export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement> {
 
     return (
         <section id="gameDetailsCard">
@@ -71,6 +73,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
             <article id="gameDetailsCard__description">
                 { game.description }
             </article>
+            { await isAuthenticated() ? <EditGameButton gameId={game.id} /> : <></> }
         </section>
     );
 }

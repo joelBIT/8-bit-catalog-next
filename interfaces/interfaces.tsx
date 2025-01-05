@@ -1,18 +1,5 @@
+import { Game } from "@/types/types";
 import { ReactNode } from "react";
-
-export interface Game {
-    id: number,
-    title: string,
-    publisher: string,
-    developer: string,
-    category: string,
-    releaseYear: number,
-    releaseDate: string,
-    cover: string,
-    imageLink: string,
-    players: number,
-    description: string
-}
 
 export interface User {
     id: number,

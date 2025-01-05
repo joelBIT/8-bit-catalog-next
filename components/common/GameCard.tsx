@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
 import { FavouriteButton } from "./FavouriteButton";
-import { Game } from "@/interfaces/interfaces";
+import { Game } from "@/types/types";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 
 import "./GameCard.css";
