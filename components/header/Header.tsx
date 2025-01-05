@@ -3,21 +3,12 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { NavBar } from "./NavBar";
 import { AuthenticatedNavBar } from "./AuthenticatedNavBar";
-import { createAuthClient } from '@/utils/supabase/server';
 import { irishGrover } from "@/fonts/fonts";
+import { isAuthenticated } from "@/app/utils/utils";
 
 import "./Header.css";
 
 export async function Header(): Promise<ReactElement> {
-
-    async function isAuthenticated() {
-        const serverClient = await createAuthClient();
-        const { data: { user } } = await serverClient.auth.getUser();
-        if (user) {
-            return user.role === "authenticated";
-        }
-        return false;
-    }
 
     return (
         <header>
