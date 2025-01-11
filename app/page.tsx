@@ -1,37 +1,18 @@
-'use client';
-
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement } from "react";
 import { HeroCard } from "@/components/home/HeroCard";
-import { Game } from "@/types/types";
+import { getGameById } from "@/db/db";
 
 import "./page.css";
 
 /**
  * A random game is presented to the user every time the landing page is visited.
  */
-export default function Home(): ReactElement {
-    const [ randomGame, setRandomGame ] = useState<Game>();
+export default async function Home(): Promise<ReactElement> {
 
-    useEffect(() => {
-        const fetchRandomGame = async () => {
-            const response = await fetch(`/api/game?id=${randomID()}`);
-            const data = await response.json();
-            setRandomGame(data);
-        }
-        
-        fetchRandomGame();
-    }, []);
-
-    function randomID() {
-        return Math.floor(Math.random() * 970 + 1);
-    }
-  
     return (
         <main id="landingPage">
-            <video autoPlay loop id="background-video">
-                <source src="/nintendo.mp4" type="video/mp4" />
-            </video>
-            { randomGame ? <HeroCard game={randomGame} /> : <></> }
+            <HeroCard game={await getGameById(Math.floor(Math.random() * 970 + 1))} />
+            <video autoPlay muted loop id="background-video" src="/nintendo.mp4" />
         </main>
     );
 }
