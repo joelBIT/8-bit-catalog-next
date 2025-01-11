@@ -28,6 +28,9 @@ export default function Home(): ReactElement {
   
     return (
         <main id="landingPage">
+            <video autoPlay loop id="background-video">
+                <source src="/nintendo.mp4" type="video/mp4" />
+            </video>
             { randomGame ? <HeroCard game={randomGame} /> : <></> }
         </main>
     );
