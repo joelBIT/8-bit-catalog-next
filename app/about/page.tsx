@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { FieldSetFrame } from "@/components/common/FieldSetFrame";
 import { silkScreen } from "@/fonts/fonts";
+
 import "./page.css";
 
 export default function AboutPage(): ReactElement {

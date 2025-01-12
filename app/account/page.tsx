@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { createAuthClient } from '@/utils/supabase/server'
+import { createAuthClient } from '@/utils/supabase/server';
 
 import "./page.css";
 
