@@ -3,6 +3,7 @@
 import { ReactElement, useContext } from "react";
 import { GameCard } from "@/components/common/GameCard";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
+
 import "./page.css";
 
 export default function FavouritesPage(): ReactElement {
@@ -11,7 +12,9 @@ export default function FavouritesPage(): ReactElement {
     return (
         <main id="favouritesPage">
             <section id="gameCards">
-                { favouritesList.map((game, index) => <GameCard key={index} game={game} />) }
+                { favouritesList.length === 0 ? 
+                    <h1 className="no-favourites-text">{"No favourites selected"}</h1> : 
+                    favouritesList.map((game, index) => <GameCard key={index} game={game} />) }
             </section>
         </main>
     );

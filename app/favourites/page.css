@@ -10,5 +10,9 @@
         gap: 2rem;
         margin: 2rem;
         justify-content: center;
+
+        & .no-favourites-text {
+            font-size: 3rem;
+        }
     }
 }
