@@ -6,7 +6,7 @@ import Link from "next/link";
 import { arima } from "@/fonts/fonts";
 import { login } from "@/actions/account";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
-import { Input } from "../common/input/Input";
+import { Input } from "../common/Input";
 
 import "./LoginForm.css";
 
