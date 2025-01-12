@@ -3,6 +3,7 @@
     background-color: var(--color-black);
     color: var(--color-white);
     border-radius: 8px;
+    max-width: 70vw;
 
     .fieldset {
         display: grid;
@@ -16,5 +17,12 @@
             font-size: 3rem;
             text-align: center;
         }
+    }
+}
+
+
+@media (max-width: 1350px) {
+    #fieldSetFrame {
+        max-width: 90vw;
     }
 }
