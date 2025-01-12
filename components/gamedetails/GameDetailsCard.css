@@ -1,9 +1,10 @@
 #gameDetailsCard {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
 
     .gameDetailsCard__figure {
         margin-right: 1rem;
+        max-width: 500px;
 
         .gameDetailsCard__figure-cover {
             width: 100%;
