@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import Link from "next/link";
 import Image from 'next/image';
 import { silkScreen } from "@/fonts/fonts";
 import { Game } from "@/types/types";
@@ -12,13 +13,15 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
     return (
         <section id="gameDetailsCard">
             <figure className="gameDetailsCard__figure">
-                <Image 
-                    src={game.imageLink}
-                    className="gameDetailsCard__figure-cover"
-                    alt="Game Cover"
-                    width={500}
-                    height={600}
-                />
+                <Link href={game.imageLink} target="_blank">
+                    <Image 
+                        src={game.imageLink}
+                        className="gameDetailsCard__figure-cover"
+                        alt="Game Cover"
+                        width={500}
+                        height={600}
+                    />
+                </Link>
             </figure>
             
             <article id="gameDetails" className={silkScreen.className}>
