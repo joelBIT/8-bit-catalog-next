@@ -4,7 +4,7 @@ import { ReactElement, useRef } from "react";
 import { useFormState } from "react-dom";
 import { arima } from "@/fonts/fonts";
 import { register } from "@/actions/account";
-import { Input } from "../common/input/Input";
+import { Input } from "../common/Input";
 
 import "./RegisterForm.css";
 
