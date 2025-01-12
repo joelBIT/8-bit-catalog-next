@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FavouriteButton } from "./FavouriteButton";
 import { Game } from "@/types/types";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
+import { rancho } from "@/fonts/fonts";
 
 import "./GameCard.css";
 
@@ -29,7 +30,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                     />
                 </figure>
                 <article id="gameCardTitle">
-                    <h1 className="gameCardTitle__heading">{game.title}</h1>
+                    <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
                     <FavouriteButton game={game} />
                 </article>
             </section>
