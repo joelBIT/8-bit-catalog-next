@@ -35,7 +35,7 @@ export function addAllOption(list: string[]): string[] {
  * @returns   a list containing the choosable options for players in a game.
  */
 export function getPlayersList(): string[] {
-    return ["1", "2", "3", "4", "5", "6"];
+    return ["1", "2", "3", "4", "5", "6", "7", "8"];
 }
 
 export function getCategories(): string[] {
