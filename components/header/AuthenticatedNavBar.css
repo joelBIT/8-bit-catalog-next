@@ -1,4 +1,4 @@
-.navbar {
+.authenticated-navbar {
     align-self: center;
     width: 100%;
 
@@ -44,8 +44,20 @@
     }
 }
 
+@media (max-width: 850px) {
+    .authenticated-navbar {
+        .navbar__list {
+            .navbar__list-element {
+                .navbar__list-element-link {
+                    font-size: 3vw;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 700px) {
-    .navbar {
+    .authenticated-navbar {
         .navbar__list {
             display: none;
             width: 100%;
@@ -55,6 +67,14 @@
 
             .navbar__list-element {
                 margin-left: 2rem;
+
+                .navbar__list-element-link {
+                    font-size: 3rem;
+
+                    .navbar__list-element-title {
+                        font-size: 3rem;
+                    }
+                }
 
                 .wideScreen {
                     display: none;

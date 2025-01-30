@@ -26,7 +26,7 @@ export function AuthenticatedNavBar() {
     }
     
     return (
-        <nav className="navbar">
+        <nav className="authenticated-navbar">
             <ul className={showMenu ? "navbar__list showmenu" : "navbar__list"}>
                 <li className="navbar__list-element">
                     <Link 

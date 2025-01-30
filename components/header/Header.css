@@ -20,7 +20,7 @@ header {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     header {
         #logoLink { 
             font-size: 0.5rem;
