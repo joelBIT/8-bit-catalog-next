@@ -28,6 +28,13 @@
         font-weight: 600;
         align-self: end;
         margin-top: 0.6rem;
+
+        &:hover {
+            color: var(--color-link-hover);
+            font-weight: bolder;
+            transform: scale(1.05);
+            transition-duration: 0.5s;
+        }
     }
 }
 

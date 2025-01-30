@@ -81,7 +81,7 @@
         .showmenu {
             display: inline-table;
             position: absolute;
-            margin-top: 3rem;
+            margin-top: 2.7rem;
             text-align: justify;
             background: var(--color-black);
             height: fit-content;
