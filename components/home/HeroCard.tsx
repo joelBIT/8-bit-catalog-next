@@ -24,6 +24,7 @@ export function HeroCard({ game }: { game: Game }): ReactElement {
             <figure className="heroCard__figure">
                 <Image 
                     src={game.imageLink}
+                    unoptimized
                     className="heroCard__figure-cover"
                     alt="Random Game Cover"
                     width={100}

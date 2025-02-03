@@ -23,6 +23,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                 <figure className="gameCard-figure">
                     <Image 
                         src={game.imageLink}
+                        unoptimized
                         className="gameCard-figure__cover"
                         alt="Game Cover"
                         width={100}
