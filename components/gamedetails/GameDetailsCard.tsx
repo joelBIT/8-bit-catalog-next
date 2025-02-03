@@ -16,6 +16,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                 <Link href={game.imageLink} target="_blank">
                     <Image 
                         src={game.imageLink}
+                        unoptimized
                         className="gameDetailsCard__figure-cover"
                         alt="Game Cover"
                         width={500}
