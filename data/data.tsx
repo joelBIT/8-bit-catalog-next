@@ -3,13 +3,7 @@ import { Game } from '@/types/types';
 export async function getAllGames(): Promise<Game[]> {
     try {
         const response = await fetch('/api/games');
-        const data = await response.json();
-        const cartridges = data.map((game: any) => {
-            game.players = game.players ? game.players : 1,
-            game.description = game.description as string,
-            game.releaseDate = game.releaseDate as string
-            return copyGame(game);
-        });
+        const cartridges = await response.json();
 
         cartridges.sort((a: { title: string; }, b: { title: any; }) => a.title.localeCompare(b.title));
         return cartridges;
@@ -19,20 +13,4 @@ export async function getAllGames(): Promise<Game[]> {
     }
 
     return [];
-}
-
-function copyGame(game: Game): Game {
-    return {
-        id: game.id,
-        title: game.title,
-        category: game.category,
-        cover: game.cover,
-        publisher: game.publisher,
-        description: game.description,
-        developer: game.developer,
-        players: game.players,
-        releaseYear: game.releaseYear,
-        releaseDate: game.releaseDate,
-        imageLink: game.imageLink
-    }
 }

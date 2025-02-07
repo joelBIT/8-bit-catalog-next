@@ -12,17 +12,12 @@ import "./EditGameForm.css";
 export function EditGameForm({ game }: { game: Game }): ReactElement {
     const router = useRouter();
     const [ cover, setCover ] = useState<File>();
-    const [ date, setDate ] = useState<string>(game.releaseDate);
-    const [ year ] = useState<number>(game.releaseYear);
+    const [ date, setDate ] = useState<string>(game.release_date);
 
     function handleCover(event: ChangeEvent<HTMLInputElement>): void {
         if (event.target.files) {
             setCover(event.target.files[0]);
         }
-    }
-
-    function getDate(): string {
-        return date ? date : `${year}-01-01`;
     }
 
     function handleDate(event: ChangeEvent<HTMLInputElement>): void {
@@ -91,7 +86,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="releasedSection">
                 <h2 className={`releasedSection__title ${arima.className}`}>Released</h2>
-                <input id="releaseDate" name="released" type="date" value={getDate()} onChange={handleDate} required />
+                <input id="releaseDate" name="released" type="date" value={date} onChange={handleDate} required />
             </section>
 
             <div className="editGameForm-buttons">
