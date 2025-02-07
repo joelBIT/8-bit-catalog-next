@@ -27,7 +27,7 @@ export function SearchForm({ search }: { search: (title: string, category: strin
     }, []);
 
     function sortFilterList(list: string[]) {
-        list.sort();
+        list.sort((a, b) => a.localeCompare(b, undefined, {sensitivity: 'base'}));
         return list.filter((element: string) => element != null);
     }
 
