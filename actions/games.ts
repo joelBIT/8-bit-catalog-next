@@ -13,10 +13,9 @@ export async function updateGame(id: number, formData: FormData) {
         publisher: formData.get('publisher') as string,
         description: formData.get("description") as string,
         players: parseInt(formData.get('players') as string) || 1,
-        releaseDate: formData.get('released') as string,
+        release_date: formData.get('released') as string,
         cover: (formData.get('cover') as File).name,
         category: formData.get('category') as string,
-        releaseYear: parseInt((formData.get('released') as string).slice(0, 4)),
         imageLink: ""
     };
 
