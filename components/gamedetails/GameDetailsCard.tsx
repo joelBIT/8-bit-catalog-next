@@ -42,7 +42,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                         Released: 
                     </h2>
                     <p className="gameDetails__metadata-text">
-                        {game.releaseDate ? game.releaseDate : game.releaseYear}
+                        {game.release_date}
                     </p>
                 </section>
 
