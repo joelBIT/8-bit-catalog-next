@@ -77,3 +77,21 @@ async function sendMail(email: string, subject: string, text: string) {
         })
     });
 }
+
+/**
+ * Test if localstorage is available. Favourite games are added to localstorage if true. If false,
+ * the FavouritesContext stores favourite games temporarily.
+ * 
+ * @returns true if localstorage is available, false otherwise
+ */
+export function isLocalStorageAvailable() {
+    try {
+        const key = 'testingLocalStorage';
+        localStorage.setItem(key, 'add');
+        localStorage.removeItem(key);
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}

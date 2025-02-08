@@ -7,7 +7,7 @@ import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 import "./FavouriteButton.css";
 
 export function FavouriteButton({ game }: { game: Game }): ReactElement {
-    const {favouritesList, setFavouritesList} = useContext(FavouritesContext);
+    const { favouritesList, addFavouriteGame, removeFavouriteGame} = useContext(FavouritesContext);
     const isFavorite = favouritesList.some((favourite: { id: number; }) => favourite.id === game.id);
 
     /**
@@ -18,9 +18,9 @@ export function FavouriteButton({ game }: { game: Game }): ReactElement {
         event.preventDefault();
 
         if (isFavorite) {
-            setFavouritesList(favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id));
+            removeFavouriteGame(game);
         } else {
-            setFavouritesList([...favouritesList, game]);
+            addFavouriteGame(game);
         }
     }
     

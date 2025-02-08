@@ -12,7 +12,7 @@ export async function updateGame(id: number, formData: FormData) {
         developer: formData.get('developer') as string,
         publisher: formData.get('publisher') as string,
         description: formData.get("description") as string,
-        players: parseInt(formData.get('players') as string) || 1,
+        players: parseInt(formData.get('players') as string),
         release_date: formData.get('released') as string,
         cover: (formData.get('cover') as File).name,
         category: formData.get('category') as string,
