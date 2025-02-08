@@ -22,6 +22,5 @@ export async function getAllDevelopers(): Promise<string[]>  {
 
 export async function getAllPublishers(): Promise<string[]>  {
     const response = await fetch('/api/publishers', { cache: 'force-cache' });
-    const publishers = await response.json();
-    return Array.from(publishers);
+    return await response.json();
 }
