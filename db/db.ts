@@ -78,17 +78,15 @@ export function getImageLink(cover: string) {
  ******************/
 
 export async function getAllDevelopers() {
-    const { data, error } = await databaseClient.rpc('developers');         // Invokes the Postgres 'developers' function
-    if (error) {
-        console.log(error);
-        return []; 
-    }
-
-    return data;
+    return await invokePostgresFunction('developers');
 }
 
 export async function getAllPublishers() {
-    const { data, error } = await databaseClient.rpc('publishers');         // Invokes the Postgres 'publishers' function
+    return await invokePostgresFunction('publishers');
+}
+
+async function invokePostgresFunction(functionName: string) {
+    const { data, error } = await databaseClient.rpc(functionName);         // Invokes the named Postgres function
     if (error) {
         console.log(error);
         return []; 
