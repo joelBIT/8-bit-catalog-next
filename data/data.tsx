@@ -14,3 +14,15 @@ export async function getAllGames(): Promise<Game[]> {
 
     return [];
 }
+
+export async function getAllDevelopers(): Promise<string[]>  {
+    const response = await fetch('/api/developers');
+    const developers = await response.json();
+    return Array.from(developers);
+}
+
+export async function getAllPublishers(): Promise<string[]>  {
+    const response = await fetch('/api/publishers');
+    const publishers = await response.json();
+    return Array.from(publishers);
+}

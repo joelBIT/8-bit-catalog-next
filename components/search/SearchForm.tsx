@@ -5,31 +5,31 @@ import { SearchInput } from "./SearchInput";
 import { rancho } from "@/fonts/fonts";
 import { addAllOption, ALL_OPTION_VALUE, getCategories } from "@/utils/utils";
 import { Select } from "../common/Select";
-import { getAllGames } from "@/data/data";
+import { getAllDevelopers, getAllPublishers } from "@/data/data";
 
 import "./SearchForm.css";
 
 export function SearchForm({ search }: { search: (title: string, category: string, publisher: string, developer: string) => void }): ReactElement {
-    const [category, setCategory] = useState<string>(ALL_OPTION_VALUE);
-    const [publisher, setPublisher] = useState<string>(ALL_OPTION_VALUE);
-    const [developer, setDeveloper] = useState<string>(ALL_OPTION_VALUE);
+    const [ category, setCategory ] = useState<string>(ALL_OPTION_VALUE);
+    const [ publisher, setPublisher ] = useState<string>(ALL_OPTION_VALUE);
+    const [ developer, setDeveloper ] = useState<string>(ALL_OPTION_VALUE);
     const [ allPublishers, setAllPublishers ] = useState<string[]>();
     const [ allDevelopers, setAllDevelopers ] = useState<string[]>();
 
     useEffect(() => {
-        const fetchGames = async () => {
-            const games = await getAllGames();
-            setAllDevelopers(Array.from(new Set(addAllOption(sortFilterList(games.map(game => game.developer))))));
-            setAllPublishers(Array.from(new Set(addAllOption(sortFilterList(games.map(game => game.publisher))))));
+        const fetchDevelopers = async () => {
+            const developers = await getAllDevelopers();
+            setAllDevelopers(addAllOption(developers));
+        }
+
+        const fetchPublishers = async () => {
+            const publishers = await getAllPublishers();
+            setAllPublishers(addAllOption(publishers));
         }
         
-        fetchGames();
+        fetchDevelopers();
+        fetchPublishers();
     }, []);
-
-    function sortFilterList(list: string[]) {
-        list.sort((a, b) => a.localeCompare(b, undefined, {sensitivity: 'base'}));
-        return list.filter((element: string) => element != null);
-    }
 
     /**
      * Performs a search based on given title text and filters. The search is executed either

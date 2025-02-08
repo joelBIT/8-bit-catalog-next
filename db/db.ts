@@ -73,6 +73,39 @@ export function getImageLink(cover: string) {
 
 
 
+/**********
+ * SEARCH *
+ *********/
+
+export async function getAllDevelopers() {
+    const { data } = await databaseClient.from(GAMES_TABLE).select('developer').order('developer');
+    if (data) {
+        const developers = new Set();
+        for (let i = 0; i < data.length; i++) {
+            developers.add(data[i].developer);
+        }
+        return Array.from(developers);
+    }
+    
+    return [];   
+}
+
+export async function getAllPublishers() {
+    const { data } = await databaseClient.from(GAMES_TABLE).select('publisher').order('publisher');
+    if (data) {
+        const publisher = new Set();
+        for (let i = 0; i < data.length; i++) {
+            publisher.add(data[i].publisher);
+        }
+        return Array.from(publisher);
+    }
+    
+    return [];  
+}
+
+
+
+
 /*********
  * USERS *
  ********/
