@@ -73,34 +73,28 @@ export function getImageLink(cover: string) {
 
 
 
-/**********
- * SEARCH *
- *********/
+/******************
+ * SEARCH FILTERS *
+ ******************/
 
 export async function getAllDevelopers() {
-    const { data } = await databaseClient.from(GAMES_TABLE).select('developer').order('developer');
-    if (data) {
-        const developers = new Set();
-        for (let i = 0; i < data.length; i++) {
-            developers.add(data[i].developer);
-        }
-        return Array.from(developers);
+    const { data, error } = await databaseClient.rpc('developers');         // Invokes the Postgres 'developers' function
+    if (error) {
+        console.log(error);
+        return []; 
     }
-    
-    return [];   
+
+    return data;
 }
 
 export async function getAllPublishers() {
-    const { data } = await databaseClient.from(GAMES_TABLE).select('publisher').order('publisher');
-    if (data) {
-        const publisher = new Set();
-        for (let i = 0; i < data.length; i++) {
-            publisher.add(data[i].publisher);
-        }
-        return Array.from(publisher);
+    const { data, error } = await databaseClient.rpc('publishers');         // Invokes the Postgres 'publishers' function
+    if (error) {
+        console.log(error);
+        return []; 
     }
-    
-    return [];  
+
+    return data; 
 }
 
 
@@ -108,7 +102,7 @@ export async function getAllPublishers() {
 
 /*********
  * USERS *
- ********/
+ *********/
 
 export async function signIn(email: string, password: string) {
     const authClient = await createAuthClient();

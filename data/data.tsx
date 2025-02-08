@@ -17,12 +17,10 @@ export async function getAllGames(): Promise<Game[]> {
 
 export async function getAllDevelopers(): Promise<string[]>  {
     const response = await fetch('/api/developers', { cache: 'force-cache' });
-    const developers = await response.json();
-    return Array.from(developers);
+    return await response.json();
 }
 
 export async function getAllPublishers(): Promise<string[]>  {
     const response = await fetch('/api/publishers', { cache: 'force-cache' });
-    const publishers = await response.json();
-    return Array.from(publishers);
+    return await response.json();
 }
