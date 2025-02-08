@@ -78,16 +78,13 @@ export function getImageLink(cover: string) {
  *********/
 
 export async function getAllDevelopers() {
-    const { data } = await databaseClient.from(GAMES_TABLE).select('developer').order('developer');
-    if (data) {
-        const developers = new Set();
-        for (let i = 0; i < data.length; i++) {
-            developers.add(data[i].developer);
-        }
-        return Array.from(developers);
+    const { data, error } = await databaseClient.rpc('developers');         // Invokes the Postgres 'developers' function
+    if (error) {
+        console.log(error);
+        return []; 
     }
-    
-    return [];   
+
+    return data;
 }
 
 export async function getAllPublishers() {
