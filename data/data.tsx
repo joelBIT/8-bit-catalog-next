@@ -1,8 +1,8 @@
-import { Game } from '@/types/types';
+import { Game, SearchFilter } from '@/types/types';
 
-export async function getAllGames(): Promise<Game[]> {
+export async function getGames(filters: SearchFilter): Promise<Game[]> {
     try {
-        const response = await fetch('/api/games', { cache: 'force-cache' });
+        const response = await fetch(`/api/games?title=${filters.title}&category=${filters.category}&developer=${filters.developer}&publisher=${filters.publisher}`);
         return await response.json();
     } catch (error) {
         console.error(error);
