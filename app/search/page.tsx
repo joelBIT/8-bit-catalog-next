@@ -18,7 +18,7 @@ export default function SearchPage(): ReactElement {
      * is set on each search to inform the user about how many games that matches the search query.
      */
     async function search(title: string, category: string, publisher: string, developer: string): Promise<void> {
-        let games = await getGames({title, category, developer, publisher});
+        const games = await getGames({title, category, developer, publisher});
 
         setShowHeading(true);
         setSearchResult(games);
