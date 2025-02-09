@@ -10,3 +10,10 @@ export type Game = {
     players: number,
     description: string
 }
+
+export type SearchFilter = {
+    title: string,
+    category: string,
+    developer: string,
+    publisher: string
+}

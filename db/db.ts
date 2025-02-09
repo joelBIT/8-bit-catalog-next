@@ -1,4 +1,4 @@
-import { Game } from '@/types/types';
+import { Game, SearchFilter } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { createAuthClient } from "@/utils/supabase/server";
 
@@ -46,15 +46,16 @@ async function uploadFile(fileName: string, file: File) {
     }
 }
 
-export async function getGames() {
-    const { data, error } = await databaseClient.from(GAMES_TABLE).select().order('title');
+export async function getGamesBySearchFilters(filters: SearchFilter) {
+    const { data, error } = await databaseClient.rpc('games', {filter_title: '%' + filters.title + '%', filter_category: filters.category, 
+        filter_developer: filters.developer, filter_publisher: filters.publisher});
     if (error) {
         console.log(error);
         return [];
     }
 
     for (let i = 0; i < data.length; i++) {
-        data[i].imageLink = getImageLink(data[i].cover);
+        data[i].imageLink = getImageLink(data[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
     }
 
     return data;
