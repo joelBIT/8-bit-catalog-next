@@ -14,7 +14,7 @@ export function SearchInput({ onSearch }: { onSearch: (title: string) => void })
      */
     function executeSearch(): void {
         if (searchRef.current) {
-            onSearch(searchRef.current.value);
+            onSearch(searchRef.current.value.trim());
         }
     }
     

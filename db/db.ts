@@ -66,7 +66,7 @@ export async function getGameById(id: number) {
     return data;
 }
 
-export function getImageLink(cover: string) {
+function getImageLink(cover: string) {
     const { data } = databaseClient.storage.from(COVERS_STORAGE).getPublicUrl(cover);
     return data.publicUrl;
 }
