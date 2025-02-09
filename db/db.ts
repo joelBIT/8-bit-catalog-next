@@ -5,11 +5,11 @@ import { createAuthClient } from "@/utils/supabase/server";
 const databaseClient = createClient(databaseURL(), databaseKey());
 
 function databaseURL() {
-    return process.env.NEXT_PUBLIC_SUPABASE_URL as string;
+    return process.env?.SUPABASE_URL as string;
 }
 
 function databaseKey() {
-    return process.env.NEXT_PUBLIC_SUPABASE_KEY as string;
+    return process.env?.SUPABASE_KEY as string;
 }
 
 const COVERS_STORAGE = "covers";
@@ -47,13 +47,14 @@ async function uploadFile(fileName: string, file: File) {
 }
 
 export async function getGames() {
-    const { data, error } = await databaseClient.from(GAMES_TABLE).select();
+    const { data, error } = await databaseClient.from(GAMES_TABLE).select().order('title');
     if (error) {
         console.log(error);
-    } else {
-        for (let i = 0; i < data.length; i++) {
-            data[i].imageLink = getImageLink(data[i].cover);
-        }
+        return [];
+    }
+
+    for (let i = 0; i < data.length; i++) {
+        data[i].imageLink = getImageLink(data[i].cover);
     }
 
     return data;
