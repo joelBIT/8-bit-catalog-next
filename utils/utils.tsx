@@ -39,7 +39,7 @@ export function getPlayersList(): string[] {
 }
 
 export function getCategories(): string[] {
-    return ["Action", "Adult", "Adventure", "Educational", "Fighting", "Puzzle", "Racing", "Role-Playing",
+    return ["All", "Action", "Adult", "Adventure", "Educational", "Fighting", "Puzzle", "Racing", "Role-Playing",
         "Shooter", "Simulation", "Sports", "Strategy", "Traditional", "Various"
     ];
 }
