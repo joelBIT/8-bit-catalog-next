@@ -42,9 +42,7 @@ export function SearchResult({ result, showHeading }: { result: Game[], showHead
     
     return (
         <section id="searchResult">
-            { showHeading ? <h1 
-                                className={`searchResult__title ${arima.className}`}
-                            >
+            { showHeading ? <h1 className={`searchResult__title ${arima.className}`}>
                                 Games found: <p className="searchResult__games-found">{result.length}</p>
                             </h1> 
                         : <></>
