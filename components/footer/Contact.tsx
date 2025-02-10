@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import "./Contact.css";
 
-export function Contact(): ReactElement {
+export function Contact(): ReactElement<ReactElement> {
     return (
         <section id="contact">
             <h2 className="contact__title">Contact</h2>

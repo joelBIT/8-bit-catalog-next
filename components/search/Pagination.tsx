@@ -3,7 +3,7 @@ import { arima } from "@/fonts/fonts";
 
 import "./Pagination.css";
 
-export function Pagination({ currentPage, setCurrentPage, totalPages }: { currentPage: number, setCurrentPage: (arg0: number) => void, totalPages: number }): ReactElement {
+export function Pagination({ currentPage, setCurrentPage, totalPages }: { currentPage: number, setCurrentPage: (arg0: number) => void, totalPages: number }): ReactElement<ReactElement> {
 
     function nextPage(): void {
         setCurrentPage(currentPage + 1);

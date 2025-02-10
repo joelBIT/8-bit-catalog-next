@@ -8,10 +8,10 @@ import { EditGameButton } from "../common/EditGameButton";
 
 import "./GameDetailsCard.css";
 
-export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement> {
+export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement<ReactElement>> {
 
     return (
-        <section id="gameDetailsCard">
+        (<section id="gameDetailsCard">
             <figure className="gameDetailsCard__figure">
                 <Link href={game.imageLink} target="_blank">
                     <Image 
@@ -24,7 +24,6 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                     />
                 </Link>
             </figure>
-            
             <article id="gameDetails" className={silkScreen.className}>
                 <h1 className="gameDetails__title">{game.title}</h1>
 
@@ -73,11 +72,10 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                     </p>
                 </section>
             </article>
-
             <article id="gameDetailsCard__description">
                 { game.description }
             </article>
-            { await isAuthenticated() ? <EditGameButton gameId={game.id} /> : <></> }
-        </section>
+            { (await isAuthenticated()) ? <EditGameButton gameId={game.id} /> : <></> }
+        </section>)
     );
 }

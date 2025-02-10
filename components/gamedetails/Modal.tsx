@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-export function Modal({ title, showModal, confirm }: { title: string, showModal: (arg0: boolean) => void, confirm: () => void }): ReactElement {
+export function Modal({ title, showModal, confirm }: { title: string, showModal: (arg0: boolean) => void, confirm: () => void }): ReactElement<ReactElement> {
     
     return (
         <dialog id="modal" open>

@@ -5,11 +5,13 @@ import { getGameById } from "@/db/db";
 
 import "./page.css";
 
-export default async function EditGamePage({ params }: { params: { id: string }}): Promise<ReactElement> {
+export default async function EditGamePage({ params }: { params: Promise<{ id: string }>}): Promise<ReactElement<ReactElement>> {
+    const param = await params;
+    const id = param.id;
     
     return (
         <main id="editGamePage">
-            <FieldSetFrame legend={"Edit Details"} body={<EditGameForm game={ await getGameById(parseInt(params.id)) } />} />
+            <FieldSetFrame legend={"Edit Details"} body={<EditGameForm game={ await getGameById(parseInt(id)) } />} />
         </main>
     );
 }

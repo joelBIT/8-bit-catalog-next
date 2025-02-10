@@ -9,7 +9,7 @@ import { updateGame } from "@/actions/games";
 
 import "./EditGameForm.css";
 
-export function EditGameForm({ game }: { game: Game }): ReactElement {
+export function EditGameForm({ game }: { game: Game }): ReactElement<ReactElement> {
     const router = useRouter();
     const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.release_date);
