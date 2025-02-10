@@ -39,10 +39,10 @@ export function SearchFilters({ developers, publishers } : { developers: string[
     }
 
     return (
-        <section id="searchForm">
-            <h1 className={`searchForm__title ${rancho.className}`}>Search Games</h1>
-                <section id="searchFilters">
-                    <article className="searchForm__filters">
+        <section id="searchFilters">
+            <h1 className={`searchFilters__title ${rancho.className}`}>Search Games</h1>
+                <section id="searchFilters__articles">
+                    <article className="searchFilters__filters">
 
                         <section className="selectSection">
                             <h2 className={`selectSection__title ${arima.className}`}>{'Category'}</h2>

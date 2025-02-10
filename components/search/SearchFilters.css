@@ -1,21 +1,21 @@
-#searchForm {
+#searchFilters {
     display: flex;
     flex-direction: column;
     
-    .searchForm__title {
+    .searchFilters__title {
         font-size: 50px;
         font-weight: 500;
         margin: 1rem 0;
         align-self: center;
     }
 
-    #searchFilters {
+    #searchFilters__articles {
         display: flex;
         flex-direction: column;
         gap: 3rem;
         align-self: center;
 
-        & .searchForm__filters {
+        & .searchFilters__filters {
             display: flex;
             gap: 3rem;
 
@@ -46,9 +46,9 @@
 }
 
 @media (max-width: 1150px) {
-    #searchForm {   
-        #searchFilters {
-            & .searchForm__filters {
+    #searchFilters {   
+        #searchFilters__articles {
+            & .searchFilters__filters {
                 flex-direction: column;
             }
         }
@@ -56,13 +56,13 @@
 }
 
 @media (max-width: 500px) {
-    #searchForm {
+    #searchFilters {
         #searchInput {
             flex-direction: column;
         }
 
-        #searchFilters {
-            & .searchForm__filters {
+        #searchFilters__articles {
+            & .searchFilters__filters {
                 .selectSection {
                     .selectSection__select {
                         font-size: 1.2rem;
