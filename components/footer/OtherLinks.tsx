@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import "./OtherLinks.css";
 
-export function OtherLinks(): ReactElement {
+export function OtherLinks(): ReactElement<ReactElement> {
 
     const OTHERLINKS = [
         {url: "https://www.nesdev.org/", title: "NesDev"},

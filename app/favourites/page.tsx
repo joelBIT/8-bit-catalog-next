@@ -6,7 +6,7 @@ import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 
 import "./page.css";
 
-export default function FavouritesPage(): ReactElement {
+export default function FavouritesPage(): ReactElement<ReactElement> {
     const { favouritesList } = useContext(FavouritesContext);
 
     return (

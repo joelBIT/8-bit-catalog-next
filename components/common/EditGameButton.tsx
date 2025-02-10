@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import { useRouter } from 'next/navigation';
 
-export function EditGameButton( { gameId } : { gameId: number}): ReactElement {
+export function EditGameButton( { gameId } : { gameId: number}): ReactElement<ReactElement> {
     const router = useRouter();
 
     function editGame() {

@@ -9,7 +9,7 @@ import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 
 import "./SearchResult.css";
 
-export function SearchResult({ result, showHeading }: { result: Game[], showHeading: boolean }): ReactElement {
+export function SearchResult({ result, showHeading }: { result: Game[], showHeading: boolean }): ReactElement<ReactElement> {
     const [ currentPage, setCurrentPage ] = useState<number>(1);
     let totalPages = Math.floor(result.length / PAGINATION_PAGE_SIZE) + 1;
 

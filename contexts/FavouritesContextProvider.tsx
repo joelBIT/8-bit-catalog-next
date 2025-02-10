@@ -11,7 +11,7 @@ export const FavouritesContext = createContext<FavouritesContextProvider>({} as 
  * Favourite games are placed in localstorage if localstorage is available. If not available, the favourite games
  * are only stored in this Context's favouritesList variable.
  */
-export function FavouritesContexProvider({ children }: ContextProviderChildren): ReactElement {
+export function FavouritesContexProvider({ children }: ContextProviderChildren): ReactElement<ReactElement> {
     const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
     const STORAGE_KEY = 'favouriteGames';
 

@@ -4,7 +4,7 @@ import { silkScreen } from "@/fonts/fonts";
 
 import "./page.css";
 
-export default function AboutPage(): ReactElement {
+export default function AboutPage(): ReactElement<ReactElement> {
     return (
         <main id="aboutPage">
             <FieldSetFrame legend="About" body={<Text />} />
@@ -12,7 +12,7 @@ export default function AboutPage(): ReactElement {
     );
 }
 
-function Text(): ReactElement {
+function Text(): ReactElement<ReactElement> {
     return (
         <>
             <p className={`aboutPage__paragraph ${silkScreen.className}`}>

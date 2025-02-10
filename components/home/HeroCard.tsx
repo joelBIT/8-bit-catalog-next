@@ -7,7 +7,7 @@ import { silkScreen, singleDay } from "@/fonts/fonts";
 
 import "./HeroCard.css";
 
-export function HeroCard({ game }: { game: Game }): ReactElement {
+export function HeroCard({ game }: { game: Game }): ReactElement<ReactElement> {
     return (
         <section id="heroCard">
             <article className="heroCard-wrapper">

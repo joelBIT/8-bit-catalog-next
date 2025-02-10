@@ -3,7 +3,7 @@ import { createAuthClient } from '@/utils/supabase/server';
 
 import "./page.css";
 
-export default async function AccountPage(): Promise<ReactElement> {
+export default async function AccountPage(): Promise<ReactElement<ReactElement>> {
     const supabase = await createAuthClient();
     const { data } = await supabase.auth.getUser();
 

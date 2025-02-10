@@ -6,7 +6,7 @@ import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 
 import "./FavouriteButton.css";
 
-export function FavouriteButton({ game }: { game: Game }): ReactElement {
+export function FavouriteButton({ game }: { game: Game }): ReactElement<ReactElement> {
     const { favouritesList, addFavouriteGame, removeFavouriteGame } = useContext(FavouritesContext);
     const isFavorite = favouritesList.some((favourite: { id: number; }) => favourite.id === game.id);
 

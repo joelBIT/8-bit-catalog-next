@@ -16,7 +16,7 @@ import "./GameCard.css";
  * @param game          a game
  * @returns             a clickable card with game information
  */
-export function GameCard({ game }: { game: Game }): ReactElement {
+export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
     return (
         <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`}>
             <section className="gameCard">

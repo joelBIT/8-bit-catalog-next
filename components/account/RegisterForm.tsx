@@ -1,15 +1,14 @@
 'use client';
 
-import { ReactElement, useRef } from "react";
-import { useFormState } from "react-dom";
+import { ReactElement, useRef, useActionState } from "react";
 import { arima } from "@/fonts/fonts";
 import { register } from "@/actions/account";
 import { Input } from "../common/Input";
 
 import "./RegisterForm.css";
 
-export function RegisterForm(): ReactElement {
-    const [state, formAction] = useFormState(register, { message: '', success: false});
+export function RegisterForm(): ReactElement<ReactElement> {
+    const [state, formAction] = useActionState(register, { message: '', success: false});
     const formRef = useRef<HTMLFormElement>(null);
 
     if (formRef.current) {

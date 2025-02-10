@@ -1,7 +1,6 @@
 'use client';
 
-import { ReactElement, useRef } from "react";
-import { useFormState } from "react-dom";
+import { ReactElement, useRef, useActionState } from "react";
 import Link from "next/link";
 import { arima } from "@/fonts/fonts";
 import { login } from "@/actions/account";
@@ -10,8 +9,8 @@ import { Input } from "../common/Input";
 
 import "./LoginForm.css";
 
-export function LoginForm(): ReactElement {
-    const [state, formAction] = useFormState(login, { message: '', success: false });
+export function LoginForm(): ReactElement<ReactElement> {
+    const [state, formAction] = useActionState(login, { message: '', success: false });
     const formRef = useRef<HTMLFormElement>(null);
 
     if (formRef.current) {

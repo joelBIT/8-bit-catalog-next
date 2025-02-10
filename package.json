@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,18 +13,22 @@
     "@react-email/components": "0.0.31",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.46.1",
-    "next": "14.2.16",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "15.1.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "resend": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
     "eslint": "^8",
-    "eslint-config-next": "14.2.16",
+    "eslint-config-next": "15.1.6",
     "react-email": "3.0.4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3"
   }
 }

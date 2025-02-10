@@ -3,7 +3,7 @@ import { silkScreen } from "@/fonts/fonts";
 
 import "./FieldSetFrame.css";
 
-export function FieldSetFrame({ legend, body }: { legend: string, body: ReactElement }): ReactElement {
+export function FieldSetFrame({ legend, body }: { legend: string, body: ReactElement<ReactElement> }): ReactElement<ReactElement> {
     
     return (
         <section id="fieldSetFrame">
