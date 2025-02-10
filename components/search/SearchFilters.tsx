@@ -17,6 +17,7 @@ import "./SearchFilters.css";
 export function SearchFilters({ developers, publishers } : { developers: string[], publishers: string[] }): ReactElement {
     const [ searchResult, setSearchResult ] = useState<Game[]>([]);
     const [ showHeading, setShowHeading ] = useState<boolean>(false);
+    const [ disabled, setDisabled ] = useState(false);
     const titleRef = useRef<HTMLInputElement>(null);
     const categoryRef = useRef<HTMLSelectElement>(null);
     const developerRef = useRef<HTMLSelectElement>(null);
@@ -27,6 +28,7 @@ export function SearchFilters({ developers, publishers } : { developers: string[
      * when the button is pressed or when the Enter key is pressed in the input field.
      */
     async function search() {
+        setDisabled(true);
         const searchFilters: SearchFilter = {
             title: titleRef.current?.value || '',
             category: categoryRef.current?.value || ALL_OPTION_VALUE,
@@ -36,11 +38,12 @@ export function SearchFilters({ developers, publishers } : { developers: string[
 
         setSearchResult(await getGames(searchFilters));
         setShowHeading(true);
+        setDisabled(false);
     }
 
     return (
         <section id="searchFilters">
-            <h1 className={`searchFilters__title ${rancho.className}`}>Search Games</h1>
+            <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
                 <section id="searchFilters__articles">
                     <article className="searchFilters__filters">
 
@@ -76,7 +79,7 @@ export function SearchFilters({ developers, publishers } : { developers: string[
                             placeholder="Game Title"
                         />
 
-                        <button className={`gameButton ${arima.className}`} onClick={search}> Search </button>
+                        <button className={`gameButton ${arima.className}`} onClick={search} disabled={disabled}> Search </button>
                     </article>
                 </section>
                 
