@@ -15,7 +15,10 @@ export async function Footer(): Promise<ReactElement<ReactElement>> {
                 <Contact />
                 <OtherLinks />
             </section>
-            <article id="copyright"><span className="material-symbols-outlined">copyright</span> <h4>2025 Joel Rollny</h4></article>
+            <article id="copyright">
+                <span className="material-symbols-outlined">copyright</span> 
+                <h4 className="copyright__text">2025 Joel Rollny</h4>
+            </article>
         </footer>
     );
 }

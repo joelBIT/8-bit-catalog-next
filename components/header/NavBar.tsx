@@ -19,7 +19,8 @@ export function NavBar() {
             <ul className={showMenu ? "navbar__list showmenu" : "navbar__list"}>
                 <li className="navbar__list-element">
                     <Link 
-                        href="/search" 
+                        href="/search"
+                        onClick={() => setShowMenu(false)}
                         className={pathname === "/search" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
                         <h2 className={`navbar__list-element-title ${rancho.className}`}>Games</h2>
@@ -27,7 +28,8 @@ export function NavBar() {
                 </li>
                 <li className="navbar__list-element">
                     <Link 
-                        href="/favourites" 
+                        href="/favourites"
+                        onClick={() => setShowMenu(false)}
                         className={pathname === "/favourites" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
                         <h2 className={`navbar__list-element-title ${rancho.className}`}>Favourites</h2>
@@ -36,6 +38,7 @@ export function NavBar() {
                 <li className="navbar__list-element">
                     <Link 
                         href="/login"
+                        onClick={() => setShowMenu(false)}
                         className={pathname === "/login" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                         >
                         <span className="material-symbols-outlined wideScreen">login</span>

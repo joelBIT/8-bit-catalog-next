@@ -30,7 +30,8 @@ export function AuthenticatedNavBar() {
             <ul className={showMenu ? "navbar__list showmenu" : "navbar__list"}>
                 <li className="navbar__list-element">
                     <Link 
-                        href="/search" 
+                        href="/search"
+                        onClick={() => setShowMenu(false)}
                         className={pathname === "/search" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
                         <h2 className={`navbar__list-element-title ${rancho.className}`}>Games</h2>
@@ -38,7 +39,8 @@ export function AuthenticatedNavBar() {
                 </li>
                 <li className="navbar__list-element">
                     <Link 
-                        href="/favourites" 
+                        href="/favourites"
+                        onClick={() => setShowMenu(false)}
                         className={pathname === "/favourites" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
                         <h2 className={`navbar__list-element-title ${rancho.className}`}>Favourites</h2>
@@ -47,6 +49,7 @@ export function AuthenticatedNavBar() {
                 <li className="navbar__list-element">
                     <Link 
                         href="/account"
+                        onClick={() => setShowMenu(false)}
                         className={pathname === "/account" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
                         <span className="material-symbols-outlined wideScreen">account_circle</span>
@@ -54,7 +57,7 @@ export function AuthenticatedNavBar() {
                     </Link>
                 </li>
                 <li className="navbar__list-element" onClick={logout}>
-                    <Link href="/">
+                    <Link href="/" onClick={() => setShowMenu(false)}>
                         <span className="material-symbols-outlined wideScreen">logout</span>
                         <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Logout</h2>
                     </Link>

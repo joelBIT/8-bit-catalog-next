@@ -17,9 +17,5 @@ footer {
         align-self: center;
         font-size-adjust: from-font;
         margin: 1rem;
-
-        & .material-symbols-outlined {
-            padding-top: 0.1rem;
-        }
     }
 }
