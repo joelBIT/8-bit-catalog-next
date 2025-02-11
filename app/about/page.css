@@ -27,6 +27,8 @@
     #aboutPage {
         .aboutPage__paragraph {
             font-size: 1.3rem;
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 }

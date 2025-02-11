@@ -26,17 +26,21 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
                 localStorage.setItem(STORAGE_KEY, '[]');
             }
         }
-    }, []); 
+    }, []);
+
+    function sortFavourites(favourites: Game[]) {
+        return favourites.sort((a, b) => a.title.localeCompare(b.title));
+    }
 
     /**
      * Adds a game as a favourite in localstorage if localstorage is available.
      */
     function addFavouriteGame(game: Game): void {
         if (isLocalStorageAvailable()) {
-            setFavouritesList([...favouritesList, game]);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify([...favouritesList, game]));
+            setFavouritesList(sortFavourites([...favouritesList, game]));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(sortFavourites([...favouritesList, game])));
         } else {
-            setFavouritesList([...favouritesList, game]);
+            setFavouritesList(sortFavourites([...favouritesList, game]));
         }
     }
 
