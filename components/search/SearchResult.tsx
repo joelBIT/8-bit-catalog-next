@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactElement, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Pagination } from "./Pagination";
 import { GameCard } from "../common/GameCard";
 import { arima } from "@/fonts/fonts";
@@ -12,6 +13,7 @@ import "./SearchResult.css";
 export function SearchResult({ result, showHeading }: { result: Game[], showHeading: boolean }): ReactElement<ReactElement> {
     const [ currentPage, setCurrentPage ] = useState<number>(1);
     let totalPages = Math.floor(result.length / PAGINATION_PAGE_SIZE) + 1;
+    const searchParams = useSearchParams();
 
     /**
      * Resets the current page to 1 every time a new search is performed. The number of total pages is also
@@ -21,6 +23,17 @@ export function SearchResult({ result, showHeading }: { result: Game[], showHead
         setCurrentPage(1);
         totalPages = Math.floor(result.length / PAGINATION_PAGE_SIZE) + 1;
     }, [result]);
+
+        /**
+     * Updates the URL with the page number as a query parameter.
+     */
+        function setPage(page: number) {
+            const params = new URLSearchParams(searchParams.toString());
+            params.delete('page');
+            params.set('page', page.toString());
+            window.history.pushState(null, '', `?${params.toString()}`);
+            setCurrentPage(page);
+        }
 
     /**
      * Calculates the start position of games to display for the user, based on the current page and the pagination page size.
@@ -48,13 +61,13 @@ export function SearchResult({ result, showHeading }: { result: Game[], showHead
                         : <></>
             }
 
-            {totalPages > 1 ? <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} /> : <></>}
+            {totalPages > 1 ? <Pagination currentPage={currentPage} setCurrentPage={setPage} totalPages={totalPages} /> : <></>}
 
             <section id="gameCards">
                 {result.slice(from(), to()).map((game, index) => <GameCard key={index} game={game} />)}
             </section>
 
-            {totalPages > 1 ? <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} /> : <></>}
+            {totalPages > 1 ? <Pagination currentPage={currentPage} setCurrentPage={setPage} totalPages={totalPages} /> : <></>}
         </section>
     );
 }
