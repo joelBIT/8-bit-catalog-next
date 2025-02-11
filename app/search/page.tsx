@@ -19,7 +19,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
         <main id="searchPage">
             <section id="searchFilters">
                 <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
-                <Form id="searchFilters__form" action="">
+                <Form id="searchFilters__form" action="" scroll={false}>
                     <article className="searchFilters__filters">
 
                         <section className="selectSection">
