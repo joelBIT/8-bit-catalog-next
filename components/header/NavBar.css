@@ -44,6 +44,18 @@
     }
 }
 
+@media (max-width: 850px) {
+    .authenticated-navbar {
+        .navbar__list {
+            .navbar__list-element {
+                .navbar__list-element-link {
+                    font-size: 3vw;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 700px) {
     .navbar {
         .navbar__list {
@@ -62,7 +74,6 @@
             
                 .smallScreen {
                     display: block;
-                    font-size: 3rem;
                 }
 
                 &:hover {
