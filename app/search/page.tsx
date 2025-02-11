@@ -5,6 +5,7 @@ import { addAllOption, getCategories } from "@/utils/utils";
 import { SearchFilter } from "@/types/types";
 import { arima, rancho } from "@/fonts/fonts";
 import { Search } from "@/components/search/Search";
+import { SearchButton } from "@/components/common/SearchButton";
 
 import "./page.css";
 
@@ -19,7 +20,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
         <main id="searchPage">
             <section id="searchFilters">
                 <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
-                <Form id="searchFilters__form" action="">
+                <Form id="searchFilters__form" action="" scroll={false}>
                     <article className="searchFilters__filters">
 
                         <section className="selectSection">
@@ -54,7 +55,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                             placeholder="Game Title"
                         />
 
-                        <button className={`gameButton ${arima.className}`}> Search </button>
+                        <SearchButton />
                     </article>
                 </Form>
             </section>
