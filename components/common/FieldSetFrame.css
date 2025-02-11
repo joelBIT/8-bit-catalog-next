@@ -25,3 +25,22 @@
         max-width: 90vw;
     }
 }
+
+@media (max-width: 700px) {
+    #fieldSetFrame {
+        .fieldset {
+            .legend {
+                font-size: 2.2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #fieldSetFrame {
+        .fieldset {
+            margin: 1rem;
+            padding: 1rem;
+        }
+    }
+}

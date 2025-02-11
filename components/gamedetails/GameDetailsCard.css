@@ -88,3 +88,24 @@
         }        
     }
 }
+
+@media (max-width: 500px) {
+    #gameDetailsCard {
+        #gameDetails {
+            .gameDetails__metadata {    
+                .gameDetails__metadata-heading {
+                    font-size: 1.8rem;
+                }
+            
+                .gameDetails__metadata-text {
+                    font-weight: 100;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        #gameDetailsCard__description {
+            font-size: 1.3rem;
+        } 
+    }
+}

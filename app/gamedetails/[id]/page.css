@@ -11,3 +11,9 @@
         padding: 2rem;
     }
 }
+
+@media (max-width: 500px) {
+    #gameDetailsPage {
+        padding: 1rem;
+    }
+}
