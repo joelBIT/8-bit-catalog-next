@@ -15,7 +15,10 @@ footer {
         display: flex;
         align-items: center;
         align-self: center;
-        font-size-adjust: from-font;
         margin: 1rem;
+
+        & .material-symbols-outlined {
+            font-size: small;
+        }
     }
 }
