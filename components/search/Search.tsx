@@ -20,16 +20,16 @@ export function Search(): ReactElement<ReactElement> {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const page =  params.get('page') as string || '1';
+    const title = params.get('title') || '';
+    const category = params.get('category') as string;
+    const developer = params.get('developer') as string;
+    const publisher = params.get('publisher') as string;
     const [ searchResult, setSearchResult ] = useState<Game[]>([]);
     const [ showHeading, setShowHeading ] = useState<boolean>(false);
     const [ currentPage, setCurrentPage ] = useState<number>(parseInt(page));
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
-    const title = params.get('title') || '';
-    const category = params.get('category') as string;
-    const developer = params.get('developer') as string;
-    const publisher = params.get('publisher') as string;
-
+    
     useEffect(() => {
         if ((title || category || developer || publisher)) {
             search();
