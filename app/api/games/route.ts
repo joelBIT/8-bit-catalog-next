@@ -9,7 +9,8 @@ export async function GET(request: NextRequest) {
         title: searchParams.get('title') as string,
         category: convertFilterAll(searchParams.get('category') as string),
         developer: convertFilterAll(searchParams.get('developer') as string),
-        publisher: convertFilterAll(searchParams.get('publisher') as string)
+        publisher: convertFilterAll(searchParams.get('publisher') as string),
+        page: searchParams.get('page') as string
     }
 
     const games = await getGamesBySearchFilters(filters);

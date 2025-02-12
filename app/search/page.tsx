@@ -15,6 +15,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
     const category = params.category;
     const developer = params.developer;
     const publisher = params.publisher;
+    const page = params.page || '1';
 
     return (
         <main id="searchPage">
@@ -43,7 +44,6 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                                 {addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}>{element}</option>)}
                             </select>
                         </section>
-
                     </article>
 
                     <article id="searchInput">
@@ -60,7 +60,13 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                 </Form>
             </section>
             
-            <Search searchParams={{ title, category, developer, publisher }} />
+            <Search searchParams={{
+                title: title,
+                category: category,
+                developer: developer,
+                publisher: publisher,
+                page: page
+            }} />
         </main>
     );
 }
