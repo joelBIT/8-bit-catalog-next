@@ -11,11 +11,9 @@ import "./page.css";
 
 export default async function SearchPage({ searchParams } : { searchParams: Promise<SearchFilter> }): Promise<ReactElement<ReactElement>> {
     const params = await searchParams;
-    const title = params.title || '';
     const category = params.category;
     const developer = params.developer;
     const publisher = params.publisher;
-    const page = params.page || '1';
 
     return (
         <main id="searchPage">
@@ -60,13 +58,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                 </Form>
             </section>
             
-            <Search searchParams={{
-                title: title,
-                category: category,
-                developer: developer,
-                publisher: publisher,
-                page: page
-            }} />
+            <Search />
         </main>
     );
 }

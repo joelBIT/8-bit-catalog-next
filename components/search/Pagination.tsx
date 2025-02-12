@@ -8,6 +8,10 @@ import { getGames } from "@/data/data";
 
 import "./Pagination.css";
 
+/**
+ * Pagination is used to navigate between pages of a search result. Pressing the Previous or Next button invokes a call to the database to retrieve
+ * the desired page of a search result.
+ */
 export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchResult }: { currentPage: number, setCurrentPage: (page: number) => void, totalPages: number, setSearchResult: (games: Game[]) => void }): ReactElement<ReactElement> {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
@@ -24,7 +28,10 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
         await searchPage((currentPage - 1).toString());
     }
 
-    async function searchPage(page: string) {
+    /**
+     * Updates the URL with the current page number when navigating between pages.
+     */
+    async function searchPage(page: string): Promise<void> {
         params.delete('page');
         params.set('page', page);
         window.history.pushState(null, '', `?${params.toString()}`);
@@ -39,7 +46,7 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
                 id="previous" 
                 className={`gameButton ${arima.className}`}
                 onClick={() => previousPage()} 
-                disabled={currentPage > 1 ? false : true}>
+                disabled={currentPage <= 1}>
                     Previous
             </button>
             
@@ -49,7 +56,7 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
                 id="next" 
                 className={`gameButton ${arima.className}`}
                 onClick={() => nextPage()} 
-                disabled={currentPage < totalPages ? false : true}>
+                disabled={currentPage >= totalPages}>
                     Next
             </button>
         </section>
