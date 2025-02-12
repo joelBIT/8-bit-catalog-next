@@ -1,14 +1,14 @@
-import { Game, SearchFilter } from '@/types/types';
+import { SearchFilter, SearchResult } from '@/types/types';
 
-export async function getGames(filters: SearchFilter): Promise<Game[]> {
+export async function getGames(filters: SearchFilter): Promise<SearchResult> {
     try {
-        const response = await fetch(`/api/games?title=${filters.title}&category=${filters.category}&developer=${filters.developer}&publisher=${filters.publisher}`);
+        const response = await fetch(`/api/games?title=${filters.title.trim()}&category=${filters.category}&developer=${filters.developer}&publisher=${filters.publisher}&page=${filters.page}`);
         return await response.json();
     } catch (error) {
         console.error(error);
     }
 
-    return [];
+    return {games: [], count: 0};
 }
 
 export async function getAllDevelopers(): Promise<string[]>  {

@@ -1,6 +1,7 @@
-import { Game, SearchFilter } from '@/types/types';
+import { Game, SearchFilter, SearchResult } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { createAuthClient } from "@/utils/supabase/server";
+import { PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
 const databaseClient = createClient(databaseURL(), databaseKey());
 
@@ -46,30 +47,39 @@ async function uploadFile(fileName: string, file: File) {
     }
 }
 
-export async function getGamesBySearchFilters(filters: SearchFilter) {
-    const { data, error } = await databaseClient.rpc('games', {filter_title: '%' + filters.title + '%', filter_category: filters.category, 
-        filter_developer: filters.developer, filter_publisher: filters.publisher});
+export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
+    const { data, error, count } = await databaseClient.rpc('games', {filter_title: '%' + filters.title + '%', filter_category: filters.category, 
+        filter_developer: filters.developer, filter_publisher: filters.publisher}, {count: 'exact'})
+        .range(from(parseInt(filters.page)), to(parseInt(filters.page)));
     if (error) {
         console.log(error);
-        return [];
+        return {games: [], count: 0};
     }
 
     for (let i = 0; i < data.length; i++) {
         data[i].imageLink = getImageLink(data[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
     }
 
-    return data;
+    return {games: data, count: count ? count : 0};
+}
+
+function from(page: number): number {
+    return (page-1) * PAGINATION_PAGE_SIZE;
+}
+
+function to(page: number): number {
+    return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
+}
+
+function getImageLink(cover: string) {
+    const { data } = databaseClient.storage.from(COVERS_STORAGE).getPublicUrl(cover);
+    return data.publicUrl;
 }
 
 export async function getGameById(id: number) {
     const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
     data.imageLink = getImageLink(data.cover);
     return data;
-}
-
-function getImageLink(cover: string) {
-    const { data } = databaseClient.storage.from(COVERS_STORAGE).getPublicUrl(cover);
-    return data.publicUrl;
 }
 
 

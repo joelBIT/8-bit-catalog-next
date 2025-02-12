@@ -15,5 +15,11 @@ export type SearchFilter = {
     title: string,
     category: string,
     developer: string,
-    publisher: string
+    publisher: string,
+    page: string
+}
+
+export type SearchResult = {
+    games: Game[],
+    count: number
 }
