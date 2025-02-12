@@ -3,7 +3,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { getGames } from "@/data/data";
-import { Game, SearchFilter } from "@/types/types";
+import { Game } from "@/types/types";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { Pagination } from "./Pagination";
 import { GameCard } from "../common/GameCard";
@@ -16,22 +16,22 @@ import "./Search.css";
  * The searchResult state contains the games that matches the search query. The showHeading state
  * is set on each search to inform the user about how many games that matches the search query.
  */
-export function Search({ searchParams } : { searchParams: SearchFilter }): ReactElement<ReactElement> {
-    const searchParamss = useSearchParams();
-    const params = new URLSearchParams(searchParamss);
+export function Search(): ReactElement<ReactElement> {
+    const searchParams = useSearchParams();
+    const params = new URLSearchParams(searchParams);
     const page =  params.get('page') as string || '1';
     const [ searchResult, setSearchResult ] = useState<Game[]>([]);
     const [ showHeading, setShowHeading ] = useState<boolean>(false);
     const [ currentPage, setCurrentPage ] = useState<number>(parseInt(page));
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
-    const title = searchParams.title.trim();                                    // Trim whitespaces from title beginnings and ends
-    const category = searchParams.category;
-    const developer = searchParams.developer;
-    const publisher = searchParams.publisher;
+    const title = params.get('title') || '';
+    const category = params.get('category') as string;
+    const developer = params.get('developer') as string;
+    const publisher = params.get('publisher') as string;
 
     useEffect(() => {
-        if ((title || category || developer || publisher) !== undefined) {      // Undefined means that the query string does not exist (first visit of search page)
+        if ((title || category || developer || publisher)) {
             search();
         }
     }, [title, category, developer, publisher])
@@ -45,7 +45,7 @@ export function Search({ searchParams } : { searchParams: SearchFilter }): React
         setSearchResult(result.games);
         setTotalCount(result.count);
         setTotalPages(Math.floor(result.count / PAGINATION_PAGE_SIZE) + 1);
-        setCurrentPage(parseInt(params.get('page') as string) || 1);
+        setCurrentPage(parseInt(page) || 1);
         setShowHeading(true);
     }
 
