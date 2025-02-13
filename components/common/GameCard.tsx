@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { FavouriteButton } from "./FavouriteButton";
+import { FavouriteButton } from "../favourites/FavouriteButton";
 import { Game } from "@/types/types";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { rancho } from "@/fonts/fonts";

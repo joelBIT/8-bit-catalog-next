@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { silkScreen } from "@/fonts/fonts";
 import { Game } from "@/types/types";
 import { isAuthenticated } from "@/app/utils/utils";
-import { EditGameButton } from "../common/EditGameButton";
+import { EditGameButton } from "./edit/EditGameButton";
 
 import "./GameDetailsCard.css";
 
