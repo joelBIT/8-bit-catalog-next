@@ -84,6 +84,8 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
         if (isLastFavouritePage() && isEmptyLastPage()) {
             setFavouritesPage(favouritesPage > 1 ? favouritesPage - 1 : 1);
             setTotalPages(totalPages - 1);
+        } else if (isEmptyLastPage()) {
+            setTotalPages(totalPages - 1);
         }
     }
 
