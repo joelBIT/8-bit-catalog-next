@@ -3,7 +3,7 @@
 import { createContext, ReactElement, useEffect, useState } from "react";
 import { FavouritesContextProvider, ContextProviderChildren } from "@/interfaces/interfaces";
 import { Game } from "@/types/types";
-import { isLocalStorageAvailable } from "@/utils/utils";
+import { isLocalStorageAvailable, PAGINATION_PAGE_SIZE } from "@/utils/utils";
 
 export const FavouritesContext = createContext<FavouritesContextProvider>({} as FavouritesContextProvider);
 
@@ -13,6 +13,8 @@ export const FavouritesContext = createContext<FavouritesContextProvider>({} as 
  */
 export function FavouritesContexProvider({ children }: ContextProviderChildren): ReactElement<ReactElement> {
     const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
+    const [ favouritesPage, setFavouritesPage ] = useState<number>(1);      // Used for pagination
+    const [ totalPages, setTotalPages ] = useState<number>(1);              // Total number of favourite pages
     const STORAGE_KEY = 'favouriteGames';
 
     /**
@@ -21,31 +23,49 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
     useEffect(() => {
         if (isLocalStorageAvailable()) {
             if (localStorage.getItem(STORAGE_KEY)) {
-                setFavouritesList(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+                const games = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+                setFavouritesList(games);
+                setTotalPages(getTotalPages(games));
             } else {
                 localStorage.setItem(STORAGE_KEY, '[]');
             }
         }
     }, []);
 
+    /**
+     * Get the total number of pages containing favourite games.
+     */
+    function getTotalPages(games: Game[]) {
+        if (games.length > PAGINATION_PAGE_SIZE && (games.length % PAGINATION_PAGE_SIZE === 0)) {
+            return Math.floor(games.length / PAGINATION_PAGE_SIZE);
+        }
+        return (Math.floor(games.length / PAGINATION_PAGE_SIZE) + 1);
+    }
+
     function sortFavourites(favourites: Game[]) {
         return favourites.sort((a, b) => a.title.localeCompare(b.title));
     }
 
     /**
-     * Adds a game as a favourite in localstorage if localstorage is available.
+     * Adds a game as a favourite in localstorage if localstorage is available. Updates the total number of favourite pages
+     * to be consistent with the number of favourite games.
      */
     function addFavouriteGame(game: Game): void {
+        const games = sortFavourites([...favouritesList, game]);
+
         if (isLocalStorageAvailable()) {
-            setFavouritesList(sortFavourites([...favouritesList, game]));
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(sortFavourites([...favouritesList, game])));
+            setFavouritesList(games);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
         } else {
-            setFavouritesList(sortFavourites([...favouritesList, game]));
+            setFavouritesList(sortFavourites(games));
         }
+
+        setTotalPages(getTotalPages(games));
     }
 
     /**
-     * Removes a game from the list of favourites in localstorage if localstorage is available.
+     * Removes a game from the list of favourites in localstorage if localstorage is available. Updates the total number of favourite pages
+     * to be consistent with the number of favourite games.
      */
     function removeFavouriteGame(game: Game): void {
         if (isLocalStorageAvailable()) {
@@ -55,10 +75,28 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
         } else {
             setFavouritesList(favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id));
         }
+
+        updateFavouritePage();
+    }
+
+    // Change to the previous page if all favourite games of the last favourite page are removed.
+    function updateFavouritePage(): void {
+        if (isLastFavouritePage() && isEmptyLastPage()) {
+            setFavouritesPage(favouritesPage > 1 ? favouritesPage - 1 : 1);
+            setTotalPages(totalPages - 1);
+        }
+    }
+
+    function isLastFavouritePage(): boolean {
+        return favouritesPage === Math.floor(favouritesList.length / PAGINATION_PAGE_SIZE) + 1;
+    }
+
+    function isEmptyLastPage() {
+        return (favouritesList.length - 1) % PAGINATION_PAGE_SIZE === 0;
     }
 
     return (
-        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame }}>
+        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages }}>
             { children }
         </FavouritesContext.Provider>
     );

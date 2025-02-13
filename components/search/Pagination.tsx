@@ -50,7 +50,12 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
                     Previous
             </button>
             
-            <div className={`pagination-page__text ${arima.className}`}>Page <p className="pagination-page__number">{currentPage} / {totalPages} </p></div>
+            <div className={`pagination-page__text ${arima.className}`}>
+                Page 
+                <p className="pagination-page__number">
+                    {currentPage} / {totalPages} 
+                </p>
+            </div>
             
             <button 
                 id="next" 

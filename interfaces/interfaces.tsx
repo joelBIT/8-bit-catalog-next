@@ -2,9 +2,12 @@ import { ReactNode } from "react";
 import { Game } from "@/types/types";
 
 export interface FavouritesContextProvider {
-    favouritesList: Game[],
+    favouritesList: Game[];
     addFavouriteGame: (game: Game) => void;
     removeFavouriteGame: (game: Game) => void;
+    favouritesPage: number;
+    setFavouritesPage: (page: number) => void;
+    totalPages: number;
 }
 
 export interface ContextProviderChildren {

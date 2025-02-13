@@ -1,0 +1,29 @@
+.favourite-pagination {
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    gap: 1rem;
+    align-items: center;
+
+    #previous, #next {
+        padding: 0.5rem;
+    }
+
+    .favourite-pagination-page__text {
+        display: flex;
+        gap: 1rem;
+        font-size: 30px;
+        font-weight: 600;
+
+        .favourite-pagination-page__number {
+            font-weight: 100;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .favourite-pagination {
+        display: flex;
+        flex-direction: column;
+    }
+}
