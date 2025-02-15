@@ -8,7 +8,8 @@ export type Game = {
     cover: string,
     imageLink: string,
     players: number,
-    description: string
+    description: string,
+    rom: boolean
 }
 
 export type SearchFilter = {

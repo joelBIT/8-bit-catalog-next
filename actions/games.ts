@@ -16,6 +16,7 @@ export async function updateGame(id: number, formData: FormData) {
         release_date: formData.get('released') as string,
         cover: (formData.get('cover') as File).name,
         category: formData.get('category') as string,
+        rom: false,
         imageLink: ""
     };
 

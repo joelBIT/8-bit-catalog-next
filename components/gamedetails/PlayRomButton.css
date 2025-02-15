@@ -1,0 +1,12 @@
+#playRomButton {
+    width: fit-content;
+    color: black;
+    align-self: center;
+    margin-top: 2rem;
+}
+
+@media (max-width: 700px) {
+    #playRomButton {
+        margin-top: 0;
+    }
+}
