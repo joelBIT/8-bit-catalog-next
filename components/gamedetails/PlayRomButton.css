@@ -1,12 +1,32 @@
-#playRomButton {
+#playRomLink {
+    border: 2px solid;
     width: fit-content;
-    color: black;
     align-self: center;
-    margin-top: 2rem;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    transition: 0.25s;
+    border-color: var(--color-bar-purple);
+    animation: pulse-animation 2s infinite;
+  
+    &:hover, &:focus { 
+        border-color: var(--color-link);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(21, 112, 124, 0.4);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(21, 112, 124, 0);
+    }
 }
 
 @media (max-width: 700px) {
-    #playRomButton {
+    #playRomLink {
         margin-top: 0;
     }
 }

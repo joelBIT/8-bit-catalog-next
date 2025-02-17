@@ -8,8 +8,7 @@ import "./PlayRomButton.css";
 export function PlayRomButton({ id } : { id: number}): ReactElement {
     return (
         <Link 
-            id="playRomButton" 
-            className="gameButton"
+            id="playRomLink"
             target="_blank"
             href={`https://nes-emulator.vercel.app?id=${id}`} 
         >
