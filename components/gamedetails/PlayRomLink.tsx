@@ -3,9 +3,9 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 
-import "./PlayRomButton.css";
+import "./PlayRomLink.css";
 
-export function PlayRomButton({ id } : { id: number}): ReactElement {
+export function PlayRomLink({ id } : { id: number}): ReactElement {
     return (
         <Link 
             id="playRomLink"

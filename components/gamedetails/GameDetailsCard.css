@@ -16,6 +16,7 @@
     #gameDetails {
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
 
         .gameDetails__title {
             font-size: 2.5rem;

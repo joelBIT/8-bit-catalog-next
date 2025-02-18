@@ -5,7 +5,7 @@ import { silkScreen } from "@/fonts/fonts";
 import { Game } from "@/types/types";
 import { isAuthenticated } from "@/app/utils/utils";
 import { EditGameButton } from "./edit/EditGameButton";
-import { PlayRomButton } from "./PlayRomButton";
+import { PlayRomLink } from "./PlayRomLink";
 
 import "./GameDetailsCard.css";
 
@@ -73,7 +73,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                     </p>
                 </section>
 
-                { game.rom ? <PlayRomButton id={game.id} /> : <></> }
+                { game.rom ? <PlayRomLink id={game.id} /> : <></> }
             </article>
             <article id="gameDetailsCard__description">
                 { game.description }

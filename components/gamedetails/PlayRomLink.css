@@ -6,11 +6,10 @@
     margin: 0.5em;
     padding: 1em 2em;
     transition: 0.25s;
-    border-color: var(--color-bar-purple);
+    border-color: var(--color-link);
     animation: pulse-animation 2s infinite;
   
     &:hover, &:focus { 
-        border-color: var(--color-link);
         transform: scale(1.05);
     }
 }
