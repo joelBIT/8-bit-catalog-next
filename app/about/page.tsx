@@ -16,7 +16,7 @@ function Text(): ReactElement<ReactElement> {
     return (
         <>
             <p className={`aboutPage__paragraph ${silkScreen.className}`}>
-                The purpose of the 8-bit Catalog is to be an as accomplished source of NES games and ROMS as possible.
+                The purpose of the 8-bit Catalog is to be an as accomplished source of NES games as possible.
                 This catalog is continuously updated with new information.
             </p>
             <p className={`aboutPage__paragraph ${silkScreen.className}`}>
