@@ -6,6 +6,7 @@ import { arima } from "@/fonts/fonts";
 import { login } from "@/actions/account";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
 import { Input } from "../common/Input";
+import { PasswordInput } from "../common/PasswordInput";
 
 import "./LoginForm.css";
 
@@ -27,7 +28,7 @@ export function LoginForm(): ReactElement<ReactElement> {
             
             <form id="loginForm" ref={formRef} action={formAction}>
                 <Input id="email" type="email" placeholder="Email" />
-                <Input id="password" type="password" placeholder="Password" />
+                <PasswordInput id="password" placeholder="Password" />
                 
                 <button className="accountButton" type="submit">Login</button>
             </form>
