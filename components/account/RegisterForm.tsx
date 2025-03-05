@@ -4,6 +4,7 @@ import { ReactElement, useRef, useActionState } from "react";
 import { arima } from "@/fonts/fonts";
 import { register } from "@/actions/account";
 import { Input } from "../common/Input";
+import { PasswordInput } from "../common/PasswordInput";
 
 import "./RegisterForm.css";
 
@@ -26,8 +27,8 @@ export function RegisterForm(): ReactElement<ReactElement> {
             <form id="registerForm" ref={formRef} action={formAction}>
                 <Input id="email" type="email" placeholder="Email" />
                 <Input id="name" type="text" placeholder="Name" />
-                <Input id="password" type="password" placeholder="Password" />
-                <Input id="passwordRepeat" type="password" placeholder="Re-type Password" />
+                <PasswordInput id="password" placeholder="Password" />
+                <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
                 { state.success ? <p className="confirmation-text">A confirmation link will be sent to your email</p> : <></> }
                 <button className="accountButton" type="submit">Register</button>

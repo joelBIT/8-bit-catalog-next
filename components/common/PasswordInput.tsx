@@ -8,18 +8,18 @@ export function PasswordInput({ id, placeholder }: { id: string, placeholder: st
     
     return (
         <div className="password-input">
-        <input 
-            id={id}
-            name={id} 
-            type={isVisible ? "text" : "password"}
-            placeholder={placeholder}
-            className={arima.className}
-            autoComplete="false" 
-            required 
-        />
-        <span className="material-symbols-outlined" onClick={() => setVisible(!isVisible)}>
-        {isVisible ? "visibility_off" : "visibility"}
-      </span>
-      </div>
+            <input 
+                id={id}
+                name={id} 
+                type={isVisible ? "text" : "password"}
+                placeholder={placeholder}
+                className={arima.className}
+                autoComplete="false" 
+                required 
+            />
+            <span className="material-symbols-outlined" onClick={() => setVisible(!isVisible)}>
+                {isVisible ? "visibility_off" : "visibility"}
+            </span>
+        </div>
     );
 }
