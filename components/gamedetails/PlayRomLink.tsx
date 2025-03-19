@@ -10,7 +10,7 @@ export function PlayRomLink({ id } : { id: number}): ReactElement {
         <Link 
             id="playRomLink"
             target="_blank"
-            href={`https://nes-emulator.vercel.app?id=${id}`} 
+            href={`https://emulator.joel-rollny.eu?id=${id}`} 
         >
             Play
         </Link>
