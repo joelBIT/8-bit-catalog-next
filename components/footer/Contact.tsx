@@ -15,7 +15,7 @@ export function Contact(): ReactElement<ReactElement> {
                 <li>
                     <h4 className="contact__info">
                         <span className={`material-symbols-outlined globe`}>globe</span> 
-                        <a href="http://www.joel-rollny.eu" target="_blank" className="contact__link"> www.joel-rollny.eu</a>
+                        <a href="https://www.joel-rollny.eu" target="_blank" className="contact__link"> www.joel-rollny.eu</a>
                     </h4>
                 </li>
                 <li>
