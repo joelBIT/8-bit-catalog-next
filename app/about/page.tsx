@@ -20,9 +20,8 @@ function Text(): ReactElement<ReactElement> {
                 This catalog is continuously updated with new information.
             </p>
             <p className={`aboutPage__paragraph ${silkScreen.className}`}>
-                It is possible to submit requests for games that are missing in the catalog. After being reviewed
-                by an admin a request can be either denied or accepted. If accepted, the game will be added to
-                the catalog. A submitter will get feedback on a denied request in case the request was created while being authenticated.
+                Games that have a mapper implemented by emulator.joel-rollny.eu can be played in a browser.
+                An increasing number of games will be supported over time due to the emulator being an ongoing project.
             </p>
         </>
     );
