@@ -36,5 +36,6 @@ export type User = {
     email: string,
     last_name: string,
     first_name: string,
-    password_hash: string
+    password_hash: string,
+    role: string
 }
