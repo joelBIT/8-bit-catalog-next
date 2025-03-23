@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import { validateSession } from './auth/session';
+import { isAuthenticatedAdmin } from './app/utils/utils';
 
 /**
  * Check if user has an active session. If not, redirect the user when trying to navigate to certain pages.
@@ -17,6 +18,13 @@ export async function middleware(request: NextRequest) {
         const session = await validateSession(cookie);    
         if (session && (request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register'))) {
             return redirect(request, '/forbidden');         // Authenticated user is not allowed to navigate to register or login pages
+        }
+
+        if (session && request.nextUrl.pathname.endsWith('/edit')) {
+            const isAdmin = await isAuthenticatedAdmin();
+            if (!isAdmin) {
+                return redirect(request, '/forbidden');         // Only admin is allowed to navigate to edit pages
+            }
         }
 
         if (!session && !request.nextUrl.pathname.startsWith('/login') && !request.nextUrl.pathname.startsWith('/register')) {

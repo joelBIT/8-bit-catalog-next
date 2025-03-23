@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { silkScreen } from "@/fonts/fonts";
 import { Game } from "@/types/types";
-import { isAuthenticated } from "@/app/utils/utils";
+import { isAuthenticatedAdmin } from "@/app/utils/utils";
 import { EditGameButton } from "./edit/EditGameButton";
 import { PlayRomLink } from "./PlayRomLink";
 
@@ -79,7 +79,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                 { game.description }
             </article>
             
-            { (await isAuthenticated()) ? <EditGameButton gameId={game.id} /> : <></> }
+            { (await isAuthenticatedAdmin()) ? <EditGameButton gameId={game.id} /> : <></> }
         </section>)
     );
 }

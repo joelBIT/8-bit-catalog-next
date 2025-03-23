@@ -176,9 +176,12 @@ export async function registerUser(email: string, password_hash: string) {
 }
 
 export async function getUserByEmail(email: string) {
-    return await databaseClient.from(USER_TABLE).select('id, password_hash').eq('email', email).single();
+    return await databaseClient.from(USER_TABLE).select('id, password_hash, role').eq('email', email).single();
 }
 
+export async function getUserById(id: number) {
+    return await databaseClient.from(USER_TABLE).select('id, password_hash, email, role').eq('id', id).single();
+}
 
 
 
