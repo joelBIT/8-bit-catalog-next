@@ -4,8 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import { createAuthClient } from '@/utils/supabase/client';
 import { rancho } from "@/fonts/fonts";
+import { signOut } from "@/auth/session";
 import close from "../../assets/close_icon.png";
 import hamburger from "../../assets/hamburger_icon.png";
 
@@ -17,11 +17,7 @@ export function AuthenticatedNavBar() {
     const router = useRouter();
 
     async function logout() {
-        const browserClient = createAuthClient();
-        const { error } = await browserClient.auth.signOut();
-        if (error) {
-            console.log(error);
-        }
+        signOut();
         router.refresh();
     }
     

@@ -7,20 +7,20 @@ import { FavouritesContexProvider } from "@/contexts/FavouritesContextProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The 8-bit Catalog",
-  description: "Contains information about 8-bit NES games",
+    title: "The 8-bit Catalog",
+    description: "Contains information about 8-bit NES games",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={`${blinker.className}`}>
           <Header />
-          <FavouritesContexProvider>{children}</FavouritesContexProvider>
+          <FavouritesContexProvider> {children} </FavouritesContexProvider>
           <Footer />
       </body>
     </html>
