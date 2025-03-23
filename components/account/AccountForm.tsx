@@ -6,9 +6,9 @@ import { register } from "@/actions/account";
 import { Input } from "../common/Input";
 import { PasswordInput } from "../common/PasswordInput";
 
-import "./RegisterForm.css";
+import "./AccountForm.css";
 
-export function RegisterForm(): ReactElement<ReactElement> {
+export function AccountForm(): ReactElement<ReactElement> {
     const [state, formAction] = useActionState(register, { message: '', success: false});
     const formRef = useRef<HTMLFormElement>(null);
 
@@ -17,20 +17,20 @@ export function RegisterForm(): ReactElement<ReactElement> {
     }
 
     return (
-        <section id="registerCard" className={arima.className}>
-            <h1 className="registerCard__title">Create Account</h1>
+        <section id="accountCard" className={arima.className}>
+            <h1 className="accountCard__title">Edit Account</h1>
 
             { state?.message ? <h2 className={state?.success ? "message-success" : "message-failure"}>
                 {state?.message}
             </h2> : <></> }
 
-            <form id="registerForm" ref={formRef} action={formAction}>
-                <Input id="email" type="email" placeholder="Email" />
+            <form id="accountForm" ref={formRef} action={formAction}>
+                <Input id="firstName" type="text" placeholder="First Name" />
+                <Input id="lastName" type="text" placeholder="Last Name" />
                 <PasswordInput id="password" placeholder="Password" />
                 <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
-                { state.success ? <p className="confirmation-text">A confirmation link will be sent to your email</p> : <></> }
-                <button className="accountButton" type="submit">Register</button>
+                <button className="accountButton" type="submit">Save</button>
             </form>
         </section>
     );

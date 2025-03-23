@@ -1,5 +1,5 @@
 import { Game, SearchFilter, SearchResult, Session } from '@/types/types';
-import { createClient } from '@supabase/supabase-js';
+import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
 const databaseClient = createClient(databaseURL(), databaseKey());
@@ -172,7 +172,16 @@ async function invokePostgresFunction(functionName: string) {
  *********/
 
 export async function registerUser(email: string, password_hash: string) {
-    return await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
+    const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
+    if (error) {
+        console.log(error);
+        if (error instanceof AuthWeakPasswordError) {
+            throw new Error('Password is to weak');
+        }
+        throw error;
+    }
+
+    return data;
 }
 
 export async function getUserByEmail(email: string) {

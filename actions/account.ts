@@ -8,14 +8,12 @@ import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 
 export async function login(_prevState: any, formData: FormData) {
-    const loginData = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string
-    };
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
     try {
-        const user = await getUserByEmail(loginData.email);
-        const validPassword = await verifyPasswordHash(user.data?.password_hash, loginData.password);
+        const user = await getUserByEmail(email);
+        const validPassword = await verifyPasswordHash(user.data?.password_hash, password);
         if (!validPassword) {
             return { message: 'Password is incorrect', success: false };
         }
@@ -33,23 +31,20 @@ export async function login(_prevState: any, formData: FormData) {
 }
 
 export async function register(_prevState: any, formData: FormData) {
-    const registerData = {
-        name: formData.get('username') as string,
-        password: formData.get('password') as string,
-        passwordRepeat: formData.get('passwordRepeat') as string,
-        email: formData.get('email') as string
-    };
+    const password = formData.get('password') as string;
+    const passwordRepeat = formData.get('passwordRepeat') as string;
+    const email = formData.get('email') as string;
 
-    if (registerData.password !== registerData.passwordRepeat) {
+    if (password !== passwordRepeat) {
         return { message: 'The entered passwords must be equal', success: false };
     }
 
     try {
-        const passwordHash = await hashPassword(registerData.password);
-        const user = await registerUser(registerData.email, passwordHash);
+        const passwordHash = await hashPassword(password);
+        const user = await registerUser(email, passwordHash);
   
         const sessionToken = await generateRandomSessionToken();
-        const session = await createSession(sessionToken, parseInt(user.data?.id));
+        const session = await createSession(sessionToken, parseInt(user?.id));
 
         await setSessionCookie(sessionToken, session.expires_at);
     } catch (error) {

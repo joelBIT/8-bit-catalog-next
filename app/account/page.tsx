@@ -2,6 +2,7 @@
 
 import { ReactElement, useContext, useEffect } from "react";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
+import { AccountForm } from "@/components/account/AccountForm";
 
 import "./page.css";
 
@@ -14,7 +15,8 @@ export default function AccountPage(): ReactElement {
 
     return (
         <main id="accountPage">
-            <h1> Logged in </h1>
+            <h1 className="accountPage__title">Account</h1>
+            <AccountForm />
         </main>
     );
 }
