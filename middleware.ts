@@ -8,19 +8,29 @@ import { validateSession } from './auth/session';
 export async function middleware(request: NextRequest) {
     const cookie = (await cookies()).get("session")?.value ?? null;
     if (!cookie) {
-        const url = request.nextUrl.clone();
-        url.pathname = '/login';
-        return NextResponse.redirect(url);
+        if (request.nextUrl.pathname.startsWith('/account') || request.nextUrl.pathname.endsWith('/edit')) {
+            return redirect(request, '/forbidden');     // Unauthenticated user is not allowed to navigate to account or edit games
+        }
     }
-      
-    const session = await validateSession(cookie);
-    if (!session) {
-        const url = request.nextUrl.clone();
-        url.pathname = '/login';
-        return NextResponse.redirect(url);
+    
+    if (cookie) {
+        const session = await validateSession(cookie);    
+        if (session && (request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register'))) {
+            return redirect(request, '/forbidden');         // Authenticated user is not allowed to navigate to register or login pages
+        }
+
+        if (!session && !request.nextUrl.pathname.startsWith('/login') && !request.nextUrl.pathname.startsWith('/register')) {
+            return redirect(request, '/forbidden');     // Unauthenticated user is not allowed to navigate to account or edit games
+        }
     }
 }
 
 export const config = {
-    matcher: ['/gamedetails/:path/edit', '/account']
+    matcher: ['/gamedetails/:path/edit', '/account', '/login', '/register']
+}
+
+function redirect(request: NextRequest, page: string) {
+    const url = request.nextUrl.clone();
+    url.pathname = page;
+    return NextResponse.redirect(url);
 }

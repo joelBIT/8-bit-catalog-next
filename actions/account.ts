@@ -17,7 +17,7 @@ export async function login(_prevState: any, formData: FormData) {
         const user = await getUserByEmail(loginData.email);
         const validPassword = await verifyPasswordHash(user.data?.password_hash, loginData.password);
         if (!validPassword) {
-            throw new Error('Incorrect password');
+            return { message: 'Password is incorrect', success: false };
         }
 
         const sessionToken = await generateRandomSessionToken();

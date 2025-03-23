@@ -84,5 +84,5 @@ export async function signOut() {
     }
 
     revalidatePath('/', 'layout');
-    redirect('/account');
+    redirect('/login');
 }
