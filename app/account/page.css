@@ -2,7 +2,6 @@
     background-image: url("../../assets/backgrounds/nes-gaming-set-in-dark.webp");
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
     h1 {

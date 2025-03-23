@@ -12,16 +12,19 @@ export const FavouritesContext = createContext<FavouritesContextProvider>({} as 
  * are only stored in this Context's favouritesList variable.
  */
 export function FavouritesContexProvider({ children }: ContextProviderChildren): ReactElement<ReactElement> {
+    const [ isLoggedIn, setIsLoggedIn ] = useState(false);      // Get this from the user session instead?
     const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
     const [ favouritesPage, setFavouritesPage ] = useState<number>(1);      // Used for pagination
     const [ totalPages, setTotalPages ] = useState<number>(1);              // Total number of favourite pages
     const STORAGE_KEY = 'favouriteGames';
 
     /**
-     * Load favourite games from localstorage if localstorage is available.
+     * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.
      */
     useEffect(() => {
-        if (isLocalStorageAvailable()) {
+        if (isLoggedIn) {
+            
+        } else if (isLocalStorageAvailable()) {
             if (localStorage.getItem(STORAGE_KEY)) {
                 const games = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
                 setFavouritesList(games);
@@ -98,7 +101,7 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
     }
 
     return (
-        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages }}>
+        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages, setIsLoggedIn }}>
             { children }
         </FavouritesContext.Provider>
     );

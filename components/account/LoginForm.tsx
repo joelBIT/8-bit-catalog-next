@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useRef, useActionState } from "react";
+import { ReactElement, useRef, useActionState, useContext } from "react";
 import Link from "next/link";
 import { arima } from "@/fonts/fonts";
 import { login } from "@/actions/account";
@@ -9,13 +9,19 @@ import { Input } from "../common/Input";
 import { PasswordInput } from "../common/PasswordInput";
 
 import "./LoginForm.css";
+import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 
 export function LoginForm(): ReactElement<ReactElement> {
     const [state, formAction] = useActionState(login, { message: '', success: false });
+    const { setIsLoggedIn } = useContext(FavouritesContext);
     const formRef = useRef<HTMLFormElement>(null);
 
     if (formRef.current) {
         formRef.current?.reset();
+    }
+
+    if (state?.success) {
+        setIsLoggedIn(true);
     }
 
     return (

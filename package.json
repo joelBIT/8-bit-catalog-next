@@ -10,6 +10,9 @@
     "email": "email dev --dir components/email"
   },
   "dependencies": {
+    "@node-rs/argon2": "^2.0.2",
+    "@oslojs/crypto": "^1.0.1",
+    "@oslojs/encoding": "^1.1.0",
     "@react-email/components": "0.0.31",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.46.1",

@@ -2,7 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { signIn, signUp } from "@/db/db";
+import { getUserByEmail, registerUser } from "@/db/db";
+import { hashPassword, verifyPasswordHash } from "@/auth/password";
+import { createSession, generateRandomSessionToken } from "@/auth/session";
+import { setSessionCookie } from "@/auth/cookie";
 
 export async function login(_prevState: any, formData: FormData) {
     const loginData = {
@@ -11,7 +14,16 @@ export async function login(_prevState: any, formData: FormData) {
     };
 
     try {
-        await signIn(loginData.email, loginData.password);
+        const user = await getUserByEmail(loginData.email);
+        const validPassword = await verifyPasswordHash(user.data?.password_hash, loginData.password);
+        if (!validPassword) {
+            throw new Error('Incorrect password');
+        }
+
+        const sessionToken = await generateRandomSessionToken();
+        const session = await createSession(sessionToken, user.data?.id);
+
+        await setSessionCookie(sessionToken, session.expires_at);
     } catch (error) {
         return { message: 'Could not log in', success: false };
     }
@@ -32,10 +44,14 @@ export async function register(_prevState: any, formData: FormData) {
         return { message: 'The entered passwords must be equal', success: false };
     }
 
-    // validate data
-
     try {
-        await signUp(registerData.email, registerData.password);
+        const passwordHash = await hashPassword(registerData.password);
+        const user = await registerUser(registerData.email, passwordHash);
+  
+        const sessionToken = await generateRandomSessionToken();
+        const session = await createSession(sessionToken, parseInt(user.data?.id));
+
+        await setSessionCookie(sessionToken, session.expires_at);
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };

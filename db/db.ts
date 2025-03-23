@@ -1,6 +1,5 @@
-import { Game, SearchFilter, SearchResult } from '@/types/types';
-import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
-import { createAuthClient } from "@/utils/supabase/server";
+import { Game, SearchFilter, SearchResult, Session } from '@/types/types';
+import { createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
 const databaseClient = createClient(databaseURL(), databaseKey());
@@ -15,6 +14,8 @@ function databaseKey() {
 
 const COVERS_STORAGE = "covers";
 const GAMES_TABLE = "games";
+const SESSION_TABLE = "session";
+const USER_TABLE = "user";
 
 
 
@@ -169,33 +170,50 @@ async function invokePostgresFunction(functionName: string) {
  * USERS *
  *********/
 
-export async function signIn(email: string, password: string) {
-    const authClient = await createAuthClient();
-
-    const { data, error } = await authClient.auth.signInWithPassword({
-        email: email,
-        password: password
-    });
-
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+export async function registerUser(email: string, password_hash: string) {
+    return await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
 }
 
-export async function signUp(email: string, password: string) {
-    const authClient = await createAuthClient();
+export async function getUserByEmail(email: string) {
+    return await databaseClient.from(USER_TABLE).select('id, password_hash').eq('email', email).single();
+}
 
-    const { data, error } = await authClient.auth.signUp({
-        email: email,
-        password: password
-    });
 
+
+
+
+
+
+
+/***********
+ * SESSION *
+ ***********/
+
+/**
+ * Creates a session when a user register or signs in.
+ */
+export async function storeSession(session: Session) {
+    return await databaseClient.from(SESSION_TABLE).insert(session);
+}
+
+export async function getSessionByTokenValue(value: string){
+    const { data, error } = await databaseClient.from(SESSION_TABLE).select('expires_at, user_id, token_value').eq('token_value', value).single();
     if (error) {
         console.log(error);
-        if (error instanceof AuthWeakPasswordError) {
-            throw new Error('Password is to weak');
-        }
-        throw error;
     }
+    return data;
+}
+
+/**
+ * Deletes a user's session when the user signs out.
+ */
+export async function deleteSessionByTokenValue(token_value: string) {
+    return await databaseClient.from(SESSION_TABLE).delete().eq('token_value', token_value);
+}
+
+/**
+ * The session is usually updated when it is refreshed (so it does not expire).
+ */
+export async function updateSession(session: Session) {
+    return await databaseClient.from(SESSION_TABLE).update(session);
 }

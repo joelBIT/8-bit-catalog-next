@@ -24,3 +24,17 @@ export type SearchResult = {
     games: Game[],
     count: number
 }
+
+export type Session = {
+    user_id: number,
+    expires_at: Date,
+    token_value: string
+}
+
+export type User = {
+    id: number,
+    email: string,
+    last_name: string,
+    first_name: string,
+    password_hash: string
+}
