@@ -4,8 +4,9 @@
     flex-direction: column;
     align-items: center;
 
-    h1 {
+    & .accountPage__title {
         margin-top: 3rem;
         font-family: "Arima Madurai", display;
+        margin-bottom: 2rem;
     }
 }
