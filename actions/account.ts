@@ -8,14 +8,12 @@ import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 
 export async function login(_prevState: any, formData: FormData) {
-    const loginData = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string
-    };
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
 
     try {
-        const user = await getUserByEmail(loginData.email);
-        const validPassword = await verifyPasswordHash(user.data?.password_hash, loginData.password);
+        const user = await getUserByEmail(email);
+        const validPassword = await verifyPasswordHash(user.data?.password_hash, password);
         if (!validPassword) {
             return { message: 'Password is incorrect', success: false };
         }
