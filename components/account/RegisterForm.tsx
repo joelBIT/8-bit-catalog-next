@@ -26,7 +26,6 @@ export function RegisterForm(): ReactElement<ReactElement> {
 
             <form id="registerForm" ref={formRef} action={formAction}>
                 <Input id="email" type="email" placeholder="Email" />
-                <Input id="name" type="text" placeholder="Name" />
                 <PasswordInput id="password" placeholder="Password" />
                 <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
