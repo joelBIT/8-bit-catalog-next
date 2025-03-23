@@ -59,5 +59,6 @@ export async function register(_prevState: any, formData: FormData) {
         return { message: 'Could not create account', success: false };
     }
 
-    return { message: 'Account was successfully created', success: true };
+    revalidatePath('/', 'layout');
+    redirect('/account');
 }

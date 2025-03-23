@@ -14,8 +14,9 @@ function databaseKey() {
 
 const COVERS_STORAGE = "covers";
 const GAMES_TABLE = "games";
-const SESSION_TABLE = "session";
-const USER_TABLE = "user";
+const SESSION_TABLE = "sessions";
+const USER_TABLE = "users";
+const FAVOURITES_TABLE = "favourites";
 
 
 
@@ -216,4 +217,43 @@ export async function deleteSessionByTokenValue(token_value: string) {
  */
 export async function updateSession(session: Session) {
     return await databaseClient.from(SESSION_TABLE).update(session);
+}
+
+
+
+
+
+
+/**************
+ * FAVOURITES *
+ **************/
+
+export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
+    const { data, error } = await databaseClient.from(FAVOURITES_TABLE).select("game_id").eq('user_id', user_id);
+    if (error) {
+        console.log(error);
+    }
+
+    if (data) {
+        const ids = data.map(game => game.game_id);
+        const response = await databaseClient.from(GAMES_TABLE).select().in("id", ids);
+
+        if (response.data) {
+            const games = response.data;
+            for (let i = 0; i < data.length; i++) {
+                games[i].imageLink = getImageLink(games[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
+            }
+            return games;
+        }
+    }
+
+    return [];
+}
+
+export async function addFavouriteForUserId(user_id: number, game_id: number) {
+    await databaseClient.from(FAVOURITES_TABLE).insert({user_id, game_id});
+}
+
+export async function deleteFavouriteForUserId(user_id: number, game_id: number) {
+    await databaseClient.from(FAVOURITES_TABLE).delete().eq("user_id", user_id).eq("game_id", game_id);
 }

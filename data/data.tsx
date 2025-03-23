@@ -11,12 +11,36 @@ export async function getGames(filters: SearchFilter): Promise<SearchResult> {
     return {games: [], count: 0};
 }
 
-export async function getAllDevelopers(): Promise<string[]>  {
-    const response = await fetch('/api/developers', { cache: 'force-cache' });
-    return await response.json();
+/**
+ * Retrieve favourite games for user with an active session.
+ */
+export async function getFavourites() {
+    try {
+        const response = await fetch(`/api/favourites`);
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-export async function getAllPublishers(): Promise<string[]>  {
-    const response = await fetch('/api/publishers', { cache: 'force-cache' });
-    return await response.json();
+export async function addFavouriteGameToDatabase(game_id: number) {
+    try {
+        await fetch(`/api/favourites`, {
+            method: "POST",
+            body: JSON.stringify({ game_id: game_id })
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function deleteFavouriteGameFromDatabase(game_id: number) {
+    try {
+        await fetch(`/api/favourites`, {
+            method: "DELETE",
+            body: JSON.stringify({ game_id: game_id })
+        });
+    } catch (error) {
+        console.error(error);
+    }
 }

@@ -1,5 +1,7 @@
 'use server';
 
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { deleteSessionByTokenValue, getSessionByTokenValue, storeSession, updateSession } from "@/db/db";
 import { Session } from "@/types/types";
 import { sha256 } from "@oslojs/crypto/sha2";
@@ -80,4 +82,7 @@ export async function signOut() {
         await deleteSessionByTokenValue(session.token_value);
         await deleteSessionCookie();
     }
+
+    revalidatePath('/', 'layout');
+    redirect('/account');
 }

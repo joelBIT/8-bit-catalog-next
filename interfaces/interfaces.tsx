@@ -8,7 +8,7 @@ export interface FavouritesContextProvider {
     favouritesPage: number;
     setFavouritesPage: (page: number) => void;
     totalPages: number;
-    setIsLoggedIn: (loggedIn: boolean) => void;
+    loadFavouriteGames: () => void;
 }
 
 export interface ContextProviderChildren {

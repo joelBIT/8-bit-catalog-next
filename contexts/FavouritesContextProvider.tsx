@@ -4,26 +4,33 @@ import { createContext, ReactElement, useEffect, useState } from "react";
 import { FavouritesContextProvider, ContextProviderChildren } from "@/interfaces/interfaces";
 import { Game } from "@/types/types";
 import { isLocalStorageAvailable, PAGINATION_PAGE_SIZE } from "@/utils/utils";
+import { addFavouriteGameToDatabase, deleteFavouriteGameFromDatabase, getFavourites } from "@/data/data";
+import { isAuthenticated } from "@/app/utils/utils";
 
 export const FavouritesContext = createContext<FavouritesContextProvider>({} as FavouritesContextProvider);
 
 /**
+ * Favourite games are kept in a database for users with active sessions. Localstorage is used if there is no active session.
  * Favourite games are placed in localstorage if localstorage is available. If not available, the favourite games
- * are only stored in this Context's favouritesList variable.
+ * are only temporarily stored in this Context's favouritesList variable.
  */
 export function FavouritesContexProvider({ children }: ContextProviderChildren): ReactElement<ReactElement> {
-    const [ isLoggedIn, setIsLoggedIn ] = useState(false);      // Get this from the user session instead?
     const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
     const [ favouritesPage, setFavouritesPage ] = useState<number>(1);      // Used for pagination
     const [ totalPages, setTotalPages ] = useState<number>(1);              // Total number of favourite pages
     const STORAGE_KEY = 'favouriteGames';
 
+    useEffect(() => {
+        loadFavouriteGames();     
+    }, []);
+
     /**
      * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.
      */
-    useEffect(() => {
-        if (isLoggedIn) {
-            
+    async function loadFavouriteGames() {
+        const authenticated = await isAuthenticated();      // Check if user has an active session
+        if (authenticated) {
+            getFavouriteGames();
         } else if (isLocalStorageAvailable()) {
             if (localStorage.getItem(STORAGE_KEY)) {
                 const games = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -33,7 +40,16 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
                 localStorage.setItem(STORAGE_KEY, '[]');
             }
         }
-    }, []);
+    }
+
+    /**
+     * Get the favourite games for a user (with an active session) from the DB.
+     */
+    async function getFavouriteGames() {
+        const games = await getFavourites();
+        setFavouritesList(games);
+        setTotalPages(getTotalPages(games));
+    }
 
     /**
      * Get the total number of pages containing favourite games.
@@ -53,10 +69,14 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
      * Adds a game as a favourite in localstorage if localstorage is available. Updates the total number of favourite pages
      * to be consistent with the number of favourite games.
      */
-    function addFavouriteGame(game: Game): void {
+    async function addFavouriteGame(game: Game): Promise<void> {
         const games = sortFavourites([...favouritesList, game]);
 
-        if (isLocalStorageAvailable()) {
+        const authenticated = await isAuthenticated();
+        if (authenticated) {
+            setFavouritesList(games);
+            addFavouriteGameToDatabase(game.id);
+        } else if (isLocalStorageAvailable()) {
             setFavouritesList(games);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
         } else {
@@ -70,9 +90,13 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
      * Removes a game from the list of favourites in localstorage if localstorage is available. Updates the total number of favourite pages
      * to be consistent with the number of favourite games.
      */
-    function removeFavouriteGame(game: Game): void {
-        if (isLocalStorageAvailable()) {
-            const games = favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id);
+    async function removeFavouriteGame(game: Game): Promise<void> {
+        const games = favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id);
+        const authenticated = await isAuthenticated();
+        if (authenticated) {
+            setFavouritesList(games);
+            deleteFavouriteGameFromDatabase(game.id);
+        } else if (isLocalStorageAvailable()) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
             setFavouritesList(games);
         } else {
@@ -101,7 +125,7 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
     }
 
     return (
-        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages, setIsLoggedIn }}>
+        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages, loadFavouriteGames }}>
             { children }
         </FavouritesContext.Provider>
     );
