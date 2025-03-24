@@ -28,6 +28,7 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
      * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.
      */
     async function loadFavouriteGames() {
+        setFavouritesPage(1);       // Is set to the first page when favourite games are loaded
         const authenticated = await isAuthenticated();      // Check if user has an active session
         if (authenticated) {
             getFavouriteGames();
