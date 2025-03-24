@@ -1,4 +1,6 @@
-import { ReactElement } from "react";
+'use client';
+
+import { ReactElement, useState } from "react";
 import Link from "next/link";
 import Image from 'next/image';
 import { FavouriteButton } from "../favourites/FavouriteButton";
@@ -17,8 +19,10 @@ import "./GameCard.css";
  * @returns             a clickable card with game information
  */
 export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
+    const [ isFadingOut, setIsFadingOut ] = useState(false);
+    
     return (
-        <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`}>
+        <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : ""}>
             <section className="gameCard">
                 <figure className="gameCard-figure">
                     <Image 
@@ -32,7 +36,7 @@ export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
                 </figure>
                 <article id="gameCardTitle">
                     <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
-                    <FavouriteButton game={game} />
+                    <FavouriteButton game={game} setFading={setIsFadingOut} />
                 </article>
             </section>
         </Link>
