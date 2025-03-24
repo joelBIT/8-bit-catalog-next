@@ -11,12 +11,12 @@ import "./Header.css";
 export async function Header(): Promise<ReactElement<ReactElement>> {
 
     return (
-        (<header>
+        <header>
             <Link href="/" id="logoLink">
                 <Logo />
                 <h1 className={`header__title ${irishGrover.className}`}>The 8-bit Catalog</h1>
             </Link>
             { (await isAuthenticated()) ? <AuthenticatedNavBar /> : <NavBar /> }
-        </header>)
+        </header>
     );
 }
