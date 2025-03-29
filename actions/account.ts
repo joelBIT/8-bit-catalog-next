@@ -18,10 +18,7 @@ export async function login(_prevState: any, formData: FormData) {
             return { message: 'Password is incorrect', success: false };
         }
 
-        const sessionToken = await generateRandomSessionToken();
-        const session = await createSession(sessionToken, user.data?.id);
-
-        await setSessionCookie(sessionToken, session.expires_at);
+        await initiateSession(user.data?.id);
     } catch (error) {
         return { message: 'Could not log in', success: false };
     }
@@ -43,10 +40,7 @@ export async function register(_prevState: any, formData: FormData) {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
   
-        const sessionToken = await generateRandomSessionToken();
-        const session = await createSession(sessionToken, parseInt(user?.id));
-
-        await setSessionCookie(sessionToken, session.expires_at);
+        await initiateSession(parseInt(user?.id));
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };
@@ -56,4 +50,11 @@ export async function register(_prevState: any, formData: FormData) {
 
     revalidatePath('/', 'layout');
     redirect('/account');
+}
+
+async function initiateSession(userId: number) {
+    const sessionToken = await generateRandomSessionToken();
+    const session = await createSession(sessionToken, userId);
+
+    await setSessionCookie(sessionToken, session.expires_at);
 }
