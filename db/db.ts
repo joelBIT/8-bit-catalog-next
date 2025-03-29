@@ -1,4 +1,4 @@
-import { Game, SearchFilter, SearchResult, Session } from '@/types/types';
+import { Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
@@ -171,6 +171,8 @@ async function invokePostgresFunction(functionName: string) {
  * USERS *
  *********/
 
+const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email";
+
 export async function registerUser(email: string, password_hash: string) {
     const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
     if (error) {
@@ -185,11 +187,15 @@ export async function registerUser(email: string, password_hash: string) {
 }
 
 export async function getUserByEmail(email: string) {
-    return await databaseClient.from(USER_TABLE).select('id, password_hash, role').eq('email', email).single();
+    return await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', email).single();
 }
 
 export async function getUserById(id: number) {
-    return await databaseClient.from(USER_TABLE).select('id, password_hash, email, role').eq('id', id).single();
+    return await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('id', id).single();
+}
+
+export async function updateUser(id: number, password_hash: string, last_name: string, first_name: string) {
+    return await databaseClient.from(USER_TABLE).update({password_hash, last_name, first_name}).eq('id', id);
 }
 
 

@@ -2,19 +2,15 @@
 
 import { ReactElement, useRef, useActionState } from "react";
 import { arima } from "@/fonts/fonts";
-import { register } from "@/actions/account";
-import { Input } from "../common/Input";
+import { update } from "@/actions/account";
+import { User } from "@/types/types";
 import { PasswordInput } from "../common/PasswordInput";
 
 import "./AccountForm.css";
 
-export function AccountForm(): ReactElement<ReactElement> {
-    const [state, formAction] = useActionState(register, { message: '', success: false});
+export function AccountForm({ user } : { user: User }): ReactElement<ReactElement> {
+    const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false});
     const formRef = useRef<HTMLFormElement>(null);
-
-    if (formRef.current) {
-        formRef.current?.reset();
-    }
 
     return (
         <section id="accountCard" className={arima.className}>
@@ -25,8 +21,8 @@ export function AccountForm(): ReactElement<ReactElement> {
             </h2> : <></> }
 
             <form id="accountForm" ref={formRef} action={formAction}>
-                <Input id="firstName" type="text" placeholder="First Name" />
-                <Input id="lastName" type="text" placeholder="Last Name" />
+                <input id="firstName" name="firstName" type="text" placeholder="First Name" className={arima.className} defaultValue={user?.first_name} />
+                <input id="lastName" name="lastName" type="text" placeholder="Last Name" className={arima.className} defaultValue={user ? user?.last_name : ""} />
                 <PasswordInput id="password" placeholder="Password" />
                 <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
