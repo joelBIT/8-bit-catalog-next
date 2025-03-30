@@ -2,11 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getImageLink, getUserByEmail, PROFILE_IMAGES_STORAGE, registerUser, updateProfileImage, updateUser, updateUserBio } from "@/db/db";
+import { getUserByEmail, registerUser, updateProfileImage, updateUser, updateUserBio } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
-import { DEFAULT_PROFILE_IMAGE } from "@/utils/utils";
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).

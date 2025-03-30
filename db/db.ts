@@ -30,7 +30,7 @@ const FAVOURITES_TABLE = "favourites";
 
 export async function updateGameById(game: Game, file: File) {
     if (file.name === 'undefined') {                            // No new cover was chosen for the game
-        const { cover, imageLink, ...data } = game;             // Remove cover property since the cover is not updated
+        const { cover, ...data } = game;             // Remove cover property since the cover is not updated
         return await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
     }
 
@@ -66,10 +66,6 @@ export async function filterSearch(filters: SearchFilter): Promise<SearchResult>
     if (error) {
         console.log(error);
         return {games: [], count: 0};
-    }
-
-    for (let i = 0; i < data.length; i++) {
-        data[i].imageLink = getImageLink(data[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
     }
 
     return {games: data, count: count ? count : 0};
@@ -115,10 +111,6 @@ export async function textSearch(filters: SearchFilter): Promise<SearchResult> {
         return {games: [], count: 0};
     }
 
-    for (let i = 0; i < data.length; i++) {
-        data[i].imageLink = getImageLink(data[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
-    }
-
     return { games: data, count: count ? count : 0 };
 }
 
@@ -137,7 +129,6 @@ export function getImageLink(cover: string, storage: string) {
 
 export async function getGameById(id: number) {
     const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
-    data.imageLink = getImageLink(data.cover, COVERS_STORAGE);
     return data;
 }
 
@@ -271,11 +262,7 @@ export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
         const response = await databaseClient.from(GAMES_TABLE).select().in("id", ids);
 
         if (response.data) {
-            const games = response.data;
-            for (let i = 0; i < data.length; i++) {
-                games[i].imageLink = getImageLink(games[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
-            }
-            return games;
+            return response.data;
         }
     }
 
