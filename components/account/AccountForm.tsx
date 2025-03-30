@@ -13,37 +13,42 @@ export function AccountForm({ user } : { user: User }): ReactElement<ReactElemen
     const formRef = useRef<HTMLFormElement>(null);
 
     return (
-        <section id="accountCard" className={arima.className}>
-            <h1 className="accountCard__title">Edit Account</h1>
+        <section id="account-edit__card">
+            <section id="accountCard" className={arima.className}>
+                <h1 className="accountCard__title">Edit Information</h1>
 
-            { state?.message ? <h2 className={state?.success ? "message-success" : "message-failure"}>
-                {state?.message}
-            </h2> : <></> }
+                <form id="accountForm" ref={formRef} action={formAction}>
+                    <input 
+                        id="firstName" 
+                        name="firstName" 
+                        type="text" 
+                        placeholder="First Name" 
+                        className={arima.className} 
+                        defaultValue={state?.success ? state.firstName : user?.first_name} 
+                    />
 
-            <form id="accountForm" ref={formRef} action={formAction}>
-                <input 
-                    id="firstName" 
-                    name="firstName" 
-                    type="text" 
-                    placeholder="First Name" 
-                    className={arima.className} 
-                    defaultValue={state?.success ? state.firstName : user?.first_name} 
-                />
+                    <input 
+                        id="lastName" 
+                        name="lastName" 
+                        type="text" 
+                        placeholder="Last Name" 
+                        className={arima.className} 
+                        defaultValue={state?.success ? state.lastName : user?.last_name} 
+                    />
 
-                <input 
-                    id="lastName" 
-                    name="lastName" 
-                    type="text" 
-                    placeholder="Last Name" 
-                    className={arima.className} 
-                    defaultValue={state?.success ? state.lastName : user?.last_name} 
-                />
+                    <PasswordInput id="password" placeholder="Password" />
+                    <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
-                <PasswordInput id="password" placeholder="Password" />
-                <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
-
-                <button className="accountButton" type="submit">Save</button>
-            </form>
+                    <button className="accountButton" type="submit">Save</button>
+                </form>
+            </section>
+        
+            <section>
+                { state?.message ? <h2 className={state?.success ? "message-success" : "message-failure"}>
+                    {state?.message}
+                </h2> : <></> }
+            </section>
         </section>
+        
     );
 }
