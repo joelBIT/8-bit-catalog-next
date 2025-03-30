@@ -22,7 +22,7 @@ export function FavouriteButton({ game, setFading }: { game: Game, setFading: (f
         if (isFavorite) {
             if (pathname === "/favourites") {           // If a game card is removed from favourites page, it fades out
                 setFading(true);
-                setTimeout(() => removeFavouriteGame(game), 500);
+                setTimeout(() => removeFavouriteGame(game), 400);
                 setTimeout(() => setFading(false), 600);
             } else {
                 removeFavouriteGame(game);
