@@ -30,6 +30,13 @@
     }
 }
 
+@media (max-width: 1100px) {
+    #account-edit__card {
+        flex-direction: column-reverse;
+        align-self: center;
+    }
+}
+
 @media (max-width: 550px) {
     #account-edit__card {
         #accountCard {
