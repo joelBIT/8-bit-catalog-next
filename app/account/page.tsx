@@ -2,7 +2,7 @@
 
 import { ReactElement, useContext, useEffect, useState } from "react";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
-import { AccountForm } from "@/components/account/AccountForm";
+import { EditAccountForm } from "@/components/account/EditAccountForm";
 import { getUserFromSession } from "../utils/utils";
 import { User } from "@/types/types";
 
@@ -27,7 +27,7 @@ export default function AccountPage(): ReactElement {
     return (
         <main id="accountPage">
             <h1 className="accountPage__title">Account</h1>
-            { user ? <AccountForm user={user} /> : <></> }
+            { user ? <EditAccountForm user={user} /> : <></> }
         </main>
     );
 }

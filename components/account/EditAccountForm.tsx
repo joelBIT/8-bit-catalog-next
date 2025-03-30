@@ -6,9 +6,9 @@ import { update } from "@/actions/account";
 import { User } from "@/types/types";
 import { PasswordInput } from "../common/PasswordInput";
 
-import "./AccountForm.css";
+import "./EditAccountForm.css";
 
-export function AccountForm({ user } : { user: User }): ReactElement<ReactElement> {
+export function EditAccountForm({ user } : { user: User }): ReactElement<ReactElement> {
     const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: ""});
     const [ showMessage, setShowMessage ] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
