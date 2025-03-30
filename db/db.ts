@@ -13,8 +13,7 @@ function databaseKey() {
 }
 
 const COVERS_STORAGE = "covers";
-const PROFILE_IMAGES_STORAGE = "catalog";
-
+export const PROFILE_IMAGES_STORAGE = "catalog";
 
 const GAMES_TABLE = "games";
 const SESSION_TABLE = "sessions";
@@ -70,7 +69,7 @@ export async function filterSearch(filters: SearchFilter): Promise<SearchResult>
     }
 
     for (let i = 0; i < data.length; i++) {
-        data[i].imageLink = getImageLink(data[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
+        data[i].imageLink = getImageLink(data[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
     }
 
     return {games: data, count: count ? count : 0};
@@ -117,7 +116,7 @@ export async function textSearch(filters: SearchFilter): Promise<SearchResult> {
     }
 
     for (let i = 0; i < data.length; i++) {
-        data[i].imageLink = getImageLink(data[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
+        data[i].imageLink = getImageLink(data[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
     }
 
     return { games: data, count: count ? count : 0 };
@@ -131,14 +130,14 @@ function to(page: number): number {
     return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
 }
 
-function getImageLink(cover: string) {
-    const { data } = databaseClient.storage.from(COVERS_STORAGE).getPublicUrl(cover);
+export function getImageLink(cover: string, storage: string) {
+    const { data } = databaseClient.storage.from(storage).getPublicUrl(cover);
     return data.publicUrl;
 }
 
 export async function getGameById(id: number) {
     const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
-    data.imageLink = getImageLink(data.cover);
+    data.imageLink = getImageLink(data.cover, COVERS_STORAGE);
     return data;
 }
 
@@ -209,9 +208,6 @@ async function updateUserImage(id: number, image: string) {
     return await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
 }
 
-/**
- * create folder with name corresponding to userID so multiple users can have same name on profile images.
- */
 export async function updateProfileImage(id: number, image: File) {
     await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE);
     await updateUserImage(id, image.name);
@@ -277,7 +273,7 @@ export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
         if (response.data) {
             const games = response.data;
             for (let i = 0; i < data.length; i++) {
-                games[i].imageLink = getImageLink(games[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
+                games[i].imageLink = getImageLink(games[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
             }
             return games;
         }

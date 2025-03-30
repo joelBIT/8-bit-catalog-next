@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState } from "react";
 import { User } from "@/types/types";
-import { imageTypes } from "@/utils/utils";
+import { imageTypes, STORAGE_URL } from "@/utils/utils";
 import { updateProfile } from "@/actions/account";
 
 import "./EditProfileForm.css";
@@ -13,7 +13,7 @@ export function EditProfileForm({ user } : { user: User }): ReactElement {
     return (
         <form id="editProfileForm" action={formAction}>
             <section className="edit-profile-image">
-                <img src={user.image} className="profile-image" />
+                <img src={STORAGE_URL + user.image} className="profile-image" />
                 <h2 className="edit-profile__change-image"> Change profile image <input name="profileImage" type="file" accept={imageTypes.toString()} />  </h2>
             </section>
 
