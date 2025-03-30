@@ -2,13 +2,14 @@
 
 import { ReactElement, useActionState } from "react";
 import { User } from "@/types/types";
-import { imageTypes, STORAGE_URL } from "@/utils/utils";
+import { imageTypes } from "@/utils/utils";
 import { updateProfile } from "@/actions/account";
 
 import "./EditProfileForm.css";
 
 export function EditProfileForm({ user } : { user: User }): ReactElement {
     const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: '' });
+    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE;
 
     return (
         <form id="editProfileForm" action={formAction}>
