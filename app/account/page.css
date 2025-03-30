@@ -5,8 +5,8 @@
     align-items: center;
 
     & .accountPage__title {
-        margin-top: 3rem;
-        font-family: "Arima Madurai", display;
+        font-size: 3.5rem;
+        margin-top: 1rem;
         margin-bottom: 2rem;
     }
 }
