@@ -20,7 +20,6 @@ export const URL_REVIEW_PAGE = "/review";
 export const URL_SEARCH_PAGE = "/games";
 
 export const DEFAULT_PROFILE_IMAGE = "profile.png";
-export const STORAGE_URL = process.env?.NEXT_PUBLIC_IMAGE as string;
 
 /**
  * Adds the 'ALL' option to the list so that a search can be performed on all games.
