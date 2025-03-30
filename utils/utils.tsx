@@ -95,3 +95,19 @@ export function isLocalStorageAvailable() {
         return false;
     }
 }
+
+/**
+ * These are the allowed image types for profile images.
+ */
+export const imageTypes = [
+    'image/apng',
+    'image/bmp',
+    'image/gif',
+    'image/jpeg',
+    'image/pjpeg',
+    'image/png',
+    'image/svg+xml',
+    'image/tiff',
+    'image/webp',
+    `image/x-icon`
+];

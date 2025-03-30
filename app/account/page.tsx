@@ -3,6 +3,7 @@
 import { ReactElement, useContext, useEffect, useState } from "react";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 import { EditAccountForm } from "@/components/account/EditAccountForm";
+import { EditProfileForm } from "@/components/account/EditProfileForm";
 import { getUserFromSession } from "../utils/utils";
 import { User } from "@/types/types";
 
@@ -27,7 +28,10 @@ export default function AccountPage(): ReactElement {
     return (
         <main id="accountPage">
             <h1 className="accountPage__title">Account</h1>
-            { user ? <EditAccountForm user={user} /> : <></> }
+            <section className="accountPage__forms">
+                { user ? <EditAccountForm user={user} /> : <></> }
+                { user ? <EditProfileForm user={user} /> : <></> }
+            </section>
         </main>
     );
 }
