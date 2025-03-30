@@ -13,6 +13,8 @@ function databaseKey() {
 }
 
 const COVERS_STORAGE = "covers";
+export const PROFILE_IMAGES_STORAGE = "catalog";
+
 const GAMES_TABLE = "games";
 const SESSION_TABLE = "sessions";
 const USER_TABLE = "users";
@@ -32,7 +34,7 @@ export async function updateGameById(game: Game, file: File) {
         return await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
     }
 
-    await uploadFile(game.cover, file);
+    await uploadFile(game.cover, file, COVERS_STORAGE);
 
     return await databaseClient.from(GAMES_TABLE).update(game).eq('id', game.id);
 }
@@ -40,8 +42,8 @@ export async function updateGameById(game: Game, file: File) {
 /**
  * Uploads file to storage
  */
-async function uploadFile(fileName: string, file: File) {
-    const { error } = await databaseClient.storage.from(COVERS_STORAGE).upload(fileName, file);
+async function uploadFile(fileName: string, file: File, storage: string) {
+    const { error } = await databaseClient.storage.from(storage).upload(fileName, file);
     if (error) {
         console.log(error);
     } else {
@@ -67,7 +69,7 @@ export async function filterSearch(filters: SearchFilter): Promise<SearchResult>
     }
 
     for (let i = 0; i < data.length; i++) {
-        data[i].imageLink = getImageLink(data[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
+        data[i].imageLink = getImageLink(data[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
     }
 
     return {games: data, count: count ? count : 0};
@@ -114,7 +116,7 @@ export async function textSearch(filters: SearchFilter): Promise<SearchResult> {
     }
 
     for (let i = 0; i < data.length; i++) {
-        data[i].imageLink = getImageLink(data[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
+        data[i].imageLink = getImageLink(data[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
     }
 
     return { games: data, count: count ? count : 0 };
@@ -128,14 +130,14 @@ function to(page: number): number {
     return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
 }
 
-function getImageLink(cover: string) {
-    const { data } = databaseClient.storage.from(COVERS_STORAGE).getPublicUrl(cover);
+export function getImageLink(cover: string, storage: string) {
+    const { data } = databaseClient.storage.from(storage).getPublicUrl(cover);
     return data.publicUrl;
 }
 
 export async function getGameById(id: number) {
     const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
-    data.imageLink = getImageLink(data.cover);
+    data.imageLink = getImageLink(data.cover, COVERS_STORAGE);
     return data;
 }
 
@@ -171,7 +173,7 @@ async function invokePostgresFunction(functionName: string) {
  * USERS *
  *********/
 
-const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email";
+const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio, image";
 
 export async function registerUser(email: string, password_hash: string) {
     const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
@@ -198,6 +200,18 @@ export async function updateUser(id: number, password_hash: string, last_name: s
     return await databaseClient.from(USER_TABLE).update({password_hash, last_name, first_name}).eq('id', id);
 }
 
+export async function updateUserBio(id: number, bio: string) {
+    return await databaseClient.from(USER_TABLE).update({bio}).eq('id', id);
+}
+
+async function updateUserImage(id: number, image: string) {
+    return await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
+}
+
+export async function updateProfileImage(id: number, image: File) {
+    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE);
+    await updateUserImage(id, image.name);
+}
 
 
 
@@ -259,7 +273,7 @@ export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
         if (response.data) {
             const games = response.data;
             for (let i = 0; i < data.length; i++) {
-                games[i].imageLink = getImageLink(games[i].cover);    // Adds image link to games so that a user can click on the cover image to open it in another tab
+                games[i].imageLink = getImageLink(games[i].cover, COVERS_STORAGE);    // Adds image link to games so that a user can click on the cover image to open it in another tab
             }
             return games;
         }

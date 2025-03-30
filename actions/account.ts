@@ -2,10 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getUserByEmail, registerUser, updateUser } from "@/db/db";
+import { getImageLink, getUserByEmail, PROFILE_IMAGES_STORAGE, registerUser, updateProfileImage, updateUser, updateUserBio } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
+import { DEFAULT_PROFILE_IMAGE } from "@/utils/utils";
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).
@@ -85,5 +86,22 @@ export async function update(userId: number, _prevState: any, formData: FormData
         return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName };
     } catch (error) {
         console.log(error);
+    }
+}
+
+export async function updateProfile(userId: number, _prevState: any, formData: FormData) {
+    try {
+        const profileImage = formData.get('profileImage') as File;
+        if (profileImage.name !== 'undefined') {
+            await updateProfileImage(userId, profileImage);
+        }
+    
+        const userBio = formData.get('bio') as string;
+        await updateUserBio(userId, userBio);
+    
+        return { message: 'The account was successfully updated', success: true, bio: userBio, image: profileImage.name };
+    } catch (error) {
+        console.log(error);
+        return { message: 'The account could not be updated', success: false };
     }
 }

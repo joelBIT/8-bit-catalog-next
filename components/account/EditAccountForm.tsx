@@ -1,17 +1,16 @@
 'use client';
 
-import { ReactElement, useRef, useActionState, useState, useEffect } from "react";
+import { ReactElement, useActionState, useState, useEffect } from "react";
 import { arima } from "@/fonts/fonts";
 import { update } from "@/actions/account";
 import { User } from "@/types/types";
 import { PasswordInput } from "../common/PasswordInput";
 
-import "./AccountForm.css";
+import "./EditAccountForm.css";
 
-export function AccountForm({ user } : { user: User }): ReactElement<ReactElement> {
+export function EditAccountForm({ user } : { user: User }): ReactElement<ReactElement> {
     const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: ""});
     const [ showMessage, setShowMessage ] = useState(false);
-    const formRef = useRef<HTMLFormElement>(null);
 
     useEffect(() => {
         if (state?.message && !showMessage) {
@@ -27,7 +26,7 @@ export function AccountForm({ user } : { user: User }): ReactElement<ReactElemen
             <section id="accountCard" className={arima.className}>
                 <h1 className="accountCard__title">Edit Information</h1>
 
-                <form id="accountForm" ref={formRef} action={formAction}>
+                <form id="accountForm" action={formAction}>
                     <input 
                         id="firstName" 
                         name="firstName" 

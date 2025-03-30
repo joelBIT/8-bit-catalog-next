@@ -30,7 +30,7 @@
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1400px) {
     #account-edit__card {
         flex-direction: column-reverse;
         align-self: center;
