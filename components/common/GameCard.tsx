@@ -20,13 +20,14 @@ import "./GameCard.css";
  */
 export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
     const [ isFadingOut, setIsFadingOut ] = useState(false);
+    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
     
     return (
         <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : ""}>
             <section className="gameCard">
                 <figure className="gameCard-figure">
                     <Image 
-                        src={game.imageLink}
+                        src={STORAGE_URL + game.cover}
                         unoptimized
                         className="gameCard-figure__cover"
                         alt="Game Cover"
@@ -34,6 +35,7 @@ export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
                         height={300}
                     />
                 </figure>
+                
                 <article id="gameCardTitle">
                     <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
                     <FavouriteButton game={game} setFading={setIsFadingOut} />

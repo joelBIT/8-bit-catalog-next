@@ -6,7 +6,6 @@ export type Game = {
     category: string,
     release_date: string,
     cover: string,
-    imageLink: string,
     players: number,
     description: string,
     rom: boolean

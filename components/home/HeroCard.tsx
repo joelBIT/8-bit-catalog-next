@@ -8,6 +8,8 @@ import { silkScreen, singleDay } from "@/fonts/fonts";
 import "./HeroCard.css";
 
 export function HeroCard({ game }: { game: Game }): ReactElement<ReactElement> {
+    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
+
     return (
         <section id="heroCard">
             <article className="heroCard-wrapper">
@@ -23,7 +25,7 @@ export function HeroCard({ game }: { game: Game }): ReactElement<ReactElement> {
             
             <figure className="heroCard__figure">
                 <Image 
-                    src={game.imageLink}
+                    src={STORAGE_URL + game.cover}
                     unoptimized
                     className="heroCard__figure-cover"
                     alt="Random Game Cover"

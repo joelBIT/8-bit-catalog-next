@@ -10,13 +10,14 @@ import { PlayRomLink } from "./PlayRomLink";
 import "./GameDetailsCard.css";
 
 export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement<ReactElement>> {
+    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     return (
         (<section id="gameDetailsCard">
             <figure className="gameDetailsCard__figure">
-                <Link href={game.imageLink} target="_blank">
+                <Link href={STORAGE_URL + game.cover} target="_blank">
                     <Image 
-                        src={game.imageLink}
+                        src={STORAGE_URL + game.cover}
                         unoptimized
                         className="gameDetailsCard__figure-cover"
                         alt="Game Cover"
