@@ -33,3 +33,20 @@ export async function isAuthenticatedAdmin() {
 
     return false;
 }
+
+/**
+ * 
+ * @returns         User active in current session
+ */
+export async function getUserFromSession() {
+    const session = await getValidatedSession();
+    if (session) {
+        const { data, error } = await getUserById(session?.user_id);
+        if (data) {
+            return data;
+        }
+        if (error) {
+            console.log(error);
+        }
+    }
+}

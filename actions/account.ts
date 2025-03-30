@@ -2,11 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getUserByEmail, registerUser } from "@/db/db";
+import { getUserByEmail, registerUser, updateUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 
+/**
+ * This function is invoked when a user tries to log in (get access to the user's account).
+ */
 export async function login(_prevState: any, formData: FormData) {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
@@ -18,10 +21,7 @@ export async function login(_prevState: any, formData: FormData) {
             return { message: 'Password is incorrect', success: false };
         }
 
-        const sessionToken = await generateRandomSessionToken();
-        const session = await createSession(sessionToken, user.data?.id);
-
-        await setSessionCookie(sessionToken, session.expires_at);
+        await initiateSession(user.data?.id);
     } catch (error) {
         return { message: 'Could not log in', success: false };
     }
@@ -30,6 +30,9 @@ export async function login(_prevState: any, formData: FormData) {
     redirect('/account');
 }
 
+/**
+ * This function is invoked when a user tries to create an account.
+ */
 export async function register(_prevState: any, formData: FormData) {
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
@@ -43,10 +46,7 @@ export async function register(_prevState: any, formData: FormData) {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
   
-        const sessionToken = await generateRandomSessionToken();
-        const session = await createSession(sessionToken, parseInt(user?.id));
-
-        await setSessionCookie(sessionToken, session.expires_at);
+        await initiateSession(parseInt(user?.id));
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };
@@ -56,4 +56,34 @@ export async function register(_prevState: any, formData: FormData) {
 
     revalidatePath('/', 'layout');
     redirect('/account');
+}
+
+async function initiateSession(userId: number) {
+    const sessionToken = await generateRandomSessionToken();
+    const session = await createSession(sessionToken, userId);
+
+    await setSessionCookie(sessionToken, session.expires_at);
+}
+
+/**
+ * This function is invoked when a user updates account information.
+ */
+export async function update(userId: number, _prevState: any, formData: FormData) {
+    const password = formData.get('password') as string;
+    const passwordRepeat = formData.get('passwordRepeat') as string;
+
+    if (password !== passwordRepeat) {
+        return { message: 'The entered passwords must be equal', success: false };
+    }
+
+    try {
+        const firstName = formData.get('firstName') as string;
+        const lastName = formData.get('lastName') as string;
+        const passwordHash = await hashPassword(password);
+
+        await updateUser(userId, passwordHash, lastName, firstName);
+        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName };
+    } catch (error) {
+        console.log(error);
+    }
 }
