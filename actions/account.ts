@@ -99,7 +99,7 @@ export async function updateProfile(userId: number, _prevState: any, formData: F
         const userBio = formData.get('bio') as string;
         await updateUserBio(userId, userBio);
     
-        return { message: 'The account was successfully updated', success: true, bio: userBio };
+        return { message: 'The account was successfully updated', success: true, bio: userBio, image: profileImage.name };
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false };

@@ -8,12 +8,12 @@ import { updateProfile } from "@/actions/account";
 import "./EditProfileForm.css";
 
 export function EditProfileForm({ user } : { user: User }): ReactElement {
-    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '' });
+    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: '' });
 
     return (
         <form id="editProfileForm" action={formAction}>
             <section className="edit-profile-image">
-                <img src={STORAGE_URL + user.image} className="profile-image" />
+                <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + user.image} className="profile-image" />
                 <h2 className="edit-profile__change-image"> Change profile image <input name="profileImage" type="file" accept={imageTypes.toString()} />  </h2>
             </section>
 
