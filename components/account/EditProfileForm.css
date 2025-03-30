@@ -31,6 +31,7 @@
 
         & .edit-profile__bio {
             width: 100%;
+            white-space-collapse: preserve-breaks;
         }
     }
 }

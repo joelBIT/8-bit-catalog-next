@@ -13,6 +13,9 @@ function databaseKey() {
 }
 
 const COVERS_STORAGE = "covers";
+const PROFILE_IMAGES_STORAGE = "catalog";
+
+
 const GAMES_TABLE = "games";
 const SESSION_TABLE = "sessions";
 const USER_TABLE = "users";
@@ -32,7 +35,7 @@ export async function updateGameById(game: Game, file: File) {
         return await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
     }
 
-    await uploadFile(game.cover, file);
+    await uploadFile(game.cover, file, COVERS_STORAGE);
 
     return await databaseClient.from(GAMES_TABLE).update(game).eq('id', game.id);
 }
@@ -40,8 +43,8 @@ export async function updateGameById(game: Game, file: File) {
 /**
  * Uploads file to storage
  */
-async function uploadFile(fileName: string, file: File) {
-    const { error } = await databaseClient.storage.from(COVERS_STORAGE).upload(fileName, file);
+async function uploadFile(fileName: string, file: File, storage: string) {
+    const { error } = await databaseClient.storage.from(storage).upload(fileName, file);
     if (error) {
         console.log(error);
     } else {
@@ -198,6 +201,16 @@ export async function updateUser(id: number, password_hash: string, last_name: s
     return await databaseClient.from(USER_TABLE).update({password_hash, last_name, first_name}).eq('id', id);
 }
 
+export async function updateUserBio(id: number, bio: string) {
+    return await databaseClient.from(USER_TABLE).update({bio}).eq('id', id);
+}
+
+/**
+ * create folder with name corresponding to userID so multiple users can have same name on profile images.
+ */
+export async function updateProfileImage(id: number, image: File) {
+    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE);
+}
 
 
 
