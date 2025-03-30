@@ -205,11 +205,16 @@ export async function updateUserBio(id: number, bio: string) {
     return await databaseClient.from(USER_TABLE).update({bio}).eq('id', id);
 }
 
+async function updateUserImage(id: number, image: string) {
+    return await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
+}
+
 /**
  * create folder with name corresponding to userID so multiple users can have same name on profile images.
  */
 export async function updateProfileImage(id: number, image: File) {
     await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE);
+    await updateUserImage(id, image.name);
 }
 
 
