@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useRef, useActionState } from "react";
+import { ReactElement, useRef, useActionState, useState, useEffect } from "react";
 import { arima } from "@/fonts/fonts";
 import { update } from "@/actions/account";
 import { User } from "@/types/types";
@@ -10,7 +10,17 @@ import "./AccountForm.css";
 
 export function AccountForm({ user } : { user: User }): ReactElement<ReactElement> {
     const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: ""});
+    const [ showMessage, setShowMessage ] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
+
+    useEffect(() => {
+        if (state?.message && !showMessage) {
+            setShowMessage(true);
+            setTimeout(() => {
+                setShowMessage(false);
+            }, 5000);
+        }
+    }, [state]);
 
     return (
         <section id="account-edit__card">
@@ -43,11 +53,11 @@ export function AccountForm({ user } : { user: User }): ReactElement<ReactElemen
                 </form>
             </section>
         
-            <section>
-                { state?.message ? <h2 className={state?.success ? "message-success" : "message-failure"}>
+            { showMessage ? <section>
+                <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
                     {state?.message}
-                </h2> : <></> }
-            </section>
+                </h2>
+            </section> : <></> }
         </section>
         
     );

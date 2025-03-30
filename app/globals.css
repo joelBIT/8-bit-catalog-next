@@ -192,3 +192,25 @@ textarea {
         opacity: 0;
     }
 }
+
+.message-fade {
+    animation: fade 5s ease-in-out;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
