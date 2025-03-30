@@ -9,7 +9,7 @@ import { PasswordInput } from "../common/PasswordInput";
 import "./AccountForm.css";
 
 export function AccountForm({ user } : { user: User }): ReactElement<ReactElement> {
-    const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false});
+    const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: ""});
     const formRef = useRef<HTMLFormElement>(null);
 
     return (
@@ -21,8 +21,24 @@ export function AccountForm({ user } : { user: User }): ReactElement<ReactElemen
             </h2> : <></> }
 
             <form id="accountForm" ref={formRef} action={formAction}>
-                <input id="firstName" name="firstName" type="text" placeholder="First Name" className={arima.className} defaultValue={user?.first_name} />
-                <input id="lastName" name="lastName" type="text" placeholder="Last Name" className={arima.className} defaultValue={user ? user?.last_name : ""} />
+                <input 
+                    id="firstName" 
+                    name="firstName" 
+                    type="text" 
+                    placeholder="First Name" 
+                    className={arima.className} 
+                    defaultValue={state?.success ? state.firstName : user?.first_name} 
+                />
+
+                <input 
+                    id="lastName" 
+                    name="lastName" 
+                    type="text" 
+                    placeholder="Last Name" 
+                    className={arima.className} 
+                    defaultValue={state?.success ? state.lastName : user?.last_name} 
+                />
+
                 <PasswordInput id="password" placeholder="Password" />
                 <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 

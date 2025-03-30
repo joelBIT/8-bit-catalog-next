@@ -82,7 +82,7 @@ export async function update(userId: number, _prevState: any, formData: FormData
         const passwordHash = await hashPassword(password);
 
         await updateUser(userId, passwordHash, lastName, firstName);
-        return { message: 'The account was successfully updated', success: true };
+        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName };
     } catch (error) {
         console.log(error);
     }
