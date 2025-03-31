@@ -40,10 +40,10 @@ export async function updateGameById(game: Game, file: File) {
 }
 
 /**
- * Uploads file to storage
+ * Uploads file to storage. The file is stored in the folder, if folder is supplied. Otherwise the file is stored in root.
  */
-async function uploadFile(fileName: string, file: File, storage: string) {
-    const { error } = await databaseClient.storage.from(storage).upload(fileName, file);
+async function uploadFile(fileName: string, file: File, storage: string, folder: string = "") {
+    const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file);
     if (error) {
         console.log(error);
     } else {
@@ -199,8 +199,11 @@ async function updateUserImage(id: number, image: string) {
     return await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
 }
 
+/**
+ * The profile image is stored in a folder named as the user's id.
+ */
 export async function updateProfileImage(id: number, image: File) {
-    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE);
+    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");
     await updateUserImage(id, image.name);
 }
 
