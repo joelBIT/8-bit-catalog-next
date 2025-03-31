@@ -2,7 +2,7 @@
 
 import { ReactElement, useRef, useActionState } from "react";
 import { arima } from "@/fonts/fonts";
-import { register } from "@/actions/account";
+import { register } from "@/actions/auth";
 import { Input } from "../common/Input";
 import { PasswordInput } from "../common/PasswordInput";
 

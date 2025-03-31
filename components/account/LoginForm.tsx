@@ -3,7 +3,7 @@
 import { ReactElement, useRef, useActionState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { arima } from "@/fonts/fonts";
-import { login } from "@/actions/account";
+import { login } from "@/actions/auth";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 import { Input } from "../common/Input";
