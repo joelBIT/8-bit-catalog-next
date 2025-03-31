@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getUserByEmail, registerUser } from "@/db/db";
+import { createAccount, getUserByEmail, registerUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
@@ -51,6 +51,7 @@ export async function register(_prevState: any, formData: FormData) {
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
+        await createAccount(user.id, passwordHash);
         sendMail(user.email, passwordHash);
         
         return { message: 'Account has been created', success: true };
