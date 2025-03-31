@@ -122,11 +122,6 @@ function to(page: number): number {
     return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
 }
 
-export function getImageLink(cover: string, storage: string) {
-    const { data } = databaseClient.storage.from(storage).getPublicUrl(cover);
-    return data.publicUrl;
-}
-
 export async function getGameById(id: number) {
     const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
     return data;
