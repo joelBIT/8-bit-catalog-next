@@ -25,20 +25,24 @@ export function LoginForm(): ReactElement<ReactElement> {
     }
 
     return (
-        <section id="loginCard" className={arima.className}>
-            <h1 className="loginCard__heading">Log in</h1>
-            
-            { state?.message ? <h2 className={state?.success ? "message-success" : "message-failure"}>
-                {state?.message}
-            </h2> : <></> }
-            
-            <form id="loginForm" ref={formRef} action={formAction}>
-                <Input id="email" type="email" placeholder="Email" />
-                <PasswordInput id="password" placeholder="Password" />
-                
-                <button className="accountButton" type="submit">Login</button>
-            </form>
-            <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link">Create an Account</Link>
+        <section id="login">
+            { state?.message ? 
+                <h2 className={state?.success ? "message-success" : "message-failure"}>
+                    {state?.message}
+                </h2> : <></> 
+            }
+
+            <section id="loginCard" className={arima.className}>
+                <h1 className="loginCard__heading">Log in</h1>
+        
+                <form id="loginForm" ref={formRef} action={formAction}>
+                    <Input id="email" type="email" placeholder="Email" />
+                    <PasswordInput id="password" placeholder="Password" />
+                    
+                    <button className="accountButton" type="submit">Login</button>
+                </form>
+                <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Create an Account </Link>
+            </section>
         </section>
     );
 }
