@@ -76,6 +76,6 @@ async function sendMail(email: string, activationCode: string) {
         from: '8bit <onboarding@joel-rollny.eu>',
         to: email,
         subject: 'Finish registration',
-        react: EmailTemplate(),
+        react: EmailTemplate(activationCode),
     });
 }
