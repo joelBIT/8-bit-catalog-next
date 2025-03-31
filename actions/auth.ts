@@ -7,7 +7,7 @@ import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 import { Resend } from "resend";
-import EmailTemplate from "@/components/email/EmailTemplate";
+import ActivationEmail from "@/components/email/ActivationEmail";
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).
@@ -51,7 +51,7 @@ export async function register(_prevState: any, formData: FormData) {
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
-        sendMail(user.email, 'code');
+        sendMail(user.email, passwordHash);
         
         return { message: 'Account has been created', success: true };
     } catch (error) {
@@ -76,6 +76,6 @@ async function sendMail(email: string, activationCode: string) {
         from: '8bit <onboarding@joel-rollny.eu>',
         to: email,
         subject: 'Finish registration',
-        react: EmailTemplate(activationCode),
+        react: ActivationEmail(activationCode),
     });
 }

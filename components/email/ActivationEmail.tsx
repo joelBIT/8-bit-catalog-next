@@ -1,6 +1,6 @@
 import { Section, Row, Text, Link } from "@react-email/components";
 
-export default function EmailTemplate(activationCode: string) {
+export default function ActivationEmail(activationCode: string) {
 
     return (
         <Section>
@@ -12,7 +12,7 @@ export default function EmailTemplate(activationCode: string) {
                 </Row>
                 <Row>
                     <Text style={{ fontSize: "1.3rem"}}>
-                        Please click on the following link to verify your email: <Link href={`https://localhost:3000/activate/${activationCode}`}> verify </Link>
+                        Please click on the following link to verify your email: <Link href={`http://localhost:3000/activate/${activationCode}`}> verify </Link>
                     </Text>
                 </Row>
             </Section>
