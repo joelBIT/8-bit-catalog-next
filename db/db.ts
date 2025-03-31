@@ -41,6 +41,7 @@ export async function updateGameById(game: Game, file: File) {
 
 /**
  * Uploads file to storage. The file is stored in the folder, if folder is supplied. Otherwise the file is stored in root.
+ * If the file already exists (i.e., same name) at the destination, it is overwritten with the new file.
  */
 async function uploadFile(fileName: string, file: File, storage: string, folder: string = "") {
     const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file, {
