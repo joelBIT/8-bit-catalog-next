@@ -1,37 +1,49 @@
-#registerCard {
+#register {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-form);
-    border-radius: 8px;
-    padding: 1rem 5rem 4rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-    .registerCard__title {
-        color: var(--color-black);
-        text-align: center;
-        font-size: 36px;
-        margin-bottom: 1rem;
-    }
-
-    #registerForm {
+    #registerCard {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-
-        & .confirmation-text {
+        background-color: var(--color-form);
+        border-radius: 8px;
+        padding: 1rem 5rem 4rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+        .registerCard__title {
             color: var(--color-black);
-            font-weight: bolder;
-            align-self: center;
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 1rem;
         }
+    
+        #registerForm {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+    
+            & .confirmation-text {
+                color: var(--color-black);
+                font-weight: bolder;
+                align-self: center;
+            }
+        }
+    }
+
+    & .message-failure, .message-success {
+        width: fit-content;
+        align-self: center;
     }
 }
 
 @media (max-width: 550px) {
-    #registerCard {
-        padding: 1rem 3rem 2rem;
-
-        #registerForm {
-            max-width: 18rem;
+    #register {
+        #registerCard {
+            padding: 1rem 3rem 2rem;
+    
+            #registerForm {
+                max-width: 18rem;
+            }
         }
     }
 }
