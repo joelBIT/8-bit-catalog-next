@@ -46,16 +46,13 @@ export async function register(_prevState: any, formData: FormData) {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
   
-        await initiateSession(parseInt(user?.id));
+        return { message: 'You have been registered', success: true };
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };
         }
         return { message: 'Could not create account', success: false };
     }
-
-    revalidatePath('/', 'layout');
-    redirect('/account');
 }
 
 async function initiateSession(userId: number) {

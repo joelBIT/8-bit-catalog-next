@@ -171,6 +171,8 @@ export async function registerUser(email: string, password_hash: string) {
         console.log(error);
         if (error instanceof AuthWeakPasswordError) {
             throw new Error('Password is to weak');
+        } else if (error.code == '23505') {
+            throw new Error(`The email ${email} is already in use`);
         }
         throw error;
     }
