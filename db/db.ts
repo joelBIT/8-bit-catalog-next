@@ -303,9 +303,6 @@ export async function deleteFavouriteForUserId(user_id: number, game_id: number)
 
 
 
-
-
-
 /***********
  * ACCOUNT *
  ***********/
@@ -315,5 +312,18 @@ export async function createAccount(user_id: number, activation_code: string) {
 }
 
 export async function getAccount(user_id: number) {
-    return await databaseClient.from(ACCOUNT_TABLE).select("activated, activation_code").eq('user_id', user_id);
+    return await databaseClient.from(ACCOUNT_TABLE).select("activated, activation_code").eq('user_id', user_id).single();
+}
+
+/**
+ * First a check is done to see if the activation code is valid. Then the corresponding account is activated.
+ */
+export async function activateAccount(activation_code: string): Promise<boolean> {
+    const { data, error } = await databaseClient.from(ACCOUNT_TABLE).select().eq('activation_code', activation_code).eq('activated', false);
+    if (error || data.length === 0) {
+        return false;
+    }
+
+    await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);
+    return true;
 }

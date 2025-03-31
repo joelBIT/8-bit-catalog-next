@@ -2,12 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createAccount, getUserByEmail, registerUser } from "@/db/db";
+import { createAccount, getAccount, getUserByEmail, registerUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 import { Resend } from "resend";
 import ActivationEmail from "@/components/email/ActivationEmail";
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).
@@ -18,7 +19,13 @@ export async function login(_prevState: any, formData: FormData) {
 
     try {
         const user = await getUserByEmail(email);
-        if (!user.data?.activated) {
+        const account = await getAccount(user.data?.id);
+
+        if (account.error?.code) {
+            return { message: 'No such account', success: false };
+        }
+
+        if (!account.data?.activated) {
             return { message: 'Account is not activated', success: false };
         }
 
@@ -51,8 +58,9 @@ export async function register(_prevState: any, formData: FormData) {
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
-        await createAccount(user.id, passwordHash);
-        sendMail(user.email, passwordHash);
+        const activationCode = uuidv4();
+        await createAccount(user.id, activationCode);
+        sendMail(user.email, activationCode);
         
         return { message: 'Account has been created', success: true };
     } catch (error) {
