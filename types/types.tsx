@@ -38,6 +38,5 @@ export type User = {
     password_hash: string,
     role: string,
     image: string,
-    bio: string,
-    activated: boolean
+    bio: string
 }
