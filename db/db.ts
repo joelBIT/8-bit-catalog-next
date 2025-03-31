@@ -1,4 +1,4 @@
-import { Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
+import { Game, SearchFilter, SearchResult, Session } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
@@ -19,6 +19,7 @@ const GAMES_TABLE = "games";
 const SESSION_TABLE = "sessions";
 const USER_TABLE = "users";
 const FAVOURITES_TABLE = "favourites";
+const ACCOUNT_TABLE = "account";
 
 
 
@@ -55,40 +56,20 @@ async function uploadFile(fileName: string, file: File, storage: string, folder:
     }
 }
 
-/**
- * Retrieve games based on supplied search filters. A count property corresponding to the number of matched games is added to the response.
- */
-export async function filterSearch(filters: SearchFilter): Promise<SearchResult> {
-    const { data, error, count } = await databaseClient.rpc('games', {
-        filter_title: '%' + filters.title + '%', 
-        filter_category: convertFilterAll(filters.category), 
-        filter_developer: convertFilterAll(filters.developer),
-        filter_publisher: convertFilterAll(filters.publisher)},
-        {count: 'exact'})
-        .range(from(parseInt(filters.page)), to(parseInt(filters.page)));
-
-    if (error) {
-        console.log(error);
-        return {games: [], count: 0};
-    }
-
-    return {games: data, count: count ? count : 0};
+export async function getGameById(id: number) {
+    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
+    return data;
 }
 
-function convertFilterAll(value: string) {
-    return value === 'All' ? '%' : value;
-}
 
-/**
- * Performs a text search if a title is given by the user. Otherwise a search is executed based on supplied filters.
- */
-export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
-    if (filters.title) {
-        return await textSearch(filters);
-    }
-    
-    return await filterSearch(filters);
-}
+
+
+
+
+
+/**********
+ * SEARCH *
+ **********/
 
 /**
  * Retrieve games based on text search performed on game descriptions. 
@@ -126,10 +107,8 @@ function to(page: number): number {
     return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
 }
 
-export async function getGameById(id: number) {
-    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
-    return data;
-}
+
+
 
 
 
@@ -137,6 +116,41 @@ export async function getGameById(id: number) {
 /******************
  * SEARCH FILTERS *
  ******************/
+
+/**
+ * Performs a text search if a title is given by the user. Otherwise a search is executed based on supplied filters.
+ */
+export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
+    if (filters.title) {
+        return await textSearch(filters);
+    }
+    
+    return await filterSearch(filters);
+}
+
+/**
+ * Retrieve games based on supplied search filters. A count property corresponding to the number of matched games is added to the response.
+ */
+export async function filterSearch(filters: SearchFilter): Promise<SearchResult> {
+    const { data, error, count } = await databaseClient.rpc('games', {
+        filter_title: '%' + filters.title + '%', 
+        filter_category: convertFilterAll(filters.category), 
+        filter_developer: convertFilterAll(filters.developer),
+        filter_publisher: convertFilterAll(filters.publisher)},
+        {count: 'exact'})
+        .range(from(parseInt(filters.page)), to(parseInt(filters.page)));
+
+    if (error) {
+        console.log(error);
+        return {games: [], count: 0};
+    }
+
+    return {games: data, count: count ? count : 0};
+}
+
+function convertFilterAll(value: string) {
+    return value === 'All' ? '%' : value;
+}
 
 export async function getAllDevelopers() {
     return await invokePostgresFunction('developers');
@@ -159,6 +173,8 @@ async function invokePostgresFunction(functionName: string) {
 
 
 
+
+
 /*********
  * USERS *
  *********/
@@ -171,6 +187,8 @@ export async function registerUser(email: string, password_hash: string) {
         console.log(error);
         if (error instanceof AuthWeakPasswordError) {
             throw new Error('Password is to weak');
+        } else if (error.code == '23505') {
+            throw new Error(`The email ${email} is already in use`);
         }
         throw error;
     }
@@ -277,4 +295,35 @@ export async function addFavouriteForUserId(user_id: number, game_id: number) {
 
 export async function deleteFavouriteForUserId(user_id: number, game_id: number) {
     await databaseClient.from(FAVOURITES_TABLE).delete().eq("user_id", user_id).eq("game_id", game_id);
+}
+
+
+
+
+
+
+
+/***********
+ * ACCOUNT *
+ ***********/
+
+export async function createAccount(user_id: number, activation_code: string) {
+    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id, activation_code });
+}
+
+export async function getAccount(user_id: number) {
+    return await databaseClient.from(ACCOUNT_TABLE).select("activated, activation_code").eq('user_id', user_id).single();
+}
+
+/**
+ * First a check is done to see if the activation code is valid. Then the corresponding account is activated.
+ */
+export async function activateAccount(activation_code: string): Promise<boolean> {
+    const { data, error } = await databaseClient.from(ACCOUNT_TABLE).select().eq('activation_code', activation_code).eq('activated', false);
+    if (error || data.length === 0) {
+        return false;
+    }
+
+    await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);
+    return true;
 }

@@ -2,14 +2,14 @@
 
 import { ReactElement, useRef, useActionState } from "react";
 import { arima } from "@/fonts/fonts";
-import { register } from "@/actions/account";
+import { register } from "@/actions/auth";
 import { Input } from "../common/Input";
 import { PasswordInput } from "../common/PasswordInput";
 
 import "./RegisterForm.css";
 
 export function RegisterForm(): ReactElement<ReactElement> {
-    const [state, formAction] = useActionState(register, { message: '', success: false});
+    const [state, formAction] = useActionState(register, { message: '', success: false });
     const formRef = useRef<HTMLFormElement>(null);
 
     if (formRef.current) {
