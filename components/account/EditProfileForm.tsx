@@ -2,14 +2,15 @@
 
 import { ReactElement, useActionState } from "react";
 import { User } from "@/types/types";
-import { imageTypes } from "@/utils/utils";
+import { DEFAULT_PROFILE_IMAGE, imageTypes } from "@/utils/utils";
 import { updateProfile } from "@/actions/account";
 
 import "./EditProfileForm.css";
 
 export function EditProfileForm({ user } : { user: User }): ReactElement {
     const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: '' });
-    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE;
+    const folder = user.image === DEFAULT_PROFILE_IMAGE ? "" : `${user.id}/`;       // default image located in root folder
+    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + folder;
 
     return (
         <form id="editProfileForm" action={formAction}>
