@@ -9,7 +9,7 @@ import { PasswordInput } from "../common/PasswordInput";
 import "./EditAccountForm.css";
 
 export function EditAccountForm({ user } : { user: User }): ReactElement<ReactElement> {
-    const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: ""});
+    const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
     const [ showMessage, setShowMessage ] = useState(false);
 
     useEffect(() => {

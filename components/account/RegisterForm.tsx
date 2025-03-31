@@ -9,7 +9,7 @@ import { PasswordInput } from "../common/PasswordInput";
 import "./RegisterForm.css";
 
 export function RegisterForm(): ReactElement<ReactElement> {
-    const [state, formAction] = useActionState(register, { message: '', success: false});
+    const [state, formAction] = useActionState(register, { message: '', success: false });
     const formRef = useRef<HTMLFormElement>(null);
 
     if (formRef.current) {
