@@ -6,6 +6,8 @@ import { getUserByEmail, registerUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
+import { Resend } from "resend";
+import EmailTemplate from "@/components/email/EmailTemplate";
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).
@@ -19,6 +21,7 @@ export async function login(_prevState: any, formData: FormData) {
         if (!user.data?.activated) {
             return { message: 'Account is not activated', success: false };
         }
+
         const validPassword = await verifyPasswordHash(user.data?.password_hash, password);
         if (!validPassword) {
             return { message: 'Password is incorrect', success: false };
@@ -48,7 +51,8 @@ export async function register(_prevState: any, formData: FormData) {
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
-  
+        sendMail(user.email, 'code');
+        
         return { message: 'Account has been created', success: true };
     } catch (error) {
         if (error instanceof Error) {
@@ -63,4 +67,15 @@ async function initiateSession(userId: number) {
     const session = await createSession(sessionToken, userId);
 
     await setSessionCookie(sessionToken, session.expires_at);
+}
+
+async function sendMail(email: string, activationCode: string) {
+    const resend = new Resend(process.env.RESEND_API_KEY as string);
+
+    const response = await resend.emails.send({
+        from: '8bit <onboarding@joel-rollny.eu>',
+        to: email,
+        subject: 'Finish registration',
+        react: EmailTemplate(),
+    });
 }

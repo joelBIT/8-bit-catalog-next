@@ -63,24 +63,6 @@ export const fileTypes = [
 ];
 
 /**
- * Sends an email to supplied email address.
- * 
- * @param email             the email address to which the email is sent
- * @param subject           the email subject
- * @param text              the email body text
- */
-async function sendMail(email: string, subject: string, text: string) {
-    await fetch('/api/send', {
-        method:'POST',
-        body:JSON.stringify({
-            'email': email,
-            'subject': subject,
-            'text': text
-        })
-    });
-}
-
-/**
  * Test if localstorage is available. Favourite games are added to localstorage if true. If false,
  * the FavouritesContext stores favourite games temporarily.
  * 
