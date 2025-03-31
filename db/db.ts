@@ -43,7 +43,10 @@ export async function updateGameById(game: Game, file: File) {
  * Uploads file to storage. The file is stored in the folder, if folder is supplied. Otherwise the file is stored in root.
  */
 async function uploadFile(fileName: string, file: File, storage: string, folder: string = "") {
-    const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file);
+    const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file, {
+        cacheControl: '3600',
+        upsert: true
+      });
     if (error) {
         console.log(error);
     } else {
