@@ -163,7 +163,7 @@ async function invokePostgresFunction(functionName: string) {
  * USERS *
  *********/
 
-const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio, image";
+const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio, image, activated";
 
 export async function registerUser(email: string, password_hash: string) {
     const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();

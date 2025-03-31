@@ -16,6 +16,9 @@ export async function login(_prevState: any, formData: FormData) {
 
     try {
         const user = await getUserByEmail(email);
+        if (!user.data?.activated) {
+            return { message: 'Account is not activated', success: false };
+        }
         const validPassword = await verifyPasswordHash(user.data?.password_hash, password);
         if (!validPassword) {
             return { message: 'Password is incorrect', success: false };
@@ -46,7 +49,7 @@ export async function register(_prevState: any, formData: FormData) {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash);
   
-        return { message: 'You have been registered', success: true };
+        return { message: 'Account has been created', success: true };
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };
