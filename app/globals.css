@@ -180,7 +180,7 @@ textarea {
 **********/
 
 .is-fading {
-    animation: fadeout .3s linear forwards;
+    animation: fadeout .5s linear forwards;
 }
 
 @keyframes fadeout {
