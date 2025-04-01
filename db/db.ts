@@ -13,7 +13,7 @@ function databaseKey() {
 }
 
 const COVERS_STORAGE = "covers";
-export const PROFILE_IMAGES_STORAGE = "catalog";
+const PROFILE_IMAGES_STORAGE = "catalog";
 
 const GAMES_TABLE = "games";
 const SESSION_TABLE = "sessions";
@@ -183,6 +183,7 @@ const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio
 
 export async function registerUser(email: string, password_hash: string) {
     const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
+    
     if (error) {
         console.log(error);
         if (error instanceof AuthWeakPasswordError) {
@@ -311,6 +312,19 @@ export async function createAccount(user_id: number, activation_code: string) {
     await databaseClient.from(ACCOUNT_TABLE).insert({ user_id, activation_code });
 }
 
+/**
+ * Copies the default profile image to the folder created for the newly registered user. The folder is named
+ * after the registered user's id.
+ */
+export async function copyProfileImageToFolder(activation_code: string) {
+    try {
+        const response = await databaseClient.from(ACCOUNT_TABLE).select().eq('activation_code', activation_code).single();
+        await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response.data?.user_id}/profile.png`);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export async function getAccount(user_id: number) {
     return await databaseClient.from(ACCOUNT_TABLE).select("activated, activation_code").eq('user_id', user_id).single();
 }
@@ -324,6 +338,6 @@ export async function activateAccount(activation_code: string): Promise<boolean>
         return false;
     }
 
-    await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);
+    await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);    
     return true;
 }

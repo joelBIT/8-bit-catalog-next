@@ -19,8 +19,6 @@ export const URL_REQUEST_PAGE = "/request";
 export const URL_REVIEW_PAGE = "/review";
 export const URL_SEARCH_PAGE = "/games";
 
-export const DEFAULT_PROFILE_IMAGE = "profile.png";
-
 /**
  * Adds the 'ALL' option to the list so that a search can be performed on all games.
  * 
