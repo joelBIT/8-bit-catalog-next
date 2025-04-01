@@ -1,8 +1,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { NavBar } from "./NavBar";
-import { AuthenticatedNavBar } from "./AuthenticatedNavBar";
+import { NavBars } from "./NavBars";
 import { irishGrover } from "@/fonts/fonts";
 import { isAuthenticated } from "@/app/utils/utils";
 
@@ -16,7 +15,7 @@ export async function Header(): Promise<ReactElement<ReactElement>> {
                 <Logo />
                 <h1 className={`header__title ${irishGrover.className}`}>The 8-bit Catalog</h1>
             </Link>
-            { (await isAuthenticated()) ? <AuthenticatedNavBar /> : <NavBar /> }
+            <NavBars authenticated={await isAuthenticated()} />
         </header>
     );
 }
