@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useContext, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 import { EditAccountForm } from "@/components/account/EditAccountForm";
 import { EditProfileForm } from "@/components/account/EditProfileForm";
@@ -13,10 +12,8 @@ import "./page.css";
 export default function AccountPage(): ReactElement {
     const { loadFavouriteGames } = useContext(FavouritesContext);
     const [ user, setUser ] = useState<User>({} as User);
-    const router = useRouter();
 
     useEffect(() => {
-        router.refresh();
         loadFavouriteGames();       // Updates the favourite list because users are redirected here when logging in or registering
         getUser();
     }, []);
