@@ -2,20 +2,19 @@
 
 import { ReactElement, useActionState } from "react";
 import { User } from "@/types/types";
-import { DEFAULT_PROFILE_IMAGE, imageTypes } from "@/utils/utils";
+import { imageTypes } from "@/utils/utils";
 import { updateProfile } from "@/actions/account";
 
 import "./EditProfileForm.css";
 
 export function EditProfileForm({ user } : { user: User }): ReactElement {
-    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: '' });
-    const folder = user.image === DEFAULT_PROFILE_IMAGE ? "" : `${user.id}/`;       // default image located in root folder
-    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + folder;
+    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: user.image });
+    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     return (
         <form id="editProfileForm" action={formAction}>
             <section className="edit-profile-image">
-                <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + user.image} className="profile-image" />
+                <img src={STORAGE_URL + state.image} className="profile-image" />
                 <h2 className="edit-profile__change-image"> Change profile image <input name="profileImage" type="file" accept={imageTypes.toString()} />  </h2>
             </section>
 

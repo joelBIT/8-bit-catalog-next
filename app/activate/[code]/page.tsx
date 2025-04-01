@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Params } from "next/dist/server/request/params";
-import { activateAccount } from "@/db/db";
+import { activateAccount, copyProfileImageToFolder } from "@/db/db";
 
 import "./page.css";
 
@@ -9,6 +9,7 @@ export default async function ActivationPage({ params }: { params: Promise<Param
     const { code } = await params;
 
     const activated = await activateAccount(code as string);
+    await copyProfileImageToFolder(code as string);
 
     return (
         <main id="activationPage">

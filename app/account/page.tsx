@@ -11,7 +11,7 @@ import "./page.css";
 
 export default function AccountPage(): ReactElement {
     const { loadFavouriteGames } = useContext(FavouritesContext);
-    const [ user, setUser ] = useState<User>({} as User);
+    const [ user, setUser ] = useState<User>();
 
     useEffect(() => {
         loadFavouriteGames();       // Updates the favourite list because users are redirected here when logging in or registering

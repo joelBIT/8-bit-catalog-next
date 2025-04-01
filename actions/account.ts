@@ -28,15 +28,17 @@ export async function update(userId: number, _prevState: any, formData: FormData
 
 export async function updateProfile(userId: number, _prevState: any, formData: FormData) {
     try {
+        const userBio = formData.get('bio') as string;
+        await updateUserBio(userId, userBio);
+
         const profileImage = formData.get('profileImage') as File;
         if (profileImage.name !== 'undefined') {
             await updateProfileImage(userId, profileImage);
+            return { message: 'The account was successfully updated', success: true, bio: userBio, image: profileImage.name };
+        } else {
+            return { message: 'The account was successfully updated', success: true, bio: userBio, image: _prevState.image };
         }
     
-        const userBio = formData.get('bio') as string;
-        await updateUserBio(userId, userBio);
-    
-        return { message: 'The account was successfully updated', success: true, bio: userBio, image: profileImage.name };
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false };
