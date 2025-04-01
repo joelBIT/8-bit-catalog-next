@@ -9,6 +9,7 @@ import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 import ActivationEmail from "@/components/email/ActivationEmail";
+import { isAuthenticated } from "@/app/utils/utils";
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).
@@ -34,7 +35,10 @@ export async function login(_prevState: any, formData: FormData) {
             return { message: 'Password is incorrect', success: false };
         }
 
-        await initiateSession(user.data?.id);
+        const authenticated = await isAuthenticated();
+        if (!authenticated) {                           // Only create a new session when the user is not logged in
+            await initiateSession(user.data?.id);
+        }
     } catch (error) {
         return { message: 'Could not log in', success: false };
     }
@@ -81,7 +85,7 @@ async function initiateSession(userId: number) {
 async function sendMail(email: string, activationCode: string) {
     const resend = new Resend(process.env.RESEND_API_KEY as string);
 
-    const response = await resend.emails.send({
+    await resend.emails.send({
         from: '8bit <onboarding@joel-rollny.eu>',
         to: email,
         subject: 'Finish registration',

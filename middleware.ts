@@ -17,7 +17,9 @@ export async function middleware(request: NextRequest) {
     if (cookie) {
         const session = await validateSession(cookie);    
         if (session && (request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register'))) {
-            return redirect(request, '/forbidden');         // Authenticated user is not allowed to navigate to register or login pages
+            if (request.method === 'GET') {
+                return redirect(request, '/forbidden');      // Authenticated user is not allowed to navigate to register or login pages   
+            }
         }
 
         if (session && request.nextUrl.pathname.endsWith('/edit')) {
