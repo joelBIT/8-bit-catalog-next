@@ -24,18 +24,21 @@ export function RegisterForm(): ReactElement<ReactElement> {
                 </h2> : <></> 
             }
 
-            <section id="registerCard" className={arima.className}>
-                <h1 className="registerCard__title">Create Account</h1>
+            { state.success ?  
+                <p className="confirmation-text">A confirmation link will be sent to your email</p>  
+                    :
+                <section id="registerCard" className={arima.className}>
+                    <h1 className="registerCard__title">Create Account</h1>
 
-                <form id="registerForm" ref={formRef} action={formAction}>
-                    <Input id="email" type="email" placeholder="Email" />
-                    <PasswordInput id="password" placeholder="Password" />
-                    <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
+                    <form id="registerForm" ref={formRef} action={formAction}>
+                        <Input id="email" type="email" placeholder="Email" />
+                        <PasswordInput id="password" placeholder="Password" />
+                        <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
-                    { state.success ? <p className="confirmation-text">A confirmation link will be sent to your email</p> : <></> }
-                    <button className="accountButton" type="submit"> Register </button>
-                </form>
-            </section>
+                        <button className="accountButton" type="submit"> Register </button>
+                    </form>
+                </section>
+            }
         </section>
     );
 }
