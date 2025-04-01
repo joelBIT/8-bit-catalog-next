@@ -2,13 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { Resend } from "resend";
+import { v4 as uuidv4 } from 'uuid';
 import { createAccount, getAccount, getUserByEmail, registerUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
-import { Resend } from "resend";
 import ActivationEmail from "@/components/email/ActivationEmail";
-import { v4 as uuidv4 } from 'uuid';
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).
