@@ -7,7 +7,7 @@ import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 
 import "./FavouriteButton.css";
 
-export function FavouriteButton({ game, setFading }: { game: Game, setFading: (fading: boolean) => void }): ReactElement<ReactElement> {
+export function FavouriteButton({ game, setFading, removeCard }: { game: Game, setFading: (fading: boolean) => void, removeCard: (remove: boolean) => void }): ReactElement<ReactElement> {
     const pathname = usePathname();
     const { favouritesList, addFavouriteGame, removeFavouriteGame } = useContext(FavouritesContext);
     const isFavorite = favouritesList.some((favourite: { id: number; }) => favourite.id === game.id);
@@ -23,7 +23,7 @@ export function FavouriteButton({ game, setFading }: { game: Game, setFading: (f
             if (pathname === "/favourites") {           // If a game card is removed from favourites page, it fades out
                 setFading(true);
                 setTimeout(() => removeFavouriteGame(game), 300);
-                setTimeout(() => { setFading(false) }, 500);
+                setTimeout(() => { removeCard(true) }, 500);
             } else {
                 removeFavouriteGame(game);
             }
