@@ -14,8 +14,11 @@
         border-radius: 8px;
     
         .legend {
-            font-size: 3rem;
+            width: min-content;
+            font-size: 2rem;
             text-align: center;
+            padding-inline-start: 1rem;
+            padding-inline-end: 1rem;
         }
     }
 }
@@ -23,16 +26,6 @@
 @media (max-width: 1350px) {
     #fieldSetFrame {
         max-width: 90vw;
-    }
-}
-
-@media (max-width: 700px) {
-    #fieldSetFrame {
-        .fieldset {
-            .legend {
-                font-size: 2.2rem;
-            }
-        }
     }
 }
 

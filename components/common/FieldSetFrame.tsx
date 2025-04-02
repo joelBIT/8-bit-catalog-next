@@ -8,7 +8,7 @@ export function FieldSetFrame({ legend, body }: { legend: string, body: ReactEle
     return (
         <section id="fieldSetFrame">
             <fieldset className="fieldset">
-                <legend className={`legend ${silkScreen.className}`}> { legend } </legend>
+                <legend className={`legend bit-font`}> { legend } </legend>
                 { body }
             </fieldset>
         </section>
