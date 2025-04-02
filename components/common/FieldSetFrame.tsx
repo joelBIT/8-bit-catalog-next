@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { silkScreen } from "@/fonts/fonts";
 
 import "./FieldSetFrame.css";
 
