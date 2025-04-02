@@ -20,11 +20,12 @@ import "./GameCard.css";
  */
 export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
     const [ isFadingOut, setIsFadingOut ] = useState(false);
+    const [ removeCard, setRemoveCard ] = useState(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
     
     return (
         <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : ""}>
-            <section className="gameCard">
+            <section className={removeCard ? "hidden" : "gameCard"}>
                 <figure className="gameCard-figure">
                     <Image 
                         src={STORAGE_URL + game.cover}
@@ -38,7 +39,7 @@ export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
                 
                 <article id="gameCardTitle">
                     <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
-                    <FavouriteButton game={game} setFading={setIsFadingOut} />
+                    <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
                 </article>
             </section>
         </Link>

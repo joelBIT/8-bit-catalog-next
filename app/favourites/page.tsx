@@ -26,7 +26,7 @@ export default function FavouritesPage(): ReactElement<ReactElement> {
             <section id="gameCards">
                 { favouritesList.length === 0 ? 
                     <h1 className="no-favourites-text">{"No favourites selected"}</h1> : 
-                    favouritesList.slice(from(favouritesPage), to(favouritesPage)).map((game, index) => <GameCard key={index} game={game} />) }
+                    favouritesList.slice(from(favouritesPage), to(favouritesPage)).map(game => <GameCard key={game.id} game={game} />) }
             </section>
 
             {favouritesList.length > PAGINATION_PAGE_SIZE ? <FavouritePagination currentPage={favouritesPage} /> : <></>}
