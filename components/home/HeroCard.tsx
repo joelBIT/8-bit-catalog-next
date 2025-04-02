@@ -11,7 +11,7 @@ export function HeroCard({ game }: { game: Game }): ReactElement<ReactElement> {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     return (
-        <section id="heroCard">
+        <section id="heroCard" className="pixel-corners">
             <article className="heroCard-wrapper">
                 <h1 className={`heroCard__title ${silkScreen.className}`}> {game.title} </h1>
                 
