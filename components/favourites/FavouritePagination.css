@@ -5,10 +5,6 @@
     gap: 1rem;
     align-items: center;
 
-    #previous, #next {
-        padding: 0.5rem;
-    }
-
     .favourite-pagination-page__text {
         display: flex;
         gap: 1rem;
