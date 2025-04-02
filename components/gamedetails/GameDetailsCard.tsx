@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { silkScreen } from "@/fonts/fonts";
 import { Game } from "@/types/types";
 import { isAuthenticatedAdmin } from "@/app/utils/utils";
 import { EditGameButton } from "./edit/EditGameButton";
@@ -26,7 +25,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                     />
                 </Link>
             </figure>
-            <article id="gameDetails" className={silkScreen.className}>
+            <article id="gameDetails" className="bit-font">
                 <h1 className="gameDetails__title">{game.title}</h1>
 
                 <section className="gameDetails__metadata">
