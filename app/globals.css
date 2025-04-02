@@ -126,6 +126,17 @@ textarea {
     }
 }
 
+.gameButton:disabled {
+    &:hover {
+        background-color: var(--color-nintendo-gray-light);
+        cursor: default;
+    }
+
+    &:active { 
+        transform: scale(1.0); 
+    }
+}
+
 
 
 
