@@ -4,8 +4,9 @@
     justify-content: center;
 
     .aboutPage__paragraph {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin: 1rem;
+        font-weight: 100;
     }
 }
 
@@ -18,7 +19,7 @@
         }
     
         .aboutPage__paragraph {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
         }
     }
 }
