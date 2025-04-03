@@ -1,6 +1,6 @@
 #heroCard {
     display: flex;
-    background-color: var(--color-nintendo-gray);
+    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
     border-radius: 8px;
     width: 50rem;
     padding: 1rem;

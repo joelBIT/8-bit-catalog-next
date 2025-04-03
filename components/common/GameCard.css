@@ -23,7 +23,7 @@
         justify-content: space-between;
         height: 100%;
         border-radius: 8px;
-        background-color: var(--color-nintendo-gray);
+        background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
         
         .gameCardTitle__heading {
             color: var(--color-black);
