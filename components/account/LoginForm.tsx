@@ -2,7 +2,7 @@
 
 import { ReactElement, useRef, useActionState, useEffect, useContext } from "react";
 import Link from "next/link";
-import { arima } from "@/fonts/fonts";
+import { arima, irishGrover } from "@/fonts/fonts";
 import { login } from "@/actions/auth";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
@@ -39,7 +39,7 @@ export function LoginForm(): ReactElement<ReactElement> {
                     <Input id="email" type="email" placeholder="Email" />
                     <PasswordInput id="password" placeholder="Password" />
                     
-                    <button className="accountButton" type="submit">Login</button>
+                    <button className={`accountButton ${irishGrover.className}`} type="submit">Login</button>
                 </form>
                 <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Create an Account </Link>
             </section>
