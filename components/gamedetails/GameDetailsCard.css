@@ -51,19 +51,11 @@
         }
     }
 
-    #deleteButton, #editButton {
-        grid-column: 2;
-        width: fit-content;
-        padding: 0.5rem;
-    }
-
     #editButton {
+        grid-column: 2;
         justify-self: flex-end;
+        align-self: flex-end;
         margin-top: 2rem;
-    }
-
-    #deleteButton {
-        height: fit-content;
     }
 }
 

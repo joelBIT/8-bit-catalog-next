@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useRef, useActionState } from "react";
-import { arima } from "@/fonts/fonts";
+import { arima, irishGrover } from "@/fonts/fonts";
 import { register } from "@/actions/auth";
 import { Input } from "../common/Input";
 import { PasswordInput } from "../common/PasswordInput";
@@ -35,7 +35,7 @@ export function RegisterForm(): ReactElement<ReactElement> {
                         <PasswordInput id="password" placeholder="Password" />
                         <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
-                        <button className="accountButton" type="submit"> Register </button>
+                        <button className={`accountButton ${irishGrover.className}`} type="submit"> Register </button>
                     </form>
                 </section>
             }
