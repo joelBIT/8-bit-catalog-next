@@ -131,12 +131,11 @@ textarea {
 }
 
 .gameButton:disabled {
-    opacity: 0.5;
+    filter: brightness(0.5);
     box-shadow: none;
 
     &:hover {
         cursor: default;
-        filter: brightness(1);
     }
 
     &:active { 
