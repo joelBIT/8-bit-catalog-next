@@ -35,7 +35,9 @@ export function RegisterForm(): ReactElement<ReactElement> {
                         <PasswordInput id="password" placeholder="Password" />
                         <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
-                        <button className={`accountButton ${irishGrover.className}`} type="submit"> Register </button>
+                        <button className={`authButton ${irishGrover.className}`} type="submit">
+                            <span className="authButton__text"> Register </span>
+                        </button>
                     </form>
                 </section>
             }
