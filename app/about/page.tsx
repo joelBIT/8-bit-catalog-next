@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { FieldSetFrame } from "@/components/common/FieldSetFrame";
+import { FieldSetFrame } from "@/components/common";
 
 import "./page.css";
 

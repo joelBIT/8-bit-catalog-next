@@ -87,6 +87,10 @@
             text-align: right;
             margin-right: 2rem;
             width: fit-content;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         .showmenu {

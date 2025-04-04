@@ -4,8 +4,7 @@ import { getAllDevelopers, getAllPublishers } from "@/db/db";
 import { addAllOption, getCategories } from "@/utils/utils";
 import { SearchFilter } from "@/types/types";
 import { arima, rancho } from "@/fonts/fonts";
-import { Search } from "@/components/search/Search";
-import { SearchButton } from "@/components/common/SearchButton";
+import { Search, SearchButton } from "@/components/search";
 
 import "./page.css";
 

@@ -3,8 +3,8 @@
 import { ReactElement, useContext } from "react";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { FavouritePagination } from "@/components/favourites/FavouritePagination";
-import { GameCard } from "@/components/common/GameCard";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
+import { GameCard } from "@/components/common";
 
 import "./page.css";
 

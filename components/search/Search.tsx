@@ -5,8 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { getGames } from "@/data/data";
 import { Game } from "@/types/types";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
-import { Pagination } from "./Pagination";
-import { GameCard } from "../common/GameCard";
+import { GameCard } from "../common";
+import { Pagination } from ".";
 import { arima } from "@/fonts/fonts";
 
 import "./Search.css";

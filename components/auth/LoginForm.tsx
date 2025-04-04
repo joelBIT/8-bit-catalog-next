@@ -6,8 +6,7 @@ import { arima, irishGrover } from "@/fonts/fonts";
 import { login } from "@/actions/auth";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
-import { Input } from "../common/Input";
-import { PasswordInput } from "../common/PasswordInput";
+import { EmailInput, PasswordInput } from "../common";
 
 import "./LoginForm.css";
 
@@ -36,7 +35,7 @@ export function LoginForm(): ReactElement<ReactElement> {
                 <h1 className="loginCard__heading">Sign in</h1>
         
                 <form id="loginForm" ref={formRef} action={formAction}>
-                    <Input id="email" type="email" placeholder="Email" />
+                    <EmailInput />
                     <PasswordInput id="password" placeholder="Password" />
                     
                     <button className={`authButton ${irishGrover.className}`} type="submit">

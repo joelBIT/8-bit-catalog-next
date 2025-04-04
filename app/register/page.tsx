@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { RegisterForm } from "@/components/account/RegisterForm";
+import { RegisterForm } from "@/components/auth/RegisterForm";
 
 import "./page.css";
 
