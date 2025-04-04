@@ -1,14 +1,14 @@
 'use client';
 
 import { ReactElement, useRef, useActionState } from "react";
+import Link from "next/link";
 import { arima, irishGrover } from "@/fonts/fonts";
+import { URL_LOGIN_PAGE } from "@/utils/utils";
 import { register } from "@/actions/auth";
-import { Input } from "../common/Input";
+import { EmailInput } from "../common/EmailInput";
 import { PasswordInput } from "../common/PasswordInput";
 
 import "./RegisterForm.css";
-import { URL_LOGIN_PAGE } from "@/utils/utils";
-import Link from "next/link";
 
 export function RegisterForm(): ReactElement<ReactElement> {
     const [state, formAction] = useActionState(register, { message: '', success: false });
@@ -33,7 +33,7 @@ export function RegisterForm(): ReactElement<ReactElement> {
                     <h1 className="registerCard__title">Create Account</h1>
 
                     <form id="registerForm" ref={formRef} action={formAction}>
-                        <Input id="email" type="email" placeholder="Email" />
+                        <EmailInput />
                         <PasswordInput id="password" placeholder="Password" />
                         <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
