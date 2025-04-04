@@ -7,6 +7,8 @@ import { Input } from "../common/Input";
 import { PasswordInput } from "../common/PasswordInput";
 
 import "./RegisterForm.css";
+import { URL_LOGIN_PAGE } from "@/utils/utils";
+import Link from "next/link";
 
 export function RegisterForm(): ReactElement<ReactElement> {
     const [state, formAction] = useActionState(register, { message: '', success: false });
@@ -39,6 +41,11 @@ export function RegisterForm(): ReactElement<ReactElement> {
                             <span className="authButton__text"> Register </span>
                         </button>
                     </form>
+
+                    <section id="login-link">
+                        <h2 className="login-link__text">Already got an account?</h2> 
+                        <Link href={URL_LOGIN_PAGE} className="registerCard__login-link"> Sign in </Link>
+                    </section>
                 </section>
             }
         </section>
