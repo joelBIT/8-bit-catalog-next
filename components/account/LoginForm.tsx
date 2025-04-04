@@ -40,7 +40,7 @@ export function LoginForm(): ReactElement<ReactElement> {
                     <PasswordInput id="password" placeholder="Password" />
                     
                     <button className={`authButton ${irishGrover.className}`} type="submit">
-                        <span className="authButton__text">Login</span>
+                        <span className="authButton__text"> Login </span>
                     </button>
                 </form>
                 <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Create an Account </Link>
