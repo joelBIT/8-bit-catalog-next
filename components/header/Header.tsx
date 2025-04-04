@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { Logo } from "./Logo";
-import { NavBars } from "./NavBars";
+import { Logo, NavBars } from ".";
 import { irishGrover } from "@/fonts/fonts";
 import { isAuthenticated } from "@/app/utils/utils";
 
