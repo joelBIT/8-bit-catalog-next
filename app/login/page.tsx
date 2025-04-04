@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { LoginForm } from "@/components/account/LoginForm";
+import { LoginForm } from "@/components/auth/LoginForm";
 
 import "./page.css";
 

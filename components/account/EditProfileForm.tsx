@@ -14,7 +14,7 @@ export function EditProfileForm({ user } : { user: User }): ReactElement {
     return (
         <form id="editProfileForm" action={formAction}>
             <section className="edit-profile-image">
-                <img src={STORAGE_URL + state.image} className="profile-image" />
+                <img src={STORAGE_URL + state.image} className="profile-image" alt="Profile image" />
                 <h2 className="edit-profile__change-image"> Change profile image <input name="profileImage" type="file" accept={imageTypes.toString()} />  </h2>
             </section>
 
