@@ -1,0 +1,24 @@
+#emailInput {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    & .material-symbols-outlined {
+        color: var(--color-black);
+        font-size: 2rem;
+    }
+
+    #email {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    #emailInput {
+        gap: 0.1rem;
+
+        #email {
+            padding-left: 0.3rem;
+        }
+    }
+}

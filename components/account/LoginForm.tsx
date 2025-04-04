@@ -5,8 +5,8 @@ import Link from "next/link";
 import { arima, irishGrover } from "@/fonts/fonts";
 import { login } from "@/actions/auth";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
+import { EmailInput } from "../common/EmailInput";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
-import { Input } from "../common/Input";
 import { PasswordInput } from "../common/PasswordInput";
 
 import "./LoginForm.css";
@@ -36,8 +36,9 @@ export function LoginForm(): ReactElement<ReactElement> {
                 <h1 className="loginCard__heading">Sign in</h1>
         
                 <form id="loginForm" ref={formRef} action={formAction}>
-                    <Input id="email" type="email" placeholder="Email" />
+                    <EmailInput />
                     <PasswordInput id="password" placeholder="Password" />
+                    <span className="material-symbols-outlined"> lock </span>
                     
                     <button className={`authButton ${irishGrover.className}`} type="submit">
                         <span className="authButton__text"> Login </span>

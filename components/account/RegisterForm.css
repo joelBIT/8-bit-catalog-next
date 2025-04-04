@@ -63,11 +63,17 @@
 
 @media (max-width: 550px) {
     #register {
+        min-width: 90vw;
+        max-width: 95vw;
+
         #registerCard {
+            min-width: inherit;
             padding: 1rem 3rem 2rem;
     
             #registerForm {
-                max-width: 18rem;
+                & input {
+                    font-size: large;
+                }
             }
         }
     }
