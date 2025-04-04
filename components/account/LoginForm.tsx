@@ -38,7 +38,6 @@ export function LoginForm(): ReactElement<ReactElement> {
                 <form id="loginForm" ref={formRef} action={formAction}>
                     <EmailInput />
                     <PasswordInput id="password" placeholder="Password" />
-                    <span className="material-symbols-outlined"> lock </span>
                     
                     <button className={`authButton ${irishGrover.className}`} type="submit">
                         <span className="authButton__text"> Login </span>
