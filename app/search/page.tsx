@@ -5,7 +5,7 @@ import { addAllOption, getCategories } from "@/utils/utils";
 import { SearchFilter } from "@/types/types";
 import { arima, rancho } from "@/fonts/fonts";
 import { Search } from "@/components/search/Search";
-import { SearchButton } from "@/components/common/SearchButton";
+import { SearchButton } from "@/components/common";
 
 import "./page.css";
 

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { GameDetailsCard } from "@/components/gamedetails/GameDetailsCard";
-import { FieldSetFrame } from "@/components/common/FieldSetFrame";
+import { FieldSetFrame } from "@/components/common";
 import { getGameById } from "@/db/db";
 
 import "./page.css";

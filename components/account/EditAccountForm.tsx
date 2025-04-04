@@ -4,7 +4,7 @@ import { ReactElement, useActionState, useState, useEffect } from "react";
 import { arima } from "@/fonts/fonts";
 import { update } from "@/actions/account";
 import { User } from "@/types/types";
-import { PasswordInput } from "../common/PasswordInput";
+import { PasswordInput } from "../common";
 
 import "./EditAccountForm.css";
 

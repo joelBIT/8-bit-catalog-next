@@ -5,8 +5,7 @@ import Link from "next/link";
 import { arima, irishGrover } from "@/fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/utils/utils";
 import { register } from "@/actions/auth";
-import { EmailInput } from "../common/EmailInput";
-import { PasswordInput } from "../common/PasswordInput";
+import { EmailInput, PasswordInput } from "../common";
 
 import "./RegisterForm.css";
 

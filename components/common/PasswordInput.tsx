@@ -1,10 +1,12 @@
+'use client';
+
 import { arima } from "@/fonts/fonts";
 import { ReactElement, useState } from "react";
 
 import "./PasswordInput.css";
 
 export function PasswordInput({ id, placeholder }: { id: string, placeholder: string }): ReactElement<ReactElement> {
-    const [isVisible, setVisible] = useState(false);
+    const [ isVisible, setVisible ] = useState(false);
     
     return (
         <section id="passwordInput">
