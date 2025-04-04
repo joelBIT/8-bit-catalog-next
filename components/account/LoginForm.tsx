@@ -43,7 +43,11 @@ export function LoginForm(): ReactElement<ReactElement> {
                         <span className="authButton__text"> Login </span>
                     </button>
                 </form>
-                <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Create an Account </Link>
+
+                <section id="register-link">
+                    <h2 className="register-link__text">Need an account?</h2> 
+                    <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Register </Link>
+                </section>
             </section>
         </section>
     );
