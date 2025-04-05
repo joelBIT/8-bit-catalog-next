@@ -23,6 +23,11 @@ const ACCOUNT_TABLE = "account";
 
 
 
+/****************************************************************************************
+* This file contains functions that interact directly with the database/database client *
+****************************************************************************************/
+
+
 
 
 /*********
@@ -40,8 +45,21 @@ export async function updateGameById(game: Game, file: File) {
     return await databaseClient.from(GAMES_TABLE).update(game).eq('id', game.id);
 }
 
+export async function getGameById(id: number) {
+    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
+    return data;
+}
+
+
+
+
+
+/*********
+ * FILES *
+ *********/
+
 /**
- * Uploads file to storage. The file is stored in the folder, if folder is supplied. Otherwise the file is stored in root.
+ * Uploads file to storage (bucket). The file is stored in the supplied folder. If no folder name is supplied the file is stored in root.
  * If the file already exists (i.e., same name) at the destination, it is overwritten with the new file.
  */
 async function uploadFile(fileName: string, file: File, storage: string, folder: string = "") {
@@ -55,13 +73,6 @@ async function uploadFile(fileName: string, file: File, storage: string, folder:
         console.log(`Uploaded file ${file} successfully`);
     }
 }
-
-export async function getGameById(id: number) {
-    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
-    return data;
-}
-
-
 
 
 
@@ -148,14 +159,21 @@ export async function filterSearch(filters: SearchFilter): Promise<SearchResult>
     return {games: data, count: count ? count : 0};
 }
 
+// Convert All to % because the postgres function named 'games' uses % as wildcard (matches sequences of characters).
 function convertFilterAll(value: string) {
     return value === 'All' ? '%' : value;
 }
 
+/**
+ * Retrieves all game developers by invoking a postgres function named 'developers'.
+ */
 export async function getAllDevelopers() {
     return await invokePostgresFunction('developers');
 }
 
+/**
+ * Retrieves all game publishers by invoking a postgres function named 'publishers'.
+ */
 export async function getAllPublishers() {
     return await invokePostgresFunction('publishers');
 }
@@ -181,6 +199,10 @@ async function invokePostgresFunction(functionName: string) {
 
 const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio, image";
 
+/**
+ * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
+ * email already exists in the user table.
+ */
 export async function registerUser(email: string, password_hash: string) {
     const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
     
@@ -213,6 +235,7 @@ export async function updateUserBio(id: number, bio: string) {
     return await databaseClient.from(USER_TABLE).update({bio}).eq('id', id);
 }
 
+// Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
 async function updateUserImage(id: number, image: string) {
     return await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
 }
@@ -221,8 +244,8 @@ async function updateUserImage(id: number, image: string) {
  * The profile image is stored in a folder named as the user's id.
  */
 export async function updateProfileImage(id: number, image: File) {
-    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");
-    await updateUserImage(id, image.name);
+    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");   // uploads the image file to a bucket.
+    await updateUserImage(id, image.name);  // updates the image name since this name is used to reference the uploaded image file.
 }
 
 
