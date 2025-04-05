@@ -1,4 +1,4 @@
-import { Game, SearchFilter, SearchResult, Session } from '@/types/types';
+import { Account, Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
@@ -23,28 +23,55 @@ const ACCOUNT_TABLE = "account";
 
 
 
+/****************************************************************************************
+* This file contains functions that interact directly with the database/database client *
+****************************************************************************************/
+
+
 
 
 /*********
  * GAMES *
  *********/
 
-export async function updateGameById(game: Game, file: File) {
-    if (file.name === 'undefined') {                            // No new cover was chosen for the game
-        const { cover, ...data } = game;             // Remove cover property since the cover is not updated
-        return await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
+/**
+ * Updates an existing game. If a new cover has been chosen it is uploaded to a storage bucket. After that the
+ * cover name is updated for the game in the database since this cover name is used to reference the
+ * cover image in the storage bucket.
+ */
+export async function updateGameById(game: Game, file: File): Promise<void> {
+    if (file.name !== 'undefined') {                            // New game cover was chosen so the cover file must be uploaded to the storage bucket
+        await uploadFile(game.cover, file, COVERS_STORAGE);
+        await databaseClient.from(GAMES_TABLE).update({ cover: game.cover }).eq('id', game.id);     // Update game cover name
+    } 
+    
+    const { cover, ...data } = game;             // Remove cover property since the cover is already taken care of (not updated if not changed)
+    const { error } = await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(`Updated game ${game.title} successfully`);
     }
-
-    await uploadFile(game.cover, file, COVERS_STORAGE);
-
-    return await databaseClient.from(GAMES_TABLE).update(game).eq('id', game.id);
 }
 
+export async function getGameById(id: number): Promise<Game> {
+    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
+    return data;
+}
+
+
+
+
+
+/*********
+ * FILES *
+ *********/
+
 /**
- * Uploads file to storage. The file is stored in the folder, if folder is supplied. Otherwise the file is stored in root.
+ * Uploads file to storage (bucket). The file is stored in the supplied folder. If no folder name is supplied the file is stored in root.
  * If the file already exists (i.e., same name) at the destination, it is overwritten with the new file.
  */
-async function uploadFile(fileName: string, file: File, storage: string, folder: string = "") {
+async function uploadFile(fileName: string, file: File, storage: string, folder: string = ""): Promise<void> {
     const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file, {
         cacheControl: '3600',
         upsert: true
@@ -55,13 +82,6 @@ async function uploadFile(fileName: string, file: File, storage: string, folder:
         console.log(`Uploaded file ${file} successfully`);
     }
 }
-
-export async function getGameById(id: number) {
-    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
-    return data;
-}
-
-
 
 
 
@@ -148,19 +168,26 @@ export async function filterSearch(filters: SearchFilter): Promise<SearchResult>
     return {games: data, count: count ? count : 0};
 }
 
-function convertFilterAll(value: string) {
+// Convert 'All' to % because the postgres function named 'games' uses % as wildcard (matches sequences of characters).
+function convertFilterAll(value: string): string {
     return value === 'All' ? '%' : value;
 }
 
-export async function getAllDevelopers() {
+/**
+ * Retrieves all game developers by invoking a postgres function named 'developers'.
+ */
+export async function getAllDevelopers(): Promise<string[]> {
     return await invokePostgresFunction('developers');
 }
 
-export async function getAllPublishers() {
+/**
+ * Retrieves all game publishers by invoking a postgres function named 'publishers'.
+ */
+export async function getAllPublishers(): Promise<string[]> {
     return await invokePostgresFunction('publishers');
 }
 
-async function invokePostgresFunction(functionName: string) {
+async function invokePostgresFunction(functionName: string): Promise<string[]> {
     const { data, error } = await databaseClient.rpc(functionName);         // Invokes the named Postgres function
     if (error) {
         console.log(error);
@@ -181,7 +208,11 @@ async function invokePostgresFunction(functionName: string) {
 
 const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio, image";
 
-export async function registerUser(email: string, password_hash: string) {
+/**
+ * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
+ * email already exists in the user table.
+ */
+export async function registerUser(email: string, password_hash: string): Promise<{id: number, email: string}> {
     const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
     
     if (error) {
@@ -197,32 +228,43 @@ export async function registerUser(email: string, password_hash: string) {
     return data;
 }
 
-export async function getUserByEmail(email: string) {
-    return await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', email).single();
+export async function getUserByEmail(email: string): Promise<User> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', email).single();
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+    return data;
 }
 
-export async function getUserById(id: number) {
-    return await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('id', id).single();
+export async function getUserById(id: number): Promise<User> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('id', id).single();
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+    return data;
 }
 
-export async function updateUser(id: number, password_hash: string, last_name: string, first_name: string) {
-    return await databaseClient.from(USER_TABLE).update({password_hash, last_name, first_name}).eq('id', id);
+export async function updateUser(id: number, password_hash: string, last_name: string, first_name: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({password_hash, last_name, first_name}).eq('id', id);
 }
 
-export async function updateUserBio(id: number, bio: string) {
-    return await databaseClient.from(USER_TABLE).update({bio}).eq('id', id);
+export async function updateUserBio(id: number, bio: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({bio}).eq('id', id);
 }
 
-async function updateUserImage(id: number, image: string) {
-    return await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
+// Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
+async function updateUserImage(id: number, image: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
 }
 
 /**
  * The profile image is stored in a folder named as the user's id.
  */
-export async function updateProfileImage(id: number, image: File) {
-    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");
-    await updateUserImage(id, image.name);
+export async function updateProfileImage(id: number, image: File): Promise<void> {
+    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");   // uploads the image file to a bucket.
+    await updateUserImage(id, image.name);  // updates the image name since this name is used to reference the uploaded image file.
 }
 
 
@@ -237,14 +279,15 @@ export async function updateProfileImage(id: number, image: File) {
 /**
  * Creates a session when a user register or signs in.
  */
-export async function storeSession(session: Session) {
-    return await databaseClient.from(SESSION_TABLE).insert(session);
+export async function storeSession(session: Session): Promise<void> {
+    await databaseClient.from(SESSION_TABLE).insert(session);
 }
 
-export async function getSessionByTokenValue(value: string){
+export async function getSessionByTokenValue(value: string): Promise<Session> {
     const { data, error } = await databaseClient.from(SESSION_TABLE).select('expires_at, user_id, token_value').eq('token_value', value).single();
     if (error) {
         console.log(error);
+        throw error;
     }
     return data;
 }
@@ -252,15 +295,15 @@ export async function getSessionByTokenValue(value: string){
 /**
  * Deletes a user's session when the user signs out.
  */
-export async function deleteSessionByTokenValue(token_value: string) {
-    return await databaseClient.from(SESSION_TABLE).delete().eq('token_value', token_value);
+export async function deleteSessionByTokenValue(token_value: string): Promise<void> {
+    await databaseClient.from(SESSION_TABLE).delete().eq('token_value', token_value);
 }
 
 /**
  * The session is usually updated when it is refreshed (so it does not expire).
  */
-export async function updateSession(session: Session) {
-    return await databaseClient.from(SESSION_TABLE).update(session);
+export async function updateSession(session: Session): Promise<void> {
+    await databaseClient.from(SESSION_TABLE).update(session);
 }
 
 
@@ -272,6 +315,10 @@ export async function updateSession(session: Session) {
  * FAVOURITES *
  **************/
 
+/**
+ * Returns a user's favourite games. First all game id's of the favourite games are gathered. Then all game objects with
+ * the corresponding id's are returned.
+ */
 export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
     const { data, error } = await databaseClient.from(FAVOURITES_TABLE).select("game_id").eq('user_id', user_id);
     if (error) {
@@ -290,11 +337,11 @@ export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
     return [];
 }
 
-export async function addFavouriteForUserId(user_id: number, game_id: number) {
+export async function addFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
     await databaseClient.from(FAVOURITES_TABLE).insert({user_id, game_id});
 }
 
-export async function deleteFavouriteForUserId(user_id: number, game_id: number) {
+export async function deleteFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
     await databaseClient.from(FAVOURITES_TABLE).delete().eq("user_id", user_id).eq("game_id", game_id);
 }
 
@@ -308,7 +355,7 @@ export async function deleteFavouriteForUserId(user_id: number, game_id: number)
  * ACCOUNT *
  ***********/
 
-export async function createAccount(user_id: number, activation_code: string) {
+export async function createAccount(user_id: number, activation_code: string): Promise<void> {
     await databaseClient.from(ACCOUNT_TABLE).insert({ user_id, activation_code });
 }
 
@@ -316,7 +363,7 @@ export async function createAccount(user_id: number, activation_code: string) {
  * Copies the default profile image to the folder created for the newly registered user. The folder is named
  * after the registered user's id.
  */
-export async function copyProfileImageToFolder(activation_code: string) {
+export async function copyProfileImageToFolder(activation_code: string): Promise<void> {
     try {
         const response = await databaseClient.from(ACCOUNT_TABLE).select().eq('activation_code', activation_code).single();
         await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response.data?.user_id}/profile.png`);
@@ -325,8 +372,13 @@ export async function copyProfileImageToFolder(activation_code: string) {
     }
 }
 
-export async function getAccount(user_id: number) {
-    return await databaseClient.from(ACCOUNT_TABLE).select("activated, activation_code").eq('user_id', user_id).single();
+export async function getAccountByUserId(user_id: number): Promise<Account> {
+    const { data, error } = await databaseClient.from(ACCOUNT_TABLE).select().eq('user_id', user_id).single();
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+    return data;
 }
 
 /**

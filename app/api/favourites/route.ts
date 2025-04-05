@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     const session = await getValidatedSession();
 
     if (session) {
-        addFavouriteForUserId(session.user_id, game_id);
+        await addFavouriteForUserId(session.user_id, game_id);
     }
 
     return NextResponse.json(request);
@@ -29,7 +29,7 @@ export async function DELETE(request: Request) {
     const session = await getValidatedSession();
 
     if (session) {
-        deleteFavouriteForUserId(session.user_id, game_id);
+        await deleteFavouriteForUserId(session.user_id, game_id);
     }
 
     return NextResponse.json(request);

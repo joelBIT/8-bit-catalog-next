@@ -10,10 +10,10 @@ import "./EditAccountForm.css";
 
 export function EditAccountForm({ user } : { user: User }): ReactElement<ReactElement> {
     const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
-    const [ showMessage, setShowMessage ] = useState(false);
+    const [ showMessage, setShowMessage ] = useState<boolean>(false);
 
     useEffect(() => {
-        if (state?.message && !showMessage) {
+        if (state?.message && !showMessage) {       // Show message for a fixed amount of time
             setShowMessage(true);
             setTimeout(() => {
                 setShowMessage(false);

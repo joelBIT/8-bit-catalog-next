@@ -6,7 +6,7 @@ import { isAuthenticated } from "@/app/utils/utils";
 
 import "./Header.css";
 
-export async function Header(): Promise<ReactElement<ReactElement>> {
+export async function Header(): Promise<ReactElement> {
 
     return (
         <header>

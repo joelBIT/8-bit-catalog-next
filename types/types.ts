@@ -40,3 +40,10 @@ export type User = {
     image: string,
     bio: string
 }
+
+export type Account = {
+    id: number,
+    user_id: number,
+    activated: boolean,
+    activation_code: string
+}

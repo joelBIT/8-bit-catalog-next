@@ -23,6 +23,7 @@ export async function update(userId: number, _prevState: any, formData: FormData
         return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName };
     } catch (error) {
         console.log(error);
+        return { message: 'The account could not be updated', success: false };
     }
 }
 
@@ -32,8 +33,8 @@ export async function updateProfile(userId: number, _prevState: any, formData: F
         await updateUserBio(userId, userBio);
 
         const profileImage = formData.get('profileImage') as File;
-        if (profileImage.name !== 'undefined') {
-            await updateProfileImage(userId, profileImage);
+        if (profileImage.name !== 'undefined') {                        // Profile image has been changed
+            await updateProfileImage(userId, profileImage);             // Upload new profile image
             return { message: 'The account was successfully updated', success: true, bio: userBio, image: profileImage.name };
         } else {
             return { message: 'The account was successfully updated', success: true, bio: userBio, image: _prevState.image };

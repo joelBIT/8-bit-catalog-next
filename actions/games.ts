@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { updateGameById } from "@/db/db";
 import { Game } from "@/types/types";
 
-export async function updateGame(id: number, formData: FormData) {
+export async function updateGame(id: number, formData: FormData): Promise<void> {
 
     const game: Game = {
         id: id,
@@ -16,13 +16,10 @@ export async function updateGame(id: number, formData: FormData) {
         release_date: formData.get('released') as string,
         cover: (formData.get('cover') as File).name,
         category: formData.get('category') as string,
-        rom: false
+        rom: (formData.get('rom') as string) === "true" ? true : false
     };
 
-    const { error } = await updateGameById(game, formData.get('cover') as File);
-    if (error) {
-        console.log(error);
-    }
+    await updateGameById(game, formData.get('cover') as File);
 
     revalidatePath("/gamedetails/[id]", "page");
 }

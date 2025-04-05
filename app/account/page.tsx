@@ -17,16 +17,16 @@ export default function AccountPage(): ReactElement {
         getUser();
     }, []);
 
-    async function getUser() {
-        const response = await getUserFromSession();
-        if (response) {
-            setUser(response);
+    async function getUser(): Promise<void> {
+        const sessionUser = await getUserFromSession();
+        if (sessionUser) {
+            setUser(sessionUser);              // Set the user of the current session, if any
         }
     }
 
     return (
         <main id="accountPage">
-            <h1 className="accountPage__title">Account</h1>
+            <h1 className="accountPage__title"> Account </h1>
             <section className="accountPage__forms">
                 { user ? <EditAccountForm user={user} /> : <></> }
                 { user ? <EditProfileForm user={user} /> : <></> }

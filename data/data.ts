@@ -1,5 +1,14 @@
-import { SearchFilter, SearchResult } from '@/types/types';
+import { Game, SearchFilter, SearchResult } from '@/types/types';
 
+
+/********************************************************************************************
+* This file contains functions that make API calls to the Route Handlers in the /api folder *
+********************************************************************************************/
+
+
+/**
+ * Retrieve games that match the search filters.
+ */
 export async function getGames(filters: SearchFilter): Promise<SearchResult> {
     try {
         const response = await fetch(`/api/games?title=${filters.title.trim()}&category=${filters.category}&developer=${filters.developer}&publisher=${filters.publisher}&page=${filters.page}`);
@@ -14,16 +23,21 @@ export async function getGames(filters: SearchFilter): Promise<SearchResult> {
 /**
  * Retrieve favourite games for user with an active session.
  */
-export async function getFavourites() {
+export async function getFavourites(): Promise<Game[]> {
     try {
         const response = await fetch(`/api/favourites`);
         return await response.json();
     } catch (error) {
         console.error(error);
     }
+
+    return [];
 }
 
-export async function addFavouriteGameToDatabase(game_id: number) {
+/**
+ * Persist a favourite game in the database for user with an active session.
+ */
+export async function addFavouriteGameToDatabase(game_id: number): Promise<void> {
     try {
         await fetch(`/api/favourites`, {
             method: "POST",
@@ -34,7 +48,10 @@ export async function addFavouriteGameToDatabase(game_id: number) {
     }
 }
 
-export async function deleteFavouriteGameFromDatabase(game_id: number) {
+/**
+ * Delete a favourite game in the database for user with an active session.
+ */
+export async function deleteFavouriteGameFromDatabase(game_id: number): Promise<void> {
     try {
         await fetch(`/api/favourites`, {
             method: "DELETE",

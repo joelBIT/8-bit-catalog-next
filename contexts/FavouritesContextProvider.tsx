@@ -27,7 +27,7 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
     /**
      * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.
      */
-    async function loadFavouriteGames() {
+    async function loadFavouriteGames(): Promise<void> {
         setFavouritesPage(1);       // Is set to the first page when favourite games are loaded
         const authenticated = await isAuthenticated();      // Check if user has an active session
         if (authenticated) {
@@ -46,7 +46,7 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
     /**
      * Get the favourite games for a user (with an active session) from the DB.
      */
-    async function getFavouriteGames() {
+    async function getFavouriteGames(): Promise<void> {
         const games = await getFavourites();
         setFavouritesList(games);
         setTotalPages(getTotalPages(games));
@@ -55,14 +55,14 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
     /**
      * Get the total number of pages containing favourite games.
      */
-    function getTotalPages(games: Game[]) {
+    function getTotalPages(games: Game[]): number {
         if (games.length > PAGINATION_PAGE_SIZE && (games.length % PAGINATION_PAGE_SIZE === 0)) {
             return Math.floor(games.length / PAGINATION_PAGE_SIZE);
         }
         return (Math.floor(games.length / PAGINATION_PAGE_SIZE) + 1);
     }
 
-    function sortFavourites(favourites: Game[]) {
+    function sortFavourites(favourites: Game[]): Game[] {
         return favourites.sort((a, b) => a.title.localeCompare(b.title));
     }
 
@@ -121,7 +121,7 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
         return favouritesPage === Math.floor(favouritesList.length / PAGINATION_PAGE_SIZE) + 1;
     }
 
-    function isEmptyLastPage() {
+    function isEmptyLastPage(): boolean {
         return (favouritesList.length - 1) % PAGINATION_PAGE_SIZE === 0;
     }
 

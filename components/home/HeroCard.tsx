@@ -7,7 +7,7 @@ import { silkScreen, singleDay } from "@/fonts/fonts";
 
 import "./HeroCard.css";
 
-export function HeroCard({ game }: { game: Game }): ReactElement<ReactElement> {
+export function HeroCard({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     return (

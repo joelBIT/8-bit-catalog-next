@@ -12,7 +12,7 @@ import "./Pagination.css";
  * Pagination is used to navigate between pages of a search result. Pressing the Previous or Next button invokes a call to the database to retrieve
  * the desired page of a search result.
  */
-export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchResult }: { currentPage: number, setCurrentPage: (page: number) => void, totalPages: number, setSearchResult: (games: Game[]) => void }): ReactElement<ReactElement> {
+export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchResult }: { currentPage: number, setCurrentPage: (page: number) => void, totalPages: number, setSearchResult: (games: Game[]) => void }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const title = params.get('title') as string;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
@@ -11,12 +11,12 @@ import hamburger from "../../assets/hamburger_icon.png";
 
 import "./AuthenticatedNavBar.css";
 
-export function AuthenticatedNavBar() {
-    const [ showMenu, setShowMenu ] = useState(false);
+export function AuthenticatedNavBar(): ReactElement {
+    const [ showMenu, setShowMenu ] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
 
-    async function logout() {
+    async function logout(): Promise<void> {
         signOut();
         router.refresh();
     }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -10,8 +10,8 @@ import hamburger from "../../assets/hamburger_icon.png";
 
 import "./NavBar.css";
 
-export function NavBar() {
-    const [ showMenu, setShowMenu ] = useState(false);
+export function NavBar(): ReactElement {
+    const [ showMenu, setShowMenu ] = useState<boolean>(false);
     const pathname = usePathname();
     
     return (

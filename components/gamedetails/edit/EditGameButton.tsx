@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation';
 
 import "./EditGameButton.css";
 
-export function EditGameButton( { gameId } : { gameId: number}): ReactElement<ReactElement> {
+export function EditGameButton( { gameId } : { gameId: number}): ReactElement {
     const router = useRouter();
 
-    function editGame() {
+    function editGame(): void {
         router.push(`/gamedetails/${gameId}/edit`);
     }
 
