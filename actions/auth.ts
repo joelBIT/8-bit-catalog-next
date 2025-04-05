@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { createAccount, getAccount, getUserByEmail, registerUser } from "@/db/db";
+import { createAccount, getAccountByUserId, getUserByEmail, registerUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
@@ -20,13 +20,9 @@ export async function login(_prevState: any, formData: FormData) {
 
     try {
         const user = await getUserByEmail(email);
-        const account = await getAccount(user.id);
+        const account = await getAccountByUserId(user.id);
 
-        if (account.error?.code) {
-            return { message: 'No such account', success: false };
-        }
-
-        if (!account.data?.activated) {
+        if (!account.activated) {
             return { message: 'Account is not activated', success: false };
         }
 
