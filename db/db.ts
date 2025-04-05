@@ -1,4 +1,4 @@
-import { Game, SearchFilter, SearchResult, Session } from '@/types/types';
+import { Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
@@ -34,6 +34,11 @@ const ACCOUNT_TABLE = "account";
  * GAMES *
  *********/
 
+/**
+ * Updates an existing game. If a new cover has been chosen it is uploaded to a storage bucket. After that the
+ * cover name is updated for the game in the database since this cover name is used to reference the
+ * cover image in the storage bucket.
+ */
 export async function updateGameById(game: Game, file: File): Promise<void> {
     if (file.name !== 'undefined') {                            // New game cover was chosen so the cover file must be uploaded to the storage bucket
         await uploadFile(game.cover, file, COVERS_STORAGE);
@@ -49,7 +54,7 @@ export async function updateGameById(game: Game, file: File): Promise<void> {
     }
 }
 
-export async function getGameById(id: number) {
+export async function getGameById(id: number): Promise<Game> {
     const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
     return data;
 }
@@ -66,7 +71,7 @@ export async function getGameById(id: number) {
  * Uploads file to storage (bucket). The file is stored in the supplied folder. If no folder name is supplied the file is stored in root.
  * If the file already exists (i.e., same name) at the destination, it is overwritten with the new file.
  */
-async function uploadFile(fileName: string, file: File, storage: string, folder: string = "") {
+async function uploadFile(fileName: string, file: File, storage: string, folder: string = ""): Promise<void> {
     const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file, {
         cacheControl: '3600',
         upsert: true
@@ -163,26 +168,26 @@ export async function filterSearch(filters: SearchFilter): Promise<SearchResult>
     return {games: data, count: count ? count : 0};
 }
 
-// Convert All to % because the postgres function named 'games' uses % as wildcard (matches sequences of characters).
-function convertFilterAll(value: string) {
+// Convert 'All' to % because the postgres function named 'games' uses % as wildcard (matches sequences of characters).
+function convertFilterAll(value: string): string {
     return value === 'All' ? '%' : value;
 }
 
 /**
  * Retrieves all game developers by invoking a postgres function named 'developers'.
  */
-export async function getAllDevelopers() {
+export async function getAllDevelopers(): Promise<string[]> {
     return await invokePostgresFunction('developers');
 }
 
 /**
  * Retrieves all game publishers by invoking a postgres function named 'publishers'.
  */
-export async function getAllPublishers() {
+export async function getAllPublishers(): Promise<string[]> {
     return await invokePostgresFunction('publishers');
 }
 
-async function invokePostgresFunction(functionName: string) {
+async function invokePostgresFunction(functionName: string): Promise<string[]> {
     const { data, error } = await databaseClient.rpc(functionName);         // Invokes the named Postgres function
     if (error) {
         console.log(error);
@@ -207,7 +212,7 @@ const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
  * email already exists in the user table.
  */
-export async function registerUser(email: string, password_hash: string) {
+export async function registerUser(email: string, password_hash: string): Promise<{id: number, email: string}> {
     const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
     
     if (error) {
@@ -223,12 +228,24 @@ export async function registerUser(email: string, password_hash: string) {
     return data;
 }
 
-export async function getUserByEmail(email: string) {
-    return await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', email).single();
+export async function getUserByEmail(email: string): Promise<User> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', email).single();
+    if (error) {
+        console.log(error);
+        throw error;
+    } else {
+        return data;
+    }
 }
 
-export async function getUserById(id: number) {
-    return await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('id', id).single();
+export async function getUserById(id: number): Promise<User> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('id', id).single();
+    if (error) {
+        console.log(error);
+        throw error;
+    } else {
+        return data;
+    }
 }
 
 export async function updateUser(id: number, password_hash: string, last_name: string, first_name: string) {

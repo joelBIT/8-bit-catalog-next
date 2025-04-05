@@ -27,8 +27,8 @@ export async function isAuthenticatedAdmin() {
     const session = await getValidatedSession();
 
     if (session) {
-        const { data } = await getUserById(session.user_id);
-        return data?.role === 'admin';        
+        const user = await getUserById(session.user_id);
+        return user.role === 'admin';        
     }
 
     return false;
@@ -41,12 +41,6 @@ export async function isAuthenticatedAdmin() {
 export async function getUserFromSession() {
     const session = await getValidatedSession();
     if (session) {
-        const { data, error } = await getUserById(session?.user_id);
-        if (data) {
-            return data;
-        }
-        if (error) {
-            console.log(error);
-        }
+        return await getUserById(session?.user_id);
     }
 }

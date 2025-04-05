@@ -20,7 +20,7 @@ export async function login(_prevState: any, formData: FormData) {
 
     try {
         const user = await getUserByEmail(email);
-        const account = await getAccount(user.data?.id);
+        const account = await getAccount(user.id);
 
         if (account.error?.code) {
             return { message: 'No such account', success: false };
@@ -30,14 +30,14 @@ export async function login(_prevState: any, formData: FormData) {
             return { message: 'Account is not activated', success: false };
         }
 
-        const validPassword = await verifyPasswordHash(user.data?.password_hash, password);
+        const validPassword = await verifyPasswordHash(user.password_hash, password);
         if (!validPassword) {
             return { message: 'Password is incorrect', success: false };
         }
 
         const authenticated = await isAuthenticated();
         if (!authenticated) {                           // Only create a new session when the user is not logged in
-            await initiateSession(user.data?.id);
+            await initiateSession(user.id);
         }
     } catch (error) {
         return { message: 'Could not log in', success: false };
