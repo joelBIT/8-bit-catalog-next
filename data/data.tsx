@@ -1,5 +1,14 @@
 import { SearchFilter, SearchResult } from '@/types/types';
 
+
+/********************************************************************************************
+* This file contains functions that make API calls to the Route Handlers in the /api folder *
+********************************************************************************************/
+
+
+/**
+ * Retrieve games that match the search filters.
+ */
 export async function getGames(filters: SearchFilter): Promise<SearchResult> {
     try {
         const response = await fetch(`/api/games?title=${filters.title.trim()}&category=${filters.category}&developer=${filters.developer}&publisher=${filters.publisher}&page=${filters.page}`);
@@ -23,6 +32,9 @@ export async function getFavourites() {
     }
 }
 
+/**
+ * Persist a favourite game in the database for user with an active session.
+ */
 export async function addFavouriteGameToDatabase(game_id: number) {
     try {
         await fetch(`/api/favourites`, {
@@ -34,6 +46,9 @@ export async function addFavouriteGameToDatabase(game_id: number) {
     }
 }
 
+/**
+ * Delete a favourite game in the database for user with an active session.
+ */
 export async function deleteFavouriteGameFromDatabase(game_id: number) {
     try {
         await fetch(`/api/favourites`, {
