@@ -31,6 +31,15 @@
         grid-row: 4;
     }
 
+    .romSection {
+        grid-row: 4;
+
+        #rom-select {
+            font-size: 1.4rem;
+            padding: .2rem;
+        }
+    }
+
     #coverSection {
         grid-row: 1;
         

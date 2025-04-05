@@ -34,15 +34,19 @@ const ACCOUNT_TABLE = "account";
  * GAMES *
  *********/
 
-export async function updateGameById(game: Game, file: File) {
-    if (file.name === 'undefined') {                            // No new cover was chosen for the game
-        const { cover, ...data } = game;             // Remove cover property since the cover is not updated
-        return await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
+export async function updateGameById(game: Game, file: File): Promise<void> {
+    if (file.name !== 'undefined') {                            // New game cover was chosen so the cover file must be uploaded to the storage bucket
+        await uploadFile(game.cover, file, COVERS_STORAGE);
+        await databaseClient.from(GAMES_TABLE).update({ cover: game.cover }).eq('id', game.id);     // Update game cover name
+    } 
+    
+    const { cover, ...data } = game;             // Remove cover property since the cover is already taken care of (not updated if not changed)
+    const { error } = await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(`Updated game ${game.title} successfully`);
     }
-
-    await uploadFile(game.cover, file, COVERS_STORAGE);
-
-    return await databaseClient.from(GAMES_TABLE).update(game).eq('id', game.id);
 }
 
 export async function getGameById(id: number) {
