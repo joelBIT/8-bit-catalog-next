@@ -4,6 +4,16 @@ import { cookies } from "next/headers";
 import { validateSession } from "./session";
 import { Session } from "@/types/types";
 
+
+
+/******************************************************************************************
+* This file contains functions that creates or deletes session cookies on the server side *
+******************************************************************************************/
+
+
+
+
+
 /**
  * Set a cookie with the session token when the user signs up/in.
  */
