@@ -12,7 +12,7 @@ export default function ActivationEmail(activationCode: string) {
                 </Row>
                 <Row>
                     <Text style={{ fontSize: "1.3rem"}}>
-                        Please click on the following link to verify your email: <Link href={`http://localhost:3000/activate/${activationCode}`}> verify </Link>
+                        Please click on the following link to verify your email: <Link href={`${process.env.DOMAIN_URL}/activate/${activationCode}`}> verify </Link>
                     </Text>
                 </Row>
             </Section>
