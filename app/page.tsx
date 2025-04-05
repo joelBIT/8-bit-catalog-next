@@ -11,7 +11,7 @@ export default async function Home(): Promise<ReactElement<ReactElement>> {
 
     return (
         <main id="landingPage">
-            <HeroCard game={await getGameById(Math.floor(Math.random() * 970 + 1))} />
+            <HeroCard game={await getGameById(Math.floor(Math.random() * 980 + 1))} />
             <video autoPlay muted loop id="background-video" src="/nintendo.mp4" />
         </main>
     );

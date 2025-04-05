@@ -19,7 +19,6 @@ import { User } from "@/types/types";
  */
 export async function isAuthenticated(): Promise<boolean> {
     const session = await getValidatedSession();
-
     if (!session) {
         return false;       // If no session exist, the user is not authenticated
     }
@@ -34,7 +33,6 @@ export async function isAuthenticated(): Promise<boolean> {
  */
 export async function isAuthenticatedAdmin(): Promise<boolean> {
     const session = await getValidatedSession();
-
     if (!session) {
         return false;       // If no session exist, the user is not authenticated
     }
