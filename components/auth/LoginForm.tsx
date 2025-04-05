@@ -11,7 +11,7 @@ import { EmailInput, PasswordInput } from "../common";
 import "./LoginForm.css";
 
 export function LoginForm(): ReactElement<ReactElement> {
-    const [state, formAction] = useActionState(login, { message: '', success: false });
+    const [ state, formAction ] = useActionState(login, { message: '', success: false });
     const formRef = useRef<HTMLFormElement>(null);
     const { loadFavouriteGames } = useContext(FavouritesContext);
     

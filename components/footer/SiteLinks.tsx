@@ -1,11 +1,12 @@
 'use client';
 
+import { ReactElement } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import "./SiteLinks.css";
 
-export function SiteLinks( { authenticated } : { authenticated: boolean} ) {
+export function SiteLinks( { authenticated } : { authenticated: boolean} ): ReactElement {
     const pathname = usePathname();
 
     const SITELINKS = [

@@ -8,7 +8,7 @@ import { PlayRomLink } from "./PlayRomLink";
 
 import "./GameDetailsCard.css";
 
-export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement<ReactElement>> {
+export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement> {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     return (

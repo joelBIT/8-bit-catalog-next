@@ -4,7 +4,7 @@ import logo from "../../assets/Logo.jpeg";
 
 import "./Logo.css";
 
-export function Logo(): ReactElement<ReactElement> {
+export function Logo(): ReactElement {
     return (
         <figure id="logo">
             <Image src={logo} alt="logo" width={200} className="logo__image" />

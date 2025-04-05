@@ -19,8 +19,8 @@ import "./GameCard.css";
  * @returns             a clickable card with game information
  */
 export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
-    const [ isFadingOut, setIsFadingOut ] = useState(false);
-    const [ removeCard, setRemoveCard ] = useState(false);
+    const [ isFadingOut, setIsFadingOut ] = useState<boolean>(false);
+    const [ removeCard, setRemoveCard ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
     
     return (
