@@ -1,4 +1,11 @@
 #accountMenu {
     display: flex;
     flex-direction: column;
+    background: var(--color-black);
+
+    #menus, #settings {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
