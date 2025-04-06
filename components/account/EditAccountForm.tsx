@@ -1,15 +1,15 @@
 'use client';
 
-import { ReactElement, useActionState, useState, useEffect } from "react";
+import { ReactElement, useActionState, useState, useEffect, useContext } from "react";
 import { arima } from "@/fonts/fonts";
-import { update } from "@/actions/account";
-import { User } from "@/types/types";
-import { PasswordInput } from "../common";
+import { updateDashboard } from "@/actions/account";
+import { AccountContext } from "@/contexts/AccountContextProvider";
 
 import "./EditAccountForm.css";
 
-export function EditAccountForm({ user } : { user: User }): ReactElement<ReactElement> {
-    const [ state, formAction ] = useActionState(update.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
+export function EditAccountForm(): ReactElement<ReactElement> {
+    const { user } = useContext(AccountContext);
+    const [ state, formAction ] = useActionState(updateDashboard.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
 
     useEffect(() => {
@@ -44,9 +44,6 @@ export function EditAccountForm({ user } : { user: User }): ReactElement<ReactEl
                         className={arima.className} 
                         defaultValue={state?.success ? state.lastName : user?.last_name} 
                     />
-
-                    <PasswordInput id="password" placeholder="Password" />
-                    <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
                     <button className="accountButton" type="submit">Save</button>
                 </form>
