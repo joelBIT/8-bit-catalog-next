@@ -1,0 +1,36 @@
+#accountMenu {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-black);
+    gap: 4rem;
+
+    #menus, #settings {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .menus-title, .settings-title {
+            margin-left: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        & .account-menu__link {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            font-size: 1.7rem;
+            padding-left: 1rem;
+            padding-right: 2rem;
+
+            &:hover{
+                filter: brightness(1.5);
+            }
+        }
+
+        & .active {
+            border-right: solid;
+            background-color: hsl(0, 3%, 12%);
+        }
+    }
+}

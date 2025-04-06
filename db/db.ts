@@ -246,8 +246,12 @@ export async function getUserById(id: number): Promise<User> {
     return data;
 }
 
-export async function updateUser(id: number, password_hash: string, last_name: string, first_name: string): Promise<void> {
-    await databaseClient.from(USER_TABLE).update({password_hash, last_name, first_name}).eq('id', id);
+export async function updateUser(id: number, last_name: string, first_name: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({last_name, first_name}).eq('id', id);
+}
+
+export async function updatePassword(id: number, password_hash: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({password_hash}).eq('id', id);
 }
 
 export async function updateUserBio(id: number, bio: string): Promise<void> {

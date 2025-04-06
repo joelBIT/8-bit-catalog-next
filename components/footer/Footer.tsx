@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Contact, OtherLinks, SiteLinks } from ".";
-import { isAuthenticated } from "@/app/utils/utils";
+import { isAuthenticated } from "@/app/_session/utils";
 
 import "./Footer.css";
 

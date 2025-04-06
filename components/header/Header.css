@@ -14,7 +14,7 @@ header {
             width: 15vw;
 
             &:hover {
-                transform: scale(1.1);
+                filter: brightness(1.5);
                 transition: transform 0.3s ease;
             }
         }

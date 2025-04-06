@@ -44,9 +44,9 @@ export function AuthenticatedNavBar(): ReactElement {
                 </li>
                 <li className="navbar__list-element">
                     <Link 
-                        href="/account"
+                        href="/dashboard"
                         onClick={() => setShowMenu(false)}
-                        className={pathname === "/account" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                        className={pathname === "/dashboard" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
                         <span className="material-symbols-outlined wideScreen">account_circle</span>
                         <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Account</h2>

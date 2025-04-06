@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Game } from "@/types/types";
+import { Game, User } from "@/types/types";
 
 export interface FavouritesContextProvider {
     favouritesList: Game[];
@@ -9,6 +9,10 @@ export interface FavouritesContextProvider {
     setFavouritesPage: (page: number) => void;
     totalPages: number;
     loadFavouriteGames: () => void;
+}
+
+export interface AccountContextProvider {
+    user: User;
 }
 
 export interface ContextProviderChildren {

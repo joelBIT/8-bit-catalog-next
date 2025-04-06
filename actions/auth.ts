@@ -9,7 +9,7 @@ import { hashPassword, verifyPasswordHash } from "@/auth/password";
 import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 import ActivationEmail from "@/components/email/ActivationEmail";
-import { isAuthenticated } from "@/app/utils/utils";
+import { isAuthenticated } from "@/app/_session/utils";
 
 /**
  * This function is invoked when a user tries to log in (get access to the user's account).
@@ -40,7 +40,7 @@ export async function login(_prevState: any, formData: FormData) {
     }
 
     revalidatePath('/', 'layout');
-    redirect('/account');
+    redirect('/dashboard');
 }
 
 /**

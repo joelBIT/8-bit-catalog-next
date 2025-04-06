@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import { validateSession } from './auth/session';
-import { isAuthenticatedAdmin } from './app/utils/utils';
+import { isAuthenticatedAdmin } from './app/_session/utils';
 
 /**
  * Check if user has an active session. If not, redirect the user when trying to navigate to certain pages.
@@ -9,7 +9,7 @@ import { isAuthenticatedAdmin } from './app/utils/utils';
 export async function middleware(request: NextRequest) {
     const cookie = (await cookies()).get("session")?.value ?? null;
     if (!cookie) {
-        if (request.nextUrl.pathname.startsWith('/account') || request.nextUrl.pathname.endsWith('/edit')) {
+        if (request.nextUrl.pathname.startsWith('/dashboard') || request.nextUrl.pathname.endsWith('/edit')) {
             return redirect(request, '/forbidden');     // Unauthenticated user is not allowed to navigate to account or edit games
         }
     }
@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/gamedetails/:path/edit', '/account', '/login', '/register']
+    matcher: ['/gamedetails/:path/edit', '/dashboard', '/login', '/register']
 }
 
 function redirect(request: NextRequest, page: string) {
