@@ -29,8 +29,8 @@ export function SiteLinks( { authenticated } : { authenticated: boolean} ): Reac
                 }
                 <li key={SITELINKS.length}>
                     <Link 
-                        href={authenticated ? "/account" : "/login"} 
-                        className={pathname === "/login" || pathname === "/account" ? `active siteLinks__link` : `siteLinks__link`}>
+                        href={authenticated ? "/dashboard" : "/login"} 
+                        className={pathname === "/login" || pathname === "/dashboard" ? `active siteLinks__link` : `siteLinks__link`}>
                         <h4 className="siteLinks__link-title"> Account </h4>
                     </Link>
                 </li>
