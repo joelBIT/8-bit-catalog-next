@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/gamedetails/:path/edit', '/dashboard', '/login', '/register']
+    matcher: ['/gamedetails/:path/edit', '/dashboard', '/dashboard/:path', '/login', '/register']
 }
 
 function redirect(request: NextRequest, page: string) {
