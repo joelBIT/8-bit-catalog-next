@@ -6,7 +6,10 @@ import { EditAccountForm, EditProfileForm } from "@/components/account";
 
 import "./page.css";
 
-export default function AccountPage(): ReactElement {
+/**
+ * The dashboard of the account section.
+ */
+export default function DashboardPage(): ReactElement {
     const { loadFavouriteGames } = useContext(FavouritesContext);
 
     useEffect(() => {
