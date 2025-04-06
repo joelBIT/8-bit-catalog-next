@@ -25,7 +25,7 @@ export function EditProfileForm(): ReactElement {
                 <textarea name="bio" className="edit-profile__bio" defaultValue={state.bio ? state.bio : user.bio} placeholder="About me" />
             </article>
 
-            <button className="accountButton" type="submit"> Save </button>
+            <button className="gameButton" type="submit"> Save </button>
         </form>
     );
 }

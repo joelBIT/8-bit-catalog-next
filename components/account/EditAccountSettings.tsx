@@ -31,14 +31,14 @@ export function EditAccountSettings(): ReactElement {
             </section> : <></> }
 
             <section id="accountCard" className={arima.className}>
-                <h1 className="accountCard__title">Edit account settings</h1>
+                <h1 className="accountCard__title">Change password</h1>
 
-                <form id="accountForm" action={formAction}>
+                <form id="passwordForm" action={formAction}>
                     <PasswordInput id="oldPassword" placeholder="Old Password" />
                     <PasswordInput id="password" placeholder="New Password" />
                     <PasswordInput id="passwordRepeat" placeholder="Re-type New Password" />
 
-                    <button className="accountButton" type="submit">Save</button>
+                    <button className="gameButton" type="submit">Save</button>
                 </form>
             </section>
         </section>

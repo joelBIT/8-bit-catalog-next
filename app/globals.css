@@ -9,8 +9,6 @@
 
 :root {
     --color-bar-purple: #701296;
-    --color-accountbutton-hover: #27a727;
-    --color-account-green: #34c334;
     --color-card-light: #F4D9B7;
     --color-footer-heading: #D23C3C;
     --color-form: #D9D9D9;
@@ -201,21 +199,6 @@ textarea {
         background-color: rgba(255, 255, 255, 0.1);
     }
 }
-
-.accountButton {
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    border-radius: 8px;
-    background-color: var(--color-account-green);
-    font-weight: 600;
-    margin-top: 1rem;
-
-    &:hover {
-        background-color: var(--color-accountbutton-hover);
-    }
-}
-
-
 
 
 
