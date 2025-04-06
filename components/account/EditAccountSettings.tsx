@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
 import { AccountContext } from "@/contexts/AccountContextProvider";
-import { updateSettings } from "@/actions/account";
+import { updateAccountPassword } from "@/actions/account";
 import { arima } from "@/fonts/fonts";
 import { PasswordInput } from "../common";
 
@@ -10,7 +10,7 @@ import "./EditAccountSettings.css";
 
 export function EditAccountSettings(): ReactElement {
     const { user } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateSettings.bind(null, user.id), { message: '', success: false });
+    const [ state, formAction ] = useActionState(updateAccountPassword.bind(null, user.id), { message: '', success: false });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
 
     useEffect(() => {
@@ -34,8 +34,9 @@ export function EditAccountSettings(): ReactElement {
                 <h1 className="accountCard__title">Edit account settings</h1>
 
                 <form id="accountForm" action={formAction}>
-                    <PasswordInput id="password" placeholder="Password" />
-                    <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
+                    <PasswordInput id="oldPassword" placeholder="Old Password" />
+                    <PasswordInput id="password" placeholder="New Password" />
+                    <PasswordInput id="passwordRepeat" placeholder="Re-type New Password" />
 
                     <button className="accountButton" type="submit">Save</button>
                 </form>

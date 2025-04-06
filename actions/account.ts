@@ -1,12 +1,14 @@
 'use server';
 
-import { updatePassword, updateProfileImage, updateUser, updateUserBio } from "@/db/db";
-import { hashPassword } from "@/auth/password";
+import { getUserById, updatePassword, updateProfileImage, updateUser, updateUserBio } from "@/db/db";
+import { hashPassword, verifyPasswordHash } from "@/auth/password";
 
 /**
  * This function is invoked when a user updates account information such as account password.
+ * A user must enter the correct current password before it is updated to the new password.
  */
-export async function updateSettings(userId: number, _prevState: any, formData: FormData) {
+export async function updateAccountPassword(userId: number, _prevState: any, formData: FormData) {
+    const oldPassword = formData.get('oldPassword') as string;
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
 
@@ -15,12 +17,19 @@ export async function updateSettings(userId: number, _prevState: any, formData: 
     }
 
     try {
+        const user = await getUserById(userId);
+        const validPassword = await verifyPasswordHash(user.password_hash, oldPassword);
+        if (!validPassword) {
+            return { message: 'Old password is incorrect', success: false };
+        }
+
         const passwordHash = await hashPassword(password);
         await updatePassword(userId, passwordHash);
-        return { message: 'The account was successfully updated', success: true };
+
+        return { message: 'The password was successfully updated', success: true };
     } catch (error) {
         console.log(error);
-        return { message: 'The account could not be updated', success: false };
+        return { message: 'The password could not be updated', success: false };
     }
 }
 
