@@ -29,7 +29,7 @@ export function AccountMenu(): ReactElement {
                     <span className="material-symbols-outlined"> dashboard </span> Dashboard 
                 </Link>
 
-                <Link href="/dashboard/profile" className="account-menu__link"> 
+                <Link href="/dashboard/profile" className={pathname === "/dashboard/profile" ? "account-menu__link active" : "account-menu__link"}> 
                     <span className="material-symbols-outlined"> person </span> Profile 
                 </Link>
             </article>
@@ -37,7 +37,7 @@ export function AccountMenu(): ReactElement {
             <article id="settings">
                 <h1 className="settings-title">Account settings</h1>
 
-                <Link href="/dashboard/settings" className="account-menu__link"> 
+                <Link href="/dashboard/settings" className={pathname === "/dashboard/settings" ? "account-menu__link active" : "account-menu__link"}> 
                     <span className="material-symbols-outlined"> settings </span> Settings 
                 </Link>
 

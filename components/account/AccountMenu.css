@@ -19,9 +19,9 @@
             align-items: center;
             justify-content: flex-start;
             gap: 1rem;
-            font-size: 1.6rem;
-            margin-left: 1rem;
-            margin-right: 2rem;
+            font-size: 1.7rem;
+            padding-left: 1rem;
+            padding-right: 2rem;
 
             &:hover{
                 filter: brightness(1.5);
@@ -29,7 +29,8 @@
         }
 
         & .active {
-            border-right: solid 1px red;
+            border-right: solid;
+            background-color: hsl(0, 3%, 12%);
         }
     }
 }
