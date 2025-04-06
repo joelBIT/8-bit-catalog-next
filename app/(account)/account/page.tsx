@@ -3,7 +3,7 @@
 import { ReactElement, useContext, useEffect, useState } from "react";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 import { EditAccountForm, EditProfileForm } from "@/components/account";
-import { getUserFromSession } from "../_session/utils";
+import { getUserFromSession } from "../../_session/utils";
 import { User } from "@/types/types";
 
 import "./page.css";
