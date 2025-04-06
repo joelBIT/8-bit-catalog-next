@@ -45,7 +45,7 @@ export function EditAccountForm(): ReactElement<ReactElement> {
                         defaultValue={state?.success ? state.lastName : user?.last_name} 
                     />
 
-                    <button className="accountButton" type="submit">Save</button>
+                    <button className="gameButton" type="submit">Save</button>
                 </form>
             </section>
         

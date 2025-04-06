@@ -38,7 +38,7 @@ export function EditAccountSettings(): ReactElement {
                     <PasswordInput id="password" placeholder="New Password" />
                     <PasswordInput id="passwordRepeat" placeholder="Re-type New Password" />
 
-                    <button className="accountButton" type="submit">Save</button>
+                    <button className="gameButton" type="submit">Save</button>
                 </form>
             </section>
         </section>
