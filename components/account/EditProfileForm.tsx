@@ -9,13 +9,13 @@ import "./EditProfileForm.css";
 
 export function EditProfileForm(): ReactElement {
     const { user } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: user.image });
+    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: user?.image });
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     return (
         <form id="editProfileForm" action={formAction}>
             <section className="edit-profile-image">
-                <img src={STORAGE_URL + state.image} className="profile-image" alt="Profile image" />
+                <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + user?.image} className="profile-image" alt="Profile image" />
                 <h2 className="edit-profile__change-image"> Change profile image <input name="profileImage" type="file" accept={imageTypes.toString()} />  </h2>
             </section>
 

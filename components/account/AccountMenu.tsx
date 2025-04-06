@@ -2,7 +2,7 @@
 
 import { ReactElement } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "@/auth/session";
 
 import "./AccountMenu.css";
@@ -11,6 +11,7 @@ import "./AccountMenu.css";
  * Used to navigate between account-specific sections.
  */
 export function AccountMenu(): ReactElement {
+    const pathname = usePathname();
     const router = useRouter();
 
     async function logout(event: React.MouseEvent<HTMLAnchorElement>): Promise<void> {
@@ -24,7 +25,7 @@ export function AccountMenu(): ReactElement {
             <article id="menus">
                 <h1 className="menus-title">Menus</h1>
 
-                <Link href="/dashboard" className="account-menu__link">
+                <Link href="/dashboard" className={pathname === "/dashboard" ? "account-menu__link active" : "account-menu__link"}>
                     <span className="material-symbols-outlined"> dashboard </span> Dashboard 
                 </Link>
 

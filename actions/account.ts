@@ -27,7 +27,7 @@ export async function updateSettings(userId: number, _prevState: any, formData: 
 /**
  * This function is invoked when updating user information such as name.
  */
-export async function updateDashboard(userId: number, _prevState: any, formData: FormData) {
+export async function updateUserDetails(userId: number, _prevState: any, formData: FormData) {
     try {
         const firstName = formData.get('firstName') as string;
         const lastName = formData.get('lastName') as string;

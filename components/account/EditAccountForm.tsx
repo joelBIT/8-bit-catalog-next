@@ -2,14 +2,14 @@
 
 import { ReactElement, useActionState, useState, useEffect, useContext } from "react";
 import { arima } from "@/fonts/fonts";
-import { updateDashboard } from "@/actions/account";
+import { updateUserDetails } from "@/actions/account";
 import { AccountContext } from "@/contexts/AccountContextProvider";
 
 import "./EditAccountForm.css";
 
 export function EditAccountForm(): ReactElement<ReactElement> {
     const { user } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateDashboard.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
+    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
 
     useEffect(() => {
