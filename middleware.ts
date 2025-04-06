@@ -9,7 +9,7 @@ import { isAuthenticatedAdmin } from './app/_session/utils';
 export async function middleware(request: NextRequest) {
     const cookie = (await cookies()).get("session")?.value ?? null;
     if (!cookie) {
-        if (request.nextUrl.pathname.startsWith('/account') || request.nextUrl.pathname.endsWith('/edit')) {
+        if (request.nextUrl.pathname.startsWith('/dashboard') || request.nextUrl.pathname.endsWith('/edit')) {
             return redirect(request, '/forbidden');     // Unauthenticated user is not allowed to navigate to account or edit games
         }
     }
@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/gamedetails/:path/edit', '/account', '/login', '/register']
+    matcher: ['/gamedetails/:path/edit', '/dashboard', '/login', '/register']
 }
 
 function redirect(request: NextRequest, page: string) {
