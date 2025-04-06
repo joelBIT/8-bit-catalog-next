@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import { validateSession } from './auth/session';
-import { isAuthenticatedAdmin } from './app/utils/utils';
+import { isAuthenticatedAdmin } from './app/_session/utils';
 
 /**
  * Check if user has an active session. If not, redirect the user when trying to navigate to certain pages.

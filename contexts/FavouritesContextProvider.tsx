@@ -5,7 +5,7 @@ import { FavouritesContextProvider, ContextProviderChildren } from "@/interfaces
 import { Game } from "@/types/types";
 import { isLocalStorageAvailable, PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { addFavouriteGameToDatabase, deleteFavouriteGameFromDatabase, getFavourites } from "@/data/data";
-import { isAuthenticated } from "@/app/utils/utils";
+import { isAuthenticated } from "@/app/_session/utils";
 
 export const FavouritesContext = createContext<FavouritesContextProvider>({} as FavouritesContextProvider);
 
