@@ -26,7 +26,6 @@ export default function AccountPage(): ReactElement {
 
     return (
         <main id="accountPage">
-            <h1 className="accountPage__title"> Account </h1>
             <section className="accountPage__forms">
                 { user ? <EditAccountForm user={user} /> : <></> }
                 { user ? <EditProfileForm user={user} /> : <></> }
