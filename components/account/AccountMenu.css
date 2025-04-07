@@ -3,6 +3,7 @@
     flex-direction: column;
     background: var(--color-black);
     gap: 4rem;
+    padding-top: 3rem;
 
     #menus, #settings {
         display: flex;
