@@ -21,30 +21,41 @@ export function AccountMenu(): ReactElement {
     }
 
     return (
-        <section id="accountMenu">
-            <article id="menus">
-                <h1 className="menus-title">Menus</h1>
+        <div id="accountMenu-wrapper">
+            <input id="hamburger-side" type="checkbox" />
+            <label htmlFor="hamburger-side" className="hamburger-side">
+                <i></i>
+                <div className="text">
+                    <h3 className="close">close</h3>
+                    <h3 className="open">menu</h3>
+                </div>
+            </label>
 
-                <Link href="/dashboard" className={pathname === "/dashboard" ? "account-menu__link active" : "account-menu__link"}>
-                    <span className="material-symbols-outlined"> dashboard </span> Dashboard 
-                </Link>
+            <section id="accountMenu">
+                <article id="pages">
+                    <h1 className="pages-title">Pages</h1>
 
-                <Link href="/dashboard/profile" className={pathname === "/dashboard/profile" ? "account-menu__link active" : "account-menu__link"}> 
-                    <span className="material-symbols-outlined"> person </span> Profile 
-                </Link>
-            </article>
+                    <Link href="/dashboard" className={pathname === "/dashboard" ? "account-menu__link active" : "account-menu__link"}>
+                        <span className="material-symbols-outlined" title="Dashboard"> dashboard </span> 
+                        <h1 className="menu__link-title"> Dashboard </h1> 
+                    </Link>
 
-            <article id="settings">
-                <h1 className="settings-title">Account settings</h1>
+                    <Link href="/dashboard/profile" className={pathname === "/dashboard/profile" ? "account-menu__link active" : "account-menu__link"}> 
+                        <span className="material-symbols-outlined" title="Profile"> person </span>
+                        <h1 className="menu__link-title"> Profile </h1>
+                    </Link>
 
-                <Link href="/dashboard/settings" className={pathname === "/dashboard/settings" ? "account-menu__link active" : "account-menu__link"}> 
-                    <span className="material-symbols-outlined"> settings </span> Settings 
-                </Link>
+                    <Link href="/dashboard/settings" className={pathname === "/dashboard/settings" ? "account-menu__link active" : "account-menu__link"}> 
+                        <span className="material-symbols-outlined" title="Settings"> settings </span> 
+                        <h1 className="menu__link-title"> Settings </h1>
+                    </Link>
 
-                <Link href="#" className="account-menu__link" onClick={logout}> 
-                    <span className="material-symbols-outlined"> power_settings_new </span> Logout 
-                </Link>
-            </article>
-        </section>
+                    <Link href="#" className="account-menu__link logout-link" onClick={logout}> 
+                        <span className="material-symbols-outlined" title="Logout"> power_settings_new </span> 
+                        <h1 className="menu__link-title"> Logout </h1>
+                    </Link>
+                </article>
+            </section>
+        </div>
     );
 }

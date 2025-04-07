@@ -51,6 +51,10 @@
                 .navbar__list-element-link {
                     font-size: 3vw;
                 }
+
+                .material-symbols-outlined {
+                    font-size: 3rem;
+                }
             }
         }
     }
