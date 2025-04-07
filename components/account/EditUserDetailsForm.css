@@ -1,5 +1,6 @@
-#account-edit__card {
+#userDetails-edit__card {
     display: flex;
+    flex-direction: column;
     align-self: flex-start;
 
     #accountCard {
@@ -29,15 +30,8 @@
     }
 }
 
-@media (max-width: 1400px) {
-    #account-edit__card {
-        flex-direction: column-reverse;
-        align-self: center;
-    }
-}
-
 @media (max-width: 550px) {
-    #account-edit__card {
+    #userDetails-edit__card {
         #accountCard {
             padding: 1rem 3rem 2rem;
     

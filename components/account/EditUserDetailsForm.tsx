@@ -5,7 +5,7 @@ import { arima } from "@/fonts/fonts";
 import { updateUserDetails } from "@/actions/account";
 import { AccountContext } from "@/contexts/AccountContextProvider";
 
-import "./EditAccountForm.css";
+import "./EditUserDetailsForm.css";
 
 export function EditUserDetailsForm(): ReactElement<ReactElement> {
     const { user } = useContext(AccountContext);
@@ -22,7 +22,7 @@ export function EditUserDetailsForm(): ReactElement<ReactElement> {
     }, [state]);
 
     return (
-        <section id="account-edit__card">
+        <section id="userDetails-edit__card">
             { showMessage ? 
                 <section>
                     <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
