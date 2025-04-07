@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     background-image: url("../../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    align-items: center;
 
     & .settingsPage__title {
         margin-bottom: 3rem;

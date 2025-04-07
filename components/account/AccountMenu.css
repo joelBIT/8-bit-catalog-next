@@ -1,5 +1,8 @@
 #accountMenu-wrapper {
     background: var(--color-black);
+    position: absolute;
+    height: 70%;
+    z-index: 1;
 
     #accountMenu {
         display: flex;
@@ -71,6 +74,7 @@
                 #pages {
                     .pages-title, .menu__link-title {
                         visibility: visible;
+                        transition: visibility 1s step-end;
                     }
                 }
             }
@@ -101,8 +105,8 @@
     }
     
     .hamburger-side {
-        position: fixed;
-        top: 14rem;
+        position: absolute;
+        top: 2rem;
         margin-left: 1rem;
         height: 26px;
         width: 26px;
@@ -162,22 +166,6 @@
             &:after {
                 transform: translate(-50%, 7px);
             }
-        }
-    }
-}
-  
-@media (max-width: 1000px) {
-    #accountMenu-wrapper {
-        .hamburger-side {
-            top: 10rem;
-        }
-    }
-}
-
-@media (max-width: 700px) {
-    #accountMenu-wrapper {
-        .hamburger-side {
-            top: 5rem;
         }
     }
 }
