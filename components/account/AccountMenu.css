@@ -1,37 +1,183 @@
-#accountMenu {
-    display: flex;
-    flex-direction: column;
+#accountMenu-wrapper {
     background: var(--color-black);
-    gap: 4rem;
-    padding-top: 3rem;
 
-    #menus, #settings {
+    #accountMenu {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 4rem;
+        padding-top: 3rem;
+        transition: width 1s ease-in-out;
+        width: 3.5rem;
 
-        .menus-title, .settings-title {
-            margin-left: 0.5rem;
-            margin-top: 1rem;
+        #pages {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .pages-title {
+                margin-left: 0.5rem;
+                margin-top: 3rem;
+                visibility: hidden;
+            }
+
+            & .account-menu__link {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 1rem;
+                font-size: 1.7rem;
+                padding-left: 1rem;
+                padding-right: 2rem;
+
+                & .menu__link-title {
+                    font-weight: 100;
+                    visibility: hidden;
+                }
+
+                &:hover{
+                    filter: brightness(1.5);
+                    cursor: pointer;
+                }
+            }
+
+            .logout-link {
+                margin-top: 2rem;
+            }
+
+            & .active {
+                border-right: solid;
+                background-color: hsl(0, 3%, 12%);
+            }
+        }
+    }
+
+
+
+
+
+
+    /**********************
+    * Hamburger Side Menu *
+    **********************/
+
+    #hamburger-side {
+        display: none;
+
+        &:checked {
+            & ~ #accountMenu {
+                width: 14rem;
+                transition: width 1s ease-in-out;
+
+                #pages {
+                    .pages-title, .menu__link-title {
+                        visibility: visible;
+                    }
+                }
+            }
+
+            & ~ label {
+                > i {
+                    background-color: transparent;
+                    transform: rotate(90deg);
+
+                    &:before {
+                        transform: translate(-50%, -50%) rotate(45deg);
+                    }
+
+                    &:after {
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                    }
+                }
+
+                .close {
+                    width: 100%;
+                }
+
+                .open {
+                    width: 0;
+                }
+            }
+        }
+    }
+    
+    .hamburger-side {
+        position: fixed;
+        top: 14rem;
+        margin-left: 1rem;
+        height: 26px;
+        width: 26px;
+
+        &:hover {
+            cursor: pointer;
         }
 
-        & .account-menu__link {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 1rem;
-            font-size: 1.7rem;
-            padding-left: 1rem;
-            padding-right: 2rem;
+        .text {
+            .close,
+            .open {
+                text-transform: uppercase;
+                text-align: center;
+                position: absolute;
+                transform: translateY(24px);
+                overflow: hidden;
+                transition: width .25s .35s, color .45s .35s;
+                font-size: 0.6rem;
+                color: var(--color-white);
+            }
 
-            &:hover{
-                filter: brightness(1.5);
+            .close {
+                right: 0;
+                width: 0;
+            }
+
+            .open {
+                width: 100%;
             }
         }
 
-        & .active {
-            border-right: solid;
-            background-color: hsl(0, 3%, 12%);
+        & > i {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            background-color: var(--color-white);
+            transition-duration: .35s;
+            transition-delay: .35s;
+
+            &:before,
+            &:after {
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                left: 50%;
+                background-color: var(--color-white);
+                content: "";
+                transition: transform 0.35s;
+                transform-origin: 50% 50%;
+            }
+
+            &:before {
+                transform: translate(-50%, -7px);
+            }
+
+            &:after {
+                transform: translate(-50%, 7px);
+            }
+        }
+    }
+}
+  
+@media (max-width: 1000px) {
+    #accountMenu-wrapper {
+        .hamburger-side {
+            top: 10rem;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    #accountMenu-wrapper {
+        .hamburger-side {
+            top: 5rem;
         }
     }
 }
