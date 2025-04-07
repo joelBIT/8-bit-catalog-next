@@ -1,4 +1,4 @@
 export * from "./AccountMenu";
-export * from "./EditAccountForm";
+export * from "./EditUserDetailsForm";
 export * from "./EditAccountSettings";
 export * from "./EditProfileForm";

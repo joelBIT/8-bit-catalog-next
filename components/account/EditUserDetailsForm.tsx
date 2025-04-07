@@ -5,9 +5,9 @@ import { arima } from "@/fonts/fonts";
 import { updateUserDetails } from "@/actions/account";
 import { AccountContext } from "@/contexts/AccountContextProvider";
 
-import "./EditAccountForm.css";
+import "./EditUserDetailsForm.css";
 
-export function EditAccountForm(): ReactElement<ReactElement> {
+export function EditUserDetailsForm(): ReactElement<ReactElement> {
     const { user } = useContext(AccountContext);
     const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
@@ -22,7 +22,15 @@ export function EditAccountForm(): ReactElement<ReactElement> {
     }, [state]);
 
     return (
-        <section id="account-edit__card">
+        <section id="userDetails-edit__card">
+            { showMessage ? 
+                <section>
+                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
+                        {state?.message}
+                    </h2>
+                </section> : <></> 
+            }
+
             <section id="accountCard" className={arima.className}>
                 <h1 className="accountCard__title">Edit Information</h1>
 
@@ -48,12 +56,6 @@ export function EditAccountForm(): ReactElement<ReactElement> {
                     <button className="gameButton" type="submit">Save</button>
                 </form>
             </section>
-        
-            { showMessage ? <section>
-                <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                    {state?.message}
-                </h2>
-            </section> : <></> }
         </section>
         
     );

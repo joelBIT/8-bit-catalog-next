@@ -24,11 +24,13 @@ export function EditAccountSettings(): ReactElement {
 
     return (
         <section id="editAccountSettings">
-            { showMessage ? <section>
-                <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                    {state?.message}
-                </h2>
-            </section> : <></> }
+            { showMessage ? 
+                <section>
+                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
+                        {state?.message}
+                    </h2>
+                </section> : <></> 
+            }
 
             <section id="accountCard" className={arima.className}>
                 <h1 className="accountCard__title">Change password</h1>
