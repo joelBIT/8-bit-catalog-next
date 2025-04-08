@@ -9,6 +9,16 @@
     }
 }
 
+@media (max-width: 700px) {
+    #dashboardPage {
+        .message-success, .message-failure {
+            font-size: 1rem;
+            text-align: center;
+            margin-left: 3rem;
+        }
+    }
+}
+
 @media (max-width: 400px) {
     #dashboardPage {
         padding: 1rem;
