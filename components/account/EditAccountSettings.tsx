@@ -23,7 +23,7 @@ export function EditAccountSettings(): ReactElement {
     }, [state]);
 
     return (
-        <section id="editAccountSettings">
+        <>
             { showMessage ? 
                 <section>
                     <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
@@ -43,6 +43,6 @@ export function EditAccountSettings(): ReactElement {
                     <button className="gameButton" type="submit">Save</button>
                 </form>
             </section>
-        </section>
+        </>
     );
 }
