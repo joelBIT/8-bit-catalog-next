@@ -25,7 +25,7 @@ export function AccountContexProvider({ children }: ContextProviderChildren): Re
     }
 
     return (
-        <AccountContext.Provider value={{ user }}>
+        <AccountContext.Provider value={{ user, addUser }}>
             { children }
         </AccountContext.Provider>
     );

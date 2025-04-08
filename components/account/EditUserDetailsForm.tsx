@@ -7,9 +7,9 @@ import { AccountContext } from "@/contexts/AccountContextProvider";
 
 import "./EditUserDetailsForm.css";
 
-export function EditUserDetailsForm(): ReactElement<ReactElement> {
-    const { user } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "", bio: '' });
+export function EditUserDetailsForm(): ReactElement {
+    const { user, addUser } = useContext(AccountContext);
+    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: '', lastName: '', bio: '' });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
 
     useEffect(() => {
@@ -18,6 +18,10 @@ export function EditUserDetailsForm(): ReactElement<ReactElement> {
             setTimeout(() => {
                 setShowMessage(false);
             }, 5000);
+        }
+
+        if (state.success) {
+            addUser();      // Update user in AccountContext
         }
     }, [state]);
 

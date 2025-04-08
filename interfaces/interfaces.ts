@@ -13,6 +13,7 @@ export interface FavouritesContextProvider {
 
 export interface AccountContextProvider {
     user: User;
+    addUser: () => Promise<void>
 }
 
 export interface ContextProviderChildren {
