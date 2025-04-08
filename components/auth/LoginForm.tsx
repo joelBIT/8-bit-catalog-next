@@ -32,7 +32,7 @@ export function LoginForm(): ReactElement<ReactElement> {
             }
 
             <section id="loginCard" className={arima.className}>
-                <h1 className="loginCard__heading">Sign in</h1>
+                <h1 className="loginCard__title">Sign in</h1>
         
                 <form id="loginForm" ref={formRef} action={formAction}>
                     <EmailInput />

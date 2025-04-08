@@ -1,50 +1,45 @@
-#register {
+#registerCard {
     display: flex;
     flex-direction: column;
+    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+    border-radius: 8px;
+    padding: 1rem 5rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-width: fit-content;
+    align-self: center;
 
-    #registerCard {
+    .registerCard__title {
+        color: var(--color-black);
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    #registerForm {
         display: flex;
         flex-direction: column;
-        background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
-        border-radius: 8px;
-        padding: 1rem 5rem 2rem;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        max-width: fit-content;
-        align-self: center;
-    
-        .registerCard__title {
-            color: var(--color-black);
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 1rem;
-        }
-    
-        #registerForm {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+        gap: 1rem;
+    }
 
-        #login-link {
-            display: flex;
-            color: var(--color-black);
-            margin-top: 1rem;
-            gap: 0.3rem;
-            font-size: 1rem;
-            align-self: end;
-            align-items: center;
-            
-            .login-link__text {
-                font-size: 1rem;
-            }
-
-            .registerCard__login-link {
-                color: var(--color-link);
-                font-weight: 600;
+    #login-link {
+        display: flex;
+        color: var(--color-black);
+        margin-top: 1rem;
+        gap: 0.3rem;
+        font-size: 1rem;
+        align-self: end;
+        align-items: center;
         
-                &:hover {
-                    filter: brightness(1.2);
-                }
+        .login-link__text {
+            font-size: 1rem;
+        }
+
+        .registerCard__login-link {
+            color: var(--color-link);
+            font-weight: 600;
+    
+            &:hover {
+                filter: brightness(1.2);
             }
         }
     }
@@ -54,30 +49,15 @@
         align-self: center;
         font-size: 2rem;
     }
-
-    & .message-failure, .message-success {
-        width: fit-content;
-        align-self: center;
-    }
 }
 
 @media (max-width: 600px) {
-    #register {
-        min-width: 90vw;
-        max-width: 95vw;
+    #registerCard {
+        padding: 1rem 1.5rem 2rem;
 
-        #registerCard {
-            min-width: inherit;
-            padding: 1rem 1.5rem 2rem;
-
-            .registerCard__title {
-                font-size: 2rem;
-            }
-    
-            #registerForm {
-                & input {
-                    font-size: 1rem;
-                }
+        #registerForm {
+            & input {
+                font-size: 1rem;
             }
         }
     }

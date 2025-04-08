@@ -7,10 +7,10 @@
     max-width: fit-content;
     align-self: center;
 
-    .loginCard__heading {
+    .loginCard__title {
         color: var(--color-black);
         text-align: center;
-        font-size: 36px;
+        font-size: 2rem;
         margin-bottom: 2rem;
     }
 
@@ -47,11 +47,8 @@
 @media (max-width: 600px) {
     #loginCard {
         padding: 1rem 1.5rem 2rem;
-        min-width: inherit;
-        max-width: 80vw;
 
-        .loginCard__heading {
-            font-size: 2rem;
+        .loginCard__title {
             margin-bottom: 1rem;
         }
 
