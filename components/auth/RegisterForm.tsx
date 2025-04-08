@@ -18,7 +18,7 @@ export function RegisterForm(): ReactElement<ReactElement> {
     }
 
     return (
-        <section id="register">
+        <>
             { state?.message ? 
                 <h2 className={state?.success ? "message-success" : "message-failure"}>
                     {state?.message}
@@ -47,6 +47,6 @@ export function RegisterForm(): ReactElement<ReactElement> {
                     </section>
                 </section>
             }
-        </section>
+        </>
     );
 }

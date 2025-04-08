@@ -1,7 +1,17 @@
-
 #loginPage {
-    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+}
+
+@media (max-width: 600px) {
+    #loginPage {
+        padding: 1rem;
+        
+        .message-failure, .message-success {
+            font-size: 1.5rem;
+        }
+    }
 }
