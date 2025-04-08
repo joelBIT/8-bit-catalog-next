@@ -26,46 +26,43 @@ export function EditUserDetailsForm(): ReactElement {
     }, [state]);
 
     return (
-        <section id="userDetails-edit__card">
+        <>
             { showMessage ? 
                 <section>
                     <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
                         {state?.message}
                     </h2>
                 </section> : <></> 
-            }
+            }   
 
-            <section id="userDetailsCard" className={arima.className}>
-                <form id="userDetailsForm" action={formAction}>
-                    <input 
-                        id="firstName" 
-                        name="firstName" 
-                        type="text" 
-                        placeholder="First Name" 
-                        className={arima.className} 
-                        defaultValue={state?.success ? state.firstName : user?.first_name} 
-                    />
+            <form id="userDetailsForm" action={formAction}>
+                <input 
+                    id="firstName" 
+                    name="firstName" 
+                    type="text" 
+                    placeholder="First Name" 
+                    className={arima.className} 
+                    defaultValue={state?.success ? state.firstName : user?.first_name} 
+                />
 
-                    <input 
-                        id="lastName" 
-                        name="lastName" 
-                        type="text" 
-                        placeholder="Last Name" 
-                        className={arima.className} 
-                        defaultValue={state?.success ? state.lastName : user?.last_name} 
-                    />
+                <input 
+                    id="lastName" 
+                    name="lastName" 
+                    type="text" 
+                    placeholder="Last Name" 
+                    className={arima.className} 
+                    defaultValue={state?.success ? state.lastName : user?.last_name} 
+                />
 
-                    <textarea 
-                        name="bio" 
-                        className={`edit-profile__bio ${arima.className}`} 
-                        defaultValue={state.bio ? state.bio : user.bio} 
-                        placeholder="About me" 
-                    />
+                <textarea 
+                    name="bio" 
+                    className={`edit-profile__bio ${arima.className}`} 
+                    defaultValue={state.bio ? state.bio : user.bio} 
+                    placeholder="About me" 
+                />
 
-                    <button className="gameButton" type="submit">Save</button>
-                </form>
-            </section>
-        </section>
-        
+                <button className="gameButton" type="submit">Save</button>
+            </form>
+        </>
     );
 }
