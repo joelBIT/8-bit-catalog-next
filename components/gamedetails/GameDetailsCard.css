@@ -118,6 +118,11 @@
 
         #gameDetailsCard__description {
             font-size: 1rem;
-        } 
+        }
+
+        #editButton {
+            width: fit-content;
+            font-size: 1rem;
+        }
     }
 }
