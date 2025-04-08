@@ -32,3 +32,29 @@
         }
     }
 }
+
+@media (max-width: 550px) {
+    #editAccountSettings {
+        #accountCard {
+            #passwordForm {
+                #passwordInput {
+                    .password-input > input {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    #editAccountSettings {
+        #accountCard {
+            #passwordForm {
+                #passwordInput > span {
+                    color: transparent
+                }
+            }
+        }
+    }
+}

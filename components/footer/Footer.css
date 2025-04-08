@@ -3,6 +3,7 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--color-black);
+    z-index: 1;
 
     #footerComponents {
         display: flex;

@@ -8,3 +8,9 @@
         margin-bottom: 3rem;
     }
 }
+
+@media (max-width: 500px) {
+    #settingsPage {
+        align-items: flex-end;
+    }
+}
