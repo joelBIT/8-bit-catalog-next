@@ -9,7 +9,7 @@ import "./EditUserDetailsForm.css";
 
 export function EditUserDetailsForm(): ReactElement<ReactElement> {
     const { user } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
+    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "", bio: '' });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
 
     useEffect(() => {
@@ -31,10 +31,8 @@ export function EditUserDetailsForm(): ReactElement<ReactElement> {
                 </section> : <></> 
             }
 
-            <section id="accountCard" className={arima.className}>
-                <h1 className="accountCard__title">Edit Information</h1>
-
-                <form id="accountForm" action={formAction}>
+            <section id="userDetailsCard" className={arima.className}>
+                <form id="userDetailsForm" action={formAction}>
                     <input 
                         id="firstName" 
                         name="firstName" 
@@ -51,6 +49,13 @@ export function EditUserDetailsForm(): ReactElement<ReactElement> {
                         placeholder="Last Name" 
                         className={arima.className} 
                         defaultValue={state?.success ? state.lastName : user?.last_name} 
+                    />
+
+                    <textarea 
+                        name="bio" 
+                        className={`edit-profile__bio ${arima.className}`} 
+                        defaultValue={state.bio ? state.bio : user.bio} 
+                        placeholder="About me" 
                     />
 
                     <button className="gameButton" type="submit">Save</button>

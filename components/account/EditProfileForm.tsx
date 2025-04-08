@@ -9,7 +9,7 @@ import "./EditProfileForm.css";
 
 export function EditProfileForm(): ReactElement {
     const { user } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, bio: '', image: user?.image });
+    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, image: user?.image });
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     return (
@@ -22,7 +22,6 @@ export function EditProfileForm(): ReactElement {
             <article className="edit-profile__information">
                 <h1 className="edit-profile__role"> Role: { user.role } </h1>
                 <h2 className="edit-profile__email"> Email: { user.email } </h2>
-                <textarea name="bio" className="edit-profile__bio" defaultValue={state.bio ? state.bio : user.bio} placeholder="About me" />
             </article>
 
             <button className="gameButton" type="submit"> Save </button>
