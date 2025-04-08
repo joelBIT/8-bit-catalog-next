@@ -17,7 +17,8 @@ export default function DashboardPage(): ReactElement {
     }, []);
 
     return (
-        <main id="accountPage">
+        <main id="dashboardPage">
+            <h1 className="dashboardPage__title">Edit user information</h1>
             <EditUserDetailsForm />
         </main>
     );

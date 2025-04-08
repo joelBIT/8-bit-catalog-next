@@ -1,41 +1,31 @@
-#userDetails-edit__card {
+#userDetailsForm {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 
-    #accountCard {
-        display: flex;
-        flex-direction: column;
-        background-color: transparent;
-        border-radius: 8px;
-        padding: 1rem 5rem 4rem;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
-        .accountCard__title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 1rem;
-        }
-    
-        #accountForm {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+    & .edit-profile__bio {
+        white-space-collapse: preserve-breaks;
+        line-height: 1;
+    }
 
-            .gameButton {
-                align-self: flex-end;
-            }
-        }
+    .gameButton {
+        align-self: flex-end;
     }
 }
 
 @media (max-width: 550px) {
-    #userDetails-edit__card {
-        #accountCard {
-            padding: 1rem 3rem 2rem;
-    
-            #accountForm {
-                max-width: 18rem;
-            }
+    #userDetailsForm {
+        width: 75vw;
+        margin-left: 3rem;
+
+        > input {
+            font-size: 1.3rem;
+            padding-left: 0.3rem;
+            height: 2rem;
+        }
+
+        & .edit-profile__bio {
+            padding-left: 0.3rem;
         }
     }
 }

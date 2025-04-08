@@ -1,33 +1,50 @@
-#editAccountSettings {
+#accountCard {
     display: flex;
     flex-direction: column;
+    max-width: fit-content;
 
-    .message-success, .message-failure {
-        width: fit-content;
+    & .accountCard__title {
         align-self: center;
-        justify-self: center;
     }
 
-    #accountCard {
+    #passwordForm {
         display: flex;
         flex-direction: column;
-        max-width: fit-content;
+        gap: 1rem;
 
-        & .accountCard__title {
-            align-self: center;
+        #passwordInput > span {
+            color: var(--color-white);
         }
-    
-        #passwordForm {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
 
+        .gameButton {
+            align-self: flex-end;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    #accountCard {
+        #passwordForm {
+            #passwordInput {
+                .password-input > input {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    #accountCard {
+        #passwordForm {
             #passwordInput > span {
-                color: var(--color-white);
+                color: transparent;
+                margin-left: 1rem;
             }
 
             .gameButton {
-                align-self: flex-end;
+                font-size: 1rem;
+                width: fit-content;
             }
         }
     }

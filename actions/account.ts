@@ -1,6 +1,6 @@
 'use server';
 
-import { getUserById, updatePassword, updateProfileImage, updateUser, updateUserBio } from "@/db/db";
+import { getUserById, updatePassword, updateProfileImage, updateUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 
 /**
@@ -34,35 +34,34 @@ export async function updateAccountPassword(userId: number, _prevState: any, for
 }
 
 /**
- * This function is invoked when updating user information such as name.
+ * This function is invoked when updating user information such as name and bio.
  */
 export async function updateUserDetails(userId: number, _prevState: any, formData: FormData) {
     try {
         const firstName = formData.get('firstName') as string;
         const lastName = formData.get('lastName') as string;
-        await updateUser(userId, lastName, firstName);
+        const userBio = formData.get('bio') as string;
+        await updateUser(userId, lastName, firstName, userBio);
 
-        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName };
+        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName, bio: userBio };
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false };
     }
 }
 
+/**
+ * Updates a user's profile image.
+ */
 export async function updateProfile(userId: number, _prevState: any, formData: FormData) {
     try {
-        const userBio = formData.get('bio') as string;
-        await updateUserBio(userId, userBio);
-
         const profileImage = formData.get('profileImage') as File;
         if (profileImage.name !== 'undefined') {                        // Profile image has been changed
             await updateProfileImage(userId, profileImage);             // Upload new profile image
-
-            return { message: 'The account was successfully updated', success: true, bio: userBio, image: profileImage.name };
+            return { message: 'The account was successfully updated', success: true, image: profileImage.name };
         } else {
-            return { message: 'The account was successfully updated', success: true, bio: userBio, image: _prevState.image };
+            return { message: 'The account was successfully updated', success: true, image: _prevState.image };
         }
-    
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false };

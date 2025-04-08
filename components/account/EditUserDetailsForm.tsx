@@ -7,9 +7,9 @@ import { AccountContext } from "@/contexts/AccountContextProvider";
 
 import "./EditUserDetailsForm.css";
 
-export function EditUserDetailsForm(): ReactElement<ReactElement> {
-    const { user } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: "", lastName: "" });
+export function EditUserDetailsForm(): ReactElement {
+    const { user, addUser } = useContext(AccountContext);
+    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: '', lastName: '', bio: '' });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
 
     useEffect(() => {
@@ -19,44 +19,50 @@ export function EditUserDetailsForm(): ReactElement<ReactElement> {
                 setShowMessage(false);
             }, 5000);
         }
+
+        if (state.success) {
+            addUser();      // Update user in AccountContext
+        }
     }, [state]);
 
     return (
-        <section id="userDetails-edit__card">
+        <>
             { showMessage ? 
                 <section>
                     <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
                         {state?.message}
                     </h2>
                 </section> : <></> 
-            }
+            }   
 
-            <section id="accountCard" className={arima.className}>
-                <h1 className="accountCard__title">Edit Information</h1>
+            <form id="userDetailsForm" action={formAction}>
+                <input 
+                    id="firstName" 
+                    name="firstName" 
+                    type="text" 
+                    placeholder="First Name" 
+                    className={arima.className} 
+                    defaultValue={state?.success ? state.firstName : user?.first_name} 
+                />
 
-                <form id="accountForm" action={formAction}>
-                    <input 
-                        id="firstName" 
-                        name="firstName" 
-                        type="text" 
-                        placeholder="First Name" 
-                        className={arima.className} 
-                        defaultValue={state?.success ? state.firstName : user?.first_name} 
-                    />
+                <input 
+                    id="lastName" 
+                    name="lastName" 
+                    type="text" 
+                    placeholder="Last Name" 
+                    className={arima.className} 
+                    defaultValue={state?.success ? state.lastName : user?.last_name} 
+                />
 
-                    <input 
-                        id="lastName" 
-                        name="lastName" 
-                        type="text" 
-                        placeholder="Last Name" 
-                        className={arima.className} 
-                        defaultValue={state?.success ? state.lastName : user?.last_name} 
-                    />
+                <textarea 
+                    name="bio" 
+                    className={`edit-profile__bio ${arima.className}`} 
+                    defaultValue={state.bio ? state.bio : user.bio} 
+                    placeholder="About me" 
+                />
 
-                    <button className="gameButton" type="submit">Save</button>
-                </form>
-            </section>
-        </section>
-        
+                <button className="gameButton" type="submit">Save</button>
+            </form>
+        </>
     );
 }
