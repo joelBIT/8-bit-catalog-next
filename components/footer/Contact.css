@@ -47,6 +47,10 @@
             .contact__link, .contact__info {
                 font-size: 0.8rem;
             }
+
+            .material-symbols-outlined {
+                line-height: 0;
+            }
         }
     }
 }
