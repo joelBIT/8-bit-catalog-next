@@ -63,11 +63,21 @@
         #loginCard {
             padding: 1rem 1.5rem 2rem;
             min-width: inherit;
+            max-width: 80vw;
+
+            .loginCard__heading {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
     
             #loginForm {
                 & input {
-                    font-size: large;
+                    font-size: 1rem;
                 }
+            }
+
+            #register-link {
+                align-self: center;
             }
         }
     }

@@ -69,10 +69,14 @@
         #registerCard {
             min-width: inherit;
             padding: 1rem 1.5rem 2rem;
+
+            .registerCard__title {
+                font-size: 2rem;
+            }
     
             #registerForm {
                 & input {
-                    font-size: large;
+                    font-size: 1rem;
                 }
             }
         }

@@ -1,12 +1,10 @@
 #userDetails-edit__card {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
 
     #accountCard {
         display: flex;
         flex-direction: column;
-        align-self: flex-start;
         background-color: transparent;
         border-radius: 8px;
         padding: 1rem 5rem 4rem;

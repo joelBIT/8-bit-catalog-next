@@ -83,3 +83,27 @@
         }
     }
 }
+
+@media (max-width: 420px) {
+    #searchPage {
+        #searchFilters {
+            #searchInput {
+                #searchTitle {
+                    width: 90vw;
+                }
+            }
+
+            #searchFilters__form {
+                & .searchFilters__filters {
+                    .selectSection {
+                        align-self: center;
+
+                        .selectSection__select {
+                            font-size: 0.9rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

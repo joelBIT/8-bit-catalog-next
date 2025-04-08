@@ -68,6 +68,14 @@
             .navbar__list-element {
                 margin-left: 2rem;
 
+                .navbar__list-element-link {
+                    font-size: 3rem;
+
+                    .navbar__list-element-title {
+                        font-size: 3rem;
+                    }
+                }
+
                 .wideScreen {
                     display: none;
                 }

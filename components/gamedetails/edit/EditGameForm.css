@@ -86,6 +86,7 @@
 
         input {
             margin: 0;
+            width: 100%;
         }
     }
 }
@@ -97,23 +98,37 @@
         }
 
         & input {
-            width: 80%;
             align-self: center;
+            font-size: 1.3rem;
         }
     }
 }
 
 @media (max-width: 500px) {
     #editGameForm {
-        .selectSection, #coverSection, #releasedSection {
+        #description {
+            font-size: 0.8rem;
+            padding-top: 0.3rem;
+            padding-left: 0.3rem;
+        }
+
+        .selectSection, #coverSection, #releasedSection, .romSection {
+            gap: 0;
+            
             h2 {
                 font-size: 1.5rem;
+            }
+
+            & .selectSection__select, #rom-select {
+                font-size: 1.2rem;
             }
         }
 
         input {
-            width: 80%;
+            height: 2rem;
             align-self: center;
+            font-size: 1rem;
+            padding-left: 0.5rem;
         }
 
         section {
@@ -124,13 +139,12 @@
         #releasedSection {
             align-items: center;
         }
-    }
-}
 
-@media (max-width: 450px) {
-    .selectSection {
-        & .selectSection__select {
-            font-size: 1.2rem;
+        & .editGameForm-buttons {
+            #cancelButton, #saveButton {
+                width: fit-content;
+                font-size: 1rem;
+            }
         }
     }
 }

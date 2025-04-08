@@ -17,3 +17,17 @@
         }
     }
 }
+
+@media (max-width: 420px) {
+    #siteLinks {
+        .siteLinks__title {
+            font-size: 1.3rem;
+        }
+
+        .siteLinks__list {
+            .siteLinks__link {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

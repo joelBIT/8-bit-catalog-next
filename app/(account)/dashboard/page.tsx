@@ -18,9 +18,7 @@ export default function DashboardPage(): ReactElement {
 
     return (
         <main id="accountPage">
-            <section className="accountPage__forms">
-                <EditUserDetailsForm />
-            </section>
+            <EditUserDetailsForm />
         </main>
     );
 }

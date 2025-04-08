@@ -22,3 +22,17 @@
         }
     }
 }
+
+@media (max-width: 420px) {
+    #otherLinks {
+        .otherLinks__title {
+            font-size: 1.3rem;
+        }
+
+        .otherLinks__list {
+            .otherLinks__link {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

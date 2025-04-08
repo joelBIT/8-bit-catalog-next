@@ -33,7 +33,7 @@
         width: 100%;
 
         & .edit-profile__bio {
-            width: 100%;
+            width: 70%;
             white-space-collapse: preserve-breaks;
         }
     }
