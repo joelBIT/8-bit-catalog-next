@@ -33,6 +33,7 @@
 
         & .edit-profile__bio {
             padding-left: 0.3rem;
+            font-size: 1rem;
         }
     }
 }

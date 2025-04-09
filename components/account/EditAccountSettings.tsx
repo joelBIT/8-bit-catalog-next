@@ -24,14 +24,6 @@ export function EditAccountSettings(): ReactElement {
 
     return (
         <>
-            { showMessage ? 
-                <section>
-                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                        {state?.message}
-                    </h2>
-                </section> : <></> 
-            }
-
             <section id="accountCard" className={arima.className}>
                 <h1 className="accountCard__title">Change password</h1>
 
@@ -43,6 +35,14 @@ export function EditAccountSettings(): ReactElement {
                     <button className="gameButton" type="submit">Save</button>
                 </form>
             </section>
+
+            { showMessage ? 
+                <section>
+                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
+                        {state?.message}
+                    </h2>
+                </section> : <></> 
+            }
         </>
     );
 }

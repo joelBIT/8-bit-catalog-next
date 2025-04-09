@@ -27,14 +27,6 @@ export function EditUserDetailsForm(): ReactElement {
 
     return (
         <>
-            { showMessage ? 
-                <section>
-                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                        {state?.message}
-                    </h2>
-                </section> : <></> 
-            }
-
             <form id="userDetailsForm" action={formAction}>
                 <input 
                     id="firstName" 
@@ -63,6 +55,14 @@ export function EditUserDetailsForm(): ReactElement {
 
                 <button className="gameButton" type="submit">Save</button>
             </form>
+
+            { showMessage ? 
+                <section>
+                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
+                        {state?.message}
+                    </h2>
+                </section> : <></> 
+            }
         </>
     );
 }
