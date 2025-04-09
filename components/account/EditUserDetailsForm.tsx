@@ -33,7 +33,7 @@ export function EditUserDetailsForm(): ReactElement {
                         {state?.message}
                     </h2>
                 </section> : <></> 
-            }   
+            }
 
             <form id="userDetailsForm" action={formAction}>
                 <input 
