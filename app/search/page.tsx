@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Form from 'next/form';
-import { getAllDevelopers, getAllPublishers } from "@/db/db";
-import { addAllOption, getCategories } from "@/utils/utils";
+import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/db/db";
+import { addAllOption } from "@/utils/utils";
 import { SearchFilter } from "@/types/types";
 import { arima, rancho } from "@/fonts/fonts";
 import { Search, SearchButton } from "@/components/search";
@@ -24,7 +24,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         <section className="selectSection">
                             <h2 className={`selectSection__title ${arima.className}`}>{'Category'}</h2>
                             <select className="selectSection__select" name="category" defaultValue={category}>
-                                {getCategories().map((element, index) => <option key={index} value={element}>{element}</option>)}
+                                {addAllOption((await getAllCategories())).map((element, index) => <option key={index} value={element}>{element}</option>)}
                             </select>
                         </section>
 

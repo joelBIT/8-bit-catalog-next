@@ -20,6 +20,7 @@ const SESSION_TABLE = "sessions";
 const USER_TABLE = "users";
 const FAVOURITES_TABLE = "favourites";
 const ACCOUNT_TABLE = "account";
+const FILTERS_TABLE = "filters";
 
 
 
@@ -171,6 +172,19 @@ export async function filterSearch(filters: SearchFilter): Promise<SearchResult>
 // Convert 'All' to % because the postgres function named 'games' uses % as wildcard (matches sequences of characters).
 function convertFilterAll(value: string): string {
     return value === 'All' ? '%' : value;
+}
+
+/**
+ * Retrieves all game categories.
+ */
+export async function getAllCategories(): Promise<string[]> {
+    const { error, data } = await databaseClient.from(FILTERS_TABLE).select('categories').single();
+    if (error) {
+        console.log(error);
+        return [];
+    }
+
+    return data.categories;
 }
 
 /**

@@ -41,12 +41,6 @@ export function getPlayersList(): string[] {
     return ["1", "2", "3", "4", "5", "6", "7", "8"];
 }
 
-export function getCategories(): string[] {
-    return ["All", "Action", "Adult", "Adventure", "Educational", "Fighting", "Puzzle", "Racing", "Role-Playing",
-        "Shooter", "Simulation", "Sports", "Strategy", "Traditional", "Various"
-    ];
-}
-
 /**
  * The types of files that a user is permitted to upload.
  */
