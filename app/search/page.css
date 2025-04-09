@@ -84,7 +84,7 @@
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 350px) {
     #searchPage {
         #searchFilters {
             #searchInput {
@@ -96,8 +96,6 @@
             #searchFilters__form {
                 & .searchFilters__filters {
                     .selectSection {
-                        align-self: center;
-
                         .selectSection__select {
                             font-size: 0.9rem;
                         }

@@ -5,7 +5,7 @@ import "./EditFilterForm.css";
 
 export function EditFilterForm( { categories, developers, publishers } : { categories: string[], developers: string[], publishers: string[] }): ReactElement {
     return (
-        <form id="editFilterForm">
+        <section id="editFilterForm">
             <h2 className={`selectSection__title ${arima.className}`}> Category </h2>
             <div className="category-wrapper">
                 <span className="material-symbols-outlined"> remove </span>
@@ -32,6 +32,6 @@ export function EditFilterForm( { categories, developers, publishers } : { categ
                 </select>
                 <span className="material-symbols-outlined"> add </span>
             </div>
-        </form>
+        </section>
     );
 }
