@@ -10,7 +10,6 @@
         align-items: flex-end;
         text-align-last: end;
         gap: 1rem;
-        max-width: 80%;
 
         & .profile-image {
             border-radius: 250px;
@@ -22,16 +21,11 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            max-width: 80%;
-        }
-    }
-}
 
-@media (max-width: 1100px) {
-    #editProfileForm {
-        & .edit-profile-image {
-            align-items: center;
-            text-align-last: center;
+            & .edit-profile__input {
+                height: 2rem;
+                font-size: 1.2rem;
+            }
         }
     }
 }
@@ -39,10 +33,6 @@
 @media (max-width: 500px) {
     #editProfileForm {
         width: 90vw;
-
-        & .edit-profile-image {
-            align-items: flex-end;
-            text-align-last: right;
-        }
+        padding-right: 0.6rem;
     }
 }
