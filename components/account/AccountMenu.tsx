@@ -12,7 +12,7 @@ import "./AccountMenu.css";
 /**
  * Used to navigate between account-specific sections.
  */
-export function AccountMenu({ user } : {user: User}): ReactElement {
+export function AccountMenu({ user } : { user: User }): ReactElement {
     const pathname = usePathname();
     const router = useRouter();
 
@@ -53,7 +53,7 @@ export function AccountMenu({ user } : {user: User}): ReactElement {
                                 <span className="material-symbols-outlined" title="Search filters"> manage_search </span>
                                 <h1 className="menu__link-title"> Filters </h1>
                             </Link>
-                            : <></>
+                        : <></>
                     }
 
                     <Link href="/dashboard/settings" className={pathname === "/dashboard/settings" ? "account-menu__link active" : "account-menu__link"}> 
