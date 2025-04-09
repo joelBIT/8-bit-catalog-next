@@ -8,7 +8,7 @@ import { AccountContext } from "@/contexts/AccountContextProvider";
 import "./EditProfileForm.css";
 
 export function EditProfileForm(): ReactElement {
-    const { user } = useContext(AccountContext);
+    const { user, addUser } = useContext(AccountContext);
     const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, image: user?.image });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
@@ -19,6 +19,10 @@ export function EditProfileForm(): ReactElement {
                 setTimeout(() => {
                     setShowMessage(false);
                 }, 5000);
+            }
+
+            if (state.success) {
+                addUser();      // Update user in AccountContext
             }
         }, [state]);
 
