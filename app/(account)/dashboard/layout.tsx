@@ -1,13 +1,15 @@
 import { ReactElement } from "react";
 import { AccountMenu } from "@/components/account";
 import { AccountContexProvider } from "@/contexts/AccountContextProvider";
+import { getUserFromSession } from "@/app/_session/utils";
+import { User } from "@/types/types";
 
 import "./layout.css";
 
-export default function Layout({ children }: { children: React.ReactNode }): ReactElement {
+export default async function Layout({ children }: { children: React.ReactNode }): Promise<ReactElement> {
     return (
         <section id="dashboardLayout">
-            <AccountMenu />
+            <AccountMenu user={await getUserFromSession() as User} />
             <AccountContexProvider> {children} </AccountContexProvider>
         </section>
     );

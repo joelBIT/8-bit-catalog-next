@@ -3,13 +3,13 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/types/types";
-import { fileTypes, getCategories, getPlayersList } from "@/utils/utils";
+import { fileTypes, getPlayersList } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/games";
 
 import "./EditGameForm.css";
 
-export function EditGameForm({ game }: { game: Game }): ReactElement<ReactElement> {
+export function EditGameForm({ game, categories }: { game: Game, categories: string[] }): ReactElement<ReactElement> {
     const router = useRouter();
     const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.release_date);
@@ -58,7 +58,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement<ReactElemen
             <section className="selectSection categorySection">
                 <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
                 <select name="category" className="selectSection__select" defaultValue={game.category}>
-                    {getCategories().map((element, index) => <option key={index} value={element}> {element} </option>)}
+                    {categories.map((element, index) => <option key={index} value={element}> {element} </option>)}
                 </select>
             </section>
 
@@ -98,7 +98,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement<ReactElemen
             </section>
 
             <div className="editGameForm-buttons">
-                <button id="cancelButton" className="gameButton" type="reset" onClick={() => router.push(`/gamedetails/${game.id}`)}> Cancel</button>
+                <button id="cancelButton" className="gameButton" type="reset" onClick={() => router.push(`/gamedetails/${game.id}`)}> Cancel </button>
                 <button id="saveButton" className="gameButton" type="submit"> Save </button>
             </div>
         </form>

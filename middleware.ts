@@ -15,22 +15,24 @@ export async function middleware(request: NextRequest) {
     }
     
     if (cookie) {
-        const session = await validateSession(cookie);    
-        if (session && (request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register'))) {
-            if (request.method === 'GET') {
-                return redirect(request, '/forbidden');      // Authenticated user is not allowed to navigate to register or login pages   
+        const session = await validateSession(cookie);
+        if (session) {      // User is authenticated
+            if ((request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/register'))) {
+                if (request.method === 'GET') {
+                    return redirect(request, '/forbidden');      // Authenticated user is not allowed to navigate to register or login pages   
+                }
             }
-        }
-
-        if (session && request.nextUrl.pathname.endsWith('/edit')) {
-            const isAdmin = await isAuthenticatedAdmin();
-            if (!isAdmin) {
-                return redirect(request, '/forbidden');         // Only admin is allowed to navigate to edit pages
+    
+            if (request.nextUrl.pathname.endsWith('/edit') || request.nextUrl.pathname.startsWith('/dashboard/filters')) {
+                const isAdmin = await isAuthenticatedAdmin();
+                if (!isAdmin) {
+                    return redirect(request, '/forbidden');         // Only admin is allowed to navigate to edit pages
+                }
             }
-        }
-
-        if (!session && !request.nextUrl.pathname.startsWith('/login') && !request.nextUrl.pathname.startsWith('/register')) {
-            return redirect(request, '/forbidden');     // Unauthenticated user is not allowed to navigate to account or edit games
+        } else {
+            if (!request.nextUrl.pathname.startsWith('/login') && !request.nextUrl.pathname.startsWith('/register')) {
+                return redirect(request, '/forbidden');     // Unauthenticated user is not allowed to navigate to account or edit games
+            }
         }
     }
 }

@@ -19,6 +19,9 @@ export const URL_REQUEST_PAGE = "/request";
 export const URL_REVIEW_PAGE = "/review";
 export const URL_SEARCH_PAGE = "/games";
 
+export const USER_ROLE_ADMIN = "admin";
+export const USER_ROLE_REGULAR = "regular";
+
 /**
  * Adds the 'ALL' option to the list so that a search can be performed on all games.
  * 
@@ -36,12 +39,6 @@ export function addAllOption(list: string[]): string[] {
  */
 export function getPlayersList(): string[] {
     return ["1", "2", "3", "4", "5", "6", "7", "8"];
-}
-
-export function getCategories(): string[] {
-    return ["All", "Action", "Adult", "Adventure", "Educational", "Fighting", "Puzzle", "Racing", "Role-Playing",
-        "Shooter", "Simulation", "Sports", "Strategy", "Traditional", "Various"
-    ];
 }
 
 /**
