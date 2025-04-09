@@ -26,7 +26,7 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
     #editFilterForm {
         & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
             & .selectSection__select {
@@ -48,7 +48,7 @@
             align-items: center;
 
             & .selectSection__select {
-                font-size: 0.8rem;
+                font-size: 1rem;
             }
         }
     }
