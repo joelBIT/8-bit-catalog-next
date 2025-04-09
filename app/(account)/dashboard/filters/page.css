@@ -4,3 +4,10 @@
     background-image: url("../../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
     align-items: center;
 }
+
+@media (max-width: 600px) {
+    #filtersPage {
+        padding: 0;
+        align-items: flex-end;
+    }
+}

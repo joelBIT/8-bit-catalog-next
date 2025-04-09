@@ -98,7 +98,7 @@ export function EditGameForm({ game, categories }: { game: Game, categories: str
             </section>
 
             <div className="editGameForm-buttons">
-                <button id="cancelButton" className="gameButton" type="reset" onClick={() => router.push(`/gamedetails/${game.id}`)}> Cancel</button>
+                <button id="cancelButton" className="gameButton" type="reset" onClick={() => router.push(`/gamedetails/${game.id}`)}> Cancel </button>
                 <button id="saveButton" className="gameButton" type="submit"> Save </button>
             </div>
         </form>

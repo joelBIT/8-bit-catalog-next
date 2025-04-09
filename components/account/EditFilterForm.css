@@ -1,0 +1,55 @@
+#editFilterForm {
+    display: flex;
+    flex-direction: column;
+    min-width: 20rem;
+
+    & .selectSection__title {
+        text-align: center;
+        font-weight: 600;
+        margin-top: 2rem;
+    }
+
+    & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
+        display: flex;
+        align-self: center;
+        gap: 0.7rem;
+
+        & .selectSection__select {
+            width: fit-content;
+            font-size: 1.3rem;
+            align-self: center;
+        }
+
+        & .material-symbols-outlined:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #editFilterForm {
+        & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
+            & .selectSection__select {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    #editFilterForm {
+        & .selectSection__title {
+            margin-right: 2rem;
+            text-align: right;
+        }
+
+        & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
+            gap: 0.2rem;
+            align-self: flex-end;
+
+            & .selectSection__select {
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
