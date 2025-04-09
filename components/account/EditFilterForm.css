@@ -38,17 +38,17 @@
 
 @media (max-width: 400px) {
     #editFilterForm {
-        & .selectSection__title {
-            margin-right: 2rem;
-            text-align: right;
-        }
+        align-items: center;
+        margin-left: 2rem;
 
         & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
             gap: 0.2rem;
-            align-self: flex-end;
+            align-self: center;
+            flex-direction: column;
+            align-items: center;
 
             & .selectSection__select {
-                font-size: 0.7rem;
+                font-size: 0.8rem;
             }
         }
     }
