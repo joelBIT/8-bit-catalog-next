@@ -4,8 +4,10 @@
     background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
     align-items: center;
 
-    & .dashboardPage__title {
+    & .user-information {
         margin-bottom: 3rem;
+        width: 100%;
+        text-align: right;
     }
 }
 
@@ -22,9 +24,5 @@
 @media (max-width: 400px) {
     #dashboardPage {
         padding: 1rem;
-
-        & .dashboardPage__title {
-            align-self: flex-end;
-        }
     }
 }

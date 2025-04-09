@@ -1,7 +1,7 @@
 #accountMenu-wrapper {
     background: var(--color-black);
     position: absolute;
-    height: 70vh;
+    height: 73vh;
     z-index: 1;
 
     #accountMenu {

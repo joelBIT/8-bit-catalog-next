@@ -2,6 +2,7 @@
 
 import { ReactElement, useContext, useEffect } from "react";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
+import { AccountContext } from "@/contexts/AccountContextProvider";
 import { EditUserDetailsForm } from "@/components/account";
 
 import "./page.css";
@@ -11,6 +12,7 @@ import "./page.css";
  */
 export default function DashboardPage(): ReactElement {
     const { loadFavouriteGames } = useContext(FavouritesContext);
+    const { user } = useContext(AccountContext);
 
     useEffect(() => {
         loadFavouriteGames();       // Updates the favourite list because users are redirected here when logging in or registering
@@ -18,7 +20,11 @@ export default function DashboardPage(): ReactElement {
 
     return (
         <main id="dashboardPage">
-            <h1 className="dashboardPage__title">Edit user information</h1>
+            <article className="user-information">
+                <h1> Role: { user.role } </h1>
+                <h1> Email: { user.email } </h1>
+            </article>
+
             <EditUserDetailsForm />
         </main>
     );

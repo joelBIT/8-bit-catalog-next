@@ -2,4 +2,16 @@
     display: flex;
     flex-direction: column;
     background-image: url("../../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    align-items: center;
+}
+
+@media (max-width: 700px) {
+    #profilePage {
+        .message-success, .message-failure {
+            font-size: 1rem;
+            text-align: center;
+            margin-left: 3rem;
+            margin-right: 0.3rem;
+        }
+    }
 }

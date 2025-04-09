@@ -53,7 +53,7 @@
 
         .heroCard-wrapper {
             .heroCard__title {
-                font-size: calc(4vw + 1vh + 2vmin);
+                font-size: 2rem;
             }
         }
     }
