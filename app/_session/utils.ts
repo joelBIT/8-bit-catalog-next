@@ -3,6 +3,7 @@
 import { getValidatedSession } from "@/auth/cookie";
 import { getUserById } from "@/db/db";
 import { User } from "@/types/types";
+import { USER_ROLE_ADMIN } from "@/utils/utils";
 
 
 
@@ -38,7 +39,7 @@ export async function isAuthenticatedAdmin(): Promise<boolean> {
     }
 
     const user = await getUserById(session.user_id);
-    return user.role === 'admin';
+    return user.role === USER_ROLE_ADMIN;
 }
 
 /**
