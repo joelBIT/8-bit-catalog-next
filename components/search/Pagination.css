@@ -15,10 +15,6 @@
             font-weight: 100;
         }
     }
-
-    & .gameButton {
-        padding-bottom: 0.2rem;
-    }
 }
 
 @media (max-width: 450px) {
