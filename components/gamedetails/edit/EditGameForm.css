@@ -5,6 +5,17 @@
     margin-top: 3rem;
     color: var(--color-white);
 
+    & .filter-fieldset {
+        width: 90%;
+        border: thin;
+
+        > select {
+            width: 100%;
+            height: 2rem;
+            font-size: 1.3rem;
+        }
+    }
+
     & input {
         grid-column: 1;
         width: 90%;
@@ -84,6 +95,10 @@
         display: flex;
         flex-direction: column;
 
+        & .filter-fieldset {
+            width: 100%;
+        }
+
         input {
             margin: 0;
             width: 100%;
@@ -93,6 +108,12 @@
 
 @media (max-width: 670px) {
     #editGameForm {
+        & .filter-fieldset {    
+            > select {
+                font-size: 1rem;
+            }
+        }
+
         textarea {
             height: 25rem;
         }
@@ -144,6 +165,12 @@
             #cancelButton, #saveButton {
                 width: fit-content;
                 font-size: 1rem;
+            }
+        }
+
+        & .filter-fieldset {    
+            > select {
+                font-size: 0.8rem;
             }
         }
     }
