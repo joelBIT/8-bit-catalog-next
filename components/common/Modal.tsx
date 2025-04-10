@@ -5,7 +5,7 @@ import { arima } from "@/fonts/fonts";
 
 import "./Modal.css";
 
-export function Modal({ title, confirm, open, close }: { title: string, confirm: () => void, open: boolean, close: (toggle: boolean) => void }): ReactElement {
+export function Modal({ text, confirm, open, close }: { text: string, confirm: () => void, open: boolean, close: (toggle: boolean) => void }): ReactElement {
     const modalRef = useRef<HTMLDialogElement>(null);
 
     if (open) {
@@ -20,7 +20,7 @@ export function Modal({ title, confirm, open, close }: { title: string, confirm:
     return (
         <dialog id="modal" ref={modalRef}>
             <form method="dialog">
-                <h1 className="modal__text"> {title} </h1>
+                <h1 className="modal__text"> {text} </h1>
                 <div className="modal-buttons-wrapper">
                     <button onClick={closeModal} className={`gameButton ${arima.className}`}> Close </button>
                     <button onClick={confirm} className={`gameButton ${arima.className}`}> Confirm </button>

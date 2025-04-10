@@ -7,6 +7,10 @@ import { updateFilterValues } from "@/data/data";
 
 import "./EditFilterForm.css";
 
+/**
+ * Update the values of a search filter. The 'filter' input corresponds to the name of the column in the database filter table that is going
+ * to be updated. The 'filterValues' input corresponds to the currently existing values of the search filter.
+ */
 export function EditFilterForm( { title, filterValues, filter } : { title: string, filterValues: string[], filter: string }): ReactElement {
     const [ valuesList, setValuesList ] = useState<string[]>(filterValues);
     const [ modalText, setModalText ] = useState<string>("Are you sure you want to delete the value?");
@@ -39,7 +43,7 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
                 <span className="material-symbols-outlined"> add </span>
             </div>
 
-            <Modal title={modalText} confirm={confirmDelete} open={openModal} close={closeModal} />
+            <Modal text={modalText} confirm={confirmDelete} open={openModal} close={closeModal} />
         </section>
     );
 }
