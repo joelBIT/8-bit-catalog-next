@@ -211,6 +211,15 @@ async function invokePostgresFunction(functionName: string): Promise<string[]> {
     return data; 
 }
 
+/**
+ * Updates the Category search-filter values.
+ */
+export async function updateCategoryFilter(values: string[]): Promise<void> {
+    await databaseClient.from(FILTERS_TABLE).update({ categories: values }).eq('id', 1);
+}
+
+
+
 
 
 

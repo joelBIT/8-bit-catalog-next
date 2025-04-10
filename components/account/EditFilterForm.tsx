@@ -3,17 +3,20 @@
 import { ReactElement, useRef, useState } from "react";
 import { Modal } from "../common";
 import { arima } from "@/fonts/fonts";
+import { updateFilterValues } from "@/data/data";
 
 import "./EditFilterForm.css";
 
-export function EditFilterForm( { title, filterValues } : { title: string, filterValues: string[] }): ReactElement {
+export function EditFilterForm( { title, filterValues, filter } : { title: string, filterValues: string[], filter: string }): ReactElement {
     const [ valuesList, setValuesList ] = useState<string[]>(filterValues);
     const [ modalText, setModalText ] = useState<string>("Are you sure you want to delete the value?");
     const [ openModal, setOpenModal ] = useState<boolean>(false);
     const selectRef = useRef<HTMLSelectElement>(null);
 
     function confirmDelete() {
-        
+        const remainingValues = valuesList.filter(value => value !== selectRef.current?.value);
+        updateFilterValues(remainingValues, filter);
+        setValuesList(remainingValues);
     }
 
     function open() {

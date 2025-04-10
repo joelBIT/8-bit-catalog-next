@@ -61,3 +61,17 @@ export async function deleteFavouriteGameFromDatabase(game_id: number): Promise<
         console.error(error);
     }
 }
+
+/**
+ * Updates the list of values for a supplied search filter (e.g., categories, developers, publishers).
+ */
+export async function updateFilterValues(values: string[], filter: string) {
+    try {
+        await fetch(`/api/filter`, {
+            method: "PUT",
+            body: JSON.stringify({ values: values, filter: filter })
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
