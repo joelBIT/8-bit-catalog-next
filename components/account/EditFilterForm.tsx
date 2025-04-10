@@ -27,8 +27,12 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
     }
 
     function confirmUpdate(value: string) {
-        updateFilterValues([...valuesList, value], filter);
-        setValuesList([...valuesList, value]);
+        if (!valuesList.includes(value)) {      // Only add value if it does not already exists
+            const values = [...valuesList, value].sort();
+            updateFilterValues(values, filter);
+            setValuesList(values);
+        }
+        
         setOpenInputModal(false);
     }
 

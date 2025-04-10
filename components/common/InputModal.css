@@ -25,12 +25,17 @@
             color: var(--black);
             font-size: 3rem;
             text-align: center;
-            margin: 2rem;
         }
 
         #filterValueInput {
             width: 80%;
             align-self: center;
+        }
+
+        .message-failure {
+            width: fit-content;
+            align-self: center;
+            margin: 0;
         }
     }
 }
@@ -49,7 +54,24 @@
 
             & .modal__text {
                 font-size: 2rem;
-                margin: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #inputModal {
+        & form {
+            #filterValueInput {
+                width: 90%;
+                height: auto;
+                font-size: 1rem;
+                padding-left: 0.3rem;
+            }
+
+            .message-failure {
+                font-size: 1rem;
+                text-align: center;
             }
         }
     }

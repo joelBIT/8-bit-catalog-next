@@ -24,7 +24,7 @@ export function Modal({ text, confirm, open, close }: { text: string, confirm: (
             <form method="dialog">
                 <h1 className="modal__text"> {text} </h1>
                 <div className="modal-buttons-wrapper">
-                    <button type="reset" onClick={closeModal} className={`gameButton ${arima.className}`}> Close </button>
+                    <button onClick={closeModal} className={`gameButton ${arima.className}`}> Close </button>
                     <button onClick={confirm} className={`gameButton ${arima.className}`}> Confirm </button>
                 </div>
             </form>
