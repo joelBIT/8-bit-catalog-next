@@ -3,10 +3,11 @@
 import { ReactElement, useRef } from "react";
 import { arima } from "@/fonts/fonts";
 
-import "./Modal.css";
+import "./InputModal.css";
 
-export function Modal({ text, confirm, open, close }: { text: string, confirm: () => void, open: boolean, close: (toggle: boolean) => void }): ReactElement {
+export function InputModal({ text, confirm, open, close }: { text: string, confirm: (value: string) => void, open: boolean, close: (toggle: boolean) => void }): ReactElement {
     const modalRef = useRef<HTMLDialogElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     if (open) {
         modalRef.current?.showModal();
@@ -20,12 +21,13 @@ export function Modal({ text, confirm, open, close }: { text: string, confirm: (
     }
     
     return (
-        <dialog id="modal" ref={modalRef}>
+        <dialog id="inputModal" ref={modalRef}>
             <form method="dialog">
                 <h1 className="modal__text"> {text} </h1>
+                <input id="filterValueInput" className={arima.className} type="text" ref={inputRef} placeholder="Filter value" minLength={2} />
                 <div className="modal-buttons-wrapper">
                     <button type="reset" onClick={closeModal} className={`gameButton ${arima.className}`}> Close </button>
-                    <button onClick={confirm} className={`gameButton ${arima.className}`}> Confirm </button>
+                    <button onClick={() => confirm(inputRef.current?.value as string)} className={`gameButton ${arima.className}`}> Confirm </button>
                 </div>
             </form>
         </dialog>
