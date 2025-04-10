@@ -1,14 +1,15 @@
 import { ReactElement } from "react";
 import Form from 'next/form';
-import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/db/db";
-import { addAllOption } from "@/utils/utils";
 import { SearchFilter } from "@/types/types";
 import { arima, rancho } from "@/fonts/fonts";
-import { Search, SearchButton } from "@/components/search";
+import { CategoryFilter, DeveloperFilter, PublisherFilter, Search, SearchButton } from "@/components/search";
 
 import "./page.css";
 
-export default async function SearchPage({ searchParams } : { searchParams: Promise<SearchFilter> }): Promise<ReactElement<ReactElement>> {
+/**
+ * The search params are used to get the desired search results/page.
+ */
+export default async function SearchPage({ searchParams } : { searchParams: Promise<SearchFilter> }): Promise<ReactElement> {
     const params = await searchParams;
     const category = params.category;
     const developer = params.developer;
@@ -20,27 +21,9 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                 <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
                 <Form id="searchFilters__form" action="" scroll={false}>
                     <article className="searchFilters__filters">
-
-                        <section className="selectSection">
-                            <h2 className={`selectSection__title ${arima.className}`}>{'Category'}</h2>
-                            <select className="selectSection__select" name="category" defaultValue={category}>
-                                {addAllOption((await getAllCategories())).map((element, index) => <option key={index} value={element}>{element}</option>)}
-                            </select>
-                        </section>
-
-                        <section className="selectSection">
-                            <h2 className={`selectSection__title ${arima.className}`}>{'Publisher'}</h2>
-                            <select className="selectSection__select" name="publisher" defaultValue={publisher}>
-                                {addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}>{element}</option>)}
-                            </select>
-                        </section>
-
-                        <section className="selectSection">
-                            <h2 className={`selectSection__title ${arima.className}`}>{'Developer'}</h2>
-                            <select className="selectSection__select" name="developer" defaultValue={developer}>
-                                {addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}>{element}</option>)}
-                            </select>
-                        </section>
+                        <CategoryFilter defaultValue={category} />
+                        <PublisherFilter defaultValue={publisher} />
+                        <DeveloperFilter defaultValue={developer} />
                     </article>
 
                     <article id="searchInput">

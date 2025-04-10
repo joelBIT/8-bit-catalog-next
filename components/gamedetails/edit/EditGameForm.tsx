@@ -1,15 +1,17 @@
 'use client';
 
-import { ChangeEvent, ReactElement, useState } from "react";
+import { ChangeEvent, ReactElement, useContext, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/types/types";
 import { fileTypes, getPlayersList } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/games";
+import { FilterContext } from "@/contexts/FilterContextProvider";
 
 import "./EditGameForm.css";
 
-export function EditGameForm({ game, categories, developers, publishers }: { game: Game, categories: string[], developers: string[], publishers: string[] }): ReactElement<ReactElement> {
+export function EditGameForm({ game }: { game: Game }): ReactElement<ReactElement> {
+    const { categories, publishers, developers } = useContext(FilterContext);
     const router = useRouter();
     const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.release_date);
@@ -40,21 +42,21 @@ export function EditGameForm({ game, categories, developers, publishers }: { gam
             <fieldset className="filter-fieldset">
                 <legend>Developer</legend>
                 <select name="developer" className="selectSection__select" defaultValue={game.developer}>
-                    {developers.map(element => <option key={element} value={element}> {element} </option>)}
+                    {developers?.map(element => <option key={element} value={element}> {element} </option>)}
                 </select>
             </fieldset>
 
             <fieldset className="filter-fieldset">
                 <legend>Publisher</legend>
                 <select name="publisher" className="selectSection__select" defaultValue={game.publisher}>
-                    {publishers.map(element => <option key={element} value={element}> {element} </option>)}
+                    {publishers?.map(element => <option key={element} value={element}> {element} </option>)}
                 </select>
             </fieldset>
 
             <section className="selectSection categorySection">
                 <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
                 <select name="category" className="selectSection__select" defaultValue={game.category}>
-                    {categories.map((element, index) => <option key={index} value={element}> {element} </option>)}
+                    {categories?.map((element, index) => <option key={index} value={element}> {element} </option>)}
                 </select>
             </section>
 

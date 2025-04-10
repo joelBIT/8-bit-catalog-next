@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { blinker } from "@/fonts/fonts";
-import { FavouritesContexProvider } from "@/contexts/FavouritesContextProvider";
+import { FavouritesContexProvider, FilterContexProvider } from "@/contexts";
 
 import "./globals.css";
 
@@ -16,13 +16,15 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${blinker.className}`}>
-          <Header />
-          <FavouritesContexProvider> {children} </FavouritesContexProvider>
-          <Footer />
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body className={`${blinker.className}`}>
+                <Header />
+                    <FilterContexProvider>
+                        <FavouritesContexProvider> {children} </FavouritesContexProvider>
+                    </FilterContexProvider>
+                <Footer />
+            </body>
+        </html>
+    );
 }
