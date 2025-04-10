@@ -51,17 +51,20 @@ export function Search(): ReactElement {
 
     return (
         <section id="search">
-            { showHeading ? <h1 className={`searchResult__title ${arima.className}`}>
-                                Games found: <p className="searchResult__games-found">{totalCount}</p>
-                            </h1> 
-                        : <></>
+            { 
+                showHeading ? 
+                    <h1 className={`searchResult__title ${arima.className}`}>
+                        Games found: 
+                        <p className="searchResult__games-found"> {totalCount} </p>
+                    </h1> 
+                : <></>
             }
 
             {totalPages > 1 ? <Pagination currentPage={currentPage} 
                 setCurrentPage={setCurrentPage} setSearchResult={setSearchResult} totalPages={totalPages} /> : <></>}
 
             <section id="gameCards">
-                {searchResult.map((game, index) => <GameCard key={index} game={game} />)}
+                { searchResult.map((game, index) => <GameCard key={index} game={game} />) }
             </section>
 
             {totalPages > 1 ? <Pagination currentPage={currentPage} 
