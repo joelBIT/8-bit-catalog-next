@@ -16,6 +16,12 @@ export interface AccountContextProvider {
     addUser: () => Promise<void>
 }
 
+export interface FilterContextProvider {
+    categories: string[];
+    publishers: string[];
+    developers: string[];
+}
+
 export interface ContextProviderChildren {
     children: ReactNode;
 }
