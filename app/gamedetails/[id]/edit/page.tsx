@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
 import { EditGameForm } from "@/components/gamedetails/edit/EditGameForm";
 import { FieldSetFrame } from "@/components/common";
-import { getAllCategories, getAllDevelopers, getAllPublishers, getGameById } from "@/db/db";
+import { getGameById } from "@/db/db";
 
 import "./page.css";
 
-export default async function EditGamePage({ params }: { params: Promise<{ id: string }> }): Promise<ReactElement<ReactElement>> {
+export default async function EditGamePage({ params }: { params: Promise<{ id: string }> }): Promise<ReactElement> {
     const param = await params;
     const id = parseInt(param.id);
     
@@ -13,13 +13,7 @@ export default async function EditGamePage({ params }: { params: Promise<{ id: s
         <main id="editGamePage">
             <FieldSetFrame 
                 legend="Edit Details" 
-                body={  <EditGameForm 
-                            game={await getGameById(id)} 
-                            categories={await getAllCategories()} 
-                            developers={await getAllDevelopers()} 
-                            publishers={await getAllPublishers()}
-                        />
-                    } 
+                body={<EditGameForm game={await getGameById(id)} />} 
             />
         </main>
     );

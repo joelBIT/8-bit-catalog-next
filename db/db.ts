@@ -1,3 +1,5 @@
+'use server';
+
 import { Account, Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
