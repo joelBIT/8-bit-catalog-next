@@ -1,11 +1,11 @@
 #filtersPage {
     display: flex;
     flex-direction: column;
-    background-image: url("../../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
     align-items: center;
+    background-image: url("../../../../assets/backgrounds/account_wallpaper.png");
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     #filtersPage {
         padding: 0;
         align-items: flex-end;

@@ -9,7 +9,7 @@
         margin-top: 2rem;
     }
 
-    & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
+    & .filter-wrapper {
         display: flex;
         align-self: center;
         gap: 0.7rem;
@@ -24,11 +24,22 @@
             cursor: pointer;
         }
     }
+
+    ::backdrop {
+        background-image: linear-gradient(
+            45deg,
+            var(--color-white),
+            var(--color-black),
+            var(--color-black),
+            var(--color-white)
+        );
+        opacity: 0.75;
+    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
     #editFilterForm {
-        & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
+        & .filter-wrapper {
             & .selectSection__select {
                 font-size: 1rem;
             }
@@ -38,17 +49,17 @@
 
 @media (max-width: 400px) {
     #editFilterForm {
-        & .selectSection__title {
-            margin-right: 2rem;
-            text-align: right;
-        }
+        align-items: center;
+        margin-left: 2rem;
 
-        & .category-wrapper, & .developer-wrapper, & .publisher-wrapper {
+        & .filter-wrapper {
             gap: 0.2rem;
-            align-self: flex-end;
+            align-self: center;
+            flex-direction: column;
+            align-items: center;
 
             & .selectSection__select {
-                font-size: 0.7rem;
+                font-size: 1rem;
             }
         }
     }

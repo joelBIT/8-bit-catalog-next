@@ -42,11 +42,9 @@ export function EditProfileForm(): ReactElement {
             </form>
 
             { showMessage ? 
-                <section>
-                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                        {state?.message}
-                    </h2>
-                </section> : <></> 
+                <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
+                    {state?.message}
+                </h2> : <></> 
             }
         </>
     );

@@ -1,8 +1,8 @@
 #dashboardPage {
     display: flex;
     flex-direction: column;
-    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
     align-items: center;
+    background-image: url("../../../assets/backgrounds/account_wallpaper.png");
 
     & .user-information {
         margin-bottom: 3rem;

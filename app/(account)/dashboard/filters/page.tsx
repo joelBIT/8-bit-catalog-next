@@ -8,9 +8,21 @@ export default async function FiltersPage(): Promise<ReactElement> {
     return (
         <main id="filtersPage">
             <EditFilterForm 
-                categories={await getAllCategories()} 
-                developers={await getAllDevelopers()}
-                publishers={await getAllPublishers()}
+                filterValues={await getAllCategories()} 
+                title="Category" 
+                filter="categories"
+            />
+
+            <EditFilterForm 
+                filterValues={await getAllPublishers()} 
+                title="Publisher" 
+                filter="publishers" 
+            />
+
+            <EditFilterForm 
+                filterValues={await getAllDevelopers()} 
+                title="Developer" 
+                filter="developers" 
             />
         </main>
     );

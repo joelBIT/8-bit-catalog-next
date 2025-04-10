@@ -8,7 +8,7 @@ export function SearchButton(): ReactElement {
   const status = useFormStatus();
 
   return (
-    <button type="submit" className={`gameButton ${arima.className}`} disabled={status.pending}> 
+    <button id="searchButton" type="submit" className={`gameButton ${arima.className}`} disabled={status.pending}> 
         Search
     </button>
   )

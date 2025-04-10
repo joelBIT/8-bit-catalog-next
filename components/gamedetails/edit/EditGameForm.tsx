@@ -9,7 +9,7 @@ import { updateGame } from "@/actions/games";
 
 import "./EditGameForm.css";
 
-export function EditGameForm({ game, categories }: { game: Game, categories: string[] }): ReactElement<ReactElement> {
+export function EditGameForm({ game, categories, developers, publishers }: { game: Game, categories: string[], developers: string[], publishers: string[] }): ReactElement<ReactElement> {
     const router = useRouter();
     const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.release_date);
@@ -37,23 +37,19 @@ export function EditGameForm({ game, categories }: { game: Game, categories: str
                 required 
             />
 
-            <input 
-                name="developer"
-                type="text" 
-                defaultValue={game.developer}
-                placeholder="Developer" 
-                autoComplete="false" 
-                required 
-            />
+            <fieldset className="filter-fieldset">
+                <legend>Developer</legend>
+                <select name="developer" className="selectSection__select" defaultValue={game.developer}>
+                    {developers.map(element => <option key={element} value={element}> {element} </option>)}
+                </select>
+            </fieldset>
 
-            <input 
-                name="publisher"
-                type="text" 
-                defaultValue={game.publisher}
-                placeholder="Publisher" 
-                autoComplete="false" 
-                required 
-            />
+            <fieldset className="filter-fieldset">
+                <legend>Publisher</legend>
+                <select name="publisher" className="selectSection__select" defaultValue={game.publisher}>
+                    {publishers.map(element => <option key={element} value={element}> {element} </option>)}
+                </select>
+            </fieldset>
 
             <section className="selectSection categorySection">
                 <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
