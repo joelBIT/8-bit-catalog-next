@@ -7,11 +7,9 @@ import "./page.css";
 export default async function FiltersPage(): Promise<ReactElement> {
     return (
         <main id="filtersPage">
-            <EditFilterForm 
-                categories={await getAllCategories()} 
-                developers={await getAllDevelopers()}
-                publishers={await getAllPublishers()}
-            />
+            <EditFilterForm filterValues={await getAllCategories()} title="Category" />
+            <EditFilterForm filterValues={await getAllPublishers()} title="Publisher" />
+            <EditFilterForm filterValues={await getAllDevelopers()} title="Developer" />
         </main>
     );
 }

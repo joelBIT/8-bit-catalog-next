@@ -1,37 +1,44 @@
-import { ReactElement } from "react";
+'use client';
+
+import { ReactElement, useRef, useState } from "react";
+import { Modal } from "../common";
 import { arima } from "@/fonts/fonts";
 
 import "./EditFilterForm.css";
 
-export function EditFilterForm( { categories, developers, publishers } : { categories: string[], developers: string[], publishers: string[] }): ReactElement {
+export function EditFilterForm( { title, filterValues } : { title: string, filterValues: string[] }): ReactElement {
+    const [ valuesList, setValuesList ] = useState<string[]>(filterValues);
+    const [ modalText, setModalText ] = useState<string>("Are you sure you want to delete the value?");
+    const [ openModal, setOpenModal ] = useState<boolean>(false);
+    const selectRef = useRef<HTMLSelectElement>(null);
+
+    function confirmDelete() {
+        console.log(selectRef.current?.value);            // Create 3 parallel routes (categories, developers, publishers) on /dashboard/filter/
+        setModalText(`Are you sure you want to delete ${selectRef.current?.value}?`);
+        //document.querySelector("#modal").showModal();
+    }
+
+    function testOpen() {
+        setOpenModal(true);
+        console.log('inside');
+    }
+
+    function closeModal() {
+        setOpenModal(false);
+    }
+    
     return (
         <section id="editFilterForm">
-            <h2 className={`selectSection__title ${arima.className}`}> Category </h2>
-            <div className="category-wrapper">
-                <span className="material-symbols-outlined"> remove </span>
-                <select name="categories" className="selectSection__select" defaultValue={categories[0]}>
-                    {categories.map((element, index) => <option key={index} value={element}> {element} </option>)}
+            <h2 className={`selectSection__title ${arima.className}`}> { title } </h2>
+            <div className="filter-wrapper">
+                <span className="material-symbols-outlined" onClick={testOpen}> remove </span>
+                <select name="values" className="selectSection__select" defaultValue={valuesList[0]} ref={selectRef}>
+                    {valuesList.map(element => <option key={element} value={element}> {element} </option>)}
                 </select>
                 <span className="material-symbols-outlined"> add </span>
             </div>
 
-            <h2 className={`selectSection__title ${arima.className}`}> Developer </h2>
-            <div className="developer-wrapper">
-                <span className="material-symbols-outlined"> remove </span>
-                <select name="developers" className="selectSection__select" defaultValue={developers[0]}>
-                    {developers.map((element, index) => <option key={index} value={element}> {element} </option>)}
-                </select>
-                <span className="material-symbols-outlined"> add </span>
-            </div>
-
-            <h2 className={`selectSection__title ${arima.className}`}> Publisher </h2>
-            <div className="publisher-wrapper">
-                <span className="material-symbols-outlined"> remove </span>
-                <select name="publishers" className="selectSection__select" defaultValue={publishers[0]}>
-                    {publishers.map((element, index) => <option key={index} value={element}> {element} </option>)}
-                </select>
-                <span className="material-symbols-outlined"> add </span>
-            </div>
+            <Modal title={modalText} confirm={confirmDelete} open={openModal} close={closeModal} />
         </section>
     );
 }
