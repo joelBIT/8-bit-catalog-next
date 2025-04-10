@@ -10,6 +10,8 @@ import "./EditFilterForm.css";
 /**
  * Update the values of a search filter. The 'filter' input corresponds to the name of the column in the database filter table that is going
  * to be updated. The 'filterValues' input corresponds to the currently existing values of the search filter.
+ * The 'filterValues' input is retrieved directly from the database since this is an admin page for modifying filter values, and the updates
+ * are stored in the database.
  */
 export function EditFilterForm( { title, filterValues, filter } : { title: string, filterValues: string[], filter: string }): ReactElement {
     const [ valuesList, setValuesList ] = useState<string[]>(filterValues);
@@ -57,8 +59,19 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
                 <span className="material-symbols-outlined" onClick={inputOpen}> add </span>
             </div>
 
-            <Modal text={modalText} confirm={confirmDelete} open={openModal} close={() => setOpenModal(false)} />
-            <InputModal text={inputModalText} confirm={confirmUpdate} open={openInputModal} close={() => setOpenInputModal(false)} />
+            <Modal 
+                text={modalText} 
+                confirm={confirmDelete} 
+                open={openModal} 
+                close={() => setOpenModal(false)} 
+            />
+
+            <InputModal 
+                text={inputModalText} 
+                confirm={confirmUpdate} 
+                open={openInputModal} 
+                close={() => setOpenInputModal(false)} 
+            />
         </section>
     );
 }
