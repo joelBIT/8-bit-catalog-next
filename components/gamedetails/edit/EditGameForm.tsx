@@ -1,17 +1,16 @@
 'use client';
 
-import { ChangeEvent, ReactElement, useContext, useState } from "react";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/types/types";
-import { fileTypes, getPlayersList, removeAllOption } from "@/utils/utils";
+import { fileTypes, getPlayersList } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/games";
-import { FilterContext } from "@/contexts/FilterContextProvider";
+import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from ".";
 
 import "./EditGameForm.css";
 
 export function EditGameForm({ game }: { game: Game }): ReactElement {
-    const { categories, publishers, developers } = useContext(FilterContext);
     const router = useRouter();
     const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.release_date);
@@ -39,26 +38,9 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
                 required 
             />
 
-            <fieldset className="filter-fieldset">
-                <legend>Developer</legend>
-                <select name="developer" className="selectSection__select" defaultValue={game.developer}>
-                    { removeAllOption(developers)?.map(element => <option key={element} value={element}> {element} </option>) }
-                </select>
-            </fieldset>
-
-            <fieldset className="filter-fieldset">
-                <legend>Publisher</legend>
-                <select name="publisher" className="selectSection__select" defaultValue={game.publisher}>
-                    { removeAllOption(publishers)?.map(element => <option key={element} value={element}> {element} </option>) }
-                </select>
-            </fieldset>
-
-            <section className="selectSection categorySection">
-                <h2 className={`selectSection__title ${arima.className}`}>Category</h2>
-                <select name="category" className="selectSection__select" defaultValue={game.category}>
-                    { removeAllOption(categories)?.map((element, index) => <option key={index} value={element}> {element} </option>) }
-                </select>
-            </section>
+            <EditGameDeveloper defaultValue={game.developer} />
+            <EditGamePublisher defaultValue={game.publisher}/>
+            <EditGameCategory defaultValue={game.category} />
 
             <section className="selectSection romSection">
                 <h2 className={`romSection__title ${arima.className}`}>Has ROM?</h2>
