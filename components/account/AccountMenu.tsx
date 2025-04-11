@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "@/auth/session";
-import { USER_ROLE_ADMIN } from "@/utils/utils";
+import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_PROFILE_PAGE, URL_SETTINGS_PAGE, USER_ROLE_ADMIN } from "@/utils/utils";
 import { User } from "@/types/types";
 
 import "./AccountMenu.css";
@@ -37,26 +37,26 @@ export function AccountMenu({ user } : { user: User }): ReactElement {
                 <article id="pages">
                     <h1 className="pages-title">Pages</h1>
 
-                    <Link href="/dashboard" className={pathname === "/dashboard" ? "account-menu__link active" : "account-menu__link"}>
+                    <Link href={URL_DASHBOARD_PAGE} className={pathname === URL_DASHBOARD_PAGE ? "account-menu__link active" : "account-menu__link"}>
                         <span className="material-symbols-outlined" title="Dashboard"> dashboard </span> 
                         <h1 className="menu__link-title"> Dashboard </h1> 
                     </Link>
 
-                    <Link href="/dashboard/profile" className={pathname === "/dashboard/profile" ? "account-menu__link active" : "account-menu__link"}> 
+                    <Link href={URL_PROFILE_PAGE} className={pathname === URL_PROFILE_PAGE ? "account-menu__link active" : "account-menu__link"}> 
                         <span className="material-symbols-outlined" title="Profile"> person </span>
                         <h1 className="menu__link-title"> Profile </h1>
                     </Link>
 
                     {
                         user?.role === USER_ROLE_ADMIN ?
-                            <Link href="/dashboard/filters" className={pathname === "/dashboard/filters" ? "account-menu__link active" : "account-menu__link"}> 
+                            <Link href={URL_FILTERS_PAGE} className={pathname === URL_FILTERS_PAGE ? "account-menu__link active" : "account-menu__link"}> 
                                 <span className="material-symbols-outlined" title="Search filters"> manage_search </span>
                                 <h1 className="menu__link-title"> Filters </h1>
                             </Link>
                         : <></>
                     }
 
-                    <Link href="/dashboard/settings" className={pathname === "/dashboard/settings" ? "account-menu__link active" : "account-menu__link"}> 
+                    <Link href={URL_SETTINGS_PAGE} className={pathname === URL_SETTINGS_PAGE ? "account-menu__link active" : "account-menu__link"}> 
                         <span className="material-symbols-outlined" title="Settings"> settings </span> 
                         <h1 className="menu__link-title"> Settings </h1>
                     </Link>

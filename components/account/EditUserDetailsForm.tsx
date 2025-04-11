@@ -56,10 +56,11 @@ export function EditUserDetailsForm(): ReactElement {
                 <button className="gameButton" type="submit">Save</button>
             </form>
 
-            { showMessage ? 
-                <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                    {state?.message}
-                </h2> : <></> 
+            { 
+                showMessage ? 
+                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
+                        {state?.message}
+                    </h2> : <></> 
             }
         </>
     );

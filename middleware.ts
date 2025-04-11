@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
 import { validateSession } from './auth/session';
 import { isAuthenticatedAdmin } from './app/_session/utils';
-import { URL_DASHBOARD_PAGE, URL_FORBIDDEN_PAGE, URL_GAME_DETAILS_PAGE, URL_LOGIN_PAGE, URL_REGISTER_PAGE } from './utils/utils';
+import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_FORBIDDEN_PAGE, URL_GAME_DETAILS_PAGE, URL_LOGIN_PAGE, URL_REGISTER_PAGE } from './utils/utils';
 
 /**
  * Check if user has an active session. If not, redirect the user when trying to navigate to certain pages.
@@ -24,7 +24,7 @@ export async function middleware(request: NextRequest) {
                 }
             }
     
-            if (request.nextUrl.pathname.endsWith('/edit') || request.nextUrl.pathname.startsWith(`${URL_DASHBOARD_PAGE}/filters`)) {
+            if (request.nextUrl.pathname.endsWith('/edit') || request.nextUrl.pathname.startsWith(URL_FILTERS_PAGE)) {
                 const isAdmin = await isAuthenticatedAdmin();
                 if (!isAdmin) {
                     return redirect(request, URL_FORBIDDEN_PAGE);         // Only admin is allowed to navigate to edit pages

@@ -11,6 +11,9 @@ export const URL_REGISTER_PAGE = "/register";
 export const URL_SEARCH_PAGE = "/search";
 export const URL_ACTIVATION_PAGE = "/activate";
 export const URL_DASHBOARD_PAGE = "/dashboard";
+export const URL_PROFILE_PAGE = URL_DASHBOARD_PAGE + "/profile";
+export const URL_FILTERS_PAGE = URL_DASHBOARD_PAGE + "/filters";
+export const URL_SETTINGS_PAGE = URL_DASHBOARD_PAGE + "/settings";
 
 export const USER_ROLE_ADMIN = "admin";
 export const USER_ROLE_REGULAR = "regular";

@@ -25,10 +25,11 @@ export function LoginForm(): ReactElement<ReactElement> {
 
     return (
         <>
-            { state?.message ? 
-                <h2 className={state?.success ? "message-success" : "message-failure"}>
-                    {state?.message}
-                </h2> : <></> 
+            { 
+                state?.message ? 
+                    <h2 className={state?.success ? "message-success" : "message-failure"}>
+                        {state?.message}
+                    </h2> : <></> 
             }
 
             <section id="loginCard" className={arima.className}>
@@ -44,7 +45,7 @@ export function LoginForm(): ReactElement<ReactElement> {
                 </form>
 
                 <section id="register-link">
-                    <h2 className="register-link__text">Need an account?</h2> 
+                    <h2 className="register-link__text"> Need an account? </h2> 
                     <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Register </Link>
                 </section>
             </section>
