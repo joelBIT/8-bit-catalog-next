@@ -2,14 +2,14 @@
 
 import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
 import { imageTypes } from "@/utils/utils";
-import { updateProfile } from "@/actions/account";
+import { updateProfileImage } from "@/actions/account";
 import { AccountContext } from "@/contexts/AccountContextProvider";
 
 import "./EditProfileForm.css";
 
 export function EditProfileForm(): ReactElement {
     const { user, addUser } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateProfile.bind(null, user.id), { message: '', success: false, image: user?.image });
+    const [ state, formAction ] = useActionState(updateProfileImage.bind(null, user.id), { message: '', success: false, image: user?.image });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 

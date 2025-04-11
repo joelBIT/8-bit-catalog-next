@@ -1,6 +1,6 @@
 'use server';
 
-import { getUserById, updatePassword, updateProfileImage, updateUser } from "@/db/db";
+import { getUserById, updatePassword, updateProfileImageById, updateUser } from "@/db/db";
 import { hashPassword, verifyPasswordHash } from "@/auth/password";
 
 /**
@@ -53,11 +53,11 @@ export async function updateUserDetails(userId: number, _prevState: any, formDat
 /**
  * Updates a user's profile image.
  */
-export async function updateProfile(userId: number, _prevState: any, formData: FormData) {
+export async function updateProfileImage(userId: number, _prevState: any, formData: FormData) {
     try {
         const profileImage = formData.get('profileImage') as File;
         if (profileImage.name !== 'undefined') {                        // Profile image has been changed
-            await updateProfileImage(userId, profileImage);             // Upload new profile image
+            await updateProfileImageById(userId, profileImage);             // Upload new profile image
             return { message: 'The account was successfully updated', success: true, image: profileImage.name };
         } else {
             return { message: 'The account was successfully updated', success: true, image: _prevState.image };
