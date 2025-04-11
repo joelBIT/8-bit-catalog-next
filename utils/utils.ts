@@ -1,24 +1,16 @@
-export const ACTION_OPTION_VALUE = "Action";
 export const ALL_OPTION_VALUE = "All";
-export const ASSETS_URL = "src/assets";
-export const COVER_URL = `${ASSETS_URL}/covers`;
 export const PAGINATION_PAGE_SIZE = 15;
 
 export const URL_ABOUT_PAGE = "/about";
-export const URL_ACCOUNT_PAGE = "/account";
-export const URL_EDIT_GAME_DETAILS_PAGE = "/editgame";
 export const URL_FAVOURITES_PAGE = "/favourites";
-export const URL_FORBIDDEN_PAGE = "/403";
+export const URL_FORBIDDEN_PAGE = "/forbidden";
 export const URL_GAME_DETAILS_PAGE = "/gamedetails";
 export const URL_HOME = "/";
 export const URL_LOGIN_PAGE = "/login";
-export const URL_LOGOUT_PAGE = "/logout";
-export const URL_NOT_FOUND_PAGE = "*";
 export const URL_REGISTER_PAGE = "/register";
-export const URL_REQUEST_PAGE = "/request";
-export const URL_REVIEW_PAGE = "/review";
-export const URL_SEARCH_PAGE = "/games";
+export const URL_SEARCH_PAGE = "/search";
 export const URL_ACTIVATION_PAGE = "/activate";
+export const URL_DASHBOARD_PAGE = "/dashboard";
 
 export const USER_ROLE_ADMIN = "admin";
 export const USER_ROLE_REGULAR = "regular";

@@ -10,6 +10,7 @@ import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 import ActivationEmail from "@/components/email/ActivationEmail";
 import { isAuthenticated } from "@/app/_session/utils";
+import { URL_DASHBOARD_PAGE } from "@/utils/utils";
 
 /**
  * This function is invoked when a user tries to log in.
@@ -40,7 +41,7 @@ export async function login(_prevState: any, formData: FormData) {
     }
 
     revalidatePath('/', 'layout');
-    redirect('/dashboard');
+    redirect(URL_DASHBOARD_PAGE);
 }
 
 /**
