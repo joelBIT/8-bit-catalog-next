@@ -7,6 +7,7 @@ import { Session } from "@/types/types";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import { deleteSessionCookie, getValidatedSession } from "./cookie";
+import { URL_LOGIN_PAGE } from "@/utils/utils";
 
 const SESSION_REFRESH_INTERVAL_MS = 1000 * 60 * 60 * 24 * 15; // 15 days
 const SESSION_MAX_DURATION_MS = SESSION_REFRESH_INTERVAL_MS * 2;  // 30 days
@@ -82,7 +83,8 @@ export async function validateSession(sessionToken: string): Promise<Session | u
 }
 
 /**
- * Deletes a session and corresponding cookie when logging out.
+ * Deletes a session and corresponding cookie when logging out. The user is redirected to the login page
+ * and the cache is invalidated so that the header is updated.
  */
 export async function signOut(): Promise<void> {
     const session = await getValidatedSession();
@@ -93,5 +95,5 @@ export async function signOut(): Promise<void> {
     }
 
     revalidatePath('/', 'layout');
-    redirect('/login');
+    redirect(URL_LOGIN_PAGE);
 }
