@@ -24,7 +24,7 @@ const SESSION_MAX_DURATION_MS = SESSION_REFRESH_INTERVAL_MS * 2;  // 30 days
 
 /**
  * Creates a random session token which will be used for the cookie and as a one way 
- * hashed version for the actual session's token_value in the DB.
+ * hashed version for the actual session's token_value in the database.
  */
 export async function generateRandomSessionToken(): Promise<string> {
     const bytes = new Uint8Array(20);
@@ -33,7 +33,7 @@ export async function generateRandomSessionToken(): Promise<string> {
 }
 
 /**
- * Creates a session for a user when signing up/in.
+ * Creates a session for a user when signing in.
  */
 export async function createSession(sessionToken: string, user_id: number): Promise<Session> {
     const token_value = fromSessionTokenToSessionValue(sessionToken);
@@ -44,7 +44,7 @@ export async function createSession(sessionToken: string, user_id: number): Prom
         token_value: token_value
     };
 
-    storeSession(session);
+    storeSession(session);  // Stores session in database
     return session;
 };
 
@@ -88,8 +88,8 @@ export async function signOut(): Promise<void> {
     const session = await getValidatedSession();
       
     if (session) {
-        await deleteSessionByTokenValue(session.token_value);
-        await deleteSessionCookie();
+        await deleteSessionByTokenValue(session.token_value);       // Delete session from database
+        await deleteSessionCookie();                                // Delete cookie in browser
     }
 
     revalidatePath('/', 'layout');

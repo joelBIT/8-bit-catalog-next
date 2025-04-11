@@ -318,7 +318,7 @@ export async function updateProfileImageById(id: number, image: File): Promise<v
  ***********/
 
 /**
- * Creates a session when a user register or signs in.
+ * Creates a session when a user signs in.
  */
 export async function storeSession(session: Session): Promise<void> {
     await databaseClient.from(SESSION_TABLE).insert(session);

@@ -3,7 +3,11 @@
 import { revalidatePath } from 'next/cache';
 import { updateGameById } from "@/db/db";
 import { Game } from "@/types/types";
+import { URL_GAME_DETAILS_PAGE } from '@/utils/utils';
 
+/**
+ * Updates an existing game's metadata. 
+ */
 export async function updateGame(id: number, formData: FormData): Promise<void> {
 
     const game: Game = {
@@ -21,5 +25,5 @@ export async function updateGame(id: number, formData: FormData): Promise<void> 
 
     await updateGameById(game, formData.get('cover') as File);
 
-    revalidatePath("/gamedetails/[id]", "page");
+    revalidatePath(`${URL_GAME_DETAILS_PAGE}/[id]`, "page");
 }
