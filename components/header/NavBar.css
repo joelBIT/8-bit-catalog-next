@@ -45,11 +45,15 @@
 }
 
 @media (max-width: 850px) {
-    .authenticated-navbar {
+    .navbar {
         .navbar__list {
             .navbar__list-element {
                 .navbar__list-element-link {
                     font-size: 3vw;
+                }
+
+                .material-symbols-outlined {
+                    font-size: 3rem;
                 }
             }
         }
@@ -82,6 +86,7 @@
             
                 .smallScreen {
                     display: block;
+                    font-size: 3rem;
                 }
 
                 &:hover {
@@ -104,7 +109,7 @@
         .showmenu {
             display: inline-table;
             position: absolute;
-            margin-top: 2.7rem;
+            margin-top: 2.5rem;
             text-align: justify;
             background: var(--color-black);
             height: fit-content;

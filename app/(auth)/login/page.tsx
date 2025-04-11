@@ -3,7 +3,7 @@ import { LoginForm } from "@/components/auth/LoginForm";
 
 import "./page.css";
 
-export default function LoginPage(): ReactElement<ReactElement> {
+export default function LoginPage(): ReactElement {
 
     return (
         <main id="loginPage">
