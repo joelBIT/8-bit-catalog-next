@@ -15,7 +15,7 @@ import { Session } from "@/types/types";
 
 
 /**
- * Set a cookie with the session token when the user signs up/in.
+ * Set a cookie with the session token when the user signs in.
  */
 export async function setSessionCookie(sessionToken: string, expires_at: Date): Promise<void> {
     const cookie = {

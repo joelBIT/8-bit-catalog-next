@@ -9,7 +9,7 @@ import "./FavouritePagination.css";
 /**
  * Pagination is used to navigate between pages of favourite games.
  */
-export function FavouritePagination({ currentPage }: { currentPage: number }): ReactElement<ReactElement> {
+export function FavouritePagination({ currentPage }: { currentPage: number }): ReactElement {
     const { setFavouritesPage, totalPages } = useContext(FavouritesContext);
 
     /**

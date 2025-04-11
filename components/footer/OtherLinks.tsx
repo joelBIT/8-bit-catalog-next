@@ -13,7 +13,7 @@ export function OtherLinks(): ReactElement {
 
     return (
         <section id="otherLinks">
-            <h2 className="otherLinks__title">Other Links</h2>
+            <h2 className="otherLinks__title"> Other Links </h2>
             <ul className="otherLinks__list">
                 {
                     OTHERLINKS.map((link, index) => 

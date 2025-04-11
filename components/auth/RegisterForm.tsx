@@ -19,33 +19,35 @@ export function RegisterForm(): ReactElement<ReactElement> {
 
     return (
         <>
-            { state?.message ? 
-                <h2 className={state?.success ? "message-success" : "message-failure"}>
-                    {state?.message}
-                </h2> : <></> 
+            { 
+                state?.message ? 
+                    <h2 className={state?.success ? "message-success" : "message-failure"}>
+                        {state?.message}
+                    </h2> : <></> 
             }
 
-            { state.success ?  
-                <p className="confirmation-text">A confirmation link will be sent to your email</p>  
+            { 
+                state.success ?  
+                    <p className="confirmation-text">A confirmation link will be sent to your email</p>  
                     :
-                <section id="registerCard" className={arima.className}>
-                    <h1 className="registerCard__title">Create Account</h1>
+                    <section id="registerCard" className={arima.className}>
+                        <h1 className="registerCard__title">Create Account</h1>
 
-                    <form id="registerForm" ref={formRef} action={formAction}>
-                        <EmailInput />
-                        <PasswordInput id="password" placeholder="Password" />
-                        <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
+                        <form id="registerForm" ref={formRef} action={formAction}>
+                            <EmailInput />
+                            <PasswordInput id="password" placeholder="Password" />
+                            <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
-                        <button className={`authButton ${irishGrover.className}`} type="submit">
-                            <span className="authButton__text"> Register </span>
-                        </button>
-                    </form>
+                            <button className={`authButton ${irishGrover.className}`} type="submit">
+                                <span className="authButton__text"> Register </span>
+                            </button>
+                        </form>
 
-                    <section id="login-link">
-                        <h2 className="login-link__text">Already got an account?</h2> 
-                        <Link href={URL_LOGIN_PAGE} className="registerCard__login-link"> Sign in </Link>
+                        <section id="login-link">
+                            <h2 className="login-link__text">Already got an account?</h2> 
+                            <Link href={URL_LOGIN_PAGE} className="registerCard__login-link"> Sign in </Link>
+                        </section>
                     </section>
-                </section>
             }
         </>
     );

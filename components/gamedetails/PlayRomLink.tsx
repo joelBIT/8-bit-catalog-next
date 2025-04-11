@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import "./PlayRomLink.css";
 
-export function PlayRomLink({ id } : { id: number}): ReactElement {
+export function PlayRomLink({ id } : { id: number }): ReactElement {
     return (
         <Link 
             id="playRomLink"

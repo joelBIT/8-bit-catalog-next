@@ -10,9 +10,10 @@ import { createSession, generateRandomSessionToken } from "@/auth/session";
 import { setSessionCookie } from "@/auth/cookie";
 import ActivationEmail from "@/components/email/ActivationEmail";
 import { isAuthenticated } from "@/app/_session/utils";
+import { URL_DASHBOARD_PAGE } from "@/utils/utils";
 
 /**
- * This function is invoked when a user tries to log in (get access to the user's account).
+ * This function is invoked when a user tries to log in.
  */
 export async function login(_prevState: any, formData: FormData) {
     const email = formData.get('email') as string;
@@ -40,7 +41,7 @@ export async function login(_prevState: any, formData: FormData) {
     }
 
     revalidatePath('/', 'layout');
-    redirect('/dashboard');
+    redirect(URL_DASHBOARD_PAGE);
 }
 
 /**
@@ -71,6 +72,9 @@ export async function register(_prevState: any, formData: FormData) {
     }
 }
 
+/**
+ * Creates a session in the database and a cookie for the browser when a user signs in.
+ */
 async function initiateSession(userId: number) {
     const sessionToken = await generateRandomSessionToken();
     const session = await createSession(sessionToken, userId);
@@ -78,6 +82,9 @@ async function initiateSession(userId: number) {
     await setSessionCookie(sessionToken, session.expires_at);
 }
 
+/**
+ * Sends an email containing a link with the activation code to the supplied email address.
+ */
 async function sendMail(email: string, activationCode: string) {
     const resend = new Resend(process.env.RESEND_API_KEY as string);
 

@@ -3,13 +3,16 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { Game } from "@/types/types";
-import { fileTypes, getPlayersList } from "@/utils/utils";
+import { fileTypes, getPlayersList, URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/games";
 import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from ".";
 
 import "./EditGameForm.css";
 
+/**
+ * Edit the metadata for a game.
+ */
 export function EditGameForm({ game }: { game: Game }): ReactElement {
     const router = useRouter();
     const [ cover, setCover ] = useState<File>();
@@ -19,10 +22,6 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
         if (event.target.files) {
             setCover(event.target.files[0]);
         }
-    }
-
-    function handleDate(event: ChangeEvent<HTMLInputElement>): void {
-        setDate(event.target.value);
     }
 
     const updateGameWithId = updateGame.bind(null, game.id);
@@ -74,11 +73,19 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="releasedSection">
                 <h2 className={`releasedSection__title ${arima.className}`}>Released</h2>
-                <input id="releaseDate" name="released" type="date" value={date} onChange={handleDate} required />
+                <input id="releaseDate" name="released" type="date" value={date} onChange={(event) => setDate(event.target.value)} required />
             </section>
 
             <div className="editGameForm-buttons">
-                <button id="cancelButton" className="gameButton" type="reset" onClick={() => router.push(`/gamedetails/${game.id}`)}> Cancel </button>
+                <button 
+                    id="cancelButton" 
+                    className="gameButton" 
+                    type="reset" 
+                    onClick={() => router.push(`${URL_GAME_DETAILS_PAGE}/${game.id}`)}
+                > 
+                    Cancel 
+                </button>
+
                 <button id="saveButton" className="gameButton" type="submit"> Save </button>
             </div>
         </form>
