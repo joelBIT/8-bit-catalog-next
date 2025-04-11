@@ -20,9 +20,6 @@ export interface FilterContextProvider {
     categories: string[];
     publishers: string[];
     developers: string[];
-    searchCategories: string[];
-    searchPublishers: string[];
-    searchDevelopers: string[];
 }
 
 export interface ContextProviderChildren {
