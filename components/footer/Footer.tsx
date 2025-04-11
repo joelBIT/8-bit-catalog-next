@@ -4,7 +4,7 @@ import { isAuthenticated } from "@/app/_session/utils";
 
 import "./Footer.css";
 
-export async function Footer(): Promise<ReactElement<ReactElement>> {
+export async function Footer(): Promise<ReactElement> {
 
     return (
         <footer>

@@ -3,6 +3,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_HOME, URL_LOGIN_PAGE } from "@/utils/utils";
 
 import "./SiteLinks.css";
 
@@ -10,13 +11,13 @@ export function SiteLinks( { authenticated } : { authenticated: boolean} ): Reac
     const pathname = usePathname();
 
     const SITELINKS = [
-        {path: "/", title: "Home"},
-        {path: "/about", title: "About"}
+        {path: URL_HOME, title: "Home"},
+        {path: URL_ABOUT_PAGE, title: "About"}
     ];
 
     return (
         <section id="siteLinks">
-            <h2 className="siteLinks__title">Site Links</h2>
+            <h2 className="siteLinks__title"> Site Links </h2>
             <ul className="siteLinks__list">
                 {
                     SITELINKS.map((link, index) => 
@@ -29,8 +30,8 @@ export function SiteLinks( { authenticated } : { authenticated: boolean} ): Reac
                 }
                 <li key={SITELINKS.length}>
                     <Link 
-                        href={authenticated ? "/dashboard" : "/login"} 
-                        className={pathname === "/login" || pathname === "/dashboard" ? `active siteLinks__link` : `siteLinks__link`}>
+                        href={authenticated ? URL_DASHBOARD_PAGE : URL_LOGIN_PAGE} 
+                        className={pathname === URL_LOGIN_PAGE || pathname === URL_DASHBOARD_PAGE ? `active siteLinks__link` : `siteLinks__link`}>
                         <h4 className="siteLinks__link-title"> Account </h4>
                     </Link>
                 </li>
