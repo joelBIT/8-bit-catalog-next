@@ -13,6 +13,7 @@
             width: 100%;
             height: 2rem;
             font-size: 1.3rem;
+            padding-left: 0.8rem;
         }
     }
 
@@ -171,6 +172,7 @@
         & .filter-fieldset {    
             > select {
                 font-size: 0.8rem;
+                padding-left: 0.3rem;
             }
         }
     }

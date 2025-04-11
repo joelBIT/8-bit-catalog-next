@@ -23,13 +23,29 @@ export const USER_ROLE_ADMIN = "admin";
 export const USER_ROLE_REGULAR = "regular";
 
 /**
- * Adds the 'ALL' option to the list so that a search can be performed on all games.
+ * Adds the 'All' option to the list so that a search can be performed on all games. The 'All' value is not added
+ * if the list already contains it.
  * 
  * @param list      list of options in filter list
  * @returns         list of options in filter list including the 'All' option
  */
 export function addAllOption(list: string[]): string[] {
-    list.unshift(ALL_OPTION_VALUE);
+    if (!list.includes(ALL_OPTION_VALUE)) {
+        list.unshift(ALL_OPTION_VALUE);
+    }
+    return list;
+}
+
+/**
+ * Removes the 'All' option from the list. 
+ * 
+ * @param list      list of options in filter list
+ * @returns         list of options in filter list excluding the 'All' option
+ */
+export function removeAllOption(list: string[]): string[] {
+    if (list.includes(ALL_OPTION_VALUE)) {
+        return list.filter(option => option !== ALL_OPTION_VALUE);
+    }
     return list;
 }
 
