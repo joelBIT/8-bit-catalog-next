@@ -7,7 +7,7 @@ import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/db/db";
 export const FilterContext = createContext<FilterContextProvider>({} as FilterContextProvider);
 
 /**
- * This is the context for filters used in the application.
+ * This is the context for filters used in the application. Filter values will almost never change.
  */
 export function FilterContexProvider({ children }: ContextProviderChildren): ReactElement {
     const [ categories, setCategories ] = useState<string[]>([]);

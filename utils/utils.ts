@@ -18,6 +18,7 @@ export const URL_REGISTER_PAGE = "/register";
 export const URL_REQUEST_PAGE = "/request";
 export const URL_REVIEW_PAGE = "/review";
 export const URL_SEARCH_PAGE = "/games";
+export const URL_ACTIVATION_PAGE = "/activate";
 
 export const USER_ROLE_ADMIN = "admin";
 export const USER_ROLE_REGULAR = "regular";

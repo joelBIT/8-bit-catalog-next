@@ -60,15 +60,31 @@ export function Search(): ReactElement {
                 : <></>
             }
 
-            {totalPages > 1 ? <Pagination currentPage={currentPage} 
-                setCurrentPage={setCurrentPage} setSearchResult={setSearchResult} totalPages={totalPages} /> : <></>}
+            {
+                totalPages > 1 ?
+                     <Pagination 
+                        currentPage={currentPage} 
+                        setCurrentPage={setCurrentPage} 
+                        setSearchResult={setSearchResult} 
+                        totalPages={totalPages} 
+                    /> 
+                : <></>
+            }
 
             <section id="gameCards">
                 { searchResult.map((game, index) => <GameCard key={index} game={game} />) }
             </section>
 
-            {totalPages > 1 ? <Pagination currentPage={currentPage} 
-                setCurrentPage={setCurrentPage} setSearchResult={setSearchResult} totalPages={totalPages} /> : <></>}
+            {
+                totalPages > 1 ? 
+                    <Pagination 
+                        currentPage={currentPage} 
+                        setCurrentPage={setCurrentPage}
+                        setSearchResult={setSearchResult} 
+                        totalPages={totalPages} 
+                    /> 
+                : <></>
+            }
         </section>
     );
 }

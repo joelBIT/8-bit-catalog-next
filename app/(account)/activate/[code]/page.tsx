@@ -15,7 +15,12 @@ export default async function ActivationPage({ params }: { params: Promise<Param
 
     return (
         <main id="activationPage">
-            { activated ? <h1> Account is activated. You can now log in. </h1> : <h1> Account could not be activated </h1> }
+            { 
+                activated ? 
+                    <h1> Account is activated. You can now log in. </h1> 
+                    : 
+                    <h1> Account could not be activated </h1> 
+            }
         </main>
     );
 }

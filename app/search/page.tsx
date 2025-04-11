@@ -11,9 +11,6 @@ import "./page.css";
  */
 export default async function SearchPage({ searchParams } : { searchParams: Promise<SearchFilter> }): Promise<ReactElement> {
     const params = await searchParams;
-    const category = params.category;
-    const developer = params.developer;
-    const publisher = params.publisher;
 
     return (
         <main id="searchPage">
@@ -21,9 +18,9 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                 <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
                 <Form id="searchFilters__form" action="" scroll={false}>
                     <article className="searchFilters__filters">
-                        <CategoryFilter defaultValue={category} />
-                        <PublisherFilter defaultValue={publisher} />
-                        <DeveloperFilter defaultValue={developer} />
+                        <CategoryFilter defaultValue={params.category} />
+                        <PublisherFilter defaultValue={params.publisher} />
+                        <DeveloperFilter defaultValue={params.developer} />
                     </article>
 
                     <article id="searchInput">
