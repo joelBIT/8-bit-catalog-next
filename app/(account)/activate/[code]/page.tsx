@@ -5,7 +5,7 @@ import { activateAccount, copyProfileImageToFolder } from "@/db/db";
 import "./page.css";
 
 /**
- * When an account is activated a folder is created for that account. This folder contains the account-specific profile images.
+ * When an account is activated a folder is created in storage for that account. This folder contains the account-specific profile images.
  */
 export default async function ActivationPage({ params }: { params: Promise<Params> }): Promise<ReactElement> {
     const { code } = await params;

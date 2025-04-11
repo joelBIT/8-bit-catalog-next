@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { Logo, NavBars } from ".";
+import { NavBar, Logo } from ".";
 import { irishGrover } from "@/fonts/fonts";
 import { isAuthenticated } from "@/app/_session/utils";
 
@@ -14,7 +14,7 @@ export async function Header(): Promise<ReactElement> {
                 <Logo />
                 <h1 className={`header__title ${irishGrover.className}`}>The 8-bit Catalog</h1>
             </Link>
-            <NavBars authenticated={await isAuthenticated()} />
+            <NavBar authenticated={await isAuthenticated()} />
         </header>
     );
 }

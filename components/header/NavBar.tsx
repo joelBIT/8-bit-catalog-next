@@ -2,17 +2,27 @@
 
 import { ReactElement, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { rancho } from "@/fonts/fonts";
+import { signOut } from "@/auth/session";
 import close from "../../assets/close_icon.png";
 import hamburger from "../../assets/hamburger_icon.png";
 
 import "./NavBar.css";
 
-export function NavBar(): ReactElement {
+/**
+ * Different NavBar options will be available depending on if the user is authenticated or not.
+ */
+export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
     const [ showMenu, setShowMenu ] = useState<boolean>(false);
     const pathname = usePathname();
+    const router = useRouter();
+
+    async function logout(): Promise<void> {
+        signOut();
+        router.refresh();
+    }
     
     return (
         <nav className="navbar">
@@ -35,16 +45,44 @@ export function NavBar(): ReactElement {
                         <h2 className={`navbar__list-element-title ${rancho.className}`}>Favourites</h2>
                     </Link>
                 </li>
-                <li className="navbar__list-element">
-                    <Link 
-                        href="/login"
-                        onClick={() => setShowMenu(false)}
-                        className={pathname === "/login" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+
+                { !authenticated ? 
+                    <li className="navbar__list-element">
+                        <Link 
+                            href="/login"
+                            onClick={() => setShowMenu(false)}
+                            className={pathname === "/login" ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                            >
+                            <span className="material-symbols-outlined wideScreen">login</span>
+                            <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Login</h2>
+                        </Link>
+                    </li>
+                    : <></>
+                }
+
+                { authenticated ?
+                    <li className="navbar__list-element">
+                        <Link 
+                            href="/dashboard"
+                            onClick={() => setShowMenu(false)}
+                            className={pathname === "/dashboard" ? `active navbar__list-element-link` : `navbar__list-element-link`}
                         >
-                        <span className="material-symbols-outlined wideScreen">login</span>
-                        <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Login</h2>
-                    </Link>
-                </li>
+                            <span className="material-symbols-outlined wideScreen">account_circle</span>
+                            <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Account</h2>
+                        </Link>
+                    </li>
+                    : <></>
+                }
+
+                { authenticated ?
+                    <li className="navbar__list-element" onClick={logout}>
+                        <Link href="/" onClick={() => setShowMenu(false)}>
+                            <span className="material-symbols-outlined wideScreen">logout</span>
+                            <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}>Logout</h2>
+                        </Link>
+                    </li>
+                    : <></>
+                }
             </ul>
 
             <div id="hamburger" onClick={() => setShowMenu(!showMenu)}>
