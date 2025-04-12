@@ -38,7 +38,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
             <ul className={showMenu ? "navbar__list showmenu" : "navbar__list"}>
                 {
                     LINKS.filter(link => link.render).map(link =>
-                        <li className="navbar__list-element">
+                        <li className="navbar__list-element" key={link.url}>
                             <Link 
                                 href={link.url}
                                 onClick={() => setShowMenu(false)}
