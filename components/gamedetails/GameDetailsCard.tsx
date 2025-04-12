@@ -11,8 +11,16 @@ import "./GameDetailsCard.css";
 export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement> {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
+    const GAME_DETAILS = [
+        {heading: "Category:", text: game.category},
+        {heading: "Released:", text: game.release_date},
+        {heading: "Players:", text: game.players},
+        {heading: "Publisher:", text: game.publisher},
+        {heading: "Developer:", text: game.developer}
+    ]
+
     return (
-        (<section id="gameDetailsCard">
+        <section id="gameDetailsCard">
             <figure className="gameDetailsCard__figure">
                 <Link href={STORAGE_URL + game.cover} target="_blank">
                     <Image 
@@ -25,61 +33,31 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                     />
                 </Link>
             </figure>
+
             <article id="gameDetails" className="bit-font">
-                <h1 className="gameDetails__title">{game.title}</h1>
+                <h1 className="gameDetails__title"> {game.title} </h1>
 
-                <section className="gameDetails__metadata">
-                    <h2 className="gameDetails__metadata-heading">
-                        Category: 
-                    </h2>
-                    <p className="gameDetails__metadata-text">
-                        {game.category}
-                    </p>
-                </section>
-
-                <section className="gameDetails__metadata">
-                    <h2 className="gameDetails__metadata-heading">
-                        Released: 
-                    </h2>
-                    <p className="gameDetails__metadata-text">
-                        {game.release_date}
-                    </p>
-                </section>
-
-                <section className="gameDetails__metadata">
-                    <h2 className="gameDetails__metadata-heading">
-                        Players: 
-                    </h2>
-                    <p className="gameDetails__metadata-text">
-                        {game.players}
-                    </p>
-                </section>
-
-                <section className="gameDetails__metadata">
-                    <h2 className="gameDetails__metadata-heading">
-                        Publisher: 
-                    </h2>
-                    <p className="gameDetails__metadata-text">
-                        {game.publisher}
-                    </p>
-                </section>
-
-                <section className="gameDetails__metadata">
-                    <h2 className="gameDetails__metadata-heading">
-                        Developer: 
-                    </h2>
-                    <p className="gameDetails__metadata-text">
-                        {game.developer}
-                    </p>
-                </section>
+                {
+                    GAME_DETAILS.map(detail => 
+                        <section className="gameDetails__metadata" key={detail.heading}>
+                            <h2 className="gameDetails__metadata-heading">
+                                { detail.heading }
+                            </h2>
+                            <p className="gameDetails__metadata-text">
+                                { detail.text }
+                            </p>
+                        </section>
+                    )
+                }
 
                 { game.rom ? <PlayRomLink id={game.id} /> : <></> }
             </article>
+
             <article id="gameDetailsCard__description">
                 { game.description }
             </article>
             
             { (await isAuthenticatedAdmin()) ? <EditGameButton gameId={game.id} /> : <></> }
-        </section>)
+        </section>
     );
 }

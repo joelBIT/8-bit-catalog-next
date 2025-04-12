@@ -5,11 +5,16 @@ import { useFormStatus } from 'react-dom';
 import { arima } from '@/fonts/fonts';
  
 export function SearchButton(): ReactElement {
-  const status = useFormStatus();
+    const status = useFormStatus();
 
-  return (
-    <button id="searchButton" type="submit" className={`gameButton ${arima.className}`} disabled={status.pending}> 
-        Search
-    </button>
-  )
+    return (
+        <button 
+            id="searchButton" 
+            type="submit" 
+            className={`gameButton ${arima.className}`} 
+            disabled={status.pending}
+        > 
+            Search
+        </button>
+    )
 }

@@ -42,10 +42,10 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             <EditGameCategory defaultValue={game.category} />
 
             <section className="selectSection romSection">
-                <h2 className={`romSection__title ${arima.className}`}>Has ROM?</h2>
+                <h2 className={`romSection__title ${arima.className}`}> Has ROM? </h2>
                 <select name="rom" id="rom-select" defaultValue={game.rom.toString()}>
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
+                    <option value="false"> No </option>
+                    <option value="true"> Yes </option>
                 </select>
             </section>
 
@@ -60,19 +60,19 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             />
 
             <section id="coverSection">
-                <h2 className={`coverSection__title ${arima.className}`}>New Cover</h2>
+                <h2 className={`coverSection__title ${arima.className}`}> New Cover </h2>
                 <input name="cover" type="file" defaultValue={cover?.name} accept={fileTypes.toString()} onChange={handleCover} />
             </section>
 
             <section className="selectSection playersSection">
-                <h2 className={`selectSection__title ${arima.className}`}>Players</h2>
+                <h2 className={`selectSection__title ${arima.className}`}> Players </h2>
                 <select name="players" className="selectSection__select" defaultValue={game.players?.toString()}>
                     { getPlayersList().map((element, index) => <option key={index} value={element}> {element} </option>) }
                 </select>
             </section>
 
             <section id="releasedSection">
-                <h2 className={`releasedSection__title ${arima.className}`}>Released</h2>
+                <h2 className={`releasedSection__title ${arima.className}`}> Released </h2>
                 <input id="releaseDate" name="released" type="date" value={date} onChange={(event) => setDate(event.target.value)} required />
             </section>
 
