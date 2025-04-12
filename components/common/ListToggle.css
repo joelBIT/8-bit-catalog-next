@@ -1,8 +1,8 @@
 #listToggle {
     display: flex;
     gap: 1rem;
-    align-self: flex-end;
-    margin-right: 2rem;
+    align-self: center;
+    margin-bottom: 2rem;
 
     #gridView, #listView {
         display: flex;
@@ -31,12 +31,5 @@
         &:hover {
             filter: brightness(1.5);
         }
-    }
-}
-
-@media (max-width: 500px) {
-    #listToggle {
-        margin-right: 0;
-        align-self: center;
     }
 }

@@ -83,7 +83,7 @@ export function Search(): ReactElement {
             }
 
             <section id="gameCards">
-                { searchResult.map((game, index) => gridView ? <GameCard key={index} game={game} /> : <GameCard key={index} game={game} />) }
+                { searchResult.map((game, index) => <GameCard key={index} game={game} grid={gridView} />) }
             </section>
 
             {
