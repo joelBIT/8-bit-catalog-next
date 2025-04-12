@@ -22,6 +22,13 @@ export function AccountMenu({ user } : { user: User }): ReactElement {
         router.refresh();
     }
 
+    // Links visible for all user roles
+    const LINKS = [
+        {url: URL_DASHBOARD_PAGE, title: 'Dashboard', icon: 'dashboard'},
+        {url: URL_PROFILE_PAGE, title: 'Profile', icon: 'person'},
+        {url: URL_SETTINGS_PAGE, title: 'Settings', icon: 'settings'}
+    ];
+
     return (
         <div id="accountMenu-wrapper">
             <input id="hamburger-side" type="checkbox" />
@@ -37,15 +44,14 @@ export function AccountMenu({ user } : { user: User }): ReactElement {
                 <article id="pages">
                     <h1 className="pages-title">Pages</h1>
 
-                    <Link href={URL_DASHBOARD_PAGE} className={pathname === URL_DASHBOARD_PAGE ? "account-menu__link active" : "account-menu__link"}>
-                        <span className="material-symbols-outlined" title="Dashboard"> dashboard </span> 
-                        <h1 className="menu__link-title"> Dashboard </h1> 
-                    </Link>
-
-                    <Link href={URL_PROFILE_PAGE} className={pathname === URL_PROFILE_PAGE ? "account-menu__link active" : "account-menu__link"}> 
-                        <span className="material-symbols-outlined" title="Profile"> person </span>
-                        <h1 className="menu__link-title"> Profile </h1>
-                    </Link>
+                    { 
+                        LINKS.map(link => 
+                            <Link href={link.url} className={pathname === link.url ? "account-menu__link active" : "account-menu__link"}>
+                                <span className="material-symbols-outlined" title={link.title}> {link.icon} </span> 
+                                <h1 className="menu__link-title"> {link.title} </h1> 
+                            </Link>
+                        )
+                    }
 
                     {
                         user?.role === USER_ROLE_ADMIN ?
@@ -55,11 +61,6 @@ export function AccountMenu({ user } : { user: User }): ReactElement {
                             </Link>
                         : <></>
                     }
-
-                    <Link href={URL_SETTINGS_PAGE} className={pathname === URL_SETTINGS_PAGE ? "account-menu__link active" : "account-menu__link"}> 
-                        <span className="material-symbols-outlined" title="Settings"> settings </span> 
-                        <h1 className="menu__link-title"> Settings </h1>
-                    </Link>
 
                     <Link href="#" className="account-menu__link logout-link" onClick={logout}> 
                         <span className="material-symbols-outlined" title="Logout"> power_settings_new </span> 
