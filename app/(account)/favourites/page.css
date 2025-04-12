@@ -4,6 +4,10 @@
     flex-direction: column;
     align-items: center;
 
+    .number-favourites-text {
+        margin-bottom: 1rem;
+    }
+
     #gameCards {
         display: flex;
         flex-wrap: wrap;
