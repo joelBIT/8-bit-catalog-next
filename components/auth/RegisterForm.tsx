@@ -9,7 +9,7 @@ import { EmailInput, PasswordInput } from "../common";
 
 import "./RegisterForm.css";
 
-export function RegisterForm(): ReactElement<ReactElement> {
+export function RegisterForm(): ReactElement {
     const [state, formAction] = useActionState(register, { message: '', success: false });
     const formRef = useRef<HTMLFormElement>(null);
 

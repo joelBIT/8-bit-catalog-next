@@ -16,16 +16,17 @@ import "./GameCard.css";
  * add a game card to the list of favourite games.
  * 
  * @param game          a game
+ * @param grid          rendered as a grid-view card if true, otherwise the card is rendered as a list-view card
  * @returns             a clickable card with game information
  */
-export function GameCard({ game }: { game: Game }): ReactElement<ReactElement> {
+export function GameCard({ game, grid }: { game: Game, grid: boolean }): ReactElement {
     const [ isFadingOut, setIsFadingOut ] = useState<boolean>(false);
     const [ removeCard, setRemoveCard ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
     
     return (
         <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : ""}>
-            <section className={removeCard ? "hidden" : "gameCard"}>
+            <section className={removeCard ? "hidden" : `${grid ? "gameCard" : "gameCard-listView"}`}>
                 <figure className="gameCard-figure">
                     <Image 
                         src={STORAGE_URL + game.cover}

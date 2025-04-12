@@ -52,7 +52,7 @@
     }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 950px) {
     #searchPage {
         #searchFilters {
             #searchFilters__form {

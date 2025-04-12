@@ -5,7 +5,7 @@ import { ReactElement, useState } from "react";
 
 import "./PasswordInput.css";
 
-export function PasswordInput({ id, placeholder }: { id: string, placeholder: string }): ReactElement<ReactElement> {
+export function PasswordInput({ id, placeholder }: { id: string, placeholder: string }): ReactElement {
     const [ isVisible, setVisible ] = useState<boolean>(false);
     
     return (

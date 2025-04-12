@@ -1,0 +1,35 @@
+#listToggle {
+    display: flex;
+    gap: 1rem;
+    align-self: center;
+    margin-bottom: 2rem;
+
+    #gridView, #listView {
+        display: flex;
+        align-items: center;
+
+        & .material-symbols-outlined {
+            margin-top: 0.1rem;
+        }
+        
+        & .toggle-title {
+            font-weight: 100;
+        }
+    }
+
+    .active {
+        background-color: rgba(51, 50, 50, 0.5);
+        border-radius: 9px;
+        padding: 0.5rem;
+        cursor: default;
+    }
+
+    .disabled {
+        cursor: pointer;
+        padding: 0.5rem;
+
+        &:hover {
+            filter: brightness(1.5);
+        }
+    }
+}

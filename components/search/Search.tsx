@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { getGames } from "@/data/data";
 import { Game } from "@/types/types";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
-import { GameCard } from "../common";
+import { GameCard, ListToggle } from "../common";
 import { Pagination } from ".";
 import { arima } from "@/fonts/fonts";
 
@@ -29,6 +29,7 @@ export function Search(): ReactElement {
     const [ currentPage, setCurrentPage ] = useState<number>(parseInt(page));
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
+    const [ gridView, setGridView ] = useState<boolean>(true);
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
@@ -49,6 +50,10 @@ export function Search(): ReactElement {
         setShowHeading(true);
     }
 
+    function toggleGridView() {
+        setGridView(!gridView);
+    }
+
     return (
         <section id="search">
             { 
@@ -58,6 +63,12 @@ export function Search(): ReactElement {
                         <p className="searchResult__games-found"> {totalCount} </p>
                     </h1> 
                 : <></>
+            }
+
+            {
+                searchResult.length > 0 ?
+                    <ListToggle toggle={toggleGridView} />
+                    : <></>
             }
 
             {
@@ -72,7 +83,7 @@ export function Search(): ReactElement {
             }
 
             <section id="gameCards">
-                { searchResult.map((game, index) => <GameCard key={index} game={game} />) }
+                { searchResult.map((game, index) => <GameCard key={index} game={game} grid={gridView} />) }
             </section>
 
             {
