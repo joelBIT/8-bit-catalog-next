@@ -7,7 +7,12 @@ import "./Logo.css";
 export function Logo(): ReactElement {
     return (
         <figure id="logo">
-            <Image src={logo} alt="logo" width={200} className="logo__image" />
+            <Image 
+                src={logo} 
+                alt="logo" 
+                width={200} 
+                className="logo__image" 
+            />
         </figure>
     );
 }
