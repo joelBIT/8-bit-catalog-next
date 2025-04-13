@@ -14,7 +14,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
 
     return (
         <main id="searchPage">
-            <section id="searchFilters">
+            <search id="searchFilters">
                 <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
                 <Form id="searchFilters__form" action="" scroll={false}>
                     <article className="searchFilters__filters">
@@ -35,7 +35,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         <SearchButton />
                     </article>
                 </Form>
-            </section>
+            </search>
             
             <Search />
         </main>

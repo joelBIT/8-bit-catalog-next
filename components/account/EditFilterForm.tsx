@@ -21,14 +21,14 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
     const [ openInputModal, setOpenInputModal ] = useState<boolean>(false);
     const selectRef = useRef<HTMLSelectElement>(null);
 
-    function confirmDelete() {
+    function confirmDelete(): void {
         const remainingValues = valuesList.filter(value => value !== selectRef.current?.value);
         updateFilterValues(remainingValues, filter);
         setValuesList(remainingValues);
         setOpenModal(false);
     }
 
-    function confirmUpdate(value: string) {
+    function confirmUpdate(value: string): void {
         if (!valuesList.includes(value)) {      // Only add value if it does not already exists
             const values = [...valuesList, value].sort();
             updateFilterValues(values, filter);
@@ -38,12 +38,12 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
         setOpenInputModal(false);
     }
 
-    function open() {
+    function open(): void {
         setModalText(`Are you sure you want to delete ${selectRef.current?.value}?`);
         setOpenModal(true);
     }
 
-    function inputOpen() {
+    function inputOpen(): void {
         setInputModalText(`Add ${title}`);
         setOpenInputModal(true);
     }

@@ -14,6 +14,7 @@ export const URL_DASHBOARD_PAGE = "/dashboard";
 export const URL_PROFILE_PAGE = URL_DASHBOARD_PAGE + "/profile";
 export const URL_FILTERS_PAGE = URL_DASHBOARD_PAGE + "/filters";
 export const URL_SETTINGS_PAGE = URL_DASHBOARD_PAGE + "/settings";
+export const URL_MEMBERS_PAGE = URL_DASHBOARD_PAGE + "/members";
 
 export const USER_ROLE_ADMIN = "admin";
 export const USER_ROLE_REGULAR = "regular";

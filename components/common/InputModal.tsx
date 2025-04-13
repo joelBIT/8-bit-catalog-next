@@ -35,10 +35,12 @@ export function InputModal({ text, confirm, open, close }: { text: string, confi
         <dialog id="inputModal" ref={modalRef}>
             <form method="dialog">
                 <h1 className="modal__text"> {text} </h1>
-                { showMessage ? 
-                    <h2 className="message-failure">
-                        Value must be at least 3 characters
-                    </h2> : <></> 
+                
+                { 
+                    showMessage ? 
+                        <h2 className="message-failure">
+                            Value must be at least 3 characters
+                        </h2> : <></> 
                 }
 
                 <input 

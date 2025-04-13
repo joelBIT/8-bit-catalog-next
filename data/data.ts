@@ -1,4 +1,4 @@
-import { Game, SearchFilter, SearchResult } from '@/types/types';
+import { Game, SearchFilter, SearchResult, User } from '@/types/types';
 
 
 /********************************************************************************************
@@ -18,6 +18,20 @@ export async function getGames(filters: SearchFilter): Promise<SearchResult> {
     }
 
     return {games: [], count: 0};
+}
+
+/**
+ * Retrieve all users.
+ */
+export async function getUsers(): Promise<User[]> {
+    try {
+        const response = await fetch(`/api/users`);
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+    }
+
+    return [];
 }
 
 /**

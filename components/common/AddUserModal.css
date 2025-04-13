@@ -1,4 +1,4 @@
-#inputModal {
+#addUserModal {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -18,8 +18,7 @@
         & .modal-buttons-wrapper {
             display: flex;
             justify-content: space-around;
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
+            margin: 1rem 0.5rem;
         }
 
         & .modal__text {
@@ -28,21 +27,21 @@
             text-align: center;
         }
 
-        #filterValueInput {
+        #emailInput, #passwordInput {
             width: 80%;
             align-self: center;
         }
 
-        .message-failure {
+        .message-failure, .message-success {
             width: fit-content;
             align-self: center;
-            margin: 0;
+            filter: brightness(0.8);
         }
     }
 }
 
 @media (max-width: 1000px) {
-    #inputModal {
+    #addUserModal {
         height: 50%;
         width: 85%;
 
@@ -61,18 +60,13 @@
 }
 
 @media (max-width: 600px) {
-    #inputModal {
+    #addUserModal {
         & form {
-            #filterValueInput {
+            input {
                 width: 90%;
                 height: auto;
                 font-size: 1rem;
                 padding-left: 0.3rem;
-            }
-
-            .message-failure {
-                font-size: 1rem;
-                text-align: center;
             }
         }
     }

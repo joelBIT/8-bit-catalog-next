@@ -95,6 +95,17 @@ async function uploadFile(fileName: string, file: File, storage: string, folder:
  **********/
 
 /**
+ * Performs a text search if a title is given by the user. Otherwise a search is executed based on supplied filters.
+ */
+export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
+    if (filters.title) {
+        return await textSearch(filters);
+    }
+    
+    return await filterSearch(filters);
+}
+
+/**
  * Retrieve games based on text search performed on game descriptions. 
  * A count property corresponding to the number of matched games is added to the response.
  */
@@ -128,17 +139,6 @@ function from(page: number): number {
 
 function to(page: number): number {
     return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
-}
-
-/**
- * Performs a text search if a title is given by the user. Otherwise a search is executed based on supplied filters.
- */
-export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
-    if (filters.title) {
-        return await textSearch(filters);
-    }
-    
-    return await filterSearch(filters);
 }
 
 /**
@@ -287,6 +287,15 @@ export async function getUserById(id: number): Promise<User> {
     return data;
 }
 
+export async function getAllUsers(): Promise<User[]> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS);
+    if (error) {
+        console.log(error);
+        return [];
+    }
+    return data;
+}
+
 export async function updateUser(id: number, last_name: string, first_name: string, bio: string): Promise<void> {
     await databaseClient.from(USER_TABLE).update({last_name, first_name, bio}).eq('id', id);
 }
@@ -306,6 +315,14 @@ async function updateUserImage(id: number, image: string): Promise<void> {
 export async function updateProfileImageById(id: number, image: File): Promise<void> {
     await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");   // uploads the image file to a bucket.
     await updateUserImage(id, image.name);  // updates the image name since this name is used to reference the uploaded image file.
+}
+
+/**
+ * Used by admin to create a user and account directly by bypassing the email activation procedure.
+ */
+export async function createActivatedAccount(email: string, password_hash: string): Promise<void> {
+    const user = await registerUser(email, password_hash);
+    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
 }
 
 
