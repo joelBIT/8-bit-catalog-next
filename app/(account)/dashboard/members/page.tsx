@@ -27,8 +27,7 @@ export default function MembersPage(): ReactElement {
     }
 
     function updateMemberList() {
-        
-        setResult(members);
+        setResult(members.filter(member => member.email.includes(searchRef.current?.value as string)));
     }
 
     return (
