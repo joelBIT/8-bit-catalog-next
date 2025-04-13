@@ -15,7 +15,7 @@ import { URL_DASHBOARD_PAGE } from "@/utils/utils";
 /**
  * This function is invoked when a user tries to log in.
  */
-export async function login(_prevState: any, formData: FormData) {
+export async function login(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
@@ -47,7 +47,7 @@ export async function login(_prevState: any, formData: FormData) {
 /**
  * This function is invoked when a user tries to create an account.
  */
-export async function register(_prevState: any, formData: FormData) {
+export async function register(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
     const email = formData.get('email') as string;
@@ -75,7 +75,7 @@ export async function register(_prevState: any, formData: FormData) {
 /**
  * Creates a session in the database and a cookie for the browser when a user signs in.
  */
-async function initiateSession(userId: number) {
+async function initiateSession(userId: number): Promise<void> {
     const sessionToken = await generateRandomSessionToken();
     const session = await createSession(sessionToken, userId);
 
@@ -85,7 +85,7 @@ async function initiateSession(userId: number) {
 /**
  * Sends an email containing a link with the activation code to the supplied email address.
  */
-async function sendMail(email: string, activationCode: string) {
+async function sendMail(email: string, activationCode: string): Promise<void> {
     const resend = new Resend(process.env.RESEND_API_KEY as string);
 
     await resend.emails.send({

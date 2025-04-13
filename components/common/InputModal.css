@@ -7,6 +7,7 @@
     height: 40%;
     border-radius: 8px;
     scrollbar-width: none;
+    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
 
     & form {
         display: flex;

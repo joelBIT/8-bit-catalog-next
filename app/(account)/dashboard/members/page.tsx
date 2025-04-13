@@ -22,21 +22,17 @@ export default function MembersPage(): ReactElement {
         getAllMembers();
     }, [])
 
-    async function getAllMembers() {
+    async function getAllMembers(): Promise<void> {
         const users = await getUsers();
         setMembers(users);
         setResult(users);
     }
 
-    function updateMemberList() {
+    function updateMemberList(): void {
         setResult(members.filter(member => member.email.includes(searchRef.current?.value as string)));
     }
 
-    function addMember(user: User) {
-        console.log(user);
-    }
-
-    function openModal() {
+    function openModal(): void {
         setModal(true);
     }
 
@@ -60,7 +56,6 @@ export default function MembersPage(): ReactElement {
             </section>
 
             <AddUserModal 
-                confirm={addMember} 
                 open={modal} 
                 close={() => setModal(false)}  
             />

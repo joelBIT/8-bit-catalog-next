@@ -317,6 +317,14 @@ export async function updateProfileImageById(id: number, image: File): Promise<v
     await updateUserImage(id, image.name);  // updates the image name since this name is used to reference the uploaded image file.
 }
 
+/**
+ * Used by admin to create a user and account directly by bypassing the email activation procedure.
+ */
+export async function createActivatedAccount(email: string, password_hash: string): Promise<void> {
+    const user = await registerUser(email, password_hash);
+    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
+}
+
 
 
 
