@@ -32,8 +32,10 @@ export default function MembersPage(): ReactElement {
         setResult(members.filter(member => member.email.includes(searchRef.current?.value as string)));
     }
 
-    function openModal(): void {
-        setModal(true);
+    // When the modal is closed the list of all members is updated (in case new members were added)
+    function close(): void {
+        setModal(false);
+        getAllMembers();
     }
 
     return (
@@ -52,12 +54,12 @@ export default function MembersPage(): ReactElement {
                     />
                 </search>
                     
-                <button className="gameButton add-member__button" onClick={openModal}> + Add member </button>
+                <button className="gameButton add-member__button" onClick={() => setModal(true)}> + Add member </button>
             </section>
 
             <AddUserModal 
                 open={modal} 
-                close={() => setModal(false)}  
+                close={close}  
             />
 
             <section id="members-list">

@@ -18,8 +18,7 @@
         & .modal-buttons-wrapper {
             display: flex;
             justify-content: space-around;
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
+            margin: 1rem 0.5rem;
         }
 
         & .modal__text {
@@ -33,9 +32,10 @@
             align-self: center;
         }
 
-        .message-failure {
+        .message-failure, .message-success {
             width: fit-content;
             align-self: center;
+            filter: brightness(0.8);
         }
     }
 }

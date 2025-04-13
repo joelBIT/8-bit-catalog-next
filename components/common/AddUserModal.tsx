@@ -11,7 +11,7 @@ import "./AddUserModal.css";
  * This modal is used by admin in admin pages when creating a new member. Creating a new account and user this way bypasses the email
  * verification process.
  */
-export function AddUserModal({ open, close }: { open: boolean, close: (toggle: boolean) => void }): ReactElement {
+export function AddUserModal({ open, close }: { open: boolean, close: () => void }): ReactElement {
     const [ state, formAction ] = useActionState(createUserAndAccount, { message: '', success: false });
     const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -20,15 +20,11 @@ export function AddUserModal({ open, close }: { open: boolean, close: (toggle: b
     } else {
         modalRef.current?.close();
     }
-
-    if (state.success) {
-        closeModal();
-    } 
     
     function closeModal(): void {
         modalRef.current?.close();
         state.message = '';
-        close(true);
+        close();
     }
 
     return (
@@ -36,7 +32,7 @@ export function AddUserModal({ open, close }: { open: boolean, close: (toggle: b
             <form method="dialog" action={formAction}>
                 <h1 className="modal__text"> Add member </h1>
 
-                { state.message ? <h2 className="message-failure"> {state.message} </h2> : <></> }
+                { state.message ? <h2 className={state.success ? "message-success" : "message-failure"}> {state.message} </h2> : <></> }
 
                 <EmailInput />
                 <PasswordInput id="password" placeholder="Password" />
