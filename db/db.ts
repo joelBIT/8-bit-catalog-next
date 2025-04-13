@@ -287,6 +287,15 @@ export async function getUserById(id: number): Promise<User> {
     return data;
 }
 
+export async function getAllUsers(): Promise<User[]> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS);
+    if (error) {
+        console.log(error);
+        return [];
+    }
+    return data;
+}
+
 export async function updateUser(id: number, last_name: string, first_name: string, bio: string): Promise<void> {
     await databaseClient.from(USER_TABLE).update({last_name, first_name, bio}).eq('id', id);
 }
