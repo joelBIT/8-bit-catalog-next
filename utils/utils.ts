@@ -33,19 +33,6 @@ export function addAllOption(list: string[]): string[] {
 }
 
 /**
- * Removes the 'All' option from the list. 
- * 
- * @param list      list of options in filter list
- * @returns         list of options in filter list excluding the 'All' option
- */
-export function removeAllOption(list: string[]): string[] {
-    if (list.includes(ALL_OPTION_VALUE)) {
-        return list.filter(option => option !== ALL_OPTION_VALUE);
-    }
-    return list;
-}
-
-/**
  * 
  * @returns   a list containing the choosable options for players in a game.
  */
