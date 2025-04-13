@@ -57,10 +57,7 @@ export default function MembersPage(): ReactElement {
                 <button className="gameButton add-member__button" onClick={() => setModal(true)}> + Add member </button>
             </section>
 
-            <AddUserModal 
-                open={modal} 
-                close={close}  
-            />
+            <AddUserModal open={modal} close={close} />
 
             <section id="members-list">
                 { result.map(member => <h1 key={member.email}> {member.email} </h1>) }

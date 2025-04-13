@@ -23,17 +23,20 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         <DeveloperFilter defaultValue={params.developer} />
                     </article>
 
-                    <article id="searchInput">
-                        <input 
-                            id="searchTitle"
-                            name="title"
-                            className={arima.className} 
-                            type="text"
-                            placeholder="Game Title"
-                        />
+                    <search id="searchInput">
+                        <div className="input-wrapper">
+                            <span className="material-symbols-outlined"> search </span>
+                            <input 
+                                id="searchTitle"
+                                name="title"
+                                className={arima.className} 
+                                type="text"
+                                placeholder="Game Title"
+                            />
+                        </div>
 
                         <SearchButton />
-                    </article>
+                    </search>
                 </Form>
             </search>
             
