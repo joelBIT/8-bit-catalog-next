@@ -11,7 +11,7 @@ header {
         .header__title {
             letter-spacing: 0.2rem;
             font-weight: bold;
-            width: 15vw;
+            width: 17vw;
 
             &:hover {
                 filter: brightness(1.5);

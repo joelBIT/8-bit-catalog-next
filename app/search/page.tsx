@@ -24,7 +24,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                     </article>
 
                     <search id="searchInput">
-                        <div className="input-wrapper">
+                        <section className="input-wrapper">
                             <span className="material-symbols-outlined"> search </span>
                             <input 
                                 id="searchTitle"
@@ -33,7 +33,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                                 type="text"
                                 placeholder="Game Title"
                             />
-                        </div>
+                        </section>
 
                         <SearchButton />
                     </search>
