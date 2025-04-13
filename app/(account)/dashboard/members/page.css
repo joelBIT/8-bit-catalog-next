@@ -25,3 +25,34 @@
         margin-top: 3rem;
     }
 }
+
+@media (max-width: 1300px) {
+    #membersPage {
+        #heading {
+            margin-left: 2rem;
+
+            & .title {
+                margin-right: 3rem;
+            }
+
+            & .search-members > input {
+                width: 13rem;
+                font-size: 1rem;
+            }
+
+            & .add-member__button {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 950px) {
+    #membersPage {
+        #heading {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+    }
+}

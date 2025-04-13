@@ -43,9 +43,22 @@
                 margin-top: 3rem;
                 gap: 2rem;
                 align-items: center;
-            
-                #searchTitle {
-                    padding-left: 0.5rem;
+
+                & .input-wrapper {
+                    display: flex;
+
+                    & .material-symbols-outlined {
+                        position: relative;
+                        left: 2.2rem;
+                        align-content: center;
+                        color: var(--color-black);
+                        font-size: 1.8rem;
+                        z-index: 1;
+                    }
+                
+                    #searchTitle {
+                        padding-left: 2.5rem;
+                    }
                 }
             }
         }
@@ -56,6 +69,8 @@
     #searchPage {
         #searchFilters {
             #searchFilters__form {
+                text-align: center;
+
                 & .searchFilters__filters {
                     flex-direction: column;
                 }
@@ -64,7 +79,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     #searchPage {
         #searchFilters {
             #searchInput {
@@ -84,12 +99,13 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
     #searchPage {
         #searchFilters {
             #searchInput {
                 #searchTitle {
-                    width: 90vw;
+                    font-size: 1.2rem;
+                    width: 80vw;
                 }
             }
 
