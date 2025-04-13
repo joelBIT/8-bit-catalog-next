@@ -95,6 +95,17 @@ async function uploadFile(fileName: string, file: File, storage: string, folder:
  **********/
 
 /**
+ * Performs a text search if a title is given by the user. Otherwise a search is executed based on supplied filters.
+ */
+export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
+    if (filters.title) {
+        return await textSearch(filters);
+    }
+    
+    return await filterSearch(filters);
+}
+
+/**
  * Retrieve games based on text search performed on game descriptions. 
  * A count property corresponding to the number of matched games is added to the response.
  */
@@ -128,17 +139,6 @@ function from(page: number): number {
 
 function to(page: number): number {
     return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
-}
-
-/**
- * Performs a text search if a title is given by the user. Otherwise a search is executed based on supplied filters.
- */
-export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
-    if (filters.title) {
-        return await textSearch(filters);
-    }
-    
-    return await filterSearch(filters);
 }
 
 /**

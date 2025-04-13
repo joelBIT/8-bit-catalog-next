@@ -1,0 +1,6 @@
+#membersPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../../../../assets/backgrounds/account_wallpaper.png");
+}
