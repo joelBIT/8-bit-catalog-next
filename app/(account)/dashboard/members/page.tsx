@@ -45,6 +45,7 @@ export default function MembersPage(): ReactElement {
                 <h2 className="members-count__text"> All members ({members.length}) </h2>
 
                 <search className="search-members">
+                    <span className="material-symbols-outlined"> search </span>
                     <input 
                         className={`${arima.className}`} 
                         type="text" 
