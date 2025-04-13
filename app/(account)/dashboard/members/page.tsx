@@ -4,6 +4,7 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { User } from "@/types/types";
 import { arima } from "@/fonts/fonts";
 import { getUsers } from "@/data/data";
+import { AddUserModal } from "@/components/common";
 
 import "./page.css";
 
@@ -14,6 +15,7 @@ import "./page.css";
 export default function MembersPage(): ReactElement {
     const [ members, setMembers ] = useState<User[]>([]);
     const [ result, setResult ] = useState<User[]>([]);
+    const [ modal, setModal ] = useState<boolean>(false);
     const searchRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -30,6 +32,14 @@ export default function MembersPage(): ReactElement {
         setResult(members.filter(member => member.email.includes(searchRef.current?.value as string)));
     }
 
+    function addMember(user: User) {
+        console.log(user);
+    }
+
+    function openModal() {
+        setModal(true);
+    }
+
     return (
         <main id="membersPage">
             <section id="heading">
@@ -37,11 +47,23 @@ export default function MembersPage(): ReactElement {
                 <h2 className="members-count__text"> All members ({members.length}) </h2>
 
                 <search className="search-members">
-                    <input className={`${arima.className}`} type="text" placeholder="Search members" ref={searchRef} onChange={updateMemberList} />
+                    <input 
+                        className={`${arima.className}`} 
+                        type="text" 
+                        placeholder="Search members" 
+                        ref={searchRef} 
+                        onChange={updateMemberList} 
+                    />
                 </search>
                     
-                <button className="gameButton add-member__button"> + Add member </button>
+                <button className="gameButton add-member__button" onClick={openModal}> + Add member </button>
             </section>
+
+            <AddUserModal 
+                confirm={addMember} 
+                open={modal} 
+                close={() => setModal(false)}  
+            />
 
             <section id="members-list">
                 { result.map(member => <h1 key={member.email}> {member.email} </h1>) }

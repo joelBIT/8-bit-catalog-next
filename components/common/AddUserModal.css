@@ -1,0 +1,67 @@
+#addUserModal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 40%;
+    border-radius: 8px;
+    scrollbar-width: none;
+
+    & form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+
+        & .modal-buttons-wrapper {
+            display: flex;
+            justify-content: space-around;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        & .modal__text {
+            color: var(--black);
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        input {
+            width: 80%;
+            align-self: center;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    #addUserModal {
+        height: 50%;
+        width: 85%;
+
+        & form {
+            & .modal-buttons-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            & .modal__text {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #addUserModal {
+        & form {
+            input {
+                width: 90%;
+                height: auto;
+                font-size: 1rem;
+                padding-left: 0.3rem;
+            }
+        }
+    }
+}
