@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { blinker } from "@/fonts/fonts";
-import { FavouritesContexProvider, FilterContexProvider } from "@/contexts";
+import { FavouritesContexProvider } from "@/contexts";
 
 import "./globals.css";
 
@@ -20,9 +20,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${blinker.className}`}>
                 <Header />
-                    <FilterContexProvider>
-                        <FavouritesContexProvider> {children} </FavouritesContexProvider>
-                    </FilterContexProvider>
+                    <FavouritesContexProvider> {children} </FavouritesContexProvider>
                 <Footer />
             </body>
         </html>
