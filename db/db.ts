@@ -323,6 +323,7 @@ export async function updateProfileImageById(id: number, image: File): Promise<v
 export async function createActivatedAccount(email: string, password_hash: string): Promise<void> {
     const user = await registerUser(email, password_hash);
     await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
+    await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }
 
 
