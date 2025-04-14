@@ -62,6 +62,13 @@ export default function MembersPage(): ReactElement {
             <AddUserModal open={modal} close={close} />
 
             <section id="members-list">
+                <section className="members-list__heading">
+                    <h2 className="members-list__heading-name"> Name </h2>
+                    <h2> Role </h2>
+                    <h2> Account </h2>
+                    <h2 className="members-list__heading-joined"> Joined </h2>
+                </section>
+
                 { result.map(member => <UserListEntry user={member} active={false} key={member.email} />) }
             </section>
         </main>
