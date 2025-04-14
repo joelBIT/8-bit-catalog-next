@@ -1,12 +1,12 @@
 'use client';
 
 import { ChangeEvent, ReactElement, useState } from "react";
-import { useRouter } from 'next/navigation';
 import { Game } from "@/types/types";
 import { fileTypes, getPlayersList, URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/games";
 import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from ".";
+import { CancelButton } from "@/components/common";
 
 import "./EditGameForm.css";
 
@@ -14,7 +14,6 @@ import "./EditGameForm.css";
  * Edit the metadata for a game.
  */
 export function EditGameForm({ game }: { game: Game }): ReactElement {
-    const router = useRouter();
     const [ cover, setCover ] = useState<File>();
     const [ date, setDate ] = useState<string>(game.release_date);
 
@@ -77,15 +76,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
             </section>
 
             <div className="editGameForm-buttons">
-                <button 
-                    id="cancelButton" 
-                    className="gameButton" 
-                    type="reset" 
-                    onClick={() => router.push(`${URL_GAME_DETAILS_PAGE}/${game.id}`)}
-                > 
-                    Cancel 
-                </button>
-
+                <CancelButton url={`${URL_GAME_DETAILS_PAGE}/${game.id}`} />
                 <button id="saveButton" className="gameButton" type="submit"> Save </button>
             </div>
         </form>
