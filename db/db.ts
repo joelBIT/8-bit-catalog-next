@@ -247,7 +247,7 @@ export async function updateDeveloperFilter(values: string[]): Promise<void> {
  * USERS *
  *********/
 
-const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio, image";
+const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name, email, bio, image";
 
 /**
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the

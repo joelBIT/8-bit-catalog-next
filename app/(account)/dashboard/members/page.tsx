@@ -62,7 +62,7 @@ export default function MembersPage(): ReactElement {
             <AddUserModal open={modal} close={close} />
 
             <section id="members-list">
-                { result.map(member => <UserListEntry user={member} active={true} enrolled={"April 14th 2025"} key={member.email} />) }
+                { result.map(member => <UserListEntry user={member} active={false} key={member.email} />) }
             </section>
         </main>
     );

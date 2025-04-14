@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import { User } from "@/types/types";
+import { getMonthText, USER_ROLE_ADMIN } from "@/utils/utils";
 
 import "./UserListEntry.css";
 
@@ -8,8 +9,12 @@ import "./UserListEntry.css";
  * Corresponds to an entry in a user list. The 'active' parameter is true is the user's account is activated, false otherwise.
  * The 'enrolled' parameter is the date when the user was registered.
  */
-export function UserListEntry({ user, active, enrolled } : { user: User, active: boolean, enrolled: string }): ReactElement {
+export function UserListEntry({ user, active } : { user: User, active: boolean }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
+
+    function convertDate(date: Date): string {
+        return `${getMonthText(date.getMonth())} ${date.getUTCDate()}, ${date.getFullYear()}`;
+    }
 
     return (
         <section className="userListEntry">
@@ -29,11 +34,11 @@ export function UserListEntry({ user, active, enrolled } : { user: User, active:
                 <h2> {user.last_name} </h2>
             </section>
 
-            <h2> {user.role} </h2>
+            <h2 className={user.role === USER_ROLE_ADMIN ? "admin-role" : ""}> {user.role} </h2>
 
-            <h2> {active ? "Active" : "Inactive"} </h2>
+            <h2 className={active ? "" : "account-inactive"}> {active ? "Active" : "Inactive"} </h2>
 
-            <h2 className="enrollment-date"> {enrolled} </h2>
+            <h2 className="enrollment-date"> {convertDate(new Date(user.created_at))} </h2>
         </section>
     );
 }
