@@ -69,7 +69,7 @@ export default function MembersPage(): ReactElement {
                     <h2 className="members-list__heading-joined"> Joined </h2>
                 </section>
 
-                { result.map(member => <UserListEntry user={member} active={false} key={member.email} />) }
+                { result.map(member => <UserListEntry user={member} active={true} key={member.email} />) }
             </section>
         </main>
     );

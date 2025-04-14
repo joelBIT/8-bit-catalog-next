@@ -79,7 +79,7 @@ export async function deleteFavouriteGameFromDatabase(game_id: number): Promise<
 /**
  * Updates the list of values for a supplied search filter (e.g., categories, developers, publishers).
  */
-export async function updateFilterValues(values: string[], filter: string) {
+export async function updateFilterValues(values: string[], filter: string): Promise<void> {
     try {
         await fetch(`/api/filter`, {
             method: "PUT",
