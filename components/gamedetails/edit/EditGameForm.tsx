@@ -52,10 +52,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
                     <section className="selectSection romSection">
                         <h2 className={`romSection__title ${arima.className}`}> Has ROM? </h2>
-                        <select name="rom" id="rom-select" defaultValue={game.rom.toString()}>
-                            <option value="false"> No </option>
-                            <option value="true"> Yes </option>
-                        </select>
+                        <input id="rom-select" type="checkbox" name="rom" defaultChecked={game.rom} />
                     </section>
                 </article>
             </section>

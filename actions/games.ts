@@ -20,7 +20,7 @@ export async function updateGame(id: number, formData: FormData): Promise<void> 
         release_date: formData.get('released') as string,
         cover: (formData.get('cover') as File).name,
         category: formData.get('category') as string,
-        rom: (formData.get('rom') as string) === "true" ? true : false
+        rom: formData.get('rom') ? true : false
     };
 
     await updateGameById(game, formData.get('cover') as File);

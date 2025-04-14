@@ -9,6 +9,14 @@
     }
 }
 
+@media (max-width: 670px) {
+    #editfilter-publisher {
+        & .selectSection__select {
+            font-size: 1rem;
+        }
+    }
+}
+
 @media (max-width: 500px) {
     #editfilter-publisher {
         & .selectSection__select {
