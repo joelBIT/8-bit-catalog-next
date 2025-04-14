@@ -1,6 +1,4 @@
-'use client';
-
-import { ChangeEvent, ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { Game } from "@/types/types";
 import { fileTypes, getPlayersList, URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
@@ -14,15 +12,6 @@ import "./EditGameForm.css";
  * Edit the metadata for a game.
  */
 export function EditGameForm({ game }: { game: Game }): ReactElement {
-    const [ cover, setCover ] = useState<File>();
-    const [ date, setDate ] = useState<string>(game.release_date);
-
-    function handleCover(event: ChangeEvent<HTMLInputElement>): void {
-        if (event.target.files) {
-            setCover(event.target.files[0]);
-        }
-    }
-
     const updateGameWithId = updateGame.bind(null, game.id);
     
     return (
@@ -60,7 +49,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="coverSection">
                 <h2 className={`coverSection__title ${arima.className}`}> New Cover </h2>
-                <input name="cover" type="file" defaultValue={cover?.name} accept={fileTypes.toString()} onChange={handleCover} />
+                <input name="cover" type="file" accept={fileTypes.toString()} />
             </section>
 
             <section className="selectSection playersSection">
@@ -72,7 +61,7 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
 
             <section id="releasedSection">
                 <h2 className={`releasedSection__title ${arima.className}`}> Released </h2>
-                <input id="releaseDate" name="released" type="date" value={date} onChange={(event) => setDate(event.target.value)} required />
+                <input id="releaseDate" name="released" type="date" defaultValue={game.release_date} required />
             </section>
 
             <div className="editGameForm-buttons">
