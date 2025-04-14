@@ -13,18 +13,18 @@ export function UserListEntry({ user, active, enrolled } : { user: User, active:
 
     return (
         <section className="userListEntry">
-            <figure className="listEntry-figure">
-                <Image 
-                    src={STORAGE_URL + user?.image}
-                    unoptimized
-                    className="listEntry-figure__cover"
-                    alt="Member profile image"
-                    width={100}
-                    height={300}
-                />
-            </figure>
+            <section className="profile-info">
+                <figure className="listEntry-figure">
+                    <Image 
+                        src={STORAGE_URL + user?.image}
+                        unoptimized
+                        className="listEntry-figure__cover"
+                        alt="Member profile image"
+                        width={100}
+                        height={300}
+                    />
+                </figure>
 
-            <section className="name">
                 <h2> {user.first_name} </h2>
                 <h2> {user.last_name} </h2>
             </section>
@@ -33,7 +33,7 @@ export function UserListEntry({ user, active, enrolled } : { user: User, active:
 
             <h2> {active ? "Active" : "Inactive"} </h2>
 
-            <h2> {enrolled} </h2>
+            <h2 className="enrollment-date"> {enrolled} </h2>
         </section>
     );
 }

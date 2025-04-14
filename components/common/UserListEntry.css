@@ -1,6 +1,32 @@
 .userListEntry {
     display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: var(--color-black);
     width: 80vw;
     border-radius: 8px;
+    justify-content: space-between;
     background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+
+    & .profile-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 20vw;
+
+        & .listEntry-figure {
+            align-content: center;
+    
+            & .listEntry-figure__cover {
+                border-radius: 180px;
+                margin: 0.5rem;
+                width: 8rem;
+                height: 8rem;
+            }
+        }
+    }
+
+    & .enrollment-date {
+        margin-right: 0.5rem;
+    }
 }
