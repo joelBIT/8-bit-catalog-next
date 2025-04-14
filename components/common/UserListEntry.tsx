@@ -30,8 +30,10 @@ export function UserListEntry({ user, active } : { user: User, active: boolean }
                     />
                 </figure>
 
-                <h2> {user.first_name} </h2>
-                <h2> {user.last_name} </h2>
+                <section className="member-name">
+                    <h2> {`${user.first_name} ${user.last_name}`} </h2>
+                    <h2 className="member-name__email"> {user.email} </h2>
+                </section>
             </section>
 
             <h2 className={user.role === USER_ROLE_ADMIN ? "admin-role" : ""}> {user.role} </h2>

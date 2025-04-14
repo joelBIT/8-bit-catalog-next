@@ -50,7 +50,7 @@ export default function MembersPage(): ReactElement {
                     <input 
                         className={`${arima.className}`} 
                         type="text" 
-                        placeholder="Search members" 
+                        placeholder="Search by email" 
                         ref={searchRef} 
                         onChange={updateMemberList} 
                     />
