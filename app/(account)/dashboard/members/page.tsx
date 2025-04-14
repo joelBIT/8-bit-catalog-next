@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { User } from "@/types/types";
 import { arima } from "@/fonts/fonts";
 import { getUsers } from "@/data/data";
-import { AddUserModal } from "@/components/common";
+import { AddUserModal, UserListEntry } from "@/components/common";
 
 import "./page.css";
 
@@ -28,6 +28,7 @@ export default function MembersPage(): ReactElement {
         setResult(users);
     }
 
+    // Updates the result list matching the input character sequence
     function updateMemberList(): void {
         setResult(members.filter(member => member.email.includes(searchRef.current?.value as string)));
     }
@@ -61,7 +62,7 @@ export default function MembersPage(): ReactElement {
             <AddUserModal open={modal} close={close} />
 
             <section id="members-list">
-                { result.map(member => <h1 key={member.email}> {member.email} </h1>) }
+                { result.map(member => <UserListEntry user={member} active={true} enrolled={"April 14th 2025"} key={member.email} />) }
             </section>
         </main>
     );

@@ -5,8 +5,7 @@ import { EditFilterForm } from "@/components/account/EditFilterForm";
 import "./page.css";
 
 /**
- * Since this is an admin page for updating filters all filter values are retrieved from the database directly (instead of e.g., context).
- * The updates are stored directly in the database.
+ * Edit game filters. Filters are used in search to find desired games.
  */
 export default async function FiltersPage(): Promise<ReactElement> {
     return (

@@ -1,0 +1,6 @@
+.userListEntry {
+    display: flex;
+    width: 80vw;
+    border-radius: 8px;
+    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+}
