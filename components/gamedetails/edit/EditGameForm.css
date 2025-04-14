@@ -18,7 +18,6 @@
     .selectSection, #coverSection, #releasedSection {
         display: flex;
         align-items: center;
-        grid-row: 2;
         gap: 1rem;
 
         h2 {
@@ -26,11 +25,9 @@
         }
     }
 
-    .romSection {
-        #rom-select {
-            font-size: 1.4rem;
-            padding: .2rem;
-        }
+    #rom-select {
+        font-size: 1.4rem;
+        padding: .2rem;
     }
 
     #coverSection {
@@ -71,10 +68,6 @@
     #editGameForm {
         display: flex;
         flex-direction: column;
-
-        & .filter-fieldset {
-            width: 100%;
-        }
 
         input {
             margin: 0;
@@ -142,13 +135,6 @@
             #cancelButton, #saveButton {
                 width: fit-content;
                 font-size: 1rem;
-            }
-        }
-
-        & .filter-fieldset {    
-            > select {
-                font-size: 0.8rem;
-                padding-left: 0.3rem;
             }
         }
     }
