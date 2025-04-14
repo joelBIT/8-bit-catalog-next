@@ -25,11 +25,6 @@
         }
     }
 
-    #rom-select {
-        font-size: 1.4rem;
-        padding: .2rem;
-    }
-
     #coverSection {
         input {
             font-size: 1rem;
@@ -71,19 +66,12 @@
 
         input {
             margin: 0;
-            width: 100%;
         }
     }
 }
 
 @media (max-width: 670px) {
     #editGameForm {
-        & .filter-fieldset {    
-            > select {
-                font-size: 1rem;
-            }
-        }
-
         textarea {
             height: 25rem;
         }
@@ -110,7 +98,7 @@
                 font-size: 1.5rem;
             }
 
-            & .selectSection__select, #rom-select {
+            & .selectSection__select {
                 font-size: 1.2rem;
             }
         }
