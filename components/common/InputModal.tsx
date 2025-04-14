@@ -12,8 +12,6 @@ export function InputModal({ text, confirm, open, close }: { text: string, confi
 
     if (open) {
         modalRef.current?.showModal();
-    } else {
-        modalRef.current?.close();
     }
     
     function closeModal() {
@@ -26,6 +24,7 @@ export function InputModal({ text, confirm, open, close }: { text: string, confi
         if (inputRef.current?.value && inputRef.current?.value.length > 2) {
             setShowMessage(false);
             confirm(inputRef.current?.value as string);
+            closeModal();
         } else {
             setShowMessage(true);
         }
