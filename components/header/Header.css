@@ -1,6 +1,7 @@
 header {
     display: flex;
     background-color: var(--color-black);
+    z-index: 2;
 
     #logoLink {
         display: flex;

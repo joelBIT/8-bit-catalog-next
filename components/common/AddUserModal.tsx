@@ -17,8 +17,6 @@ export function AddUserModal({ open, close }: { open: boolean, close: () => void
 
     if (open) {
         modalRef.current?.showModal();
-    } else {
-        modalRef.current?.close();
     }
     
     function closeModal(): void {
@@ -29,7 +27,7 @@ export function AddUserModal({ open, close }: { open: boolean, close: () => void
 
     return (
         <dialog id="addUserModal" ref={modalRef}>
-            <form method="dialog" action={formAction}>
+            <form action={formAction}>
                 <h1 className="modal__text"> Add member </h1>
 
                 { state.message ? <h2 className={state.success ? "message-success" : "message-failure"}> {state.message} </h2> : <></> }

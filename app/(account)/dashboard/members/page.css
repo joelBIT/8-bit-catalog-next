@@ -39,7 +39,24 @@
     }
 
     #members-list {
+        display: flex;
+        flex-direction: column;
         margin-top: 3rem;
+        gap: 1rem;
+
+        & .members-list__heading {
+            display: flex;
+            justify-content: space-between;
+
+            & .members-list__heading-name {
+                width: 20vw;
+                padding-left: 5rem;
+            }
+
+            & .members-list__heading-joined {
+                width: 14vw;
+            }
+        }
     }
 }
 
@@ -70,6 +87,14 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    #membersPage {
+        .members-list__heading > h2 {
+            font-size: 1rem;
         }
     }
 }

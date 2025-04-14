@@ -10,8 +10,6 @@ export function Modal({ text, confirm, open, close }: { text: string, confirm: (
 
     if (open) {
         modalRef.current?.showModal();
-    } else {
-        modalRef.current?.close();
     }
     
     function closeModal() {

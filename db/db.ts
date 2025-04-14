@@ -247,7 +247,7 @@ export async function updateDeveloperFilter(values: string[]): Promise<void> {
  * USERS *
  *********/
 
-const USER_COLUMNS = "id, password_hash, role, last_name, first_name, email, bio, image";
+const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name, email, bio, image";
 
 /**
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
@@ -323,6 +323,7 @@ export async function updateProfileImageById(id: number, image: File): Promise<v
 export async function createActivatedAccount(email: string, password_hash: string): Promise<void> {
     const user = await registerUser(email, password_hash);
     await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
+    await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }
 
 

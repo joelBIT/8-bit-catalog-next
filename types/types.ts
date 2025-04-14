@@ -33,6 +33,7 @@ export type Session = {
 export type User = {
     id: number,
     email: string,
+    created_at: Date,
     last_name: string,
     first_name: string,
     password_hash: string,

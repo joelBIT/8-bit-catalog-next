@@ -1,0 +1,48 @@
+.userListEntry {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: var(--color-black);
+    width: 80vw;
+    border-radius: 8px;
+    justify-content: space-between;
+    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+
+    & .profile-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 20vw;
+
+        & .listEntry-figure {
+            align-content: center;
+    
+            & .listEntry-figure__cover {
+                border-radius: 180px;
+                margin: 0.2rem;
+                margin-left: 0.5rem;
+                width: 4rem;
+                height: 4rem;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    & .admin-role, & .account-inactive {
+        border-radius: 9px;
+        padding: 0.4rem;
+    }
+
+    & .admin-role {
+        background-color: #6ebd77c2;
+    }
+
+    & .account-inactive {
+        background-color: #74171788;
+    }
+
+    & .enrollment-date {
+        margin-right: 0.5rem;
+        width: 14vw;
+    }
+}
