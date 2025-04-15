@@ -3,7 +3,6 @@
     align-items: center;
     gap: 2rem;
     color: var(--color-black);
-    width: 80vw;
     border-radius: 8px;
     justify-content: space-between;
     background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
@@ -53,5 +52,66 @@
     & .enrollment-date {
         margin-right: 0.5rem;
         width: 14vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .userListEntry {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .userListEntry {
+        font-size: 0.7rem;
+
+        & .profile-info {
+            width: 45vw;
+        }
+        
+        & .enrollment-date {
+            width: 12vw;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .userListEntry {
+        font-size: 0.6rem;
+        height: 3rem;
+
+        & .profile-info {
+            padding-left: 1rem;
+            width: 35vw;
+
+            & .listEntry-figure {
+                display: none;
+            }
+
+            & .member-name {    
+                & .member-name__email {
+                    font-size: 0.6rem;
+                }
+            }
+        }
+        
+        & .enrollment-date {
+            width: 12vw;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .userListEntry {
+        font-size: 0.5rem;
+
+        & .profile-info {
+            padding-left: 0.5rem;
+            width: 20vw;
+        }
+        
+        & .enrollment-date {
+            padding-right: 0.5rem;
+        }
     }
 }
