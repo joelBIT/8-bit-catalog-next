@@ -251,17 +251,19 @@ const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name
 
 /**
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
- * email already exists in the user table.
+ * email already exists in the user table. Email is used as lowercase in this system. This is to avoid users not being able 
+ * to login/search members due to character(s) being mixed uppercase and lowercase.
  */
-export async function registerUser(email: string, password_hash: string): Promise<{id: number, email: string}> {
-    const { data, error } = await databaseClient.from(USER_TABLE).insert({email, password_hash}).select('id, email').single();
+export async function registerUser(userEmail: string, password_hash: string): Promise<{id: number, email: string}> {
+    const lowerCaseEmail = userEmail.toLowerCase();
+    const { data, error } = await databaseClient.from(USER_TABLE).insert({email: lowerCaseEmail, password_hash}).select('id, email').single();
     
     if (error) {
         console.log(error);
         if (error instanceof AuthWeakPasswordError) {
             throw new Error('Password is to weak');
         } else if (error.code == '23505') {
-            throw new Error(`The email ${email} is already in use`);
+            throw new Error(`The email ${userEmail} is already in use`);
         }
         throw error;
     }
@@ -269,8 +271,13 @@ export async function registerUser(email: string, password_hash: string): Promis
     return data;
 }
 
+/**
+ * Email is used as lowercase in this system. This is to avoid users not being able to login/search members due to character(s) being mixed
+ * uppercase and lowercase.
+ */
 export async function getUserByEmail(email: string): Promise<User> {
-    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', email).single();
+    const lowerCaseEmail = email.toLowerCase();
+    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', lowerCaseEmail).single();
     if (error) {
         console.log(error);
         throw error;
