@@ -84,6 +84,10 @@
         #searchFilters {
             #searchInput {
                 flex-direction: column;
+
+                #searchTitle {
+                    margin-right: 2rem;
+                }
             }
     
             #searchFilters__form {
