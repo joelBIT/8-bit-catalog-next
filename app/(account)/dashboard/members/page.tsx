@@ -28,9 +28,10 @@ export default function MembersPage(): ReactElement {
         setResult(users);
     }
 
-    // Updates the result list matching the input character sequence
+    // Updates the result list matching the input character sequence (using lowercase since system stores lowercase emails)
     function updateMemberList(): void {
-        setResult(members.filter(member => member.email.includes(searchRef.current?.value as string)));
+        const characters = searchRef.current?.value as string;
+        setResult(members.filter(member => member.email.includes(characters.toLowerCase())));
     }
 
     // When the modal is closed the list of all members is updated (in case new members were added)
