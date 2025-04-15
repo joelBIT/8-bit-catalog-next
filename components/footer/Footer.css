@@ -21,5 +21,10 @@ footer {
         & .material-symbols-outlined {
             font-size: small;
         }
+
+        & .material-symbols-outlined, & .copyright__text {
+            align-self: center;
+            text-align: center;
+        }
     }
 }
