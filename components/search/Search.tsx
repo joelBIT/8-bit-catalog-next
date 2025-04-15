@@ -24,12 +24,13 @@ export function Search(): ReactElement {
     const category = params.get('category') as string;
     const developer = params.get('developer') as string;
     const publisher = params.get('publisher') as string;
+    const listView = params.get('listView') as string;
     const [ searchResult, setSearchResult ] = useState<Game[]>([]);
     const [ showHeading, setShowHeading ] = useState<boolean>(false);
     const [ currentPage, setCurrentPage ] = useState<number>(parseInt(page));
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
-    const [ gridView, setGridView ] = useState<boolean>(true);
+    const [ gridView, setGridView ] = useState<boolean>(!listView);
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
@@ -50,7 +51,16 @@ export function Search(): ReactElement {
         setShowHeading(true);
     }
 
-    function toggleGridView() {
+    /**
+     * Keep track of which view the user had when navigating back from a game's detail page.
+     */
+    function toggleGridView(): void {
+        params.delete('listView');
+        if (gridView) {
+            params.set('listView', "true");
+        }
+        window.history.pushState(null, '', `?${params.toString()}`);
+
         setGridView(!gridView);
     }
 
@@ -67,7 +77,7 @@ export function Search(): ReactElement {
 
             {
                 searchResult.length > 0 ?
-                    <ListToggle toggle={toggleGridView} />
+                    <ListToggle toggle={toggleGridView} initialState={gridView} />
                     : <></>
             }
 

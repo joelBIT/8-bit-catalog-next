@@ -6,9 +6,10 @@ import "./ListToggle.css";
 
 /**
  * This is the UI component for toggling between Grid and List views. The lists themselves are changed outside of this component.
+ * The 'initialState' parameter corresponds to the initial state of the component.
  */
-export function ListToggle({ toggle }: { toggle: () => void } ): ReactElement {
-    const [ grid, setGrid ] = useState<boolean>(true);
+export function ListToggle({ toggle, initialState }: { toggle: () => void, initialState: boolean } ): ReactElement {
+    const [ grid, setGrid ] = useState<boolean>(initialState);
     const GRID = "Grid";
     const LIST = "List";
 
