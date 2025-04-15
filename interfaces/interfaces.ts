@@ -9,6 +9,8 @@ export interface FavouritesContextProvider {
     setFavouritesPage: (page: number) => void;
     totalPages: number;
     loadFavouriteGames: () => void;
+    gridView: boolean;
+    toggleGridView: () => void
 }
 
 export interface AccountContextProvider {
