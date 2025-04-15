@@ -171,3 +171,9 @@
         }
     }
 }
+
+@media (max-width: 700px) {
+    #accountMenu-wrapper {
+        padding-top: 5rem;
+    }
+}

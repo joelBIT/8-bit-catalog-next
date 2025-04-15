@@ -34,7 +34,7 @@ export function EditProfileForm(): ReactElement {
 
                     <h2 className="edit-profile__change-image"> 
                         Change profile image 
-                        <input name="profileImage" className="edit-profile__input" type="file" accept={imageTypes.toString()} />
+                        <input name="profileImage" className="edit-profile__input" type="file" size={1000} accept={imageTypes.toString()} />
                     </h2>
                 </section>
 
