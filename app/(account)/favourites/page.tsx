@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useContext, useState } from "react";
+import { ReactElement, useContext } from "react";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { FavouritePagination } from "@/components/favourites/FavouritePagination";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
@@ -10,8 +10,7 @@ import { arima } from "@/fonts/fonts";
 import "./page.css";
 
 export default function FavouritesPage(): ReactElement {
-    const { favouritesList, favouritesPage } = useContext(FavouritesContext);
-    const [ gridView, setGridView ] = useState<boolean>(true);
+    const { favouritesList, favouritesPage, gridView, toggleGridView } = useContext(FavouritesContext);
 
     function from(page: number): number {
         return (page-1) * PAGINATION_PAGE_SIZE;
@@ -19,10 +18,6 @@ export default function FavouritesPage(): ReactElement {
     
     function to(page: number): number {
         return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE;
-    }
-
-    function toggleGridView() {
-        setGridView(!gridView);
     }
 
     return (
@@ -33,7 +28,7 @@ export default function FavouritesPage(): ReactElement {
                         <h1 className={`number-favourites-text ${arima.className}`}>
                             {favouritesList.length} favourite games 
                         </h1>
-                        <ListToggle toggle={toggleGridView} />
+                        <ListToggle toggle={toggleGridView} initialState={gridView} />
                     </>
                     : <></>
             }

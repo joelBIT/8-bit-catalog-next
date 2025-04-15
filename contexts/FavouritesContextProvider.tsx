@@ -18,6 +18,7 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
     const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
     const [ favouritesPage, setFavouritesPage ] = useState<number>(1);      // Used for pagination
     const [ totalPages, setTotalPages ] = useState<number>(1);              // Total number of favourite pages
+    const [ gridView, setGridView ] = useState<boolean>(true);              // The chosen view on the favourites page
     const STORAGE_KEY = 'favouriteGames';
 
     useEffect(() => {
@@ -125,8 +126,12 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
         return (favouritesList.length - 1) % PAGINATION_PAGE_SIZE === 0;
     }
 
+    function toggleGridView(): void {
+        setGridView(!gridView);
+    }
+
     return (
-        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages, loadFavouriteGames }}>
+        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages, loadFavouriteGames, gridView, toggleGridView }}>
             { children }
         </FavouritesContext.Provider>
     );
