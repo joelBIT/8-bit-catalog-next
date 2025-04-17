@@ -3,15 +3,12 @@
 import { ReactElement, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
 import { rancho } from "@/fonts/fonts";
 import { signOut } from "@/auth/session";
 import { URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/utils/utils";
-import close from "../../assets/close_icon.png";
-import hamburger from "../../assets/hamburger_icon.png";
+import { Hamburger } from "../common";
 
 import "./NavBar.css";
-import { Hamburger } from "../common";
 
 /**
  * Different NavBar options will be available depending on if the user is authenticated or not. Links for Search Page and
@@ -63,9 +60,6 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                 }
             </ul>
 
-            {/* <div id="hamburger" onClick={() => setShowMenu(!showMenu)}>
-                <Image src={showMenu ? close : hamburger} width={40} height={40} alt='Hamburger menu' />
-            </div> */}
             <Hamburger />
         </nav>
     );
