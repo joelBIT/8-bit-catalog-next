@@ -7,8 +7,14 @@
     background-color: var(--color-white);
     color: var(--color-black);
     border-radius: 50%;
+    cursor: pointer;
 
     span {
         font-size: 2rem;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
     }
 }
