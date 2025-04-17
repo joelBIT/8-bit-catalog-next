@@ -2,10 +2,6 @@
     align-self: center;
     width: 100%;
 
-    #hamburger {
-        display: none;
-    }
-
     .navbar__list {
         display: flex;
         list-style-type: none;
@@ -94,22 +90,13 @@
                 }
             }
         }
+    }
 
-        #hamburger {
-            display: block;
-            text-align: right;
-            margin-right: 2rem;
-            width: fit-content;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-
-        .showmenu {
+    :has(:checked) {
+        .navbar__list {
             display: inline-table;
             position: absolute;
-            margin-top: 2.5rem;
+            margin-top: 1.5rem;
             text-align: justify;
             background: var(--color-black);
             height: fit-content;
