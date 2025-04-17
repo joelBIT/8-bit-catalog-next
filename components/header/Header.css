@@ -32,8 +32,21 @@ header {
 
 @media (max-width: 700px) {
     header {
-        #logoLink { 
-            display: none;
+        flex-direction: row-reverse;
+
+        #logoLink {
+            position: relative;
+            left: -35vw;
+            margin: 0;
+            text-align: center;
+
+            #logo { 
+                display: none;
+            }
+
+            & .header__title {
+                width: fit-content;
+            }
         }
     }
 }
