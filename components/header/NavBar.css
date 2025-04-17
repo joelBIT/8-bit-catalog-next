@@ -112,8 +112,16 @@
             margin-top: 2.5rem;
             text-align: justify;
             background: var(--color-black);
-            height: 100vh;
+            height: fit-content;
             padding-bottom: 2rem;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        .showmenu {
+            height: 100vh;
         }
     }
 }
