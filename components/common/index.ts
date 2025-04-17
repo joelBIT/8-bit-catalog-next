@@ -8,4 +8,5 @@ export * from "./InputModal";
 export * from "./ListToggle";
 export * from "./Modal";
 export * from "./PasswordInput";
+export * from "./ScrollTopButton";
 export * from "./UserListEntry";

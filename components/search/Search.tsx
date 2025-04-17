@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { getGames } from "@/data/data";
 import { Game } from "@/types/types";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
-import { GameCard, ListToggle } from "../common";
+import { GameCard, ListToggle, ScrollTopButton } from "../common";
 import { Pagination } from ".";
 import { arima } from "@/fonts/fonts";
 
@@ -95,6 +95,8 @@ export function Search(): ReactElement {
             <section id="gameCards">
                 { searchResult.map((game, index) => <GameCard key={index} game={game} grid={gridView} />) }
             </section>
+
+            <ScrollTopButton />
 
             {
                 totalPages > 1 ? 

@@ -1,0 +1,10 @@
+#scrollTopButton-wrapper {
+    display: flex;
+    position: fixed;
+    bottom: 1rem;
+    align-self: center;
+    padding: 1rem;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50%;
+}
