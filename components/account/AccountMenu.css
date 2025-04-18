@@ -10,28 +10,11 @@
         display: flex;
         position: fixed;
         left: 1rem;
-        padding-top: 2rem;
 
         & .material-symbols-outlined {
             &:hover {
                 cursor: pointer;
                 filter: brightness(1.5);
-            }
-        }
-    }
-
-    /***********************
-    * Open/Close Side Menu *
-    ***********************/
-
-    & .open-menu {
-        width: 14rem;
-        transition: width 1s ease-in-out;
-
-        & #pages {
-            & .pages-title, .menu__link-title {
-                visibility: visible;
-                transition: visibility 1s step-end;
             }
         }
     }
@@ -88,13 +71,31 @@
     }
 
     .rotate-down {
-        transform: rotate(90deg);
+        transform: rotate(180deg);
         transition: transform 0.15s ease-in-out;
     }
 
     .rotate-up {
         transform: rotate(0deg);
         transition: transform 0.15s ease-in-out;
+    }
+
+    /***********************
+    * Open/Close Side Menu *
+    ***********************/
+
+    :has(.rotate-down) {
+        & ~ #accountMenu {
+            width: 14rem;
+            transition: width 1s ease-in-out;
+    
+            & #pages {
+                & .pages-title, & .menu__link-title {
+                    visibility: visible;
+                    transition: visibility 1s step-end;
+                }
+            }
+        }
     }
 }
 
