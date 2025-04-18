@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { rancho } from "@/fonts/fonts";
@@ -15,7 +15,6 @@ import "./NavBar.css";
  * Favourites Page are always rendered. The remaining links are rendered depending on if the user is authenticated or not.
  */
 export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
-    const [ showMenu, setShowMenu ] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
 
@@ -33,13 +32,12 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     
     return (
         <nav className="navbar">
-            <ul className={showMenu ? "navbar__list showmenu" : "navbar__list"}>
+            <ul className="navbar__list">
                 {
                     LINKS.filter(link => link.render).map(link =>
                         <li className="navbar__list-element" key={link.url}>
                             <Link 
                                 href={link.url}
-                                onClick={() => setShowMenu(false)}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                             >
                                 { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
@@ -51,7 +49,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
 
                 { authenticated ?
                     <li className="navbar__list-element" onClick={logout}>
-                        <Link href={URL_HOME} onClick={() => setShowMenu(false)}>
+                        <Link href={URL_HOME}>
                             <span className="material-symbols-outlined wideScreen">logout</span>
                             <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}> Logout </h2>
                         </Link>

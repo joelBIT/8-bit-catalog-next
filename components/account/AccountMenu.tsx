@@ -6,7 +6,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "@/auth/session";
 import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_MEMBERS_PAGE, URL_PROFILE_PAGE, URL_SETTINGS_PAGE, USER_ROLE_ADMIN } from "@/utils/utils";
 import { User } from "@/types/types";
-import { Hamburger } from "../common";
 
 import "./AccountMenu.css";
 
@@ -33,7 +32,7 @@ export function AccountMenu({ user } : { user: User }): ReactElement {
 
     return (
         <div id="accountMenu-wrapper">
-            <Hamburger />
+           
 
             <section id="accountMenu">
                 <article id="pages">

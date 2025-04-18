@@ -100,7 +100,7 @@
         }
     }
 
-    :has(:checked) {
+    :has(#hamburger-checkbox:checked) {
         .navbar__list {
             display: inline-table;
             position: absolute;
@@ -109,16 +109,12 @@
             background: var(--color-black);
             height: fit-content;
             padding-bottom: 2rem;
-            
         }
-    }
-}
 
-@media (max-width: 500px) {
-    .navbar {
-        .navbar__list {
-            height: 100vh;
-            animation: burger-menu 1s ease 0s 1 normal forwards;
+        ~ main, 
+        footer {
+            pointer-events: none;
+            filter: blur(1.5);
         }
     }
 }
