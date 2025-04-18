@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "@/auth/session";
@@ -13,6 +13,7 @@ import "./AccountMenu.css";
  * Used to navigate between account-specific sections. Some links are only visible for users with the admin role.
  */
 export function AccountMenu({ user } : { user: User }): ReactElement {
+    const [ showMenu, setShowMenu ] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
 
@@ -32,9 +33,17 @@ export function AccountMenu({ user } : { user: User }): ReactElement {
 
     return (
         <div id="accountMenu-wrapper">
-           
+            <section id="side-menu_button">
+                <span 
+                    className={showMenu ? "material-symbols-outlined rotate-down" : "material-symbols-outlined rotate-up"} 
+                    title="Open Menu" 
+                    onClick={() => setShowMenu(!showMenu)}
+                > 
+                    double_arrow 
+                </span> 
+            </section>
 
-            <section id="accountMenu">
+            <section id="accountMenu" className={showMenu ? "open-menu" : ""}>
                 <article id="pages">
                     <h1 className="pages-title"> Pages </h1>
 

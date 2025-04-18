@@ -6,6 +6,36 @@
     top: 0;
     padding-top: 13rem;
 
+    #side-menu_button {
+        display: flex;
+        position: fixed;
+        left: 1rem;
+        padding-top: 2rem;
+
+        & .material-symbols-outlined {
+            &:hover {
+                cursor: pointer;
+                filter: brightness(1.5);
+            }
+        }
+    }
+
+    /***********************
+    * Open/Close Side Menu *
+    ***********************/
+
+    & .open-menu {
+        width: 14rem;
+        transition: width 1s ease-in-out;
+
+        & #pages {
+            & .pages-title, .menu__link-title {
+                visibility: visible;
+                transition: visibility 1s step-end;
+            }
+        }
+    }
+
     #accountMenu {
         display: flex;
         flex-direction: column;
@@ -57,49 +87,14 @@
         }
     }
 
-    /**********************
-    * Hamburger Side Menu *
-    **********************/
+    .rotate-down {
+        transform: rotate(90deg);
+        transition: transform 0.15s ease-in-out;
+    }
 
-    #hamburger-side {
-        display: none;
-
-        &:checked {
-            & ~ #accountMenu {
-                width: 14rem;
-                transition: width 1s ease-in-out;
-
-                #pages {
-                    .pages-title, .menu__link-title {
-                        visibility: visible;
-                        transition: visibility 1s step-end;
-                    }
-                }
-            }
-
-            & ~ label {
-                > i {
-                    background-color: transparent;
-                    transform: rotate(90deg);
-
-                    &:before {
-                        transform: translate(-50%, -50%) rotate(45deg);
-                    }
-
-                    &:after {
-                        transform: translate(-50%, -50%) rotate(-45deg);
-                    }
-                }
-
-                .close {
-                    width: 100%;
-                }
-
-                .open {
-                    width: 0;
-                }
-            }
-        }
+    .rotate-up {
+        transform: rotate(0deg);
+        transition: transform 0.15s ease-in-out;
     }
 }
 
