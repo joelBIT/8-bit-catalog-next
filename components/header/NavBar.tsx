@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { rancho } from "@/fonts/fonts";
@@ -15,12 +15,18 @@ import "./NavBar.css";
  * Favourites Page are always rendered. The remaining links are rendered depending on if the user is authenticated or not.
  */
 export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
+    const [ isChecked, setIsChecked ] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
 
     async function logout(): Promise<void> {
         signOut();
+        setIsChecked(false);
         router.refresh();
+    }
+
+    function closeMenu() {
+        setIsChecked(!isChecked);
     }
 
     const LINKS = [
@@ -35,7 +41,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
             <ul className="navbar__list">
                 {
                     LINKS.filter(link => link.render).map(link =>
-                        <li className="navbar__list-element" key={link.url}>
+                        <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
                             <Link 
                                 href={link.url}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
@@ -58,7 +64,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                 }
             </ul>
 
-            <Hamburger />
+            <Hamburger checked={isChecked} setCheck={setIsChecked}/>
         </nav>
     );
 }

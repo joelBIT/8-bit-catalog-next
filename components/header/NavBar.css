@@ -109,6 +109,8 @@
             background: var(--color-black);
             height: fit-content;
             padding-bottom: 2rem;
+            height: 100vh;
+            animation: burger-menu 1s ease 0s 1 normal forwards;
         }
 
         ~ main, 
