@@ -6,6 +6,19 @@
     top: 0;
     padding-top: 13rem;
 
+    #side-menu_button {
+        display: flex;
+        position: fixed;
+        left: 1rem;
+
+        & .material-symbols-outlined {
+            &:hover {
+                cursor: pointer;
+                filter: brightness(1.5);
+            }
+        }
+    }
+
     #accountMenu {
         display: flex;
         flex-direction: column;
@@ -57,46 +70,29 @@
         }
     }
 
-    /**********************
-    * Hamburger Side Menu *
-    **********************/
+    .rotate-down {
+        transform: rotate(180deg);
+        transition: transform 0.15s ease-in-out;
+    }
 
-    #hamburger-side {
-        display: none;
+    .rotate-up {
+        transform: rotate(0deg);
+        transition: transform 0.15s ease-in-out;
+    }
 
-        &:checked {
-            & ~ #accountMenu {
-                width: 14rem;
-                transition: width 1s ease-in-out;
+    /***********************
+    * Open/Close Side Menu *
+    ***********************/
 
-                #pages {
-                    .pages-title, .menu__link-title {
-                        visibility: visible;
-                        transition: visibility 1s step-end;
-                    }
-                }
-            }
-
-            & ~ label {
-                > i {
-                    background-color: transparent;
-                    transform: rotate(90deg);
-
-                    &:before {
-                        transform: translate(-50%, -50%) rotate(45deg);
-                    }
-
-                    &:after {
-                        transform: translate(-50%, -50%) rotate(-45deg);
-                    }
-                }
-
-                .close {
-                    width: 100%;
-                }
-
-                .open {
-                    width: 0;
+    :has(.rotate-down) {
+        & ~ #accountMenu {
+            width: 14rem;
+            transition: width 1s ease-in-out;
+    
+            & #pages {
+                & .pages-title, & .menu__link-title {
+                    visibility: visible;
+                    transition: visibility 1s step-end;
                 }
             }
         }

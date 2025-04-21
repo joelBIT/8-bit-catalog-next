@@ -3,12 +3,10 @@
 import { ReactElement, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
 import { rancho } from "@/fonts/fonts";
 import { signOut } from "@/auth/session";
 import { URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/utils/utils";
-import close from "../../assets/close_icon.png";
-import hamburger from "../../assets/hamburger_icon.png";
+import { Hamburger } from ".";
 
 import "./NavBar.css";
 
@@ -17,13 +15,18 @@ import "./NavBar.css";
  * Favourites Page are always rendered. The remaining links are rendered depending on if the user is authenticated or not.
  */
 export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
-    const [ showMenu, setShowMenu ] = useState<boolean>(false);
+    const [ isChecked, setIsChecked ] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
 
     async function logout(): Promise<void> {
         signOut();
+        setIsChecked(false);
         router.refresh();
+    }
+
+    function closeMenu() {
+        setIsChecked(!isChecked);
     }
 
     const LINKS = [
@@ -35,13 +38,12 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     
     return (
         <nav className="navbar">
-            <ul className={showMenu ? "navbar__list showmenu" : "navbar__list"}>
+            <ul className="navbar__list">
                 {
                     LINKS.filter(link => link.render).map(link =>
-                        <li className="navbar__list-element" key={link.url}>
+                        <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
                             <Link 
                                 href={link.url}
-                                onClick={() => setShowMenu(false)}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                             >
                                 { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
@@ -53,7 +55,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
 
                 { authenticated ?
                     <li className="navbar__list-element" onClick={logout}>
-                        <Link href={URL_HOME} onClick={() => setShowMenu(false)}>
+                        <Link href={URL_HOME}>
                             <span className="material-symbols-outlined wideScreen">logout</span>
                             <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}> Logout </h2>
                         </Link>
@@ -62,9 +64,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                 }
             </ul>
 
-            <div id="hamburger" onClick={() => setShowMenu(!showMenu)}>
-                <Image src={showMenu ? close : hamburger} width={40} height={40} alt='Hamburger menu' />
-            </div>
+            <Hamburger checked={isChecked} setCheck={setIsChecked}/>
         </nav>
     );
 }
