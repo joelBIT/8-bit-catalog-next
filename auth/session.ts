@@ -53,32 +53,43 @@ function fromSessionTokenToSessionValue(sessionToken: string): string {
     return encodeHexLowerCase(sha256(new TextEncoder().encode(sessionToken)));
 };
 
+/**
+ * Validates a session based on its token value. If there is a problem the session (if it exists) is deleted. This forces the user to
+ * sign in again.
+ */
 export async function validateSession(sessionToken: string): Promise<Session | undefined> {
     const tokenValue = fromSessionTokenToSessionValue(sessionToken);
-    const result = await getSessionByTokenValue(tokenValue);
 
-    if (result) {
-        const { user_id, expires_at, token_value } = result;
+    try {
+        const result = await getSessionByTokenValue(tokenValue);
 
-        const session: Session = {
-            user_id: user_id,
-            expires_at: expires_at,
-            token_value: token_value
-        }
-  
-        // If the session has expired, delete it
-        if (Date.now() >= new Date(session.expires_at).getTime()) {
-            await deleteSessionByTokenValue(session.token_value);
-            return;
-        }
+        if (result) {
+            const { user_id, expires_at, token_value } = result;
     
-        // If there are 15 days left until the session expires, refresh the session
-        if (Date.now() >= new Date(session.expires_at).getTime() - SESSION_REFRESH_INTERVAL_MS) {
-            session.expires_at = new Date(Date.now() + SESSION_MAX_DURATION_MS);
-            await updateSession(session);
+            const session: Session = {
+                user_id: user_id,
+                expires_at: expires_at,
+                token_value: token_value
+            }
+      
+            // If the session has expired, delete it
+            if (Date.now() >= new Date(session.expires_at).getTime()) {
+                await deleteSessionByTokenValue(session.token_value);
+                return;
+            }
+        
+            // If there are 15 days left until the session expires, refresh the session
+            if (Date.now() >= new Date(session.expires_at).getTime() - SESSION_REFRESH_INTERVAL_MS) {
+                session.expires_at = new Date(Date.now() + SESSION_MAX_DURATION_MS);
+                await updateSession(session);
+            }
+        
+            return session;
         }
-    
-        return session;
+    } catch (error) {
+        console.log(error);
+        await deleteSessionByTokenValue(tokenValue);    // Delete session from database
+        await deleteSessionCookie();                    // Delete cookie in browser
     }
 }
 
