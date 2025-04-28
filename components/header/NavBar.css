@@ -62,6 +62,9 @@
 
 @media (max-width: 700px) {
     .navbar {
+        position: fixed;
+        top: 0;
+
         #hamburger {
             display: inline;
         }
@@ -104,10 +107,11 @@
         .navbar__list {
             display: inline-table;
             position: absolute;
-            margin-top: 1.45rem;
+            margin-top: 2.8rem;
             text-align: justify;
             background: var(--color-black);
             height: fit-content;
+            padding-top: 2rem;
             padding-bottom: 2rem;
             height: 100vh;
             animation: burger-menu 1s ease 0s 1 normal forwards;
