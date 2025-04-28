@@ -30,6 +30,7 @@
 
             .material-symbols-outlined {
                 font-size: 4rem;
+                vertical-align: text-bottom;
             }
 
             .smallScreen {

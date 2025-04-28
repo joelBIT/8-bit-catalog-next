@@ -19,22 +19,12 @@ footer {
         margin: 1rem;
 
         & .material-symbols-outlined {
-            font-size: small;
+            font-size: 0.7rem;
         }
 
         & .material-symbols-outlined, & .copyright__text {
             align-self: center;
             text-align: center;
-        }
-    }
-}
-
-@media (max-width:700px) {
-    footer {
-        & #copyright {
-            & .material-symbols-outlined {
-                padding-top: 0.1rem;
-            }
         }
     }
 }
