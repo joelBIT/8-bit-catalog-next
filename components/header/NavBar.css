@@ -107,7 +107,7 @@
         .navbar__list {
             display: inline-table;
             position: absolute;
-            margin-top: 2.45rem;
+            margin-top: 2.8rem;
             text-align: justify;
             background: var(--color-black);
             height: fit-content;

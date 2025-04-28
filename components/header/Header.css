@@ -42,6 +42,8 @@ header {
         #logoLink {
             margin: 0;
             text-align: center;
+            width: 6rem;
+            margin-right: 38%;
 
             #logo { 
                 display: none;
