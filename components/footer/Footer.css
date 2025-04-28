@@ -23,7 +23,7 @@ footer {
         }
 
         & .material-symbols-outlined, & .copyright__text {
-            align-self: center;
+            align-self: first baseline;
             text-align: center;
         }
     }
