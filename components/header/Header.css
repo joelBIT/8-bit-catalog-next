@@ -33,8 +33,6 @@ header {
 @media (max-width: 700px) {
     header {
         position: fixed;
-        top: 0;
-        right: 0;
         min-height: 3rem;
         flex-direction: row-reverse;
         width: 100%;
@@ -42,7 +40,7 @@ header {
         #logoLink {
             margin: 0;
             text-align: center;
-            width: 6rem;
+            width: 7rem;
             margin-right: 38%;
 
             #logo { 
