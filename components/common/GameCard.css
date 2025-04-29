@@ -39,7 +39,6 @@
     }
 
     &:hover {
-        transform: scale(1.05);
         transition: transform 0.3s ease;
         filter: brightness(1.35);
     }
@@ -94,7 +93,6 @@
     }
 
     &:hover {
-        transform: scale(1.01);
         transition: transform 0.3s ease-in-out;
         filter: brightness(1.35);
     }
