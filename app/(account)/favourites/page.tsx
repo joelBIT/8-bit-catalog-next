@@ -13,11 +13,11 @@ export default function FavouritesPage(): ReactElement {
     const { favouritesList, favouritesPage, gridView, toggleGridView } = useContext(FavouritesContext);
 
     function from(page: number): number {
-        return (page-1) * PAGINATION_PAGE_SIZE;
+        return (page - 1) * PAGINATION_PAGE_SIZE;
     }
     
     function to(page: number): number {
-        return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE;
+        return (page - 1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE;
     }
 
     return (
