@@ -16,8 +16,10 @@ header {
 
             &:hover {
                 filter: brightness(1.5);
-                transition: transform 0.3s ease;
+                transition: filter 0.7s ease-in-out;
             }
+
+            transition: all 0.3s;
         }
     }
 }

@@ -122,6 +122,7 @@ textarea {
   
     &:hover {
         filter: brightness(1.75);
+        transition: filter 0.5s;
     }
   
     &:active {
