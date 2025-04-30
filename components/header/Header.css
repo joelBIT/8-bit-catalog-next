@@ -13,13 +13,12 @@ header {
             letter-spacing: 0.2rem;
             font-weight: bold;
             width: 16vw;
+            transition: all 0.3s;
 
             &:hover {
-                filter: brightness(1.5);
-                transition: filter 0.7s ease-in-out;
+                color: var(--color-link-active);
+                transition: color 0.2s ease-in-out;
             }
-
-            transition: all 0.3s;
         }
     }
 }
