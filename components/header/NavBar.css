@@ -23,6 +23,7 @@
                 
                 .navbar__list-element-title {
                     font-weight: 100;
+                    transition: all 0.3s;
 
                     &:hover {
                         color: var(--color-link-active);
