@@ -1,61 +1,56 @@
 #heroCard {
     display: flex;
-    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+    flex-direction: column;
     border-radius: 8px;
     width: 50rem;
-    padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    justify-content: space-between;
 
     .heroCard-wrapper {
-        display: inline-grid;
-        padding: 1rem;
-        flex: 1.5;
+        overflow: hidden;
 
-        .heroCard__title {
-            color: var(--color-black);
-            text-align: center;
-            font-size: calc(1vw + 1vh + 2vmin);
-            margin: 2rem 0;
-            font-weight: bold;
-        }
-
-        .heroCard__link {
-            width: fit-content;
-            color: var(--color-black);
-            font-size: calc(1vw + 2vh + 2vmin);
-            font-weight: 500;
-            align-self: end;
-            transition: all 0.3s;
-        }
-
-        .heroCard__link:hover {
-            opacity: 0.7;
-            transition: opacity 0.2s ease-in-out;
+        .heroCard__figure-cover {
+            object-fit: cover;
+            width: 100%;
+            transition: all 3s;
+    
+            &:hover {
+                transform: scale(1.1);
+                transition: transform 3s;
+            }
         }
     }
 
-    .heroCard__figure {
-        flex: 1;
-        align-content: center;
+    .heroCard__title {
+        position: absolute;
+        font-size: 1.8rem;
+        font-weight: 100;
+        letter-spacing: 0.05rem;
+        margin-left: 2rem;
+        bottom: 39%;
+        backdrop-filter: brightness(0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+    }
+}
 
-        .heroCard__figure-cover {
-            aspect-ratio: 1 / 1;
-            width: 100%;
-            height: auto;
-            border-radius: 100%;
+@media (max-width: 1000px) {
+    #heroCard {
+        .heroCard__title {
+            bottom: 41%;
         }
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     #heroCard {
-        flex-direction: column-reverse;
-
         .heroCard-wrapper {
-            .heroCard__title {
-                font-size: 2rem;
+            .heroCard__figure-cover {
+                height: auto;
             }
+        }
+
+        .heroCard__title {
+            display: none;
         }
     }
 }
