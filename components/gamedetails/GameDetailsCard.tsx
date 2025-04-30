@@ -21,18 +21,16 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
 
     return (
         <section id="gameDetailsCard">
-            <figure className="gameDetailsCard__figure">
-                <Link href={STORAGE_URL + game.cover} target="_blank">
-                    <Image 
-                        src={STORAGE_URL + game.cover}
-                        unoptimized
-                        className="gameDetailsCard__figure-cover"
-                        alt="Game Cover"
-                        width={500}
-                        height={600}
-                    />
-                </Link>
-            </figure>
+            <Link href={STORAGE_URL + game.cover} target="_blank" className="gameDetailsCard__link">
+                <Image 
+                    src={STORAGE_URL + game.cover}
+                    unoptimized
+                    className="gameDetailsCard-image"
+                    alt="Game Cover"
+                    width={900}
+                    height={470}
+                />
+            </Link>
 
             <article id="gameDetails" className="bit-font">
                 <h1 className="gameDetails__title"> {game.title} </h1>
