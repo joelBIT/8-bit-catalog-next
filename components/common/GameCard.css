@@ -36,12 +36,13 @@
             bottom: 0;
             width: 100%;
             background: transparent;
+            filter: brightness(0.8);
             
             .gameCardTitle__heading {
                 color: var(--color-white);
                 font-size: calc(1.5vw + 12px);
                 font-weight: 100;
-                margin: 1rem 0 1rem 1rem;
+                margin: 1rem 0 0.5rem 1rem;
                 align-content: center;
             }
         }
