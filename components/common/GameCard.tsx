@@ -36,12 +36,14 @@ export function GameCard({ game, grid }: { game: Game, grid: boolean }): ReactEl
                         width={100}
                         height={300}
                     />
+
+                    <div className="darken-image-bottom" />
+
+                    <article id="gameCardTitle">
+                        <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
+                        <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
+                    </article>
                 </figure>
-                
-                <article id="gameCardTitle">
-                    <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
-                    <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
-                </article>
             </section>
         </Link>
     );

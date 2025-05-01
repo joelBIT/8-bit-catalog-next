@@ -7,7 +7,7 @@ import "./page.css";
 /**
  * A random game is presented to the user every time the landing page is visited.
  */
-export default async function Home(): Promise<ReactElement<ReactElement>> {
+export default async function Home(): Promise<ReactElement> {
 
     return (
         <main id="landingPage">
