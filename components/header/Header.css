@@ -7,13 +7,12 @@ header {
         display: flex;
         align-items: center;
         margin-left: 1rem;
-        gap: 1rem;
 
         .header__title {
             letter-spacing: 0.2rem;
             font-weight: bold;
-            width: 16vw;
             transition: all 0.3s;
+            font-size: 1.8rem;
 
             &:hover {
                 color: var(--color-link-active);
@@ -27,6 +26,10 @@ header {
     header {
         #logoLink { 
             font-size: 0.5rem;
+
+            & .header__title {
+                font-size: 1.1rem;
+            }
         }
     }
 }
@@ -41,7 +44,7 @@ header {
         #logoLink {
             margin: 0;
             text-align: center;
-            width: 7rem;
+            width: 10rem;
             margin-right: 38%;
 
             #logo { 
@@ -49,8 +52,24 @@ header {
             }
 
             & .header__title {
-                width: fit-content;
+                font-size: 1rem;
             }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        #logoLink {
+            margin-right: 32%;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        #logoLink {
+            margin-right: 25%;
         }
     }
 }
