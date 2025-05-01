@@ -31,19 +31,37 @@
 
         #gameCardTitle {
             display: flex;
-            justify-content: space-between;
             position: absolute;
             bottom: 0;
-            width: 100%;
+            width: 85%;
             background: transparent;
             filter: brightness(0.8);
-            
-            .gameCardTitle__heading {
-                color: var(--color-white);
-                font-size: calc(1.5vw + 12px);
-                font-weight: 100;
-                margin: 1rem 0 0.5rem 1rem;
-                align-content: center;
+            color: var(--color-white);
+            font-size: 1.8rem;
+            font-weight: 100;
+            margin: 1rem 0 0.5rem 1rem;
+        }
+
+        & .gameCard-favourite {
+                backdrop-filter: brightness(0.2);
+                padding: 0;
+                border-radius: 250%;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+
+            & .favouriteButton {
+                height: 2.1rem;
+                width: 2rem;
+                margin: 0.3rem;
+                min-width: 2rem;
+
+                &:hover {
+                    transform: none;
+                    border-radius: 250%;
+                    opacity: 1;
+                    filter: brightness(1.5);
+                }
             }
         }
     }

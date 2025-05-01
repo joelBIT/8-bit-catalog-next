@@ -36,11 +36,14 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                         height={300}
                     />
 
+                    <section className="gameCard-favourite">
+                        <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
+                    </section>
+
                     <div className="darken-image-bottom" />
 
-                    <article id="gameCardTitle">
-                        <h1 className={`gameCardTitle__heading ${rancho.className}`}> {game.title} </h1>
-                        <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
+                    <article id="gameCardTitle" className={`${rancho.className}`}>
+                        {game.title}
                     </article>
                 </figure>
             </section>
