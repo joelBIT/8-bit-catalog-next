@@ -19,8 +19,6 @@
 
         .gameCard-figure {
             position: relative;
-            border-radius: 9px;
-            width: 100%;
     
             .gameCard-figure__cover {
                 object-fit: cover;
@@ -35,7 +33,7 @@
                 width: fit-content;
                 position: absolute;
                 bottom: 1rem;
-                top: 1rem;
+                top: 0.8rem;
                 margin-left: 1rem;
                 margin-right: 1rem;
                 backdrop-filter: brightness(0.2);
@@ -44,7 +42,7 @@
 
                 & .favouriteButton {
                     margin-bottom: 0;
-                    align-self: center;
+                    align-self: flex-start;
                 }
                 
                 .gameCardTitle__heading {
@@ -83,7 +81,7 @@
             .gameCard-figure {
                 #gameCardTitle {
                     bottom: 0.5rem;
-                    top: 0.5rem;
+                    top: 0.35rem;
                     margin-left: 0.5rem;
                     margin-right: 0.5rem;
 

@@ -25,7 +25,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
         router.refresh();
     }
 
-    function closeMenu() {
+    function closeMenu(): void  {
         setIsChecked(!isChecked);
     }
 
