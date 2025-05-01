@@ -9,55 +9,56 @@
     width: 60vw;
     transition: all 0.3s;
 
-    & .listGameCard-link {
+    a:first-of-type {
         width: 100%;
+    }
 
-        & .showCard {
-            display: flex;
-            flex-direction: column;
+    & .showCard {
+        display: flex;
+        flex-direction: column;
 
-            .gameCard-figure {
-                position: relative;
+        .gameCard-figure {
+            position: relative;
+            border-radius: 9px;
+            width: 100%;
+    
+            .gameCard-figure__cover {
+                object-fit: cover;
+                width: 100%;
+                height: 6rem;
                 border-radius: 9px;
-        
-                .gameCard-figure__cover {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 6rem;
-                    border-radius: 9px;
+            }
+
+            #gameCardTitle {
+                display: flex;
+                align-items: center;
+                width: fit-content;
+                position: absolute;
+                bottom: 1rem;
+                top: 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                backdrop-filter: brightness(0.2);
+                padding: 0.5rem 1rem;
+                border-radius: 50px;
+
+                & .favouriteButton {
+                    margin-bottom: 0;
+                    align-self: center;
                 }
-    
-                #gameCardTitle {
-                    display: flex;
-                    align-items: center;
-                    width: fit-content;
-                    position: absolute;
-                    bottom: 1rem;
-                    top: 1rem;
-                    margin-left: 1rem;
-                    margin-right: 1rem;
-                    backdrop-filter: brightness(0.2);
-                    padding: 0.5rem 1rem;
-                    border-radius: 50px;
-    
-                    & .favouriteButton {
-                        margin-bottom: 0;
-                        align-self: center;
-                    }
-                    
-                    .gameCardTitle__heading {
-                        color: var(--color-white);
-                        font-size: 1.8rem;
-                        font-weight: 100;
-                        letter-spacing: 0.05rem;
-                    }
+                
+                .gameCardTitle__heading {
+                    color: var(--color-white);
+                    font-size: 1.8rem;
+                    font-weight: 100;
+                    letter-spacing: 0.05rem;
                 }
             }
-        
-            &:hover {
-                filter: brightness(1.35);
-                transition: filter 0.3s ease-in-out;
-            }
+        }
+    
+        &:hover {
+            filter: brightness(1.35);
+            transition: filter 0.3s ease-in-out;
         }
     }
 }
@@ -78,23 +79,21 @@
     .listGameCard {
         width: 90vw;
 
-        & .listGameCard-link {
-            & .showCard { 
-                .gameCard-figure {
-                    #gameCardTitle {
-                        bottom: 0.5rem;
-                        top: 0.5rem;
-                        margin-left: 0.5rem;
-                        margin-right: 0.5rem;
+        & .showCard { 
+            .gameCard-figure {
+                #gameCardTitle {
+                    bottom: 0.5rem;
+                    top: 0.5rem;
+                    margin-left: 0.5rem;
+                    margin-right: 0.5rem;
 
-                        .gameCardTitle__heading {
-                            font-size: 1.2rem;
-                        }
+                    .gameCardTitle__heading {
+                        font-size: 1.2rem;
                     }
+                }
 
-                    .gameCard-figure__cover {
-                        height: 5rem;
-                    }
+                .gameCard-figure__cover {
+                    height: 5rem;
                 }
             }
         }

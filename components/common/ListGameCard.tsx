@@ -25,7 +25,7 @@ export function ListGameCard({ game }: { game: Game }): ReactElement {
         
     return (
         <section className="listGameCard">
-            <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : "listGameCard-link"}>
+            <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : ""}>
             <section className={removeCard ? "hidden" : "showCard"}>
                 <figure className="gameCard-figure">
                     <Image 
