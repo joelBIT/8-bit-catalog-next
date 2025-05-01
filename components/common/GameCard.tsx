@@ -13,7 +13,7 @@ import "./GameCard.css";
 /**
  * Represents a card containing information about a game. The card is clickable so that
  * a user can navigate to the game's detail page if interested. It is also possible to
- * add a game card to the list of favourite games.
+ * add a game card to the list of favourite games. This game card is used in Grid Views.
  * 
  * @param game          a game
  * @returns             a clickable card with game information
@@ -39,7 +39,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                     <div className="darken-image-bottom" />
 
                     <article id="gameCardTitle">
-                        <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
+                        <h1 className={`gameCardTitle__heading ${rancho.className}`}> {game.title} </h1>
                         <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
                     </article>
                 </figure>

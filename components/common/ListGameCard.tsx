@@ -11,7 +11,7 @@ import "./ListGameCard.css";
 /**
  * Represents a card containing information about a game. The card is clickable so that
  * a user can navigate to the game's detail page if interested. It is also possible to
- * add a game card to the list of favourite games.
+ * add a game card to the list of favourite games. This game card is used in List Views.
  * 
  * @param game          a game
  * @returns             a clickable card with game information
@@ -23,7 +23,7 @@ export function ListGameCard({ game }: { game: Game }): ReactElement {
         
     return (
         <section className="listGameCard">
-            <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : ""}>
+            <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : "listGameCard-link"}>
             <section className={removeCard ? "hidden" : ""}>
                 <figure className="gameCard-figure">
                     <Image 
@@ -38,7 +38,7 @@ export function ListGameCard({ game }: { game: Game }): ReactElement {
                     <div className="darken-image-bottom" />
 
                     <article id="gameCardTitle">
-                        <h1 className={`gameCardTitle__heading ${rancho.className}`}>{game.title}</h1>
+                        <h1 className={`gameCardTitle__heading ${rancho.className}`}> {game.title} </h1>
                         <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
                     </article>
                 </figure>
