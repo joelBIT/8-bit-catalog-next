@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { Game } from "@/types/types";
-import { rancho } from "@/fonts/fonts";
+import { singleDay } from "@/fonts/fonts";
 import { FavouriteButton } from "../favourites/FavouriteButton";
 
 import "./ListGameCard.css";
@@ -26,7 +26,7 @@ export function ListGameCard({ game }: { game: Game }): ReactElement {
     return (
         <section className="listGameCard">
             <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : "listGameCard-link"}>
-            <section className={removeCard ? "hidden" : ""}>
+            <section className={removeCard ? "hidden" : "showCard"}>
                 <figure className="gameCard-figure">
                     <Image 
                         src={STORAGE_URL + game.cover}
@@ -37,11 +37,9 @@ export function ListGameCard({ game }: { game: Game }): ReactElement {
                         height={300}
                     />
 
-                    <div className="darken-image-bottom" />
-
                     <article id="gameCardTitle">
-                        <h1 className={`gameCardTitle__heading ${rancho.className}`}> {game.title} </h1>
                         <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
+                        <h1 className={`gameCardTitle__heading ${singleDay.className}`}> {game.title} </h1>
                     </article>
                 </figure>
             </section>
