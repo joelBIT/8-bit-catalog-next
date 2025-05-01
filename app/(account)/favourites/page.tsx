@@ -4,7 +4,7 @@ import { ReactElement, useContext } from "react";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { FavouritePagination } from "@/components/favourites/FavouritePagination";
 import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
-import { GameCard, ListToggle, ScrollTopButton } from "@/components/common";
+import { GameCard, ListGameCard, ListToggle, ScrollTopButton } from "@/components/common";
 import { arima } from "@/fonts/fonts";
 
 import "./page.css";
@@ -39,7 +39,7 @@ export default function FavouritesPage(): ReactElement {
                 { 
                     favouritesList.length === 0 ? 
                         <h1 className="no-favourites-text"> No favourites selected </h1> :
-                        favouritesList.slice(from(favouritesPage), to(favouritesPage)).map(game => <GameCard key={game.id} game={game} grid={gridView} />) 
+                        favouritesList.slice(from(favouritesPage), to(favouritesPage)).map(game => gridView ? <GameCard key={game.id} game={game} /> : <ListGameCard key={game.id} game={game} />) 
                 }
             </section>
 
