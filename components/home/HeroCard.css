@@ -43,7 +43,7 @@
         & .heroCard__link {
             .heroCard-wrapper {
                 .heroCard__figure-cover {
-                    height: auto;
+                    min-height: 45rem;
                 }
             }
     
