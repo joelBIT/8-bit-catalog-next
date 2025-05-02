@@ -26,14 +26,23 @@ export default function FavouritesPage(): ReactElement {
                 favouritesList.length > 0 ?
                     <>
                         <h1 className={`number-favourites-text ${arima.className}`}>
-                            {favouritesList.length} favourite games 
+                            {favouritesList.length} favourite { favouritesList.length === 1 ? "game" : "games" } 
                         </h1>
-                        <ListToggle toggle={toggleGridView} initialState={gridView} />
+
+                        <section className="show-pagination-toggle">
+                            <ListToggle toggle={toggleGridView} initialState={gridView} />
+
+                            {
+                                favouritesList.length > PAGINATION_PAGE_SIZE ?
+                                    <FavouritePagination currentPage={favouritesPage} /> 
+                                    : <></>
+                            }
+
+                            <div className="invisible" />
+                        </section>
                     </>
                     : <></>
             }
-
-            {favouritesList.length > PAGINATION_PAGE_SIZE ? <FavouritePagination currentPage={favouritesPage} /> : <></>}
 
             <section id="gameCards">
                 { 
