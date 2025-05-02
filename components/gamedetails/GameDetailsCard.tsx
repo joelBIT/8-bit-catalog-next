@@ -12,11 +12,11 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     const GAME_DETAILS = [
-        {heading: "Category:", text: game.category},
-        {heading: "Released:", text: game.release_date},
-        {heading: "Players:", text: game.players},
-        {heading: "Publisher:", text: game.publisher},
-        {heading: "Developer:", text: game.developer}
+        {text: game.category, icon: "category", title: "Game Category"},
+        {text: game.release_date, icon: "calendar_month", title: "Release Date"},
+        {text: game.players, icon: "videogame_asset", title: "Players"},
+        {text: game.publisher, icon: "corporate_fare", title: "Game Publisher"},
+        {text: game.developer, icon: "code", title: "Game Developer"}
     ]
 
     return (
@@ -35,18 +35,16 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
             <article id="gameDetails" className="bit-font">
                 <h1 className="gameDetails__title"> {game.title} </h1>
 
-                {
-                    GAME_DETAILS.map(detail => 
-                        <section className="gameDetails__metadata" key={detail.heading}>
-                            <h2 className="gameDetails__metadata-heading">
-                                { detail.heading }
-                            </h2>
-                            <p className="gameDetails__metadata-text">
-                                { detail.text }
-                            </p>
-                        </section>
-                    )
-                }
+                <section className="game-tags">
+                    {
+                        GAME_DETAILS.map(detail => 
+                            <section className="game-tag" key={detail.title} title={detail.title}>
+                                <span className="material-symbols-outlined"> {detail.icon} </span>
+                                <h2 className="tag-text"> {detail.text} </h2>
+                            </section>
+                        )
+                    }
+                </section>
 
                 { game.rom ? <PlayRomLink id={game.id} /> : <></> }
             </article>
