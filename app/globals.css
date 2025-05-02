@@ -22,6 +22,8 @@
     --color-success: #45ca4e;
     --color-tag-background: #D3D3D3;
     --color-tag-text: #666666;
+    --color-neon-green: #36ff46;
+    --color-neon-blue: #3646ff;
 }
 
 html,
@@ -384,4 +386,16 @@ textarea {
         var(--color-white)
     );
     opacity: 0.75;
+}
+
+
+
+/*************
+* Animations *
+*************/
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
 }

@@ -91,6 +91,8 @@
 
     #playRomLink {
         margin-top: 2rem;
+        width: fit-content;
+        align-self: center;
     }
 }
 
