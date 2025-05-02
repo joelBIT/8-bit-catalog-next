@@ -12,7 +12,10 @@ export function PlayRomLink({ id } : { id: number }): ReactElement {
             target="_blank"
             href={`https://emulator.joel-rollny.eu?id=${id}`} 
         >
-            Play
+            <section className="playRom-content">
+                <span className="material-symbols-outlined"> play_circle </span>
+                <h2 className="playRom-text"> Play </h2>
+            </section>
         </Link>
     );
 }

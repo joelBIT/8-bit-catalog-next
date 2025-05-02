@@ -37,6 +37,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
+            align-self: center;
 
             & .game-tag {
                 display: flex;
@@ -90,6 +91,8 @@
 
     #playRomLink {
         margin-top: 2rem;
+        width: fit-content;
+        align-self: center;
     }
 }
 
