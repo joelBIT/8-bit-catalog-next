@@ -41,8 +41,10 @@
                 border-radius: 50px;
 
                 & .favouriteButton {
-                    margin-bottom: 0;
-                    align-self: flex-start;
+                    margin-bottom: 0.3rem;
+                    align-self: center;
+                    min-width: 2rem;
+                    height: 2rem;
                 }
                 
                 .gameCardTitle__heading {
