@@ -24,4 +24,34 @@
         margin: 0 2rem;
         justify-content: center;
     }
+
+    & .show-pagination-toggle {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 1rem;
+        width: 100%;
+        justify-content: space-evenly;
+
+        & #listToggle {
+            margin-bottom: 0;
+        }
+
+        & .invisible {
+            width: 12rem;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    #search {    
+        & .show-pagination-toggle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            & .invisible {
+                display: none;
+            }
+        }
+    }
 }
