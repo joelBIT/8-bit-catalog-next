@@ -3,6 +3,7 @@
     justify-content: center;
     width: fit-content;
     gap: 1rem;
+    margin-bottom: 1rem;
 
     & .playRom-content {
         display: flex;
@@ -16,8 +17,7 @@
         width: fit-content;
         align-self: center;
         line-height: 1;
-        margin: 0.5em;
-        padding: 1em 2em;
+        padding: 1rem 2rem;
         animation: pulse-animation 2s infinite;
         font-size: 1rem;
         background-color: #064D6180;
