@@ -75,6 +75,7 @@ export function Search(): ReactElement {
                 : <></>
             }
 
+            <section className="show-pagination-toggle">
             {
                 searchResult.length > 0 ?
                     <ListToggle toggle={toggleGridView} initialState={gridView} />
@@ -91,6 +92,11 @@ export function Search(): ReactElement {
                     /> 
                 : <></>
             }
+
+                <div className="invisible" />
+            </section>
+
+            
 
             <section id="gameCards">
                 { searchResult.map((game, index) => gridView ? <GameCard key={index} game={game} /> : <ListGameCard key={index} game={game} /> ) }

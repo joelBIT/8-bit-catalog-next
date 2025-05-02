@@ -255,6 +255,10 @@ textarea {
     display: none;
 }
 
+.invisible {
+    visibility: hidden;
+}
+
 .bit-font {
     font: 1.4rem "Press start 2P";
     font-weight: 700;
