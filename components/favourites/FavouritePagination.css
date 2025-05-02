@@ -15,11 +15,23 @@
             font-weight: 100;
         }
     }
+
+    #next, #previous {
+        width: fit-content;
+        padding: 0.5rem;
+        border-radius: 100%;
+
+        & > span {
+            font-size: 2rem;
+        }
+    }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
     .favourite-pagination {
-        display: flex;
-        flex-direction: column;
+        .favourite-pagination-page__text {
+            gap: 0.5rem;
+            font-size: 1.3rem;
+        }
     }
 }
