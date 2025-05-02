@@ -20,6 +20,8 @@
     --color-black: #101010;
     --color-warning: #ff3737;
     --color-success: #45ca4e;
+    --color-tag-background: #D3D3D3;
+    --color-tag-text: #666666;
 }
 
 html,
