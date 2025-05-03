@@ -51,10 +51,10 @@
                 right: 10px;
 
             & .favouriteButton {
-                height: 2.1rem;
-                width: 2rem;
+                height: 2.2rem;
+                width: 2.2rem;
                 margin: 0.3rem;
-                min-width: 2rem;
+                min-width: 2.2rem;
 
                 &:hover {
                     transform: none;
