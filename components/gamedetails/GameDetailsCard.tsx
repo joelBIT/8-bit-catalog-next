@@ -33,7 +33,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
             </Link>
 
             <article id="gameDetails" className="bit-font">
-                <h1 className="gameDetails__title"> {game.title} </h1>
+                <h1 className="gameDetails__title permanent-marker-regular"> {game.title} </h1>
 
                 <section className="game-tags">
                     {

@@ -28,9 +28,10 @@
         gap: 0.5rem;
 
         .gameDetails__title {
-            font-size: 1.5rem;
+            font-size: 4.5rem;
             margin-bottom: 2rem;
             margin-top: 2rem;
+            letter-spacing: 2px;
         }
 
         & .game-tags {
@@ -44,7 +45,6 @@
                 gap: 0.5rem;
                 align-items: center;
                 border-radius: 30px;
-                font-weight: 500;
                 cursor: default;
                 backdrop-filter: blur(5px);
                 border: 2px solid var(--color-neon-green);
@@ -60,9 +60,10 @@
                 }
     
                 & .tag-text {
-                    font-size: 1.3rem;
+                    font-size: 1.1rem;
                     letter-spacing: 1px;
                     padding-top: 0.3rem;
+                    font-weight: 100;
                 }
             }
         }
@@ -109,12 +110,8 @@
         margin-top: 2rem;
 
         #gameDetails {
-            & .game-tags {
-                & .game-tag {
-                    & .tag-text {
-                        font-size: 1rem;
-                    }
-                }
+            .gameDetails__title {
+                font-size: 3rem;
             }
         }
 
@@ -134,7 +131,7 @@
 
         #gameDetails {
             .gameDetails__title {
-                font-size: 1rem;
+                font-size: 2rem;
             }
 
             & .game-tags {
