@@ -1,43 +1,64 @@
 #aboutPage {
-    background-image: url("../../assets/backgrounds/nes-in-gray-carpet.webp");
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../assets/backgrounds/nes-in-gray-carpet.webp');
     display: flex;
+    background-size: cover;
     justify-content: center;
+    align-items: center;
+    background-position: center bottom;
 
-    .aboutPage__paragraph {
-        font-size: 1.5rem;
-        margin: 1rem;
-        font-weight: 100;
+    & #aboutPage-content {
+        width: 80%;
+        background: rgba(0,0,0,0.7);
+        padding: 1rem;
+        border-radius: 9px;
+
+        .aboutPage__paragraph {
+            font-size: 1.5rem;
+            margin: 1rem;
+            font-weight: 100;
+            line-height: 1.6rem;
+        }
+
+        > p:first-of-type {
+            padding-bottom: 1rem;
+        }
     }
 }
 
 @media (max-width: 700px) {
     #aboutPage {
-        align-items: center;
+        & #aboutPage-content {
+            width: 90%;
 
-        #fieldSetFrame {
-            height: fit-content;
-        }
-    
-        .aboutPage__paragraph {
-            font-size: 1.4rem;
+            .aboutPage__paragraph {
+                font-size: 1.4rem;
+            }
         }
     }
 }
 
 @media (max-width: 600px) {
     #aboutPage {
-        .aboutPage__paragraph {
-            font-size: 1.3rem;
-            margin-left: 0;
-            margin-right: 0;
+        & #aboutPage-content {
+            width: 95%;
+
+            .aboutPage__paragraph {
+                font-size: 1.3rem;
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
     }
 }
 
 @media (max-width: 500px) {
     #aboutPage {
-        .aboutPage__paragraph {
-            font-size: 1rem;
+        & #aboutPage-content {
+            width: 100%;
+
+            .aboutPage__paragraph {
+                font-size: 1rem;
+            }
         }
     }
 }
