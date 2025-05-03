@@ -9,8 +9,11 @@
     }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 920px) {
     #editfilter-developer {
+        width: fit-content;
+        align-self: center;
+
         & .selectSection__select {
             font-size: 1rem;
         }
