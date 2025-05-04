@@ -3,7 +3,7 @@
 import { ReactElement, useState } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { FavouriteButton } from "../favourites/FavouriteButton";
+import { FavouriteButton } from "@/components/favourites";
 import { Game } from "@/types/types";
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { rancho } from "@/fonts/fonts";
