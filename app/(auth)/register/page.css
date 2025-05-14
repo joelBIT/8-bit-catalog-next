@@ -1,9 +1,29 @@
 #registerPage {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+
+    & #registerPage-image {
+        grid-column: 1 / 2;
+        height: 100%;
+            align-content: center;
+
+        & .registerPage-nes-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 9px;
+        }
+    }
+
+    & #registerPage-form {
+        grid-column: 2 / 3;
+        height: 100%;
+        align-content: center;
+        justify-items: center;
+    }
 }
 
 @media (max-width: 600px) {
