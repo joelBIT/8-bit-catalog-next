@@ -3,12 +3,25 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+    background: linear-gradient(var(--color-black), var(--color-tag-text));
 
     & #registerPage-image {
         grid-column: 1 / 2;
         height: 100%;
-            align-content: center;
+        align-content: center;
+        position: relative;
+
+        & .registerPage-link {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background-color: #62626240;
+            padding: 0.3rem 0.5rem;
+            border-radius: 20px;
+        }
 
         & .registerPage-nes-image {
             width: 100%;
