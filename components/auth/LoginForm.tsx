@@ -1,11 +1,10 @@
 'use client';
 
-import { ReactElement, useRef, useActionState, useEffect, useContext } from "react";
+import { ReactElement, useRef, useActionState } from "react";
 import Link from "next/link";
 import { arima, irishGrover } from "@/fonts/fonts";
 import { login } from "@/actions/auth";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
-import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
 import { EmailInput, PasswordInput } from "../common";
 
 import "./LoginForm.css";
@@ -13,11 +12,6 @@ import "./LoginForm.css";
 export function LoginForm(): ReactElement {
     const [ state, formAction ] = useActionState(login, { message: '', success: false });
     const formRef = useRef<HTMLFormElement>(null);
-    const { loadFavouriteGames } = useContext(FavouritesContext);
-    
-    useEffect(() => {
-        loadFavouriteGames();       // Updates the favourite list because users are redirected here when logging out
-    }, []);
 
     if (formRef.current) {
         formRef.current?.reset();
