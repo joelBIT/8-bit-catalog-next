@@ -6,7 +6,7 @@
 
     & #registerPage-modal {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(12, 1fr);
         align-items: center;
         justify-content: center;
         padding: 1rem;
@@ -19,11 +19,11 @@
         margin-bottom: 4rem;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-            & #registerPage-modal-right {
-                grid-column: 2 / 4;
-                height: 100%;
-                align-content: center;
-                position: relative;
+        & #registerPage-modal-right {
+            grid-column: 5 / 13;
+            height: 100%;
+            align-content: center;
+            position: relative;
 
             & .registerPage-link {
                 display: flex;
@@ -49,7 +49,7 @@
         }
 
         & #registerPage-form {
-            grid-column: 1 / 2;
+            grid-column: 1 / 5;
             height: 100%;
             align-content: center;
             justify-items: center;
@@ -59,9 +59,64 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1300px) {
     #registerPage {
-        padding: 1rem;
+        & #registerPage-modal {
+            & #registerPage-modal-right {
+                grid-column: 6 / 13;
+            }
+
+            & #registerPage-form {
+                grid-column: 1 / 6;
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    #registerPage {
+        & #registerPage-modal {
+            & #registerPage-modal-right {
+                grid-column: 7 / 13;
+            }
+
+            & #registerPage-form {
+                grid-column: 1 / 7;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    #registerPage {
+        & #registerPage-modal {
+            & #registerPage-modal-right {
+                grid-column: 8 / 13;
+            }
+
+            & #registerPage-form {
+                grid-column: 1 / 8;
+            }
+        }
+    }
+}
+
+@media (max-width: 750px) {
+    #registerPage {
+        & #registerPage-modal {
+            display: flex;
+            flex-direction: column-reverse;
+            position: relative;
+
+            & #registerPage-modal-right {
+                display: contents;
+
+                & .registerPage-link {
+                    top: 1rem;
+                    right: 1rem;
+                }
+            }
+        }
         
         .message-failure, .message-success {
             font-size: 1.5rem;

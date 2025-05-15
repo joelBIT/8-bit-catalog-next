@@ -49,14 +49,34 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+    #registerCard {
+        & .registerCard__title {
+            font-size: 2.7rem;
+        }
+    }
+}
+
+@media (max-width: 700px) {
     #registerCard {
         padding: 1rem 1.5rem 2rem;
+
+        & .registerCard__title {
+            font-size: 2.2rem;
+        }
 
         #registerForm {
             & input {
                 font-size: 1rem;
             }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #registerCard {
+        & .registerCard__title {
+            font-size: 1.7rem;
         }
     }
 }
