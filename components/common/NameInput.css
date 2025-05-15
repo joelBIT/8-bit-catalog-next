@@ -71,8 +71,16 @@
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 400px) {
     #nameInput {
-        gap: 0.1rem;
+        & .material-symbols-outlined {
+            font-size: 1.2rem;
+        }
+
+        & .form__field {
+            &:placeholder-shown ~ .form__label {
+                font-size: 1rem;
+            }
+        }
     }
 }

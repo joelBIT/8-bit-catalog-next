@@ -93,7 +93,7 @@ textarea {
 }
 
 @media (max-width: 700px) {
-    main {
+    main:not(#registerPage):not(#loginPage) {
         margin-top: 2rem;
     }
 }

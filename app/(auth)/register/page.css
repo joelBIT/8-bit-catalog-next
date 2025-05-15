@@ -103,10 +103,13 @@
 
 @media (max-width: 750px) {
     #registerPage {
+        padding: 1rem;
+
         & #registerPage-modal {
             display: flex;
             flex-direction: column-reverse;
             position: relative;
+            min-height: 70vh;
 
             & #registerPage-modal-right {
                 display: contents;
