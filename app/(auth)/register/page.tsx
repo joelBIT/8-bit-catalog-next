@@ -8,7 +8,7 @@ export default function RegisterPage(): ReactElement {
     return (
         <main id="registerPage">
             <section id="registerPage-modal">
-                <section id="registerPage-form"> 
+                <section id="registerPage-form">
                     <RegisterForm />
                 </section>
 

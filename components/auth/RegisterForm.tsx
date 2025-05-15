@@ -45,15 +45,8 @@ export function RegisterForm(): ReactElement {
                                     <label htmlFor="email" className="form__label">Email</label>
                                 </div>
 
-                                <div className="form__group field">
-                                    <input type="password" className="form__field" placeholder="Password" name="password" id='password' required autoComplete="off"/>
-                                    <label htmlFor="password" className="form__label">Password</label>
-                                </div>
-
-                                <div className="form__group field">
-                                    <input type="password" className="form__field" placeholder="Re-type Password" name="passwordRepeat" id='passwordRepeat' required autoComplete="off"/>
-                                    <label htmlFor="passwordRepeat" className="form__label">Re-type Password</label>
-                                </div>
+                                <PasswordInput id="password" placeholder="Password" />
+                                <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
                             </section>
 
                             <button className={`authButton ${irishGrover.className}`} type="submit">
