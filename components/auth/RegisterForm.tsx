@@ -38,6 +38,16 @@ export function RegisterForm(): ReactElement {
                             <PasswordInput id="password" placeholder="Password" />
                             <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
 
+                            <div className="form__group field">
+                                <input type="input" className="form__field" placeholder="Name" name="name" id='name' required autoComplete="off"/>
+                                <label htmlFor="name" className="form__label">Name</label>
+                            </div>
+
+                            <div className="form__group field">
+                                <input type="input" className="form__field" placeholder="Password" name="password" id='password' required autoComplete="off"/>
+                                <label htmlFor="password" className="form__label">Password</label>
+                            </div>
+
                             <button className={`authButton ${irishGrover.className}`} type="submit">
                                 <span className="authButton__text"> Register </span>
                             </button>
