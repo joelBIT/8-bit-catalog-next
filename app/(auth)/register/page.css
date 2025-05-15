@@ -30,8 +30,8 @@
                 align-items: center;
                 gap: 0.2rem;
                 position: absolute;
-                top: 2rem;
-                left: 2rem;
+                top: 0.5rem;
+                right: 0.5rem;
                 background-color: #62626240;
                 padding: 0.3rem 0.5rem;
                 border-radius: 20px;
@@ -53,8 +53,7 @@
             height: 100%;
             align-content: center;
             justify-items: center;
-            background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
-            /* background-color: #222222; */
+            background: linear-gradient(#222222, var(--color-nintendo-gray));
             border-radius: 9px;
         }
     }

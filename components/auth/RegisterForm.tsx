@@ -34,19 +34,27 @@ export function RegisterForm(): ReactElement {
                         <h1 className="registerCard__title">Create Account</h1>
 
                         <form id="registerForm" ref={formRef} action={formAction}>
-                            <EmailInput />
-                            <PasswordInput id="password" placeholder="Password" />
-                            <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
+                            <section id="register-input">
+                                <div className="form__group field">
+                                    <input type="text" className="form__field" placeholder="Name" name="name" id='name' required autoComplete="off"/>
+                                    <label htmlFor="name" className="form__label">Name</label>
+                                </div>
 
-                            <div className="form__group field">
-                                <input type="input" className="form__field" placeholder="Name" name="name" id='name' required autoComplete="off"/>
-                                <label htmlFor="name" className="form__label">Name</label>
-                            </div>
+                                <div className="form__group field">
+                                    <input type="email" className="form__field" placeholder="Email" name="email" id='email' required autoComplete="off"/>
+                                    <label htmlFor="email" className="form__label">Email</label>
+                                </div>
 
-                            <div className="form__group field">
-                                <input type="input" className="form__field" placeholder="Password" name="password" id='password' required autoComplete="off"/>
-                                <label htmlFor="password" className="form__label">Password</label>
-                            </div>
+                                <div className="form__group field">
+                                    <input type="password" className="form__field" placeholder="Password" name="password" id='password' required autoComplete="off"/>
+                                    <label htmlFor="password" className="form__label">Password</label>
+                                </div>
+
+                                <div className="form__group field">
+                                    <input type="password" className="form__field" placeholder="Re-type Password" name="passwordRepeat" id='passwordRepeat' required autoComplete="off"/>
+                                    <label htmlFor="passwordRepeat" className="form__label">Re-type Password</label>
+                                </div>
+                            </section>
 
                             <button className={`authButton ${irishGrover.className}`} type="submit">
                                 <span className="authButton__text"> Register </span>
