@@ -1,10 +1,7 @@
 #registerCard {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
-    border-radius: 8px;
     padding: 1rem 5rem 2rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     max-width: fit-content;
     align-self: center;
 

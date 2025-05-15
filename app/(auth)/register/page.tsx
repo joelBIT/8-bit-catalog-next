@@ -9,18 +9,20 @@ import Link from "next/link";
 export default function RegisterPage(): ReactElement {
     return (
         <main id="registerPage">
-            <section id="registerPage-image">
-                <Link href={"/"} className="registerPage-link"> <span className="material-symbols-outlined"> arrow_back </span> Back to Catalog </Link>
-                <Image 
-                    src={image}
-                    unoptimized
-                    className="registerPage-nes-image"
-                    alt="NES gaming set"
-                />
-            </section>
+            <section id="registerPage-modal">
+                <section id="registerPage-image">
+                    <Link href={"/"} className="registerPage-link"> <span className="material-symbols-outlined"> arrow_back </span> Back to catalog </Link>
+                    <Image 
+                        src={image}
+                        unoptimized
+                        className="registerPage-nes-image"
+                        alt="NES gaming set"
+                    />
+                </section>
 
-            <section id="registerPage-form"> 
-                <RegisterForm />
+                <section id="registerPage-form"> 
+                    <RegisterForm />
+                </section>
             </section>
         </main>
     );
