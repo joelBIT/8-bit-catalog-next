@@ -27,11 +27,16 @@ export function LoginForm(): ReactElement {
             }
 
             <section id="loginCard" className={arima.className}>
-                <h1 className="loginCard__title">Sign in</h1>
-        
+                <section className="loginCard-title">
+                    <h1 className="loginCard__title"> Welcome</h1>
+                    <h2 className="loginCard__title-text"> Enter your email and password to access your account </h2>
+                </section>
+                
                 <form id="loginForm" ref={formRef} action={formAction}>
-                    <EmailInput />
-                    <PasswordInput id="password" placeholder="Password" />
+                    <section id="login-input">
+                        <EmailInput />
+                        <PasswordInput id="password" placeholder="Password" />
+                    </section>
                     
                     <button className={`authButton ${irishGrover.className}`} type="submit">
                         <span className="authButton__text"> Login </span>
