@@ -6,17 +6,21 @@ import "./EmailInput.css";
 export function EmailInput(): ReactElement {
     return (
         <section id="emailInput">
-            <span className="material-symbols-outlined"> person </span>
+            <span className="material-symbols-outlined"> mail </span>
 
-            <input 
-                id="email"
-                name="email" 
-                type="email" 
-                placeholder="Email"
-                className={arima.className}
-                autoComplete="false" 
-                required 
-            />               
+            <div className="email-input">
+                <input 
+                    id="email"
+                    name="email" 
+                    type="email" 
+                    placeholder="Email"
+                    className={`${arima.className} form__field`}
+                    autoComplete="off" 
+                    required 
+                />
+
+                <label htmlFor="email" className="form__label"> Email </label>
+            </div>
         </section>
     );
 }
