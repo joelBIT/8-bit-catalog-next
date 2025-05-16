@@ -1,10 +1,11 @@
 #loginCard {
     display: flex;
     flex-direction: column;
-    padding: 3rem;
+    padding: 1rem;
     align-self: center;
     height: 100%;
     justify-content: space-around;
+    width: 80%;
 
     & .loginCard-title {
         display: flex;
@@ -55,22 +56,50 @@
     }
 }
 
-@media (max-width: 600px) {
-    #loginCard {
-        padding: 1rem 1.5rem 2rem;
 
-        .loginCard__title {
-            margin-bottom: 1rem;
+@media (max-width: 900px) {
+    #liginCard {
+        & .loginCard__title {
+            font-size: 2.7rem;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    #loginCard {
+        padding: 1rem 0 2rem;
+
+        & .loginCard__title {
+            font-size: 2.2rem;
         }
 
-        #loginForm {
+        & #loginForm {
             & input {
                 font-size: 1rem;
             }
         }
+    }
+}
 
-        #register-link {
-            align-self: center;
+@media (max-width: 400px) {
+    #loginCard {
+        & .registerCard__title {
+            font-size: 1.7rem;
+        }
+
+        & #loginForm {
+            & .authButton {
+                & .authButton__text {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        & #register-link {
+            & .register-link__text,
+            .loginCard__create-account-link {
+                font-size: 0.7rem;
+            }
         }
     }
 }
