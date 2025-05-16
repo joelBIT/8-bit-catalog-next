@@ -32,7 +32,7 @@
                 position: absolute;
                 top: 0;
                 right: 0;
-                background-color: #62626240;
+                background-color: var(--color-link-background);
                 padding: 0.3rem 0.5rem;
                 border-radius: 20px;
                 transition: all 0.5s;

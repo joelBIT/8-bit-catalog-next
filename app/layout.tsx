@@ -16,7 +16,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${blinker.className}`}>
-                    {children} 
+                {children} 
             </body>
         </html>
     );

@@ -15,7 +15,7 @@
 
     & .not-found__link {
         padding: 1rem;
-        background-color: #62626240;
+        background-color: var(--color-link-background);
         border-radius: 25px;
         transition: all 0.5s;
 
