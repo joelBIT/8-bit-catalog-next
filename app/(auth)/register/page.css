@@ -126,3 +126,12 @@
         }
     }
 }
+
+@media (max-width: 500px) {
+    #registerPage {
+        & #registerPage-modal {
+            padding-top: 4rem;
+            min-height: fit-content;
+        }
+    }
+}

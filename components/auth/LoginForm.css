@@ -65,7 +65,7 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
     #loginCard {
         padding: 1rem 0 2rem;
 
@@ -83,8 +83,14 @@
 
 @media (max-width: 400px) {
     #loginCard {
-        & .registerCard__title {
-            font-size: 1.7rem;
+        & .loginCard-title {
+            & .loginCard__title {
+                font-size: 1.7rem;
+            }
+
+            & .loginCard__title-text {
+                font-size: 1.1rem;
+            }
         }
 
         & #loginForm {

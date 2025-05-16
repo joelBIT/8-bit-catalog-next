@@ -127,3 +127,12 @@
         }
     }
 }
+
+@media (max-width: 500px) {
+    #loginPage {
+        & #loginPage-modal {
+            padding-top: 4rem;
+            min-height: fit-content;
+        }
+    }
+}
