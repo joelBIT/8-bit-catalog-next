@@ -4,7 +4,7 @@
     justify-content: center;
     background: linear-gradient(var(--color-black), var(--color-tag-text));
 
-       & #loginPage-modal {
+    & #loginPage-modal {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         align-items: center;
@@ -35,15 +35,14 @@
                 background-color: #62626240;
                 padding: 0.3rem 0.5rem;
                 border-radius: 20px;
+                transition: all 0.5s;
 
                 & .material-symbols-outlined {
                     font-size: 1.2rem;
                 }
 
                 &:hover {
-                    & .material-symbols-outlined {
-                        filter: brightness(1.2);
-                    }
+                    filter: brightness(1.2);
                 }
             }
         }
