@@ -1,5 +1,5 @@
 #aboutPage {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../assets/backgrounds/nes-in-gray-carpet.webp');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../assets/backgrounds/nes-in-gray-carpet.webp');
     display: flex;
     background-size: cover;
     justify-content: center;

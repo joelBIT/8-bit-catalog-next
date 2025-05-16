@@ -1,17 +1,19 @@
-#settingsPage {
+#dashboardPage {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-image: url("../../../../assets/backgrounds/account_wallpaper.png");
     min-height: 100vh;
 
-    & .settingsPage__title {
+    & .user-information {
         margin-bottom: 3rem;
+        width: 100%;
+        text-align: right;
     }
 }
 
 @media (max-width: 700px) {
-    #settingsPage {
+    #dashboardPage {
         .message-success, .message-failure {
             font-size: 1rem;
             text-align: center;
@@ -20,9 +22,8 @@
     }
 }
 
-@media (max-width: 500px) {
-    #settingsPage {
-        align-items: flex-end;
+@media (max-width: 400px) {
+    #dashboardPage {
         padding: 1rem;
     }
 }

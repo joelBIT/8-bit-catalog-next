@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 import { blinker } from "@/fonts/fonts";
+import { FavouritesContexProvider } from "@/contexts";
 
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
     title: "The 8-bit Catalog",
@@ -16,7 +19,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${blinker.className}`}>
-                {children} 
+                <Header />
+                    <FavouritesContexProvider> {children} </FavouritesContexProvider>
+                <Footer />
             </body>
         </html>
     );

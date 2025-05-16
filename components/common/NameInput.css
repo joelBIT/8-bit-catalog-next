@@ -1,4 +1,4 @@
-#passwordInput {
+#nameInput {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -6,12 +6,16 @@
     padding: 15px 0 0;
     margin-top: 10px;
 
+    & .name-input {
+        width: 100%;
+    }
+
     & .material-symbols-outlined {
         color: var(--color-black);
         font-size: 1.5rem;
     }
 
-    & .form__field {
+    .form__field {
         font-family: inherit;
         width: 100%;
         border: 0;
@@ -43,7 +47,7 @@
         color: #9b9b9b;
     }
 
-    & .form__field:focus {
+    .form__field:focus {
         ~ .form__label {
             position: absolute;
             top: 0;
@@ -62,33 +66,13 @@
     }
 
     /* reset input */
-    & .form__field {
+    .form__field {
         &:required,&:invalid { box-shadow:none; }
-    }
-
-    & .password-input {
-        display: flex;
-        width: 100%;
-    
-        & input {
-            min-width: 100%;
-        }
-    
-        & .material-symbols-outlined {
-            position: relative;
-            right: 1.5rem;
-            align-content: center;
-            color: black;
-    
-            &:hover {
-                cursor: pointer;
-            }
-        }
     }
 }
 
 @media (max-width: 400px) {
-    #passwordInput {
+    #nameInput {
         & .material-symbols-outlined {
             font-size: 1.2rem;
         }

@@ -1,14 +1,131 @@
 #registerPage {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    background: linear-gradient(var(--color-black), var(--color-tag-text));
+
+    & #registerPage-modal {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 9px;
+        min-height: 80vh;
+        width: 90vw;
+        margin-bottom: 4rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        & #registerPage-modal-right {
+            grid-column: 5 / 13;
+            height: 100%;
+            align-content: center;
+            position: relative;
+
+            & .registerPage-link {
+                display: flex;
+                align-items: center;
+                gap: 0.2rem;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: var(--color-link-background);
+                padding: 0.3rem 0.5rem;
+                border-radius: 20px;
+                transition: all 0.5s;
+
+                & .material-symbols-outlined {
+                    font-size: 1.2rem;
+                }
+
+                &:hover {
+                    filter: brightness(1.2);
+                }
+            }
+        }
+
+        & #registerPage-form {
+            grid-column: 1 / 5;
+            height: 100%;
+            align-content: center;
+            justify-items: center;
+            background: linear-gradient(#222222, var(--color-nintendo-gray));
+            border-radius: 9px;
+        }
+    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1300px) {
+    #registerPage {
+        & #registerPage-modal {
+            & #registerPage-modal-right {
+                grid-column: 6 / 13;
+            }
+
+            & #registerPage-form {
+                grid-column: 1 / 6;
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    #registerPage {
+        & #registerPage-modal {
+            & #registerPage-modal-right {
+                grid-column: 7 / 13;
+            }
+
+            & #registerPage-form {
+                grid-column: 1 / 7;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    #registerPage {
+        & #registerPage-modal {
+            & #registerPage-modal-right {
+                grid-column: 8 / 13;
+            }
+
+            & #registerPage-form {
+                grid-column: 1 / 8;
+            }
+        }
+    }
+}
+
+@media (max-width: 750px) {
     #registerPage {
         padding: 1rem;
+        align-items: flex-start;
+
+        & #registerPage-modal {
+            display: flex;
+            flex-direction: column-reverse;
+            position: relative;
+            min-height: 70vh;
+            padding-top: 4rem;
+            min-height: fit-content;
+
+            & #registerPage-modal-right {
+                display: contents;
+
+                & .registerPage-link {
+                    top: 1rem;
+                    right: 1rem;
+                }
+            }
+
+            & #registerPage-form {
+                width: 100%;
+            }
+        }
         
         .message-failure, .message-success {
             font-size: 1.5rem;
