@@ -55,6 +55,7 @@
             justify-items: center;
             background: linear-gradient(#222222, var(--color-nintendo-gray));
             border-radius: 9px;
+            text-align: -webkit-center;
         }
     }
 }
