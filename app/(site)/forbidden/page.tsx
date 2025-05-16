@@ -20,7 +20,7 @@ export default function ForbiddenPage() {
         <main id="forbiddenPage">
             <h2 className='forbidden__title'>Forbidden</h2>
             <p className='forbidden__text'>The requested resource is not available for you.</p>
-            <Link href="/">Return Home</Link>
+            <Link href="/" className='forbidden__link'>Return Home</Link>
         </main>
     )
 }
