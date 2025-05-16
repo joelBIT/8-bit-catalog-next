@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { blinker } from "@/fonts/fonts";
 
-import "../globals.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
     title: "The 8-bit Catalog",
@@ -16,7 +16,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${blinker.className}`}>
-                {children}
+                    {children} 
             </body>
         </html>
     );
