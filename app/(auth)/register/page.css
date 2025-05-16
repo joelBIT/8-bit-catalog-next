@@ -104,12 +104,15 @@
 @media (max-width: 750px) {
     #registerPage {
         padding: 1rem;
+        align-items: flex-start;
 
         & #registerPage-modal {
             display: flex;
             flex-direction: column-reverse;
             position: relative;
             min-height: 70vh;
+            padding-top: 4rem;
+            min-height: fit-content;
 
             & #registerPage-modal-right {
                 display: contents;
@@ -119,19 +122,14 @@
                     right: 1rem;
                 }
             }
+
+            & #registerPage-form {
+                width: 100%;
+            }
         }
         
         .message-failure, .message-success {
             font-size: 1.5rem;
-        }
-    }
-}
-
-@media (max-width: 500px) {
-    #registerPage {
-        & #registerPage-modal {
-            padding-top: 4rem;
-            min-height: fit-content;
         }
     }
 }

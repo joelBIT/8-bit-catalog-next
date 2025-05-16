@@ -105,12 +105,15 @@
 @media (max-width: 750px) {
     #loginPage {
         padding: 1rem;
+        align-items: flex-start;
 
         & #loginPage-modal {
             display: flex;
             flex-direction: column-reverse;
             position: relative;
             min-height: 70vh;
+            padding-top: 4rem;
+            min-height: fit-content;
 
             & #loginPage-modal-right {
                 display: contents;
@@ -120,19 +123,14 @@
                     right: 1rem;
                 }
             }
+
+            & #loginPage-form {
+                width: 100%;
+            }
         }
         
         .message-failure, .message-success {
             font-size: 1.5rem;
-        }
-    }
-}
-
-@media (max-width: 500px) {
-    #loginPage {
-        & #loginPage-modal {
-            padding-top: 4rem;
-            min-height: fit-content;
         }
     }
 }
