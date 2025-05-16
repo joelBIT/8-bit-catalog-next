@@ -30,6 +30,7 @@
                 align-items: center;
                 gap: 0.2rem;
                 position: absolute;
+                font-family: "Permanent Marker";
                 top: 0;
                 right: 0;
                 background-color: var(--color-link-background);
