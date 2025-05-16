@@ -51,6 +51,7 @@ export async function register(_prevState: any, formData: FormData): Promise<{me
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
     const email = formData.get('email') as string;
+    const username = formData.get('username') as string;
 
     if (password !== passwordRepeat) {
         return { message: 'The entered passwords must be equal', success: false };
@@ -58,7 +59,7 @@ export async function register(_prevState: any, formData: FormData): Promise<{me
 
     try {
         const passwordHash = await hashPassword(password);
-        const user = await registerUser(email, passwordHash);
+        const user = await registerUser(email, passwordHash, username);
         const activationCode = uuidv4();
         await createAccount(user.id, activationCode);
         sendMail(user.email, activationCode);

@@ -1,25 +1,25 @@
 import { ReactElement } from "react";
 import { arima } from "@/fonts/fonts";
 
-import "./NameInput.css";
+import "./UsernameInput.css";
 
-export function NameInput(): ReactElement {
+export function UsernameInput(): ReactElement {
     return (
-        <section id="nameInput">
+        <section id="usernameInput">
             <span className="material-symbols-outlined"> person </span>
 
-            <div className="name-input">
+            <div className="username-input">
                 <input 
-                    id="name"
-                    name="name" 
+                    id="username"
+                    name="username" 
                     type="text" 
-                    placeholder="Name"
+                    placeholder="Username"
                     className={`${arima.className} form__field`}
                     autoComplete="off" 
                     required 
                 />
 
-                <label htmlFor="name" className="form__label"> Name </label>
+                <label htmlFor="username" className="form__label"> Username </label>
             </div>
         </section>
     );
