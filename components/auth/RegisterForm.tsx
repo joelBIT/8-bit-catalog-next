@@ -5,7 +5,7 @@ import Link from "next/link";
 import { arima, irishGrover } from "@/fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/utils/utils";
 import { register } from "@/actions/auth";
-import { EmailInput, NameInput, PasswordInput } from "../common";
+import { EmailInput, UsernameInput, PasswordInput } from "../common";
 
 import "./RegisterForm.css";
 
@@ -21,7 +21,7 @@ export function RegisterForm(): ReactElement {
         <>
             { 
                 state.success ?  
-                    <p className="confirmation-text">A confirmation link will be sent to your email</p>  
+                    <p className="message-confirmation"> A confirmation link will be sent to your email </p>  
                     :
                     <section id="registerCard" className={arima.className}>
                         <h1 className="registerCard__title">Create Account</h1>
@@ -35,7 +35,7 @@ export function RegisterForm(): ReactElement {
 
                         <form id="registerForm" ref={formRef} action={formAction}>
                             <section id="register-input">
-                                <NameInput />
+                                <UsernameInput />
                                 <EmailInput />
                                 <PasswordInput id="password" placeholder="Password" />
                                 <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />

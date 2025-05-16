@@ -6,7 +6,7 @@ export * from "./InputModal";
 export * from "./lists/ListGameCard";
 export * from "./lists/ListToggle";
 export * from "./Modal";
-export * from "./NameInput";
 export * from "./PasswordInput";
 export * from "./ScrollTopButton";
 export * from "./lists/UserListEntry";
+export * from "./UsernameInput";

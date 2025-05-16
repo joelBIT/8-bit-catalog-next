@@ -71,10 +71,11 @@ export async function updateProfileImage(userId: number, _prevState: any, formDa
 export async function createUserAndAccount(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
+    const username = formData.get('username') as string;
 
     try {
         const passwordHash = await hashPassword(password);
-        await createActivatedAccount(email, passwordHash);
+        await createActivatedAccount(email, passwordHash, username);
 
         return { message: 'The account was successfully created', success: true };
     } catch (error) {
