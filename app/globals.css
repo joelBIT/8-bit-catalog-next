@@ -21,6 +21,7 @@
     --color-white: #f0cca4;
     --color-black: #101010;
     --color-warning: #ff3737;
+    --color-warning-text: #cb6f6f;
     --color-success: #45ca4e;
     --color-tag-background: #D3D3D3;
     --color-tag-text: #666666;
@@ -223,11 +224,13 @@ textarea {
 
 .message-success, 
 .message-failure {
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     border-radius: 15px;
-    padding: 1rem;
-    margin: 1rem 0;
+    text-align: center;
+    width: fit-content;
+    align-self: center;
+    padding: 0 0.5rem;
 }
 
 .message-success {
@@ -237,7 +240,7 @@ textarea {
 }
 
 .message-failure {
-    color: var(--color-warning);
+    color: var(--color-warning-text);
     border: 2px solid var(--color-warning);
     background-color: hsl(from var(--color-warning) h s l / 0.2);
 }

@@ -18,36 +18,34 @@ export function LoginForm(): ReactElement {
     }
 
     return (
-        <>
+        <section id="loginCard" className={arima.className}>
+            <section className="loginCard-title">
+                <h1 className="loginCard__title"> Welcome</h1>
+                <h2 className="loginCard__title-text"> Enter your email and password to access your account </h2>
+            </section>
+
             { 
                 state?.message ? 
                     <h2 className={state?.success ? "message-success" : "message-failure"}>
                         {state?.message}
                     </h2> : <></> 
             }
-
-            <section id="loginCard" className={arima.className}>
-                <section className="loginCard-title">
-                    <h1 className="loginCard__title"> Welcome</h1>
-                    <h2 className="loginCard__title-text"> Enter your email and password to access your account </h2>
+            
+            <form id="loginForm" ref={formRef} action={formAction}>
+                <section id="login-input">
+                    <EmailInput />
+                    <PasswordInput id="password" placeholder="Password" />
                 </section>
                 
-                <form id="loginForm" ref={formRef} action={formAction}>
-                    <section id="login-input">
-                        <EmailInput />
-                        <PasswordInput id="password" placeholder="Password" />
-                    </section>
-                    
-                    <button className={`authButton ${irishGrover.className}`} type="submit">
-                        <span className="authButton__text"> Login </span>
-                    </button>
-                </form>
+                <button className={`authButton ${irishGrover.className}`} type="submit">
+                    <span className="authButton__text"> Login </span>
+                </button>
+            </form>
 
-                <section id="register-link">
-                    <h2 className="register-link__text"> Need an account? </h2> 
-                    <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Register </Link>
-                </section>
+            <section id="register-link">
+                <h2 className="register-link__text"> Need an account? </h2> 
+                <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Register </Link>
             </section>
-        </>
+        </section>
     );
 }

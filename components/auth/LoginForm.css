@@ -15,12 +15,12 @@
         & .loginCard__title {
             color: var(--color-white);
             text-align: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
 
         & .loginCard__title-text {
             color: #9b9b9b;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
             line-height: 1.5rem;
         }
@@ -52,15 +52,6 @@
             &:hover {
                 filter: brightness(1.2);
             }
-        }
-    }
-}
-
-
-@media (max-width: 900px) {
-    #liginCard {
-        & .loginCard__title {
-            font-size: 2.7rem;
         }
     }
 }

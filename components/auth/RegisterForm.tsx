@@ -20,18 +20,18 @@ export function RegisterForm(): ReactElement {
     return (
         <>
             { 
-                state?.message ? 
-                    <h2 className={state?.success ? "message-success" : "message-failure"}>
-                        {state?.message}
-                    </h2> : <></> 
-            }
-
-            { 
                 state.success ?  
                     <p className="confirmation-text">A confirmation link will be sent to your email</p>  
                     :
                     <section id="registerCard" className={arima.className}>
                         <h1 className="registerCard__title">Create Account</h1>
+
+                        { 
+                            state?.message ? 
+                                <h2 className={state?.success ? "message-success" : "message-failure"}>
+                                    {state?.message}
+                                </h2> : <></> 
+                        }
 
                         <form id="registerForm" ref={formRef} action={formAction}>
                             <section id="register-input">

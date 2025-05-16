@@ -10,7 +10,7 @@
     & .registerCard__title {
         color: var(--color-white);
         text-align: center;
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
     }
 
@@ -47,14 +47,6 @@
         font-weight: bolder;
         align-self: center;
         font-size: 2rem;
-    }
-}
-
-@media (max-width: 900px) {
-    #registerCard {
-        & .registerCard__title {
-            font-size: 2.7rem;
-        }
     }
 }
 
