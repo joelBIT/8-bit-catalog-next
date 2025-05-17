@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getGamesBySearchFilters } from "@/db/db";
 import { SearchFilter } from "@/types/types";
 
+/**
+ * Retrieve games that match the supplied search filters.
+ */
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
 

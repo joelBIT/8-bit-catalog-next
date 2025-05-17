@@ -1,5 +1,7 @@
-import { ReactElement } from "react";
-import { Game } from "@/types/types";
+'use client';
+
+import { ReactElement, useActionState } from "react";
+import { FilterValues, Game } from "@/types/types";
 import { fileTypes, getPlayersList, URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
 import { updateGame } from "@/actions/games";
@@ -11,11 +13,14 @@ import "./EditGameForm.css";
 /**
  * Edit the metadata for a game.
  */
-export function EditGameForm({ game }: { game: Game }): ReactElement {
-    const updateGameWithId = updateGame.bind(null, game.id);
+export function EditGameForm({ game, filterValues }: { game: Game, filterValues: FilterValues }): ReactElement {
+    const [ state, formAction ] = useActionState(updateGame, { message: '', success: false });
     
     return (
-        <form id="editGameForm" action={updateGameWithId}>
+        <form id="editGameForm" action={formAction}>
+
+            { state.message ? <h2 className={`${state.success ? "message-success" : "message-failure"}`}> { state.message } </h2> : <></> }
+
             <section id="editGameForm-metadata">
                 <article id="editGameForm-filters">
                     <input
@@ -27,9 +32,11 @@ export function EditGameForm({ game }: { game: Game }): ReactElement {
                         required 
                     />
 
-                    <EditGameDeveloper defaultValue={game.developer} />
-                    <EditGamePublisher defaultValue={game.publisher}/>
-                    <EditGameCategory defaultValue={game.category} />
+                    <input type="hidden" name="id" value={game.id} />
+
+                    <EditGameDeveloper developers={filterValues.developers} defaultValue={game.developer} />
+                    <EditGamePublisher publishers={filterValues.publishers} defaultValue={game.publisher}/>
+                    <EditGameCategory categories={filterValues.categories} defaultValue={game.category} />
                 </article>
 
                 <article id="editGameForm-nonfilters">

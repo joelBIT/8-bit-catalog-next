@@ -48,3 +48,9 @@ export type Account = {
     activated: boolean,
     activation_code: string
 }
+
+export type FilterValues = {
+    categories: string[],
+    publishers: string[],
+    developers: string[]
+}

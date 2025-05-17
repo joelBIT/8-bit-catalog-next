@@ -1,4 +1,4 @@
-import { Game, SearchFilter, SearchResult, User } from '@/types/types';
+import { FilterValues, Game, SearchFilter, SearchResult, User } from '@/types/types';
 
 
 /********************************************************************************************
@@ -88,4 +88,18 @@ export async function updateFilterValues(values: string[], filter: string): Prom
     } catch (error) {
         console.error(error);
     }
+}
+
+/**
+ * Retrieve all existing filter (categories, developers, publishers) values. Used in, e.g., search or editing a game.
+ */
+export async function getFilterValues(): Promise<FilterValues> {
+    try {
+        const response = await fetch(`/api/filters`);
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+    }
+
+    return { developers: [], publishers: [], categories: []};
 }

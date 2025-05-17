@@ -1,6 +1,6 @@
 'use server';
 
-import { getValidatedSession } from "@/auth/cookie";
+import { getValidatedSession } from "@/app/_session/cookie";
 import { getUserById } from "@/db/db";
 import { User } from "@/types/types";
 import { USER_ROLE_ADMIN } from "@/utils/utils";

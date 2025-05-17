@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { getGames } from "@/data/data";
+import { getGames } from "@/client/client";
 import { Game } from "@/types/types";
 import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
 import { GameCard, ListToggle, ScrollTopButton, ListGameCard } from "../common";

@@ -1,13 +1,19 @@
 'use server';
 
 import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser } from "@/db/db";
-import { hashPassword, verifyPasswordHash } from "@/auth/password";
+import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
+import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
 
 /**
  * This function is invoked when a user updates account information such as account password.
  * A user must enter the correct current password before it is updated to the new password.
  */
 export async function updateAccountPassword(userId: number, _prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
+    const authenticated = await isAuthenticated();
+    if (!authenticated) {
+        return { message: 'Must be authenticated to update password', success: false };
+    }
+    
     const oldPassword = formData.get('oldPassword') as string;
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
@@ -36,6 +42,11 @@ export async function updateAccountPassword(userId: number, _prevState: any, for
  * This function is invoked when updating user information such as name and bio.
  */
 export async function updateUserDetails(userId: number, _prevState: any, formData: FormData): Promise<{message: string, success: boolean, firstName: string, lastName: string, bio: string}> {
+    const authenticated = await isAuthenticated();
+    if (!authenticated) {
+        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '' };
+    }
+    
     try {
         const firstName = formData.get('firstName') as string;
         const lastName = formData.get('lastName') as string;
@@ -52,6 +63,11 @@ export async function updateUserDetails(userId: number, _prevState: any, formDat
  * Updates a user's profile image.
  */
 export async function updateProfileImage(userId: number, _prevState: any, formData: FormData): Promise<{message: string, success: boolean, image: string}> {
+    const authenticated = await isAuthenticated();
+    if (!authenticated) {
+        return { message: 'Must be authenticated to update profile image', success: false, image: _prevState.image };
+    }
+    
     try {
         const profileImage = formData.get('profileImage') as File;
         if (profileImage.name !== 'undefined') {                        // Profile image has been changed
@@ -69,6 +85,11 @@ export async function updateProfileImage(userId: number, _prevState: any, formDa
  * Used by admin to create a new user and account by bypassing the email verification process.
  */
 export async function createUserAndAccount(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
+    const isAdmin = await isAuthenticatedAdmin();
+    if (!isAdmin) {
+        return { message: 'Only admins may create accounts', success: false };
+    }
+
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
     const username = formData.get('username') as string;
