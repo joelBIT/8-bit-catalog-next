@@ -1,4 +1,4 @@
-'use server';
+import 'server-only';
 
 import { Account, Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
