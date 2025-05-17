@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/db/db";
-import { getValidatedSession } from "@/auth/cookie";
+import { getValidatedSession } from "@/app/_session/cookie";
 
 export async function GET() {
     const session = await getValidatedSession();

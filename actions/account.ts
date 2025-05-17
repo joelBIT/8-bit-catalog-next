@@ -1,7 +1,7 @@
 'use server';
 
 import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser } from "@/db/db";
-import { hashPassword, verifyPasswordHash } from "@/auth/password";
+import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 
 /**
  * This function is invoked when a user updates account information such as account password.

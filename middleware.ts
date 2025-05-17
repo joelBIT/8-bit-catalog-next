@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { cookies } from 'next/headers';
-import { validateSession } from './auth/session';
+import { validateSession } from './app/_session/session';
 import { isAuthenticatedAdmin } from './app/_session/utils';
 import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_FORBIDDEN_PAGE, URL_GAME_DETAILS_PAGE, URL_LOGIN_PAGE, URL_REGISTER_PAGE } from './utils/utils';
 
