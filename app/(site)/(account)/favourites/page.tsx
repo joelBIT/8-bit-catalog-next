@@ -1,9 +1,9 @@
 'use client';
 
 import { ReactElement, useContext } from "react";
-import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
+import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { FavouritePagination } from "@/app/_components/favourites/FavouritePagination";
-import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
+import { FavouritesContext } from "@/app/_contexts/FavouritesContextProvider";
 import { GameCard, ListGameCard, ListToggle, ScrollTopButton } from "@/app/_components/common";
 import { arima } from "@/fonts/fonts";
 

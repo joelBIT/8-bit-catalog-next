@@ -10,8 +10,8 @@ import { createSession, generateRandomSessionToken } from "@/app/_session/sessio
 import { setSessionCookie } from "@/app/_session/cookie";
 import ActivationEmail from "@/app/_components/email/ActivationEmail";
 import { isAuthenticated } from "@/app/_session/utils";
-import { URL_DASHBOARD_PAGE } from "@/utils/utils";
-import { ActionState } from "@/types/types";
+import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
+import { ActionState } from "@/app/_types/types";
 
 /**
  * This function is invoked when a user tries to log in.

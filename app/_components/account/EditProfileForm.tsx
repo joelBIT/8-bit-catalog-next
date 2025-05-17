@@ -1,9 +1,9 @@
 'use client';
 
 import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
-import { imageTypes } from "@/utils/utils";
+import { imageTypes } from "@/app/_utils/utils";
 import { updateProfileImage } from "@/app/_actions/account";
-import { AccountContext } from "@/contexts/AccountContextProvider";
+import { AccountContext } from "@/app/_contexts/AccountContextProvider";
 
 import "./EditProfileForm.css";
 

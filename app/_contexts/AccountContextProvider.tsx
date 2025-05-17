@@ -1,8 +1,8 @@
 'use client';
 
 import { createContext, ReactElement, useEffect, useState } from "react";
-import { ContextProviderChildren, AccountContextProvider } from "@/interfaces/interfaces";
-import { User } from "@/types/types";
+import { ContextProviderChildren, AccountContextProvider } from "@/app/_interfaces/interfaces";
+import { User } from "@/app/_types/types";
 import { getUserFromSession } from "@/app/_session/utils";
 
 export const AccountContext = createContext<AccountContextProvider>({} as AccountContextProvider);

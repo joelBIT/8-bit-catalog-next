@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useContext } from "react";
-import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
+import { FavouritesContext } from "@/app/_contexts/FavouritesContextProvider";
 import { arima } from "@/fonts/fonts";
 
 import "./FavouritePagination.css";

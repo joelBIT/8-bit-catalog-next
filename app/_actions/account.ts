@@ -3,7 +3,7 @@
 import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
-import { ActionState } from "@/types/types";
+import { ActionState } from "@/app/_types/types";
 
 /**
  * This function is invoked when a user updates account information such as account password.

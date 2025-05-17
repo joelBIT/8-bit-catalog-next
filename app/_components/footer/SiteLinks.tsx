@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_HOME, URL_LOGIN_PAGE } from "@/utils/utils";
+import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_HOME, URL_LOGIN_PAGE } from "@/app/_utils/utils";
 
 import "./SiteLinks.css";
 

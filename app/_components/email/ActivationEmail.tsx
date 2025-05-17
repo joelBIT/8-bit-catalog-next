@@ -1,4 +1,4 @@
-import { URL_ACTIVATION_PAGE } from "@/utils/utils";
+import { URL_ACTIVATION_PAGE } from "@/app/_utils/utils";
 import { Section, Row, Text, Link } from "@react-email/components";
 
 /**

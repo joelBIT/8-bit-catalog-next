@@ -3,7 +3,7 @@
 import { ReactElement, useRef, useState } from "react";
 import { InputModal, Modal } from "../common";
 import { arima } from "@/fonts/fonts";
-import { updateFilterValues } from "@/client/client";
+import { updateFilterValues } from "@/app/_client/client";
 
 import "./EditFilterForm.css";
 

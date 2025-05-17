@@ -1,10 +1,10 @@
 'use client';
 
 import { createContext, ReactElement, useEffect, useState } from "react";
-import { FavouritesContextProvider, ContextProviderChildren } from "@/interfaces/interfaces";
-import { Game } from "@/types/types";
-import { isLocalStorageAvailable, PAGINATION_PAGE_SIZE } from "@/utils/utils";
-import { addFavouriteGameToDatabase, deleteFavouriteGameFromDatabase, getFavourites } from "@/client/client";
+import { FavouritesContextProvider, ContextProviderChildren } from "@/app/_interfaces/interfaces";
+import { Game } from "@/app/_types/types";
+import { isLocalStorageAvailable, PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
+import { addFavouriteGameToDatabase, deleteFavouriteGameFromDatabase, getFavourites } from "@/app/_client/client";
 import { isAuthenticated } from "@/app/_session/utils";
 
 export const FavouritesContext = createContext<FavouritesContextProvider>({} as FavouritesContextProvider);

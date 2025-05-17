@@ -3,11 +3,11 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { deleteSessionByTokenValue, getSessionByTokenValue, storeSession, updateSession } from "@/app/_db/db";
-import { Session } from "@/types/types";
+import { Session } from "@/app/_types/types";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import { deleteSessionCookie, getValidatedSession } from "./cookie";
-import { URL_LOGIN_PAGE } from "@/utils/utils";
+import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 
 const SESSION_REFRESH_INTERVAL_MS = 1000 * 60 * 60 * 24 * 15; // 15 days
 const SESSION_MAX_DURATION_MS = SESSION_REFRESH_INTERVAL_MS * 2;  // 30 days

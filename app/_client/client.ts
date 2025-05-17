@@ -1,4 +1,4 @@
-import { FilterValues, Game, SearchFilter, SearchResult, User } from '@/types/types';
+import { FilterValues, Game, SearchFilter, SearchResult, User } from '@/app/_types/types';
 
 
 /********************************************************************************************

@@ -1,8 +1,8 @@
 import 'server-only';
 
-import { Account, FilterValues, Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
+import { Account, FilterValues, Game, SearchFilter, SearchResult, Session, User } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
-import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
+import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/app/_utils/utils';
 
 const databaseClient = createClient(databaseURL(), databaseKey());
 
@@ -49,6 +49,7 @@ export async function updateGameById(game: Game, file: File): Promise<void> {
     } 
     
     const { cover, ...data } = game;             // Remove cover property since the cover is already taken care of (not updated if not changed)
+    console.log(`cover ${cover} not updated`);
     const { error } = await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
     if (error) {
         console.log(error);

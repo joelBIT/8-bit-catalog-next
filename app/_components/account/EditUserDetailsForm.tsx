@@ -3,7 +3,7 @@
 import { ReactElement, useActionState, useState, useEffect, useContext } from "react";
 import { arima } from "@/fonts/fonts";
 import { updateUserDetails } from "@/app/_actions/account";
-import { AccountContext } from "@/contexts/AccountContextProvider";
+import { AccountContext } from "@/app/_contexts/AccountContextProvider";
 
 import "./EditUserDetailsForm.css";
 

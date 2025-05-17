@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
-import { AccountContext } from "@/contexts/AccountContextProvider";
+import { AccountContext } from "@/app/_contexts/AccountContextProvider";
 import { updateAccountPassword } from "@/app/_actions/account";
 import { arima } from "@/fonts/fonts";
 import { PasswordInput } from "../common";

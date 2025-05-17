@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { Game } from "@/types/types";
-import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
+import { Game } from "@/app/_types/types";
+import { URL_GAME_DETAILS_PAGE } from "@/app/_utils/utils";
 import { singleDay } from "@/fonts/fonts";
 
 import "./HeroCard.css";

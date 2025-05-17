@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useContext } from "react";
-import { AccountContext } from "@/contexts/AccountContextProvider";
+import { AccountContext } from "@/app/_contexts/AccountContextProvider";
 import { EditUserDetailsForm } from "@/app/_components/account";
 
 import "./page.css";

@@ -2,9 +2,9 @@
 
 import { ReactElement, useContext } from "react";
 import { usePathname } from 'next/navigation'
-import { Game } from "@/types/types";
-import { FavouritesContext } from "@/contexts/FavouritesContextProvider";
-import { URL_FAVOURITES_PAGE } from "@/utils/utils";
+import { Game } from "@/app/_types/types";
+import { FavouritesContext } from "@/app/_contexts/FavouritesContextProvider";
+import { URL_FAVOURITES_PAGE } from "@/app/_utils/utils";
 
 import "./FavouriteButton.css";
 

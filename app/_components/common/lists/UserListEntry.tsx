@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
-import { User } from "@/types/types";
-import { getMonthText, USER_ROLE_ADMIN } from "@/utils/utils";
+import { User } from "@/app/_types/types";
+import { getMonthText, USER_ROLE_ADMIN } from "@/app/_utils/utils";
 
 import "./UserListEntry.css";
 

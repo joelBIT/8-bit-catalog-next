@@ -2,14 +2,14 @@
 
 import { revalidatePath } from 'next/cache';
 import { updateGameById } from "@/app/_db/db";
-import { Game } from "@/types/types";
-import { URL_GAME_DETAILS_PAGE } from '@/utils/utils';
+import { ActionState, Game } from "@/app/_types/types";
+import { URL_GAME_DETAILS_PAGE } from '@/app/_utils/utils';
 import { isAuthenticatedAdmin } from '@/app/_session/utils';
 
 /**
  * Updates an existing game's metadata. 
  */
-export async function updateGame(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
+export async function updateGame(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const isAdmin = await isAuthenticatedAdmin();
     if (!isAdmin) {
         return { message: 'Only admins may update games', success: false };

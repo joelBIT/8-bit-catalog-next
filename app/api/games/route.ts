@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getGamesBySearchFilters } from "@/app/_db/db";
-import { SearchFilter } from "@/types/types";
+import { SearchFilter } from "@/app/_types/types";
 
 /**
  * Retrieve games that match the supplied search filters.

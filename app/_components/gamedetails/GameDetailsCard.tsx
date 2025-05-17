@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { Game } from "@/types/types";
+import { Game } from "@/app/_types/types";
 import { isAuthenticatedAdmin } from "@/app/_session/utils";
 import { EditGameButton } from "./edit/EditGameButton";
 import { PlayRomLink } from "./PlayRomLink";

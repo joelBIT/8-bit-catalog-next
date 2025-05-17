@@ -2,7 +2,7 @@
 
 import { ReactElement } from "react";
 import { arima } from "@/fonts/fonts";
-import { addAllOption } from "@/utils/utils";
+import { addAllOption } from "@/app/_utils/utils";
 import { getAllPublishers } from "@/app/_db/db";
 
 /**

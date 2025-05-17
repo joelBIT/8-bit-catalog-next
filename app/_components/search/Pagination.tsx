@@ -3,8 +3,8 @@
 import { ReactElement } from "react";
 import { useSearchParams } from 'next/navigation';
 import { arima } from "@/fonts/fonts";
-import { Game } from "@/types/types";
-import { getGames } from "@/client/client";
+import { Game } from "@/app/_types/types";
+import { getGames } from "@/app/_client/client";
 
 import "./Pagination.css";
 

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import Link from 'next/link';
-import { URL_HOME } from '@/utils/utils';
+import { URL_HOME } from '@/app/_utils/utils';
 
 import "./not-found.css";
  

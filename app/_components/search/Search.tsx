@@ -2,9 +2,9 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { getGames } from "@/client/client";
-import { Game } from "@/types/types";
-import { PAGINATION_PAGE_SIZE } from "@/utils/utils";
+import { getGames } from "@/app/_client/client";
+import { Game } from "@/app/_types/types";
+import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { GameCard, ListToggle, ScrollTopButton, ListGameCard } from "../common";
 import { Pagination } from ".";
 import { arima } from "@/fonts/fonts";

@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import Link from "next/link";
 import { NavBar, Logo } from ".";
 import { irishGrover } from "@/fonts/fonts";
-import { URL_HOME } from "@/utils/utils";
+import { URL_HOME } from "@/app/_utils/utils";
 import { isAuthenticated } from "@/app/_session/utils";
 
 import "./Header.css";

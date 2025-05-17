@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Game, User } from "@/types/types";
+import { Game, User } from "@/app/_types/types";
 
 export interface FavouritesContextProvider {
     favouritesList: Game[];
