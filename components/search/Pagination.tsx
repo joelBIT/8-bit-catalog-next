@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import { useSearchParams } from 'next/navigation';
 import { arima } from "@/fonts/fonts";
 import { Game } from "@/types/types";
-import { getGames } from "@/data/data";
+import { getGames } from "@/client/client";
 
 import "./Pagination.css";
 

@@ -3,7 +3,7 @@
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { User } from "@/types/types";
 import { arima } from "@/fonts/fonts";
-import { getUsers } from "@/data/data";
+import { getUsers } from "@/client/client";
 import { AddUserModal, UserListEntry } from "@/components/common";
 
 import "./page.css";
