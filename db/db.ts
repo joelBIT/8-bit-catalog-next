@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
+import { Account, FilterValues, Game, SearchFilter, SearchResult, Session, User } from '@/types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/utils/utils';
 
@@ -234,6 +234,17 @@ export async function updatePublisherFilter(values: string[]): Promise<void> {
  */
 export async function updateDeveloperFilter(values: string[]): Promise<void> {
     await databaseClient.from(FILTERS_TABLE).update({ developers: values }).eq('id', 1);
+}
+
+/**
+ * Get all values for all filters.
+ */
+export async function getFilterValues(): Promise<FilterValues> {
+    const categories = await getAllCategories();
+    const developers = await getAllDevelopers();
+    const publishers = await getAllPublishers();
+
+    return { categories, publishers, developers };
 }
 
 

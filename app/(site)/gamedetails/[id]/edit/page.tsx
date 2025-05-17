@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { EditGameForm } from "@/components/gamedetails/edit/EditGameForm";
-import { getGameById } from "@/db/db";
+import { getFilterValues, getGameById } from "@/db/db";
 
 import "./page.css";
 
@@ -10,7 +10,7 @@ export default async function EditGamePage({ params }: { params: Promise<{ id: s
     
     return (
         <main id="editGamePage">
-            <EditGameForm game={await getGameById(id)} />
+            <EditGameForm game={await getGameById(id)} filterValues={await getFilterValues()} />
         </main>
     );
 }
