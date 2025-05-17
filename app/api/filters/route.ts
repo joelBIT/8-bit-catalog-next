@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { getFilterValues } from "@/db/db";
 
+/**
+ * Returns all existing developers, publishers, and categories. An empty array is returned if an error occurs.
+ */
 export async function GET() {
     try {
         const filterValues = await getFilterValues();

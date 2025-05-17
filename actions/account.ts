@@ -44,7 +44,7 @@ export async function updateAccountPassword(userId: number, _prevState: any, for
 export async function updateUserDetails(userId: number, _prevState: any, formData: FormData): Promise<{message: string, success: boolean, firstName: string, lastName: string, bio: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
-        return { message: 'Must be authenticated to update profile image', success: false, firstName: '', lastName: '', bio: '' };
+        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '' };
     }
     
     try {

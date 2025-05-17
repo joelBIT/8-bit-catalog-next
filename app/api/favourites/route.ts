@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/db/db";
 import { getValidatedSession } from "@/app/_session/cookie";
 
+/**
+ * Retrieves the authenticated user's favourite games. Returns an empty array if user is not authenticated.
+ */
 export async function GET() {
     const session = await getValidatedSession();
 
@@ -13,6 +16,9 @@ export async function GET() {
     return NextResponse.json([]);
 }
 
+/**
+ * Adds a game to the authenticated user's list of favourite games. Nothing happens if no session exist.
+ */
 export async function POST(request: Request) {
     const { game_id } = await request.json();
     const session = await getValidatedSession();
@@ -24,6 +30,9 @@ export async function POST(request: Request) {
     return NextResponse.json(request);
 }
 
+/**
+ * Deletes a game from the authenticated user's list of favourite games. Nothing happens if no session exist.
+ */
 export async function DELETE(request: Request) {
     const { game_id } = await request.json();
     const session = await getValidatedSession();

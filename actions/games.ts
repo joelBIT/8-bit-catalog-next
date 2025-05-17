@@ -12,7 +12,7 @@ import { isAuthenticatedAdmin } from '@/app/_session/utils';
 export async function updateGame(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
     const isAdmin = await isAuthenticatedAdmin();
     if (!isAdmin) {
-        return { message: 'Only admins may create accounts', success: false };
+        return { message: 'Only admins may update games', success: false };
     }
 
     try {
