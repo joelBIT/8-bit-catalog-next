@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { RegisterForm } from "@/components/auth/RegisterForm";
+import { RegisterForm } from "@/app/_components/auth/RegisterForm";
 
 import "./page.css";
 

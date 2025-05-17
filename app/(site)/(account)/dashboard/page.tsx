@@ -2,7 +2,7 @@
 
 import { ReactElement, useContext } from "react";
 import { AccountContext } from "@/contexts/AccountContextProvider";
-import { EditUserDetailsForm } from "@/components/account";
+import { EditUserDetailsForm } from "@/app/_components/account";
 
 import "./page.css";
 

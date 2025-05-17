@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { Game } from "@/types/types";
 import { singleDay } from "@/fonts/fonts";
-import { FavouriteButton } from "@/components/favourites";
+import { FavouriteButton } from "@/app/_components/favourites";
 
 import "./ListGameCard.css";
 

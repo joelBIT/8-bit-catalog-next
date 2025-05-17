@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { updateGameById } from "@/db/db";
+import { updateGameById } from "@/app/_db/db";
 import { Game } from "@/types/types";
 import { URL_GAME_DETAILS_PAGE } from '@/utils/utils';
 import { isAuthenticatedAdmin } from '@/app/_session/utils';

@@ -1,3 +1,5 @@
+import { User } from "@/types/types";
+
 export const ALL_OPTION_VALUE = "All";
 export const PAGINATION_PAGE_SIZE = 15;
 

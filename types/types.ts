@@ -54,3 +54,8 @@ export type FilterValues = {
     publishers: string[],
     developers: string[]
 }
+
+export type ActionState = {
+    message: string,
+    success: boolean
+}

@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import { arima } from "@/fonts/fonts";
 import { addAllOption } from "@/utils/utils";
-import { getAllPublishers } from "@/db/db";
+import { getAllPublishers } from "@/app/_db/db";
 
 /**
  * Since this filter is used for searching games it contains the 'All' option to search for games by all publishers.

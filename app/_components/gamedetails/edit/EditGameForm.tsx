@@ -4,9 +4,9 @@ import { ReactElement, useActionState } from "react";
 import { FilterValues, Game } from "@/types/types";
 import { fileTypes, getPlayersList, URL_GAME_DETAILS_PAGE } from "@/utils/utils";
 import { arima } from "@/fonts/fonts";
-import { updateGame } from "@/actions/games";
+import { updateGame } from "@/app/_actions/games";
 import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from ".";
-import { CancelButton } from "@/components/common";
+import { CancelButton } from "@/app/_components/common";
 
 import "./EditGameForm.css";
 

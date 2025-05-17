@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getFilterValues } from "@/db/db";
+import { getFilterValues } from "@/app/_db/db";
 
 /**
  * Returns all existing developers, publishers, and categories. An empty array is returned if an error occurs.

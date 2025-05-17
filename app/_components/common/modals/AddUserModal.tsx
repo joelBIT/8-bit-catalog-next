@@ -3,7 +3,7 @@
 import { ReactElement, useActionState, useRef } from "react";
 import { EmailInput, PasswordInput } from "..";
 import { arima } from "@/fonts/fonts";
-import { createUserAndAccount } from "@/actions/account";
+import { createUserAndAccount } from "@/app/_actions/account";
 
 import "./AddUserModal.css";
 

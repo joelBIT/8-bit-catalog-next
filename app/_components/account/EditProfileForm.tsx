@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
 import { imageTypes } from "@/utils/utils";
-import { updateProfileImage } from "@/actions/account";
+import { updateProfileImage } from "@/app/_actions/account";
 import { AccountContext } from "@/contexts/AccountContextProvider";
 
 import "./EditProfileForm.css";

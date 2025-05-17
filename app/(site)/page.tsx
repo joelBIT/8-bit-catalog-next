@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
-import { HeroCard } from "@/components/home/HeroCard";
-import { getGameById } from "@/db/db";
+import { HeroCard } from "@/app/_components/home/HeroCard";
+import { getGameById } from "@/app/_db/db";
 
 import "./page.css";
 

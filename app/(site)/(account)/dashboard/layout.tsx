@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { AccountMenu } from "@/components/account";
+import { AccountMenu } from "@/app/_components/account";
 import { AccountContexProvider } from "@/contexts";
 import { getUserFromSession } from "@/app/_session/utils";
 import { User } from "@/types/types";

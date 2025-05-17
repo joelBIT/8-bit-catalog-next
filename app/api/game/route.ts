@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getGameById } from "@/db/db";
+import { getGameById } from "@/app/_db/db";
 
 /**
  * Retrieve the game which corresponds to the supplied  game id.

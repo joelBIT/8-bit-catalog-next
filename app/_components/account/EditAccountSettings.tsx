@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
 import { AccountContext } from "@/contexts/AccountContextProvider";
-import { updateAccountPassword } from "@/actions/account";
+import { updateAccountPassword } from "@/app/_actions/account";
 import { arima } from "@/fonts/fonts";
 import { PasswordInput } from "../common";
 

@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import Form from 'next/form';
 import { SearchFilter } from "@/types/types";
 import { arima, rancho } from "@/fonts/fonts";
-import { CategoryFilter, DeveloperFilter, PublisherFilter, Search, SearchButton } from "@/components/search";
+import { CategoryFilter, DeveloperFilter, PublisherFilter, Search, SearchButton } from "@/app/_components/search";
 
 import "./page.css";
 

@@ -1,12 +1,12 @@
 
 .isFavourite {
-    background-image: url("../../assets/isFavourite.png");
+    background-image: url("../../../assets/isFavourite.png");
     background-size: cover;
     border: none;
 }
 
 .noFavourite {
-    background-image: url("../../assets/noFavouriteBeige.png");
+    background-image: url("../../../assets/noFavouriteBeige.png");
     background-size: cover;
     border: none;
 }

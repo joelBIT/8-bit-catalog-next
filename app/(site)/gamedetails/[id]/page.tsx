@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
-import { GameDetailsCard } from "@/components/gamedetails/GameDetailsCard";
-import { getGameById } from "@/db/db";
+import { GameDetailsCard } from "@/app/_components/gamedetails/GameDetailsCard";
+import { getGameById } from "@/app/_db/db";
 
 import "./page.css";
 

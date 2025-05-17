@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { deleteSessionByTokenValue, getSessionByTokenValue, storeSession, updateSession } from "@/db/db";
+import { deleteSessionByTokenValue, getSessionByTokenValue, storeSession, updateSession } from "@/app/_db/db";
 import { Session } from "@/types/types";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";

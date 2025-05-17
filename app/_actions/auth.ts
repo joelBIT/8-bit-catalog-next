@@ -4,18 +4,19 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { createAccount, getAccountByUserId, getUserByEmail, registerUser } from "@/db/db";
+import { createAccount, getAccountByUserId, getUserByEmail, registerUser } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
 import { setSessionCookie } from "@/app/_session/cookie";
-import ActivationEmail from "@/components/email/ActivationEmail";
+import ActivationEmail from "@/app/_components/email/ActivationEmail";
 import { isAuthenticated } from "@/app/_session/utils";
 import { URL_DASHBOARD_PAGE } from "@/utils/utils";
+import { ActionState } from "@/types/types";
 
 /**
  * This function is invoked when a user tries to log in.
  */
-export async function login(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
+export async function login(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
@@ -37,6 +38,7 @@ export async function login(_prevState: any, formData: FormData): Promise<{messa
             await initiateSession(user.id);
         }
     } catch (error) {
+        console.log(error);
         return { message: 'Could not log in', success: false };
     }
 
@@ -47,7 +49,7 @@ export async function login(_prevState: any, formData: FormData): Promise<{messa
 /**
  * This function is invoked when a user tries to create an account.
  */
-export async function register(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
+export async function register(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
     const email = formData.get('email') as string;

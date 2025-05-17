@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/db/db";
+import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/app/_db/db";
 import { getValidatedSession } from "@/app/_session/cookie";
 
 /**

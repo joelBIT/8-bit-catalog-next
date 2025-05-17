@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getGamesBySearchFilters } from "@/db/db";
+import { getGamesBySearchFilters } from "@/app/_db/db";
 import { SearchFilter } from "@/types/types";
 
 /**

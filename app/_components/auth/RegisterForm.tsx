@@ -4,7 +4,7 @@ import { ReactElement, useRef, useActionState } from "react";
 import Link from "next/link";
 import { arima, irishGrover } from "@/fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/utils/utils";
-import { register } from "@/actions/auth";
+import { register } from "@/app/_actions/auth";
 import { EmailInput, UsernameInput, PasswordInput } from "../common";
 
 import "./RegisterForm.css";

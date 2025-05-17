@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { EditAccountSettings } from "@/components/account/EditAccountSettings";
+import { EditAccountSettings } from "@/app/_components/account/EditAccountSettings";
 
 import "./page.css";
 

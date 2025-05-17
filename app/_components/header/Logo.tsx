@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Image from 'next/image';
-import logo from "../../assets/Logo.jpeg";
+import logo from "../../../assets/Logo.jpeg";
 
 import "./Logo.css";
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { Header } from "@/app/_components/header";
+import { Footer } from "@/app/_components/footer";
 import { blinker } from "@/fonts/fonts";
 import { FavouritesContexProvider } from "@/contexts";
 

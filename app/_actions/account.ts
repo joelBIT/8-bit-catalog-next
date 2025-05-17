@@ -1,14 +1,15 @@
 'use server';
 
-import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser } from "@/db/db";
+import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
+import { ActionState } from "@/types/types";
 
 /**
  * This function is invoked when a user updates account information such as account password.
  * A user must enter the correct current password before it is updated to the new password.
  */
-export async function updateAccountPassword(userId: number, _prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
+export async function updateAccountPassword(userId: number, _prevState: ActionState, formData: FormData): Promise<ActionState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update password', success: false };
@@ -34,6 +35,7 @@ export async function updateAccountPassword(userId: number, _prevState: any, for
 
         return { message: 'The password was successfully updated', success: true };
     } catch (error) {
+        console.log(error);
         return { message: 'The password could not be updated', success: false };
     }
 }
@@ -41,7 +43,7 @@ export async function updateAccountPassword(userId: number, _prevState: any, for
 /**
  * This function is invoked when updating user information such as name and bio.
  */
-export async function updateUserDetails(userId: number, _prevState: any, formData: FormData): Promise<{message: string, success: boolean, firstName: string, lastName: string, bio: string}> {
+export async function updateUserDetails(userId: number, _prevState: {message: string, success: boolean, firstName: string, lastName: string, bio: string}, formData: FormData): Promise<{message: string, success: boolean, firstName: string, lastName: string, bio: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '' };
@@ -55,6 +57,7 @@ export async function updateUserDetails(userId: number, _prevState: any, formDat
 
         return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName, bio: userBio };
     } catch (error) {
+        console.log(error);
         return { message: 'The account could not be updated', success: false, firstName: '', lastName: '', bio: '' };
     }
 }
@@ -62,7 +65,7 @@ export async function updateUserDetails(userId: number, _prevState: any, formDat
 /**
  * Updates a user's profile image.
  */
-export async function updateProfileImage(userId: number, _prevState: any, formData: FormData): Promise<{message: string, success: boolean, image: string}> {
+export async function updateProfileImage(userId: number, _prevState: {message: string, success: boolean, image: string}, formData: FormData): Promise<{message: string, success: boolean, image: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update profile image', success: false, image: _prevState.image };
@@ -77,6 +80,7 @@ export async function updateProfileImage(userId: number, _prevState: any, formDa
             return { message: 'The account was successfully updated', success: true, image: _prevState.image };
         }
     } catch (error) {
+        console.log(error);
         return { message: 'The account could not be updated', success: false, image: _prevState.image };
     }
 }
@@ -84,7 +88,7 @@ export async function updateProfileImage(userId: number, _prevState: any, formDa
 /**
  * Used by admin to create a new user and account by bypassing the email verification process.
  */
-export async function createUserAndAccount(_prevState: any, formData: FormData): Promise<{message: string, success: boolean}> {
+export async function createUserAndAccount(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const isAdmin = await isAuthenticatedAdmin();
     if (!isAdmin) {
         return { message: 'Only admins may create accounts', success: false };
@@ -100,6 +104,8 @@ export async function createUserAndAccount(_prevState: any, formData: FormData):
 
         return { message: 'The account was successfully created', success: true };
     } catch (error) {
+        console.log(error);
+
         if (error instanceof Error) {
             return { message: error.message, success: false };
         }

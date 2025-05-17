@@ -3,7 +3,7 @@
 import { ReactElement, useRef, useActionState } from "react";
 import Link from "next/link";
 import { arima, irishGrover } from "@/fonts/fonts";
-import { login } from "@/actions/auth";
+import { login } from "@/app/_actions/auth";
 import { URL_REGISTER_PAGE } from "@/utils/utils";
 import { EmailInput, PasswordInput } from "../common";
 
