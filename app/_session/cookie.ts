@@ -11,7 +11,7 @@ import { Session } from "@/app/_types/types";
 ******************************************************************************************/
 
 
-
+const COOKIE_KEY = "session";
 
 
 /**
@@ -19,7 +19,7 @@ import { Session } from "@/app/_types/types";
  */
 export async function setSessionCookie(sessionToken: string, expires_at: Date): Promise<void> {
     const cookie = {
-        name: "session",
+        name: COOKIE_KEY,
         value: sessionToken,
         attributes: {
             httpOnly: true,
@@ -36,18 +36,7 @@ export async function setSessionCookie(sessionToken: string, expires_at: Date): 
  * Delete the cookie when the user signs out.
  */
 export async function deleteSessionCookie(): Promise<void> {
-    const cookie = {
-        name: "session",
-        value: "",
-        attributes: {
-            httpOnly: true,
-            sameSite: "lax" as const,
-            path: "/",
-            maxAge: 0,
-        },
-    };
-  
-    (await cookies()).set(cookie.name, cookie.value, cookie.attributes);
+    (await cookies()).delete(COOKIE_KEY);
 };
 
 /**
@@ -58,7 +47,7 @@ export async function deleteSessionCookie(): Promise<void> {
  * and implicitly return 'undefined' for the session and the user.
  */
 export async function getValidatedSession(): Promise<Session | undefined> {
-    const sessionToken = (await cookies()).get("session")?.value ?? null;
+    const sessionToken = (await cookies()).get(COOKIE_KEY)?.value ?? null;
   
     if (sessionToken) {
         return await validateSession(sessionToken);
