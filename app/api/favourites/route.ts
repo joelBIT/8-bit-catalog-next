@@ -37,15 +37,22 @@ export async function POST(request: Request) {
 }
 
 /**
- * Deletes a game from the authenticated user's list of favourite games. Nothing happens if no session exist.
+ * Deletes a game from the authenticated user's list of favourite games.
  */
 export async function DELETE(request: Request) {
     const { game_id } = await request.json();
     const session = await getValidatedSession();
 
     if (session) {
-        await deleteFavouriteForUserId(session.user_id, game_id);
+        try {
+            await deleteFavouriteForUserId(session.user_id, game_id);
+            return NextResponse.json({ message: 'Game removed from favourites' }, { status: 200 });
+        } catch (error) {
+            console.log(error);
+            return NextResponse.json({ error: 'Could not remove game from favourites' }, { status: 500 });
+        }
+        
     }
 
-    return NextResponse.json(request);
+    return NextResponse.json({ error: 'Unauthorized to remove game from favourites' }, { status: 401 });
 }

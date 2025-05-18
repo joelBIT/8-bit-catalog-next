@@ -11,18 +11,27 @@ export async function PUT(request: Request) {
     const isAuthenticated = await isAuthenticatedAdmin();
 
     if (isAuthenticated) {
-        switch(filter) {        // Switch to the filter column to be updated in the database filter table
-            case "categories":
-                await updateCategoryFilter(values);
-                break;
-            case "publishers":
-                await updatePublisherFilter(values);
-                break;
-            case "developers":
-                await updateDeveloperFilter(values);
-                break;
+        try {
+            switch(filter) {        // Switch to the filter column to be updated in the database filter table
+                case "categories":
+                    await updateCategoryFilter(values);
+                    break;
+                case "publishers":
+                    await updatePublisherFilter(values);
+                    break;
+                case "developers":
+                    await updateDeveloperFilter(values);
+                    break;
+                default:
+                    return NextResponse.json({ error: `Filter ${filter} does not exist` }, { status: 400 });
+            }
+            
+            return NextResponse.json({ message: 'Filter updated' }, { status: 200 });
+        } catch (error) {
+            console.log(error);
+            return NextResponse.json({ error: 'Could not update filter' }, { status: 500 });
         }
     }
 
-    return NextResponse.json(request);
+    return NextResponse.json({ error: 'Unauthorized to update filters' }, { status: 401 });
 }
