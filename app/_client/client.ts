@@ -12,7 +12,9 @@ import { FilterValues, Game, SearchFilter, SearchResult, User } from '@/app/_typ
 export async function getGames(filters: SearchFilter): Promise<SearchResult> {
     try {
         const response = await fetch(`/api/games?title=${filters.title.trim()}&category=${filters.category}&developer=${filters.developer}&publisher=${filters.publisher}&page=${filters.page}`);
-        return await response.json();
+        if (response.ok) {
+            return await response.json();
+        }
     } catch (error) {
         console.error(error);
     }
@@ -26,7 +28,9 @@ export async function getGames(filters: SearchFilter): Promise<SearchResult> {
 export async function getUsers(): Promise<User[]> {
     try {
         const response = await fetch(`/api/users`);
-        return await response.json();
+        if (response.ok) {
+            return await response.json();
+        }
     } catch (error) {
         console.error(error);
     }
@@ -40,7 +44,9 @@ export async function getUsers(): Promise<User[]> {
 export async function getFavourites(): Promise<Game[]> {
     try {
         const response = await fetch(`/api/favourites`);
-        return await response.json();
+        if (response.ok) {
+            return await response.json();
+        }
     } catch (error) {
         console.error(error);
     }
@@ -96,7 +102,9 @@ export async function updateFilterValues(values: string[], filter: string): Prom
 export async function getFilterValues(): Promise<FilterValues> {
     try {
         const response = await fetch(`/api/filters`);
-        return await response.json();
+        if (response.ok) {
+            return await response.json();
+        }
     } catch (error) {
         console.error(error);
     }
