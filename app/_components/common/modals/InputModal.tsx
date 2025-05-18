@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useRef, useState } from "react";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./InputModal.css";
 

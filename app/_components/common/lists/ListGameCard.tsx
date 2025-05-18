@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { URL_GAME_DETAILS_PAGE } from "@/app/_utils/utils";
 import { Game } from "@/app/_types/types";
-import { singleDay } from "@/fonts/fonts";
+import { singleDay } from "@/app/_fonts/fonts";
 import { FavouriteButton } from "@/app/_components/favourites";
 
 import "./ListGameCard.css";

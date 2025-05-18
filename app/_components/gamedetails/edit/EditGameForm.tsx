@@ -3,7 +3,7 @@
 import { ReactElement, useActionState } from "react";
 import { FilterValues, Game } from "@/app/_types/types";
 import { fileTypes, getPlayersList, URL_GAME_DETAILS_PAGE } from "@/app/_utils/utils";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { updateGame } from "@/app/_actions/games";
 import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from ".";
 import { CancelButton } from "@/app/_components/common";

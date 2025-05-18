@@ -7,7 +7,7 @@ import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { GameCard, ListToggle, ScrollTopButton, ListGameCard } from "../common";
 import { Pagination } from ".";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./Search.css";
 

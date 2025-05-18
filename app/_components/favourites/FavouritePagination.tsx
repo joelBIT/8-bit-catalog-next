@@ -2,7 +2,7 @@
 
 import { ReactElement, useContext } from "react";
 import { FavouritesContext } from "@/app/_contexts/FavouritesContextProvider";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./FavouritePagination.css";
 

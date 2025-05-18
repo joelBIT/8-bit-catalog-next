@@ -5,7 +5,7 @@ import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { FavouritePagination } from "@/app/_components/favourites/FavouritePagination";
 import { FavouritesContext } from "@/app/_contexts/FavouritesContextProvider";
 import { GameCard, ListGameCard, ListToggle, ScrollTopButton } from "@/app/_components/common";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./page.css";
 

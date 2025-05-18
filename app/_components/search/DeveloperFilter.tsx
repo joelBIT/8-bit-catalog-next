@@ -1,7 +1,7 @@
 'use server';
 
 import { ReactElement } from "react";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { addAllOption } from "@/app/_utils/utils";
 import { getAllDevelopers } from "@/app/_db/db";
 

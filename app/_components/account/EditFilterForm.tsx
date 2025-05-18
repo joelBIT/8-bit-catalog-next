@@ -2,7 +2,7 @@
 
 import { ReactElement, useRef, useState } from "react";
 import { InputModal, Modal } from "../common";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { updateFilterValues } from "@/app/_client/client";
 
 import "./EditFilterForm.css";

@@ -2,7 +2,7 @@
 
 import { ReactElement } from 'react';
 import { useFormStatus } from 'react-dom';
-import { arima } from '@/fonts/fonts';
+import { arima } from '@/app/_fonts/fonts';
  
 export function SearchButton(): ReactElement {
     const status = useFormStatus();

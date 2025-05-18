@@ -2,7 +2,7 @@
 
 import { ReactElement } from "react";
 import { useSearchParams } from 'next/navigation';
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { Game } from "@/app/_types/types";
 import { getGames } from "@/app/_client/client";
 

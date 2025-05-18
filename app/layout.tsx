@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { blinker } from "@/fonts/fonts";
+import { blinker } from "@/app/_fonts/fonts";
 
 import "./globals.css";
 

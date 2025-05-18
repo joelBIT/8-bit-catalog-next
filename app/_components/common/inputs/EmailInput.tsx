@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./EmailInput.css";
 

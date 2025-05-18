@@ -1,6 +1,6 @@
 'use client';
 
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { ReactElement, useState } from "react";
 
 import "./PasswordInput.css";

@@ -2,7 +2,7 @@
 
 import { ReactElement, useRef, useActionState } from "react";
 import Link from "next/link";
-import { arima, irishGrover } from "@/fonts/fonts";
+import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { login } from "@/app/_actions/auth";
 import { URL_REGISTER_PAGE } from "@/app/_utils/utils";
 import { EmailInput, PasswordInput } from "../common";

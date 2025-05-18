@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { arima } from "@/fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 
 /**
  * Edit a game's category. Then it is possible to find the game by searching on the updated value (using the category search filter).
