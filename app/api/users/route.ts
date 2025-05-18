@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAllUsers } from "@/db/db";
+import { getAllUsers } from "@/app/_db/db";
 import { isAuthenticated } from "@/app/_session/utils";
 
 /**
@@ -7,10 +7,15 @@ import { isAuthenticated } from "@/app/_session/utils";
  */
 export async function GET() {
     const authenticated = await isAuthenticated();
-    if (!authenticated) {
-        return NextResponse.json({ message: "Must be authenticated to retrieve list of users" }, { status: 401 });
+    if (authenticated) {
+        try {
+            const users = await getAllUsers();
+            return NextResponse.json(users);
+        } catch (error) {
+            console.log(error);
+            return NextResponse.json({ error: 'Could not retrieve users' }, { status: 500 });
+        }
     }
 
-    const users = await getAllUsers();
-    return NextResponse.json(users);
+    return NextResponse.json({ message: "Must be authenticated to retrieve list of users" }, { status: 401 });
 }

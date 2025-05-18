@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
-import { EditGameForm } from "@/components/gamedetails/edit/EditGameForm";
-import { getFilterValues, getGameById } from "@/db/db";
+import { EditGameForm } from "@/app/_components/gamedetails/edit/EditGameForm";
+import { getFilterValues, getGameById } from "@/app/_db/db";
 
 import "./page.css";
 

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { LoginForm } from "@/components/auth/LoginForm";
+import { LoginForm } from "@/app/_components/auth/LoginForm";
 
 import "./page.css";
 
