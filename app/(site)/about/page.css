@@ -48,50 +48,51 @@
                     }
 
                     & .b1983 {
-                        background-image: url("/nes-in-gray-carpet.webp");
-                        filter: brightness(0.5);
+                        background-image: url("/nes-controller-in-black.webp");
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b1985 {
-                        background-image: url("/nes-controller-in-black.webp");
-                        filter: brightness(0.6);
+                        background-image: url("/nes-in-gray-carpet.webp");
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b1986 {
-                        background-image: url("/nes-in-gray-carpet.webp");
-                        filter: brightness(0.6);
+                        background-image: url("/america_space.jpeg");
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
+                        background-position: center;
                     }
 
                     & .b1987 {
                         background-image: url("/nes-controller-in-black.webp");
-                        filter: brightness(0.6);
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b1990 {
                         background-image: url("/nes-in-gray-carpet.webp");
-                        filter: brightness(0.6);
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b1995 {
                         background-image: url("/nes-controller-in-black.webp");
-                        filter: brightness(0.6);
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b1997 {
                         background-image: url("/nes-in-gray-carpet.webp");
-                        filter: brightness(0.6);
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b2025 {
                         background-image: url("/nostalgic-nes-controller.webp");
-                        filter: brightness(0.4);
+                        filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
                 }
