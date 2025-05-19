@@ -48,7 +48,7 @@
                     }
 
                     & .b1983 {
-                        background-image: url("/nes-controller-in-black.webp");
+                        background-image: url("/famicom.jpeg");
                         filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
@@ -60,32 +60,33 @@
                     }
 
                     & .b1986 {
-                        background-image: url("/america_space.jpeg");
+                        background-image: url("/chicago.png");
                         filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                         background-position: center;
                     }
 
                     & .b1987 {
-                        background-image: url("/nes-controller-in-black.webp");
+                        background-image: url("/europe_space.png");
                         filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b1990 {
-                        background-image: url("/nes-in-gray-carpet.webp");
+                        background-image: url("/market.png");
                         filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
 
                     & .b1995 {
-                        background-image: url("/nes-controller-in-black.webp");
+                        background-image: url("/lionking.webp");
                         filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
+                        background-position: center;
                     }
 
                     & .b1997 {
-                        background-image: url("/nes-in-gray-carpet.webp");
+                        background-image: url("/screen.png");
                         filter: brightness(0.3);
                         transition: all 0.5s ease-in-out;
                     }
