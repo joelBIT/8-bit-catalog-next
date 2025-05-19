@@ -1,37 +1,130 @@
 #aboutPage {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../assets/backgrounds/nes-in-gray-carpet.webp');
     display: flex;
-    background-size: cover;
     justify-content: center;
     align-items: center;
-    background-position: center bottom;
 
-    & #aboutPage-content {
-        width: 80%;
-        background: rgba(0,0,0,0.7);
+    & #timeline-outer {
         padding: 1rem;
         border-radius: 9px;
+        min-height: 100vh;
+        width: 100%;
 
-        .aboutPage__paragraph {
-            font-size: 1.5rem;
-            margin: 1rem;
-            font-weight: 100;
-            line-height: 1.6rem;
-        }
+        & #timeline-inner {
+            display: flex;
 
-        > p:first-of-type {
-            padding-bottom: 1rem;
+            & #timeline-container {
+                box-sizing: border-box;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: opacity 0.25s ease-out;
+                transition-delay: 0.25s;
+                transform: translateZ(0);
+                will-change: opacity;
+                pointer-events: none;
+
+                & #image-wrapper {
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    animation: none;
+
+                    & #backgroundImage {
+                        box-sizing: border-box;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+
+                    & .b1983 {
+                        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/nes-in-gray-carpet.webp");
+                    }
+
+                    & .b1985 {
+                        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/nes-controller-in-black.webp");
+                    }
+
+                    & .b2025 {
+                        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/nostalgic-nes-controller.webp");
+                    }
+                }
+            }
+
+            & #timeline-years {
+                display: flex;
+                flex-direction: column;
+                gap: 5rem;
+                align-items: flex-end;
+                z-index: 1;
+                width: 20%;
+                border-right: 1px solid white;
+                min-height: 100vh;
+                transition: all 0.5s;
+
+                & .timeline-year {
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    & .timeline-year__title {
+                        margin-right: 1rem;
+                    }
+                }
+
+                & .active {
+                    font-size: 5rem;
+                    transition: all 0.5s;
+                }
+            }
+
+            & #timeline-text {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                position: relative;
+                width: 75%;
+                padding-left: 10rem;
+
+                & .timeline-text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    & .timeline-text__title {
+                        font-size: 3rem;
+                    }
+
+                    & .aboutPage__paragraph {
+                        font-size: 1.5rem;
+                        font-weight: 100;
+                        line-height: 1.6rem;
+                    }
+                }
+            }
         }
     }
 }
 
 @media (max-width: 700px) {
     #aboutPage {
-        & #aboutPage-content {
+        & #timeline-outer {
             width: 90%;
 
-            .aboutPage__paragraph {
-                font-size: 1.4rem;
+            & #timeline-inner {
+                & #timeline-text {
+                    .aboutPage__paragraph {
+                        font-size: 1.4rem;
+                    }
+                }
             }
         }
     }
@@ -39,13 +132,17 @@
 
 @media (max-width: 600px) {
     #aboutPage {
-        & #aboutPage-content {
+        & #timeline-outer {
             width: 95%;
 
-            .aboutPage__paragraph {
-                font-size: 1.3rem;
-                margin-left: 0;
-                margin-right: 0;
+            & #timeline-inner {
+                & #timeline-text {
+                    .aboutPage__paragraph {
+                        font-size: 1.3rem;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
             }
         }
     }
@@ -53,11 +150,15 @@
 
 @media (max-width: 500px) {
     #aboutPage {
-        & #aboutPage-content {
+        & #timeline-outer {
             width: 100%;
 
-            .aboutPage__paragraph {
-                font-size: 1rem;
+            & #timeline-inner {
+                & #timeline-text {
+                    .aboutPage__paragraph {
+                        font-size: 1rem;
+                    }
+                }
             }
         }
     }
