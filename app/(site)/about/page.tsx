@@ -18,10 +18,6 @@ const TIMELINE = [
 export default function AboutPage(): ReactElement {
     const [ year, setYear ] = useState<number>(1983);
 
-    function updateYear(year: number) {
-        setYear(year);
-    }
-
     return (
         <main id="aboutPage">
             <section id="timeline-outer">
@@ -39,45 +35,14 @@ export default function AboutPage(): ReactElement {
                     </section>
 
                     <section id="timeline-years">
-                        <article className="timeline-year" onClick={() => updateYear(1983)}>
-                            <h2 className={year === 1983 ? "timeline-year__title active" : "timeline-year__title"}> 1983 </h2>
-                            <div className="hexagon" />
-                        </article>
-
-                        <article className="timeline-year" onClick={() => updateYear(1985)}>
-                            <h2 className={year === 1985 ? "timeline-year__title active" : "timeline-year__title"}> 1985 </h2>
-                            <div className="hexagon" />
-                        </article>
-
-                        <article className="timeline-year" onClick={() => updateYear(1986)}>
-                            <h2 className={year === 1986 ? "timeline-year__title active" : "timeline-year__title"}> 1986 </h2>
-                            <div className="hexagon" />
-                        </article>
-
-                        <article className="timeline-year" onClick={() => updateYear(1987)}>
-                            <h2 className={year === 1987 ? "timeline-year__title active" : "timeline-year__title"}> 1987 </h2>
-                            <div className="hexagon" />
-                        </article>
-
-                        <article className="timeline-year" onClick={() => updateYear(1990)}>
-                            <h2 className={year === 1990 ? "timeline-year__title active" : "timeline-year__title"}> 1990 </h2>
-                            <div className="hexagon" />
-                        </article>
-
-                        <article className="timeline-year" onClick={() => updateYear(1995)}>
-                            <h2 className={year === 1995 ? "timeline-year__title active" : "timeline-year__title"}> 1995 </h2>
-                            <div className="hexagon" />
-                        </article>
-
-                        <article className="timeline-year" onClick={() => updateYear(1997)}>
-                            <h2 className={year === 1997 ? "timeline-year__title active" : "timeline-year__title"}> 1997 </h2>
-                            <div className="hexagon" />
-                        </article>
-
-                        <article className="timeline-year" onClick={() => updateYear(2025)}>
-                            <h2 className={year === 2025 ? "timeline-year__title active" : "timeline-year__title"}> 2025 </h2>
-                            <div className="hexagon" />
-                        </article>
+                        { 
+                            TIMELINE.map(event => 
+                                <article className="timeline-year" onClick={() => setYear(event.year)}>
+                                    <h2 className={year === event.year ? "timeline-year__title active" : "timeline-year__title"}> { event.year } </h2>
+                                    <div className="hexagon" />
+                                </article>
+                            )
+                        }
                     </section>
 
                     <section id="timeline-text">
