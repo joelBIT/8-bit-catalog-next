@@ -163,13 +163,22 @@
 
                     & .timeline-text__title {
                         font-size: 3rem;
+                        padding-bottom: 1rem;
                     }
 
                     & .aboutPage__paragraph {
                         font-size: 1.5rem;
                         font-weight: 100;
-                        line-height: 1.6rem;
+                        line-height: 1.8rem;
                     }
+                }
+
+                & .display-element {
+                    display: block;
+                }
+
+                & .hidden-element {
+                    display: none;
                 }
             }
         }
