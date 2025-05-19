@@ -112,6 +112,7 @@
                 & .timeline-year {
                     display: flex;
                     align-items: center;
+                    transition: all 0.5s;
 
                     &:hover {
                         cursor: pointer;
@@ -130,6 +131,7 @@
                     & .timeline-year__title {
                         margin-right: 1rem;
                         font-size: 1rem;
+                        transition: all 0.5s;
                     }
 
                     & .active {
@@ -157,6 +159,7 @@
                     position: fixed;
                     margin-right: 5rem;
                     gap: 0.5rem;
+                    animation: 0.5s fadeInRight ease-in-out;
 
                     & .timeline-text__title {
                         font-size: 3rem;
@@ -170,6 +173,22 @@
                 }
             }
         }
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(2%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
     }
 }
 
