@@ -290,8 +290,14 @@
                         right: 0;
                     }
 
-                    & .b1995,
-                    .b1997,
+                    & .b1995 {
+                        top: auto;
+                        left: auto;
+                        bottom: 0;
+                        right: -500px;
+                    }
+
+                    & .b1997,
                     .b2025 {
                         top: auto;
                         bottom: 0;
