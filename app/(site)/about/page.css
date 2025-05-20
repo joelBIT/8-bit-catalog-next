@@ -65,57 +65,42 @@
                     height: 100%;
                     background-repeat: no-repeat;
                     background-size: cover;
+                    filter: brightness(0.3);
                     transition: all 0.5s ease-in-out;
                 }
 
                 & .b1983 {
                     background-image: url("/famicom.jpeg");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                 }
 
                 & .b1985 {
                     background-image: url("/nes-in-gray-carpet.webp");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                 }
 
                 & .b1986 {
                     background-image: url("/chicago.png");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                     background-position: center;
                 }
 
                 & .b1987 {
                     background-image: url("/europe_space.png");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                 }
 
                 & .b1990 {
                     background-image: url("/market.png");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                 }
 
                 & .b1995 {
                     background-image: url("/lionking.webp");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                     background-position: center;
                 }
 
                 & .b1997 {
                     background-image: url("/screen.png");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                 }
 
                 & .b2025 {
                     background-image: url("/nostalgic-nes-controller.webp");
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
                 }
             }
 
