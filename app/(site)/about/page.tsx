@@ -31,7 +31,14 @@ export default function AboutPage(): ReactElement {
         };
     }, []);
 
+    /**
+     * Updates the active Year when the user scrolls along the Y-axis.
+     */
     function scroll(): void {
+        if (modalRef.current?.open) {
+            modalRef.current?.close();      // Close modal if the modal is open when the user scrolls
+        }
+
         if (position < 150) {
             setYear(1983);
         } else if (150 < position && position < 400) {
@@ -53,9 +60,11 @@ export default function AboutPage(): ReactElement {
         position = window.scrollY;
     }
 
-    function closeModal() {
+    /**
+     * Close modal if it is still open when the viewport is wider than 520px.
+     */
+    function closeModal(): void {
         if (window.innerWidth >= 520) {
-            console.log('INSIDE');
             modalRef.current?.close();
         }
     }
