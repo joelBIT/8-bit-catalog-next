@@ -70,6 +70,7 @@
 
                 & .b1985 {
                     background-image: url("/nes-in-gray-carpet.webp");
+                    background-position: bottom center;
                 }
 
                 & .b1986 {
@@ -79,6 +80,7 @@
 
                 & .b1987 {
                     background-image: url("/europe_space.png");
+                    background-position: bottom right;
                 }
 
                 & .b1990 {
