@@ -301,9 +301,15 @@
                         & .gameButton {
                             display: flex;
                             justify-self: center;
+                            align-self: center;
                             width: fit-content;
                             padding: 0.5rem 1rem;
                         }
+                    }
+
+                    & .display-element {
+                        display: flex;
+                        align-items: center;
                     }
                 }
             }
