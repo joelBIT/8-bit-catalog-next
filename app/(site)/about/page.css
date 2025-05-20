@@ -70,6 +70,7 @@
 
                 & .b1985 {
                     background-image: url("/nes-in-gray-carpet.webp");
+                    background-position: bottom center;
                 }
 
                 & .b1986 {
@@ -79,6 +80,7 @@
 
                 & .b1987 {
                     background-image: url("/europe_space.png");
+                    background-position: bottom right;
                 }
 
                 & .b1990 {
@@ -299,9 +301,15 @@
                         & .gameButton {
                             display: flex;
                             justify-self: center;
+                            align-self: center;
                             width: fit-content;
                             padding: 0.5rem 1rem;
                         }
+                    }
+
+                    & .display-element {
+                        display: flex;
+                        align-items: center;
                     }
                 }
             }

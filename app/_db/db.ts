@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, FilterValues, Game, SearchFilter, SearchResult, Session, User } from '@/app/_types/types';
+import { Account, FilterValues, Game, SearchFilter, SearchResult, Session, TimelineEvent, User } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/app/_utils/utils';
 
@@ -23,6 +23,7 @@ const USER_TABLE = "users";
 const FAVOURITES_TABLE = "favourites";
 const ACCOUNT_TABLE = "account";
 const FILTERS_TABLE = "filters";
+const TIMELINE_TABLE = "timeline";
 
 
 
@@ -474,4 +475,25 @@ export async function activateAccount(activation_code: string): Promise<boolean>
 
     await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);    
     return true;
+}
+
+
+
+
+
+
+
+
+/*********
+ * ABOUT *
+ ********/
+
+export async function getTimeline(): Promise<TimelineEvent[]> {
+    const { data, error } = await databaseClient.from(TIMELINE_TABLE).select();
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+  
+    return data;
 }
