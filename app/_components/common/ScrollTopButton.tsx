@@ -18,7 +18,7 @@ export function ScrollTopButton(): ReactElement {
         return () => {
             window.removeEventListener("scroll", scroll, false);
         };
-    }, [])
+    }, []);
 
     function scroll(): void {
         if ((position > 1500) && !isVisible && (window.scrollY < position)) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import "./page.css";
 
@@ -12,11 +12,42 @@ const TIMELINE = [
     { year: 1990, title: "Market decline", text: "In the late 80s, Nintendo's dominance was addressed by newer, technologically superior consoles. In 1987, NEC and Hudson Soft released the PC Engine, and in 1988, Sega released the 16-bit Mega Drive. Both were introduced in North America in 1989, where they were respectively marketed as the TurboGrafx-16 and the Genesis. Facing new competition from the PC Engine in Japan, and the Genesis in North America, Nintendo's market share began to erode. Nintendo responded in the form of the Super Famicom (Super NES or SNES in North America and Europe), the Famicom's 16-bit successor, in 1990."},
     { year: 1995, title: "Discontinuation", text: "After a decade of being on sale overseas, the NES was discontinued on August 14, 1995, with the last game being The Lion King. By the end of its production, more than 60 million NES units had been sold throughout the world." },
     { year: 1997, title: "Emulation", text: "Computer programmers began to develop emulators capable of reproducing the internal workings of the NES on modern personal computers. When paired with a ROM image (a bit-for-bit copy of a NES cartridge's program code), the games can be played on a computer. Emulators also come with a variety of built-in functions that change the gaming experience, such as save states which allow the player to save and resume progress at an exact spot in the game." },
-    { year: 2025, title: "Catalog online", text: "The purpose of the 8-bit Catalog is to be an as accomplished source of NES games as possible. This catalog is continuously updated with new information. Games supported by the emulator found at URL emulator.joel-rollny.eu can be played in a browser. An increasing number of games will be supported over time due to the emulator being an ongoing project."}
+    { year: 2025, title: "The 8-bit Catalog goes online", text: "The purpose of the 8-bit Catalog is to be an as accomplished source of NES games as possible. This catalog is continuously updated with new information. Games supported by the emulator found at URL emulator.joel-rollny.eu can be played in a browser. An increasing number of games will be supported over time due to the emulator being an ongoing project."}
 ]
 
 export default function AboutPage(): ReactElement {
     const [ year, setYear ] = useState<number>(1983);
+    let position = 0;
+
+    useEffect(() => {
+        window.addEventListener("scroll", scroll, false);
+
+        return () => {
+            window.removeEventListener("scroll", scroll, false);
+        };
+    }, []);
+
+    function scroll(): void {
+        if (position < 150) {
+            setYear(1983);
+        } else if (150 < position && position < 400) {
+            setYear(1985);
+        } else if (400 < position && position < 680) {
+            setYear(1986);
+        } else if (680 < position && position < 920) {
+            setYear(1987);
+        } else if (920 < position && position < 1200) {
+            setYear(1990);
+        } else if (1200 < position && position < 1450) {
+            setYear(1995);
+        } else if (1440 < position && position < 1700) {
+            setYear(1997);
+        } else if (position > 1700) {
+            setYear(2025);
+        }
+        
+        position = window.scrollY;
+    }
 
     return (
         <main id="aboutPage">
@@ -37,7 +68,7 @@ export default function AboutPage(): ReactElement {
                     <section id="timeline-years">
                         { 
                             TIMELINE.map(event => 
-                                <article className="timeline-year" onClick={() => setYear(event.year)}>
+                                <article className="timeline-year" onClick={() => setYear(event.year)} key={event.year}>
                                     <h2 className={year === event.year ? "timeline-year__title active" : "timeline-year__title"}> { event.year } </h2>
                                     <div className="hexagon" />
                                 </article>
@@ -48,7 +79,7 @@ export default function AboutPage(): ReactElement {
                     <section id="timeline-text">
                         { 
                             TIMELINE.map(event => 
-                                <article className={`timeline-text ${year === event.year ? "display-element" : "hidden-element"}`} key={event.year}>
+                                <article className={`timeline-text ${year === event.year ? "display-element" : "hidden-element"}`} key={event.title}>
                                     <h2 className="timeline-text__title"> {event.title} </h2>
                                     <p className="aboutPage__paragraph"> {event.text} </p>
                                 </article>

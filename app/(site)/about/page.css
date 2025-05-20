@@ -102,13 +102,15 @@
             & #timeline-years {
                 display: flex;
                 flex-direction: column;
-                gap: 5rem;
+                gap: 15rem;
                 align-items: flex-end;
                 justify-content: space-around;
                 z-index: 1;
                 width: 20%;
                 border-right: 1px solid white;
                 min-height: 100vh;
+                padding-bottom: 20rem;
+                padding-top: 10rem;
                 transition: all 0.5s;
 
                 & .timeline-year {
