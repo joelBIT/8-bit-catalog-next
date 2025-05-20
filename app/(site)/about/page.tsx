@@ -79,12 +79,15 @@ export default function AboutPage(): ReactElement {
                 <section id="timeline-inner">
 
                     <section id="timeline-container">
-                        <section 
-                            id="backgroundImage" 
-                            className={`b${year}`}
-                        >
-
-                        </section>
+                        {
+                            timeline?.map(event => 
+                                <img 
+                                    src={event.image}
+                                    className={`backgroundImage ${year === event.year ? `b${year} display-element` : "hidden-element"}`} 
+                                    key={event.image} 
+                                />
+                            )
+                        }
                     </section>
 
                     <section id="timeline-years">
