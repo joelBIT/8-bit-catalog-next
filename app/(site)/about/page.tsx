@@ -75,13 +75,11 @@ export default function AboutPage(): ReactElement {
                 <section id="timeline-inner">
 
                     <section id="timeline-container">
-                        <section id="image-wrapper">
-                            <section 
-                                id="backgroundImage" 
-                                className={`b${year}`}
-                            >
+                        <section 
+                            id="backgroundImage" 
+                            className={`b${year}`}
+                        >
 
-                            </section>
                         </section>
                     </section>
 
