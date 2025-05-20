@@ -59,3 +59,9 @@ export type ActionState = {
     message: string,
     success: boolean
 }
+
+export type TimelineEvent = {
+    year: number,
+    title: string,
+    text: string
+}

@@ -1,4 +1,4 @@
-import { FilterValues, Game, SearchFilter, SearchResult, User } from '@/app/_types/types';
+import { FilterValues, Game, SearchFilter, SearchResult, TimelineEvent, User } from '@/app/_types/types';
 
 
 /********************************************************************************************
@@ -110,4 +110,20 @@ export async function getFilterValues(): Promise<FilterValues> {
     }
 
     return { developers: [], publishers: [], categories: []};
+}
+
+/**
+ * Retrieve the timeline for about page.
+ */
+export async function getTimelineEvents(): Promise<TimelineEvent[]> {
+    try {
+        const response = await fetch(`/api/timeline`);
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+    return [];
 }
