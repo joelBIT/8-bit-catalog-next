@@ -1,6 +1,7 @@
 'use client';
 
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./page.css";
 
@@ -17,13 +18,16 @@ const TIMELINE = [
 
 export default function AboutPage(): ReactElement {
     const [ year, setYear ] = useState<number>(1983);
+    const modalRef = useRef<HTMLDialogElement>(null);
     let position = 0;
 
     useEffect(() => {
         window.addEventListener("scroll", scroll, false);
+        window.addEventListener("resize", closeModal, false);
 
         return () => {
             window.removeEventListener("scroll", scroll, false);
+            window.removeEventListener("resize", closeModal, false);
         };
     }, []);
 
@@ -47,6 +51,13 @@ export default function AboutPage(): ReactElement {
         }
         
         position = window.scrollY;
+    }
+
+    function closeModal() {
+        if (window.innerWidth >= 520) {
+            console.log('INSIDE');
+            modalRef.current?.close();
+        }
     }
 
     return (
@@ -76,12 +87,20 @@ export default function AboutPage(): ReactElement {
                         }
                     </section>
 
+                    <dialog id="textModal" ref={modalRef}>
+                        <form method="dialog">
+                            <h1 className="modal__text"> {TIMELINE.filter(event => event.year === year).map(event => event.text)[0]} </h1>
+                            <button onClick={() => modalRef.current?.close()} className={`gameButton ${arima.className}`}> Close </button>
+                        </form>
+                    </dialog>
+
                     <section id="timeline-text">
                         { 
                             TIMELINE.map(event => 
                                 <article className={`timeline-text ${year === event.year ? "display-element" : "hidden-element"}`} key={event.title}>
                                     <h2 className="timeline-text__title"> {event.title} </h2>
                                     <p className="aboutPage__paragraph"> {event.text} </p>
+                                    <button className="gameButton" onClick={() => modalRef.current?.showModal()}> Show text </button>
                                 </article>
                             )
                         }

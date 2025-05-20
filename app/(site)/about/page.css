@@ -12,6 +12,37 @@
         & #timeline-inner {
             display: flex;
 
+            & #textModal {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                width: 90%;
+                transform: translate(-50%, -50%);
+                border-radius: 8px;
+                scrollbar-width: none;
+                background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+                overflow: hidden;
+
+                & form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    height: 100%;
+
+                    & .modal__text {
+                        color: var(--black);
+                        font-size: 1rem;
+                        text-align: left;
+                        margin: 1rem;
+                    }
+
+                    & .gameButton {
+                        margin: 1rem;
+                        align-self: center;
+                    }
+                }
+            }
+
             & #timeline-container {
                 box-sizing: border-box;
                 position: fixed;
@@ -175,6 +206,10 @@
                         font-weight: 100;
                         line-height: 1.8rem;
                     }
+
+                    & .gameButton {
+                        display: none;
+                    }
                 }
 
                 & .display-element {
@@ -205,15 +240,29 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
     #aboutPage {
         & #timeline-outer {
-            width: 90%;
-
             & #timeline-inner {
+                & #timeline-years {
+                    & .timeline-year {
+                        & .active {
+                            font-size: 3rem;
+                        }
+                    }
+                }
+
                 & #timeline-text {
-                    .aboutPage__paragraph {
-                        font-size: 1.4rem;
+                    padding-left: 4rem;
+
+                    & .timeline-text {
+                        & .timeline-text__title {
+                            font-size: 2rem;
+                        }
+
+                        .aboutPage__paragraph {
+                            font-size: 1.4rem;
+                        }
                     }
                 }
             }
@@ -221,17 +270,43 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     #aboutPage {
+        padding: 1rem;
+
         & #timeline-outer {
-            width: 95%;
+            padding: 0;
 
             & #timeline-inner {
+                & #timeline-years {
+                    gap: 16rem;
+
+                    & .timeline-year {
+                        & .timeline-year__title {
+                            margin-right: 0;
+                        }
+
+                        & .active {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+
                 & #timeline-text {
-                    .aboutPage__paragraph {
-                        font-size: 1.3rem;
-                        margin-left: 0;
-                        margin-right: 0;
+                    padding-left: 2rem;
+                    width: 100%;
+                    padding-top: 5rem;
+
+                    & .timeline-text {
+                        margin-right: 1rem;
+
+                        & .timeline-text__title {
+                            font-size: 1.7rem;
+                        }
+
+                        .aboutPage__paragraph {
+                            font-size: 1.2rem;
+                        }
                     }
                 }
             }
@@ -239,15 +314,55 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 520px) {
     #aboutPage {
         & #timeline-outer {
-            width: 100%;
-
             & #timeline-inner {
                 & #timeline-text {
-                    .aboutPage__paragraph {
-                        font-size: 1rem;
+                    & .timeline-text {
+                        width: 70%;
+                        text-align: center;
+
+                        & .aboutPage__paragraph {
+                            display: none;
+                        }
+
+                        & .gameButton {
+                            display: flex;
+                            justify-self: center;
+                            width: fit-content;
+                            padding: 0.5rem 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    #aboutPage {
+        & #timeline-outer {
+            & #timeline-inner {
+                & #timeline-years {
+                    & .timeline-year {
+                        & .active {
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+
+                & #timeline-text {
+                    & .timeline-text {
+                        & .timeline-text__title {
+                            font-size: 1.3rem;
+                            margin-right: 1rem;
+                        }
+
+                        & .gameButton {
+                            margin-top: 1rem;
+                            font-size: 1rem;
+                        }
                     }
                 }
             }
