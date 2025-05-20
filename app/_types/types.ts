@@ -63,5 +63,6 @@ export type ActionState = {
 export type TimelineEvent = {
     year: number,
     title: string,
-    text: string
+    text: string,
+    image: string
 }
