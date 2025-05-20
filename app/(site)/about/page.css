@@ -65,7 +65,7 @@
                 }
 
                 & .b1983 {
-                    background-image: url("/famicom.jpeg");
+                    background-image: url("/famicom.webp");
                 }
 
                 & .b1985 {
@@ -74,17 +74,17 @@
                 }
 
                 & .b1986 {
-                    background-image: url("/chicago.png");
+                    background-image: url("/chicago.webp");
                     background-position: center;
                 }
 
                 & .b1987 {
-                    background-image: url("/europe_space.png");
+                    background-image: url("/europe_space.webp");
                     background-position: bottom right;
                 }
 
                 & .b1990 {
-                    background-image: url("/market.png");
+                    background-image: url("/market.webp");
                 }
 
                 & .b1995 {
@@ -93,7 +93,7 @@
                 }
 
                 & .b1997 {
-                    background-image: url("/screen.png");
+                    background-image: url("/screen.webp");
                 }
 
                 & .b2025 {
