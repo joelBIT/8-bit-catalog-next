@@ -1,63 +1,339 @@
 #aboutPage {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../assets/backgrounds/nes-in-gray-carpet.webp');
     display: flex;
-    background-size: cover;
     justify-content: center;
     align-items: center;
-    background-position: center bottom;
 
-    & #aboutPage-content {
-        width: 80%;
-        background: rgba(0,0,0,0.7);
+    & #timeline-outer {
         padding: 1rem;
         border-radius: 9px;
+        min-height: 100vh;
+        width: 100%;
 
-        .aboutPage__paragraph {
-            font-size: 1.5rem;
-            margin: 1rem;
-            font-weight: 100;
-            line-height: 1.6rem;
-        }
+        & #timeline-inner {
+            display: flex;
 
-        > p:first-of-type {
-            padding-bottom: 1rem;
-        }
-    }
-}
+            & #textModal {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                width: 90%;
+                transform: translate(-50%, -50%);
+                border-radius: 8px;
+                scrollbar-width: none;
+                background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+                overflow: hidden;
 
-@media (max-width: 700px) {
-    #aboutPage {
-        & #aboutPage-content {
-            width: 90%;
+                & form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    height: 100%;
 
-            .aboutPage__paragraph {
-                font-size: 1.4rem;
+                    & .modal__text {
+                        color: var(--black);
+                        font-size: 1rem;
+                        text-align: left;
+                        margin: 1rem;
+                    }
+
+                    & .gameButton {
+                        margin: 1rem;
+                        align-self: center;
+                    }
+                }
+            }
+
+            & #timeline-container {
+                box-sizing: border-box;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                & #backgroundImage {
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    filter: brightness(0.3);
+                    transition: all 0.5s ease-in-out;
+                }
+
+                & .b1983 {
+                    background-image: url("/famicom.jpeg");
+                }
+
+                & .b1985 {
+                    background-image: url("/nes-in-gray-carpet.webp");
+                }
+
+                & .b1986 {
+                    background-image: url("/chicago.png");
+                    background-position: center;
+                }
+
+                & .b1987 {
+                    background-image: url("/europe_space.png");
+                }
+
+                & .b1990 {
+                    background-image: url("/market.png");
+                }
+
+                & .b1995 {
+                    background-image: url("/lionking.webp");
+                    background-position: center;
+                }
+
+                & .b1997 {
+                    background-image: url("/screen.png");
+                }
+
+                & .b2025 {
+                    background-image: url("/nostalgic-nes-controller.webp");
+                }
+            }
+
+            & #timeline-years {
+                display: flex;
+                flex-direction: column;
+                gap: 15rem;
+                align-items: flex-end;
+                justify-content: space-around;
+                z-index: 1;
+                width: 20%;
+                border-right: 1px solid white;
+                min-height: 100vh;
+                padding-bottom: 20rem;
+                padding-top: 10rem;
+                transition: all 0.5s;
+
+                & .timeline-year {
+                    display: flex;
+                    align-items: center;
+                    transition: all 0.5s;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    .hexagon {
+                        height: 20px;
+                        aspect-ratio: 1/cos(30deg);
+                        clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
+                        background: var(--color-white);
+                        opacity: 0.5;
+                        position: relative;
+                        right: -12px;
+                    }
+
+                    & .timeline-year__title {
+                        margin-right: 1rem;
+                        font-size: 1rem;
+                        transition: all 0.5s;
+                    }
+
+                    & .active {
+                        font-size: 5rem;
+                        transition: all 0.5s;
+
+                        ~ .hexagon {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            & #timeline-text {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                position: relative;
+                width: 75%;
+                padding-left: 10rem;
+
+                & .timeline-text {
+                    display: flex;
+                    flex-direction: column;
+                    position: fixed;
+                    margin-right: 5rem;
+                    gap: 0.5rem;
+                    animation: 0.5s fadeInRight ease-in-out;
+
+                    & .timeline-text__title {
+                        font-size: 3rem;
+                        padding-bottom: 1rem;
+                    }
+
+                    & .aboutPage__paragraph {
+                        font-size: 1.5rem;
+                        font-weight: 100;
+                        line-height: 1.8rem;
+                    }
+
+                    & .gameButton {
+                        display: none;
+                    }
+                }
+
+                & .display-element {
+                    display: block;
+                }
+
+                & .hidden-element {
+                    display: none;
+                }
             }
         }
     }
 }
 
-@media (max-width: 600px) {
-    #aboutPage {
-        & #aboutPage-content {
-            width: 95%;
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(2%);
+        opacity: 0;
+    }
 
-            .aboutPage__paragraph {
-                font-size: 1.3rem;
-                margin-left: 0;
-                margin-right: 0;
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1000px) {
+    #aboutPage {
+        & #timeline-outer {
+            & #timeline-inner {
+                & #timeline-years {
+                    & .timeline-year {
+                        & .active {
+                            font-size: 3rem;
+                        }
+                    }
+                }
+
+                & #timeline-text {
+                    padding-left: 4rem;
+
+                    & .timeline-text {
+                        & .timeline-text__title {
+                            font-size: 2rem;
+                        }
+
+                        .aboutPage__paragraph {
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
             }
         }
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     #aboutPage {
-        & #aboutPage-content {
-            width: 100%;
+        padding: 1rem;
 
-            .aboutPage__paragraph {
-                font-size: 1rem;
+        & #timeline-outer {
+            padding: 0;
+
+            & #timeline-inner {
+                & #timeline-years {
+                    gap: 16rem;
+
+                    & .timeline-year {
+                        & .timeline-year__title {
+                            margin-right: 0;
+                        }
+
+                        & .active {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+
+                & #timeline-text {
+                    padding-left: 2rem;
+                    width: 100%;
+                    padding-top: 5rem;
+
+                    & .timeline-text {
+                        margin-right: 1rem;
+
+                        & .timeline-text__title {
+                            font-size: 1.7rem;
+                        }
+
+                        .aboutPage__paragraph {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 520px) {
+    #aboutPage {
+        & #timeline-outer {
+            & #timeline-inner {
+                & #timeline-text {
+                    & .timeline-text {
+                        width: 70%;
+                        text-align: center;
+
+                        & .aboutPage__paragraph {
+                            display: none;
+                        }
+
+                        & .gameButton {
+                            display: flex;
+                            justify-self: center;
+                            width: fit-content;
+                            padding: 0.5rem 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    #aboutPage {
+        & #timeline-outer {
+            & #timeline-inner {
+                & #timeline-years {
+                    & .timeline-year {
+                        & .active {
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+
+                & #timeline-text {
+                    & .timeline-text {
+                        & .timeline-text__title {
+                            font-size: 1.3rem;
+                            margin-right: 1rem;
+                        }
+
+                        & .gameButton {
+                            margin-top: 1rem;
+                            font-size: 1rem;
+                        }
+                    }
+                }
             }
         }
     }
