@@ -282,19 +282,13 @@
 
                     & .b1985,
                     .b1986 {
+                        top: auto;
                         left: -500px;
                     }
 
                     & .b1987 {
                         left: auto;
                         right: 0;
-                    }
-
-                    & .b1995 {
-                        top: auto;
-                        left: auto;
-                        bottom: 0;
-                        right: -500px;
                     }
 
                     & .b1997,
