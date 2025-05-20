@@ -278,6 +278,7 @@
                         top: auto;
                         left: auto;
                         right: -500px;
+                        bottom: 0;
                     }
 
                     & .b1985,
