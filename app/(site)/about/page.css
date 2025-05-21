@@ -68,6 +68,10 @@
                 right: 0;
             }
 
+            & .b1990 {
+                transform: scaleX(-1);
+            }
+
             & .b1997 {
                 top: auto;
                 bottom: 0;
