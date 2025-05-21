@@ -23,10 +23,6 @@ export default async function Home(): Promise<ReactElement> {
 
                 <Logo />
             </section>
-
-            <section id="content">
-
-            </section>
         </main>
     );
 }
