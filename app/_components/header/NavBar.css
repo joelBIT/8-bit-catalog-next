@@ -67,21 +67,23 @@
             display: inline;
         }
 
-        .navbar__list {
+        & .navbar__list {
             display: none;
             width: 100%;
             background: var(--white);
             text-align: center;
             z-index: 120;
 
-            .navbar__list-element {
-                margin-left: 2rem;
+            & .navbar__list-element {
+                & .navbar__list-element-title {
+                    margin-left: 1rem;
+                }
 
-                .wideScreen {
+                & .wideScreen {
                     display: none;
                 }
             
-                .smallScreen {
+                & .smallScreen {
                     display: block;
                 }
             }

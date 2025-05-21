@@ -13,15 +13,9 @@
         background: linear-gradient(to bottom left, var(--color-black) 70%, #2E3028);
         position: absolute;
         top: 0;
-
+        
         & #logo {
-            width: 30%;
-        }
-
-        & .landing-text {
-            font-size: 5rem;
-            letter-spacing: 0.2rem;
-            font-weight: bold;
+            width: 25%;
         }
     }
 
@@ -31,9 +25,50 @@
     }
 }
 
+@media (max-width: 1300px) {
+    #landingPage {
+        & #image-wrapper {
+            & #logo {
+                width: 30%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    #landingPage {
+        & #image-wrapper {
+            & #logo {
+                width: 40%;
+            }
+
+            & .landing-text {
+                font-size: 4rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #landingPage {
+        & #image-wrapper {
+            & #logo {
+                width: 60%;
+            }
+
+            & .landing-text {
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
 @media (max-width: 500px) {
     #landingPage {
         & #image-wrapper {
+            justify-content: flex-start;
+            padding-top: 8rem;
+
             & .landing-text {
                 display: none;
             }
