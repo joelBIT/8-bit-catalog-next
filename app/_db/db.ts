@@ -489,7 +489,7 @@ export async function activateAccount(activation_code: string): Promise<boolean>
  ********/
 
 export async function getTimeline(): Promise<TimelineEvent[]> {
-    const { data, error } = await databaseClient.from(TIMELINE_TABLE).select();
+    const { data, error } = await databaseClient.from(TIMELINE_TABLE).select().order("year");
     if (error) {
         console.log(error);
         throw error;
