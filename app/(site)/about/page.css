@@ -224,7 +224,7 @@
 
 @media (max-width: 800px) {
     #aboutPage {
-        padding: 1rem;
+        padding: 0;
 
         & #timeline-inner {
             padding: 0;
@@ -267,6 +267,14 @@
 @media (max-width: 520px) {
     #aboutPage {
         & #timeline-inner {
+            & #timeline-years {
+                & .timeline-year {
+                    & .active {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
             & #timeline-container {
                 & .b1983 {
                     top: auto;
@@ -327,13 +335,13 @@
     }
 }
 
-@media (max-width: 410px) {
+@media (max-width: 430px) {
     #aboutPage {
         & #timeline-inner {
             & #timeline-years {
                 & .timeline-year {
                     & .active {
-                        font-size: 1.5rem;
+                        font-size: 1.1rem;
                     }
                 }
             }
