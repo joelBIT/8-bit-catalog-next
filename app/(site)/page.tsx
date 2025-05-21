@@ -1,18 +1,24 @@
 import { ReactElement } from "react";
-import { HeroCard } from "@/app/_components/home/HeroCard";
-import { getGameById } from "@/app/_db/db";
+import { Logo } from "../_components/header";
+import { irishGrover } from "../_fonts/fonts";
 
 import "./page.css";
 
 /**
- * A random game is presented to the user every time the landing page is visited.
+ * Landing page of the application.
  */
 export default async function Home(): Promise<ReactElement> {
 
     return (
         <main id="landingPage">
-            <HeroCard game={await getGameById(Math.floor(Math.random() * 980 + 1))} />
-            <video autoPlay muted loop id="background-video" src="/nintendo.mp4" />
+            <section id="image-wrapper">
+                <Logo />
+                <h1 className={`landing-text ${irishGrover.className}`}> The 8-bit Catalog </h1>
+            </section>
+
+            <section id="content">
+                
+            </section>
         </main>
     );
 }

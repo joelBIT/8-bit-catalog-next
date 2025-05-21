@@ -1,10 +1,10 @@
 header {
     display: flex;
-    background-color: var(--color-black);
+    background-color: transparent;
     z-index: 2;
 
     #logoLink {
-        display: flex;
+        display: none;
         align-items: center;
         margin-left: 1rem;
 
@@ -40,8 +40,10 @@ header {
         min-height: 3rem;
         flex-direction: row-reverse;
         width: 100%;
+        background-color: var(--color-black);
 
         #logoLink {
+            display: flex;
             margin: 0;
             text-align: center;
             width: 10rem;
