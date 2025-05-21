@@ -30,7 +30,7 @@ header {
 
 @media (max-width: 800px) {
     header {
-        padding-right: 2rem;
+        padding-right: 0;
     }
 }
 
@@ -41,7 +41,6 @@ header {
         flex-direction: row-reverse;
         width: 100%;
         background-color: var(--color-black);
-        padding-right: 0;
 
         #logoLink {
             display: flex;
