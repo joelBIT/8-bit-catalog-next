@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { rancho } from "@/app/_fonts/fonts";
 import { signOut } from "@/app/_session/session";
-import { URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
+import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { Hamburger } from ".";
 
 import "./NavBar.css";
@@ -33,6 +33,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
         {url: URL_HOME, render: true, title: "Home", icon: null},
         {url: URL_SEARCH_PAGE, render: true, title: "Games", icon: null},
         {url: URL_FAVOURITES_PAGE, render: true, title: "Favourites", icon: null},
+        {url: URL_ABOUT_PAGE, render: true, title: "About", icon: null},
         {url: URL_LOGIN_PAGE, render: !authenticated, title: "Login", icon: "login"},
         {url: URL_DASHBOARD_PAGE, render: authenticated, title: "Account", icon: "account_circle"}
     ];
