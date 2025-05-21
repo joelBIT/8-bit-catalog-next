@@ -4,6 +4,9 @@ header {
     min-height: 4rem;
     z-index: 2;
     padding-right: 5rem;
+    position: absolute;
+    right: 0;
+    width: 100%;
 
     #logoLink {
         display: none;

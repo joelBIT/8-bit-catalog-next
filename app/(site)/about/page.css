@@ -2,10 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
 
     & #timeline-inner {
         display: flex;
-        padding: 1rem;
         border-radius: 9px;
         min-height: 100vh;
         width: 100%;
@@ -92,7 +92,7 @@
             width: 20%;
             border-right: 1px solid white;
             min-height: 100vh;
-            padding-bottom: 20rem;
+            padding-bottom: 35rem;
             padding-top: 10rem;
             transition: all 0.5s;
 
