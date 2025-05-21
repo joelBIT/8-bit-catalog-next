@@ -10,11 +10,13 @@
 @media (max-width: 700px) {
     #gameDetailsPage {
         padding: 2rem;
+        padding-top: 10rem;
     }
 }
 
 @media (max-width: 500px) {
     #gameDetailsPage {
         padding: 1rem;
+        padding-top: 5rem;
     }
 }

@@ -40,9 +40,6 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         </search>
                     </Form>
                 </search>
-            </section>
-
-            <section id="searchResult">
                 <Search />
             </section>
         </main>

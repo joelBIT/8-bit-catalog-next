@@ -94,13 +94,6 @@ textarea {
     }
 }
 
-@media (max-width: 700px) {
-    main:not(#registerPage):not(#loginPage) {
-        margin-top: 2rem;
-    }
-}
-
-
 
 
 

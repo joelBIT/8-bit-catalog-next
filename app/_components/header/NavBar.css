@@ -58,6 +58,14 @@
     }
 }
 
+@media (max-width: 800px) {
+    .navbar {
+        & .navbar__list {
+            gap: 1rem;
+        }
+    }
+}
+
 @media (max-width: 500px) {
     .navbar {
         position: fixed;
