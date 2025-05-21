@@ -30,6 +30,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     }
 
     const LINKS = [
+        {url: URL_HOME, render: true, title: "Home", icon: null},
         {url: URL_SEARCH_PAGE, render: true, title: "Games", icon: null},
         {url: URL_FAVOURITES_PAGE, render: true, title: "Favourites", icon: null},
         {url: URL_LOGIN_PAGE, render: !authenticated, title: "Login", icon: "login"},
