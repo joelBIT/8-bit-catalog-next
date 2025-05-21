@@ -107,8 +107,6 @@
 
 @media (max-width: 700px) {
     #gameDetailsCard {
-        margin-top: 2rem;
-
         #gameDetails {
             .gameDetails__title {
                 font-size: 3rem;
@@ -144,7 +142,7 @@
                         font-size: 1.5rem;
                     }
                     & .tag-text {
-                        font-size: 0.9rem;
+                        font-size: 0.8rem;
                     }
                 }
             }

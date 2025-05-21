@@ -1,63 +1,75 @@
 #searchPage {
-    background-image: url("../../../assets/backgrounds/nes-controller-in-black.webp");
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    background-image: url("../../../assets/backgrounds/nes-controller-in-black.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
 
-    #searchFilters {
+    & #searchPage-wrapper {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        min-width: 100%;
+        min-height: 100%;
 
-        .searchFilters__title {
-            font-size: 50px;
-            font-weight: 500;
-            margin: 1rem 0;
-            align-self: center;
-        }
-    
-        #searchFilters__form {
+        #searchFilters {
             display: flex;
             flex-direction: column;
-            gap: 3rem;
-            align-self: center;
-    
-            & .searchFilters__filters {
+            padding-top: 10rem;
+
+            .searchFilters__title {
+                font-size: 50px;
+                font-weight: 500;
+                margin: 1rem 0;
+                align-self: center;
+            }
+        
+            #searchFilters__form {
                 display: flex;
+                flex-direction: column;
                 gap: 3rem;
-    
-                .selectSection {
-                    .selectSection__title {
-                        font-weight: 900;
-                    }
-                
-                    .selectSection__select {
-                        font-size: 1.4rem;
-                        padding: 0.2rem;
+                align-self: center;
+        
+                & .searchFilters__filters {
+                    display: flex;
+                    gap: 3rem;
+        
+                    .selectSection {
+                        .selectSection__title {
+                            font-weight: 900;
+                        }
+                    
+                        .selectSection__select {
+                            font-size: 1.4rem;
+                            padding: 0.2rem;
+                        }
                     }
                 }
-            }
-    
-            #searchInput {
-                display: flex;
-                align-self: center;
-                margin-top: 3rem;
-                gap: 2rem;
-                align-items: center;
-
-                & .input-wrapper {
+        
+                #searchInput {
                     display: flex;
+                    align-self: center;
+                    margin-top: 3rem;
+                    gap: 2rem;
+                    align-items: center;
 
-                    & .material-symbols-outlined {
-                        position: relative;
-                        left: 2.2rem;
-                        align-content: center;
-                        color: var(--color-black);
-                        font-size: 1.8rem;
-                        z-index: 1;
-                    }
-                
-                    #searchTitle {
-                        padding-left: 2.5rem;
+                    & .input-wrapper {
+                        display: flex;
+
+                        & .material-symbols-outlined {
+                            position: relative;
+                            left: 2.2rem;
+                            align-content: center;
+                            color: var(--color-black);
+                            font-size: 1.8rem;
+                            z-index: 1;
+                        }
+                    
+                        #searchTitle {
+                            padding-left: 2.5rem;
+                        }
                     }
                 }
             }

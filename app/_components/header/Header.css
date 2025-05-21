@@ -1,12 +1,18 @@
 header {
     display: flex;
-    background-color: var(--color-black);
+    background-color: transparent;
+    min-height: 4rem;
     z-index: 2;
+    padding-right: 5rem;
+    position: absolute;
+    right: 0;
+    width: 100%;
 
     #logoLink {
-        display: flex;
+        display: none;
         align-items: center;
         margin-left: 1rem;
+        font-size: 0.5rem;
 
         .header__title {
             letter-spacing: 0.2rem;
@@ -22,46 +28,31 @@ header {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
     header {
-        #logoLink { 
-            font-size: 0.5rem;
-
-            & .header__title {
-                font-size: 1.1rem;
-            }
-        }
-    }
-}
-
-@media (max-width: 700px) {
-    header {
-        position: fixed;
-        min-height: 3rem;
-        flex-direction: row-reverse;
-        width: 100%;
-
-        #logoLink {
-            margin: 0;
-            text-align: center;
-            width: 10rem;
-            margin-right: 38%;
-
-            #logo { 
-                display: none;
-            }
-
-            & .header__title {
-                font-size: 1rem;
-            }
-        }
+        padding-right: 2rem;
     }
 }
 
 @media (max-width: 500px) {
     header {
+        position: fixed;
+        min-height: 3rem;
+        flex-direction: row-reverse;
+        width: 100%;
+        background-color: var(--color-black);
+        padding-right: 0;
+
         #logoLink {
+            display: flex;
+            margin: 0;
+            text-align: center;
+            width: 10rem;
             margin-right: 32%;
+
+            & .header__title {
+                font-size: 1rem;
+            }
         }
     }
 }

@@ -75,50 +75,47 @@ export default function AboutPage(): ReactElement {
 
     return (
         <main id="aboutPage">
-            <section id="timeline-outer">
-                <section id="timeline-inner">
+            <section id="timeline-inner">
+                <section id="timeline-container">
+                    {
+                        timeline?.map(event => 
+                            <img 
+                                src={event.image}
+                                className={`backgroundImage ${year === event.year ? `b${year} display-element` : "hidden-element"}`} 
+                                key={event.image} 
+                            />
+                        )
+                    }
+                </section>
 
-                    <section id="timeline-container">
-                        {
-                            timeline?.map(event => 
-                                <img 
-                                    src={event.image}
-                                    className={`backgroundImage ${year === event.year ? `b${year} display-element` : "hidden-element"}`} 
-                                    key={event.image} 
-                                />
-                            )
-                        }
-                    </section>
+                <section id="timeline-years">
+                    { 
+                        timeline?.map(event => 
+                            <article className="timeline-year" onClick={() => setYear(event.year)} key={event.year}>
+                                <h2 className={year === event.year ? "timeline-year__title active" : "timeline-year__title"}> { event.year } </h2>
+                                <div className="hexagon" />
+                            </article>
+                        )
+                    }
+                </section>
 
-                    <section id="timeline-years">
-                        { 
-                            timeline?.map(event => 
-                                <article className="timeline-year" onClick={() => setYear(event.year)} key={event.year}>
-                                    <h2 className={year === event.year ? "timeline-year__title active" : "timeline-year__title"}> { event.year } </h2>
-                                    <div className="hexagon" />
-                                </article>
-                            )
-                        }
-                    </section>
+                <dialog id="textModal" ref={modalRef}>
+                    <form method="dialog">
+                        <h1 className="modal__text"> {timeline?.filter(event => event.year === year).map(event => event.text)[0]} </h1>
+                        <button onClick={() => modalRef.current?.close()} className={`gameButton ${arima.className}`}> Close </button>
+                    </form>
+                </dialog>
 
-                    <dialog id="textModal" ref={modalRef}>
-                        <form method="dialog">
-                            <h1 className="modal__text"> {timeline?.filter(event => event.year === year).map(event => event.text)[0]} </h1>
-                            <button onClick={() => modalRef.current?.close()} className={`gameButton ${arima.className}`}> Close </button>
-                        </form>
-                    </dialog>
-
-                    <section id="timeline-text">
-                        { 
-                            timeline?.map(event => 
-                                <article className={`timeline-text ${year === event.year ? "display-element" : "hidden-element"}`} key={event.title}>
-                                    <h2 className="timeline-text__title"> {event.title} </h2>
-                                    <p className="aboutPage__paragraph"> {event.text} </p>
-                                    <button className="gameButton" onClick={() => modalRef.current?.showModal()}> Show text </button>
-                                </article>
-                            )
-                        }
-                    </section>
+                <section id="timeline-text">
+                    { 
+                        timeline?.map(event => 
+                            <article className={`timeline-text ${year === event.year ? "display-element" : "hidden-element"}`} key={event.title}>
+                                <h2 className="timeline-text__title"> {event.title} </h2>
+                                <p className="aboutPage__paragraph"> {event.text} </p>
+                                <button className="gameButton" onClick={() => modalRef.current?.showModal()}> Show text </button>
+                            </article>
+                        )
+                    }
                 </section>
             </section>
         </main>

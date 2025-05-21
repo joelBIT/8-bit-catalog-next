@@ -1,19 +1,22 @@
 #gameDetailsPage {
-    background-image: url("../../../../assets/backgrounds/nostalgic-nes-controller.webp");
+    background-image: url("../../../../assets/backgrounds/nes-controller-in-black.webp");
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5rem;
+    padding-top: 10rem;
 }
 
 @media (max-width: 700px) {
     #gameDetailsPage {
         padding: 2rem;
+        padding-top: 10rem;
     }
 }
 
 @media (max-width: 500px) {
     #gameDetailsPage {
         padding: 1rem;
+        padding-top: 5rem;
     }
 }

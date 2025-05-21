@@ -2,177 +2,175 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
 
-    & #timeline-outer {
-        padding: 1rem;
+    & #timeline-inner {
+        display: flex;
         border-radius: 9px;
         min-height: 100vh;
         width: 100%;
 
-        & #timeline-inner {
-            display: flex;
+        & #textModal {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 90%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+            scrollbar-width: none;
+            background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+            overflow: hidden;
 
-            & #textModal {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                width: 90%;
-                transform: translate(-50%, -50%);
-                border-radius: 8px;
-                scrollbar-width: none;
-                background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
-                overflow: hidden;
-
-                & form {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                    height: 100%;
-
-                    & .modal__text {
-                        color: var(--black);
-                        font-size: 1rem;
-                        text-align: left;
-                        margin: 1rem;
-                    }
-
-                    & .gameButton {
-                        margin: 1rem;
-                        align-self: center;
-                    }
-                }
-            }
-
-            & #timeline-container {
-                box-sizing: border-box;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
+            & form {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
                 height: 100%;
 
-                & .backgroundImage {
-                    box-sizing: border-box;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    min-width: 100%;
-                    min-height: 100%;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    filter: brightness(0.3);
-                    transition: all 0.5s ease-in-out;
+                & .modal__text {
+                    color: var(--black);
+                    font-size: 1rem;
+                    text-align: left;
+                    margin: 1rem;
                 }
 
-                & .b1985,
-                .b1987 {
-                    left: auto;
-                    right: 0;
-                }
-
-                & .b1997 {
-                    top: auto;
-                    bottom: 0;
-                }
-
-                & .display-element {
-                    display: block;
-                }
-
-                & .hidden-element {
-                    display: none;
+                & .gameButton {
+                    margin: 1rem;
+                    align-self: center;
                 }
             }
+        }
 
-            & #timeline-years {
+        & #timeline-container {
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            & .backgroundImage {
+                box-sizing: border-box;
+                position: absolute;
+                top: 0;
+                left: 0;
+                min-width: 100%;
+                min-height: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                filter: brightness(0.3);
+                transition: all 0.5s ease-in-out;
+            }
+
+            & .b1985,
+            .b1987 {
+                left: auto;
+                right: 0;
+            }
+
+            & .b1997 {
+                top: auto;
+                bottom: 0;
+            }
+
+            & .display-element {
+                display: block;
+            }
+
+            & .hidden-element {
+                display: none;
+            }
+        }
+
+        & #timeline-years {
+            display: flex;
+            flex-direction: column;
+            gap: 15rem;
+            align-items: flex-end;
+            justify-content: space-around;
+            z-index: 1;
+            width: 20%;
+            border-right: 1px solid white;
+            min-height: 100vh;
+            padding-bottom: 35rem;
+            padding-top: 10rem;
+            transition: all 0.5s;
+
+            & .timeline-year {
                 display: flex;
-                flex-direction: column;
-                gap: 15rem;
-                align-items: flex-end;
-                justify-content: space-around;
-                z-index: 1;
-                width: 20%;
-                border-right: 1px solid white;
-                min-height: 100vh;
-                padding-bottom: 20rem;
-                padding-top: 10rem;
+                align-items: center;
                 transition: all 0.5s;
 
-                & .timeline-year {
-                    display: flex;
-                    align-items: center;
+                &:hover {
+                    cursor: pointer;
+                }
+
+                .hexagon {
+                    height: 20px;
+                    aspect-ratio: 1/cos(30deg);
+                    clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
+                    background: var(--color-white);
+                    opacity: 0.5;
+                    position: relative;
+                    right: -12px;
+                }
+
+                & .timeline-year__title {
+                    margin-right: 1rem;
+                    font-size: 1rem;
+                    transition: all 0.5s;
+                }
+
+                & .active {
+                    font-size: 5rem;
                     transition: all 0.5s;
 
-                    &:hover {
-                        cursor: pointer;
-                    }
-
-                    .hexagon {
-                        height: 20px;
-                        aspect-ratio: 1/cos(30deg);
-                        clip-path: polygon(50% -50%,100% 50%,50% 150%,0 50%);
-                        background: var(--color-white);
-                        opacity: 0.5;
-                        position: relative;
-                        right: -12px;
-                    }
-
-                    & .timeline-year__title {
-                        margin-right: 1rem;
-                        font-size: 1rem;
-                        transition: all 0.5s;
-                    }
-
-                    & .active {
-                        font-size: 5rem;
-                        transition: all 0.5s;
-
-                        ~ .hexagon {
-                            opacity: 1;
-                        }
+                    ~ .hexagon {
+                        opacity: 1;
                     }
                 }
             }
+        }
 
-            & #timeline-text {
+        & #timeline-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+            width: 75%;
+            padding-left: 10rem;
+            padding-top: 10rem;
+
+            & .timeline-text {
                 display: flex;
                 flex-direction: column;
+                position: fixed;
+                margin-right: 5rem;
                 gap: 0.5rem;
-                position: relative;
-                width: 75%;
-                padding-left: 10rem;
+                animation: 0.5s fadeInRight ease-in-out;
 
-                & .timeline-text {
-                    display: flex;
-                    flex-direction: column;
-                    position: fixed;
-                    margin-right: 5rem;
-                    gap: 0.5rem;
-                    animation: 0.5s fadeInRight ease-in-out;
-
-                    & .timeline-text__title {
-                        font-size: 3rem;
-                        padding-bottom: 1rem;
-                    }
-
-                    & .aboutPage__paragraph {
-                        font-size: 1.5rem;
-                        font-weight: 100;
-                        line-height: 1.8rem;
-                    }
-
-                    & .gameButton {
-                        display: none;
-                    }
+                & .timeline-text__title {
+                    font-size: 3rem;
+                    padding-bottom: 1rem;
                 }
 
-                & .display-element {
-                    display: block;
+                & .aboutPage__paragraph {
+                    font-size: 1.5rem;
+                    font-weight: 100;
+                    line-height: 1.8rem;
                 }
 
-                & .hidden-element {
+                & .gameButton {
                     display: none;
                 }
+            }
+
+            & .display-element {
+                display: block;
+            }
+
+            & .hidden-element {
+                display: none;
             }
         }
     }
@@ -196,27 +194,25 @@
 
 @media (max-width: 1000px) {
     #aboutPage {
-        & #timeline-outer {
-            & #timeline-inner {
-                & #timeline-years {
-                    & .timeline-year {
-                        & .active {
-                            font-size: 3rem;
-                        }
+        & #timeline-inner {
+            & #timeline-years {
+                & .timeline-year {
+                    & .active {
+                        font-size: 3rem;
                     }
                 }
+            }
 
-                & #timeline-text {
-                    padding-left: 4rem;
+            & #timeline-text {
+                padding-left: 4rem;
 
-                    & .timeline-text {
-                        & .timeline-text__title {
-                            font-size: 2rem;
-                        }
+                & .timeline-text {
+                    & .timeline-text__title {
+                        font-size: 2rem;
+                    }
 
-                        .aboutPage__paragraph {
-                            font-size: 1.4rem;
-                        }
+                    .aboutPage__paragraph {
+                        font-size: 1.4rem;
                     }
                 }
             }
@@ -228,39 +224,37 @@
     #aboutPage {
         padding: 1rem;
 
-        & #timeline-outer {
+        & #timeline-inner {
             padding: 0;
 
-            & #timeline-inner {
-                & #timeline-years {
-                    gap: 16rem;
+            & #timeline-years {
+                gap: 16rem;
 
-                    & .timeline-year {
-                        & .timeline-year__title {
-                            margin-right: 0;
-                        }
+                & .timeline-year {
+                    & .timeline-year__title {
+                        margin-right: 0;
+                    }
 
-                        & .active {
-                            font-size: 2rem;
-                        }
+                    & .active {
+                        font-size: 2rem;
                     }
                 }
+            }
 
-                & #timeline-text {
-                    padding-left: 2rem;
-                    width: 100%;
-                    padding-top: 5rem;
+            & #timeline-text {
+                padding-left: 2rem;
+                width: 100%;
+                padding-top: 5rem;
 
-                    & .timeline-text {
-                        margin-right: 1rem;
+                & .timeline-text {
+                    margin-right: 1rem;
 
-                        & .timeline-text__title {
-                            font-size: 1.7rem;
-                        }
+                    & .timeline-text__title {
+                        font-size: 1.7rem;
+                    }
 
-                        .aboutPage__paragraph {
-                            font-size: 1.2rem;
-                        }
+                    .aboutPage__paragraph {
+                        font-size: 1.2rem;
                     }
                 }
             }
@@ -270,62 +264,60 @@
 
 @media (max-width: 520px) {
     #aboutPage {
-        & #timeline-outer {
-            & #timeline-inner {
-                & #timeline-container {
-                    & .b1983 {
-                        top: auto;
-                        left: auto;
-                        right: -500px;
-                        bottom: 0;
+        & #timeline-inner {
+            & #timeline-container {
+                & .b1983 {
+                    top: auto;
+                    left: auto;
+                    right: -500px;
+                    bottom: 0;
+                }
+
+                & .b1985,
+                .b1986 {
+                    top: auto;
+                    left: -500px;
+                }
+
+                & .b1987 {
+                    left: auto;
+                    right: 0;
+                }
+
+                & .b1995 {
+                    top: auto;
+                    bottom: 0;
+                }
+
+                & .b1997,
+                .b2025 {
+                    top: auto;
+                    bottom: 0;
+                    left: -500px;
+                }
+            }
+
+            & #timeline-text {
+                & .timeline-text {
+                    width: 70%;
+                    text-align: center;
+
+                    & .aboutPage__paragraph {
+                        display: none;
                     }
 
-                    & .b1985,
-                    .b1986 {
-                        top: auto;
-                        left: -500px;
-                    }
-
-                    & .b1987 {
-                        left: auto;
-                        right: 0;
-                    }
-
-                    & .b1995 {
-                        top: auto;
-                        bottom: 0;
-                    }
-
-                    & .b1997,
-                    .b2025 {
-                        top: auto;
-                        bottom: 0;
-                        left: -500px;
+                    & .gameButton {
+                        display: flex;
+                        justify-self: center;
+                        align-self: center;
+                        width: fit-content;
+                        padding: 0.5rem 1rem;
                     }
                 }
 
-                & #timeline-text {
-                    & .timeline-text {
-                        width: 70%;
-                        text-align: center;
-
-                        & .aboutPage__paragraph {
-                            display: none;
-                        }
-
-                        & .gameButton {
-                            display: flex;
-                            justify-self: center;
-                            align-self: center;
-                            width: fit-content;
-                            padding: 0.5rem 1rem;
-                        }
-                    }
-
-                    & .display-element {
-                        display: flex;
-                        align-items: center;
-                    }
+                & .display-element {
+                    display: flex;
+                    align-items: center;
                 }
             }
         }
@@ -334,27 +326,25 @@
 
 @media (max-width: 410px) {
     #aboutPage {
-        & #timeline-outer {
-            & #timeline-inner {
-                & #timeline-years {
-                    & .timeline-year {
-                        & .active {
-                            font-size: 1.5rem;
-                        }
+        & #timeline-inner {
+            & #timeline-years {
+                & .timeline-year {
+                    & .active {
+                        font-size: 1.5rem;
                     }
                 }
+            }
 
-                & #timeline-text {
-                    & .timeline-text {
-                        & .timeline-text__title {
-                            font-size: 1.3rem;
-                            margin-right: 1rem;
-                        }
+            & #timeline-text {
+                & .timeline-text {
+                    & .timeline-text__title {
+                        font-size: 1.3rem;
+                        margin-right: 1rem;
+                    }
 
-                        & .gameButton {
-                            margin-top: 1rem;
-                            font-size: 1rem;
-                        }
+                    & .gameButton {
+                        margin-top: 1rem;
+                        font-size: 1rem;
                     }
                 }
             }

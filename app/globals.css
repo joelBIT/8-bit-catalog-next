@@ -94,13 +94,6 @@ textarea {
     }
 }
 
-@media (max-width: 700px) {
-    main:not(#registerPage):not(#loginPage) {
-        margin-top: 2rem;
-    }
-}
-
-
 
 
 
@@ -339,64 +332,6 @@ textarea {
 
 
 
-
-/********************
-* Pixelated Corners *
-********************/
-
-.pixel-corners {
-    clip-path: polygon(
-        0px calc(100% - 24px),
-        4px calc(100% - 24px),
-        4px calc(100% - 16px),
-        8px calc(100% - 16px),
-        8px calc(100% - 12px),
-        12px calc(100% - 12px),
-        12px calc(100% - 8px),
-        16px calc(100% - 8px),
-        16px calc(100% - 4px),
-        24px calc(100% - 4px),
-        24px 100%,
-        calc(100% - 24px) 100%,
-        calc(100% - 24px) calc(100% - 4px),
-        calc(100% - 16px) calc(100% - 4px),
-        calc(100% - 16px) calc(100% - 8px),
-        calc(100% - 12px) calc(100% - 8px),
-        calc(100% - 12px) calc(100% - 12px),
-        calc(100% - 8px) calc(100% - 12px),
-        calc(100% - 8px) calc(100% - 16px),
-        calc(100% - 4px) calc(100% - 16px),
-        calc(100% - 4px) calc(100% - 24px),
-        100% calc(100% - 24px),
-        100% 24px,
-        calc(100% - 4px) 24px,
-        calc(100% - 4px) 16px,
-        calc(100% - 8px) 16px,
-        calc(100% - 8px) 12px,
-        calc(100% - 12px) 12px,
-        calc(100% - 12px) 8px,
-        calc(100% - 16px) 8px,
-        calc(100% - 16px) 4px,
-        calc(100% - 24px) 4px,
-        calc(100% - 24px) 0px,
-        24px 0px,
-        24px 4px,
-        16px 4px,
-        16px 8px,
-        12px 8px,
-        12px 12px,
-        8px 12px,
-        8px 16px,
-        4px 16px,
-        4px 24px,
-        0px 24px
-    );
-}
-
-
-
-
-
 /*********
 * Modals *
 *********/
@@ -411,6 +346,8 @@ textarea {
     );
     opacity: 0.75;
 }
+
+
 
 
 

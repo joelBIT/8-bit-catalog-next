@@ -3,15 +3,82 @@
     align-items: center;
     justify-content: center;
 
-    #background-video {
+    & #image-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
+        background: linear-gradient(to bottom left, var(--color-black) 70%, #2E3028);
+        position: absolute;
+        
+        & #logo {
+            width: 20%;
+        }
+    }
+}
+
+@media (max-width: 1500px) {
+    #landingPage {
+        & #image-wrapper {
+            & #logo {
+                width: 25%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1300px) {
+    #landingPage {
+        & #image-wrapper {
+            & #logo {
+                width: 30%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    #landingPage {
+        & #image-wrapper {
+            & #logo {
+                width: 40%;
+            }
+
+            & .landing-text {
+                font-size: 4rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #landingPage {
+        & #image-wrapper {
+            & #logo {
+                width: 60%;
+            }
+
+            & .landing-text {
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #landingPage {
+        & #image-wrapper {
+            justify-content: center;
+
+            & #logo {
+                width: 90%;
+            }
+
+            & #landing-text {
+                display: none;
+            }
+        }
     }
 }

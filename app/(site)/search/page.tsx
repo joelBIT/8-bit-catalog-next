@@ -14,33 +14,34 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
 
     return (
         <main id="searchPage">
-            <search id="searchFilters">
-                <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
-                <Form id="searchFilters__form" action="" scroll={false}>
-                    <article className="searchFilters__filters">
-                        <CategoryFilter defaultValue={params.category} />
-                        <PublisherFilter defaultValue={params.publisher} />
-                        <DeveloperFilter defaultValue={params.developer} />
-                    </article>
+            <section id="searchPage-wrapper">
+                <search id="searchFilters">
+                    <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
+                    <Form id="searchFilters__form" action="" scroll={false}>
+                        <article className="searchFilters__filters">
+                            <CategoryFilter defaultValue={params.category} />
+                            <PublisherFilter defaultValue={params.publisher} />
+                            <DeveloperFilter defaultValue={params.developer} />
+                        </article>
 
-                    <search id="searchInput">
-                        <section className="input-wrapper">
-                            <span className="material-symbols-outlined"> search </span>
-                            <input 
-                                id="searchTitle"
-                                name="title"
-                                className={arima.className} 
-                                type="text"
-                                placeholder="Game Title"
-                            />
-                        </section>
+                        <search id="searchInput">
+                            <section className="input-wrapper">
+                                <span className="material-symbols-outlined"> search </span>
+                                <input 
+                                    id="searchTitle"
+                                    name="title"
+                                    className={arima.className} 
+                                    type="text"
+                                    placeholder="Game Title"
+                                />
+                            </section>
 
-                        <SearchButton />
-                    </search>
-                </Form>
-            </search>
-            
-            <Search />
+                            <SearchButton />
+                        </search>
+                    </Form>
+                </search>
+                <Search />
+            </section>
         </main>
     );
 }
