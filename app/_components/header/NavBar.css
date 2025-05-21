@@ -16,20 +16,29 @@
         margin-right: 2rem;
 
         .navbar__list-element {
+            list-style: none;
+            position: relative;
+            display: inline;
             transition: all 0.3s;
             
             .navbar__list-element-link {
                 font-size: 1.5rem;
-                
-                .navbar__list-element-title {
-                    font-weight: 100;
-                    font-size: 1.5rem;
-                    transition: all 0.3s;
+                text-decoration: none;
 
-                    &:hover {
-                        color: var(--color-link-active);
-                        transition: color 0.2s ease-in-out;
-                    }
+                :after {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    bottom: -2px;
+                    width: 0px;
+                    height: 2px;
+                    background: var(--color-white);
+                    transition: all 0.45s;
+                }
+
+                :hover:after {
+                    width: 100%;
+                    left: 0;
                 }
             }
 
@@ -40,11 +49,6 @@
             .material-symbols-outlined {
                 font-size: 2rem;
                 vertical-align: text-bottom;
-
-                &:hover {
-                    color: var(--color-link-active);
-                    transition: color 0.2s ease-in-out;
-                }
             }
 
             .smallScreen {
