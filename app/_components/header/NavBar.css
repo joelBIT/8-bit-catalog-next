@@ -19,10 +19,11 @@
             transition: all 0.3s;
             
             .navbar__list-element-link {
-                font-size: calc(1vw + 1vh + 2vmin);
+                font-size: 1.5rem;
                 
                 .navbar__list-element-title {
                     font-weight: 100;
+                    font-size: 1.5rem;
                     transition: all 0.3s;
 
                     &:hover {
@@ -37,7 +38,7 @@
             }
 
             .material-symbols-outlined {
-                font-size: 4rem;
+                font-size: 2rem;
                 vertical-align: text-bottom;
 
                 &:hover {
@@ -53,23 +54,7 @@
     }
 }
 
-@media (max-width: 850px) {
-    .navbar {
-        .navbar__list {
-            .navbar__list-element {
-                .navbar__list-element-link {
-                    font-size: 3vw;
-                }
-
-                .material-symbols-outlined {
-                    font-size: 3rem;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 700px) {
+@media (max-width: 500px) {
     .navbar {
         position: fixed;
         top: 0;
@@ -88,21 +73,12 @@
             .navbar__list-element {
                 margin-left: 2rem;
 
-                .navbar__list-element-link {
-                    font-size: 3rem;
-
-                    .navbar__list-element-title {
-                        font-size: 3rem;
-                    }
-                }
-
                 .wideScreen {
                     display: none;
                 }
             
                 .smallScreen {
                     display: block;
-                    font-size: 3rem;
                 }
             }
         }

@@ -30,3 +30,13 @@
         flex-direction: column;
     }
 }
+
+@media (max-width: 500px) {
+    #landingPage {
+        & #image-wrapper {
+            & .landing-text {
+                display: none;
+            }
+        }
+    }
+}
