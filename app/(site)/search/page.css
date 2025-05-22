@@ -77,12 +77,14 @@
 
 @media (max-width: 950px) {
     #searchPage {
-        #searchFilters {
-            #searchFilters__form {
-                text-align: center;
+        & #searchPage-wrapper {
+            #searchFilters {
+                #searchFilters__form {
+                    text-align: center;
 
-                & .searchFilters__filters {
-                    flex-direction: column;
+                    & .searchFilters__filters {
+                        flex-direction: column;
+                    }
                 }
             }
         }
@@ -91,20 +93,22 @@
 
 @media (max-width: 600px) {
     #searchPage {
-        #searchFilters {
-            #searchInput {
-                flex-direction: column;
+        & #searchPage-wrapper {
+            #searchFilters {
+                #searchInput {
+                    flex-direction: column;
 
-                #searchTitle {
-                    margin-right: 2rem;
+                    #searchTitle {
+                        margin-right: 2rem;
+                    }
                 }
-            }
-    
-            #searchFilters__form {
-                & .searchFilters__filters {
-                    .selectSection {
-                        .selectSection__select {
-                            font-size: 1.2rem;
+        
+                #searchFilters__form {
+                    & .searchFilters__filters {
+                        .selectSection {
+                            .selectSection__select {
+                                font-size: 1.2rem;
+                            }
                         }
                     }
                 }
@@ -115,19 +119,21 @@
 
 @media (max-width: 400px) {
     #searchPage {
-        #searchFilters {
-            #searchInput {
-                #searchTitle {
-                    font-size: 1.2rem;
-                    width: 80vw;
+        & #searchPage-wrapper {
+            #searchFilters {
+                #searchInput {
+                    #searchTitle {
+                        font-size: 1.2rem;
+                        width: 80vw;
+                    }
                 }
-            }
 
-            #searchFilters__form {
-                & .searchFilters__filters {
-                    .selectSection {
-                        .selectSection__select {
-                            font-size: 0.9rem;
+                #searchFilters__form {
+                    & .searchFilters__filters {
+                        .selectSection {
+                            .selectSection__select {
+                                font-size: 0.9rem;
+                            }
                         }
                     }
                 }
