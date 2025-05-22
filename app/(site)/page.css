@@ -9,9 +9,11 @@
         align-items: center;
         justify-content: center;
         padding-top: 5rem;
-        padding-bottom: 2rem;
+        padding-bottom: 3rem;
         width: 100%;
-        min-height: 90vh;
+        position: absolute;
+        top: 0;
+        bottom: 0;
         background: linear-gradient(to bottom left, var(--color-black) 70%, #2E3028);
         
         & #logo {
