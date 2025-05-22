@@ -1,5 +1,5 @@
 #favouritesPage {
-    background: linear-gradient(to bottom left, var(--color-black) 70%, #2E3028);
+    background: linear-gradient(to bottom left, var(--color-black) 70%, var(--color-black-light));
     display: flex;
     flex-direction: column;
     align-items: center;

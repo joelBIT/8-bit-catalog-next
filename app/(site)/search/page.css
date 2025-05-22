@@ -2,9 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../../../assets/backgrounds/nes-controller-in-black.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(to bottom left, var(--color-black) 70%, var(--color-black-light));
     padding: 0;
 
     & #searchPage-wrapper {
