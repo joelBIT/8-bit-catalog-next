@@ -7,9 +7,12 @@ footer {
 
     #footerComponents {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         height: 100%;
-        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-white);
+        margin-left: 5rem;
+        margin-right: 5rem;
     }
 
     #copyright {
@@ -27,6 +30,24 @@ footer {
         & .material-symbols-outlined, & .copyright__text {
             align-self: first baseline;
             text-align: center;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    footer {
+        #footerComponents {
+            margin-left: 2rem;
+            margin-right: 2rem;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    footer {
+        #footerComponents {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
         }
     }
 }

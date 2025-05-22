@@ -12,19 +12,19 @@
         min-width: 100%;
         min-height: 100%;
 
-        #searchFilters {
+        & #searchFilters {
             display: flex;
             flex-direction: column;
             padding-top: 10rem;
 
-            .searchFilters__title {
+            & .searchFilters__title {
                 font-size: 50px;
                 font-weight: 500;
                 margin: 1rem 0;
                 align-self: center;
             }
         
-            #searchFilters__form {
+            & #searchFilters__form {
                 display: flex;
                 flex-direction: column;
                 gap: 3rem;
@@ -34,19 +34,19 @@
                     display: flex;
                     gap: 3rem;
         
-                    .selectSection {
+                    & .selectSection {
                         .selectSection__title {
                             font-weight: 900;
                         }
                     
-                        .selectSection__select {
+                        & .selectSection__select {
                             font-size: 1.4rem;
                             padding: 0.2rem;
                         }
                     }
                 }
         
-                #searchInput {
+                & #searchInput {
                     display: flex;
                     align-self: center;
                     margin-top: 3rem;
@@ -65,7 +65,7 @@
                             z-index: 1;
                         }
                     
-                        #searchTitle {
+                        & #searchTitle {
                             padding-left: 2.5rem;
                         }
                     }
