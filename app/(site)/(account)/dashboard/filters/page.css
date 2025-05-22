@@ -9,7 +9,7 @@
 
 @media (max-width: 500px) {
     #filtersPage {
-        padding: 0;
+        padding-top: 5rem;
         align-items: flex-end;
     }
 }
