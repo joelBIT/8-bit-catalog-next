@@ -86,7 +86,7 @@
 
     :has(.rotate-down) {
         & ~ #accountMenu {
-            width: 14rem;
+            width: 12rem;
             transition: width 1s ease-in-out;
     
             & #pages {

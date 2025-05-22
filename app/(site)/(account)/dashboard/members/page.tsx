@@ -42,8 +42,8 @@ export default function MembersPage(): ReactElement {
 
     return (
         <main id="membersPage">
+            <h1 className="title"> Members </h1>
             <section id="heading">
-                <h1 className="title"> Members </h1>
                 <h2 className="members-count__text"> All members ({members.length}) </h2>
 
                 <search className="search-members">
