@@ -2,9 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../../../assets/backgrounds/nes-controller-in-black.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
     padding: 0;
 
     & #searchPage-wrapper {
@@ -14,19 +12,19 @@
         min-width: 100%;
         min-height: 100%;
 
-        #searchFilters {
+        & #searchFilters {
             display: flex;
             flex-direction: column;
             padding-top: 10rem;
 
-            .searchFilters__title {
+            & .searchFilters__title {
                 font-size: 50px;
                 font-weight: 500;
                 margin: 1rem 0;
                 align-self: center;
             }
         
-            #searchFilters__form {
+            & #searchFilters__form {
                 display: flex;
                 flex-direction: column;
                 gap: 3rem;
@@ -36,19 +34,19 @@
                     display: flex;
                     gap: 3rem;
         
-                    .selectSection {
+                    & .selectSection {
                         .selectSection__title {
                             font-weight: 900;
                         }
                     
-                        .selectSection__select {
+                        & .selectSection__select {
                             font-size: 1.4rem;
                             padding: 0.2rem;
                         }
                     }
                 }
         
-                #searchInput {
+                & #searchInput {
                     display: flex;
                     align-self: center;
                     margin-top: 3rem;
@@ -67,7 +65,7 @@
                             z-index: 1;
                         }
                     
-                        #searchTitle {
+                        & #searchTitle {
                             padding-left: 2.5rem;
                         }
                     }
@@ -79,12 +77,14 @@
 
 @media (max-width: 950px) {
     #searchPage {
-        #searchFilters {
-            #searchFilters__form {
-                text-align: center;
+        & #searchPage-wrapper {
+            #searchFilters {
+                #searchFilters__form {
+                    text-align: center;
 
-                & .searchFilters__filters {
-                    flex-direction: column;
+                    & .searchFilters__filters {
+                        flex-direction: column;
+                    }
                 }
             }
         }
@@ -93,20 +93,22 @@
 
 @media (max-width: 600px) {
     #searchPage {
-        #searchFilters {
-            #searchInput {
-                flex-direction: column;
+        & #searchPage-wrapper {
+            #searchFilters {
+                #searchInput {
+                    flex-direction: column;
 
-                #searchTitle {
-                    margin-right: 2rem;
+                    #searchTitle {
+                        margin-right: 2rem;
+                    }
                 }
-            }
-    
-            #searchFilters__form {
-                & .searchFilters__filters {
-                    .selectSection {
-                        .selectSection__select {
-                            font-size: 1.2rem;
+        
+                #searchFilters__form {
+                    & .searchFilters__filters {
+                        .selectSection {
+                            .selectSection__select {
+                                font-size: 1.2rem;
+                            }
                         }
                     }
                 }
@@ -117,19 +119,21 @@
 
 @media (max-width: 400px) {
     #searchPage {
-        #searchFilters {
-            #searchInput {
-                #searchTitle {
-                    font-size: 1.2rem;
-                    width: 80vw;
+        & #searchPage-wrapper {
+            #searchFilters {
+                #searchInput {
+                    #searchTitle {
+                        font-size: 1.2rem;
+                        width: 80vw;
+                    }
                 }
-            }
 
-            #searchFilters__form {
-                & .searchFilters__filters {
-                    .selectSection {
-                        .selectSection__select {
-                            font-size: 0.9rem;
+                #searchFilters__form {
+                    & .searchFilters__filters {
+                        .selectSection {
+                            .selectSection__select {
+                                font-size: 0.9rem;
+                            }
                         }
                     }
                 }

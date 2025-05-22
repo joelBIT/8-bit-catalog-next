@@ -57,7 +57,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
 
                 { authenticated ?
                     <li className="navbar__list-element" onClick={logout}>
-                        <Link href={URL_HOME}>
+                        <Link href={URL_HOME} className="navbar__list-element-link">
                             <span className="material-symbols-outlined wideScreen">logout</span>
                             <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}> Logout </h2>
                         </Link>

@@ -15,7 +15,7 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        background: linear-gradient(to bottom left, var(--color-black) 70%, #2E3028);
+        background: linear-gradient(to bottom left, var(--color-black) 70%, var(--color-black-light));
         
         & #logo {
             width: 20%;

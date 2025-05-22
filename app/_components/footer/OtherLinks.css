@@ -36,3 +36,17 @@
         }
     }
 }
+
+@media (max-width: 350px) {
+    #otherLinks {
+        .otherLinks__title {
+            font-size: 1.1rem;
+        }
+
+        .otherLinks__list {
+            .otherLinks__link {
+                font-size: 0.7rem;
+            }
+        }
+    }
+}

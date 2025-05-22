@@ -54,3 +54,17 @@
         }
     }
 }
+
+@media (max-width: 350px) {
+    #contact {
+        .contact__title {
+            font-size: 1.1rem;
+        }
+
+        .contact__list {
+            .contact__link, .contact__info {
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
