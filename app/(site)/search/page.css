@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom left, var(--color-black) 70%, var(--color-black-light));
+    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
     padding: 0;
 
     & #searchPage-wrapper {
