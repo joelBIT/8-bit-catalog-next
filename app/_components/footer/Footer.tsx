@@ -15,8 +15,9 @@ export async function Footer(): Promise<ReactElement> {
             </section>
             
             <article id="copyright">
-                <span className="material-symbols-outlined">copyright</span> 
-                <h4 className="copyright__text">2025 Joel Rollny</h4>
+                <h4 className="copyright__text"> Copyright </h4>
+                <span className="material-symbols-outlined"> copyright </span> 
+                <h4 className="copyright__text">2025</h4>
             </article>
         </footer>
     );
