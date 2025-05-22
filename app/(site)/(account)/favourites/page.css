@@ -1,5 +1,5 @@
 #favouritesPage {
-    background-image: url("../../../../assets/backgrounds/nes-controller-in-black.webp");
+    background: linear-gradient(to bottom left, var(--color-black) 70%, #2E3028);
     display: flex;
     flex-direction: column;
     align-items: center;
