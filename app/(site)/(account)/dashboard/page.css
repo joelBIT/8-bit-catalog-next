@@ -4,6 +4,7 @@
     align-items: center;
     background-image: url("../../../../assets/backgrounds/account_wallpaper.png");
     min-height: 100vh;
+    padding: 10rem 1rem;
 
     & .user-information {
         margin-bottom: 3rem;

@@ -4,6 +4,8 @@
     align-items: center;
     background-image: url("../../../../../assets/backgrounds/account_wallpaper.png");
     min-height: 100vh;
+    padding-top: 10rem;
+    padding-left: 10rem;
 
     #heading {
         display: flex;
