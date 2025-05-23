@@ -1,3 +1,21 @@
 #gameList {
     display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    & .gameList-row {
+        display: flex;
+        grid-column: 1 / 6;
+
+        & .gameCard-figure__cover {
+            grid-column: 1 / 2;
+        }
+
+        & .gameCard-title {
+            grid-column: 2 / 3;
+        }
+
+        & .gameCard-category {
+            grid-column: 3 / 4;
+        }
+    }
 }
