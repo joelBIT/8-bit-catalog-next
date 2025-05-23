@@ -30,9 +30,11 @@
     .disabled {
         cursor: pointer;
         padding: 0.5rem;
+        transition: all 0.5s;
 
         &:hover {
-            filter: brightness(1.5);
+            filter: brightness(0.5);
+            transition: filter 0.5s;
         }
     }
 }
