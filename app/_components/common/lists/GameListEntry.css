@@ -1,0 +1,55 @@
+.gameListEntry {
+    display: flex;
+    height: 4rem;
+    width: 100%;
+    align-items: center;
+    border-top: 1px solid var(--color-white);
+
+    & .gameCard-figure__cover {
+        height: 70%;
+        width: 2rem;
+        height: 2.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    & .gameCard-title {
+        text-align: left;
+        padding-left: 1rem;
+        width: 50%;
+    }
+
+    & .gameCard-category,
+    .gameCard-developer,
+    .gameCard-players,
+    .gameCard-publisher {
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
+
+    & .gameCard-category {
+        width: 20%;
+    }
+
+    & .gameCard-players {
+        width: 10%;
+    }
+
+    & .gameCard-developer {
+        width: 30%;
+    }
+
+    & .gameCard-publisher {
+        width: 30%;
+    }
+
+    & .favouriteButton {
+        height: 3rem;
+        width: 2rem;
+        margin: 0;
+        align-self: flex-start;
+        justify-self: flex-end;
+    }
+}
