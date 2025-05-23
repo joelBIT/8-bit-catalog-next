@@ -19,6 +19,15 @@
         text-align: left;
         padding-left: 1rem;
         width: 50%;
+
+        & .gameCard-title__link {
+            transition: all 0.5s;
+
+            &:hover {
+                filter: brightness(0.5);
+                transition: filter 0.5s;
+            }
+        }
     }
 
     & .gameCard-category,

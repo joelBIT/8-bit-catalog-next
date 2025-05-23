@@ -28,7 +28,7 @@ export function FavouriteListEntry({ game }: { game: Game }): ReactElement {
             </Link>
 
             <h2 className="gameCard-title"> 
-                <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`}> 
+                <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className="gameCard-title__link"> 
                     {game.title} 
                 </Link> 
             </h2>
