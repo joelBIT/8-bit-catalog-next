@@ -12,33 +12,58 @@ import "./FavouriteListEntry.css";
  */
 export function FavouriteListEntry({ game }: { game: Game }): ReactElement {
     const [ removeCard, setRemoveCard ] = useState<boolean>(false);
+    const [ showModal, setShowModal ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
+    function setModalCoordinates(e: any) {
+        console.log(e);
+        console.log(e.clientX);
+        console.log(e.clientY);
+        setShowModal(true);
+    }
+
     return (
-        <li key={game.id} className={removeCard ? "hidden" : "favouriteListEntry"}>
-            <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`}>
-                <Image 
-                    src={STORAGE_URL + game.cover}
-                    unoptimized
-                    className="gameCard-figure__cover"
-                    alt="Game Cover"
-                    width={100}
-                    height={100}
-                />
-            </Link>
+        <>
+            <li key={game.id} className={removeCard ? "hidden" : "favouriteListEntry"}>
+                <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`}>
+                    <Image 
+                        src={STORAGE_URL + game.cover}
+                        unoptimized
+                        className="gameCard-figure__cover"
+                        onMouseEnter={() => setShowModal(true)}
+                        onMouseLeave={() => setShowModal(false)}
+                        alt="Game Cover"
+                        width={100}
+                        height={100}
+                    />
+                </Link>
 
-            <h2 className="gameCard-title"> 
-                <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className="gameCard-title__link"> 
-                    {game.title} 
-                </Link> 
-            </h2>
-            
-            <h2 className="gameCard-category"> {game.category} </h2>
-            <h2 className="gameCard-players"> {game.players} </h2>
-            <h2 className="gameCard-developer"> {game.developer} </h2>
-            <h2 className="gameCard-publisher"> {game.publisher} </h2>
+                <section className={showModal ? "image-modal-show" : "hidden"}>
+                    <Image 
+                        src={STORAGE_URL + game.cover}
+                        unoptimized
+                        className="gameCard-figure__cover"
+                        onMouseEnter={setModalCoordinates}
+                        onMouseLeave={() => setShowModal(false)}
+                        alt="Game Cover"
+                        width={300}
+                        height={300}
+                    />
+                </section>
 
-            <FavouriteButton game={game} setFading={() => {}} removeCard={setRemoveCard} />
-        </li>
+                <h2 className="gameCard-title"> 
+                    <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className="gameCard-title__link"> 
+                        {game.title} 
+                    </Link> 
+                </h2>
+                
+                <h2 className="gameCard-category"> {game.category} </h2>
+                <h2 className="gameCard-players"> {game.players} </h2>
+                <h2 className="gameCard-developer"> {game.developer} </h2>
+                <h2 className="gameCard-publisher"> {game.publisher} </h2>
+
+                <FavouriteButton game={game} setFading={() => {}} removeCard={setRemoveCard} />
+            </li>
+        </>
     );
 }
