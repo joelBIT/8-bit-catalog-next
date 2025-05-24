@@ -12,41 +12,61 @@ import "./GameList.css";
  */
 export function GameList({ games }: { games: Game[] }): ReactElement {
     const [ active, setActive ] = useState<string>('');
+    const [ ascending, setAscending ] = useState<boolean>(true);
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";
     const GAME_PLAYERS = "game-players";
     const GAME_DEVELOPER = "game-developer";
     const GAME_PUBLISHER = "game-publisher";
+    const HEADING_CLASSES = [GAME_TITLE, GAME_CATEGORY, GAME_PLAYERS, GAME_DEVELOPER, GAME_PUBLISHER];
+    const HEADINGS = ["Title", "Category", "Players", "Developer", "Publisher"];
+
+    function sortGames(property: string) {
+        switch(property) {
+            case GAME_TITLE:
+                active === property ? games.sort((a, b) => b.title.localeCompare(a.title)) : games.sort((a, b) => a.title.localeCompare(b.title));
+                break;
+            case GAME_CATEGORY:
+                active === property ? games.sort((a, b) => b.category.localeCompare(a.category)) : games.sort((a, b) => a.category.localeCompare(b.category));
+                break;
+            case GAME_PLAYERS:
+                active === property ? games.sort((a, b) => b.players - a.players) : games.sort((a, b) => a.players - b.players);
+                break;
+            case GAME_DEVELOPER:
+                games.sort((a, b) => a.developer.localeCompare(b.developer));
+                break;
+            case GAME_PUBLISHER:
+                games.sort((a, b) => a.publisher.localeCompare(b.publisher));
+                break;
+        }
+
+        if (active === property) {
+            setAscending(!ascending);       // Toggle arrow if user clicks on the same heading multiple times
+        } else {
+            setAscending(true);             // A heading is ascending when clicked the first time
+        }
+
+        setActive(property);
+    }
 
     return (
         <ul id="gameList">
             <section id="listHeading">
-                <section id={GAME_TITLE} className={active === GAME_TITLE ? "active" : ""}>
-                    <span className="material-symbols-outlined" onClick={() => setActive(GAME_TITLE)}> keyboard_arrow_down </span>
-                    <h2 className={GAME_TITLE} onClick={() => setActive(GAME_TITLE)}> Title </h2>
-                </section>
-                
-                <section id={GAME_CATEGORY} className={active === GAME_CATEGORY ? "active" : ""}>
-                    <span className="material-symbols-outlined" onClick={() => setActive(GAME_CATEGORY)}> keyboard_arrow_down </span>
-                    <h2 className={GAME_CATEGORY} onClick={() => setActive(GAME_CATEGORY)}> Category </h2>
-                </section>
-
-                <section id={GAME_PLAYERS} className={active === GAME_PLAYERS ? "active" : ""}>
-                    <span className="material-symbols-outlined" onClick={() => setActive(GAME_PLAYERS)}> keyboard_arrow_down </span>
-                    <h2 className={GAME_PLAYERS} onClick={() => setActive(GAME_PLAYERS)}> Players </h2>
-                </section>
-
-                <section id={GAME_DEVELOPER} className={active === GAME_DEVELOPER ? "active" : ""}>
-                    <span className="material-symbols-outlined" onClick={() => setActive(GAME_DEVELOPER)}> keyboard_arrow_down </span>
-                    <h2 className={GAME_DEVELOPER} onClick={() => setActive(GAME_DEVELOPER)}> Developer </h2>
-                </section>                
-                
-                <section id={GAME_PUBLISHER} className={active === GAME_PUBLISHER ? "active" : ""}>
-                    <span className="material-symbols-outlined" onClick={() => setActive(GAME_PUBLISHER)}> keyboard_arrow_down </span>
-                    <h2 className={GAME_PUBLISHER} onClick={() => setActive(GAME_PUBLISHER)}> Publisher </h2>
-                </section>
+                {
+                    HEADING_CLASSES.map((heading, index) => 
+                        <section id={heading} className={active === heading ? "active" : ""}>
+                            <span 
+                                className={ascending ? "material-symbols-outlined ascending" : "material-symbols-outlined"} 
+                                onClick={() => sortGames(heading)}
+                            > 
+                                keyboard_arrow_down 
+                            </span>
+                            <h2 className={heading} onClick={() => sortGames(heading)}> {HEADINGS[index]} </h2>
+                        </section>
+                    )
+                }
             </section>
-
+            
             {
                 games.map(game => <GameListEntry game={game} key={game.id} />)
             }

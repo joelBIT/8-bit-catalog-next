@@ -8,7 +8,7 @@
         display: flex;
 
         & .active {
-            & span {
+            & .ascending {
                 transform: rotateZ(180deg);
             }
         }
