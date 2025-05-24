@@ -62,14 +62,20 @@ export function FavouriteListEntry({ game }: { game: Game }): ReactElement {
                     <h2 className="gameCard-category"> {game.category} </h2>
                 </section>
 
-                <h2 className="gameCard-players__heading"> Players </h2>
-                <h2 className="gameCard-players"> {game.players} </h2>
+                <section className="players-section">
+                    <h2 className="gameCard-players__heading"> Players </h2>
+                    <h2 className="gameCard-players"> {game.players} </h2>
+                </section>
 
-                <h2 className="gameCard-developer__heading"> Developer </h2>
-                <h2 className="gameCard-developer"> {game.developer} </h2>
+                <section className="developer-section">
+                    <h2 className="gameCard-developer__heading"> Developer </h2>
+                    <h2 className="gameCard-developer"> {game.developer} </h2>
+                </section>
 
-                <h2 className="gameCard-publisher__heading"> Publisher </h2>
-                <h2 className="gameCard-publisher"> {game.publisher} </h2>
+                <section className="publisher-section">
+                    <h2 className="gameCard-publisher__heading"> Publisher </h2>
+                    <h2 className="gameCard-publisher"> {game.publisher} </h2>
+                </section>
 
                 <FavouriteButton game={game} setFading={() => {}} removeCard={setRemoveCard} />
             </li>
