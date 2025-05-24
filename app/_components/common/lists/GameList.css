@@ -33,3 +33,17 @@
         border-bottom: 1px solid var(--color-white);
     }
 }
+
+@media (max-width: 1250px) {
+    #gameList {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1100px) {
+    #gameList {
+        & #listHeading {
+            display: none;
+        }
+    }
+}
