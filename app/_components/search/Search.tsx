@@ -96,8 +96,6 @@ export function Search(): ReactElement {
                 <div className="invisible" />
             </section>
 
-            
-
             <section id="gameCards">
                 { 
                     gridView ?

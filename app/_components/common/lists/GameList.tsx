@@ -2,10 +2,13 @@
 
 import { ReactElement } from "react";
 import { Game } from "@/app/_types/types";
-import { FavouriteListEntry } from "./FavouriteListEntry";
+import { GameListEntry } from "./GameListEntry";
 
 import "./GameList.css";
 
+/**
+ * This component consists of a game list (in List View) and its heading.
+ */
 export function GameList({ games }: { games: Game[] }): ReactElement {
 
     return (
@@ -19,7 +22,7 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
             </section>
 
             {
-                games.map(game => <FavouriteListEntry game={game} key={game.id} />)
+                games.map(game => <GameListEntry game={game} key={game.id} />)
             }
         </ul>
     );

@@ -3,7 +3,7 @@ export * from "./CancelButton";
 export * from "./inputs/EmailInput";
 export * from "./lists/GameCard";
 export * from "./lists/GameList";
-export * from "./lists/FavouriteListEntry";
+export * from "./lists/GameListEntry";
 export * from "./modals/InputModal";
 export * from "./lists/ListToggle";
 export * from "./modals/Modal";
