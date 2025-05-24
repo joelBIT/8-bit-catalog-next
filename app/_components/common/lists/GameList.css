@@ -7,6 +7,12 @@
     & #listHeading {
         display: flex;
 
+        & .active {
+            & span {
+                transform: rotateZ(180deg);
+            }
+        }
+
         & #game-title {
             display: flex;
             width: 31%;
