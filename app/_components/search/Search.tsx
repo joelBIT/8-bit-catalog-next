@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { getGames } from "@/app/_client/client";
 import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
-import { GameCard, ListToggle, ScrollTopButton, ListGameCard } from "../common";
+import { GameCard, ListToggle, ScrollTopButton, GameList } from "../common";
 import { Pagination } from ".";
 import { arima } from "@/app/_fonts/fonts";
 
@@ -96,10 +96,13 @@ export function Search(): ReactElement {
                 <div className="invisible" />
             </section>
 
-            
-
             <section id="gameCards">
-                { searchResult.map((game, index) => gridView ? <GameCard key={index} game={game} /> : <ListGameCard key={index} game={game} /> ) }
+                { 
+                    gridView ?
+                        searchResult.map((game, index) => <GameCard key={index} game={game} />)
+                        :
+                        <GameList games={searchResult} />
+                }
             </section>
 
             <ScrollTopButton />
