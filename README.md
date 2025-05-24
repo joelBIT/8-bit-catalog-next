@@ -1,11 +1,7 @@
 <b><h1>A catalog containing information about 8-bit Nintendo games.</h1></b>
 
 
+![catalog2](https://github.com/user-attachments/assets/cf92b43e-6b0c-49f8-a48d-d4c9d13c10a5)
 
+![catalog3](https://github.com/user-attachments/assets/76b89f50-07af-4c9d-8a91-265efcd6f7d0)
 
-
-
-![catalog-caveman](https://github.com/user-attachments/assets/9a98cf57-02ab-4964-bc8a-d10656c78cdf)
-
-
-![catalog-search](https://github.com/user-attachments/assets/8b696ab4-7fa1-4191-bbfe-5dce4f3e08a6)
