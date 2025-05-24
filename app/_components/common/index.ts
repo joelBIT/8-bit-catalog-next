@@ -5,7 +5,6 @@ export * from "./lists/GameCard";
 export * from "./lists/GameList";
 export * from "./lists/FavouriteListEntry";
 export * from "./modals/InputModal";
-export * from "./lists/ListGameCard";
 export * from "./lists/ListToggle";
 export * from "./modals/Modal";
 export * from "./inputs/PasswordInput";
