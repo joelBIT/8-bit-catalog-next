@@ -28,4 +28,8 @@
             width: 20%;
         }
     }
+
+    & li:last-of-type {
+        border-bottom: 1px solid var(--color-white);
+    }
 }
