@@ -1,0 +1,49 @@
+#gameList {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+
+    & #listHeading {
+        display: flex;
+
+        & .game-title {
+            text-align: left;
+            width: 36%;
+        }
+
+        & .game-category {
+            width: 10%;
+        }
+
+        & .game-players {
+            width: 10%;
+        }
+
+        & .game-developer {
+            width: 20%;
+        }
+
+        & .game-publisher {
+            width: 20%;
+        }
+    }
+
+    & li:last-of-type {
+        border-bottom: 1px solid var(--color-white);
+    }
+}
+
+@media (max-width: 1250px) {
+    #gameList {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1100px) {
+    #gameList {
+        & #listHeading {
+            display: none;
+        }
+    }
+}

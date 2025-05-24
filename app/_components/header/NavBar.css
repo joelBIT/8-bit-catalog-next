@@ -36,7 +36,7 @@
                     transition: all 0.45s;
                 }
 
-                :hover:after {
+                :not(.material-symbols-outlined):hover:after {
                     width: 100%;
                     left: 0;
                 }

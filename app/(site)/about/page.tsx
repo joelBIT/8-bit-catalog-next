@@ -82,7 +82,8 @@ export default function AboutPage(): ReactElement {
                             <img 
                                 src={event.image}
                                 className={`backgroundImage ${year === event.year ? `b${year} display-element` : "hidden-element"}`} 
-                                key={event.image} 
+                                key={event.image}
+                                alt="Timeline image"
                             />
                         )
                     }
