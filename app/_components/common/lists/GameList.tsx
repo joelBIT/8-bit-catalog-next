@@ -13,7 +13,7 @@ import "./GameList.css";
 export function GameList({ games, page }: { games: Game[], page: number }): ReactElement {
     const [ active, setActive ] = useState<string>('');
     const [ ascending, setAscending ] = useState<boolean>(false);
-    const [ sortedGames, setSortedGames ] = useState<Game[]>([]);
+    const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(-1);
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";
@@ -26,12 +26,16 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     useEffect(() => {
         if (active) {                           // The selected sorting is executed on each render
             sortAscending(active, ascending);
-            setSortedGames(games);
+            setCurrentGames(games);
         }
 
         if (page !== currentPage) {         // New page containing new games so list of games and current page are updated
-            setSortedGames(games);
+            setCurrentGames(games);
             setCurrentPage(page);
+        }
+
+        if (!active && page === currentPage) {      // Set games when user e.g., refreshes the browser (resets sorting)
+            setCurrentGames(games);
         }
     })
 
@@ -111,7 +115,7 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
             </section>
             
             {
-                sortedGames.length > 0 ? sortedGames.map(game => <GameListEntry game={game} key={game.id} />) : <></>
+                currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} />) : <></>
             }
         </ul>
     );
