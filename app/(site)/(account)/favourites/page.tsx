@@ -52,7 +52,7 @@ export default function FavouritesPage(): ReactElement {
                                             .slice(from(favouritesPage), to(favouritesPage))
                                             .map(game => <GameCard key={game.id} game={game} />) 
                         :
-                            <GameList games={favouritesList.slice(from(favouritesPage), to(favouritesPage))} />
+                            <GameList games={favouritesList.slice(from(favouritesPage), to(favouritesPage))} page={favouritesPage} />
                 }
             </section>
 
