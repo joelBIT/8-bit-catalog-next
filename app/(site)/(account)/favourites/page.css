@@ -5,7 +5,8 @@
     align-items: center;
     padding-top: 8rem;
 
-    & .number-favourites-text {
+    & .number-favourites-text,
+    .no-favourites-text {
         display: flex;
         border-radius: 30px;
         cursor: default;
@@ -20,6 +21,8 @@
         margin-bottom: 1rem;
     }
 
+
+
     & #gameCards {
         display: flex;
         flex-wrap: wrap;
@@ -27,11 +30,6 @@
         margin: 2rem;
         justify-content: center;
         width: 100%;
-
-        & .no-favourites-text {
-            font-size: 3rem;
-            text-align: center;
-        }
     }
 
     & .show-pagination-toggle {

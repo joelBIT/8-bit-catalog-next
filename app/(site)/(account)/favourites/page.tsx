@@ -41,13 +41,13 @@ export default function FavouritesPage(): ReactElement {
                             <div className="invisible" />
                         </section>
                     </>
-                    : <></>
+                    : <h1 className="no-favourites-text"> No favourites </h1>
             }
 
             <section id="gameCards">
                 { 
                     favouritesList.length === 0 ? 
-                        <h1 className="no-favourites-text"> No favourites selected </h1> :
+                         <></> : 
                             gridView ?  favouritesList
                                             .slice(from(favouritesPage), to(favouritesPage))
                                             .map(game => <GameCard key={game.id} game={game} />) 
