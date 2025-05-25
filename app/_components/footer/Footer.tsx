@@ -1,15 +1,13 @@
 import { ReactElement } from "react";
-import { Contact, OtherLinks, SiteLinks } from ".";
-import { isAuthenticated } from "@/app/_session/utils";
+import { Contact, OtherLinks } from ".";
 
 import "./Footer.css";
 
-export async function Footer(): Promise<ReactElement> {
+export function Footer(): ReactElement {
 
     return (
         <footer>
             <section id="footerComponents">
-                <SiteLinks authenticated={await isAuthenticated()} />
                 <Contact />
                 <OtherLinks />
             </section>
