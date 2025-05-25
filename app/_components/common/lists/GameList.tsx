@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Game } from "@/app/_types/types";
 import { GameListEntry } from "./GameListEntry";
 
@@ -13,6 +13,7 @@ import "./GameList.css";
 export function GameList({ games }: { games: Game[] }): ReactElement {
     const [ active, setActive ] = useState<string>('');
     const [ ascending, setAscending ] = useState<boolean>(false);
+    const [ sortedGames, setSortedGames ] = useState<Game[]>([]);
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";
     const GAME_PLAYERS = "game-players";
@@ -20,6 +21,13 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
     const GAME_PUBLISHER = "game-publisher";
     const HEADING_CLASSES = [GAME_TITLE, GAME_CATEGORY, GAME_PLAYERS, GAME_DEVELOPER, GAME_PUBLISHER];
     const HEADINGS = ["Title", "Category", "Players", "Developer", "Publisher"];
+
+    useEffect(() => {
+        if (active) {                               // When navigating between pages the selected sorting is executed on each page render
+            sortAscending(active, ascending);
+        }
+        setSortedGames(games);
+    })
 
     /**
      * The games are sorted differently depending on if a heading is clicked multiple times in a row or clicked for the first time.
@@ -63,7 +71,7 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
             <section id="listHeading">
                 {
                     HEADING_CLASSES.map((heading, index) => 
-                        <section id={heading} className={active === heading ? "active" : ""}>
+                        <section id={heading} className={active === heading ? "active" : ""} key={heading}>
                             <span 
                                 className={ascending ? "material-symbols-outlined ascending" : "material-symbols-outlined"} 
                                 onClick={() => sortGames(heading)}
@@ -77,7 +85,7 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
             </section>
             
             {
-                games.map(game => <GameListEntry game={game} key={game.id} />)
+                sortedGames.length > 0 ? sortedGames.map(game => <GameListEntry game={game} key={game.id} />) : <></>
             }
         </ul>
     );
