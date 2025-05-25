@@ -12,7 +12,7 @@ import "./GameList.css";
  */
 export function GameList({ games }: { games: Game[] }): ReactElement {
     const [ active, setActive ] = useState<string>('');
-    const [ ascending, setAscending ] = useState<boolean>(true);
+    const [ ascending, setAscending ] = useState<boolean>(false);
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";
     const GAME_PLAYERS = "game-players";
@@ -21,32 +21,41 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
     const HEADING_CLASSES = [GAME_TITLE, GAME_CATEGORY, GAME_PLAYERS, GAME_DEVELOPER, GAME_PUBLISHER];
     const HEADINGS = ["Title", "Category", "Players", "Developer", "Publisher"];
 
-    function sortGames(property: string) {
-        switch(property) {
-            case GAME_TITLE:
-                active === property ? games.sort((a, b) => b.title.localeCompare(a.title)) : games.sort((a, b) => a.title.localeCompare(b.title));
-                break;
-            case GAME_CATEGORY:
-                active === property ? games.sort((a, b) => b.category.localeCompare(a.category)) : games.sort((a, b) => a.category.localeCompare(b.category));
-                break;
-            case GAME_PLAYERS:
-                active === property ? games.sort((a, b) => b.players - a.players) : games.sort((a, b) => a.players - b.players);
-                break;
-            case GAME_DEVELOPER:
-                games.sort((a, b) => a.developer.localeCompare(b.developer));
-                break;
-            case GAME_PUBLISHER:
-                games.sort((a, b) => a.publisher.localeCompare(b.publisher));
-                break;
-        }
-
+    /**
+     * The games are sorted differently depending on if a heading is clicked multiple times in a row or clicked for the first time.
+     */
+    function sortGames(property: string): void {
         if (active === property) {
+            sortAscending(property, !ascending);
             setAscending(!ascending);       // Toggle arrow if user clicks on the same heading multiple times
         } else {
+            sortAscending(property, true);
             setAscending(true);             // A heading is ascending when clicked the first time
+            setActive(property);
         }
+    }
 
-        setActive(property);
+    /**
+     * Sort the games by the chosen metadata property in an ascending or descending order.
+     */
+    function sortAscending(property: string, ascending: boolean): void {
+        switch(property) {
+            case GAME_TITLE:
+                ascending ? games.sort((a, b) => a.title.localeCompare(b.title)) : games.sort((a, b) => b.title.localeCompare(a.title));
+                break;
+            case GAME_CATEGORY:
+                ascending ? games.sort((a, b) => a.category.localeCompare(b.category)) : games.sort((a, b) => b.category.localeCompare(a.category));
+                break;
+            case GAME_PLAYERS:
+                ascending ? games.sort((a, b) => a.players - b.players) : games.sort((a, b) => b.players - a.players);
+                break;
+            case GAME_DEVELOPER:
+                ascending ? games.sort((a, b) => a.developer.localeCompare(b.developer)) : games.sort((a, b) => b.developer.localeCompare(a.developer));
+                break;
+            case GAME_PUBLISHER:
+                ascending ? games.sort((a, b) => a.publisher.localeCompare(b.publisher)) : games.sort((a, b) => b.publisher.localeCompare(a.publisher));
+                break;
+        }
     }
 
     return (
