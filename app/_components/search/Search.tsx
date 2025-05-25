@@ -101,7 +101,7 @@ export function Search(): ReactElement {
                     gridView ?
                         searchResult.map((game, index) => <GameCard key={index} game={game} />)
                         :
-                        <GameList games={searchResult} />
+                        <GameList games={searchResult} page={currentPage} />
                 }
             </section>
 

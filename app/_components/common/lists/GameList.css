@@ -7,30 +7,57 @@
     & #listHeading {
         display: flex;
 
-        & .game-title {
-            text-align: left;
-            width: 36%;
+        & .active {
+            & .ascending {
+                transform: rotateZ(180deg);
+            }
         }
 
-        & .game-category {
-            width: 10%;
+        & #game-title {
+            display: flex;
+            width: 31%;
+            align-items: center;
+
+            & .game-title,
+            .material-symbols-outlined {
+                text-align: left;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
         }
 
-        & .game-players {
-            width: 10%;
+        & #game-category,
+        #game-players {
+            display: flex;
+            width: 12%;
+            align-items: center;
+            justify-content: center;
+
+            & .game-category:hover,
+            .game-players:hover,
+            .material-symbols-outlined:hover {
+                cursor: pointer;
+            }
         }
 
-        & .game-developer {
-            width: 20%;
-        }
+        & #game-developer,
+        #game-publisher {
+            display: flex;
+            width: 18%;
+            align-items: center;
 
-        & .game-publisher {
-            width: 20%;
+            & .game-developer:hover,
+            .game-publisher:hover,
+            .material-symbols-outlined:hover {
+                cursor: pointer;
+            }
         }
     }
 
     & li:last-of-type {
-        border-bottom: 1px solid var(--color-white);
+        border-bottom: 1px solid var(--color-footer-heading);;
     }
 }
 
