@@ -24,12 +24,12 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     const HEADINGS = ["Title", "Category", "Players", "Developer", "Publisher"];
 
     useEffect(() => {
-        if (active) {                               // When navigating between pages the selected sorting is executed on each page render
+        if (active) {                           // The selected sorting is executed on each render
             sortAscending(active, ascending);
             setSortedGames(games);
         }
-        
-        if (page !== currentPage) {
+
+        if (page !== currentPage) {         // New page containing new games so list of games and current page are updated
             setSortedGames(games);
             setCurrentPage(page);
         }
@@ -55,19 +55,39 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     function sortAscending(property: string, ascending: boolean): void {
         switch(property) {
             case GAME_TITLE:
-                ascending ? games.sort((a, b) => a.title.localeCompare(b.title)) : games.sort((a, b) => b.title.localeCompare(a.title));
+                if (ascending) {
+                    games.sort((a, b) => a.title.localeCompare(b.title));
+                } else {
+                    games.sort((a, b) => b.title.localeCompare(a.title))
+                }
                 break;
             case GAME_CATEGORY:
-                ascending ? games.sort((a, b) => a.category.localeCompare(b.category)) : games.sort((a, b) => b.category.localeCompare(a.category));
+                if (ascending) {
+                    games.sort((a, b) => a.category.localeCompare(b.category));
+                } else {
+                    games.sort((a, b) => b.category.localeCompare(a.category));
+                }
                 break;
             case GAME_PLAYERS:
-                ascending ? games.sort((a, b) => a.players - b.players) : games.sort((a, b) => b.players - a.players);
+                if (ascending) {
+                    games.sort((a, b) => a.players - b.players);
+                } else {
+                    games.sort((a, b) => b.players - a.players);
+                }
                 break;
             case GAME_DEVELOPER:
-                ascending ? games.sort((a, b) => a.developer.localeCompare(b.developer)) : games.sort((a, b) => b.developer.localeCompare(a.developer));
+                if (ascending) {
+                    games.sort((a, b) => a.developer.localeCompare(b.developer));
+                } else {
+                    games.sort((a, b) => b.developer.localeCompare(a.developer));
+                }
                 break;
             case GAME_PUBLISHER:
-                ascending ? games.sort((a, b) => a.publisher.localeCompare(b.publisher)) : games.sort((a, b) => b.publisher.localeCompare(a.publisher));
+                if (ascending) {
+                    games.sort((a, b) => a.publisher.localeCompare(b.publisher));
+                } else {
+                    games.sort((a, b) => b.publisher.localeCompare(a.publisher));
+                }
                 break;
         }
     }
