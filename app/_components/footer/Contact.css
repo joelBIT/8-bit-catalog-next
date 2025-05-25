@@ -1,6 +1,6 @@
 #contact {
     .contact__title {
-        text-align: center;
+        text-align: left;
         color: var(--color-footer-heading);
         font-weight: 500;
     }
@@ -33,38 +33,6 @@
 
         .location {
             color: red;
-        }
-    }
-}
-
-@media (max-width: 420px) {
-    #contact {
-        .contact__title {
-            font-size: 1.3rem;
-        }
-
-        .contact__list {
-            .contact__link, .contact__info {
-                font-size: 0.8rem;
-            }
-
-            .material-symbols-outlined {
-                line-height: 0;
-            }
-        }
-    }
-}
-
-@media (max-width: 350px) {
-    #contact {
-        .contact__title {
-            font-size: 1.1rem;
-        }
-
-        .contact__list {
-            .contact__link, .contact__info {
-                font-size: 0.7rem;
-            }
         }
     }
 }
