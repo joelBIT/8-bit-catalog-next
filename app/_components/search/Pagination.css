@@ -1,7 +1,5 @@
 .pagination {
     display: flex;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
     gap: 1rem;
     align-items: center;
 
