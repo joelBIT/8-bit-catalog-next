@@ -66,36 +66,45 @@ export function Search(): ReactElement {
 
     return (
         <section id="search">
-            { 
-                showHeading ? 
-                    <h1 className={`searchResult__title ${arima.className}`}>
-                        Games found: 
-                        <p className="searchResult__games-found"> {totalCount} </p>
-                    </h1> 
-                : <></>
-            }
-
-            <section className="show-pagination-toggle">
             {
-                searchResult.length > 0 ?
-                    <ListToggle toggle={toggleGridView} initialState={gridView} />
-                    : <></>
+                searchResult.length > 0 ? 
+                    <section className="show-pagination-toggle">
+                        { 
+                            showHeading ? 
+                                <h1 className={`tag ${arima.className}`}>
+                                    Games found: {totalCount}
+                                </h1> 
+                            : <></>
+                        }
+
+                        {
+                            totalPages > 1 ?
+                                <Pagination 
+                                    currentPage={currentPage} 
+                                    setCurrentPage={setCurrentPage} 
+                                    setSearchResult={setSearchResult} 
+                                    totalPages={totalPages} 
+                                /> 
+                            : <></>
+                        }
+
+                        {
+                            searchResult.length > 0 ?
+                                <ListToggle toggle={toggleGridView} initialState={gridView} />
+                                : <></>
+                        }
+                    </section>
+                : <>
+                    { 
+                        showHeading ? 
+                            <h1 className={`tag ${arima.className}`}>
+                                No games found
+                            </h1> 
+                        : <></>
+                    }
+                </>
             }
-
-            {
-                totalPages > 1 ?
-                     <Pagination 
-                        currentPage={currentPage} 
-                        setCurrentPage={setCurrentPage} 
-                        setSearchResult={setSearchResult} 
-                        totalPages={totalPages} 
-                    /> 
-                : <></>
-            }
-
-                <div className="invisible" />
-            </section>
-
+            
             <section id="gameCards">
                 { 
                     gridView ?

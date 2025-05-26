@@ -26,7 +26,7 @@ export default function FavouritesPage(): ReactElement {
                 favouritesList.length > 0 ?
                     <>
                         <section className="show-pagination-toggle">
-                            <h1 className={`number-favourites-text ${arima.className}`}>
+                            <h1 className={`tag ${arima.className}`}>
                                 {favouritesList.length} favourite{ favouritesList.length === 1 ? "" : "s" } 
                             </h1>
 
@@ -39,7 +39,7 @@ export default function FavouritesPage(): ReactElement {
                             <ListToggle toggle={toggleGridView} initialState={gridView} />
                         </section>
                     </>
-                    : <h1 className="no-favourites-text"> No favourites </h1>
+                    : <h1 className="tag"> No favourites </h1>
             }
 
             <section id="gameCards">
