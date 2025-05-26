@@ -40,18 +40,10 @@
             gap: 2rem;
             align-self: center;
 
-            & .game-tag {
+            & .tag {
                 display: flex;
                 gap: 0.5rem;
-                align-items: center;
-                border-radius: 30px;
-                cursor: default;
                 backdrop-filter: blur(5px);
-                border: 2px solid var(--color-neon-green);
-                width: fit-content;
-                align-self: center;
-                padding: 0.8rem 1.5rem;
-                background-color: #36ff4620;
     
                 & .material-symbols-outlined {
                     color: var(--color-neon-green);
@@ -61,6 +53,7 @@
     
                 & .tag-text {
                     font-size: 1.1rem;
+                    align-self: center;
                     letter-spacing: 1px;
                     padding-top: 0.3rem;
                     font-weight: 100;
@@ -135,7 +128,7 @@
             & .game-tags {
                 gap: 1rem;
 
-                & .game-tag {
+                & .tag {
                     padding: 0.5rem 1rem;
 
                     & .material-symbols-outlined {

@@ -38,7 +38,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                 <section className="game-tags">
                     {
                         GAME_DETAILS.map(detail => 
-                            <section className="game-tag" key={detail.title} title={detail.title}>
+                            <section className="tag" key={detail.title} title={detail.title}>
                                 <span className="material-symbols-outlined"> {detail.icon} </span>
                                 <h2 className="tag-text"> {detail.text} </h2>
                             </section>
