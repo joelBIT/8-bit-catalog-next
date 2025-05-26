@@ -25,22 +25,6 @@
         & #listToggle {
             margin-bottom: 0;
         }
-
-        & .searchResult__title {
-            display: flex;
-            border-radius: 30px;
-            cursor: default;
-            border: 2px solid var(--color-neon-green);
-            width: fit-content;
-            height: fit-content;
-            padding: 0.8rem 1.5rem;
-            background-color: #36ff4620;
-            text-align: center;
-            align-self: center;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            font-weight: 100;
-        }
     }
 }
 

@@ -71,7 +71,7 @@ export function Search(): ReactElement {
                     <section className="show-pagination-toggle">
                         { 
                             showHeading ? 
-                                <h1 className={`searchResult__title ${arima.className}`}>
+                                <h1 className={`tag ${arima.className}`}>
                                     Games found: {totalCount}
                                 </h1> 
                             : <></>
@@ -97,7 +97,7 @@ export function Search(): ReactElement {
                 : <>
                     { 
                         showHeading ? 
-                            <h1 className={`${arima.className}`}>
+                            <h1 className={`tag ${arima.className}`}>
                                 No games found
                             </h1> 
                         : <></>
