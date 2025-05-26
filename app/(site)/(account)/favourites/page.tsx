@@ -25,12 +25,10 @@ export default function FavouritesPage(): ReactElement {
             {
                 favouritesList.length > 0 ?
                     <>
-                        <h1 className={`number-favourites-text ${arima.className}`}>
-                            {favouritesList.length} favourite{ favouritesList.length === 1 ? "" : "s" } 
-                        </h1>
-
                         <section className="show-pagination-toggle">
-                            <ListToggle toggle={toggleGridView} initialState={gridView} />
+                            <h1 className={`number-favourites-text ${arima.className}`}>
+                                {favouritesList.length} favourite{ favouritesList.length === 1 ? "" : "s" } 
+                            </h1>
 
                             {
                                 favouritesList.length > PAGINATION_PAGE_SIZE ?
@@ -38,7 +36,7 @@ export default function FavouritesPage(): ReactElement {
                                     : <></>
                             }
 
-                            <div className="invisible" />
+                            <ListToggle toggle={toggleGridView} initialState={gridView} />
                         </section>
                     </>
                     : <h1 className="no-favourites-text"> No favourites </h1>
