@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 8rem;
+    padding-bottom: 5rem;
 
     & .number-favourites-text,
     .no-favourites-text {
@@ -12,16 +13,15 @@
         cursor: default;
         border: 2px solid var(--color-neon-green);
         width: fit-content;
+        height: fit-content;
         padding: 0.8rem 1.5rem;
         background-color: #36ff4620;
         text-align: center;
+        align-self: center;
         font-size: 1.1rem;
         letter-spacing: 1px;
         font-weight: 100;
-        margin-bottom: 1rem;
     }
-
-
 
     & #gameCards {
         display: flex;
@@ -34,17 +34,15 @@
 
     & .show-pagination-toggle {
         display: flex;
-        flex-direction: row-reverse;
         gap: 1rem;
-        width: 100%;
-        justify-content: space-evenly;
+        width: 93%;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--color-white);
+        padding-bottom: 1rem;
+        padding-top: 1rem;
 
         & #listToggle {
             margin-bottom: 0;
-        }
-
-        & .invisible {
-            width: 12rem;
         }
     }
 }
@@ -55,10 +53,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-    
-            & .invisible {
-                display: none;
-            }
+            gap: 2rem;
         }
     }
 }
