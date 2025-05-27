@@ -1,8 +1,8 @@
 #favouritesPage {
-    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
     padding-top: 8rem;
     padding-bottom: 5rem;
 

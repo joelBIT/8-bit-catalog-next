@@ -8,6 +8,9 @@ import { PlayRomLink } from "./PlayRomLink";
 
 import "./GameDetailsCard.css";
 
+/**
+ * Show metadata of the supplied game in the UI.
+ */
 export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement> {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
@@ -21,39 +24,43 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
 
     return (
         <section id="gameDetailsCard">
-            <Link href={STORAGE_URL + game.cover} target="_blank" className="gameDetailsCard__link">
-                <Image 
-                    src={STORAGE_URL + game.cover}
-                    unoptimized
-                    className="gameDetailsCard-image"
-                    alt="Game Cover"
-                    width={900}
-                    height={470}
-                />
-            </Link>
+            <article id="game-cover-tags">
+                <Link href={STORAGE_URL + game.cover} target="_blank" className="gameDetailsCard__link">
+                    <Image 
+                        src={STORAGE_URL + game.cover}
+                        unoptimized
+                        className="gameDetailsCard-image"
+                        alt="Game Cover"
+                        width={900}
+                        height={470}
+                    />
+                </Link>
 
-            <article id="gameDetails" className="bit-font">
-                <h1 className="gameDetails__title permanent-marker-regular"> {game.title} </h1>
+                <article id="gameDetails" className="bit-font">
+                    <h1 className="gameDetails__title permanent-marker-regular"> {game.title} </h1>
 
-                <section className="game-tags">
-                    {
-                        GAME_DETAILS.map(detail => 
-                            <section className="tag" key={detail.title} title={detail.title}>
-                                <span className="material-symbols-outlined"> {detail.icon} </span>
-                                <h2 className="tag-text"> {detail.text} </h2>
-                            </section>
-                        )
-                    }
-                </section>
+                    <section className="game-tags">
+                        {
+                            GAME_DETAILS.map(detail => 
+                                <section className="tag" key={detail.title} title={detail.title}>
+                                    <span className="material-symbols-outlined"> {detail.icon} </span>
+                                    <h2 className="tag-text"> {detail.text} </h2>
+                                </section>
+                            )
+                        }
+                    </section>
 
-                { game.rom ? <PlayRomLink id={game.id} /> : <></> }
+                    { game.rom ? <PlayRomLink id={game.id} /> : <></> }
+                </article>
             </article>
 
-            <article id="gameDetailsCard__description">
-                { game.description }
-            </article>
-            
-            { (await isAuthenticatedAdmin()) ? <EditGameButton gameId={game.id} /> : <></> }
+            <section id="gameDetailsCard-description">
+                <article id="gameDetailsCard__description">
+                    { game.description }
+                </article>
+                
+                { (await isAuthenticatedAdmin()) ? <EditGameButton gameId={game.id} /> : <></> }
+            </section>
         </section>
-    );
+    )
 }
