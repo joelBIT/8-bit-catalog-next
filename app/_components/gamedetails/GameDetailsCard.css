@@ -74,14 +74,14 @@
     & #gameDetailsCard-description {
         display: flex;
         flex-direction: column;
+        backdrop-filter: brightness(0.2);
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 9px;
 
         & #gameDetailsCard__description {
             font-size: 1.5rem;
             padding: 2rem;
             white-space-collapse: preserve-breaks;
-            backdrop-filter: brightness(0.2);
-            border-bottom-left-radius: 9px;
-            border-bottom-right-radius: 9px;
             text-align: left;
             
             & .gameDetailsCard__description-paragraph {
