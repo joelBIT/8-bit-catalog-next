@@ -1,12 +1,14 @@
 #editGamePage {
-    background-image: url("../../../../../assets/backgrounds/nostalgic-nes-controller.webp");
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to top, var(--color-black) 70%, var(--color-black-light));
     align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 @media (max-width: 500px) {
     #editGamePage {
-        padding: 1rem 0;
+        padding: 3rem 1rem;
     }
 }
