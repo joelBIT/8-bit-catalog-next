@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useActionState, useRef } from "react";
+import { ReactElement, useActionState, useEffect, useRef } from "react";
 import { EmailInput, PasswordInput } from "..";
 import { arima } from "@/app/_fonts/fonts";
 import { createUserAndAccount } from "@/app/_actions/account";
@@ -11,13 +11,15 @@ import "./AddUserModal.css";
  * This modal is used by admin in admin pages when creating a new member. Creating a new account and user this way bypasses the email
  * verification process.
  */
-export function AddUserModal({ open, close }: { open: boolean, close: () => void }): ReactElement {
+export function AddUserModal({ close }: { close: () => void }): ReactElement {
     const [ state, formAction ] = useActionState(createUserAndAccount, { message: '', success: false });
     const modalRef = useRef<HTMLDialogElement>(null);
 
-    if (open) {
-        modalRef.current?.showModal();
-    }
+    useEffect(() => {
+        if (!modalRef.current?.open) {
+            modalRef.current?.showModal();
+        }
+    }, [])
     
     function closeModal(): void {
         modalRef.current?.close();

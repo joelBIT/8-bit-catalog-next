@@ -59,19 +59,23 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
                 <span className="material-symbols-outlined" onClick={inputOpen}> add </span>
             </div>
 
-            <Modal 
-                text={modalText} 
-                confirm={confirmDelete} 
-                open={openModal} 
-                close={() => setOpenModal(false)} 
-            />
+            { 
+                openModal ? <Modal 
+                                text={modalText} 
+                                confirm={confirmDelete} 
+                                close={() => setOpenModal(false)} 
+                            />
+                : <></>
+            }
 
-            <InputModal 
-                text={inputModalText} 
-                confirm={confirmUpdate} 
-                open={openInputModal} 
-                close={() => setOpenInputModal(false)} 
-            />
+            { 
+                openInputModal ? <InputModal 
+                                    text={inputModalText} 
+                                    confirm={confirmUpdate} 
+                                    close={() => setOpenInputModal(false)} 
+                                />
+                : <></>
+            }
         </section>
     );
 }
