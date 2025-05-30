@@ -1,4 +1,3 @@
-export * from "./EditGameButton";
 export * from "./EditGameCategory";
 export * from "./EditGameDeveloper";
 export * from "./EditGameForm";

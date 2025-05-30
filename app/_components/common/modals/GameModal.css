@@ -16,8 +16,14 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1500px) {
     #gameModal {
-        width: 75%;
+        width: 85%;
+    }
+}
+
+@media (max-width: 400px) {
+    #gameModal {
+        width: 100%;
     }
 }

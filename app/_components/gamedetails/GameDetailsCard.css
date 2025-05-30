@@ -69,27 +69,18 @@
         }
     }
 
-    & #gameDetailsCard-description {
+    & #gameDetailsCard__description {
         display: flex;
         flex-direction: column;
         border-bottom-left-radius: 9px;
         border-bottom-right-radius: 9px;
-
-        & #gameDetailsCard__description {
-            font-size: 1.5rem;
-            padding: 2rem;
-            white-space-collapse: preserve-breaks;
-            text-align: left;
-            
-            & .gameDetailsCard__description-paragraph {
-                margin-top: 1rem;
-            }
-        }
-
-        & #editButton {
-            justify-self: flex-end;
-            align-self: flex-end;
-            margin: 2rem 1rem 1rem 0;
+        font-size: 1.5rem;
+        padding: 2rem;
+        white-space-collapse: preserve-breaks;
+        text-align: left;
+        
+        & .gameDetailsCard__description-paragraph {
+            margin-top: 1rem;
         }
     }
 }
@@ -124,10 +115,9 @@
             }
         }
 
-        & #gameDetailsCard-description {
-            & #gameDetailsCard__description {
-                font-size: 1.2rem;
-            }
+
+        & #gameDetailsCard__description {
+            font-size: 1.2rem;
         }
     }
 }
@@ -163,15 +153,8 @@
             }
         }
 
-        & #gameDetailsCard-description {
-            #gameDetailsCard__description {
-                font-size: 1rem;
-            }
-
-            #editButton {
-                width: fit-content;
-                font-size: 1rem;
-            }
+        #gameDetailsCard__description {
+            font-size: 1rem;
         }
     }
 }
