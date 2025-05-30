@@ -1,11 +1,9 @@
 'use client';
 
 import { ReactElement, useState } from "react";
-import Link from "next/link";
 import Image from 'next/image';
 import { FavouriteButton } from "@/app/_components/favourites";
 import { Game } from "@/app/_types/types";
-import { URL_GAME_DETAILS_PAGE } from "@/app/_utils/utils";
 import { rancho } from "@/app/_fonts/fonts";
 
 import "./GameCard.css";
@@ -15,13 +13,13 @@ import "./GameCard.css";
  * a user can navigate to the game's detail page if interested. It is also possible to
  * add a game card to the list of favourite games. This game card is used in Grid Views.
  */
-export function GameCard({ game }: { game: Game }): ReactElement {
+export function GameCard({ game, click }: { game: Game, click: (game: Game) => void }): ReactElement {
     const [ isFadingOut, setIsFadingOut ] = useState<boolean>(false);
     const [ removeCard, setRemoveCard ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
     
     return (
-        <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className={isFadingOut ? "is-fading" : ""}>
+        <section className={isFadingOut ? "is-fading" : ""} onClick={() => click(game)}>
             <section className={removeCard ? "hidden" : "gameCard"}>
                 <figure className="gameCard-figure">
                     <Image 
@@ -44,6 +42,6 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                     </article>
                 </figure>
             </section>
-        </Link>
+        </section>
     );
 }

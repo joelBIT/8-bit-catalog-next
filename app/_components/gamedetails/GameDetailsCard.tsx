@@ -11,7 +11,7 @@ import "./GameDetailsCard.css";
 /**
  * Show metadata of the supplied game in the UI.
  */
-export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement> {
+export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     const GAME_DETAILS = [
@@ -59,7 +59,7 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                     { game.description }
                 </article>
                 
-                { (await isAuthenticatedAdmin()) ? <EditGameButton gameId={game.id} /> : <></> }
+                {/* { (await isAuthenticatedAdmin()) ? <EditGameButton gameId={game.id} /> : <></> } */}
             </section>
         </section>
     )

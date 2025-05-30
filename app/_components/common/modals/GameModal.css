@@ -1,0 +1,23 @@
+#gameModal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    border-radius: 8px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+
+    & .gameButton {
+        position: relative;
+        bottom: 0;
+        margin: 2rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    #gameModal {
+        width: 75%;
+    }
+}
