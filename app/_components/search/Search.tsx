@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { getGames } from "@/app/_client/client";
 import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
-import { GameCard, ListToggle, ScrollTopButton, GameList } from "../common";
+import { GameCard, ListToggle, ScrollTopButton, GameList, GameModal } from "../common";
 import { Pagination } from ".";
 import { arima } from "@/app/_fonts/fonts";
 
@@ -31,6 +31,8 @@ export function Search(): ReactElement {
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
     const [ gridView, setGridView ] = useState<boolean>(!listView);
+    const [ chosenGame, setChosenGame ] = useState<Game>({} as Game);
+    const [ openModal, setOpenModal ] = useState<boolean>(false);
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
@@ -62,6 +64,15 @@ export function Search(): ReactElement {
         window.history.pushState(null, '', `?${params.toString()}`);
 
         setGridView(!gridView);
+    }
+
+    function openGameModal(game: Game) {
+        setChosenGame(game);
+        setOpenModal(true);
+    }
+
+    function closeGameModal() {
+        setOpenModal(false);
     }
 
     return (
@@ -104,11 +115,13 @@ export function Search(): ReactElement {
                     }
                 </>
             }
+
+            { openModal ? <GameModal game={chosenGame} close={() => closeGameModal()} /> : <></>}
             
             <section id="gameCards">
                 { 
                     gridView ?
-                        searchResult.map((game, index) => <GameCard key={index} game={game} />)
+                        searchResult.map((game, index) => <GameCard key={index} game={game} click={openGameModal} />)
                         :
                         <GameList games={searchResult} page={currentPage} />
                 }

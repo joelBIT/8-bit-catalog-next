@@ -9,7 +9,7 @@
     height: 100%;
     transition: all 0.3s;
 
-    .gameCard-figure {
+    & .gameCard-figure {
         position: relative;
         border-radius: 9px;
 
@@ -23,13 +23,13 @@
             border-bottom-right-radius: 9px;
         }
 
-        .gameCard-figure__cover {
+        & .gameCard-figure__cover {
             width: 100%;
             border-radius: 9px;
             height: 25rem;
         }
 
-        #gameCardTitle {
+        & #gameCardTitle {
             display: flex;
             position: absolute;
             bottom: 0;
@@ -68,6 +68,7 @@
 
     &:hover {
         transition: transform 0.3s ease;
+        cursor: pointer;
         filter: brightness(1.35);
         transition: all 0.5s;
     }

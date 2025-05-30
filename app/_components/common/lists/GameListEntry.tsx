@@ -1,8 +1,6 @@
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
-import Link from "next/link";
 import { Game } from "@/app/_types/types";
-import { URL_GAME_DETAILS_PAGE } from "@/app/_utils/utils";
 import { FavouriteButton } from "../../favourites";
 
 import "./GameListEntry.css";
@@ -11,25 +9,23 @@ import "./GameListEntry.css";
  * An entry in a list of games. Corresponds to a row in a regular list in List View.
  * When hovering a game cover that cover will appear enlarged in a modal.
  */
-export function GameListEntry({ game }: { game: Game }): ReactElement {
+export function GameListEntry({ game, click }: { game: Game, click: (game: Game) => void }): ReactElement {
     const [ removeCard, setRemoveCard ] = useState<boolean>(false);
     const [ showModal, setShowModal ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     return (
-        <li key={game.id} className={removeCard ? "hidden" : "gameListEntry"}>
-            <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`}>
-                <Image 
-                    src={STORAGE_URL + game.cover}
-                    unoptimized
-                    className="gameCard-figure__cover"
-                    onMouseEnter={() => setShowModal(true)}
-                    onMouseLeave={() => setShowModal(false)}
-                    alt="Game Cover"
-                    width={100}
-                    height={100}
-                />
-            </Link>
+        <li key={game.id} className={removeCard ? "hidden" : "gameListEntry"} onClick={() => click(game)}>
+            <Image 
+                src={STORAGE_URL + game.cover}
+                unoptimized
+                className="gameCard-figure__cover"
+                onMouseEnter={() => setShowModal(true)}
+                onMouseLeave={() => setShowModal(false)}
+                alt="Game Cover"
+                width={100}
+                height={100}
+            />
 
             <section className={showModal ? "image-modal-show" : "hidden"}>
                 <Image 
@@ -45,9 +41,9 @@ export function GameListEntry({ game }: { game: Game }): ReactElement {
             </section>
 
             <h2 className="gameCard-title"> 
-                <Link href={`${URL_GAME_DETAILS_PAGE}/${game.id}`} className="gameCard-title__link"> 
+                <section className="gameCard-title__link" onClick={() => click(game)}> 
                     {game.title} 
-                </Link> 
+                </section> 
             </h2>
             
             <section className="category-section">

@@ -2,8 +2,6 @@ import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
 import { Game } from "@/app/_types/types";
-import { isAuthenticatedAdmin } from "@/app/_session/utils";
-import { EditGameButton } from "./edit/EditGameButton";
 import { PlayRomLink } from "./PlayRomLink";
 
 import "./GameDetailsCard.css";
@@ -11,7 +9,7 @@ import "./GameDetailsCard.css";
 /**
  * Show metadata of the supplied game in the UI.
  */
-export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactElement> {
+export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     const GAME_DETAILS = [
@@ -54,13 +52,9 @@ export async function GameDetailsCard({ game }: { game: Game }): Promise<ReactEl
                 </article>
             </article>
 
-            <section id="gameDetailsCard-description">
-                <article id="gameDetailsCard__description">
-                    { game.description }
-                </article>
-                
-                { (await isAuthenticatedAdmin()) ? <EditGameButton gameId={game.id} /> : <></> }
-            </section>
+            <article id="gameDetailsCard__description">
+                { game.description }
+            </article>
         </section>
     )
 }

@@ -1,0 +1,32 @@
+#gameModal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    border-radius: 8px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+    border-right: none;
+    border-left: none;
+    scrollbar-color: var(--color-black) #36ff4660;
+
+    & .gameButton {
+        position: relative;
+        bottom: 0;
+        margin: 2rem;
+    }
+}
+
+@media (max-width: 1500px) {
+    #gameModal {
+        width: 85%;
+    }
+}
+
+@media (max-width: 400px) {
+    #gameModal {
+        width: 100%;
+    }
+}

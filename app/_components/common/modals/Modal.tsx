@@ -1,16 +1,18 @@
 'use client';
 
-import { ReactElement, useRef } from "react";
+import { ReactElement, useEffect, useRef } from "react";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./Modal.css";
 
-export function Modal({ text, confirm, open, close }: { text: string, confirm: () => void, open: boolean, close: (toggle: boolean) => void }): ReactElement {
+export function Modal({ text, confirm, close }: { text: string, confirm: () => void, close: (toggle: boolean) => void }): ReactElement {
     const modalRef = useRef<HTMLDialogElement>(null);
 
-    if (open) {
-        modalRef.current?.showModal();
-    }
+    useEffect(() => {
+        if (!modalRef.current?.open) {
+            modalRef.current?.showModal();
+        }
+    }, [])
     
     function closeModal() {
         modalRef.current?.close();

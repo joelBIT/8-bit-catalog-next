@@ -3,6 +3,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Game } from "@/app/_types/types";
 import { GameListEntry } from "./GameListEntry";
+import { GameModal } from "..";
 
 import "./GameList.css";
 
@@ -15,6 +16,8 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     const [ ascending, setAscending ] = useState<boolean>(false);
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(-1);
+    const [ chosenGame, setChosenGame ] = useState<Game>({} as Game);
+    const [ openModal, setOpenModal ] = useState<boolean>(false);
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";
     const GAME_PLAYERS = "game-players";
@@ -96,6 +99,15 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
         }
     }
 
+    function openGameModal(game: Game): void {
+        setChosenGame(game);
+        setOpenModal(true);
+    }
+
+    function closeGameModal(): void {
+        setOpenModal(false);
+    }
+
     return (
         <ul id="gameList">
             <section id="listHeading">
@@ -113,9 +125,11 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
                     )
                 }
             </section>
+
+            { openModal ? <GameModal game={chosenGame} close={() => closeGameModal()} /> : <></>}
             
             {
-                currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} />) : <></>
+                currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} click={openGameModal} />) : <></>
             }
         </ul>
     );
