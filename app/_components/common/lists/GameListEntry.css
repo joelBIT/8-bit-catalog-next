@@ -41,6 +41,10 @@
         padding-left: 1rem;
         width: 50%;
 
+        &:hover {
+            cursor: pointer;
+        }
+
         & .gameCard-title__link {
             transition: all 0.5s;
 
