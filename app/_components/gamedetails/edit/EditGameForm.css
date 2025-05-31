@@ -47,18 +47,9 @@
         }
     }
 
-    & .editGameForm-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
-
-        #cancelButton, #saveButton {
-            padding: 0.5rem 1rem;
-        }
-
-        #saveButton {
-            justify-self: end;
-        }
+    #saveButton {
+        justify-self: end;
+        padding: 0.5rem 1rem;
     }
 }
 
@@ -104,11 +95,9 @@
             align-items: center;
         }
 
-        & .editGameForm-buttons {
-            #cancelButton, #saveButton {
-                width: fit-content;
-                font-size: 1rem;
-            }
+        & #saveButton {
+            width: fit-content;
+            font-size: 1rem;
         }
 
         textarea {

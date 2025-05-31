@@ -1,9 +1,7 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import { updateGameById } from "@/app/_db/db";
 import { ActionState, Game } from "@/app/_types/types";
-import { URL_GAME_DETAILS_PAGE } from '@/app/_utils/utils';
 import { isAuthenticatedAdmin } from '@/app/_session/utils';
 
 /**
@@ -37,6 +35,5 @@ export async function updateGame(_prevState: ActionState, formData: FormData): P
         return { message: 'Could not update game', success: false };
     }
 
-    revalidatePath(`${URL_GAME_DETAILS_PAGE}/[id]`, "page");
     return { message: 'Game updated', success: true };
 }
