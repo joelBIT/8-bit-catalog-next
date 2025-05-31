@@ -2,11 +2,10 @@
 
 import { ReactElement, useActionState } from "react";
 import { FilterValues, Game } from "@/app/_types/types";
-import { fileTypes, getPlayersList, URL_GAME_DETAILS_PAGE } from "@/app/_utils/utils";
+import { fileTypes, getPlayersList } from "@/app/_utils/utils";
 import { arima } from "@/app/_fonts/fonts";
 import { updateGame } from "@/app/_actions/games";
 import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from ".";
-import { CancelButton } from "@/app/_components/common";
 
 import "./EditGameForm.css";
 
@@ -74,10 +73,7 @@ export function EditGameForm({ game, filterValues }: { game: Game, filterValues:
                 required 
             />
 
-            <div className="editGameForm-buttons">
-                <CancelButton url={`${URL_GAME_DETAILS_PAGE}/${game.id}`} />
-                <button id="saveButton" className="gameButton" type="submit"> Save </button>
-            </div>
+            <button id="saveButton" className="gameButton" type="submit"> Save </button>
         </form>
     );
 }

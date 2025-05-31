@@ -4,7 +4,6 @@ export const PAGINATION_PAGE_SIZE = 15;
 export const URL_ABOUT_PAGE = "/about";
 export const URL_FAVOURITES_PAGE = "/favourites";
 export const URL_FORBIDDEN_PAGE = "/forbidden";
-export const URL_GAME_DETAILS_PAGE = "/gamedetails";
 export const URL_HOME = "/";
 export const URL_LOGIN_PAGE = "/login";
 export const URL_REGISTER_PAGE = "/register";
