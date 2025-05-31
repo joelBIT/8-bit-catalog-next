@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { GameContext } from "@/app/_contexts";
 import { Game } from "@/app/_types/types";
 import { GameListEntry } from "./GameListEntry";
 import { GameModal } from "..";
@@ -13,6 +14,7 @@ import "./GameList.css";
  * list of games by clicking on each heading.
  */
 export function GameList({ games, page }: { games: Game[], page: number }): ReactElement {
+    const { selectedGame, setSelectedGame } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
@@ -20,7 +22,6 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     const [ ascending, setAscending ] = useState<boolean>(false);
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(-1);
-    const [ chosenGame, setChosenGame ] = useState<Game>({} as Game);
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";
@@ -111,7 +112,7 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
         setTimeout(() => {
             params.set('show', "true");
             window.history.pushState(null, '', `?${params.toString()}`);
-            setChosenGame(game);
+            setSelectedGame(game);
             setOpenModal(true);
         }, 300);
     }
@@ -140,7 +141,7 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
                 }
             </section>
 
-            { openModal ? <GameModal game={chosenGame} close={() => closeGameModal()} /> : <></>}
+            { openModal && Object.keys(selectedGame).length > 0 ? <GameModal game={selectedGame} close={() => closeGameModal()} /> : <></>}
             
             {
                 currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} click={openGameModal} />) : <></>

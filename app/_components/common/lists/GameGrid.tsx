@@ -52,7 +52,7 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
 
     return (
         <section id="gameGrid">
-            { openModal && selectedGame ? <GameModal game={selectedGame} close={() => closeGameModal()} /> : <></>}
+            { openModal && Object.keys(selectedGame).length > 0 ? <GameModal game={selectedGame} close={() => closeGameModal()} /> : <></>}
             
             { currentGames.length > 0 ? currentGames.map(game => <GameCard game={game} key={game.id} click={openGameModal} />) : <></> }
         </section>
