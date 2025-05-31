@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/app/_components/header";
 import { Footer } from "@/app/_components/footer";
-import { FavouritesContexProvider } from "@/app/_contexts";
+import { FavouriteContextProvider } from "@/app/_contexts";
 
 import "../globals.css";
 
@@ -18,7 +18,7 @@ export default function RootLayout({
     return (
         <>
             <Header />
-                <FavouritesContexProvider> {children} </FavouritesContexProvider>
+                <FavouriteContextProvider> {children} </FavouriteContextProvider>
             <Footer />
         </>
     );
