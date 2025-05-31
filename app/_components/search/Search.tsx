@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { GameContext } from "@/app/_contexts";
 import { getGames } from "@/app/_client/client";
 import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
@@ -17,6 +18,7 @@ import "./Search.css";
  * is set on each search to inform the user about how many games that matches the search query.
  */
 export function Search(): ReactElement {
+    const { gridView } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const page =  params.get('page') as string || '1';
@@ -24,13 +26,11 @@ export function Search(): ReactElement {
     const category = params.get('category') as string;
     const developer = params.get('developer') as string;
     const publisher = params.get('publisher') as string;
-    const listView = params.get('listView') as string;
     const [ searchResult, setSearchResult ] = useState<Game[]>([]);
     const [ showHeading, setShowHeading ] = useState<boolean>(false);
     const [ currentPage, setCurrentPage ] = useState<number>(parseInt(page));
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
-    const [ gridView, setGridView ] = useState<boolean>(!listView);
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
@@ -55,32 +55,37 @@ export function Search(): ReactElement {
         <section id="search">
             {
                 searchResult.length > 0 ? 
-                    <section className="show-pagination-toggle">
-                        { 
-                            showHeading ? 
-                                <h1 className={`tag ${arima.className}`}>
-                                    Games found: {totalCount}
-                                </h1> 
-                            : <></>
-                        }
-
-                        {
-                            totalPages > 1 ?
-                                <Pagination 
-                                    currentPage={currentPage} 
-                                    setCurrentPage={setCurrentPage} 
-                                    setSearchResult={setSearchResult} 
-                                    totalPages={totalPages} 
-                                /> 
-                            : <></>
-                        }
-
-                        {
-                            searchResult.length > 0 ?
-                                <ListToggle toggle={() => setGridView(!gridView)} initialState={gridView} />
+                    <>
+                        <section className="show-pagination-toggle">
+                            { 
+                                showHeading ? 
+                                    <h1 className={`tag ${arima.className}`}>
+                                        Games found: {totalCount}
+                                    </h1> 
                                 : <></>
+                            }
+
+                            {
+                                totalPages > 1 ?
+                                    <Pagination 
+                                        currentPage={currentPage} 
+                                        setCurrentPage={setCurrentPage} 
+                                        setSearchResult={setSearchResult} 
+                                        totalPages={totalPages} 
+                                    /> 
+                                : <></>
+                            }
+
+                            { searchResult.length > 0 ? <ListToggle /> : <></> }
+                        </section>
+
+                        { 
+                            gridView ?
+                                <GameGrid games={searchResult} page={currentPage} />
+                                :
+                                <GameList games={searchResult} page={currentPage} />
                         }
-                    </section>
+                    </>
                 : <>
                     { 
                         showHeading ? 
@@ -90,13 +95,6 @@ export function Search(): ReactElement {
                         : <></>
                     }
                 </>
-            }
-
-            { 
-                gridView ?
-                    <GameGrid games={searchResult} page={currentPage} />
-                    :
-                    <GameList games={searchResult} page={currentPage} />
             }
         
             <ScrollTopButton />

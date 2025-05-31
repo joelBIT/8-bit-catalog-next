@@ -11,7 +11,7 @@ import "./page.css";
 
 export default function FavouritesPage(): ReactElement {
     const { favouritesList, favouritesPage } = useContext(FavouritesContext);
-    const { gridView, toggleGridView } = useContext(GameContext);
+    const { gridView } = useContext(GameContext);
 
     function from(page: number): number {
         return (page - 1) * PAGINATION_PAGE_SIZE;
@@ -37,7 +37,7 @@ export default function FavouritesPage(): ReactElement {
                                     : <></>
                             }
 
-                            <ListToggle toggle={toggleGridView} initialState={gridView} />
+                            <ListToggle />
                         </section>
                     </>
                     : <h1 className="tag"> No favourites </h1>
