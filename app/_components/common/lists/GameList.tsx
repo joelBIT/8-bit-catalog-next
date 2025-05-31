@@ -113,7 +113,7 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
             window.history.pushState(null, '', `?${params.toString()}`);
             setChosenGame(game);
             setOpenModal(true);
-        }, 200);
+        }, 300);
     }
 
     function closeGameModal(): void {
