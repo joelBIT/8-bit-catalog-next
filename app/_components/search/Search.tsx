@@ -5,12 +5,11 @@ import { useSearchParams } from "next/navigation";
 import { getGames } from "@/app/_client/client";
 import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
-import { GameCard, ListToggle, ScrollTopButton, GameList, GameModal } from "../common";
+import { ListToggle, ScrollTopButton, GameList, GameGrid } from "../common";
 import { Pagination } from ".";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./Search.css";
-import { GameGrid } from "../common/lists/GameGrid";
 
 /**
  * Searches for games that matches the supplied filter values as well as the given title text.
@@ -32,12 +31,10 @@ export function Search(): ReactElement {
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
     const [ gridView, setGridView ] = useState<boolean>(!listView);
-    const [ chosenGame, setChosenGame ] = useState<Game>({} as Game);
-    const [ openModal, setOpenModal ] = useState<boolean>(false);
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
-            search();                   // Perform a search on query params when navigating back to this page
+            search();                   // Perform a search on query params
         }
     }, [title, category, developer, publisher])
 
@@ -52,28 +49,6 @@ export function Search(): ReactElement {
         setTotalPages(Math.floor(result.count / PAGINATION_PAGE_SIZE) + 1);
         setCurrentPage(parseInt(page) || 1);
         setShowHeading(true);
-    }
-
-    /**
-     * Keep track of which view the user had when navigating back from a game's detail page.
-     */
-    function toggleGridView(): void {
-        params.delete('listView');
-        if (gridView) {
-            params.set('listView', "true");
-        }
-        window.history.pushState(null, '', `?${params.toString()}`);
-
-        setGridView(!gridView);
-    }
-
-    function openGameModal(game: Game) {
-        setChosenGame(game);
-        setOpenModal(true);
-    }
-
-    function closeGameModal() {
-        setOpenModal(false);
     }
 
     return (
@@ -102,7 +77,7 @@ export function Search(): ReactElement {
 
                         {
                             searchResult.length > 0 ?
-                                <ListToggle toggle={toggleGridView} initialState={gridView} />
+                                <ListToggle toggle={() => setGridView(!gridView)} initialState={gridView} />
                                 : <></>
                         }
                     </section>
@@ -118,12 +93,12 @@ export function Search(): ReactElement {
             }
 
 
-                { 
-                    gridView ?
-                        <GameGrid games={searchResult} page={currentPage} />
-                        :
-                        <GameList games={searchResult} page={currentPage} />
-                }
+            { 
+                gridView ?
+                    <GameGrid games={searchResult} page={currentPage} />
+                    :
+                    <GameList games={searchResult} page={currentPage} />
+            }
         
 
             <ScrollTopButton />
