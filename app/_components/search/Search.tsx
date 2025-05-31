@@ -10,6 +10,7 @@ import { Pagination } from ".";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./Search.css";
+import { GameGrid } from "../common/lists/GameGrid";
 
 /**
  * Searches for games that matches the supplied filter values as well as the given title text.
@@ -116,16 +117,14 @@ export function Search(): ReactElement {
                 </>
             }
 
-            { openModal ? <GameModal game={chosenGame} close={() => closeGameModal()} /> : <></>}
-            
-            <section id="gameCards">
+
                 { 
                     gridView ?
-                        searchResult.map((game, index) => <GameCard key={index} game={game} click={openGameModal} />)
+                        <GameGrid games={searchResult} page={currentPage} />
                         :
                         <GameList games={searchResult} page={currentPage} />
                 }
-            </section>
+        
 
             <ScrollTopButton />
 

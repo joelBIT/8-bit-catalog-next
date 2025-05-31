@@ -2,6 +2,7 @@ export * from "./modals/AddUserModal";
 export * from "./CancelButton";
 export * from "./inputs/EmailInput";
 export * from "./lists/GameCard";
+export * from "./lists/GameGrid";
 export * from "./lists/GameList";
 export * from "./lists/GameListEntry";
 export * from "./modals/GameModal";
