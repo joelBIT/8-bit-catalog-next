@@ -14,11 +14,10 @@ export const FavouritesContext = createContext<FavouritesContextProvider>({} as 
  * Favourite games are placed in localstorage if localstorage is available. If not available, the favourite games
  * are only temporarily stored in this Context's favouritesList variable.
  */
-export function FavouritesContexProvider({ children }: ContextProviderChildren): ReactElement {
+export function FavouriteContextProvider({ children }: ContextProviderChildren): ReactElement {
     const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
     const [ favouritesPage, setFavouritesPage ] = useState<number>(1);      // Used for pagination
     const [ totalPages, setTotalPages ] = useState<number>(1);              // Total number of favourite pages
-    const [ gridView, setGridView ] = useState<boolean>(true);              // The chosen view on the favourites page
     const STORAGE_KEY = 'favouriteGames';
 
     useEffect(() => {
@@ -126,12 +125,8 @@ export function FavouritesContexProvider({ children }: ContextProviderChildren):
         return (favouritesList.length - 1) % PAGINATION_PAGE_SIZE === 0;
     }
 
-    function toggleGridView(): void {
-        setGridView(!gridView);
-    }
-
     return (
-        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages, loadFavouriteGames, gridView, toggleGridView }}>
+        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, favouritesPage, setFavouritesPage, totalPages }}>
             { children }
         </FavouritesContext.Provider>
     );

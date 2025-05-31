@@ -3,14 +3,15 @@
 import { ReactElement, useContext } from "react";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { FavouritePagination } from "@/app/_components/favourites/FavouritePagination";
-import { FavouritesContext } from "@/app/_contexts/FavouritesContextProvider";
+import { FavouritesContext, GameContext } from "@/app/_contexts";
 import { GameGrid, GameList, ListToggle, ScrollTopButton } from "@/app/_components/common";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./page.css";
 
 export default function FavouritesPage(): ReactElement {
-    const { favouritesList, favouritesPage, gridView, toggleGridView } = useContext(FavouritesContext);
+    const { favouritesList, favouritesPage } = useContext(FavouritesContext);
+    const { gridView, toggleGridView } = useContext(GameContext);
 
     function from(page: number): number {
         return (page - 1) * PAGINATION_PAGE_SIZE;
