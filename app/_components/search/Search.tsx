@@ -51,12 +51,6 @@ export function Search(): ReactElement {
         setShowHeading(true);
     }
 
-    function toggleGamesView(): void {
-        params.delete('show');
-        window.history.pushState(null, '', `?${params.toString()}`);    // Remove 'show' so no modal is active when changing games list view
-        setGridView(!gridView);
-    }
-
     return (
         <section id="search">
             {
@@ -83,7 +77,7 @@ export function Search(): ReactElement {
 
                         {
                             searchResult.length > 0 ?
-                                <ListToggle toggle={toggleGamesView} initialState={gridView} />
+                                <ListToggle toggle={() => setGridView(!gridView)} initialState={gridView} />
                                 : <></>
                         }
                     </section>

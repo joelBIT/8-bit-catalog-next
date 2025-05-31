@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactElement, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import "./ListToggle.css";
 
@@ -9,6 +10,8 @@ import "./ListToggle.css";
  * The 'initialState' parameter corresponds to the initial state of the component.
  */
 export function ListToggle({ toggle, initialState }: { toggle: () => void, initialState: boolean } ): ReactElement {
+    const searchParams = useSearchParams();
+    const params = new URLSearchParams(searchParams);
     const [ grid, setGrid ] = useState<boolean>(initialState);
     const GRID = "Grid";
     const LIST = "List";
@@ -20,6 +23,8 @@ export function ListToggle({ toggle, initialState }: { toggle: () => void, initi
     function toggleView(target: string) {
         if (target === GRID && !grid || target === LIST && grid) {
             setGrid(!grid);
+            params.delete('show');
+            window.history.pushState(null, '', `?${params.toString()}`);        // Remove 'show' so no modal is active when changing games list view
             toggle();
         }
     }

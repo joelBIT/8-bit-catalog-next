@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useContext } from "react";
-import { useSearchParams } from "next/navigation";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { FavouritePagination } from "@/app/_components/favourites/FavouritePagination";
 import { FavouritesContext } from "@/app/_contexts/FavouritesContextProvider";
@@ -12,8 +11,6 @@ import "./page.css";
 
 export default function FavouritesPage(): ReactElement {
     const { favouritesList, favouritesPage, gridView, toggleGridView } = useContext(FavouritesContext);
-    const searchParams = useSearchParams();
-    const params = new URLSearchParams(searchParams);
 
     function from(page: number): number {
         return (page - 1) * PAGINATION_PAGE_SIZE;
@@ -21,12 +18,6 @@ export default function FavouritesPage(): ReactElement {
     
     function to(page: number): number {
         return (page - 1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE;
-    }
-
-    function toggleGamesView(): void {
-        params.delete('show');
-        window.history.pushState(null, '', `?${params.toString()}`);        // Remove 'show' so no modal is active when changing games list view
-        toggleGridView();
     }
 
     return (
@@ -45,7 +36,7 @@ export default function FavouritesPage(): ReactElement {
                                     : <></>
                             }
 
-                            <ListToggle toggle={toggleGamesView} initialState={gridView} />
+                            <ListToggle toggle={toggleGridView} initialState={gridView} />
                         </section>
                     </>
                     : <h1 className="tag"> No favourites </h1>
