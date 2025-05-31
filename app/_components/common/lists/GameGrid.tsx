@@ -33,9 +33,7 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
     })
 
     function openGameModal(game: Game): void {
-        params.delete('show');
-        window.history.pushState(null, '', `?${params.toString()}`);
-        setOpenModal(false);
+        closeGameModal();       // Handles when back button on mobile phone is used, makes sure the url is really updated before opening modal
 
         setTimeout(() => {
             params.set('show', "true");

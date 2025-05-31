@@ -106,11 +106,14 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     }
 
     function openGameModal(game: Game): void {
-        params.delete('show');
-        params.set('show', "true");
-        window.history.pushState(null, '', `?${params.toString()}`);
-        setChosenGame(game);
-        setOpenModal(true);
+        closeGameModal();       // Handles when back button on mobile phone is used, makes sure the url is really updated before opening modal
+
+        setTimeout(() => {
+            params.set('show', "true");
+            window.history.pushState(null, '', `?${params.toString()}`);
+            setChosenGame(game);
+            setOpenModal(true);
+        }, 200);
     }
 
     function closeGameModal(): void {
