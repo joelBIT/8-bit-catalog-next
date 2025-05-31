@@ -34,10 +34,15 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
 
     function openGameModal(game: Game): void {
         params.delete('show');
-        params.set('show', "true");
         window.history.pushState(null, '', `?${params.toString()}`);
-        setChosenGame(game);
-        setOpenModal(true);
+        setOpenModal(false);
+
+        setTimeout(() => {
+            params.set('show', "true");
+            window.history.pushState(null, '', `?${params.toString()}`);
+            setChosenGame(game);
+            setOpenModal(true);
+        }, 200);
     }
 
     function closeGameModal(): void {
