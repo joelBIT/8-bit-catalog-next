@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { blinker } from "@/app/_fonts/fonts";
+import { GameContextProvider } from "./_contexts";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
     title: "The 8-bit Catalog",
-    description: "Contains information about 8-bit NES games",
+    description: "Catalog covering 8-bit NES games",
 };
 
 export default function RootLayout({
@@ -16,7 +17,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${blinker.className}`}>
-                {children} 
+                <GameContextProvider>
+                    {children} 
+                </GameContextProvider>
             </body>
         </html>
     );

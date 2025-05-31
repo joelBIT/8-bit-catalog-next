@@ -10,9 +10,15 @@ export interface FavouritesContextProvider {
     totalPages: number;
     loadFavouriteGames: () => void;
     gridView: boolean;
-    toggleGridView: () => void
+    toggleGridView: () => void;
 }
 
+export interface GamesContextProvider {
+    selectedGame: Game;
+    setSelectedGame: (game: Game) => void;
+    gridView: boolean;
+    toggleGridView: () => void;
+}
 export interface AccountContextProvider {
     user: User;
     addUser: () => Promise<void>

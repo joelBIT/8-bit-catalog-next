@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { GameContext } from "@/app/_contexts";
 import { Game } from "@/app/_types/types";
 import { GameCard, GameModal } from "..";
 
@@ -11,12 +12,12 @@ import "./GameGrid.css";
  * This component consists of a game list in Grid View.
  */
 export function GameGrid({ games, page }: { games: Game[], page: number }): ReactElement {
+    const { selectedGame, setSelectedGame } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(-1);
-    const [ chosenGame, setChosenGame ] = useState<Game>({} as Game);
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
 
     useEffect(() => {
@@ -38,7 +39,7 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
         setTimeout(() => {
             params.set('show', "true");
             window.history.pushState(null, '', `?${params.toString()}`);
-            setChosenGame(game);
+            setSelectedGame(game);
             setOpenModal(true);
         }, 200);
     }
@@ -51,7 +52,7 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
 
     return (
         <section id="gameGrid">
-            { openModal ? <GameModal game={chosenGame} close={() => closeGameModal()} /> : <></>}
+            { openModal && selectedGame ? <GameModal game={selectedGame} close={() => closeGameModal()} /> : <></>}
             
             { currentGames.length > 0 ? currentGames.map(game => <GameCard game={game} key={game.id} click={openGameModal} />) : <></> }
         </section>
