@@ -92,7 +92,6 @@ export function Search(): ReactElement {
                 </>
             }
 
-
             { 
                 gridView ?
                     <GameGrid games={searchResult} page={currentPage} />
@@ -100,7 +99,6 @@ export function Search(): ReactElement {
                     <GameList games={searchResult} page={currentPage} />
             }
         
-
             <ScrollTopButton />
 
             {
