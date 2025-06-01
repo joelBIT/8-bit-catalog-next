@@ -19,6 +19,7 @@ export function FavouriteButton({ game, setFading, removeCard }: { game: Game, s
      */
     function handleFavourites(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
         event.preventDefault();
+        event.stopPropagation();
 
         if (isFavorite) {
             if (pathname === URL_FAVOURITES_PAGE) {           // If a game card is removed from favourites page, it fades out
