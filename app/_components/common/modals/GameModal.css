@@ -22,7 +22,7 @@
     & #prevButton, #nextButton {
         display: flex;
         position: absolute;
-        top: 10px;
+        top: 13px;
         align-items: center;
         justify-content: center;
         width: 4rem;
@@ -54,12 +54,12 @@
 
     & #prevButton {
         margin-right: 1rem;
-        left: 10px;
+        left: 13px;
     }
 
     & #nextButton {
         margin-left: 1rem;
-        right: 10px;
+        right: 13px;
     }
 }
 
