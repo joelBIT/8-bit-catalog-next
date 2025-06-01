@@ -15,13 +15,14 @@ export function GameListEntry({ game, click }: { game: Game, click: (game: Game)
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     return (
-        <li key={game.id} className={removeCard ? "hidden" : "gameListEntry"} onClick={() => click(game)}>
+        <li key={game.id} className={removeCard ? "hidden" : "gameListEntry"}>
             <Image 
                 src={STORAGE_URL + game.cover}
                 unoptimized
                 className="gameCard-figure__cover"
                 onMouseEnter={() => setShowModal(true)}
                 onMouseLeave={() => setShowModal(false)}
+                onClick={() => click(game)}
                 alt="Game Cover"
                 width={100}
                 height={100}
