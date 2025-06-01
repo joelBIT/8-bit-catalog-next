@@ -141,11 +141,9 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
                 }
             </section>
 
-            { openModal && Object.keys(selectedGame).length > 0 ? <GameModal game={selectedGame} close={() => closeGameModal()} /> : <></>}
+            { openModal && Object.keys(selectedGame).length > 0 ? <GameModal games={currentGames} game={selectedGame} close={() => closeGameModal()} /> : <></> }
             
-            {
-                currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} click={openGameModal} />) : <></>
-            }
+            { currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} click={openGameModal} />) : <></> }
         </ul>
     );
 }
