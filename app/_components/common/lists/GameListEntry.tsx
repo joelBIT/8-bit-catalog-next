@@ -33,8 +33,6 @@ export function GameListEntry({ game, click }: { game: Game, click: (game: Game)
                     src={STORAGE_URL + game.cover}
                     unoptimized
                     className="gameCard-figure__cover"
-                    onMouseEnter={() => setShowModal(true)}
-                    onMouseLeave={() => setShowModal(false)}
                     alt="Game Cover"
                     width={300}
                     height={300}

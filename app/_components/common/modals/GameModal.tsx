@@ -1,16 +1,27 @@
 'use client';
 
-import { ReactElement, useEffect, useRef } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import { GameDetailsCard } from '../../gamedetails/GameDetailsCard';
 import { Game } from '@/app/_types/types';
 
 import "./GameModal.css";
 
 /**
- * Modal showing metadata about the supplied game.
+ * Modal showing metadata about the supplied game. It is possible to navigate between the supplied games by using the 'previous' and
+ * 'next' buttons.
  */
-export function GameModal({ game, close }: { game: Game, close: () => void }): ReactElement {
+export function GameModal({ games, game, close }: { games: Game[], game: Game, close: () => void }): ReactElement {
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const [ slide, setSlide ] = useState<number>(games.findIndex(element => element.id === game.id));
+    const [ suppliedGames ] = useState<Game[]>(games);
+    
+    function nextSlide(): void {
+        setSlide(slide === games.length - 1 ? 0 : slide + 1);
+    }
+
+    function prevSlide(): void {
+        setSlide(slide === 0 ? games.length - 1 : slide - 1);
+    }
 
     useEffect(() => {
       if (!dialogRef.current?.open) {
@@ -20,8 +31,18 @@ export function GameModal({ game, close }: { game: Game, close: () => void }): R
 
     return (
         <dialog id="gameModal" ref={dialogRef}>
-            <GameDetailsCard game={game} />
-            <button onClick={close} className="gameButton"> Close </button>
+            <button id="prevButton" onClick={prevSlide}>
+                <span className="material-symbols-outlined arrow"> chevron_left </span>
+            </button>
+
+            <section id="slide-space" className={"slide"} key={game.id}>
+                <GameDetailsCard game={suppliedGames[slide]} />
+                <button onClick={close} className="gameButton"> Close </button>
+            </section>
+
+            <button id="nextButton" onClick={nextSlide}>
+                <span className="material-symbols-outlined arrow"> chevron_right </span>
+            </button>
         </dialog>
     );
 }
