@@ -22,7 +22,7 @@
     & #prevButton, #nextButton {
         display: flex;
         position: absolute;
-        top: 50%;
+        top: 10px;
         align-items: center;
         justify-content: center;
         width: 4rem;
@@ -30,9 +30,10 @@
         border-radius: 100%;
         background-color: transparent;
         border: 2px solid var(--color-link);
-        background-color: #064D6180;
+        background-color: #064D61;
         color: var(--color-white);
         transition-duration: 0.5s;
+        box-shadow: 10px 5px 5px black;
 
         & .arrow {
             position: relative;
@@ -44,9 +45,10 @@
 
         &:hover {
             cursor: pointer;
-            background-color: #064D6140;
+            background-color: #064D6180;
             color: var(--color-heading);
             transition-duration: 0.5s;
+            box-shadow: none;
         }
     }
 
