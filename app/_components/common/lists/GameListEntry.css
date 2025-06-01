@@ -41,14 +41,12 @@
         padding-left: 1rem;
         width: 50%;
 
-        &:hover {
-            cursor: pointer;
-        }
-
         & .gameCard-title__link {
             transition: all 0.5s;
+            width: fit-content;
 
             &:hover {
+                cursor: pointer;
                 filter: brightness(0.5);
                 transition: filter 0.5s;
             }
