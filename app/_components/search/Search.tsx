@@ -8,7 +8,6 @@ import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { ListToggle, ScrollTopButton, GameList, GameGrid } from "../common";
 import { Pagination } from ".";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./Search.css";
 
@@ -59,7 +58,7 @@ export function Search(): ReactElement {
                         <section className="show-pagination-toggle">
                             { 
                                 showHeading ? 
-                                    <h1 className={`tag ${arima.className}`}>
+                                    <h1 className={"tag permanent-marker-regular"}>
                                         Games found: {totalCount}
                                     </h1> 
                                 : <></>
@@ -89,7 +88,7 @@ export function Search(): ReactElement {
                 : <>
                     { 
                         showHeading ? 
-                            <h1 className={`tag ${arima.className}`}>
+                            <h1 className={"tag permanent-marker-regular"}>
                                 No games found
                             </h1> 
                         : <></>

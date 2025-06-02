@@ -12,17 +12,16 @@
     border-left: none;
     scrollbar-color: var(--color-black) #36ff4660;
 
-    & #slide-space {
-        & .gameButton {
-            position: relative;
-            bottom: 0;
-            margin: 2rem;
-            padding: .3rem 0;
-            font-family: 'Rancho';
-        }
+    & .gameButton {
+        position: relative;
+        bottom: 0;
+        margin: 2rem;
+        padding: .3rem 0;
+        font-family: 'Rancho';
     }
 
-    & #prevButton, #nextButton {
+    & #prevButton, 
+    #nextButton {
         display: flex;
         position: absolute;
         top: 13px;
