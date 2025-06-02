@@ -14,18 +14,18 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
 
     const GAME_DETAILS = [
         {text: game?.category, icon: "category", title: "Game Category"},
-        {text: game.release_date, icon: "calendar_month", title: "Release Date"},
-        {text: game.players, icon: "videogame_asset", title: "Players"},
-        {text: game.publisher, icon: "corporate_fare", title: "Game Publisher"},
-        {text: game.developer, icon: "code", title: "Game Developer"}
+        {text: game?.release_date, icon: "calendar_month", title: "Release Date"},
+        {text: game?.players, icon: "videogame_asset", title: "Players"},
+        {text: game?.publisher, icon: "corporate_fare", title: "Game Publisher"},
+        {text: game?.developer, icon: "code", title: "Game Developer"}
     ]
 
     return (
         <section id="gameDetailsCard">
             <article id="game-cover-tags">
-                <Link href={STORAGE_URL + game.cover} target="_blank" className="gameDetailsCard__link">
+                <Link href={STORAGE_URL + game?.cover} target="_blank" className="gameDetailsCard__link">
                     <Image 
-                        src={STORAGE_URL + game.cover}
+                        src={STORAGE_URL + game?.cover}
                         unoptimized
                         className="gameDetailsCard-image"
                         alt="Game Cover"
@@ -35,7 +35,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                 </Link>
 
                 <article id="gameDetails" className="bit-font">
-                    <h1 className="gameDetails__title permanent-marker-regular"> {game.title} </h1>
+                    <h1 className="gameDetails__title permanent-marker-regular"> {game?.title} </h1>
 
                     <section className="game-tags">
                         {
@@ -48,12 +48,12 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                         }
                     </section>
 
-                    { game.rom ? <PlayRomLink id={game.id} /> : <></> }
+                    { game?.rom ? <PlayRomLink id={game?.id} /> : <></> }
                 </article>
             </article>
 
             <article id="gameDetailsCard__description">
-                { game.description }
+                { game?.description }
             </article>
         </section>
     )
