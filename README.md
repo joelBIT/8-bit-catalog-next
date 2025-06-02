@@ -4,6 +4,7 @@
 
 ![catalog2](https://github.com/user-attachments/assets/c666d32e-d2ba-4858-a681-7c2827a75eff)
 
-![catalog3](https://github.com/user-attachments/assets/e9e74125-6bc9-4868-be1d-236e07786603)
+
+![Screenshot from 2025-06-02 16-12-52](https://github.com/user-attachments/assets/902e38d1-b12f-44fc-89e2-85d51a124761)
 
 
