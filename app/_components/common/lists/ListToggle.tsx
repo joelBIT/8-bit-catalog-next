@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useContext, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { GameContext } from "@/app/_contexts";
 
 import "./ListToggle.css";
@@ -11,8 +10,6 @@ import "./ListToggle.css";
  */
 export function ListToggle(): ReactElement {
     const { gridView, toggleGridView } = useContext(GameContext);
-    const searchParams = useSearchParams();
-    const params = new URLSearchParams(searchParams);
     const [ grid, setGrid ] = useState<boolean>(gridView);
     const GRID = "Grid";
     const LIST = "List";
@@ -24,8 +21,6 @@ export function ListToggle(): ReactElement {
     function toggleView(target: string) {
         if (target === GRID && !grid || target === LIST && grid) {
             setGrid(!grid);
-            params.delete('show');
-            window.history.pushState(null, '', `?${params.toString()}`);        // Remove 'show' so no modal is active when changing games list view
             toggleGridView();
         }
     }
