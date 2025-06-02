@@ -47,6 +47,7 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
     function closeGameModal(): void {
         params.delete('show');
         window.history.pushState(null, '', `?${params.toString()}`);
+        setSelectedGame({} as Game);
         setOpenModal(false);
     }
 

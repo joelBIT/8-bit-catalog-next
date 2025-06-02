@@ -2,6 +2,7 @@
 
 import { ReactElement, useContext, useState } from "react";
 import { GameContext } from "@/app/_contexts";
+import { Game } from "@/app/_types/types";
 
 import "./ListToggle.css";
 
@@ -9,7 +10,7 @@ import "./ListToggle.css";
  * This is the UI component for toggling between Grid and List views. The lists themselves are changed outside of this component.
  */
 export function ListToggle(): ReactElement {
-    const { gridView, toggleGridView } = useContext(GameContext);
+    const { gridView, toggleGridView, setSelectedGame } = useContext(GameContext);
     const [ grid, setGrid ] = useState<boolean>(gridView);
     const GRID = "Grid";
     const LIST = "List";
@@ -19,6 +20,7 @@ export function ListToggle(): ReactElement {
      * The toggle should not be performed when clicking on the already active option.
      */
     function toggleView(target: string): void {
+        setSelectedGame({} as Game);
         if (target === GRID && !grid || target === LIST && grid) {
             setGrid(!grid);
             toggleGridView();
