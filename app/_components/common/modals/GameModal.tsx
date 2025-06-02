@@ -36,7 +36,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
             </button>
 
             <section id="slide-space" className={"slide"} key={game.id}>
-                <GameDetailsCard game={suppliedGames[slide]} />
+                <GameDetailsCard game={suppliedGames[slide > -1 ? slide : 0]} />
                 <button onClick={close} className="gameButton"> Close </button>
             </section>
 
