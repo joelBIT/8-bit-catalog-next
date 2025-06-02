@@ -3,20 +3,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
 
     & .forbidden__title {
         font-size: 4rem;
+        backdrop-filter: brightness(0.3);
+        border-radius: 9px;
+        padding: 0.5rem 1rem;
     }
 
     & .forbidden__text {
         font-size: 2rem;
         text-align: center;
+        backdrop-filter: brightness(0.3);
+        border-radius: 9px;
+        padding: 0.5rem 1rem;
     }
 
     & .forbidden__link {
         padding: 1rem;
-        background-color: var(--color-link-background);
+        backdrop-filter: brightness(0.3);
         border-radius: 25px;
         transition: all 0.5s;
 
