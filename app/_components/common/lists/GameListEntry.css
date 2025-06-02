@@ -3,7 +3,7 @@
     height: 4rem;
     width: 100%;
     align-items: center;
-    border-top: 1px solid var(--color-footer-heading);;
+    border-top: 1px solid var(--color-list-border);
     position: relative;
 
     & .gameCard-category__heading,

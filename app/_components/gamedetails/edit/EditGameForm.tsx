@@ -5,7 +5,7 @@ import { FilterValues, Game } from "@/app/_types/types";
 import { fileTypes, getPlayersList } from "@/app/_utils/utils";
 import { arima } from "@/app/_fonts/fonts";
 import { updateGame } from "@/app/_actions/games";
-import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from ".";
+import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from "..";
 
 import "./EditGameForm.css";
 

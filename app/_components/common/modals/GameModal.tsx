@@ -11,9 +11,9 @@ import "./GameModal.css";
  * 'next' buttons.
  */
 export function GameModal({ games, game, close }: { games: Game[], game: Game, close: () => void }): ReactElement {
-    const dialogRef = useRef<HTMLDialogElement>(null);
     const [ slide, setSlide ] = useState<number>(games.findIndex(element => element.id === game.id));
     const [ suppliedGames ] = useState<Game[]>(games);
+    const dialogRef = useRef<HTMLDialogElement>(null);
     
     function nextSlide(): void {
         setSlide(slide === games.length - 1 ? 0 : slide + 1);

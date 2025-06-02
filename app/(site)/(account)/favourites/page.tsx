@@ -5,10 +5,12 @@ import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { FavouritePagination } from "@/app/_components/favourites/FavouritePagination";
 import { FavouritesContext, GameContext } from "@/app/_contexts";
 import { GameGrid, GameList, ListToggle, ScrollTopButton } from "@/app/_components/common";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./page.css";
 
+/**
+ * Renders the current user's favourite games as game cards either in Grid view or List view.
+ */
 export default function FavouritesPage(): ReactElement {
     const { favouritesList, favouritesPage } = useContext(FavouritesContext);
     const { gridView } = useContext(GameContext);
@@ -27,7 +29,7 @@ export default function FavouritesPage(): ReactElement {
                 favouritesList.length > 0 ?
                     <>
                         <section className="show-pagination-toggle">
-                            <h1 className={`tag ${arima.className}`}>
+                            <h1 className={"tag permanent-marker-regular"}>
                                 {favouritesList.length} favourite{ favouritesList.length === 1 ? "" : "s" } 
                             </h1>
 
@@ -40,7 +42,7 @@ export default function FavouritesPage(): ReactElement {
                             <ListToggle />
                         </section>
                     </>
-                    : <h1 className="tag"> No favourites </h1>
+                    : <h1 className="tag permanent-marker-regular"> No favourites </h1>
             }
 
             { 
