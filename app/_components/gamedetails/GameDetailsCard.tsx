@@ -13,7 +13,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     const GAME_DETAILS = [
-        {text: game.category, icon: "category", title: "Game Category"},
+        {text: game?.category, icon: "category", title: "Game Category"},
         {text: game.release_date, icon: "calendar_month", title: "Release Date"},
         {text: game.players, icon: "videogame_asset", title: "Players"},
         {text: game.publisher, icon: "corporate_fare", title: "Game Publisher"},

@@ -18,7 +18,7 @@ export function ListToggle(): ReactElement {
      * Only toggle if the user clicks on Grid when in List-mode or clicks on List when in Grid-mode.
      * The toggle should not be performed when clicking on the already active option.
      */
-    function toggleView(target: string) {
+    function toggleView(target: string): void {
         if (target === GRID && !grid || target === LIST && grid) {
             setGrid(!grid);
             toggleGridView();
