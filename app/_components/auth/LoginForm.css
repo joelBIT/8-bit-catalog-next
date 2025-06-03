@@ -9,7 +9,7 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        border-bottom: 1px solid var(--color-real-white);
+        border-bottom: 0.5px solid #6b6767;
         padding-bottom: 1.5rem;
 
         .input:first-of-type {
@@ -45,6 +45,8 @@
 
         .authButton:disabled {
             filter: brightness(0.3);
+            transform: none;
+            border: none;
         }
 
         .authButton:disabled:hover {
@@ -56,9 +58,41 @@
 
             &::before,
             &::after {
-                transform: none;
                 content: none;
             }
+        }
+    }
+
+    & #register-forgot-links {
+        display: flex;
+        margin-top: 1.5rem;
+
+        & #register-link,
+        #forgot-password-link {
+            padding: 0;
+            background: rgba(255, 255, 255, .025);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            font-size: .8rem;
+            text-align: center;
+            align-content: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: var(--color-white);
+            transition: all .25s;
+
+            &:hover {
+                background-color: var(--color-real-white);
+                color: var(--color-black);
+            }
+        }
+
+        & #register-link {
+            border-right: 1px solid rgba(255, 255, 255, .25);
+        }
+
+        & #forgot-password-link  {
+            border-left: 1px solid rgba(255, 255, 255, .25);
         }
     }
 }

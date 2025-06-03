@@ -80,14 +80,10 @@ export function LoginForm(): ReactElement {
                 </button>
             </form>
 
-            <section className="register-forgot-links">
-                <section id="register-link">
-                    <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Register </Link>
-                </section>
+            <section id="register-forgot-links" className="input">
+                <Link id="register-link" href={URL_REGISTER_PAGE} className="form__field"> Register </Link>
 
-                <section id="forgot-password-link">
-                    <Link href={URL_FORGOT_PAGE} className="loginCard__forgot-password-link"> Forgot password </Link>
-                </section>
+                <Link id="forgot-password-link" href={URL_FORGOT_PAGE} className="form__field"> Forgot password </Link>
             </section>
         </section>
     );

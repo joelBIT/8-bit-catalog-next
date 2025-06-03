@@ -22,7 +22,7 @@
             & .loginPage-link {
                 display: flex;
                 align-items: flex-start;
-                font-family: "Permanent Marker";
+                font-family: sans-serif;
                 gap: 0.2rem;
                 transition: all 0.5s;
 
