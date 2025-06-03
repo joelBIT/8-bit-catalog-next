@@ -1,6 +1,8 @@
 'use client';
 
 import { ReactElement, useRef, useActionState, useState } from "react";
+import Link from "next/link";
+import { URL_REGISTER_PAGE } from "@/app/_utils/utils";
 import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { login } from "@/app/_actions/auth";
 
@@ -74,13 +76,13 @@ export function LoginForm(): ReactElement {
                 </section>
                 
                 <button className={`authButton ${irishGrover.className}`} type="submit" disabled={!password || !email}>
-                    <span className="authButton__text"> Login </span>
+                    <span className="authButton__text"> Sign in </span>
                 </button>
             </form>
 
             <section className="register-forgot-links">
                 <section id="register-link">
-
+                    <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Register </Link>
                 </section>
 
                 <section id="forgot-password-link">
