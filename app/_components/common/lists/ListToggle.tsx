@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactElement, useContext, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { GameContext } from "@/app/_contexts";
 import { Game } from "@/app/_types/types";
 
@@ -10,6 +11,8 @@ import "./ListToggle.css";
  * This is the UI component for toggling between Grid and List views. The lists themselves are changed outside of this component.
  */
 export function ListToggle(): ReactElement {
+    const searchParams = useSearchParams();
+    const params = new URLSearchParams(searchParams);
     const { gridView, toggleGridView, setSelectedGame } = useContext(GameContext);
     const [ grid, setGrid ] = useState<boolean>(gridView);
     const GRID = "Grid";
@@ -23,6 +26,8 @@ export function ListToggle(): ReactElement {
         setSelectedGame({} as Game);
         if (target === GRID && !grid || target === LIST && grid) {
             setGrid(!grid);
+            params.delete('show');
+            window.history.pushState(null, '', `?${params.toString()}`);        // Remove 'show' so no modal is active when changing games list view
             toggleGridView();
         }
     }
