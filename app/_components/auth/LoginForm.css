@@ -8,5 +8,15 @@
     & #loginForm {
         display: flex;
         flex-direction: column;
+
+        .password-show {
+            position: absolute;
+            right: 0;
+            top: 18px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 }
