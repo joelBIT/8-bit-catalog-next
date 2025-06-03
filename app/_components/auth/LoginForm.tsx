@@ -6,6 +6,10 @@ import { login } from "@/app/_actions/auth";
 
 import "./LoginForm.css";
 
+/**
+ * A user enter credentials (email and password) into this form and submits the form to access an account.
+ * It is also possible to navigate to the register page as well as the 'forgot password' page.
+ */
 export function LoginForm(): ReactElement {
     const [ state, formAction ] = useActionState(login, { message: '', success: false });
     const [ isVisible, setVisible ] = useState<boolean>(false);
@@ -73,6 +77,16 @@ export function LoginForm(): ReactElement {
                     <span className="authButton__text"> Login </span>
                 </button>
             </form>
+
+            <section className="register-forgot-links">
+                <section id="register-link">
+
+                </section>
+
+                <section id="forgot-password-link">
+
+                </section>
+            </section>
         </section>
     );
 }
