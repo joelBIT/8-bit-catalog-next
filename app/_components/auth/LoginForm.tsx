@@ -2,7 +2,7 @@
 
 import { ReactElement, useRef, useActionState, useState } from "react";
 import Link from "next/link";
-import { URL_REGISTER_PAGE } from "@/app/_utils/utils";
+import { URL_FORGOT_PAGE, URL_REGISTER_PAGE } from "@/app/_utils/utils";
 import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { login } from "@/app/_actions/auth";
 
@@ -86,7 +86,7 @@ export function LoginForm(): ReactElement {
                 </section>
 
                 <section id="forgot-password-link">
-
+                    <Link href={URL_FORGOT_PAGE} className="loginCard__forgot-password-link"> Forgot password </Link>
                 </section>
             </section>
         </section>

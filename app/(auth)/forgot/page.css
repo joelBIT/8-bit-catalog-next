@@ -1,0 +1,8 @@
+#forgotPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

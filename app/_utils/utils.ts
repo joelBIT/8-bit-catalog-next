@@ -7,6 +7,7 @@ export const URL_FORBIDDEN_PAGE = "/forbidden";
 export const URL_HOME = "/";
 export const URL_LOGIN_PAGE = "/login";
 export const URL_REGISTER_PAGE = "/register";
+export const URL_FORGOT_PAGE = "/forgot";
 export const URL_SEARCH_PAGE = "/search";
 export const URL_ACTIVATION_PAGE = "/activate";
 export const URL_DASHBOARD_PAGE = "/dashboard";
