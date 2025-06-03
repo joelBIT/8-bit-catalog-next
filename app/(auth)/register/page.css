@@ -2,7 +2,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(var(--color-black), var(--color-tag-text));
+    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
 
     & #registerPage-modal {
         display: grid;
@@ -10,9 +12,6 @@
         align-items: center;
         justify-content: center;
         padding: 1rem;
-        background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
-        background-size: cover;
-        background-repeat: no-repeat;
         border-radius: 9px;
         min-height: 80vh;
         width: 90vw;
