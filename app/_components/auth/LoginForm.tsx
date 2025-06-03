@@ -26,22 +26,20 @@ export function LoginForm(): ReactElement {
             
             <form id="loginForm" ref={formRef} action={formAction}>
                 <section id="login-input">
-                    <section id="emailInput">
-                        <section className="email-input">
-                            <input 
-                                id="email"
-                                name="email" 
-                                type="email" 
-                                placeholder="Email"
-                                className={`${arima.className} form__field`}
-                                autoComplete="off" 
-                                required 
-                            />
+                    <section className="input">
+                        <input 
+                            id="email"
+                            name="email" 
+                            type="email" 
+                            placeholder="Email"
+                            className={`${arima.className} form__field`}
+                            autoComplete="off" 
+                            required 
+                        />
 
-                            <span className="form__field-label">
-                                Email
-                            </span>
-                        </section>
+                        <span className="form__field-label">
+                            Email
+                        </span>
                     </section>
 
                     <PasswordInput id="password" placeholder="Password" />
