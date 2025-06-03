@@ -18,5 +18,23 @@
                 cursor: pointer;
             }
         }
+
+        .authButton:disabled {
+            filter: brightness(0.3);
+        }
+
+        .authButton:disabled:hover {
+            cursor: default;
+
+            & .authButton__text {
+                letter-spacing: 0;
+            }
+
+            &::before,
+            &::after {
+                opacity: 1;
+                transform: none
+            }
+        }
     }
 }
