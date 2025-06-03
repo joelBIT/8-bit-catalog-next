@@ -10,7 +10,10 @@ export default function LoginPage(): ReactElement {
         <main id="loginPage">
             <section id="loginPage-modal">
                 <section id="loginPage-modal-back">
-                    <Link href={"/"} className="loginPage-link"> <span className="material-symbols-outlined"> arrow_back </span> Back to catalog </Link>
+                    <Link href={"/"} className="loginPage-link"> 
+                        <span className="material-symbols-outlined"> arrow_back </span> 
+                        <h2 className="loginPage-link__text"> Back to catalog </h2>
+                    </Link>
                 </section>
 
                 <section id="loginPage-form">

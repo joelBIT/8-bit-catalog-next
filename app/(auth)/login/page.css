@@ -27,8 +27,14 @@
                 transition: all 0.5s;
 
                 & .material-symbols-outlined {
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     align-self: center;
+                }
+
+                & .loginPage-link__text {
+                    align-self: center;
+                    font-weight: 100;
+                    font-size: 1.1rem;
                 }
 
                 &:hover {

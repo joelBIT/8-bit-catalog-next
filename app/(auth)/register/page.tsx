@@ -9,9 +9,12 @@ export default function RegisterPage(): ReactElement {
         <main id="registerPage">
             <section id="registerPage-modal">
                 <section id="registerPage-modal-back">
-                    <Link href={"/"} className="registerPage-link"> <span className="material-symbols-outlined"> arrow_back </span> Back to catalog </Link>
+                    <Link href={"/"} className="registerPage-link"> 
+                        <span className="material-symbols-outlined"> arrow_back </span> 
+                        <h2 className="registerPage-link__text"> Back to catalog </h2> 
+                    </Link>
                 </section>
-                
+
                 <section id="registerPage-form">
                     <RegisterForm />
                 </section>
