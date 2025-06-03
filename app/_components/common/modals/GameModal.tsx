@@ -14,7 +14,13 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
     const [ slide, setSlide ] = useState<number>(games.findIndex(element => element.id === game.id));
     const [ suppliedGames ] = useState<Game[]>(games);
     const dialogRef = useRef<HTMLDialogElement>(null);
-    
+
+    useEffect(() => {
+      if (!dialogRef.current?.open) {
+        dialogRef.current?.showModal();
+      }
+    }, []);
+
     function nextSlide(): void {
         setSlide(slide === games.length - 1 ? 0 : slide + 1);
     }
@@ -22,12 +28,6 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
     function prevSlide(): void {
         setSlide(slide === 0 ? games.length - 1 : slide - 1);
     }
-
-    useEffect(() => {
-      if (!dialogRef.current?.open) {
-        dialogRef.current?.showModal();
-      }
-    }, []);
 
     return (
         <dialog id="gameModal" ref={dialogRef}>
