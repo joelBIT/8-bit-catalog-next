@@ -7,38 +7,28 @@
     background-repeat: no-repeat;
 
     & #loginPage-modal {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        border-radius: 9px;
-        min-height: 80vh;
-        width: 90vw;
-        margin-bottom: 4rem;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        width: 100%;
+        max-width: 400px;
+        height: fit-content;
+        margin: 0 auto;
 
-        & #loginPage-modal-right {
-            grid-column: 5 / 13;
-            height: 100%;
-            align-content: center;
-            position: relative;
+        & #loginPage-modal-back {
+            align-self: flex-start;
 
             & .loginPage-link {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 font-family: "Permanent Marker";
                 gap: 0.2rem;
-                position: absolute;
-                top: 0;
-                right: 0;
-                background-color: var(--color-link-background);
-                padding: 0.3rem 0.5rem;
-                border-radius: 20px;
                 transition: all 0.5s;
 
                 & .material-symbols-outlined {
                     font-size: 1.2rem;
+                    align-self: center;
                 }
 
                 &:hover {
