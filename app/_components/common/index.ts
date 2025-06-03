@@ -1,5 +1,4 @@
 export * from "./modals/AddUserModal";
-export * from "./inputs/EmailInput";
 export * from "./lists/GameCard";
 export * from "./lists/GameGrid";
 export * from "./lists/GameList";

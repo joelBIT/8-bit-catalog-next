@@ -5,7 +5,7 @@ import Link from "next/link";
 import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/auth";
-import { EmailInput, UsernameInput, PasswordInput } from "../common";
+import { UsernameInput, PasswordInput } from "../common";
 
 import "./RegisterForm.css";
 
@@ -36,7 +36,7 @@ export function RegisterForm(): ReactElement {
                         <form id="registerForm" ref={formRef} action={formAction}>
                             <section id="register-input">
                                 <UsernameInput />
-                                <EmailInput />
+                                {/* <EmailInput /> */}
                                 <PasswordInput id="password" placeholder="Password" />
                                 <PasswordInput id="passwordRepeat" placeholder="Re-type Password" />
                             </section>

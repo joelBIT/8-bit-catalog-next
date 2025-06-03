@@ -1,11 +1,9 @@
 'use client';
 
 import { ReactElement, useRef, useActionState } from "react";
-import Link from "next/link";
 import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { login } from "@/app/_actions/auth";
-import { URL_REGISTER_PAGE } from "@/app/_utils/utils";
-import { EmailInput, PasswordInput } from "../common";
+import { PasswordInput } from "../common";
 
 import "./LoginForm.css";
 
@@ -19,11 +17,6 @@ export function LoginForm(): ReactElement {
 
     return (
         <section id="loginCard" className={arima.className}>
-            <section className="loginCard-title">
-                <h1 className="loginCard__title"> Welcome</h1>
-                <h2 className="loginCard__title-text"> Enter your email and password to access your account </h2>
-            </section>
-
             { 
                 state?.message ? 
                     <h2 className={state?.success ? "message-success" : "message-failure"}>
@@ -33,7 +26,24 @@ export function LoginForm(): ReactElement {
             
             <form id="loginForm" ref={formRef} action={formAction}>
                 <section id="login-input">
-                    <EmailInput />
+                    <section id="emailInput">
+                        <section className="email-input">
+                            <input 
+                                id="email"
+                                name="email" 
+                                type="email" 
+                                placeholder="Email"
+                                className={`${arima.className} form__field`}
+                                autoComplete="off" 
+                                required 
+                            />
+
+                            <span className="form__field-label">
+                                Email
+                            </span>
+                        </section>
+                    </section>
+
                     <PasswordInput id="password" placeholder="Password" />
                 </section>
                 
@@ -41,11 +51,6 @@ export function LoginForm(): ReactElement {
                     <span className="authButton__text"> Login </span>
                 </button>
             </form>
-
-            <section id="register-link">
-                <h2 className="register-link__text"> Need an account? </h2> 
-                <Link href={URL_REGISTER_PAGE} className="loginCard__create-account-link"> Register </Link>
-            </section>
         </section>
     );
 }

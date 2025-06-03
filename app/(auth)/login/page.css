@@ -44,56 +44,10 @@
         }
 
         & #loginPage-form {
-            grid-column: 1 / 5;
-            height: 100%;
             align-content: center;
             justify-items: center;
-            background: linear-gradient(#222222, var(--color-nintendo-gray));
             border-radius: 9px;
-            text-align: -webkit-center;
-        }
-    }
-}
-
-
-@media (max-width: 1300px) {
-    #loginPage {
-        & #loginPage-modal {
-            & #loginPage-modal-right {
-                grid-column: 6 / 13;
-            }
-
-            & #loginPage-form {
-                grid-column: 1 / 6;
-            }
-        }
-    }
-}
-
-@media (max-width: 1100px) {
-    #loginPage {
-        & #loginPage-modal {
-            & #loginPage-modal-right {
-                grid-column: 7 / 13;
-            }
-
-            & #loginPage-form {
-                grid-column: 1 / 7;
-            }
-        }
-    }
-}
-
-@media (max-width: 900px) {
-    #loginPage {
-        & #loginPage-modal {
-            & #loginPage-modal-right {
-                grid-column: 8 / 13;
-            }
-
-            & #loginPage-form {
-                grid-column: 1 / 8;
-            }
+            width: 400px;
         }
     }
 }
@@ -105,7 +59,6 @@
 
         & #loginPage-modal {
             display: flex;
-            flex-direction: column-reverse;
             position: relative;
             min-height: 70vh;
             padding-top: 4rem;
