@@ -2,6 +2,7 @@
 
 import { ReactElement, useRef, useActionState, useState } from "react";
 import Link from "next/link";
+import { SelectCountry } from "../common";
 import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/auth";
@@ -143,20 +144,7 @@ export function RegisterForm(): ReactElement {
                                     />
                                 </section>
 
-                                <section className="information-input">
-                                    <label className="input-label">
-                                        Country or Region
-                                    </label>
-
-                                    <input 
-                                        id="country"
-                                        name="country" 
-                                        type="text"
-                                        className={`${arima.className} input-field`}
-                                        autoComplete="off" 
-                                        required 
-                                    />
-                                </section>
+                                <SelectCountry />
 
                                 <section className="information-input">
                                     <label className="input-label">
