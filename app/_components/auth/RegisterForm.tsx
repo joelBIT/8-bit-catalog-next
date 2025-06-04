@@ -18,7 +18,17 @@ export function RegisterForm(): ReactElement {
     const [ password, setPassword ] = useState<string>('');
     const [ passwordRepeat, setPasswordRepeat ] = useState<string>('');
     const [ email, setEmail ] = useState<string>('');
+    const [ showInputs, setShowInputs ] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
+
+    /**
+     * If a user enters more than 2 characters in the address field, extra input fields are shown in an extension of the input area.
+     */
+    function dropdown(address: string): void {
+        if (!showInputs && address.length > 2) {
+            setShowInputs(true);
+        }
+    }
 
     return (
         <>
@@ -135,6 +145,21 @@ export function RegisterForm(): ReactElement {
 
                                 <section className="information-input">
                                     <label className="input-label">
+                                        Country or Region
+                                    </label>
+
+                                    <input 
+                                        id="country"
+                                        name="country" 
+                                        type="text"
+                                        className={`${arima.className} input-field`}
+                                        autoComplete="off" 
+                                        required 
+                                    />
+                                </section>
+
+                                <section className="information-input">
+                                    <label className="input-label">
                                         Address
                                     </label>
 
@@ -142,10 +167,43 @@ export function RegisterForm(): ReactElement {
                                         id="address"
                                         name="address" 
                                         type="text"
+                                        onChange={e => dropdown(e.target.value)}
                                         className={`${arima.className} input-field`}
                                         autoComplete="off" 
                                         required 
                                     />
+                                </section>
+
+                                <section id="extra-information" className={showInputs ? "show" : ""}>
+                                    <section className="information-input">
+                                        <label className="input-label">
+                                            City
+                                        </label>
+
+                                        <input 
+                                            id="city"
+                                            name="city" 
+                                            type="text"
+                                            className={`${arima.className} input-field`}
+                                            autoComplete="off" 
+                                            required 
+                                        />
+                                    </section>
+
+                                    <section className="information-input">
+                                        <label className="input-label">
+                                            Phone number
+                                        </label>
+
+                                        <input 
+                                            id="phone"
+                                            name="phone" 
+                                            type="text"
+                                            className={`${arima.className} input-field`}
+                                            autoComplete="off" 
+                                            required 
+                                        />
+                                    </section>
                                 </section>
                             </section>
 
