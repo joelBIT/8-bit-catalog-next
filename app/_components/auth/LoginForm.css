@@ -74,6 +74,7 @@
             backdrop-filter: blur(10px);
             width: 100%;
             font-size: .8rem;
+            font-weight: 600;
             text-align: center;
             align-content: center;
             text-transform: uppercase;

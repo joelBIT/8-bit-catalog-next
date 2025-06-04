@@ -1,84 +1,49 @@
 #registerCard {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     align-self: center;
     height: 100%;
-    justify-content: space-around;
-    width: 80%;
-
-    & .registerCard__title {
-        color: var(--color-white);
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        font-family: "Permanent Marker";
-    }
+    width: 100%;
 
     & #registerForm {
         display: flex;
         flex-direction: column;
-        gap: 3.5rem;
-    }
+        gap: 1.5rem;
 
-    & #login-link {
-        display: flex;
-        color: var(--color-black);
-        margin-top: 1rem;
-        gap: 0.3rem;
-        font-size: 1rem;
-        align-self: end;
-        align-items: center;
-        
-        & .login-link__text {
-            font-size: 1rem;
-        }
+        .password-show {
+            position: absolute;
+            right: 0;
+            top: 18px;
+            color: var(--color-real-white);
+            padding-right: 12px;
 
-        & .registerCard__login-link {
-            color: var(--color-link);
-            font-weight: 600;
-    
             &:hover {
-                filter: brightness(1.2);
+                cursor: pointer;
             }
         }
     }
-}
 
-@media (max-width: 750px) {
-    #registerCard {
-        padding: 1rem 0 2rem;
-
-        & .registerCard__title {
-            font-size: 2.2rem;
-        }
-
-        & #registerForm {
-            & input {
-                font-size: 1rem;
-            }
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    #registerCard {
-        & .registerCard__title {
-            font-size: 1.7rem;
-        }
-
-        & #registerForm {
-            & .authButton {
-                & .authButton__text {
-                    font-size: 1.4rem;
-                }
-            }
-        }
+    & #login-link-section {
+        display: flex;
+        margin-top: 1.5rem;
 
         & #login-link {
-            & .login-link__text,
-            .registerCard__login-link {
-                font-size: 0.7rem;
+            padding: 0;
+            background: rgba(255, 255, 255, .025);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            font-size: .8rem;
+            font-weight: 600;
+            text-align: center;
+            align-content: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: var(--color-white);
+            transition: all .25s;
+
+            &:hover {
+                background-color: var(--color-real-white);
+                color: var(--color-black);
             }
         }
     }
