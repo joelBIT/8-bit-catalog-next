@@ -5,7 +5,6 @@ import Link from "next/link";
 import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/auth";
-import { UsernameInput, PasswordInput } from "../common";
 
 import "./RegisterForm.css";
 
@@ -13,12 +12,13 @@ import "./RegisterForm.css";
  * Enter information and submit form in order to register a new user.
  */
 export function RegisterForm(): ReactElement {
-    const [state, formAction] = useActionState(register, { message: '', success: false });
+    const [ state, formAction ] = useActionState(register, { message: '', success: false });
     const [ isVisible, setVisible ] = useState<boolean>(false);
     const [ isVisibleRepeat, setVisibleRepeat ] = useState<boolean>(false);
     const [ password, setPassword ] = useState<string>('');
     const [ passwordRepeat, setPasswordRepeat ] = useState<string>('');
     const [ email, setEmail ] = useState<string>('');
+    const [ birth, setBirth ] = useState<string>('');
     const formRef = useRef<HTMLFormElement>(null);
 
     if (formRef.current) {
@@ -39,26 +39,26 @@ export function RegisterForm(): ReactElement {
                                 </h2> : <></> 
                         }
 
-                        <form id="registerForm" ref={formRef} action={formAction}>
-                            <section id="register-input">
-                                <section className="input">
-                                    <input 
-                                        id="email"
-                                        name="email" 
-                                        type="email"
-                                        value={email}
-                                        onChange={e => setEmail(e.target.value)}
-                                        placeholder="SET EMAIL"
-                                        className={`${arima.className} form__field`}
-                                        autoComplete="off" 
-                                        required 
-                                    />
+                        <form id="registerForm" ref={formRef} action={formAction}>                        
+                            <section className="input">
+                                <input 
+                                    id="email"
+                                    name="email" 
+                                    type="email"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                    placeholder="SET EMAIL"
+                                    className={`${arima.className} form__field`}
+                                    autoComplete="off" 
+                                    required 
+                                />
 
-                                    <span className="form__field-label">
-                                        Email
-                                    </span>
-                                </section>
+                                <span className="form__field-label">
+                                    Email
+                                </span>
+                            </section>
 
+                            <section id="password-inputs">
                                 <section className="input">
                                     <input 
                                         id="password"
@@ -102,6 +102,22 @@ export function RegisterForm(): ReactElement {
                                         {isVisibleRepeat ? "visibility_off" : "visibility"}
                                     </span>
                                 </section>
+                            </section>
+
+                            <section className="input">
+                                <input 
+                                    id="birth"
+                                    name="birth" 
+                                    type="date"
+                                    value={birth}
+                                    onChange={e => setBirth(e.target.value)}
+                                    className={`${arima.className} form__field`}
+                                    required 
+                                />
+
+                                <span className="form__field-label">
+                                    Date of Birth
+                                </span>
                             </section>
 
                             <button className={`authButton ${irishGrover.className}`} type="submit">
