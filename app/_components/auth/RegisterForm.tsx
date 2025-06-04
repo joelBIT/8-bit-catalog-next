@@ -122,7 +122,6 @@ export function RegisterForm(): ReactElement {
                                     name="birth" 
                                     type="date"
                                     className={`${arima.className} form__field`}
-                                    required 
                                 />
 
                                 <span className="form__field-label">
@@ -142,7 +141,6 @@ export function RegisterForm(): ReactElement {
                                         type="text"
                                         className={`${arima.className} input-field`}
                                         autoComplete="off" 
-                                        required 
                                     />
                                 </section>
 
@@ -159,8 +157,7 @@ export function RegisterForm(): ReactElement {
                                         type="text"
                                         onChange={e => dropdown(e.target.value)}
                                         className={`${arima.className} input-field`}
-                                        autoComplete="off" 
-                                        required 
+                                        autoComplete="off"
                                     />
                                 </section>
 
@@ -175,8 +172,7 @@ export function RegisterForm(): ReactElement {
                                             name="city" 
                                             type="text"
                                             className={`${arima.className} input-field`}
-                                            autoComplete="off" 
-                                            required 
+                                            autoComplete="off"
                                         />
                                     </section>
 
