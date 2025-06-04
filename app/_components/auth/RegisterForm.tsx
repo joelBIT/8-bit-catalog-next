@@ -18,12 +18,7 @@ export function RegisterForm(): ReactElement {
     const [ password, setPassword ] = useState<string>('');
     const [ passwordRepeat, setPasswordRepeat ] = useState<string>('');
     const [ email, setEmail ] = useState<string>('');
-    const [ birth, setBirth ] = useState<string>('');
     const formRef = useRef<HTMLFormElement>(null);
-
-    if (formRef.current) {
-        formRef.current?.reset();
-    }
 
     return (
         <>
@@ -113,8 +108,6 @@ export function RegisterForm(): ReactElement {
                                     id="birth"
                                     name="birth" 
                                     type="date"
-                                    value={birth}
-                                    onChange={e => setBirth(e.target.value)}
                                     className={`${arima.className} form__field`}
                                     required 
                                 />
@@ -142,7 +135,7 @@ export function RegisterForm(): ReactElement {
 
                                 <section className="information-input">
                                     <label className="input-label">
-                                        Address line
+                                        Address
                                     </label>
 
                                     <input 
@@ -156,7 +149,7 @@ export function RegisterForm(): ReactElement {
                                 </section>
                             </section>
 
-                            <button className={`authButton ${irishGrover.className}`} type="submit">
+                            <button className={`authButton ${irishGrover.className}`} type="submit" disabled={!email || !password || !passwordRepeat}>
                                 <span className="authButton__text"> Register </span>
                             </button>
                         </form>
