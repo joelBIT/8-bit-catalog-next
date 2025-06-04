@@ -59,6 +59,10 @@ export function RegisterForm(): ReactElement {
                             </section>
 
                             <section id="password-inputs">
+                                <span id="password-requirements">Passwords must</span>
+                                <ul id="requirements-list">
+                                    <li> be at least 8 characters long</li>
+                                </ul>
                                 <section className="input">
                                     <input 
                                         id="password"
