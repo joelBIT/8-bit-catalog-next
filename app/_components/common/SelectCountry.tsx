@@ -18,7 +18,7 @@ export function SelectCountry(): ReactElement {
         )
         .then((response) => response.json())
         .then((data) => {
-            data.countries.sort((a: { label: string; }, b: { label: string; }) => a.label.localeCompare(b.label));
+            data.countries.sort((a: { label: string; }, b: { label: string; }) => a.label.substring(4).localeCompare(b.label.substring(4)));
             setCountries(data.countries);
             setSelectedCountry(data.userSelectValue);
         });
