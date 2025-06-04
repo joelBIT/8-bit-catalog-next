@@ -4,7 +4,11 @@ import { RegisterForm } from "@/app/_components/auth/RegisterForm";
 
 import "./page.css";
 
+/**
+ * Page for registering a new user.
+ */
 export default function RegisterPage(): ReactElement {
+    
     return (
         <main id="registerPage">
             <section id="registerPage-modal">
