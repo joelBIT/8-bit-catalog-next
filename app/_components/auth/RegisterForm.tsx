@@ -59,9 +59,9 @@ export function RegisterForm(): ReactElement {
                             </section>
 
                             <section id="password-inputs">
-                                <span id="password-requirements">Passwords must</span>
+                                <span id="password-requirements"> Passwords must </span>
                                 <ul id="requirements-list">
-                                    <li> be at least 8 characters long</li>
+                                    <li> be at least 8 characters long </li>
                                 </ul>
                                 <section className="input">
                                     <input 
@@ -124,9 +124,36 @@ export function RegisterForm(): ReactElement {
                                 </span>
                             </section>
 
-                            <section id="address-inputs" className="input">
+                            <section id="personalInformation">
+                                <section className="information-input">
+                                    <label className="input-label">
+                                        Full name
+                                    </label>
 
+                                    <input 
+                                        id="fullName"
+                                        name="fullName" 
+                                        type="text"
+                                        className={`${arima.className} input-field`}
+                                        autoComplete="off" 
+                                        required 
+                                    />
+                                </section>
 
+                                <section className="information-input">
+                                    <label className="input-label">
+                                        Address line
+                                    </label>
+
+                                    <input 
+                                        id="address"
+                                        name="address" 
+                                        type="text"
+                                        className={`${arima.className} input-field`}
+                                        autoComplete="off" 
+                                        required 
+                                    />
+                                </section>
                             </section>
 
                             <button className={`authButton ${irishGrover.className}`} type="submit">
