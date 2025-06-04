@@ -18,6 +18,7 @@ export function SelectCountry(): ReactElement {
         )
         .then((response) => response.json())
         .then((data) => {
+            data.countries.sort((a: { label: string; }, b: { label: string; }) => a.label.localeCompare(b.label));
             setCountries(data.countries);
             setSelectedCountry(data.userSelectValue);
         });
@@ -47,15 +48,15 @@ export function SelectCountry(): ReactElement {
                 className={`${arima.className} input-field`}
             >
                 
-                { 
-                    countries.length > 0 ?
-                    <>
-                        <option value={selectedCountry.value} key="DEFAULT"> {selectedCountry.label} </option>
-                        {countries.map(country => <option value={country.value} key={country.value}> {country.label} </option>)}
-                    </>
-                        :
-                        <></>
-                }
+            { 
+                countries.length > 0 ?
+                <>
+                    <option value={selectedCountry.value} key="DEFAULT"> {selectedCountry.label} </option>
+                    {countries.map(country => <option value={country.value} key={country.value}> {country.label} </option>)}
+                </>
+                    :
+                    <></>
+            }
             </select>
         </section>
     );

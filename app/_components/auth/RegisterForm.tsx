@@ -3,11 +3,13 @@
 import { ReactElement, useRef, useActionState, useState } from "react";
 import Link from "next/link";
 import { SelectCountry } from "../common";
+import PhoneInput from "react-phone-input-2";
 import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/auth";
 
 import "./RegisterForm.css";
+import 'react-phone-input-2/lib/style.css'
 
 /**
  * Enter information and submit form in order to register a new user.
@@ -183,14 +185,7 @@ export function RegisterForm(): ReactElement {
                                             Phone number
                                         </label>
 
-                                        <input 
-                                            id="phone"
-                                            name="phone" 
-                                            type="text"
-                                            className={`${arima.className} input-field`}
-                                            autoComplete="off" 
-                                            required 
-                                        />
+                                        <PhoneInput country="se" />
                                     </section>
                                 </section>
                             </section>
