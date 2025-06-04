@@ -1,0 +1,4 @@
+#personalInformation {
+    display: flex;
+    flex-direction: column;
+}

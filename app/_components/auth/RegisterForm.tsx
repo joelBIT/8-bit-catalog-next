@@ -124,6 +124,11 @@ export function RegisterForm(): ReactElement {
                                 </span>
                             </section>
 
+                            <section id="address-inputs" className="input">
+
+
+                            </section>
+
                             <button className={`authButton ${irishGrover.className}`} type="submit">
                                 <span className="authButton__text"> Register </span>
                             </button>
