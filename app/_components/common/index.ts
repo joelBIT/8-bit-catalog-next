@@ -1,5 +1,4 @@
 export * from "./modals/AddUserModal";
-export * from "./inputs/EmailInput";
 export * from "./lists/GameCard";
 export * from "./lists/GameGrid";
 export * from "./lists/GameList";
@@ -10,5 +9,6 @@ export * from "./lists/ListToggle";
 export * from "./modals/Modal";
 export * from "./inputs/PasswordInput";
 export * from "./ScrollTopButton";
+export * from "./SelectCountry";
 export * from "./lists/UserListEntry";
 export * from "./inputs/UsernameInput";

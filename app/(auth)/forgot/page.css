@@ -1,6 +1,6 @@
-#registerPage {
+#forgotPage {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     background: fixed;
     background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
@@ -8,7 +8,7 @@
     background-repeat: no-repeat;
     background-position: right;
 
-    & #registerPage-modal {
+    & #forgotPage-modal {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -17,13 +17,11 @@
         max-width: 400px;
         height: fit-content;
         margin: 0 auto;
-        padding-top: 10rem;
-        padding-bottom: 10rem;
 
-        & #registerPage-modal-back {
+        & #forgotPage-modal-back {
             align-self: flex-start;
 
-            & .registerPage-link {
+            & .forgotPage-link {
                 display: flex;
                 align-items: flex-start;
                 font-family: sans-serif;
@@ -35,7 +33,7 @@
                     align-self: center;
                 }
 
-                & .registerPage-link__text {
+                & .forgotPage-link__text {
                     align-self: center;
                     font-weight: 100;
                     font-size: 1.1rem;
@@ -47,7 +45,7 @@
             }
         }
 
-        & #registerPage-form {
+        & #forgotPage-form {
             align-content: center;
             justify-items: center;
             border-radius: 9px;
@@ -57,9 +55,9 @@
 }
 
 @media (max-width: 430px) {
-    #registerPage {
-        & #registerPage-modal {
-            & #registerPage-form {
+    #forgotPage {
+        & #forgotPage-modal {
+            & #forgotPage-form {
                 width: 95vw;
             }
         }

@@ -4,11 +4,12 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { createAccount, getAccountByUserId, getUserByEmail, registerUser } from "@/app/_db/db";
+import { emailExists, createAccount, getAccountByUserId, getUserByEmail, registerUser, updateUserPassword, updateUserInformationById } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
+import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
+import ActivationEmail from "../_components/email/ActivationEmail";
 import { setSessionCookie } from "@/app/_session/cookie";
-import ActivationEmail from "@/app/_components/email/ActivationEmail";
 import { isAuthenticated } from "@/app/_session/utils";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
@@ -53,25 +54,64 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
     const email = formData.get('email') as string;
-    const username = formData.get('username') as string;
+    const phone = formData.get('phone') as string;
+    const address = formData.get('address') as string;
+    const city = formData.get('city') as string;
+    const country = formData.get('country') as string;
+    const fullName = formData.get('full_name') as string;
+    const birthDate = formData.get('birth_date') as string;
 
     if (password !== passwordRepeat) {
-        return { message: 'The entered passwords must be equal', success: false };
+        return { message: 'Passwords must be equal', success: false };
+    }
+
+    if (password.length < 8) {
+        return { message: 'Password must be at least 8 characters', success: false };
+    }
+
+    if (!/\d/.test(password)) {
+        return { message: 'Password must contain at least 1 number', success: false };
     }
 
     try {
         const passwordHash = await hashPassword(password);
-        const user = await registerUser(email, passwordHash, username);
+        const user = await registerUser(email, passwordHash, email);
+        await updateUserInformationById(user.id, fullName, phone, address, city, country, birthDate);
         const activationCode = uuidv4();
         await createAccount(user.id, activationCode);
-        sendMail(user.email, activationCode);
+        sendActivationMail(user.email, activationCode);
         
-        return { message: 'Account has been created', success: true };
+        return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };
         }
         return { message: 'Could not create account', success: false };
+    }
+}
+
+/**
+ * This function is invoked when a user resets the password for an account.
+ */
+export async function resetPassword(_prevState: ActionState, formData: FormData): Promise<ActionState> {
+    const email = formData.get('email') as string;
+
+    try {
+        const exists = await emailExists(email);
+        if (!exists) {
+            return { message: 'No such email', success: false };
+        }
+        const newPassword = uuidv4();
+        const passwordHash = await hashPassword(newPassword);
+        await updateUserPassword(email, passwordHash);
+        sendPasswordResetMail(email, newPassword);
+        
+        return { message: 'Password changed. Check email.', success: true };
+    } catch (error) {
+        if (error instanceof Error) {
+            return { message: error.message, success: false };
+        }
+        return { message: 'Could not change password', success: false };
     }
 }
 
@@ -88,7 +128,7 @@ async function initiateSession(userId: number): Promise<void> {
 /**
  * Sends an email containing a link with the activation code to the supplied email address.
  */
-async function sendMail(email: string, activationCode: string): Promise<void> {
+async function sendActivationMail(email: string, activationCode: string): Promise<void> {
     const resend = new Resend(process.env.RESEND_API_KEY as string);
 
     await resend.emails.send({
@@ -96,5 +136,19 @@ async function sendMail(email: string, activationCode: string): Promise<void> {
         to: email,
         subject: 'Finish registration',
         react: ActivationEmail(activationCode),
+    });
+}
+
+/**
+ * Sends an email containing the new password to the supplied email address.
+ */
+async function sendPasswordResetMail(email: string, password: string): Promise<void> {
+    const resend = new Resend(process.env.RESEND_API_KEY as string);
+
+    await resend.emails.send({
+        from: '8bit <onboarding@joel-rollny.eu>',
+        to: email,
+        subject: 'Password Reset',
+        react: ResetPasswordEmail(password),
     });
 }

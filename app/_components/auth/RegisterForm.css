@@ -1,84 +1,192 @@
 #registerCard {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     align-self: center;
     height: 100%;
-    justify-content: space-around;
-    width: 80%;
-
-    & .registerCard__title {
-        color: var(--color-white);
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        font-family: "Permanent Marker";
-    }
+    width: 100%;
 
     & #registerForm {
         display: flex;
         flex-direction: column;
-        gap: 3.5rem;
-    }
+        gap: 1.5rem;
+        border-bottom: 0.5px solid var(--color-auth-border-bottom);
+        padding-bottom: 1.5rem;
 
-    & #login-link {
-        display: flex;
-        color: var(--color-black);
-        margin-top: 1rem;
-        gap: 0.3rem;
-        font-size: 1rem;
-        align-self: end;
-        align-items: center;
-        
-        & .login-link__text {
-            font-size: 1rem;
+        & #password-inputs {
+            & #password-requirements,
+            #requirements-list {
+                color: var(--color-real-white);
+                text-transform: uppercase;
+                font-size: .7rem;
+                padding: 0 12px;
+                margin-bottom: 5px;
+            }
+
+            & #requirements-list {
+                margin-bottom: 10px;
+                margin-left: 18px;
+            }
+
+            .input:first-of-type {
+                border-radius: 6px 6px 0 0;
+                border-bottom: 0.5px solid var(--color-auth-border-bottom);
+            }
+
+            .input:last-of-type {
+                border-radius: 0 0 6px 6px;
+                border-top: 0;
+            }
         }
 
-        & .registerCard__login-link {
-            color: var(--color-link);
-            font-weight: 600;
-    
+        .password-show {
+            position: absolute;
+            right: 0;
+            top: 18px;
+            color: var(--color-real-white);
+            padding-right: 12px;
+
             &:hover {
-                filter: brightness(1.2);
+                cursor: pointer;
             }
         }
-    }
-}
 
-@media (max-width: 750px) {
-    #registerCard {
-        padding: 1rem 0 2rem;
-
-        & .registerCard__title {
-            font-size: 2.2rem;
+        #birth_date {
+            padding-right: 12px;
         }
 
-        & #registerForm {
-            & input {
-                font-size: 1rem;
-            }
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    #registerCard {
-        & .registerCard__title {
-            font-size: 1.7rem;
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
         }
 
-        & #registerForm {
-            & .authButton {
-                & .authButton__text {
-                    font-size: 1.4rem;
+        & #personalInformation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            border: 1px solid var(--color-auth-border);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 2px #00000026;
+            padding-top: 2rem;
+            padding-bottom: 3rem;
+            border-radius: 6px;
+            background: rgba(100, 100, 100, .05);
+            backdrop-filter: blur(10px);
+
+            & .information-input {
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                color: var(--color-real-white);
+                padding: 8px 12px;
+
+                & .input-label {
+                    text-transform: uppercase;
+                    font-size: .63rem;
+                    font-weight: 300;
+                    padding: 0 12px;
+                }
+
+                & .input-field,
+                .react-tel-input {
+                    background-color: var(--color-real-black);
+                    border-color: var(--color-real-black);
+                    color: var(--color-real-white);
+                    border-style: none;
+                    appearance: none;
+                    border-radius: 6px;
+                    box-shadow: none;
+                    height: 50px;
+                    font-size: 1rem;
+                    transition: all 0.5s;
+                }
+
+                & .input-field:focus {
+                    outline: none;
+                    border-color: var(--color-real-white);
+                    box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 10px 1px #FFFFFF80;
+                    transition: all 0.5s;
+                }
+
+                & .react-tel-input {
+                    & .form-control,
+                    .flag-dropdown {
+                        background-color: var(--color-real-black);
+                        border-color: var(--color-real-black);
+                        color: var(--color-real-white);
+                        border-style: none;
+                        appearance: none;
+                        border-radius: 6px;
+                        box-shadow: none;
+                        height: 50px;
+                        font-size: 1rem;
+                        transition: all 0.5s;
+                    }
+
+                    & .flag-dropdown:hover {
+                        background-color: var(--color-black);
+                        
+                        .selected-flag {
+                            background-color: var(--color-black);
+                        }
+                    }
+
+                    & .country-list {
+                        background-color: var(--color-real-black);
+                        color: var(--color-real-white);
+
+                        & li:hover {
+                            background-color: var(--color-black);
+                        }
+
+                        .highlight {
+                            background-color: var(--color-black);
+                        }
+                    }
                 }
             }
         }
 
+        & #extra-information {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+
+            & .information-input:last-of-type {
+                padding-top: 3rem;
+            }
+        }
+
+        .show {
+            max-height: 2000px !important;
+        }
+    }
+
+    & #login-link-section {
+        display: flex;
+        margin-top: 1.5rem;
+
         & #login-link {
-            & .login-link__text,
-            .registerCard__login-link {
-                font-size: 0.7rem;
+            padding: 0;
+            background: var(--color-auth-background);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            font-size: .8rem;
+            font-weight: 600;
+            text-align: center;
+            align-content: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: var(--color-white);
+            transition: all .25s;
+
+            &:hover {
+                background-color: var(--color-real-white);
+                color: var(--color-black);
             }
         }
     }

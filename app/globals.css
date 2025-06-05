@@ -10,6 +10,9 @@
 ******************/
 
 :root {
+    --color-auth-border: rgba(255, 255, 255, .25);
+    --color-auth-border-bottom: #6b6767;
+    --color-auth-background: rgba(255, 255, 255, .025);
     --color-bar-purple: #701296;
     --color-card-light: #F4D9B7;
     --color-footer-heading: #D23C3C;
@@ -21,7 +24,9 @@
     --color-nintendo-gray: #9D99A0;
     --color-nintendo-gray-light: #ADA8AD;
     --color-white: #f0cca4;
+    --color-real-white: #fff;
     --color-black: #101010;
+    --color-real-black: #000000;
     --color-black-light: #2E3028;
     --color-warning: #ff3737;
     --color-warning-text: #cb6f6f;
@@ -134,80 +139,56 @@ textarea {
             0 6px 6px -4px rgba(0, 0, 0, 0.35);
         transition: all 0.25s ease-in-out;
     }
-}
 
-.gameButton:disabled {
-    filter: brightness(0.5);
-    box-shadow: none;
+    &:disabled {
+        filter: brightness(0.5);
+        box-shadow: none;
 
-    &:hover {
-        cursor: default;
-    }
+        &:hover {
+            cursor: default;
+        }
 
-    &:active { 
-        transform: scale(1.0);
+        &:active { 
+            transform: scale(1.0);
+        }
     }
 }
 
 .authButton {
-    color: var(--color-black);
+    color: var(--color-white);
 	transition: all 0.3s;
 	position: relative;
     height: 3rem;
     cursor: pointer;
-    border: none;
-    background: transparent;
+    background: rgba(255, 255, 255, .025);
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    text-transform: uppercase;
 
     & .authButton__text {
-        font-size: 2rem;
+        font-size: 1rem;
+        font-family: 'arima';
         transition: all 0.3s;
-    }
-
-    &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: all 0.3s;
-        border-top-width: 1px;
-        border-bottom-width: 1px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-top-color: var(--color-black);
-        border-bottom-color: var(--color-black);
-        transform: scale(0.1, 1);
     }
 
     &:hover {
-        & .authButton__text {
-            letter-spacing: 2px;
-        }
-
-        &::before {
-            opacity: 1;	
-            transform: scale(1, 1);	
-        }
-
-        &::after {
-            opacity: 0;	
-            transform: scale(0.1, 1);
-        }
+        border: none;
+        filter: brightness(1.4);
     }
 
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: all 0.3s;
-        background-color: rgba(255, 255, 255, 0.1);
+    &:disabled {
+        filter: brightness(0.5);
+        transform: none;
+        border: none;
+
+        &:hover {
+            cursor: default;
+        }
     }
 }
+
+
 
 
 
@@ -219,13 +200,14 @@ textarea {
 
 .message-success, 
 .message-failure {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
     width: fit-content;
     align-self: center;
     padding: 0 0.5rem;
+    backdrop-filter: blur(10px);
 }
 
 .message-success {
@@ -238,16 +220,6 @@ textarea {
     color: var(--color-warning-text);
     border: 2px solid var(--color-warning);
     background-color: hsl(from var(--color-warning) h s l / 0.2);
-}
-
-.message-confirmation {
-    font-weight: bolder;
-    align-self: center;
-    font-size: 2rem;
-    padding: 1rem;
-    letter-spacing: 3px;
-    text-align: center;
-    font-family: "Permanent Marker", cursive;
 }
 
 
@@ -386,4 +358,70 @@ textarea {
     font-size: 1.1rem;
     letter-spacing: 1px;
     font-weight: 100;
+}
+
+
+
+
+
+
+
+/*********************************
+* Input Login and Register Forms *
+*********************************/
+
+.input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, .25);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 2px #00000026;
+    border-radius: 6px;
+
+    & .form__field {
+        width: 100%;
+        height: 60px;
+        padding-top: 18px;
+        font-weight: 300;
+        background: rgba(100, 100, 100, .05);
+        backdrop-filter: blur(10px);
+        color: var(--color-real-white);
+        border: none;
+        font-size: 1rem;
+        letter-spacing: .5px;
+        outline: none;
+        padding-left: 12px;
+        transition: all .2s;
+        
+        &::placeholder {
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, .1);
+        }
+
+        &:focus {
+            background: rgba(255, 255, 255, .1);
+            padding-top: 0;
+
+            ~ .form__field-label {
+                opacity: 0;
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    & .form__field-label {
+        color: var(--color-real-white);
+        line-height: 33px;
+        text-transform: uppercase;
+        font-size: .63rem;
+        font-weight: 300;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 12px;
+        transition: all .2s;
+    }
 }

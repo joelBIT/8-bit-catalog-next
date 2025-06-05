@@ -260,12 +260,13 @@ export async function getFilterValues(): Promise<FilterValues> {
  * USERS *
  *********/
 
-const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name, email, bio, image, username";
+const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name, email, bio, image, username, country, phone, full_name, city, address, birth_date";
 
 /**
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
  * email already exists in the user table. Email is used as lowercase in this system. This is to avoid users not being able 
- * to login/search members due to character(s) being mixed uppercase and lowercase.
+ * to login/search members due to character(s) being mixed uppercase and lowercase. Also, as default the email is also stored as
+ * the username since it is unique. A user can change the username to something else when logged in.
  */
 export async function registerUser(userEmail: string, password_hash: string, username: string): Promise<{id: number, email: string}> {
     const lowerCaseEmail = userEmail.toLowerCase();
@@ -324,6 +325,10 @@ export async function updateUser(id: number, last_name: string, first_name: stri
     await databaseClient.from(USER_TABLE).update({last_name, first_name, bio}).eq('id', id);
 }
 
+export async function updateUserInformationById(id: number, full_name: string, phone: string, address: string, city: string, country: string, birth_date: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({full_name, phone, address, city, country, birth_date}).eq('id', id);
+}
+
 export async function updatePassword(id: number, password_hash: string): Promise<void> {
     await databaseClient.from(USER_TABLE).update({password_hash}).eq('id', id);
 }
@@ -342,12 +347,26 @@ export async function updateProfileImageById(id: number, image: File): Promise<v
 }
 
 /**
- * Used by admin to create a user and account directly by bypassing the email activation procedure.
+ * Update password hash for the account that corresponds to the supplied email.
  */
-export async function createActivatedAccount(email: string, password_hash: string, username: string): Promise<void> {
-    const user = await registerUser(email, password_hash, username);
-    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
-    await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
+export async function updateUserPassword(email: string, password_hash: string): Promise<void> {
+    const { error } = await databaseClient.from(USER_TABLE).update({password_hash}).eq('email', email);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+/**
+ * Check if a user with the supplied email exists.
+ */
+export async function emailExists(email: string): Promise<boolean> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select().eq('email', email);
+    if (error || data.length === 0) {
+        return false;
+    }
+ 
+    return true;
 }
 
 
@@ -475,6 +494,15 @@ export async function activateAccount(activation_code: string): Promise<boolean>
 
     await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);    
     return true;
+}
+
+/**
+ * Used by admin to create a user and account directly by bypassing the email activation procedure.
+ */
+export async function createActivatedAccount(email: string, password_hash: string, username: string): Promise<void> {
+    const user = await registerUser(email, password_hash, username);
+    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
+    await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }
 
 
