@@ -4,11 +4,12 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { createAccount, getAccountByUserId, getUserByEmail, registerUser } from "@/app/_db/db";
+import { emailExists, createAccount, getAccountByUserId, getUserByEmail, registerUser, updateUserPassword } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
+import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
+import ActivationEmail from "../_components/email/ActivationEmail";
 import { setSessionCookie } from "@/app/_session/cookie";
-import ActivationEmail from "@/app/_components/email/ActivationEmail";
 import { isAuthenticated } from "@/app/_session/utils";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
@@ -64,7 +65,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
         const user = await registerUser(email, passwordHash, username);
         const activationCode = uuidv4();
         await createAccount(user.id, activationCode);
-        sendMail(user.email, activationCode);
+        sendActivationMail(user.email, activationCode);
         
         return { message: 'Account has been created', success: true };
     } catch (error) {
@@ -82,12 +83,16 @@ export async function resetPassword(_prevState: ActionState, formData: FormData)
     const email = formData.get('email') as string;
 
     try {
-        // check if email exists, send an error message if it does not
+        const exists = await emailExists(email);
+        if (!exists) {
+            return { message: 'No such email', success: false };
+        }
         const newPassword = uuidv4();
-        //await updateAccountPassword(email, newPassword);
-        //sendMail(email, newPassword);
+        const passwordHash = await hashPassword(newPassword);
+        await updateUserPassword(email, passwordHash);
+        sendPasswordResetMail(email, newPassword);
         
-        return { message: 'Password has been changed', success: true };
+        return { message: 'Password changed. Check email.', success: true };
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };
@@ -109,7 +114,7 @@ async function initiateSession(userId: number): Promise<void> {
 /**
  * Sends an email containing a link with the activation code to the supplied email address.
  */
-async function sendMail(email: string, activationCode: string): Promise<void> {
+async function sendActivationMail(email: string, activationCode: string): Promise<void> {
     const resend = new Resend(process.env.RESEND_API_KEY as string);
 
     await resend.emails.send({
@@ -117,5 +122,19 @@ async function sendMail(email: string, activationCode: string): Promise<void> {
         to: email,
         subject: 'Finish registration',
         react: ActivationEmail(activationCode),
+    });
+}
+
+/**
+ * Sends an email containing the new password to the supplied email address.
+ */
+async function sendPasswordResetMail(email: string, password: string): Promise<void> {
+    const resend = new Resend(process.env.RESEND_API_KEY as string);
+
+    await resend.emails.send({
+        from: '8bit <onboarding@joel-rollny.eu>',
+        to: email,
+        subject: 'Password Reset',
+        react: ResetPasswordEmail(password),
     });
 }

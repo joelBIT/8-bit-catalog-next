@@ -342,12 +342,26 @@ export async function updateProfileImageById(id: number, image: File): Promise<v
 }
 
 /**
- * Used by admin to create a user and account directly by bypassing the email activation procedure.
+ * Update password hash for the account that corresponds to the supplied email.
  */
-export async function createActivatedAccount(email: string, password_hash: string, username: string): Promise<void> {
-    const user = await registerUser(email, password_hash, username);
-    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
-    await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
+export async function updateUserPassword(email: string, password_hash: string): Promise<void> {
+    const { error } = await databaseClient.from(USER_TABLE).update({password_hash}).eq('email', email);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+/**
+ * Check if a user with the supplied email exists.
+ */
+export async function emailExists(email: string): Promise<boolean> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select().eq('email', email);
+    if (error || data.length === 0) {
+        return false;
+    }
+ 
+    return true;
 }
 
 
@@ -475,6 +489,15 @@ export async function activateAccount(activation_code: string): Promise<boolean>
 
     await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);    
     return true;
+}
+
+/**
+ * Used by admin to create a user and account directly by bypassing the email activation procedure.
+ */
+export async function createActivatedAccount(email: string, password_hash: string, username: string): Promise<void> {
+    const user = await registerUser(email, password_hash, username);
+    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
+    await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }
 
 
