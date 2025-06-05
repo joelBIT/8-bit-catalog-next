@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useRef, useActionState, useState } from "react";
+import { ReactElement, useActionState, useState } from "react";
 import Link from "next/link";
 import { SelectCountry } from "../common";
 import PhoneInput from "react-phone-input-2";
@@ -8,8 +8,8 @@ import { arima, irishGrover } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/auth";
 
+import 'react-phone-input-2/lib/style.css';
 import "./RegisterForm.css";
-import 'react-phone-input-2/lib/style.css'
 
 /**
  * Enter information and submit form in order to register a new user.
@@ -22,7 +22,6 @@ export function RegisterForm(): ReactElement {
     const [ passwordRepeat, setPasswordRepeat ] = useState<string>('');
     const [ email, setEmail ] = useState<string>('');
     const [ showInputs, setShowInputs ] = useState<boolean>(false);
-    const formRef = useRef<HTMLFormElement>(null);
 
     /**
      * If a user enters more than 2 characters in the address field, extra input fields are shown in an extension of the input area.
@@ -47,7 +46,7 @@ export function RegisterForm(): ReactElement {
                                 </h2> : <></> 
                         }
 
-                        <form id="registerForm" ref={formRef} action={formAction}>                        
+                        <form id="registerForm" action={formAction}>                        
                             <section className="input">
                                 <input 
                                     id="email"
