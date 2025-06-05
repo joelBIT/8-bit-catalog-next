@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useActionState, useRef, useState } from "react";
+import { ReactElement, useActionState, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SelectCountry } from "../common";
 import PhoneInput from "react-phone-input-2";
@@ -21,20 +21,31 @@ export function RegisterForm(): ReactElement {
     const [ password, setPassword ] = useState<string>('');
     const [ passwordRepeat, setPasswordRepeat ] = useState<string>('');
     const [ email, setEmail ] = useState<string>('');
+    const [ fullName, setFullName ] = useState<string>('');
+    const [ address, setAddress ] = useState<string>('');
+    const [ city, setCity ] = useState<string>('');
+    const [ birthDate, setBirthDate ] = useState<string>('');
     const [ showInputs, setShowInputs ] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
 
-    /**
-     * Reset the form when registration is successful.
-     */
-    if (formRef.current && state.success) {
-        formRef.current?.reset();
-    }
+    useEffect(() => {     
+        if (formRef.current && state.success) {     // Reset the form when registration is successful.
+            formRef.current?.reset();
+            setEmail('');
+            setPassword('');
+            setPasswordRepeat('');
+            setAddress('');
+            setFullName('');
+            setBirthDate('');
+            setCity('');
+        }
+    }, [state])
 
     /**
      * If a user enters more than 2 characters in the address field, extra input fields are shown in an extension of the input area.
      */
     function dropdown(address: string): void {
+        setAddress(address);
         if (!showInputs && address.length > 2) {
             setShowInputs(true);
         }
@@ -117,6 +128,8 @@ export function RegisterForm(): ReactElement {
                         id="birth"
                         name="birth" 
                         type="date"
+                        value={birthDate}
+                        onChange={e => setBirthDate(e.target.value)}
                         className={`${arima.className} form__field`}
                     />
 
@@ -133,7 +146,9 @@ export function RegisterForm(): ReactElement {
 
                         <input 
                             id="fullName"
-                            name="fullName" 
+                            name="fullName"
+                            value={fullName}
+                            onChange={e => setFullName(e.target.value)} 
                             type="text"
                             className={`${arima.className} input-field`}
                             autoComplete="off" 
@@ -151,6 +166,7 @@ export function RegisterForm(): ReactElement {
                             id="address"
                             name="address" 
                             type="text"
+                            value={address}
                             onChange={e => dropdown(e.target.value)}
                             className={`${arima.className} input-field`}
                             autoComplete="off"
@@ -167,6 +183,8 @@ export function RegisterForm(): ReactElement {
                                 id="city"
                                 name="city" 
                                 type="text"
+                                value={city}
+                                onChange={e => setCity(e.target.value)}
                                 className={`${arima.className} input-field`}
                                 autoComplete="off"
                             />
@@ -177,7 +195,7 @@ export function RegisterForm(): ReactElement {
                                 Phone number
                             </label>
 
-                            <PhoneInput country="se" />
+                            <PhoneInput country={state.success ? "se" : undefined} />
                         </section>
                     </section>
                 </section>
