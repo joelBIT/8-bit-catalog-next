@@ -42,7 +42,7 @@ export function SelectCountry(): ReactElement {
 
             <select 
                 id="selectCountry" 
-                name="selectCountry" 
+                name="country" 
                 value={selectedCountry.value} 
                 onChange={selectCountry} 
                 className={`${arima.className} input-field`}

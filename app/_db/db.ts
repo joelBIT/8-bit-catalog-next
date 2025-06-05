@@ -260,7 +260,7 @@ export async function getFilterValues(): Promise<FilterValues> {
  * USERS *
  *********/
 
-const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name, email, bio, image, username";
+const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name, email, bio, image, username, country, phone, full_name, city, address, birth_date";
 
 /**
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
@@ -323,6 +323,10 @@ export async function getAllUsers(): Promise<User[]> {
 
 export async function updateUser(id: number, last_name: string, first_name: string, bio: string): Promise<void> {
     await databaseClient.from(USER_TABLE).update({last_name, first_name, bio}).eq('id', id);
+}
+
+export async function updateUserInformationById(id: number, full_name: string, phone: string, address: string, city: string, country: string, birth_date: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({full_name, phone, address, city, country, birth_date}).eq('id', id);
 }
 
 export async function updatePassword(id: number, password_hash: string): Promise<void> {

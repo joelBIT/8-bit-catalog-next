@@ -125,8 +125,8 @@ export function RegisterForm(): ReactElement {
 
                 <section className="input">
                     <input 
-                        id="birth"
-                        name="birth" 
+                        id="birthDate"
+                        name="birth_date" 
                         type="date"
                         max={new Date().toLocaleDateString('en-ca')}
                         value={birthDate}
@@ -147,7 +147,7 @@ export function RegisterForm(): ReactElement {
 
                         <input 
                             id="fullName"
-                            name="fullName"
+                            name="full_name"
                             value={fullName}
                             onChange={e => setFullName(e.target.value)} 
                             type="text"
@@ -196,7 +196,7 @@ export function RegisterForm(): ReactElement {
                                 Phone number
                             </label>
 
-                            <PhoneInput country={state.success ? "se" : undefined} />
+                            <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone'}} />
                         </section>
                     </section>
                 </section>
