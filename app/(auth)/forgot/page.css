@@ -53,3 +53,36 @@
         }
     }
 }
+
+@media (max-width: 750px) {
+    #forgotPage {
+        padding: 1rem;
+        align-items: flex-start;
+
+        & #forgotPage-modal {
+            display: flex;
+            position: relative;
+            min-height: 70vh;
+            padding-top: 4rem;
+            min-height: fit-content;
+
+            & #forgotPage-modal-back {
+                display: contents;
+
+                & .forgotPage-link {
+                    top: 1rem;
+                    right: 1rem;
+                }
+            }
+
+            & #forgotPage-form {
+                width: 100%;
+            }
+        }
+        
+        .message-failure, 
+        .message-success {
+            font-size: 1.5rem;
+        }
+    }
+}

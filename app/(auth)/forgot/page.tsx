@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
+import { ResetPasswordForm } from "@/app/_components/auth/ResetPasswordForm";
 
 import "./page.css";
 
@@ -18,7 +19,7 @@ export default function ForgotPage(): ReactElement {
                 </section>
 
                 <section id="forgotPage-form">
-                    
+                    <ResetPasswordForm />
                 </section>
             </section>
         </main>

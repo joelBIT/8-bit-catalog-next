@@ -76,6 +76,27 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
 }
 
 /**
+ * This function is invoked when a user resets the password for an account.
+ */
+export async function resetPassword(_prevState: ActionState, formData: FormData): Promise<ActionState> {
+    const email = formData.get('email') as string;
+
+    try {
+        // check if email exists, send an error message if it does not
+        const newPassword = uuidv4();
+        //await updateAccountPassword(email, newPassword);
+        //sendMail(email, newPassword);
+        
+        return { message: 'Password has been changed', success: true };
+    } catch (error) {
+        if (error instanceof Error) {
+            return { message: error.message, success: false };
+        }
+        return { message: 'Could not change account password', success: false };
+    }
+}
+
+/**
  * Creates a session in the database and a cookie for the browser when a user signs in.
  */
 async function initiateSession(userId: number): Promise<void> {
