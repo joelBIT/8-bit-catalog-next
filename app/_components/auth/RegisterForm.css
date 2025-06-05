@@ -9,7 +9,7 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        border-bottom: 0.5px solid #6b6767;
+        border-bottom: 0.5px solid var(--color-auth-border-bottom);
         padding-bottom: 1.5rem;
 
         & #password-inputs {
@@ -29,7 +29,7 @@
 
             .input:first-of-type {
                 border-radius: 6px 6px 0 0;
-                border-bottom: 0.5px solid #6b6767;
+                border-bottom: 0.5px solid var(--color-auth-border-bottom);
             }
 
             .input:last-of-type {
@@ -63,7 +63,7 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            border: 1px solid rgba(255, 255, 255, .25);
+            border: 1px solid var(--color-auth-border);
             position: relative;
             overflow: hidden;
             box-shadow: 0 1px 2px #00000026;
@@ -172,7 +172,7 @@
 
         & #login-link {
             padding: 0;
-            background: rgba(255, 255, 255, .025);
+            background: var(--color-auth-background);
             backdrop-filter: blur(10px);
             width: 100%;
             font-size: .8rem;
