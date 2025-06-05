@@ -18,13 +18,6 @@ export function ResetPasswordForm(): ReactElement {
 
     return (
         <section id="resetPasswordCard" className={arima.className}>
-            { 
-                state?.message ? 
-                    <h2 className={state?.success ? "message-success" : "message-failure"}>
-                        {state?.message}
-                    </h2> : <></> 
-            }
-
             <form id="resetPasswordForm" action={formAction}>
                 <section id="login-input">
                     <section className="input">
@@ -45,6 +38,13 @@ export function ResetPasswordForm(): ReactElement {
                         </span>
                     </section>
                 </section>
+
+                { 
+                    state?.message ? 
+                        <h2 className={state?.success ? "message-success" : "message-failure"}>
+                            {state?.message}
+                        </h2> : <></> 
+                }
                 
                 <button className="authButton" type="submit" disabled={!email}>
                     <span className="authButton__text"> Send Reset Mail </span>

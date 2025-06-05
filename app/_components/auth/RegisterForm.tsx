@@ -39,13 +39,6 @@ export function RegisterForm(): ReactElement {
                     <p className="message-confirmation"> A confirmation link will be sent to your email </p>  
                     :
                     <section id="registerCard" className={arima.className}>
-                        { 
-                            state?.message ? 
-                                <h2 className={state?.success ? "message-success" : "message-failure"}>
-                                    {state?.message}
-                                </h2> : <></> 
-                        }
-
                         <form id="registerForm" action={formAction}>                        
                             <section className="input">
                                 <input 
@@ -184,6 +177,13 @@ export function RegisterForm(): ReactElement {
                                     </section>
                                 </section>
                             </section>
+
+                            { 
+                                state?.message ? 
+                                    <h2 className={state?.success ? "message-success" : "message-failure"}>
+                                        {state?.message}
+                                    </h2> : <></> 
+                            }
 
                             <button className="authButton" type="submit" disabled={!email || !password || !passwordRepeat}>
                                 <span className="authButton__text"> Register </span>

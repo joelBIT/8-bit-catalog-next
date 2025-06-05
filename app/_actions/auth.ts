@@ -56,7 +56,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const username = formData.get('username') as string;
 
     if (password !== passwordRepeat) {
-        return { message: 'The entered passwords must be equal', success: false };
+        return { message: 'Passwords must be equal', success: false };
     }
 
     try {
@@ -92,7 +92,7 @@ export async function resetPassword(_prevState: ActionState, formData: FormData)
         if (error instanceof Error) {
             return { message: error.message, success: false };
         }
-        return { message: 'Could not change account password', success: false };
+        return { message: 'Could not change password', success: false };
     }
 }
 

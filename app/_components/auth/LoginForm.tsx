@@ -25,13 +25,6 @@ export function LoginForm(): ReactElement {
 
     return (
         <section id="loginCard" className={arima.className}>
-            { 
-                state?.message ? 
-                    <h2 className={state?.success ? "message-success" : "message-failure"}>
-                        {state?.message}
-                    </h2> : <></> 
-            }
-            
             <form id="loginForm" ref={formRef} action={formAction}>
                 <section id="login-input">
                     <section className="input">
@@ -74,6 +67,13 @@ export function LoginForm(): ReactElement {
                         </span>
                     </section>
                 </section>
+
+                { 
+                    state?.message ? 
+                        <h2 className={state?.success ? "message-success" : "message-failure"}>
+                            {state?.message}
+                        </h2> : <></> 
+                }
                 
                 <button className="authButton" type="submit" disabled={!password || !email}>
                     <span className="authButton__text"> Sign in </span>

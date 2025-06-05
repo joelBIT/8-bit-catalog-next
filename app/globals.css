@@ -197,13 +197,14 @@ textarea {
 
 .message-success, 
 .message-failure {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
     width: fit-content;
     align-self: center;
     padding: 0 0.5rem;
+    backdrop-filter: blur(10px);
 }
 
 .message-success {
