@@ -3,7 +3,7 @@
 import { ReactElement, useRef, useActionState, useState } from "react";
 import Link from "next/link";
 import { URL_FORGOT_PAGE, URL_REGISTER_PAGE } from "@/app/_utils/utils";
-import { arima, irishGrover } from "@/app/_fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { login } from "@/app/_actions/auth";
 
 import "./LoginForm.css";
@@ -75,7 +75,7 @@ export function LoginForm(): ReactElement {
                     </section>
                 </section>
                 
-                <button className={`authButton ${irishGrover.className}`} type="submit" disabled={!password || !email}>
+                <button className="authButton" type="submit" disabled={!password || !email}>
                     <span className="authButton__text"> Sign in </span>
                 </button>
             </form>

@@ -3,7 +3,7 @@
 import { ReactElement, useActionState, useState } from "react";
 import Link from "next/link";
 import { resetPassword } from "@/app/_actions/auth";
-import { arima, irishGrover } from "@/app/_fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE, URL_REGISTER_PAGE } from "@/app/_utils/utils";
 
 import "./ResetPasswordForm.css";
@@ -46,7 +46,7 @@ export function ResetPasswordForm(): ReactElement {
                     </section>
                 </section>
                 
-                <button className={`authButton ${irishGrover.className}`} type="submit" disabled={!email}>
+                <button className="authButton" type="submit" disabled={!email}>
                     <span className="authButton__text"> Send Reset Mail </span>
                 </button>
             </form>

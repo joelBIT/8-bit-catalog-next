@@ -4,7 +4,7 @@ import { ReactElement, useActionState, useState } from "react";
 import Link from "next/link";
 import { SelectCountry } from "../common";
 import PhoneInput from "react-phone-input-2";
-import { arima, irishGrover } from "@/app/_fonts/fonts";
+import { arima } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/auth";
 
@@ -185,7 +185,7 @@ export function RegisterForm(): ReactElement {
                                 </section>
                             </section>
 
-                            <button className={`authButton ${irishGrover.className}`} type="submit" disabled={!email || !password || !passwordRepeat}>
+                            <button className="authButton" type="submit" disabled={!email || !password || !passwordRepeat}>
                                 <span className="authButton__text"> Register </span>
                             </button>
                         </form>

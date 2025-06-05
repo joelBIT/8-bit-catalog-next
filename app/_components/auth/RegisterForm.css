@@ -164,34 +164,6 @@
         .show {
             max-height: 2000px !important;
         }
-
-        & .authButton {
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, .25);
-
-            &:hover {
-                border: none;
-            }
-        }
-
-        & .authButton:disabled {
-            filter: brightness(0.5);
-            transform: none;
-            border: none;
-        }
-
-        & .authButton:disabled:hover {
-            cursor: default;
-
-            & .authButton__text {
-                letter-spacing: 0;
-            }
-
-            &::before,
-            &::after {
-                content: none;
-            }
-        }
     }
 
     & #login-link-section {
