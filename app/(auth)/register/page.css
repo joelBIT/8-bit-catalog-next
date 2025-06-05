@@ -56,32 +56,14 @@
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 430px) {
     #registerPage {
-        padding: 1rem;
-        align-items: flex-start;
-
         & #registerPage-modal {
-            display: flex;
-            position: relative;
-            min-height: 70vh;
-            padding-top: 4rem;
-            min-height: fit-content;
-
-            & #registerPage-modal-back {
-                display: contents;
-
-                & .registerPage-link {
-                    top: 1rem;
-                    right: 1rem;
-                }
-            }
-
             & #registerPage-form {
-                width: 100%;
+                width: 95vw;
             }
         }
-        
+
         .message-failure, 
         .message-success {
             font-size: 1.5rem;

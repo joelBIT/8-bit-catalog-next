@@ -54,32 +54,14 @@
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 430px) {
     #loginPage {
-        padding: 1rem;
-        align-items: flex-start;
-
         & #loginPage-modal {
-            display: flex;
-            position: relative;
-            min-height: 70vh;
-            padding-top: 4rem;
-            min-height: fit-content;
-
-            & #loginPage-modal-back {
-                display: contents;
-
-                & .loginPage-link {
-                    top: 1rem;
-                    right: 1rem;
-                }
-            }
-
             & #loginPage-form {
-                width: 100%;
+                width: 95vw;
             }
         }
-        
+
         .message-failure, 
         .message-success {
             font-size: 1.5rem;
