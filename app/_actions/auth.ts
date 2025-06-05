@@ -54,20 +54,27 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const password = formData.get('password') as string;
     const passwordRepeat = formData.get('passwordRepeat') as string;
     const email = formData.get('email') as string;
-    const username = formData.get('username') as string;
 
     if (password !== passwordRepeat) {
         return { message: 'Passwords must be equal', success: false };
     }
 
+    if (password.length < 8) {
+        return { message: 'Password must be at least 8 characters', success: false };
+    }
+
+    if (!/\d/.test(password)) {
+        return { message: 'Password must contain at least 1 number', success: false };
+    }
+
     try {
         const passwordHash = await hashPassword(password);
-        const user = await registerUser(email, passwordHash, username);
+        const user = await registerUser(email, passwordHash, email);
         const activationCode = uuidv4();
         await createAccount(user.id, activationCode);
         sendActivationMail(user.email, activationCode);
         
-        return { message: 'Account has been created', success: true };
+        return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {
         if (error instanceof Error) {
             return { message: error.message, success: false };

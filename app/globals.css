@@ -219,16 +219,6 @@ textarea {
     background-color: hsl(from var(--color-warning) h s l / 0.2);
 }
 
-.message-confirmation {
-    font-weight: bolder;
-    align-self: center;
-    font-size: 2rem;
-    padding: 1rem;
-    letter-spacing: 3px;
-    text-align: center;
-    font-family: "Permanent Marker", cursive;
-}
-
 
 
 

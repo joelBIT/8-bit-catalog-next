@@ -265,7 +265,8 @@ const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name
 /**
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
  * email already exists in the user table. Email is used as lowercase in this system. This is to avoid users not being able 
- * to login/search members due to character(s) being mixed uppercase and lowercase.
+ * to login/search members due to character(s) being mixed uppercase and lowercase. Also, as default the email is also stored as
+ * the username since it is unique. A user can change the username to something else when logged in.
  */
 export async function registerUser(userEmail: string, password_hash: string, username: string): Promise<{id: number, email: string}> {
     const lowerCaseEmail = userEmail.toLowerCase();
