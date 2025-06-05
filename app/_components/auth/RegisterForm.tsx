@@ -128,6 +128,7 @@ export function RegisterForm(): ReactElement {
                         id="birth"
                         name="birth" 
                         type="date"
+                        max={new Date().toLocaleDateString('en-ca')}
                         value={birthDate}
                         onChange={e => setBirthDate(e.target.value)}
                         className={`${arima.className} form__field`}
