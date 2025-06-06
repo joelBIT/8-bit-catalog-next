@@ -2,15 +2,18 @@ import { ReactElement } from "react";
 
 import "./loading.css";
 
+/**
+ * Loading page containing a loading spinner shown in the UI while page content is loading.
+ */
 export default function Loading(): ReactElement {
     return (
         <main id="loadingPage">
-            <div className="loadingio-eclipse">
-                <div className="ldio-rpinwye8j0b">
+            <section className="loading-spinner">
+                <section className="loading-spinner-inner">
                     <div>
                     </div>
-                </div>
-            </div>
+                </section>
+            </section>
         </main>
     );
 }
