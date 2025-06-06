@@ -63,7 +63,7 @@ export function RegisterForm(): ReactElement {
                         onChange={e => setEmail(e.target.value)}
                         placeholder="SET EMAIL"
                         className={`${arima.className} form__field`}
-                        autoComplete="off" 
+                        autoComplete="none" 
                         required 
                     />
 
@@ -87,7 +87,7 @@ export function RegisterForm(): ReactElement {
                             type={isVisible ? "text" : "password"}
                             placeholder="SET PASSWORD"
                             className={`${arima.className} form__field`}
-                            autoComplete="off" 
+                            autoComplete="none" 
                             required 
                         />
 
@@ -109,7 +109,7 @@ export function RegisterForm(): ReactElement {
                             type={isVisibleRepeat ? "text" : "password"}
                             placeholder="CONFIRM PASSWORD"
                             className={`${arima.className} form__field`}
-                            autoComplete="off" 
+                            autoComplete="none" 
                             required 
                         />
 
@@ -152,7 +152,7 @@ export function RegisterForm(): ReactElement {
                             onChange={e => setFullName(e.target.value)} 
                             type="text"
                             className={`${arima.className} input-field`}
-                            autoComplete="off" 
+                            autoComplete="none" 
                         />
                     </section>
 
@@ -170,7 +170,7 @@ export function RegisterForm(): ReactElement {
                             value={address}
                             onChange={e => dropdown(e.target.value)}
                             className={`${arima.className} input-field`}
-                            autoComplete="off"
+                            autoComplete="none"
                         />
                     </section>
 
@@ -187,7 +187,7 @@ export function RegisterForm(): ReactElement {
                                 value={city}
                                 onChange={e => setCity(e.target.value)}
                                 className={`${arima.className} input-field`}
-                                autoComplete="off"
+                                autoComplete="none"
                             />
                         </section>
 
@@ -196,7 +196,7 @@ export function RegisterForm(): ReactElement {
                                 Phone number
                             </label>
 
-                            <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone'}} />
+                            <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone', autoComplete: "none"}} />
                         </section>
                     </section>
                 </section>

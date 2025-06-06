@@ -29,7 +29,7 @@ export function ResetPasswordForm(): ReactElement {
                             onChange={e => setEmail(e.target.value)}
                             placeholder="Email"
                             className={`${arima.className} form__field`}
-                            autoComplete="off" 
+                            autoComplete="none" 
                             required 
                         />
 
