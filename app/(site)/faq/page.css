@@ -1,6 +1,24 @@
 #faqPage {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 4rem;
     background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
+    padding-bottom: 5rem;
+    padding-top: 10rem;
+
+    & .title-section {
+        width: 70%;
+        align-self: center;
+
+        & .faqPage-title {
+            font-size: 3rem;
+            text-align: center;
+            color: var(--color-footer-heading);
+        }
+
+        & .title-text {
+            font-weight: 100;
+        }
+    }
 }

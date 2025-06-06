@@ -6,7 +6,7 @@
     align-items: center;
     background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
     padding-bottom: 5rem;
-    padding-top: 15rem;
+    padding-top: 10rem;
 
     & .other-page-card {
         display: flex;
