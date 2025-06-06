@@ -1,6 +1,41 @@
 #sitesPage {
     display: flex;
+    flex-direction: column;
+    gap: 4rem;
     justify-content: center;
     align-items: center;
     background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
+    padding-bottom: 5rem;
+    padding-top: 15rem;
+
+    & .other-page-card {
+        display: flex;
+        border-radius: 18px;
+        height: 300px;
+        width: 60rem;
+        padding: 2rem;
+
+        & .card-title {
+           
+        }
+    }
+
+    & #nesDev {
+        background-image: url("/nesdev.png");
+        background-position: bottom;
+        justify-content: flex-end;
+    }
+
+    & #nesNinja {
+        background-image: url("/nesninja.png");
+        justify-content: flex-end;
+    }
+
+    & #nesCart {
+        background-image: url("/nescart.png");
+    }
+
+    & #romDetectives {
+        background-image: url("/romdetectives.png");
+    }
 }
