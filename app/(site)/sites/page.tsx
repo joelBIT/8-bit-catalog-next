@@ -12,3 +12,12 @@ export default function SitesPage(): ReactElement {
         </main>
     );
 }
+
+/**
+ *     const OTHERLINKS = [
+        {url: "https://www.nesdev.org/", title: "NesDev"},
+        {url: "https://nesninja.com/game/nes/", title: "NES Ninja"},
+        {url: "https://nescartdb.com/", title: "NesCartDB"},
+        {url: "http://www.romdetectives.com/Wiki/index.php", title: "ROM Detectives"}
+    ];
+ */
