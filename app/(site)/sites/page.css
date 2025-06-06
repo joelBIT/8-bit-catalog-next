@@ -13,29 +13,68 @@
         border-radius: 18px;
         height: 300px;
         width: 60rem;
-        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+
+        & .background-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: all 2s;
+
+            &:hover {
+                transform: scale(1.1);
+                transition: all 2s;
+            }
+        }
 
         & .card-title {
-           
+           position: absolute;
+           top: 2rem;
         }
     }
 
     & #nesDev {
-        background-image: url("/nesdev.png");
-        background-position: bottom;
         justify-content: flex-end;
-    }
 
-    & #nesNinja {
-        background-image: url("/nesninja.png");
-        justify-content: flex-end;
+        & .background-wrapper {
+            background-image: url("/nesdev.png");
+            background-position: bottom;
+        }
+
+        & .card-title {
+           right: 2rem;
+        }
     }
 
     & #nesCart {
-        background-image: url("/nescart.png");
+        & .background-wrapper {
+            background-image: url("/nescart.png");
+        }
+
+        & .card-title {
+           left: 2rem;
+        }
+    }
+
+    & #nesNinja {
+        justify-content: flex-end;
+
+        & .background-wrapper {
+            background-image: url("/nesninja.png");
+        }
+
+        & .card-title {
+           right: 2rem;
+        }
     }
 
     & #romDetectives {
-        background-image: url("/romdetectives.png");
+        & .background-wrapper {
+            background-image: url("/romdetectives.png");
+        }
+
+        & .card-title {
+           left: 2rem;
+        }
     }
 }

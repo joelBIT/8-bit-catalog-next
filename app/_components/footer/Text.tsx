@@ -6,7 +6,7 @@ export function Text(): ReactElement {
     return (
         <section id="text">
             <h2 className="text__title"> 8-bit catalog </h2>
-            <p> The best things in life are in 8-bits </p>
+            <p> The best things in life come in 8-bits </p>
         </section>
     );
 }
