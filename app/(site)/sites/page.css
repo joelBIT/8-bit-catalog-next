@@ -63,7 +63,8 @@
             background-image: url("/nescart.png");
         }
 
-        & .card-title {
+        & .card-title,
+        .card-description {
            left: 2rem;
         }
     }
@@ -85,7 +86,8 @@
             background-image: url("/romdetectives.png");
         }
 
-        & .card-title {
+        & .card-title,
+        .card-description {
            left: 2rem;
         }
     }
