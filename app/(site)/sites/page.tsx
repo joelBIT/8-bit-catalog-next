@@ -12,6 +12,7 @@ export default function SitesPage(): ReactElement {
             <Link id="nesDev" className="other-page-card" href="https://www.nesdev.org/" target="_blank">
                 <section className="background-wrapper" />
                 <h1 className="card-title"> NesDev </h1>
+                <p className="card-description"> A community of homebrew game developers and hardware researchers for the Nintendo Entertainment System (NES) and other retro consoles. </p>
             </Link>
 
             <Link id="nesCart" className="other-page-card" href="https://nescartdb.com/" target="_blank">
