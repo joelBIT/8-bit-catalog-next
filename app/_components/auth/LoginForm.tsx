@@ -36,7 +36,7 @@ export function LoginForm(): ReactElement {
                             onChange={e => setEmail(e.target.value)}
                             placeholder="Email"
                             className={`${arima.className} form__field`}
-                            autoComplete="none" 
+                            autoComplete="off" 
                             required 
                         />
 
