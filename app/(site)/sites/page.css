@@ -33,6 +33,7 @@
            position: absolute;
            font-size: 3rem;
            top: 2rem;
+           color: var(--color-footer-heading);
         }
 
         & .card-description {
