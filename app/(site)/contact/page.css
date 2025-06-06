@@ -1,0 +1,6 @@
+#contactPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
+}
