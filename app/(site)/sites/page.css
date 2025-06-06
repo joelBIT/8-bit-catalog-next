@@ -124,6 +124,12 @@
                 background-position: center;
             }
         }
+
+        & #nesCart {
+            & .background-wrapper {
+                background-position: bottom;
+            }
+        }
     }
 }
 
