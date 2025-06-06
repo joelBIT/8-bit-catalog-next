@@ -63,7 +63,7 @@ export function RegisterForm(): ReactElement {
                         onChange={e => setEmail(e.target.value)}
                         placeholder="SET EMAIL"
                         className={`${arima.className} form__field`}
-                        autoComplete="none" 
+                        autoComplete="off" 
                         required 
                     />
 
