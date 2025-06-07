@@ -14,9 +14,12 @@ export function FAQ({ faq }: { faq: FAQ }): ReactElement {
     return (
         <section className="faq" onClick={() => setIsShowing(!isShowing)}>
              <section className="faq-card">
-                <h2 className="faq-card__question"> { faq.question } </h2> 
+                <section className="faq-card-text">
+                    <span className="material-symbols-outlined"> help </span>
+                    <h2 className="faq-card__question"> { faq.question } </h2> 
+                </section>
 
-                <img src="/arrow_right.png" className={isShowing ? "rotate-down" : "rotate-up"} />
+                <div className={isShowing ? "faq-open" : "faq-closed"} />
             </section>
 
             <div className={isShowing ? "accordion-panel dropdown" : "accordion-panel"}>
