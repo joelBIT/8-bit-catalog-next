@@ -22,6 +22,10 @@ export const URL_MEMBERS_PAGE = URL_DASHBOARD_PAGE + "/members";
 export const USER_ROLE_ADMIN = "admin";
 export const USER_ROLE_REGULAR = "regular";
 
+export const FAQ_GENERAL = "General";
+export const FAQ_ACCOUNT = "Account";
+export const FAQ_GAMES = "Games";
+
 /**
  * Adds the 'All' option to the list so that a search can be performed on all games. The 'All' value is not added
  * if the list already contains it.
