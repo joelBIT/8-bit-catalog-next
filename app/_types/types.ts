@@ -52,8 +52,7 @@ export type Account = {
 export type FAQ = {
     type: string,
     question: string,
-    answer: string,
-    icon: string
+    answer: string
 }
 
 export type FilterValues = {

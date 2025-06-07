@@ -13,16 +13,10 @@
         justify-content: space-between;
         align-items: center;
 
-        & .faq-card-text {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-
-            & .faq-card__question {
-                font-size: 1.5rem;
-                font-weight: 400;
-                text-align: left;
-            }
+        & .faq-card__question {
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-align: left;
         }
 
         & img {
