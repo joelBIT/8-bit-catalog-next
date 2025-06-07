@@ -69,7 +69,7 @@
             white-space-collapse: preserve-breaks;
             padding-left: 3.5rem;
             padding-right: 4rem;
-            color: #f0cca4b0;
+            color: var(--color-real-white);
         }
     }
 
