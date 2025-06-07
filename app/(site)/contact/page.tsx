@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useActionState, useState } from "react";
+import { ReactElement, useActionState } from "react";
 import { sendMessage } from "@/app/_actions/contact";
 import { arima } from "@/app/_fonts/fonts";
 
@@ -11,7 +11,6 @@ import "./page.css";
  */
 export default function ContactPage(): ReactElement {
     const [ state, formAction ] = useActionState(sendMessage, { message: '', success: false });
-    const [ email, setEmail ] = useState<string>('');
 
     return (
         <main id="contactPage">
@@ -53,8 +52,6 @@ export default function ContactPage(): ReactElement {
                             id="email"
                             name="email" 
                             type="email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
                             className={`${arima.className} input-field`}
                             autoComplete="off" 
                             required 
@@ -80,7 +77,7 @@ export default function ContactPage(): ReactElement {
                             Message
                         </label>
 
-                         <textarea id="message" name="message" className={`${arima.className} input-field`} />
+                         <textarea id="message" name="message" className={`${arima.className} input-field`} required />
                     </section>
 
                     { 
@@ -90,7 +87,7 @@ export default function ContactPage(): ReactElement {
                             </h2> : <></> 
                     }
 
-                    <button id="sendButton" className="authButton" type="submit" disabled={!email}>
+                    <button id="sendButton" className="authButton" type="submit">
                         <span className="authButton__text"> Send </span>
                     </button>
                 </form>
