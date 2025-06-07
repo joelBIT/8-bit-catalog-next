@@ -34,3 +34,65 @@
         }
     }
 }
+
+@media (max-width: 1200px) {
+    #contactPage {
+        & #contactPage-content {
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+
+            & #contactPage-information {
+                width: 80%;
+            }
+
+            & #contactForm {
+                width: 70%;
+
+                & #sendButton {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    #contactPage {
+        & #contactPage-content {
+            & #contactPage-information {
+                width: 90%;
+            }
+
+            & #contactForm {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #contactPage {
+        & #contact-image {
+            margin-top: 3rem;
+        }
+
+        & #contactPage-content {
+            padding-top: 0;
+            
+            & #contactPage-information {
+                & #information-text {
+                    font-size: 1.2rem;
+                }
+            }
+
+            & #contactForm {
+                padding: 1rem;
+
+                & .information-input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
