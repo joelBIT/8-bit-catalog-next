@@ -15,6 +15,7 @@
             font-size: 3rem;
             text-align: center;
             color: var(--color-footer-heading);
+            padding-bottom: 1rem;
         }
 
         & .title-text {
@@ -46,6 +47,35 @@
         & .active-button {
             background-color: var(--color-white);
             color: var(--color-black);
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    #faqPage {
+        & .title-section {
+            width: 95%;
+        }
+
+        & .faq {
+            width: 95%;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #faqPage {
+        padding-top: 5rem;
+
+        & .title-section {
+            & .faqPage-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        & .faq-toggle-topics {
+            justify-content: center;
+            flex-wrap: wrap;
         }
     }
 }

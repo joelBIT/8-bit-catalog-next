@@ -16,10 +16,6 @@
             gap: 2rem;
             align-items: center;
 
-            & .material-symbols-outlined {
-                align-self: flex-end;
-            }
-
             & .faq-card__question {
                 font-size: 1.5rem;
                 font-weight: 400;
@@ -38,6 +34,7 @@
             justify-content: center;
             border: 1px solid #f0cca430;
             width: 2rem;
+            min-width: 2rem;
             height: 2rem;
             border-radius: 100%;
             font-size: 1.5rem;
@@ -78,5 +75,31 @@
 
     & .dropdown {
         max-height: 2000px;
+    }
+}
+
+@media (max-width: 500px) {
+    .faq {
+        & .faq-card {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+
+            & .faq-card-text {
+                gap: 1rem;
+                
+                & .faq-card__question {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        & .accordion-panel {
+            & .accordion__text {
+                padding-left: 2.5rem;
+                padding-right: 3rem;
+            }
+        }
     }
 }
