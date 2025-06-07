@@ -47,6 +47,7 @@
         & .active-button {
             background-color: #CC8B21c0;
             color: var(--color-black);
+            border-color: var(--color-link-active);
         }
     }
 }
