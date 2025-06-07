@@ -32,6 +32,6 @@ async function sendContactMessageMail(email: string, name: string, subject: stri
         from: '8bit <onboarding@joel-rollny.eu>',
         to: "joel.rollny@gmail.com",
         subject: subject,
-        react: ContactMessageEmail(name, email, message),
+        react: ContactMessageEmail(email, name, message),
     });
 }

@@ -97,23 +97,8 @@
             }
 
             & #sendButton {
-                padding: 0;
-                background: var(--color-auth-background);
-                backdrop-filter: blur(10px);
-                width: 100%;
-                font-size: .8rem;
-                font-weight: 600;
-                text-align: center;
-                align-content: center;
-                text-transform: uppercase;
-                cursor: pointer;
-                color: var(--color-white);
-                transition: all .25s;
-
-                &:hover {
-                    background-color: var(--color-real-white);
-                    color: var(--color-black);
-                }
+                width: 85%;
+                margin-top: 2rem;
             }
         }
     }

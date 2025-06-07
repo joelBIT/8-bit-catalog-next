@@ -1,6 +1,7 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useActionState, useState } from "react";
+import { sendMessage } from "@/app/_actions/contact";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./page.css";
@@ -9,6 +10,7 @@ import "./page.css";
  * This page contains contact information as well as a contact form where users can make inquiries or give feedback.
  */
 export default function ContactPage(): ReactElement {
+    const [ state, formAction ] = useActionState(sendMessage, { message: '', success: false });
     const [ email, setEmail ] = useState<string>('');
 
     return (
@@ -27,7 +29,7 @@ export default function ContactPage(): ReactElement {
                     </p>
                 </section>
                 
-                <form id="contactForm">
+                <form id="contactForm" action={formAction}>
                     <section className="information-input">
                         <label className="input-label" htmlFor="name">
                             Name
@@ -51,6 +53,8 @@ export default function ContactPage(): ReactElement {
                             id="email"
                             name="email" 
                             type="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                             className={`${arima.className} input-field`}
                             autoComplete="off" 
                             required 
@@ -78,6 +82,13 @@ export default function ContactPage(): ReactElement {
 
                          <textarea id="message" name="message" className={`${arima.className} input-field`} />
                     </section>
+
+                    { 
+                        state?.message ? 
+                            <h2 className={state?.success ? "message-success" : "message-failure"}>
+                                {state?.message}
+                            </h2> : <></> 
+                    }
 
                     <button id="sendButton" className="authButton" type="submit" disabled={!email}>
                         <span className="authButton__text"> Send </span>
