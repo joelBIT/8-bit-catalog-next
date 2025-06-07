@@ -8,3 +8,11 @@
         font-weight: 500;
     }
 }
+
+@media (max-width: 500px) {
+    #text {
+        & .text__title {
+            text-align: center;
+        }
+    }
+}
