@@ -96,6 +96,11 @@
                 }
             }
 
+            & .message-success, 
+            .message-failure {
+                margin-top: 1rem;
+            }
+
             & #sendButton {
                 width: 85%;
                 margin-top: 2rem;
