@@ -1,0 +1,125 @@
+#contactPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
+
+    & #contact-image {
+        width: 100vw;
+        margin-top: 4rem;
+        filter: brightness(0.8);
+    }
+
+    & #contactPage-content {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        padding-top: 4rem;
+        padding-bottom: 5rem;
+
+        & #contactPage-information {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 30rem;
+
+            & #contactPage-title {
+                padding-top: 2rem;
+                font-size: 2rem;
+            }
+
+            & #information-text {
+                font-size: 1.5rem;
+                padding-bottom: 2rem;
+            }
+
+            & .contact__info {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                & .location {
+                    color: var(--color-footer-heading);
+                }
+
+                & .globe {
+                    color: var(--color-neon-blue);
+                }
+
+                & .mail {
+                    color: var(--color-real-white);
+                }
+
+                & .contact__link:hover {
+                    filter: brightness(0.5);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    #contactPage {
+        & #contactPage-content {
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+
+            & #contactPage-information {
+                width: 80%;
+            }
+
+            & #contactForm {
+                width: 70%;
+
+                & #sendButton {
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    #contactPage {
+        & #contactPage-content {
+            & #contactPage-information {
+                width: 90%;
+            }
+
+            & #contactForm {
+                width: 90%;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #contactPage {
+        & #contact-image {
+            margin-top: 3rem;
+        }
+
+        & #contactPage-content {
+            padding-top: 0;
+
+            & #contactPage-information {
+                & #contactPage-title {
+                    font-size: 1rem;
+                }
+
+                & #information-text {
+                    font-size: 1.2rem;
+                }
+            }
+
+            & #contactForm {
+                padding: 1rem;
+
+                & .information-input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

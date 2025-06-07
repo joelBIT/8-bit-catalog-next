@@ -10,6 +10,9 @@ export const URL_REGISTER_PAGE = "/register";
 export const URL_FORGOT_PAGE = "/forgot";
 export const URL_SEARCH_PAGE = "/search";
 export const URL_ACTIVATION_PAGE = "/activate";
+export const URL_CONTACT_PAGE = "/contact";
+export const URL_FAQ_PAGE = "/faq";
+export const URL_SITES_PAGE = "/sites";
 export const URL_DASHBOARD_PAGE = "/dashboard";
 export const URL_PROFILE_PAGE = URL_DASHBOARD_PAGE + "/profile";
 export const URL_FILTERS_PAGE = URL_DASHBOARD_PAGE + "/filters";
@@ -18,6 +21,10 @@ export const URL_MEMBERS_PAGE = URL_DASHBOARD_PAGE + "/members";
 
 export const USER_ROLE_ADMIN = "admin";
 export const USER_ROLE_REGULAR = "regular";
+
+export const FAQ_GENERAL = "General";
+export const FAQ_ACCOUNT = "Account";
+export const FAQ_GAMES = "Games";
 
 /**
  * Adds the 'All' option to the list so that a search can be performed on all games. The 'All' value is not added

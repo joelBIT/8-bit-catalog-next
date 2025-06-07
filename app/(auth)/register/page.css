@@ -37,7 +37,7 @@
 
                 & .registerPage-link__text {
                     align-self: center;
-                    font-weight: 100;
+                    font-weight: 600;
                     font-size: 1.1rem;
                 }
 
@@ -58,7 +58,11 @@
 
 @media (max-width: 430px) {
     #registerPage {
+        align-items: flex-start;
+        
         & #registerPage-modal {
+            padding-top: 5rem;
+
             & #registerPage-form {
                 width: 95vw;
             }

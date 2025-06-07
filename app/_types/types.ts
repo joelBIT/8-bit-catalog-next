@@ -49,6 +49,12 @@ export type Account = {
     activation_code: string
 }
 
+export type FAQ = {
+    type: string,
+    question: string,
+    answer: string
+}
+
 export type FilterValues = {
     categories: string[],
     publishers: string[],

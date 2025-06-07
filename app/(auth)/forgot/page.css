@@ -1,6 +1,6 @@
 #forgotPage {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
     background: fixed;
     background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
@@ -35,7 +35,7 @@
 
                 & .forgotPage-link__text {
                     align-self: center;
-                    font-weight: 100;
+                    font-weight: 600;
                     font-size: 1.1rem;
                 }
 
@@ -56,7 +56,11 @@
 
 @media (max-width: 430px) {
     #forgotPage {
+        align-items: flex-start;
+
         & #forgotPage-modal {
+            padding-top: 5rem;
+
             & #forgotPage-form {
                 width: 95vw;
             }

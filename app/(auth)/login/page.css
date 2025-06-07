@@ -35,7 +35,7 @@
 
                 & .loginPage-link__text {
                     align-self: center;
-                    font-weight: 100;
+                    font-weight: 600;
                     font-size: 1.1rem;
                 }
 
@@ -56,7 +56,11 @@
 
 @media (max-width: 430px) {
     #loginPage {
+        align-items: flex-start;
+
         & #loginPage-modal {
+            padding-top: 5rem;
+            
             & #loginPage-form {
                 width: 95vw;
             }

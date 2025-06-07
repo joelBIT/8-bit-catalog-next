@@ -1,0 +1,150 @@
+#sitesPage {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
+    padding-bottom: 5rem;
+    padding-top: 10rem;
+
+    & .other-page-card {
+        display: flex;
+        border-radius: 18px;
+        height: 300px;
+        width: 60rem;
+        position: relative;
+        overflow: hidden;
+        border-color: var(--color-real-white);
+        box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 10px 1px #FFFFFF80;
+
+        &:hover {
+            .background-wrapper {
+                transform: scale(1.1);
+                transition: all 2s;
+            }
+        }
+
+        & .background-wrapper {
+            width: 100%;
+            height: 100%;
+            transition: all 2s;
+        }
+
+        & .card-title {
+           position: absolute;
+           font-size: 3rem;
+           top: 2rem;
+           color: var(--color-footer-heading);
+        }
+
+        & .card-description {
+            position: absolute;
+            font-size: 1.5rem;
+            font-weight: 600;
+            top: 8rem;
+            width: 70%;
+        }
+    }
+
+    & #nesDev {
+        justify-content: flex-end;
+
+        & .background-wrapper {
+            background-image: url("/nesdev.png");
+            background-position: bottom;
+            filter: opacity(0.3);
+        }
+
+        & .card-title,
+        .card-description {
+           right: 2rem;
+        }
+    }
+
+    & #nesCart {
+        & .background-wrapper {
+            background-image: url("/nescart.png");
+        }
+
+        & .card-title,
+        .card-description {
+           left: 2rem;
+        }
+    }
+
+    & #nesNinja {
+        justify-content: flex-end;
+
+        & .background-wrapper {
+            background-image: url("/nesninja.png");
+        }
+
+        & .card-title,
+        .card-description {
+           right: 2rem;
+        }
+    }
+
+    & #romDetectives {
+        & .background-wrapper {
+            background-image: url("/romdetectives.png");
+        }
+
+        & .card-title,
+        .card-description {
+           left: 2rem;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    #sitesPage {
+        & .other-page-card {
+            width: 95%;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #sitesPage {
+        & .other-page-card {
+            & .card-description {
+                width: 90%;
+                left: 2rem;
+                bottom: 0;
+                align-content: space-evenly;
+                font-size: 1.3rem;
+                padding-right: 1rem;
+            }
+        }
+
+        & #romDetectives {
+            & .background-wrapper {
+                background-position: center;
+            }
+        }
+
+        & #nesCart {
+            & .background-wrapper {
+                background-position: bottom;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #sitesPage {
+        & .other-page-card {
+            & .card-description {
+                width: 90%;
+                left: 1rem;
+                font-size: 1.2rem;
+            }
+
+            & .card-title {
+                font-size: 2rem;
+            }
+        }
+    }
+}
