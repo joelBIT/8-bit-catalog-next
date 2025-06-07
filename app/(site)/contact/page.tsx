@@ -14,7 +14,7 @@ export default function ContactPage(): ReactElement {
 
             <section id="contactPage-content">
                 <section id="contactPage-information">
-                    <h1 id="contactPage-title">
+                    <h1 id="contactPage-title" className="bit-font">
                         Get in touch
                     </h1>
 
@@ -22,6 +22,20 @@ export default function ContactPage(): ReactElement {
                         Send a message if you have any questions or wishes about the 8-bit catalog. I will get back to
                         you as soon as possible.
                     </p>
+
+                    <section className="contact__info">
+                        <span className={`material-symbols-outlined location`}> location_on </span> Karlstad, Sweden
+                    </section>
+
+                    <section className="contact__info">
+                        <span className={`material-symbols-outlined mail`}> mail </span>
+                        <p> joel.rollny@gmail.com </p>
+                    </section>
+
+                    <section className="contact__info">
+                        <span className={`material-symbols-outlined globe`}> globe </span> 
+                        <a href="https://www.joel-rollny.eu" target="_blank" className="contact__link"> www.joel-rollny.eu</a>
+                    </section>
                 </section>
                 
                 <ContactForm />
@@ -29,18 +43,3 @@ export default function ContactPage(): ReactElement {
         </main>
     );
 }
-
-
-/**
-                    <h4 className="contact__info">
-                        <span className={`material-symbols-outlined mail`}> mail </span>
-                        <a href="mailto:joel.rollny@gmail.com" className="contact__link"> joel.rollny@gmail.com</a>
-                    </h4>
-                    <h4 className="contact__info">
-                        <span className={`material-symbols-outlined globe`}> globe </span> 
-                        <a href="https://www.joel-rollny.eu" target="_blank" className="contact__link"> www.joel-rollny.eu</a>
-                    </h4>
-                    <h4 className="contact__info">
-                        <span className={`material-symbols-outlined location`}> location_on </span> Karlstad, Sweden
-                    </h4>
- */

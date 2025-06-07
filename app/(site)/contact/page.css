@@ -30,6 +30,29 @@
 
             & #information-text {
                 font-size: 1.5rem;
+                padding-bottom: 2rem;
+            }
+
+            & .contact__info {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                & .location {
+                    color: var(--color-footer-heading);
+                }
+
+                & .globe {
+                    color: var(--color-neon-blue);
+                }
+
+                & .mail {
+                    color: var(--color-real-white);
+                }
+
+                & .contact__link:hover {
+                    filter: brightness(0.5);
+                }
             }
         }
     }
@@ -79,8 +102,12 @@
 
         & #contactPage-content {
             padding-top: 0;
-            
+
             & #contactPage-information {
+                & #contactPage-title {
+                    font-size: 1rem;
+                }
+
                 & #information-text {
                     font-size: 1.2rem;
                 }
