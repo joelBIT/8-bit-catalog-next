@@ -30,9 +30,9 @@ export default function FaqPage(): ReactElement {
             </section>
 
             <section className="faq-toggle-topics">
-                <button className="toggle-button" onClick={() => setFaqPage("General")}> General </button>
-                <button className="toggle-button" onClick={() => setFaqPage("Account")}> Account </button>
-                <button className="toggle-button" onClick={() => setFaqPage("Games")}> Games </button>
+                <button className={faqPage === "General" ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage("General")}> General </button>
+                <button className={faqPage === "Account" ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage("Account")}> Account </button>
+                <button className={faqPage === "Games" ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage("Games")}> Games </button>
             </section>
 
             { faqPage === "General" ? FAQs.filter(faq => faq.type === "General").map(faq => <FAQ faq={faq} />) : <></> }
