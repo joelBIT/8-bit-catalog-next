@@ -1,8 +1,5 @@
-'use client';
-
-import { ReactElement, useActionState } from "react";
-import { sendMessage } from "@/app/_actions/contact";
-import { arima } from "@/app/_fonts/fonts";
+import { ReactElement } from "react";
+import { ContactForm } from "@/app/_components/common";
 
 import "./page.css";
 
@@ -10,7 +7,6 @@ import "./page.css";
  * This page contains contact information as well as a contact form where users can make inquiries or give feedback.
  */
 export default function ContactPage(): ReactElement {
-    const [ state, formAction ] = useActionState(sendMessage, { message: '', success: false });
 
     return (
         <main id="contactPage">
@@ -28,69 +24,7 @@ export default function ContactPage(): ReactElement {
                     </p>
                 </section>
                 
-                <form id="contactForm" action={formAction}>
-                    <section className="information-input">
-                        <label className="input-label" htmlFor="name">
-                            Name
-                        </label>
-
-                        <input 
-                            id="name"
-                            name="name"
-                            type="text"
-                            className={`${arima.className} input-field`}
-                            autoComplete="none" 
-                        />
-                    </section>
-
-                    <section className="information-input">
-                        <label className="input-label" htmlFor="email">
-                            Email
-                        </label>
-
-                        <input 
-                            id="email"
-                            name="email" 
-                            type="email"
-                            className={`${arima.className} input-field`}
-                            autoComplete="off" 
-                            required 
-                        />
-                    </section>
-
-                    <section className="information-input">
-                        <label className="input-label" htmlFor="subject">
-                            Subject
-                        </label>
-
-                        <input 
-                            id="subject"
-                            name="subject"
-                            type="text"
-                            className={`${arima.className} input-field`}
-                            autoComplete="none" 
-                        />
-                    </section>
-
-                    <section className="information-input">
-                        <label className="input-label" htmlFor="message">
-                            Message
-                        </label>
-
-                         <textarea id="message" name="message" className={`${arima.className} input-field`} required />
-                    </section>
-
-                    { 
-                        state?.message ? 
-                            <h2 className={state?.success ? "message-success" : "message-failure"}>
-                                {state?.message}
-                            </h2> : <></> 
-                    }
-
-                    <button id="sendButton" className="authButton" type="submit">
-                        <span className="authButton__text"> Send </span>
-                    </button>
-                </form>
+                <ContactForm />
             </section>
         </main>
     );

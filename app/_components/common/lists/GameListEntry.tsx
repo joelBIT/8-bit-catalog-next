@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
 import { Game } from "@/app/_types/types";
