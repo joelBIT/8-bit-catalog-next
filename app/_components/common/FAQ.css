@@ -1,0 +1,63 @@
+.faq {
+    display: flex;
+    flex-direction: column;
+    border-radius: 9px;
+    width: 50rem;
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: var(--color-black-light);
+
+    & .faq-card {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: center;
+
+        & .faq-card-text {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            & .faq-card__question {
+                font-size: 1.5rem;
+                font-weight: 400;
+                text-align: left;
+            }
+        }
+
+        & img {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
+    & .accordion-panel {
+        display: flex;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease-in-out;
+
+        & .accordion__text {
+            margin-top: 1rem;
+            white-space-collapse: preserve-breaks;
+        }
+    }
+
+    & .dropdown {
+        max-height: 2000px;
+    }
+
+    & .rotate-down {
+        transform: rotate(90deg);
+        transition: transform 0.25s ease-in-out;
+    }
+
+    & .rotate-up {
+        transform: rotate(0deg);
+        transition: transform 0.25s ease-in-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
