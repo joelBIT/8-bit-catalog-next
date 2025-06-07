@@ -11,19 +11,13 @@
         justify-content: space-between;
         align-items: center;
 
-        & .faq-card-text {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
+        & .faq-card__question {
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-align: left;
 
-            & .faq-card__question {
-                font-size: 1.5rem;
-                font-weight: 400;
-                text-align: left;
-
-                 &:hover {
-                    cursor: pointer;
-                }
+            &:hover {
+                cursor: pointer;
             }
         }
 
@@ -67,8 +61,6 @@
             font-size: 1.15rem;
             margin-top: 1rem;
             white-space-collapse: preserve-breaks;
-            padding-left: 3.5rem;
-            padding-right: 4rem;
             color: var(--color-real-white);
         }
     }
@@ -86,19 +78,8 @@
             justify-content: space-between;
             align-items: center;
 
-            & .faq-card-text {
-                gap: 1rem;
-                
-                & .faq-card__question {
-                    font-size: 1.2rem;
-                }
-            }
-        }
-
-        & .accordion-panel {
-            & .accordion__text {
-                padding-left: 2.5rem;
-                padding-right: 3rem;
+            & .faq-card__question {
+                font-size: 1.2rem;
             }
         }
     }
