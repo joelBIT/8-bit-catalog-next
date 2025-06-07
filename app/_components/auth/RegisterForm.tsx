@@ -141,7 +141,7 @@ export function RegisterForm(): ReactElement {
 
                 <section id="personalInformation">
                     <section className="information-input">
-                        <label className="input-label">
+                        <label className="input-label" htmlFor="full_name">
                             Full name
                         </label>
 
@@ -159,7 +159,7 @@ export function RegisterForm(): ReactElement {
                     <SelectCountry />
 
                     <section className="information-input">
-                        <label className="input-label">
+                        <label className="input-label" htmlFor="address">
                             Address
                         </label>
 
@@ -176,7 +176,7 @@ export function RegisterForm(): ReactElement {
 
                     <section id="extra-information" className={showInputs ? "show" : ""}>
                         <section className="information-input">
-                            <label className="input-label">
+                            <label className="input-label" htmlFor="city">
                                 City
                             </label>
 
@@ -192,7 +192,7 @@ export function RegisterForm(): ReactElement {
                         </section>
 
                         <section className="information-input">
-                            <label className="input-label">
+                            <label className="input-label" htmlFor="phone">
                                 Phone number
                             </label>
 
