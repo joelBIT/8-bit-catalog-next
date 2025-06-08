@@ -79,11 +79,11 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
 
                 <section id="carousel-buttons">
                     <button id="prevButton" onClick={prevSlide}>
-                        <span className="material-symbols-outlined arrow"> chevron_left </span>
+                        <span className="arrow"> </span>
                     </button>
 
                     <button id="nextButton" onClick={nextSlide}>
-                        <span className="material-symbols-outlined arrow"> chevron_right </span>
+                        <span className="arrow"> </span>
                     </button>
                 </section>
             </section>
