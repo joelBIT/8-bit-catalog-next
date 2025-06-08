@@ -8,16 +8,42 @@
         display: flex;
         border-radius: 9px;
 
-        & .gameDetailsCard__link {
-            background-size: cover;
-            width: 50rem;
+        & #cover-wrapper {
+            position: relative;
+            background-color: #1f1e1a;
+            margin-left: 4rem;
+            height: 250px;
+            width: 300px;
+            border-radius: 24px;
 
             & .gameDetailsCard-image {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-                border-bottom-right-radius: 9px;
-                border-top-left-radius: 9px;
+                position: absolute;
+                width: 150px;
+                height: 200px;
+                left: 17%;
+                top: -2.5rem;
+                border-radius: 10px;
+            }
+
+            & .gameDetailsCard__link {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                gap: 0.7rem;
+                bottom: 1rem;
+                left: 17%;
+                padding: 0.5rem 1rem;
+                background-color: var(--color-real-white);
+                color: var(--color-black);
+                border-radius: 9px;
+                font-family: 'Rancho';
+                font-size: 1.5rem;
+                transition: all 0.5s;
+
+                &:hover {
+                    filter: invert(1);
+                    transition: all 0.5s;
+                }
             }
         }
 

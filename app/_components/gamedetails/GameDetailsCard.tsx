@@ -23,7 +23,8 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     return (
         <section id="gameDetailsCard">
             <article id="game-cover-tags">
-                <Link href={STORAGE_URL + game?.cover} target="_blank" className="gameDetailsCard__link">
+
+                <section id="cover-wrapper">
                     <Image 
                         src={STORAGE_URL + game?.cover}
                         unoptimized
@@ -32,7 +33,12 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                         width={900}
                         height={470}
                     />
-                </Link>
+
+                    <Link href={STORAGE_URL + game?.cover} target="_blank" className="gameDetailsCard__link">
+                        Open cover
+                        <span className="material-symbols-outlined"> open_in_new </span>
+                    </Link>
+                </section>
 
                 <article id="gameDetails" className="bit-font">
                     <h1 className="gameDetails__title permanent-marker-regular"> {game?.title} </h1>

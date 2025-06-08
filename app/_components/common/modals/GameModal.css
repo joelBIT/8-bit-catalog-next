@@ -3,7 +3,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 90%;
     border-radius: 8px;
     background-color: var(--color-black);
     color: var(--color-white);
@@ -160,12 +160,6 @@
         margin: 2rem;
         padding: .3rem 0;
         font-family: 'Rancho';
-    }
-}
-
-@media (max-width: 1500px) {
-    #gameModal {
-        width: 85%;
     }
 }
 
