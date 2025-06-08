@@ -76,20 +76,22 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                         alt="Game 2 clicks forward"
                     />
                 </section>
-            </section>
 
-            <button id="prevButton" onClick={prevSlide}>
-                <span className="material-symbols-outlined arrow"> chevron_left </span>
-            </button>
+                <section id="carousel-buttons">
+                    <button id="prevButton" onClick={prevSlide}>
+                        <span className="material-symbols-outlined arrow"> chevron_left </span>
+                    </button>
+
+                    <button id="nextButton" onClick={nextSlide}>
+                        <span className="material-symbols-outlined arrow"> chevron_right </span>
+                    </button>
+                </section>
+            </section>
 
             <section id="slide-space" className={"slide"} key={game.id}>
                 <GameDetailsCard game={suppliedGames[slide > -1 ? slide : 0]} />
                 <button onClick={close} className="gameButton"> Close </button>
             </section>
-
-            <button id="nextButton" onClick={nextSlide}>
-                <span className="material-symbols-outlined arrow"> chevron_right </span>
-            </button>
         </dialog>
     );
 }
