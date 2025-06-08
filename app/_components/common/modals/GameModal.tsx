@@ -14,11 +14,12 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
     const [ slide, setSlide ] = useState<number>(games.findIndex(element => element.id === game.id));
     const [ suppliedGames ] = useState<Game[]>(games);
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     useEffect(() => {
-      if (!dialogRef.current?.open) {
-        dialogRef.current?.showModal();
-      }
+        if (!dialogRef.current?.open) {
+            dialogRef.current?.showModal();
+        }
     }, []);
 
     function nextSlide(): void {
@@ -31,6 +32,40 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
 
     return (
         <dialog id="gameModal" ref={dialogRef}>
+            <section className="container">
+                <section className="carousel">
+                    <img
+                        className="item"
+                        src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.cover}
+                        alt="Game 2 clicks back"
+                    />
+
+                    <img
+                        className="item"
+                        src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.cover}
+                        alt="Previous game"
+                    />
+
+                    <img
+                        className="item"
+                        src={STORAGE_URL + suppliedGames[slide]?.cover}
+                        alt="Current game"
+                    />
+
+                    <img
+                        className="item"
+                        src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 0 : slide + 1]?.cover}
+                        alt="Next game"
+                    />
+
+                    <img
+                        className="item"
+                        src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.cover}
+                        alt="Game 2 clicks forward"
+                    />
+                </section>
+            </section>
+
             <button id="prevButton" onClick={prevSlide}>
                 <span className="material-symbols-outlined arrow"> chevron_left </span>
             </button>
