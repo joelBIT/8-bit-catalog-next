@@ -26,8 +26,16 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
         setSlide(slide === games.length - 1 ? 0 : slide + 1);
     }
 
+    function twiceNextSlide(): void {
+        setSlide(slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2));
+    }
+
     function prevSlide(): void {
         setSlide(slide === 0 ? games.length - 1 : slide - 1);
+    }
+
+    function twicePrevSlide(): void {
+        setSlide(slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2));
     }
 
     return (
@@ -37,12 +45,14 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                     <img
                         className="item first-game"
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.cover}
+                        onClick={twicePrevSlide}
                         alt="Game 2 clicks back"
                     />
 
                     <img
                         className="item previous-game"
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.cover}
+                        onClick={prevSlide}
                         alt="Previous game"
                     />
 
@@ -55,12 +65,14 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                     <img
                         className="item"
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 0 : slide + 1]?.cover}
+                        onClick={nextSlide}
                         alt="Next game"
                     />
 
                     <img
                         className="item"
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.cover}
+                        onClick={twiceNextSlide}
                         alt="Game 2 clicks forward"
                     />
                 </section>
