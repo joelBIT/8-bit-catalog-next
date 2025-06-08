@@ -23,7 +23,6 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     return (
         <section id="gameDetailsCard">
             <article id="game-cover-tags">
-
                 <section id="cover-wrapper">
                     <Image 
                         src={STORAGE_URL + game?.cover}
@@ -41,26 +40,26 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                 </section>
 
                 <article id="gameDetails" className="bit-font">
-                    <h1 className="gameDetails__title permanent-marker-regular"> {game?.title} </h1>
+                    <h1 className="gameDetails__title"> {game?.title} </h1>
 
-                    <section className="game-tags">
-                        {
-                            GAME_DETAILS.map(detail => 
-                                <section className="tag" key={detail.title} title={detail.title}>
-                                    <span className="material-symbols-outlined"> {detail.icon} </span>
-                                    <h2 className="tag-text"> {detail.text} </h2>
-                                </section>
-                            )
-                        }
-                    </section>
-
-                    { game?.rom ? <PlayRomLink id={game?.id} /> : <></> }
+                    <article id="gameDetailsCard__description">
+                        { game?.description }
+                    </article>
                 </article>
             </article>
 
-            <article id="gameDetailsCard__description">
-                { game?.description }
-            </article>
+            <section className="game-tags">
+                {
+                    GAME_DETAILS.map(detail => 
+                        <section className="tag" key={detail.title} title={detail.title}>
+                            <span className="material-symbols-outlined"> {detail.icon} </span>
+                            <h2 className="tag-text"> {detail.text} </h2>
+                        </section>
+                    )
+                }
+            </section>
+
+            { game?.rom ? <PlayRomLink id={game?.id} /> : <></> }
         </section>
     )
 }

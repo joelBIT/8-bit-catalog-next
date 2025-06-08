@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url("https://fonts.googleapis.com/css2?&family=Playfair+Display&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker');
 
@@ -255,6 +255,13 @@ textarea {
 .permanent-marker-regular {
     font-family: "Permanent Marker", cursive;
     font-weight: 100;
+    font-style: normal;
+}
+
+.playfair-display-regular {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
     font-style: normal;
 }
 
