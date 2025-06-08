@@ -1,4 +1,4 @@
-import { FilterValues, Game, SearchFilter, SearchResult, TimelineEvent, User } from '@/app/_types/types';
+import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, TimelineEvent, User } from '@/app/_types/types';
 
 
 /********************************************************************************************
@@ -118,6 +118,22 @@ export async function getFilterValues(): Promise<FilterValues> {
 export async function getTimelineEvents(): Promise<TimelineEvent[]> {
     try {
         const response = await fetch(`/api/timeline`);
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+    return [];
+}
+
+/**
+ * Retrieve the FAQs for the FAQ page.
+ */
+export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
+    try {
+        const response = await fetch(`/api/faq`);
         if (response.ok) {
             return await response.json();
         }

@@ -49,7 +49,7 @@ export type Account = {
     activation_code: string
 }
 
-export type FAQ = {
+export type FrequentlyAskedQuestion = {
     type: string,
     question: string,
     answer: string

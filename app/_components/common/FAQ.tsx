@@ -1,14 +1,14 @@
 'use client';
 
 import { ReactElement, useState } from "react";
-import { type FAQ } from "@/app/_types/types";
+import { FrequentlyAskedQuestion } from "@/app/_types/types";
 
 import "./FAQ.css";
 
 /**
  * A frequently asked question.
  */
-export function FAQ({ faq }: { faq: FAQ }): ReactElement {
+export function FAQ({ faq }: { faq: FrequentlyAskedQuestion }): ReactElement {
     const [isShowing, setIsShowing] = useState(false);
     
     return (
