@@ -1,8 +1,9 @@
+'use client';
+
 import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
 import { Game } from "@/app/_types/types";
-import { PlayRomLink } from "./PlayRomLink";
 
 import "./GameDetailsCard.css";
 
@@ -33,14 +34,22 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                         height={470}
                     />
 
-                    <Link href={STORAGE_URL + game?.cover} target="_blank" className="gameDetailsCard__link">
+                    <Link href={STORAGE_URL + game?.cover} target="_blank" className="button__link">
                         Open cover
                         <span className="material-symbols-outlined"> open_in_new </span>
                     </Link>
                 </section>
 
                 <article id="gameDetails">
-                    <h1 className="gameDetails__title"> {game?.title} </h1>
+                    <section id="titleLink">
+                        <h1 className="gameDetails__title"> {game?.title} </h1>
+                        { game?.rom ? 
+                            <Link className="button__link" target="_blank" href={`https://emulator.joel-rollny.eu?id=${game?.id}`}>
+                                Play 
+                                <span className="material-symbols-outlined"> open_in_new </span>
+                            </Link>  : <></> 
+                        }
+                    </section>
 
                     <article id="gameDetailsCard__description">
                         { game?.description }
@@ -58,8 +67,6 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                     )
                 }
             </section>
-
-            { game?.rom ? <PlayRomLink id={game?.id} /> : <></> }
         </section>
     )
 }

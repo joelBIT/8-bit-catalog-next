@@ -26,25 +26,10 @@
                 border-radius: 10px;
             }
 
-            & .gameDetailsCard__link {
-                display: flex;
-                align-items: center;
+            & .button__link {
                 position: absolute;
-                gap: 0.7rem;
                 bottom: 1.5rem;
                 left: 25%;
-                padding: 0.5rem 1rem;
-                background-color: var(--color-real-white);
-                color: var(--color-black);
-                border-radius: 9px;
-                font-family: 'Rancho';
-                font-size: 1.5rem;
-                transition: all 0.35s;
-
-                &:hover {
-                    filter: invert(1);
-                    transition: all 0.35s;
-                }
             }
         }
 
@@ -55,6 +40,13 @@
             gap: 0.5rem;
             max-width: 70%;
             z-index: 15;
+
+            & #titleLink {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+            }
 
             & #gameDetailsCard__description {
                 display: flex;
@@ -74,10 +66,14 @@
 
             & .gameDetails__title {
                 font-size: 4.5rem;
-                margin-bottom: 2rem;
                 letter-spacing: 2px;
                 font-family: 'Rancho';
                 font-weight: 100;
+            }
+
+            & .button__link {
+                width: fit-content;
+                height: fit-content;
             }
         }
     }
@@ -108,12 +104,6 @@
                 font-weight: 100;
             }
         }
-    }
-
-    & #playRomLink {
-        margin-top: 2rem;
-        width: fit-content;
-        align-self: center;
     }
 }
 

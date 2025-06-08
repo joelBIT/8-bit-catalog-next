@@ -432,3 +432,27 @@ textarea {
         transition: all .2s;
     }
 }
+
+
+
+/**********************
+* Common Link Classes *
+**********************/
+
+.button__link {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-real-white);
+    color: var(--color-black);
+    border-radius: 9px;
+    font-family: 'Rancho';
+    font-size: 1.5rem;
+    transition: all 0.35s;
+
+    &:hover {
+        filter: invert(1);
+        transition: all 0.35s;
+    }
+}
