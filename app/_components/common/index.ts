@@ -13,4 +13,3 @@ export * from "./inputs/PasswordInput";
 export * from "./ScrollTopButton";
 export * from "./SelectCountry";
 export * from "./lists/UserListEntry";
-export * from "./inputs/UsernameInput";
