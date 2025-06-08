@@ -39,7 +39,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                     </Link>
                 </section>
 
-                <article id="gameDetails" className="bit-font">
+                <article id="gameDetails">
                     <h1 className="gameDetails__title"> {game?.title} </h1>
 
                     <article id="gameDetailsCard__description">

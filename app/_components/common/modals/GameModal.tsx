@@ -89,9 +89,12 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
             </section>
 
             <section id="slide-space" className={"slide"} key={game.id}>
+                <div className="darken-image-top" />
+                <img id="slide-background" src="/playing.png" alt="Playing nintendo" />
                 <GameDetailsCard game={suppliedGames[slide > -1 ? slide : 0]} />
-                <button onClick={close} className="gameButton"> Close </button>
             </section>
+
+            <button onClick={close} className="gameButton"> Close </button>
         </dialog>
     );
 }
