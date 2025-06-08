@@ -94,7 +94,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                 <GameDetailsCard game={suppliedGames[slide > -1 ? slide : 0]} />
             </section>
 
-            <button onClick={close} className="gameButton"> Close </button>
+            <span onClick={close} className="closeButton" />
         </dialog>
     );
 }
