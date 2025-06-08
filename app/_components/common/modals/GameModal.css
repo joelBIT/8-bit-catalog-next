@@ -38,31 +38,33 @@
                 transition: 0.5s;
                 object-fit: cover;
                 filter: brightness(1);
+            }
 
-                &:hover {
-                    filter: brightness(1);
-                    transform: translateZ(170px);
-                }
+            & .selected-game {
+                filter: brightness(1);
+                transform: translateZ(170px);
+                width: 25%;
+                height: 270px;
+            }
 
-                &:hover + * {
-                    filter: brightness(0.6);
-                    transform: translateZ(120px) rotateY(25deg);
-                }
+            & .selected-game + * {
+                filter: brightness(0.6);
+                transform: translateZ(120px) rotateY(25deg);
+            }
 
-                &:hover + * + * {
-                    filter: brightness(0.4);
-                    transform: translateZ(50px) rotateY(15deg);
-                }
+            & .selected-game + * + * {
+                filter: brightness(0.4);
+                transform: translateZ(50px) rotateY(15deg);
+            }
 
-                &:has(+ *:hover) {
-                    filter: brightness(0.6);
-                    transform: translateZ(120px) rotateY(-25deg);
-                }
+            & .previous-game {
+                filter: brightness(0.6);
+                transform: translateZ(120px) rotateY(-25deg);
+            }
 
-                &:has(+ * + *:hover) {
-                    filter: brightness(0.4);
-                    transform: translateZ(50px) rotateY(-15deg);
-                }
+            & .first-game {
+                filter: brightness(0.4);
+                transform: translateZ(50px) rotateY(-15deg);
             }
         }
     }

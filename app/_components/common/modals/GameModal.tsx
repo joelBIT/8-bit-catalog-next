@@ -35,19 +35,19 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
             <section className="container">
                 <section className="carousel">
                     <img
-                        className="item"
+                        className="item first-game"
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.cover}
                         alt="Game 2 clicks back"
                     />
 
                     <img
-                        className="item"
+                        className="item previous-game"
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.cover}
                         alt="Previous game"
                     />
 
                     <img
-                        className="item"
+                        className="item selected-game"
                         src={STORAGE_URL + suppliedGames[slide]?.cover}
                         alt="Current game"
                     />
