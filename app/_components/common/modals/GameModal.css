@@ -155,8 +155,9 @@
     }
 
     & .gameButton {
-        position: relative;
-        bottom: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
         margin: 2rem;
         padding: .3rem 0;
         font-family: 'Rancho';
