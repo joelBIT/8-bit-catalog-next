@@ -51,7 +51,7 @@
         justify-content: flex-end;
 
         & .background-wrapper {
-            background-image: url("/nesdev.png");
+            background-image: url("/nesdev.webp");
             background-position: bottom;
             filter: opacity(0.3);
         }
@@ -64,7 +64,7 @@
 
     & #nesCart {
         & .background-wrapper {
-            background-image: url("/nescart.png");
+            background-image: url("/nescart.webp");
         }
 
         & .card-title,
@@ -77,7 +77,7 @@
         justify-content: flex-end;
 
         & .background-wrapper {
-            background-image: url("/nesninja.png");
+            background-image: url("/nesninja.webp");
         }
 
         & .card-title,
@@ -88,7 +88,7 @@
 
     & #romDetectives {
         & .background-wrapper {
-            background-image: url("/romdetectives.png");
+            background-image: url("/romdetectives.webp");
         }
 
         & .card-title,
