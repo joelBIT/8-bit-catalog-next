@@ -14,11 +14,11 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     const GAME_DETAILS = [
-        {text: game?.category, description: "category", type: "category"},
-        {text: game?.release_date, description: "calendar_month", type: "released"},
-        {text: game?.players, description: "videogame_asset", type: "players"},
-        {text: game?.publisher, description: "corporate_fare", type: "publisher"},
-        {text: game?.developer, description: "code", type: "developer"}
+        {text: game?.category, description: "Some text describing the category in general for nintendo", type: "Category"},
+        {text: game?.release_date, description: "Some text describing the category in general for nintendo", type: "Released"},
+        {text: game?.players, description: "Some text describing the category in general for nintendo", type: "Players"},
+        {text: game?.publisher, description: "Some text describing the category in general for nintendo", type: "Publisher"},
+        {text: game?.developer, description: "Some text describing the category in general for nintendo", type: "Developer"}
     ]
 
     return (
@@ -62,6 +62,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                     GAME_DETAILS.map(detail => 
                         <section className={`metadata-card ${detail.type}`} key={detail.type}>
                             <section id="metadata-information">
+                                <h2 className="metadata-type"> {detail.type} </h2>
                                 <h2 className="metadata-text"> {detail.text} </h2>
                                 <div className="metadata-description">
                                     { detail.description }

@@ -85,23 +85,23 @@
         justify-content: center;
         padding-top: 3rem;
 
-        & .released {
+        & .Released {
             background-image: url("/released.webp");
         }
 
-        & .publisher {
+        & .Publisher {
             background-image: url("/publisher.webp");
         }
 
-        & .players {
+        & .Players {
             background-image: url("/players.webp");
         }
 
-        & .category {
+        & .Category {
             background-image: url("/category.webp");
         }
 
-        & .developer {
+        & .Developer {
             background-image: url("/developer.webp");
         }
 
@@ -125,7 +125,7 @@
                 backdrop-filter: blur(10px);
                 color: var(--color-black);
 
-                & .metadata-text {
+                & .metadata-type {
                     font-size: 1.1rem;
                     align-self: center;
                     letter-spacing: 1px;
@@ -134,7 +134,9 @@
                 }
 
                 & .metadata-description {
-                    
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                    padding-top: 1rem;
                 }
             }
         }
