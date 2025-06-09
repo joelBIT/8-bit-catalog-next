@@ -146,70 +146,11 @@
         & #game-cover-tags {
             flex-direction: column;
 
-            & .gameDetailsCard__link {
+            & #gameDetails {
                 width: 100%;
-                height: 20rem;
-
-                & .gameDetailsCard-image {
-                    align-self: center;
-                    margin-right: 0;
-                    border-top-right-radius: 9px;
-                    border-bottom-right-radius: 0;
-                }
+                max-width: 100%;
+                padding-top: 2rem;
             }
-        }
-    }
-}
-
-@media (max-width: 900px) {
-    #gameDetailsCard {
-        & #game-cover-tags {
-            & #gameDetails {
-                & .gameDetails__title {
-                    font-size: 3rem;
-                }
-            }
-        }
-
-        & #gameDetailsCard__description {
-            font-size: 1.2rem;
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    #gameDetailsCard {
-        & #game-cover-tags {
-            & .gameDetailsCard__link {
-                & .gameDetailsCard-image {
-                    min-height: 15rem;
-                }
-            }
-
-            & #gameDetails {
-                .gameDetails__title {
-                    font-size: 2rem;
-                }
-
-                & .game-tags {
-                    gap: 1rem;
-
-                    & .tag {
-                        padding: 0.5rem 1rem;
-
-                        & .material-symbols-outlined {
-                            font-size: 1.5rem;
-                        }
-                        & .tag-text {
-                            font-size: 0.8rem;
-                        }
-                    }
-                }
-            }
-        }
-
-        #gameDetailsCard__description {
-            font-size: 1rem;
         }
     }
 }
