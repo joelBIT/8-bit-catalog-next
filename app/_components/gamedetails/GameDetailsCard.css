@@ -78,30 +78,64 @@
         }
     }
 
-    & .game-tags {
+    & .metadata-cards {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
-        align-self: center;
+        justify-content: center;
         padding-top: 3rem;
 
-        & .tag {
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            color: var(--color-black);
+        & .released {
+            background-image: url("/released.webp");
+        }
 
-            & .material-symbols-outlined {
-                color: var(--color-neon-green);
-                font-weight: 300;
-                font-size: 2rem;
-            }
+        & .publisher {
+            background-image: url("/publisher.webp");
+        }
 
-            & .tag-text {
-                font-size: 1.1rem;
-                align-self: center;
-                letter-spacing: 1px;
-                padding-top: 0.3rem;
-                font-weight: 100;
+        & .players {
+            background-image: url("/players.webp");
+        }
+
+        & .category {
+            background-image: url("/category.webp");
+        }
+
+        & .developer {
+            background-image: url("/developer.webp");
+        }
+
+        & .metadata-card {
+            background-size: cover;
+            background-position: bottom;
+            position: relative;
+            height: 300px;
+            width: 250px;
+            z-index: 10;
+            border-radius: 9px;
+
+            & #metadata-information {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 50%;
+                border-bottom-left-radius: 9px;
+                border-bottom-right-radius: 9px;
+                background-color: #ffffff50;
+                backdrop-filter: blur(10px);
+                color: var(--color-black);
+
+                & .metadata-text {
+                    font-size: 1.1rem;
+                    align-self: center;
+                    letter-spacing: 1px;
+                    padding-top: 0.3rem;
+                    font-weight: 100;
+                }
+
+                & .metadata-description {
+                    
+                }
             }
         }
     }

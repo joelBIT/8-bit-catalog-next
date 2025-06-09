@@ -14,11 +14,11 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     const GAME_DETAILS = [
-        {text: game?.category, icon: "category", title: "Game Category"},
-        {text: game?.release_date, icon: "calendar_month", title: "Release Date"},
-        {text: game?.players, icon: "videogame_asset", title: "Players"},
-        {text: game?.publisher, icon: "corporate_fare", title: "Game Publisher"},
-        {text: game?.developer, icon: "code", title: "Game Developer"}
+        {text: game?.category, description: "category", type: "category"},
+        {text: game?.release_date, description: "calendar_month", type: "released"},
+        {text: game?.players, description: "videogame_asset", type: "players"},
+        {text: game?.publisher, description: "corporate_fare", type: "publisher"},
+        {text: game?.developer, description: "code", type: "developer"}
     ]
 
     return (
@@ -57,12 +57,16 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                 </article>
             </article>
 
-            <section className="game-tags">
+            <section className="metadata-cards">
                 {
                     GAME_DETAILS.map(detail => 
-                        <section className="tag" key={detail.title} title={detail.title}>
-                            <span className="material-symbols-outlined"> {detail.icon} </span>
-                            <h2 className="tag-text"> {detail.text} </h2>
+                        <section className={`metadata-card ${detail.type}`} key={detail.type}>
+                            <section id="metadata-information">
+                                <h2 className="metadata-text"> {detail.text} </h2>
+                                <div className="metadata-description">
+                                    { detail.description }
+                                </div>
+                            </section>
                         </section>
                     )
                 }
