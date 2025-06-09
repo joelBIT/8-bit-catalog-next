@@ -109,7 +109,7 @@
             background-size: cover;
             background-position: bottom;
             position: relative;
-            height: 300px;
+            height: 330px;
             width: 250px;
             z-index: 10;
             border-radius: 9px;
@@ -134,9 +134,7 @@
                 }
 
                 & .metadata-description {
-                    padding-left: 0.5rem;
-                    padding-right: 0.5rem;
-                    padding-top: 1rem;
+                    padding: 1rem 0.5rem;
                 }
             }
         }
