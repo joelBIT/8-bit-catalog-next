@@ -11,7 +11,7 @@ export function SearchButton(): ReactElement {
         <button 
             id="searchButton" 
             type="submit" 
-            className={`gameButton ${arima.className}`} 
+            className={`button__link ${arima.className}`} 
             disabled={status.pending}
         > 
             Search
