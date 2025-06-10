@@ -47,6 +47,18 @@
                 box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 100px 1px #FFFFFF80;
             }
 
+            & .cards-1 {
+                width: 100%;
+            }
+
+            & .cards-2 {
+                width: 80%;
+            }
+
+            & .cards-3 {
+                width: 50%;
+            }
+
             & .selected-game + * {
                 filter: brightness(0.6);
                 transform: translateZ(120px) rotateY(25deg);

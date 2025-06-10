@@ -50,27 +50,27 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                     />
 
                     <img
-                        className={suppliedGames.length < 2 ? "hidden" : "item previous-game"}
+                        className={suppliedGames.length < 2 ? "hidden" : `item previous-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.cover}
                         onClick={prevSlide}
                         alt="Previous game"
                     />
 
                     <img
-                        className="item selected-game"
+                        className={`item selected-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide]?.cover}
                         alt="Current game"
                     />
 
                     <img
-                        className={suppliedGames.length < 3 ? "hidden" : "item"}
+                        className={suppliedGames.length < 3 ? "hidden" : `item next-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 0 : slide + 1]?.cover}
                         onClick={nextSlide}
                         alt="Next game"
                     />
 
                     <img
-                        className={suppliedGames.length < 4 ? "hidden" : "item"}
+                        className={suppliedGames.length < 4 ? "hidden" : `item last-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.cover}
                         onClick={twiceNextSlide}
                         alt="Game 2 clicks forward"
