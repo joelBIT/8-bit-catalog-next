@@ -35,17 +35,6 @@
                 & .searchFilters__filters {
                     display: flex;
                     gap: 3rem;
-        
-                    & .selectSection {
-                        .selectSection__title {
-                            font-weight: 900;
-                        }
-                    
-                        & .selectSection__select {
-                            font-size: 1.4rem;
-                            padding: 0.2rem;
-                        }
-                    }
                 }
         
                 & #searchInput {
@@ -70,6 +59,10 @@
                         & #searchTitle {
                             padding-left: 2.5rem;
                         }
+                    }
+
+                    & #searchButton {
+                        padding: .3rem 1rem;
                     }
                 }
             }
@@ -104,16 +97,6 @@
                         margin-right: 2rem;
                     }
                 }
-        
-                #searchFilters__form {
-                    & .searchFilters__filters {
-                        .selectSection {
-                            .selectSection__select {
-                                font-size: 1.2rem;
-                            }
-                        }
-                    }
-                }
             }
         }
     }
@@ -125,7 +108,6 @@
             #searchFilters {
                 #searchInput {
                     #searchTitle {
-                        font-size: 1.2rem;
                         width: 80vw;
                     }
                 }

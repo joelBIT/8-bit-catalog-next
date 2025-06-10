@@ -89,16 +89,8 @@ textarea {
     padding-left: 1rem;
 }
 
-.selectSection {
-    & .selectSection__title {
-        font-weight: 900;
-    }
 
-    & .selectSection__select {
-        font-size: 1.4rem;
-        padding: 0.2rem;
-    }
-}
+
 
 
 
@@ -435,6 +427,9 @@ textarea {
 
 
 
+
+
+
 /**********************
 * Common Link Classes *
 **********************/
@@ -454,5 +449,42 @@ textarea {
     &:hover {
         filter: invert(1);
         transition: all 0.35s;
+    }
+}
+
+
+
+
+
+
+
+/*************************
+* Select element styling *
+*************************/
+
+.selectSection {
+    & .selectSection__title {
+        font-weight: 900;
+        font-size: 1.2rem;
+    }
+
+    & .selectSection__select {
+        border: 2px solid var(--color-white);
+        outline: 0;
+        border-radius: 9px;
+        background-color: transparent;
+        color: #ffffffa0;
+        font-size: 1.2rem;
+        padding: 0.3rem;
+        font-family: sans-serif;
+
+        & option {
+            background-color: var(--color-black);
+            color: var(--color-real-white);
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
