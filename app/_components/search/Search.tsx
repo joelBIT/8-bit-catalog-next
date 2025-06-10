@@ -6,7 +6,7 @@ import { GameContext } from "@/app/_contexts";
 import { getGames } from "@/app/_client/client";
 import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
-import { ListToggle, ScrollTopButton, GameList, GameGrid } from "../common";
+import { SlidingToggle, ScrollTopButton, GameList, GameGrid } from "../common";
 import { Pagination } from ".";
 
 import "./Search.css";
@@ -75,7 +75,7 @@ export function Search(): ReactElement {
                                 : <></>
                             }
 
-                            { searchResult.length > 0 ? <ListToggle /> : <></> }
+                            { searchResult.length > 0 ? <SlidingToggle /> : <></> }
                         </section>
 
                         { 

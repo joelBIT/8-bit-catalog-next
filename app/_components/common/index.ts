@@ -12,4 +12,5 @@ export * from "./modals/Modal";
 export * from "./inputs/PasswordInput";
 export * from "./ScrollTopButton";
 export * from "./SelectCountry";
+export * from "./lists/SlidingToggle";
 export * from "./lists/UserListEntry";

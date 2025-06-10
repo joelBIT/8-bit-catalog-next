@@ -18,10 +18,6 @@
             margin-bottom: 0;
         }
     }
-
-    & .pagination:last-of-type {
-        margin-top: 2rem;
-    }
 }
 
 @media (max-width: 900px) {

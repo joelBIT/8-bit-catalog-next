@@ -76,8 +76,8 @@
 @media (max-width: 950px) {
     #searchPage {
         & #searchPage-wrapper {
-            #searchFilters {
-                #searchFilters__form {
+            & #searchFilters {
+                & #searchFilters__form {
                     text-align: center;
 
                     & .searchFilters__filters {
@@ -92,11 +92,11 @@
 @media (max-width: 600px) {
     #searchPage {
         & #searchPage-wrapper {
-            #searchFilters {
-                #searchInput {
+            & #searchFilters {
+                & #searchInput {
                     flex-direction: column;
 
-                    #searchTitle {
+                    & #searchTitle {
                         margin-right: 2rem;
                     }
                 }
