@@ -4,7 +4,7 @@ import { ReactElement, useContext } from "react";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { FavouritePagination } from "@/app/_components/favourites/FavouritePagination";
 import { FavouritesContext, GameContext } from "@/app/_contexts";
-import { GameGrid, GameList, ListToggle, ScrollTopButton } from "@/app/_components/common";
+import { GameGrid, GameList, SlidingToggle, ScrollTopButton } from "@/app/_components/common";
 
 import "./page.css";
 
@@ -39,7 +39,7 @@ export default function FavouritesPage(): ReactElement {
                                     : <></>
                             }
 
-                            <ListToggle />
+                            <SlidingToggle />
                         </section>
                     </>
                     : <h1 className="tag permanent-marker-regular"> No favourites </h1>
