@@ -97,16 +97,6 @@
                         margin-right: 2rem;
                     }
                 }
-        
-                #searchFilters__form {
-                    & .searchFilters__filters {
-                        .selectSection {
-                            .selectSection__select {
-                                font-size: 1.2rem;
-                            }
-                        }
-                    }
-                }
             }
         }
     }
@@ -118,7 +108,6 @@
             #searchFilters {
                 #searchInput {
                     #searchTitle {
-                        font-size: 1.2rem;
                         width: 80vw;
                     }
                 }
