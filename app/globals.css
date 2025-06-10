@@ -488,3 +488,11 @@ textarea {
         }
     }
 }
+
+@media (max-width: 400px) {
+    .selectSection {
+        & .selectSection__select {
+            font-size: 0.9rem;
+        }
+    }
+}

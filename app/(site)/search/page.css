@@ -58,6 +58,9 @@
                     
                         & #searchTitle {
                             padding-left: 2.5rem;
+                            border-radius: 9px;
+                            font-size: 1.2rem;
+                            outline: none;
                         }
                     }
 
@@ -95,30 +98,6 @@
 
                     #searchTitle {
                         margin-right: 2rem;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    #searchPage {
-        & #searchPage-wrapper {
-            #searchFilters {
-                #searchInput {
-                    #searchTitle {
-                        width: 80vw;
-                    }
-                }
-
-                #searchFilters__form {
-                    & .searchFilters__filters {
-                        .selectSection {
-                            .selectSection__select {
-                                font-size: 0.9rem;
-                            }
-                        }
                     }
                 }
             }
