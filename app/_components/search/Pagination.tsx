@@ -44,10 +44,11 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
         <section className="pagination">
             <button 
                 id="previous" 
-                className={`gameButton ${arima.className}`}
+                className={`prevButton ${arima.className}`}
                 onClick={() => previousPage()} 
-                disabled={currentPage <= 1}>
-                    <span className="material-symbols-outlined"> chevron_left </span>
+                disabled={currentPage <= 1}
+            >
+                <span className="arrow">  </span>
             </button>
             
             <div className={`pagination-page__text ${arima.className}`}>
@@ -59,10 +60,11 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
             
             <button 
                 id="next" 
-                className={`gameButton ${arima.className}`}
+                className={`nextButton ${arima.className}`}
                 onClick={() => nextPage()} 
-                disabled={currentPage >= totalPages}>
-                    <span className="material-symbols-outlined"> chevron_right </span>
+                disabled={currentPage >= totalPages}
+            >
+                <span className="arrow"> </span>
             </button>
         </section>
     );

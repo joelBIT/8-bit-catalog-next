@@ -193,6 +193,15 @@ textarea {
     color: var(--color-real-white);
     transition-duration: 0.5s;
 
+    &:disabled {
+        filter: brightness(0.2);
+
+        &:hover {
+            cursor: default;
+            filter: brightness(0.2);
+        }
+    }
+
     & .arrow {
         position: relative;
         height: 0px; 
