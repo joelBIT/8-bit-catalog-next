@@ -14,35 +14,88 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
     const [ slide, setSlide ] = useState<number>(games.findIndex(element => element.id === game.id));
     const [ suppliedGames ] = useState<Game[]>(games);
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     useEffect(() => {
-      if (!dialogRef.current?.open) {
-        dialogRef.current?.showModal();
-      }
+        if (!dialogRef.current?.open) {
+            dialogRef.current?.showModal();
+        }
     }, []);
 
     function nextSlide(): void {
         setSlide(slide === games.length - 1 ? 0 : slide + 1);
     }
 
+    function twiceNextSlide(): void {
+        setSlide(slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2));
+    }
+
     function prevSlide(): void {
         setSlide(slide === 0 ? games.length - 1 : slide - 1);
     }
 
+    function twicePrevSlide(): void {
+        setSlide(slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2));
+    }
+
     return (
         <dialog id="gameModal" ref={dialogRef}>
-            <button id="prevButton" onClick={prevSlide}>
-                <span className="material-symbols-outlined arrow"> chevron_left </span>
-            </button>
+            <section className="carousel-container">
+                <section className="carousel">
+                    <img
+                        className={suppliedGames.length < 5 ? "hidden" : "item first-game"}
+                        src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.cover}
+                        onClick={twicePrevSlide}
+                        alt="Game 2 clicks back"
+                    />
 
-            <section id="slide-space" className={"slide"} key={game.id}>
-                <GameDetailsCard game={suppliedGames[slide > -1 ? slide : 0]} />
-                <button onClick={close} className="gameButton"> Close </button>
+                    <img
+                        className={suppliedGames.length < 2 ? "hidden" : `item previous-game cards-${suppliedGames.length}`}
+                        src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.cover}
+                        onClick={prevSlide}
+                        alt="Previous game"
+                    />
+
+                    <img
+                        className={`item selected-game cards-${suppliedGames.length}`}
+                        src={STORAGE_URL + suppliedGames[slide]?.cover}
+                        alt="Current game"
+                    />
+
+                    <img
+                        className={suppliedGames.length < 3 ? "hidden" : `item next-game cards-${suppliedGames.length}`}
+                        src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 0 : slide + 1]?.cover}
+                        onClick={nextSlide}
+                        alt="Next game"
+                    />
+
+                    <img
+                        className={suppliedGames.length < 4 ? "hidden" : `item last-game cards-${suppliedGames.length}`}
+                        src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.cover}
+                        onClick={twiceNextSlide}
+                        alt="Game 2 clicks forward"
+                    />
+                </section>
+
+                <section id="carousel-buttons" className={suppliedGames.length < 2 ? "hidden" : ""}>
+                    <button id="prevButton" onClick={prevSlide}>
+                        <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
+                    </button>
+
+                    <button id="nextButton" onClick={nextSlide}>
+                        <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
+                    </button>
+                </section>
             </section>
 
-            <button id="nextButton" onClick={nextSlide}>
-                <span className="material-symbols-outlined arrow"> chevron_right </span>
-            </button>
+            <section id="slide-space" className={"slide"} key={game.id}>
+                <div className="darken-image-top" />
+                <img id="slide-background" src="/playing.webp" alt="Playing nintendo" />
+                <div className="darken-image-bottom" />
+                <GameDetailsCard game={suppliedGames[slide > -1 ? slide : 0]} />
+            </section>
+
+            <span onClick={close} className="closeButton" />
         </dialog>
     );
 }

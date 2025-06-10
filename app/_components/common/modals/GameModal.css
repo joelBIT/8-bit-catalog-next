@@ -3,76 +3,273 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 90%;
     border-radius: 8px;
-    background-color: var(--color-black);
+    background-color: black;
     color: var(--color-white);
-    border: 1px solid var(--color-white);
+    border: 1px solid var(--color-real-white);
     border-right: none;
     border-left: none;
-    scrollbar-color: var(--color-black) #36ff4660;
+    scrollbar-color: var(--color-black) #FFFFFF20;
 
-    & .gameButton {
-        position: relative;
-        bottom: 0;
-        margin: 2rem;
-        padding: .3rem 0;
-        font-family: 'Rancho';
-    }
-
-    & #prevButton, 
-    #nextButton {
+    & .carousel-container {
         display: flex;
-        position: absolute;
-        top: 13px;
         align-items: center;
         justify-content: center;
-        width: 4rem;
-        height: auto;
-        border-radius: 100%;
-        background-color: transparent;
-        border: 2px solid var(--color-link);
-        background-color: #064D61;
-        color: var(--color-white);
-        transition-duration: 0.5s;
-        box-shadow: 10px 5px 5px black;
+        height: 35rem;
+        gap: 3rem;
+        flex-flow: column;
+        position: relative;
 
-        & .arrow {
-            position: relative;
-            font-size: 2.5rem;
-            padding: 0.5rem;
-            font-weight: 300;
-            border-radius: 100%;
+        & .carousel {
+            max-width: 80%;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+
+            & .item {
+                width: 20%;
+                height: 250px;
+                max-width: 250px;
+                margin: 2px;
+                transition: all 0.5s;
+                object-fit: cover;
+            }
+
+            & .selected-game {
+                filter: brightness(1);
+                transform: translateZ(170px);
+                width: 25%;
+                height: 270px;
+                box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 100px 1px #FFFFFF80;
+            }
+
+            & .cards-1 {
+                width: 100%;
+            }
+
+            & .cards-2 {
+                width: 80%;
+            }
+
+            & .cards-3 {
+                width: 50%;
+            }
+
+            & .selected-game + * {
+                filter: brightness(0.6);
+                transform: translateZ(120px) rotateY(25deg);
+            }
+
+            & .selected-game + * + * {
+                filter: brightness(0.4);
+                transform: translateZ(50px) rotateY(15deg);
+            }
+
+            & .previous-game {
+                filter: brightness(0.6);
+                transform: translateZ(120px) rotateY(-25deg);
+            }
+
+            & .first-game {
+                filter: brightness(0.4);
+                transform: translateZ(50px) rotateY(-15deg);
+            }
         }
+
+        & #carousel-buttons {
+            display: flex;
+
+            & #prevButton, 
+            #nextButton {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 4rem;
+                height: auto;
+                border-radius: 100%;
+                border: none;
+                background-color: transparent;
+                color: var(--color-real-white);
+                transition-duration: 0.5s;
+
+                & .arrow {
+                    position: relative;
+                    height: 0px; 
+                    width: 0px;
+                    border: 8px solid;
+                    filter: drop-shadow(2px 2px 0px var(--color-black));
+                    border-color: 
+                        var(--color-real-white)
+                        var(--color-real-white)
+                        transparent
+                        transparent;
+                    transform: rotate(45deg); 
+                }
+
+                & .arrow:before, 
+                .arrow:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    height: 0;
+                    width: 0;
+                    border: 5px solid;
+                    transform-origin: top right;
+                }
+
+                & .arrow:before {
+                    border-color:
+                        var(--color-real-white)
+                        transparent
+                        transparent
+                        var(--color-real-white);
+                    top: -1px; 
+                    right: 0px;
+                    transform: rotate(45deg); 
+                }
+
+                & .arrow:after {
+                    border-color:
+                        transparent
+                        var(--color-real-white)
+                        var(--color-real-white)
+                        transparent;
+                    top: 0px; 
+                    right: -1px;
+                    transform: rotate(-45deg);
+                }
+
+                &:hover {
+                    filter: brightness(0.5);
+
+                    & .arrow {
+                        filter: drop-shadow(0 0 0 var(--color-black));
+                    }
+                }
+            }
+
+            & #prevButton {
+                margin-right: 1rem;
+
+                & .arrow {
+                    transform: rotate(-135deg); 
+                }
+            }
+
+            & #nextButton {
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    & .closeButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-family: 'Rancho';
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        margin: 1rem;
 
         &:hover {
             cursor: pointer;
-            background-color: #064D6180;
-            color: var(--color-heading);
-            transition-duration: 0.5s;
-            box-shadow: none;
+        }
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            top: 50%;
+            left: 1px;
+            margin-top: -1px;
+            background: var(--color-real-white);
+            border-radius: 100%;
+            height: 4px;
+            margin-top: -2px;
+        }
+
+        &::before {
+            transform: rotate(45deg);
+        }
+            
+        &::after {
+            transform: rotate(135deg);
         }
     }
 
-    & #prevButton {
-        margin-right: 1rem;
-        left: 13px;
-    }
+    & #slide-space {
+        position: relative;
+        margin-top: 3rem;
+        padding-bottom: 3rem;
 
-    & #nextButton {
-        margin-left: 1rem;
-        right: 13px;
+        & .darken-image-top {
+            position: absolute;
+            top: 0;
+            height: 15rem;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%);
+            z-index: 1;
+        }
+
+        & .darken-image-bottom {
+            position: absolute;
+            top: 36rem;
+            height: 15rem;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%);
+            z-index: 1;
+        }
+
+        & #slide-background {
+            background-image: url("/playing.png");
+            background-position: center;
+            position: absolute;
+            width: 100%;
+            height: 50rem;
+            filter: brightness(0.2);
+        }
     }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1150px) {
     #gameModal {
-        width: 85%;
+        & #slide-space {
+            & #slide-background {
+                width: auto;
+            }
+        }
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 800px) {
+    #gameModal {
+        & .carousel-container {
+            height: 5rem;
+
+            & .carousel {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
     #gameModal {
         width: 100%;
+
+        & .carousel-container {
+            height: 4rem;
+        }
+
+        & .closeButton {
+            width: 30px;
+            height: 30px;
+        }
     }
 }

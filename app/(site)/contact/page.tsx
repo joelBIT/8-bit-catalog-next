@@ -10,7 +10,7 @@ export default function ContactPage(): ReactElement {
 
     return (
         <main id="contactPage">
-            <img id="contact-image" src="/karlstad.png" alt="Photography of Karlstad from above" />
+            <img id="contact-image" src="/karlstad.webp" alt="Photography of Karlstad from above" />
 
             <section id="contactPage-content">
                 <section id="contactPage-information">
