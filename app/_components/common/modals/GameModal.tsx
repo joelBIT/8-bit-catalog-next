@@ -40,7 +40,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
 
     return (
         <dialog id="gameModal" ref={dialogRef}>
-            <section className="container">
+            <section className="carousel-container">
                 <section className="carousel">
                     <img
                         className={suppliedGames.length < 5 ? "hidden" : "item first-game"}

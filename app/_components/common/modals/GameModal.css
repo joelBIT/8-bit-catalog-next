@@ -12,7 +12,7 @@
     border-left: none;
     scrollbar-color: var(--color-black) #FFFFFF20;
 
-    & .container {
+    & .carousel-container {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -247,8 +247,29 @@
     }
 }
 
+@media (max-width: 800px) {
+    #gameModal {
+        & .carousel-container {
+            height: 5rem;
+
+            & .carousel {
+                display: none;
+            }
+        }
+    }
+}
+
 @media (max-width: 500px) {
     #gameModal {
         width: 100%;
+
+        & .carousel-container {
+            height: 4rem;
+        }
+
+        & .closeButton {
+            width: 30px;
+            height: 30px;
+        }
     }
 }
