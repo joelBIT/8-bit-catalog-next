@@ -43,14 +43,14 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
             <section className="container">
                 <section className="carousel">
                     <img
-                        className="item first-game"
+                        className={suppliedGames.length < 5 ? "hidden" : "item first-game"}
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.cover}
                         onClick={twicePrevSlide}
                         alt="Game 2 clicks back"
                     />
 
                     <img
-                        className="item previous-game"
+                        className={suppliedGames.length < 2 ? "hidden" : "item previous-game"}
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.cover}
                         onClick={prevSlide}
                         alt="Previous game"
@@ -63,27 +63,27 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                     />
 
                     <img
-                        className="item"
+                        className={suppliedGames.length < 3 ? "hidden" : "item"}
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 0 : slide + 1]?.cover}
                         onClick={nextSlide}
                         alt="Next game"
                     />
 
                     <img
-                        className="item"
+                        className={suppliedGames.length < 4 ? "hidden" : "item"}
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.cover}
                         onClick={twiceNextSlide}
                         alt="Game 2 clicks forward"
                     />
                 </section>
 
-                <section id="carousel-buttons">
+                <section id="carousel-buttons" className={suppliedGames.length < 2 ? "hidden" : ""}>
                     <button id="prevButton" onClick={prevSlide}>
-                        <span className="arrow"> </span>
+                        <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
                     </button>
 
                     <button id="nextButton" onClick={nextSlide}>
-                        <span className="arrow"> </span>
+                        <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
                     </button>
                 </section>
             </section>
