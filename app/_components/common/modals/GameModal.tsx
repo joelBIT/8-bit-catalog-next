@@ -78,11 +78,11 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                 </section>
 
                 <section id="carousel-buttons" className={suppliedGames.length < 2 ? "hidden" : ""}>
-                    <button id="prevButton" onClick={prevSlide}>
+                    <button className="prevButton" onClick={prevSlide}>
                         <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
                     </button>
 
-                    <button id="nextButton" onClick={nextSlide}>
+                    <button className="nextButton" onClick={nextSlide}>
                         <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
                     </button>
                 </section>

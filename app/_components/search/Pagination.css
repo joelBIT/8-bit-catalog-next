@@ -13,16 +13,6 @@
             font-weight: 100;
         }
     }
-
-    #next, #previous {
-        width: fit-content;
-        padding: 0.5rem;
-        border-radius: 100%;
-
-        & > span {
-            font-size: 2rem;
-        }
-    }
 }
 
 @media (max-width: 500px) {
