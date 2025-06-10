@@ -48,7 +48,7 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
                 onClick={() => previousPage()} 
                 disabled={currentPage <= 1}
             >
-                <span className="arrow">  </span>
+                <span className="arrow" />
             </button>
             
             <div className={`pagination-page__text ${arima.className}`}>
@@ -64,7 +64,7 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
                 onClick={() => nextPage()} 
                 disabled={currentPage >= totalPages}
             >
-                <span className="arrow"> </span>
+                <span className="arrow" />
             </button>
         </section>
     );

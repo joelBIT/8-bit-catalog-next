@@ -29,8 +29,9 @@ export function FavouritePagination({ currentPage }: { currentPage: number }): R
                 id="previous" 
                 className={`prevButton ${arima.className}`}
                 onClick={() => previousPage()} 
-                disabled={currentPage <= 1}>
-                    <span className="arrow">  </span>
+                disabled={currentPage <= 1}
+            >
+                <span className="arrow" />
             </button>
             
             <div className={`favourite-pagination-page__text ${arima.className}`}>
@@ -44,8 +45,9 @@ export function FavouritePagination({ currentPage }: { currentPage: number }): R
                 id="next" 
                 className={`nextButton ${arima.className}`}
                 onClick={() => nextPage()} 
-                disabled={currentPage >= totalPages}>
-                    <span className="arrow">  </span>
+                disabled={currentPage >= totalPages}
+            >
+                <span className="arrow" />
             </button>
         </section>
     );
