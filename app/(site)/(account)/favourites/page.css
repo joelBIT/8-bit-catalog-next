@@ -15,14 +15,6 @@
         padding-bottom: 1rem;
         padding-top: 1rem;
         margin-bottom: 3rem;
-
-        & #listToggle {
-            margin-bottom: 0;
-        }
-    }
-
-    & .favourite-pagination:last-of-type {
-        margin-top: 2rem;
     }
 }
 

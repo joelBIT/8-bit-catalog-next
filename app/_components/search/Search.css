@@ -13,10 +13,6 @@
         padding-top: 1rem;
         border-bottom: 1px solid var(--color-white);
         margin-bottom: 3rem;
-
-        & #listToggle {
-            margin-bottom: 0;
-        }
     }
 }
 
