@@ -3,15 +3,23 @@
     gap: 1rem;
     align-items: center;
 
-    .favourite-pagination-page__text {
+    & .favourite-pagination-page__text {
         display: flex;
         gap: 1rem;
-        font-size: 30px;
+        font-size: 1.4rem;
         font-weight: 600;
 
-        .favourite-pagination-page__number {
+        & .favourite-pagination-page__number {
             font-weight: 100;
         }
+    }
+
+    & #previous {
+        margin-right: 0;
+    }
+
+    & #next {
+        margin-left: 0;
     }
 }
 
@@ -19,7 +27,7 @@
     .favourite-pagination {
         .favourite-pagination-page__text {
             gap: 0.5rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
     }
 }
