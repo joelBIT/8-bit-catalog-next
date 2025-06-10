@@ -25,7 +25,7 @@
 
 @media (max-width: 500px) {
     .favourite-pagination {
-        .favourite-pagination-page__text {
+        & .favourite-pagination-page__text {
             gap: 0.5rem;
             font-size: 1.2rem;
         }
