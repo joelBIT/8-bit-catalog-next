@@ -55,14 +55,9 @@ export function Search(): ReactElement {
             {
                 searchResult.length > 0 ? 
                     <>
+                        <h1 className="search-result-text"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""} for "${title}"`} </h1>
                         <section className="show-pagination-toggle">
-                            { 
-                                showHeading ? 
-                                    <h1 className={"tag permanent-marker-regular"}>
-                                        Games found: {totalCount}
-                                    </h1> 
-                                : <></>
-                            }
+                            <div className="invisible" />
 
                             {
                                 totalPages > 1 ?
@@ -85,15 +80,13 @@ export function Search(): ReactElement {
                                 <GameList games={searchResult} page={currentPage} />
                         }
                     </>
-                : <>
-                    { 
-                        showHeading ? 
-                            <h1 className={"tag permanent-marker-regular"}>
-                                No games found
-                            </h1> 
-                        : <></>
-                    }
-                </>
+                :   <>
+                        { 
+                            showHeading ? 
+                                <h1 className="search-result-text"> No games found </h1>
+                            : <></>
+                        }
+                    </>   
             }
         
             <ScrollTopButton />
