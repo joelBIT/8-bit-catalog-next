@@ -16,10 +16,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <>
+        <FavouriteContextProvider>
             <Header />
-                <FavouriteContextProvider> {children} </FavouriteContextProvider>
+            {children} 
             <Footer />
-        </>
+        </FavouriteContextProvider>
     );
 }
