@@ -156,12 +156,14 @@
                 & .timeline-text__title {
                     font-size: 3rem;
                     padding-bottom: 1rem;
+                    color: var(--color-footer-heading);
                 }
 
                 & .aboutPage__paragraph {
                     font-size: 1.5rem;
                     font-weight: 100;
                     line-height: 1.8rem;
+                    color: var(--color-real-white);
                 }
 
                 & .gameButton {
