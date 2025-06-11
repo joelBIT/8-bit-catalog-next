@@ -154,6 +154,7 @@
 @media (max-width: 600px) {
     .gameListEntry {
         height: fit-content;
+        max-height: 15rem;
 
         & .gameCard-players__heading,
         .gameCard-publisher__heading {
