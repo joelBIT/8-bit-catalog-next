@@ -59,6 +59,7 @@
     .gameCard-publisher {
         font-size: 1.2rem;
         font-weight: 100;
+        color: var(--color-nintendo-gray);
     }
 
     & .category-section {
@@ -80,7 +81,7 @@
         margin: 0;
         align-self: center;
         justify-self: flex-end;
-        transform: scale(0.8);
+        transform: scale(0.7);
     }
 }
 
