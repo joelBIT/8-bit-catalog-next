@@ -17,7 +17,7 @@
         & #searchFilters {
             display: flex;
             flex-direction: column;
-            padding-bottom: 2rem;
+            padding-bottom: 0.5rem;
 
             & .searchFilters__title {
                 font-size: 50px;
