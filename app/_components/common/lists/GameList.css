@@ -58,6 +58,7 @@
 
     & li:last-of-type {
         border-bottom: 1px solid var(--color-list-border);
+        margin-bottom: 2rem;
     }
 }
 
