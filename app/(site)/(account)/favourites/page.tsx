@@ -29,9 +29,7 @@ export default function FavouritesPage(): ReactElement {
                 favouritesList.length > 0 ?
                     <>
                         <section className="show-pagination-toggle">
-                            <h1 className={"tag permanent-marker-regular"}>
-                                {favouritesList.length} favourite{ favouritesList.length === 1 ? "" : "s" } 
-                            </h1>
+                            <div className="invisible" />
 
                             {
                                 favouritesList.length > PAGINATION_PAGE_SIZE ?
@@ -42,7 +40,7 @@ export default function FavouritesPage(): ReactElement {
                             <SlidingToggle />
                         </section>
                     </>
-                    : <h1 className="tag permanent-marker-regular"> No favourites </h1>
+                    : <h1> No favourites selected </h1>
             }
 
             { 
