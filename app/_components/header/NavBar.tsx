@@ -66,7 +66,12 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                     >
                         <h2 id="favourite-link" className={`navbar__list-element-title ${rancho.className}`}> 
                             Favourites
-                            { favouritesList?.length > 0 ? <span id="favourites-amount"> {favouritesList?.length} </span> : <></> }
+                            { 
+                                favouritesList?.length > 0 ? 
+                                    <p id="favourites-amount" className={`material-symbols-outlined ${rancho.className}`}> 
+                                        {favouritesList?.length} 
+                                    </p> : <></> 
+                            }
                         </h2>
                     </Link>
                 </li>
