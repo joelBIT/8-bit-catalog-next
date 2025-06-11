@@ -12,7 +12,7 @@
         align-self: flex-start;
         min-width: 100%;
         min-height: 100%;
-        margin-top: 8rem;
+        margin-top: 5rem;
 
         & #searchFilters {
             display: flex;
