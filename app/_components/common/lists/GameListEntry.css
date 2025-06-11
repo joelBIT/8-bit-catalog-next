@@ -64,15 +64,18 @@
 
     & .category-section {
         width: 20%;
+        align-self: flex-start;
     }
 
     & .players-section {
         width: 10%;
+        align-self: flex-start;
     }
 
     & .developer-section,
     .publisher-section {
         width: 30%;
+        align-self: flex-start;
     }
 
     & .favouriteButton {
