@@ -203,7 +203,6 @@ textarea {
         &:hover {
             cursor: default;
             filter: brightness(0.2);
-            
         }
     }
 
