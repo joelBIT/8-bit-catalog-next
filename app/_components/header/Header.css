@@ -8,13 +8,13 @@ header {
     right: 0;
     width: 100%;
 
-    #logoLink {
+    & #logoLink {
         display: none;
         align-items: center;
         margin-left: 1rem;
         font-size: 0.5rem;
 
-        .header__title {
+        & .header__title {
             letter-spacing: 0.2rem;
             font-weight: bold;
             transition: all 0.3s;
@@ -42,7 +42,7 @@ header {
         width: 100%;
         background-color: var(--color-black);
 
-        #logoLink {
+        & #logoLink {
             display: flex;
             margin: 0;
             text-align: center;
@@ -58,7 +58,7 @@ header {
 
 @media (max-width: 400px) {
     header {
-        #logoLink {
+        & #logoLink {
             margin-right: 25%;
         }
     }
