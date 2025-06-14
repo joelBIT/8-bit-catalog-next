@@ -134,6 +134,10 @@
                     ::after {
                         content: none;
                     }
+
+                    &:hover {
+                        color: var(--color-link-active);
+                    }
                 }
             }
         }
