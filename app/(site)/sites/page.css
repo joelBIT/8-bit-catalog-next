@@ -4,147 +4,105 @@
     gap: 4rem;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
+    background-image: url("/sites_background.jpeg");
+    background-position: center;
     padding-bottom: 5rem;
-    padding-top: 10rem;
 
-    & .other-page-card {
+    & .sites-title {
+        align-self: flex-start;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+        font-size: 3rem;
+        border: 1px solid;
+        padding: 2rem;
+        filter: drop-shadow(2px 4px 6px black);
+        margin-top: 10rem;
+        margin-left: 5rem;
+    }
+
+    & .darken-image-top {
+        position: absolute;
+        top: 0;
+        height: 15rem;
+        width: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%);
+        z-index: 1;
+    }
+
+    & #other-site-cards {
         display: flex;
-        border-radius: 18px;
-        height: 300px;
-        width: 60rem;
-        position: relative;
-        overflow: hidden;
-        border-color: var(--color-real-white);
-        box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 10px 1px #FFFFFF80;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        text-align: center;
+        padding-top: 3rem;
 
-        &:hover {
-            .background-wrapper {
-                transform: scale(1.1);
-                transition: all 2s;
+        & .other-page-card {
+            background-size: cover;
+            background-position: bottom;
+            position: relative;
+            height: 330px;
+            width: 250px;
+            z-index: 10;
+            border-radius: 9px;
+
+            & .other-information {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 50%;
+                border-bottom-left-radius: 9px;
+                border-bottom-right-radius: 9px;
+                background-color: #ffffff50;
+                backdrop-filter: blur(10px);
+                color: var(--color-black);
+
+                & .site-title {
+                    font-size: 1.1rem;
+                    align-self: center;
+                    letter-spacing: 1px;
+                    padding-top: 0.3rem;
+                }
+
+                & .site-description {
+                    padding: 1rem 0.5rem;
+                    text-align: left;
+                }
             }
-        }
-
-        & .background-wrapper {
-            width: 100%;
-            height: 100%;
-            transition: all 2s;
-        }
-
-        & .card-title {
-           position: absolute;
-           font-size: 3rem;
-           top: 2rem;
-           color: var(--color-footer-heading);
-        }
-
-        & .card-description {
-            position: absolute;
-            font-size: 1.5rem;
-            font-weight: 600;
-            top: 8rem;
-            width: 70%;
         }
     }
 
     & #nesDev {
-        justify-content: flex-end;
-
-        & .background-wrapper {
-            background-image: url("/nesdev.webp");
-            background-position: bottom;
-            filter: opacity(0.3);
-        }
-
-        & .card-title,
-        .card-description {
-           right: 2rem;
-        }
+        background-image: url("/nesdev.png");
     }
 
     & #nesCart {
-        & .background-wrapper {
-            background-image: url("/nescart.webp");
-        }
-
-        & .card-title,
-        .card-description {
-           left: 2rem;
-        }
+        background-image: url("/nescartdb.png");
     }
 
     & #nesNinja {
-        justify-content: flex-end;
-
-        & .background-wrapper {
-            background-image: url("/nesninja.webp");
-        }
-
-        & .card-title,
-        .card-description {
-           right: 2rem;
-        }
+        background-image: url("/nesninja.png");
     }
 
     & #romDetectives {
-        & .background-wrapper {
-            background-image: url("/romdetectives.webp");
-        }
+        background-image: url("/romdetectives.png");
+    }
+}
 
-        & .card-title,
-        .card-description {
-           left: 2rem;
+@media (max-width: 900px) {
+    #sitesPage {
+        & .sites-title {
+            font-size: 2rem;
         }
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 500px) {
     #sitesPage {
-        & .other-page-card {
-            width: 95%;
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    #sitesPage {
-        & .other-page-card {
-            & .card-description {
-                width: 90%;
-                left: 2rem;
-                bottom: 0;
-                align-content: space-evenly;
-                font-size: 1.3rem;
-                padding-right: 1rem;
-            }
-        }
-
-        & #romDetectives {
-            & .background-wrapper {
-                background-position: center;
-            }
-        }
-
-        & #nesCart {
-            & .background-wrapper {
-                background-position: bottom;
-            }
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    #sitesPage {
-        & .other-page-card {
-            & .card-description {
-                width: 90%;
-                left: 1rem;
-                font-size: 1.2rem;
-            }
-
-            & .card-title {
-                font-size: 2rem;
-            }
+        & .sites-title {
+            padding: 1rem;
+            font-size: 1.5rem;
+            margin-left: 2rem;
         }
     }
 }
