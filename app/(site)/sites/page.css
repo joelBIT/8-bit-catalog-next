@@ -15,7 +15,7 @@
         font-size: 3rem;
         border: 1px solid;
         padding: 2rem;
-        filter: drop-shadow(2px 4px 6px black);
+        text-shadow: 2px 4px 6px black;
         margin-top: 10rem;
         margin-left: 5rem;
     }

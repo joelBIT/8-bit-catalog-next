@@ -1,7 +1,8 @@
 #logo {
-    .logo__image {
+    & .logo__image {
         border-radius: 100%;
         width: 100%;
         height: auto;
+        filter: drop-shadow(12px -6px 16px black);
     }
 }
