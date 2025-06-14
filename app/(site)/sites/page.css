@@ -69,6 +69,11 @@
                     padding: 1rem 0.5rem;
                 }
             }
+
+            &:hover {
+                box-shadow: none;
+                transition: box-shadow 1s;
+            }
         }
     }
 
