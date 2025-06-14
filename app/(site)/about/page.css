@@ -177,7 +177,7 @@
                     color: var(--color-real-white);
                 }
 
-                & .gameButton {
+                & .button__link {
                     display: none;
                 }
             }
@@ -330,12 +330,12 @@
                         display: none;
                     }
 
-                    & .gameButton {
+                    & .button__link {
                         display: flex;
                         justify-self: center;
                         align-self: center;
                         width: fit-content;
-                        padding: 0.5rem 1rem;
+                        padding: 0.3rem 1rem;
                     }
                 }
 
