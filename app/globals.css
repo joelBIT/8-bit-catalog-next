@@ -10,10 +10,12 @@
 ******************/
 
 :root {
+    --color-auth-background: rgba(255, 255, 255, .025);
     --color-auth-border: rgba(255, 255, 255, .25);
     --color-auth-border-bottom: #6b6767;
-    --color-auth-background: rgba(255, 255, 255, .025);
     --color-bar-purple: #701296;
+    --color-black: #101010;
+    --color-black-light: #2E3028;
     --color-card-light: #F4D9B7;
     --color-footer-heading: #D23C3C;
     --color-form: #D9D9D9;
@@ -21,20 +23,19 @@
     --color-link-active: #CC8B21;
     --color-link-background: #62626240;
     --color-list-border: #d23c3c80;
+    --color-modal-background: #19251F;
+    --color-neon-blue: #3646ff;
+    --color-neon-green: #36ff46;
     --color-nintendo-gray: #9D99A0;
     --color-nintendo-gray-light: #ADA8AD;
-    --color-white: #f0cca4;
-    --color-real-white: #fff;
-    --color-black: #101010;
     --color-real-black: #000000;
-    --color-black-light: #2E3028;
-    --color-warning: #ff3737;
-    --color-warning-text: #cb6f6f;
+    --color-real-white: #fff;
     --color-success: #45ca4e;
     --color-tag-background: #D3D3D3;
     --color-tag-text: #666666;
-    --color-neon-green: #36ff46;
-    --color-neon-blue: #3646ff;
+    --color-warning: #ff3737;
+    --color-warning-text: #cb6f6f;
+    --color-white: #f0cca4;
 }
 
 html,
