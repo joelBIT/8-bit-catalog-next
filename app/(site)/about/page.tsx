@@ -103,7 +103,7 @@ export default function AboutPage(): ReactElement {
                 <dialog id="textModal" ref={modalRef}>
                     <form method="dialog">
                         <h1 className="modal__text"> {timeline?.filter(event => event.year === year).map(event => event.text)[0]} </h1>
-                        <button onClick={() => modalRef.current?.close()} className={`gameButton ${arima.className}`}> Close </button>
+                        <span onClick={() => modalRef.current?.close()} className={`closeButton ${arima.className}`}> Close </span>
                     </form>
                 </dialog>
 

@@ -18,8 +18,10 @@
             transform: translate(-50%, -50%);
             border-radius: 8px;
             scrollbar-width: none;
-            background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+            background: linear-gradient(to top right, var(--color-modal-background) 70%, var(--color-black-light));
             overflow: hidden;
+            border-color: var(--color-real-white);
+            box-shadow: 2px 4px 6px black;
 
             & form {
                 display: flex;
@@ -28,15 +30,17 @@
                 height: 100%;
 
                 & .modal__text {
-                    color: var(--black);
+                    color: var(--color-real-white);
                     font-size: 1rem;
                     text-align: left;
                     margin: 1rem;
+                    padding-top: 3rem;
                 }
 
-                & .gameButton {
-                    margin: 1rem;
-                    align-self: center;
+                & .closeButton {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
                 }
             }
         }
