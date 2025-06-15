@@ -47,6 +47,7 @@ The 8-bit Catalog is a searchable library of games released for the Nintendo Ent
 -   **Game Modal**
 
     -   Most of the games have a link to an Emulator page where the game may be played in a browser.
+    -   Navigate between the games within a pagination page.
  
 -   **Register Page**
 
