@@ -62,7 +62,7 @@ export function AddUserModal({ close }: { close: () => void }): ReactElement {
                     />
 
                     <span className="form__field-label">
-                        New Password
+                        Password
                     </span>
 
                     <span className="material-symbols-outlined password-show" onClick={() => setVisible(!isVisible)}>
