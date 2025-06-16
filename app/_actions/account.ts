@@ -23,6 +23,14 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
         return { message: 'The entered passwords must be equal', success: false };
     }
 
+    if (password.length < 8) {
+        return { message: 'Password must be at least 8 characters', success: false };
+    }
+
+    if (!/\d/.test(password)) {
+        return { message: 'Password must contain at least 1 number', success: false };
+    }
+
     try {
         const user = await getUserById(userId);
         const validPassword = await verifyPasswordHash(user.password_hash, oldPassword);
