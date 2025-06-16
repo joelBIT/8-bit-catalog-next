@@ -57,7 +57,7 @@ export default function MembersPage(): ReactElement {
                     />
                 </search>
                     
-                <button className="gameButton add-member__button" onClick={() => setModal(true)}> + Add member </button>
+                <button className="button__link add-member__button" onClick={() => setModal(true)}> + Add member </button>
             </section>
 
             { modal ? <AddUserModal close={close} /> : <></> }

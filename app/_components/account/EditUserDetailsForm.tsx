@@ -53,7 +53,7 @@ export function EditUserDetailsForm(): ReactElement {
                     placeholder="About me" 
                 />
 
-                <span className="button__link"> Save </span>
+                <button className="button__link"> Save </button>
             </form>
 
             { 

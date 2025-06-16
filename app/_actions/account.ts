@@ -104,7 +104,10 @@ export async function createUserAndAccount(_prevState: ActionState, formData: Fo
 
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-    const username = formData.get('username') as string;
+    let username = formData.get('username') as string;
+    if (!username) {
+        username = email;       // Set username same as email if username is missing since email is unique
+    }
 
     try {
         const passwordHash = await hashPassword(password);
