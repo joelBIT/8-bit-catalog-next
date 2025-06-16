@@ -84,7 +84,7 @@ export function EditAccountSettings(): ReactElement {
                                 id="passwordRepeat"
                                 name="passwordRepeat"
                                 type={isVisibleRepeat ? "text" : "password"}
-                                placeholder="CONFIRM NEW PASSWORD"
+                                placeholder="CONFIRM PASSWORD"
                                 className={`${arima.className} form__field`}
                                 autoComplete="none" 
                                 required 
