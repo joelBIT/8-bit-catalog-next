@@ -660,6 +660,7 @@ textarea {
     &:hover {
         filter: invert(1);
         transition: all 0.35s;
+        cursor: pointer;
     }
 }
 
