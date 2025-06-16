@@ -102,51 +102,6 @@ textarea {
 * Common Button Classes *
 ************************/
 
-.gameButton {
-    display: flex;
-    padding: 0.4rem 0.6rem 0.2rem;
-    width: 7rem;
-    justify-content: space-around;
-    font-size: 1.4rem;
-    color: var(--color-white);
-    border-radius: 0.75em;
-    transition: all 0.25s ease-in-out;
-    box-shadow: inset 0 0 0 1px black, 0 0 0 2px #3a3d40,
-      0 0 0 4px rgba(0, 0, 0, 0.25), 0 11px 27px -5px rgba(0, 0, 0, 0.53),
-      0 25px 25px -4px rgba(0, 0, 0, 0.35);
-  
-    background-image: radial-gradient(227.71% 180.23% at 90.64% 130.38%, rgb(17, 20, 23) 0%, rgb(55, 59, 63) 100%),
-      radial-gradient(207.84% 121.69% at -5.69% 111.39%, rgb(17, 20, 23) 0%, rgb(55, 59, 63) 100%),
-      linear-gradient(206deg, rgba(123, 134, 151, 0.2) 0%, rgba(25, 27, 30, 0.2) 100%),
-      linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
-  
-    &:hover {
-        filter: brightness(1.75);
-        transition: filter 0.5s;
-    }
-  
-    &:active {
-        transform: translateY(2px);
-        box-shadow: inset 0 0 0 1px black, 0 0 0 2px #3a3d40,
-            0 0 0 4px rgba(0, 0, 0, 0.25), 0 4px 12px -5px rgba(0, 0, 0, 0.53),
-            0 6px 6px -4px rgba(0, 0, 0, 0.35);
-        transition: all 0.25s ease-in-out;
-    }
-
-    &:disabled {
-        filter: brightness(0.5);
-        box-shadow: none;
-
-        &:hover {
-            cursor: default;
-        }
-
-        &:active { 
-            transform: scale(1.0);
-        }
-    }
-}
-
 .authButton {
     color: var(--color-white);
 	transition: all 0.3s;

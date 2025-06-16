@@ -94,7 +94,8 @@ export async function updateProfileImage(userId: number, _prevState: {message: s
 }
 
 /**
- * Used by admin to create a new user and account by bypassing the email verification process.
+ * Used by admin to create a new user and account by bypassing the email verification process. There are no
+ * restrictions on the password when adding a user as admin.
  */
 export async function createUserAndAccount(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const isAdmin = await isAuthenticatedAdmin();
