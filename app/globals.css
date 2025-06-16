@@ -453,6 +453,47 @@ textarea {
     opacity: 0.75;
 }
 
+.modal-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    scrollbar-width: none;
+    background: linear-gradient(to top right, var(--color-modal-background) 70%, var(--color-black-light));
+    overflow: hidden;
+    border-color: var(--color-real-white);
+    box-shadow: 2px 4px 6px black;
+
+    & .modal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+
+        & .modal__title {
+            color: var(--color-real-white);
+            padding-top: 1rem;
+            padding-left: 1rem;
+            padding-right: 3rem;
+        }
+
+        & .modal__text {
+            color: var(--color-real-white);
+            font-size: 1rem;
+            text-align: left;
+            margin: 1rem;
+            padding-top: 1rem;
+        }
+
+        & .closeButton {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}
 
 
 
@@ -533,6 +574,65 @@ textarea {
         left: 0;
         padding: 0 12px;
         transition: all .2s;
+    }
+}
+
+.input-field,
+.react-tel-input {
+    background-color: var(--color-real-black);
+    border-color: var(--color-real-black);
+    color: var(--color-real-white);
+    border-style: none;
+    appearance: none;
+    border-radius: 6px;
+    box-shadow: none;
+    height: 50px;
+    font-size: 1rem;
+    transition: all 0.5s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-real-white);
+    box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 10px 1px #FFFFFF80;
+    transition: all 0.5s;
+}
+
+#password-inputs {
+    & #password-requirements,
+    #requirements-list {
+        color: var(--color-real-white);
+        text-transform: uppercase;
+        font-size: .7rem;
+        padding: 0 12px;
+        margin-bottom: 5px;
+    }
+
+    & #requirements-list {
+        margin-bottom: 10px;
+        margin-left: 18px;
+    }
+
+    & .input:first-of-type {
+        border-radius: 6px 6px 0 0;
+        border-bottom: 0.5px solid var(--color-auth-border-bottom);
+    }
+
+    & .input:last-of-type {
+        border-radius: 0 0 6px 6px;
+        border-top: 0;
+    }
+}
+
+.password-show {
+    position: absolute;
+    right: 0;
+    top: 18px;
+    color: var(--color-real-white);
+    padding-right: 12px;
+
+    &:hover {
+        cursor: pointer;
     }
 }
 

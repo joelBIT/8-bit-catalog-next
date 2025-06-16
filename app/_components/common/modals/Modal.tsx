@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useEffect, useRef } from "react";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./Modal.css";
 
@@ -14,19 +13,17 @@ export function Modal({ text, confirm, close }: { text: string, confirm: () => v
         }
     }, [])
     
-    function closeModal() {
+    function closeModal(): void {
         modalRef.current?.close();
         close(true);
     }
     
     return (
-        <dialog id="modal" ref={modalRef}>
-            <form method="dialog">
+        <dialog id="modal" ref={modalRef} className="modal-dialog">
+            <form method="dialog" className="modal-content">
                 <h1 className="modal__text"> {text} </h1>
-                <div className="modal-buttons-wrapper">
-                    <button onClick={closeModal} className={`gameButton ${arima.className}`}> Close </button>
-                    <button onClick={confirm} className={`gameButton ${arima.className}`}> Confirm </button>
-                </div>
+                <span onClick={closeModal} className="closeButton" />
+                <button onClick={confirm} className="button__link"> Confirm </button>
             </form>
         </dialog>
     );

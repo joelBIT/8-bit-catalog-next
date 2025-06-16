@@ -16,13 +16,13 @@ export function InputModal({ text, confirm, close }: { text: string, confirm: (v
         }
     }, [])
     
-    function closeModal() {
+    function closeModal(): void {
         modalRef.current?.close();
         setShowMessage(false);
         close(true);
     }
 
-    function confirmAdd() {
+    function confirmAdd(): void {
         if (inputRef.current?.value && inputRef.current?.value.length > 2) {
             setShowMessage(false);
             confirm(inputRef.current?.value as string);
@@ -33,8 +33,8 @@ export function InputModal({ text, confirm, close }: { text: string, confirm: (v
     }
     
     return (
-        <dialog id="inputModal" ref={modalRef}>
-            <form method="dialog">
+        <dialog id="inputModal" ref={modalRef} className="modal-dialog">
+            <form method="dialog" className="modal-content">
                 <h1 className="modal__text"> {text} </h1>
                 
                 { 
@@ -46,16 +46,14 @@ export function InputModal({ text, confirm, close }: { text: string, confirm: (v
 
                 <input 
                     id="filterValueInput" 
-                    className={arima.className} 
+                    className={`${arima.className} input-field`}
                     type="text" 
                     ref={inputRef} 
                     placeholder="Filter value" 
                 />
                 
-                <div className="modal-buttons-wrapper">
-                    <button type="reset" onClick={closeModal} className={`gameButton ${arima.className}`}> Close </button>
-                    <button type="reset" onClick={confirmAdd} className={`gameButton ${arima.className}`}> Confirm </button>
-                </div>
+                <span onClick={closeModal} className="closeButton" />
+                <button type="reset" onClick={confirmAdd} className="button__link"> Confirm </button>
             </form>
         </dialog>
     );

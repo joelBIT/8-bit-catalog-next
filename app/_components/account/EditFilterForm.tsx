@@ -49,7 +49,7 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
     }
     
     return (
-        <section id="editFilterForm">
+        <section id="editFilterForm" className="selectSection">
             <h2 className={`selectSection__title ${arima.className}`}> {title} </h2>
             <div className="filter-wrapper">
                 <span className="material-symbols-outlined" onClick={open}> remove </span>

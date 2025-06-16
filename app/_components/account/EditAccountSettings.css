@@ -6,6 +6,7 @@
 
     & .accountCard__title {
         align-self: center;
+        font-size: 1rem;
     }
 
     & #passwordForm {
@@ -15,46 +16,13 @@
         width: 50%;
 
         & #password-inputs {
-            & #password-requirements,
-            #requirements-list {
-                color: var(--color-real-white);
-                text-transform: uppercase;
-                font-size: .7rem;
-                padding: 0 12px;
-                margin-bottom: 5px;
-            }
-
-            & #requirements-list {
-                margin-bottom: 10px;
-                margin-left: 18px;
-            }
-
             & .input:first-of-type {
-                border-radius: 6px 6px 0 0;
-                border-bottom: 0.5px solid var(--color-auth-border-bottom);
                 margin-bottom: 1rem;
             }
 
             & .input:nth-of-type(2) {
                 border-radius: 6px 6px 0 0;
                 border-bottom: 0.5px solid var(--color-auth-border-bottom);
-            }
-
-            & .input:last-of-type {
-                border-radius: 0 0 6px 6px;
-                border-top: 0;
-            }
-
-            & .password-show {
-                position: absolute;
-                right: 0;
-                top: 18px;
-                color: var(--color-real-white);
-                padding-right: 12px;
-
-                &:hover {
-                    cursor: pointer;
-                }
             }
         }
 
