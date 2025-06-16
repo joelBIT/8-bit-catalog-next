@@ -100,8 +100,8 @@ export default function AboutPage(): ReactElement {
                     }
                 </section>
 
-                <dialog id="textModal" ref={modalRef}>
-                    <form method="dialog">
+                <dialog id="textModal" ref={modalRef} className="modal-dialog">
+                    <form method="dialog" className="modal-content">
                         <h1 className="modal__title"> {timeline?.filter(event => event.year === year).map(event => event.title)[0]} </h1>
                         <h1 className="modal__text"> {timeline?.filter(event => event.year === year).map(event => event.text)[0]} </h1>
                         <span onClick={() => modalRef.current?.close()} className={`closeButton ${arima.className}`} />

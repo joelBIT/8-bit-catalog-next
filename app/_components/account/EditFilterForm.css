@@ -20,8 +20,12 @@
             align-self: center;
         }
 
-        & .material-symbols-outlined:hover {
-            cursor: pointer;
+        & .material-symbols-outlined {
+            align-content: center;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }
