@@ -7,6 +7,7 @@ import { AccountContext } from "@/app/_contexts/AccountContextProvider";
 import PhoneInput from "react-phone-input-2";
 import { SelectCountry } from "../common";
 
+import 'react-phone-input-2/lib/style.css';
 import "./EditUserDetailsForm.css";
 
 export function EditUserDetailsForm(): ReactElement {
@@ -14,6 +15,8 @@ export function EditUserDetailsForm(): ReactElement {
     const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: '', lastName: '', bio: '' });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
     const [ fullName, setFullName ] = useState<string>('');
+    const [ firstName, setFirstName ] = useState<string>('');
+    const [ lastName, setLastName ] = useState<string>('');
     const [ address, setAddress ] = useState<string>('');
     const [ city, setCity ] = useState<string>('');
     const [ birthDate, setBirthDate ] = useState<string>('');
@@ -34,30 +37,53 @@ export function EditUserDetailsForm(): ReactElement {
     return (
         <>
             <form id="userDetailsForm" action={formAction}>
-                <input 
-                    id="firstName" 
-                    name="firstName" 
-                    type="text" 
-                    placeholder="First Name" 
-                    className={`${arima.className} input-field`}
-                    defaultValue={state?.success ? state.firstName : user?.first_name} 
-                />
+                <section className="information-input">
+                    <label className="input-label" htmlFor="first_name">
+                        First name
+                    </label>
 
-                <input 
-                    id="lastName" 
-                    name="lastName" 
-                    type="text" 
-                    placeholder="Last Name" 
-                    className={`${arima.className} input-field`}
-                    defaultValue={state?.success ? state.lastName : user?.last_name} 
-                />
+                    <input 
+                        id="first_name"
+                        name="first_name"
+                        value={firstName}
+                        onChange={e => setFirstName(e.target.value)} 
+                        type="text"
+                        className={`${arima.className} input-field`}
+                        autoComplete="none"
+                        defaultValue={state?.success ? state.firstName : user?.first_name} 
+                    />
+                </section>
 
-                <textarea 
-                    name="bio" 
-                    className={`${arima.className} input-field edit-profile__bio`}
-                    defaultValue={state.bio ? state.bio : user.bio} 
-                    placeholder="About me" 
-                />
+                <section className="information-input">
+                    <label className="input-label" htmlFor="last_name">
+                        Last name
+                    </label>
+
+                    <input 
+                        id="last_name"
+                        name="last_name"
+                        value={lastName}
+                        onChange={e => setLastName(e.target.value)} 
+                        type="text"
+                        className={`${arima.className} input-field`}
+                        autoComplete="none"
+                        defaultValue={state?.success ? state.lastName : user?.last_name} 
+                    />
+                </section>
+
+                <section className="information-input">
+                    <label className="input-label" htmlFor="bio">
+                        Bio
+                    </label>
+
+                    <textarea 
+                        id="bio"
+                        name="bio" 
+                        className={`${arima.className} input-field edit-profile__bio`}
+                        defaultValue={state.bio ? state.bio : user.bio} 
+                        placeholder="About me" 
+                    />
+                </section>
 
                 <section className="input">
                     <input 
