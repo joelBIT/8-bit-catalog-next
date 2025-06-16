@@ -38,7 +38,7 @@ export function EditProfileForm(): ReactElement {
                     </h2>
                 </section>
 
-                <button className="gameButton" type="submit"> Save </button>
+                <button className="button__link" > Save </button>
             </form>
 
             { 

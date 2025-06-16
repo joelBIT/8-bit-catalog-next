@@ -28,6 +28,10 @@
             }
         }
     }
+
+    & .button__link {
+        padding: .3rem 1rem;
+    }
 }
 
 @media (max-width: 500px) {

@@ -15,7 +15,7 @@
         line-height: 1;
     }
 
-    .gameButton {
+    & .button__link {
         align-self: flex-end;
     }
 }

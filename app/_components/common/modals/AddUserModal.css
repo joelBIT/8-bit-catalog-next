@@ -1,38 +1,31 @@
 #addUserModal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 40%;
-    border-radius: 8px;
-    scrollbar-width: none;
-    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
-
-    & form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        height: 100%;
-
-        & .modal-buttons-wrapper {
-            display: flex;
-            justify-content: space-around;
-            margin: 1rem 0.5rem;
-        }
+    & .modal-content {
+        align-items: center;
 
         & .modal__text {
-            color: var(--black);
             font-size: 3rem;
             text-align: center;
+            margin: 3rem;
+            margin-bottom: 2rem;
         }
 
-        #emailInput, #passwordInput {
-            width: 80%;
+        & .input {
+            width: 50%;
+
+            & #email, 
+            #password {
+                background-color: var(--color-real-black);
+            }
+        }
+
+        & .button__link {
             align-self: center;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
         }
 
-        .message-failure, .message-success {
+        .message-failure, 
+        .message-success {
             width: fit-content;
             align-self: center;
             filter: brightness(0.8);
@@ -42,31 +35,21 @@
 
 @media (max-width: 1000px) {
     #addUserModal {
-        height: 50%;
-        width: 85%;
-
-        & form {
-            & .modal-buttons-wrapper {
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-            }
-
-            & .modal__text {
-                font-size: 2rem;
+        & .modal-content {
+            & .input {
+                width: 80%;
             }
         }
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     #addUserModal {
-        & form {
-            input {
-                width: 90%;
-                height: auto;
-                font-size: 1rem;
-                padding-left: 0.3rem;
+        & .modal-content {
+            & .modal__text {
+                font-size: 2rem;
+                margin-left: 2rem;
+                margin-right: 2rem;
             }
         }
     }

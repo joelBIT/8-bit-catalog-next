@@ -60,20 +60,22 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
             </div>
 
             { 
-                openModal ? <Modal 
-                                text={modalText} 
-                                confirm={confirmDelete} 
-                                close={() => setOpenModal(false)} 
-                            />
+                openModal ? 
+                    <Modal 
+                        text={modalText} 
+                        confirm={confirmDelete} 
+                        close={() => setOpenModal(false)} 
+                    />
                 : <></>
             }
 
             { 
-                openInputModal ? <InputModal 
-                                    text={inputModalText} 
-                                    confirm={confirmUpdate} 
-                                    close={() => setOpenInputModal(false)} 
-                                />
+                openInputModal ? 
+                    <InputModal 
+                        text={inputModalText} 
+                        confirm={confirmUpdate} 
+                        close={() => setOpenInputModal(false)} 
+                    />
                 : <></>
             }
 

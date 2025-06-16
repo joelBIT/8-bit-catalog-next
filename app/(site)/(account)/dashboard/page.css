@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-image: url("../../../../assets/backgrounds/account_wallpaper.png");
-    min-height: 100vh;
+    min-height: 90vh;
     padding: 10rem 1rem;
 
     & .user-information {
