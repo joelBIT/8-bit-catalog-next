@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useEffect, useRef } from "react";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./Modal.css";
 
@@ -14,7 +13,7 @@ export function Modal({ text, confirm, close }: { text: string, confirm: () => v
         }
     }, [])
     
-    function closeModal() {
+    function closeModal(): void {
         modalRef.current?.close();
         close(true);
     }
