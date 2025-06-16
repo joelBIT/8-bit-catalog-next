@@ -1,47 +1,84 @@
 #accountCard {
     display: flex;
     flex-direction: column;
-    max-width: fit-content;
+    align-items: center;
+    width: 80%;
 
     & .accountCard__title {
         align-self: center;
     }
 
-    #passwordForm {
+    & #passwordForm {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        width: 50%;
 
-        #passwordInput > span {
-            color: var(--color-white);
-        }
+        & #password-inputs {
+            & #password-requirements,
+            #requirements-list {
+                color: var(--color-real-white);
+                text-transform: uppercase;
+                font-size: .7rem;
+                padding: 0 12px;
+                margin-bottom: 5px;
+            }
 
-        .gameButton {
-            align-self: flex-end;
-        }
-    }
-}
+            & #requirements-list {
+                margin-bottom: 10px;
+                margin-left: 18px;
+            }
 
-@media (max-width: 550px) {
-    #accountCard {
-        #passwordForm {
-            #passwordInput {
-                .password-input > input {
-                    font-size: 1.1rem;
-                    height: 2rem;
+            .input:first-of-type {
+                border-radius: 6px 6px 0 0;
+                border-bottom: 0.5px solid var(--color-auth-border-bottom);
+                margin-bottom: 1rem;
+            }
+
+            .input:nth-of-type(2) {
+                border-radius: 6px 6px 0 0;
+                border-bottom: 0.5px solid var(--color-auth-border-bottom);
+            }
+
+            .input:last-of-type {
+                border-radius: 0 0 6px 6px;
+                border-top: 0;
+            }
+
+            .password-show {
+                position: absolute;
+                right: 0;
+                top: 18px;
+                color: var(--color-real-white);
+                padding-right: 12px;
+
+                &:hover {
+                    cursor: pointer;
                 }
             }
         }
+
+        & .button__link {
+            align-self: flex-end;
+            padding: .3rem 1rem;
+        }
     }
 }
 
-@media (max-width: 410px) {
+@media (max-width: 1000px) {
     #accountCard {
-        #passwordForm {
-            #passwordInput > span {
-                color: transparent;
-                margin-left: 1rem;
-            }
+        & #passwordForm {
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #accountCard {
+        margin-top: 5rem;
+
+        & #passwordForm {
+            width: 100%;
         }
     }
 }

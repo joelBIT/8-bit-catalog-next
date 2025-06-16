@@ -3,10 +3,12 @@ import { EditAccountSettings } from "@/app/_components/account/EditAccountSettin
 
 import "./page.css";
 
+/**
+ * Change password and account-related settings.
+ */
 export default function AccountSettingsPage(): ReactElement {
     return (
         <main id="settingsPage">
-            <h1 className="settingsPage__title">Edit account settings</h1>
             <EditAccountSettings />
         </main>
     );
