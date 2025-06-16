@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useActionState, useEffect, useRef } from "react";
-import { PasswordInput } from "..";
 import { arima } from "@/app/_fonts/fonts";
 import { createUserAndAccount } from "@/app/_actions/account";
 
@@ -35,7 +34,7 @@ export function AddUserModal({ close }: { close: () => void }): ReactElement {
                 { state.message ? <h2 className={state.success ? "message-success" : "message-failure"}> {state.message} </h2> : <></> }
 
                 {/* <EmailInput /> */}
-                <PasswordInput id="password" placeholder="Password" />
+                {/* <PasswordInput /> */}
                 
                 <div className="modal-buttons-wrapper">
                     <button type="reset" onClick={closeModal} className={`gameButton ${arima.className}`}> Close </button>
