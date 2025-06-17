@@ -16,6 +16,7 @@
             text-align: center;
             color: var(--color-footer-heading);
             padding-bottom: 1rem;
+            line-height: 65px;
         }
 
         & .title-text {
@@ -58,6 +59,10 @@
     #faqPage {
         & .title-section {
             width: 95%;
+
+            & .faqPage-title {
+                font-size: 2.5rem;
+            }
         }
 
         & .faq {
@@ -72,7 +77,8 @@
 
         & .title-section {
             & .faqPage-title {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
+                line-height: 35px;
             }
         }
 
