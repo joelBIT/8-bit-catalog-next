@@ -48,68 +48,95 @@
         }
     }
 
-    & #other-site-cards {
+    & #sites {
         display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: center;
-        text-align: center;
-        padding-top: 3rem;
+        width: 80%;
+        gap: 4rem;
 
-        & .other-page-card {
-            background-size: cover;
-            background-position: bottom;
-            position: relative;
-            height: 330px;
-            width: 250px;
-            z-index: 10;
-            border-radius: 9px;
-            box-shadow: 2px 4px 6px black;
+        & #change-site-content {
+            display: flex;
+            flex-direction: column;
 
-            & .other-information {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                height: 50%;
-                border-bottom-left-radius: 9px;
-                border-bottom-right-radius: 9px;
-                background-color: #ffffff50;
-                backdrop-filter: blur(10px);
-                color: var(--color-black);
+            & .site-content-link {
+                display: flex;
+                font-size: 3rem;
+                align-items: baseline;
+                gap: 1rem;
+                text-transform: uppercase;
+                color: #ffffff50;
+                border-bottom: 1px solid #ffffff50;
+                padding: 1.5rem 0;
+                transition: all 0.5s ease;
 
-                & .site-title {
-                    font-size: 1.1rem;
-                    align-self: center;
-                    letter-spacing: 1px;
-                    padding-top: 0.3rem;
+                & > p {
+                    font-size: 1.5rem;
                 }
 
-                & .site-description {
-                    padding: 1rem 0.5rem;
+                & > h1 {
+                    font-weight: 100;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: var(--color-real-white);
+                        transition: all 0.5s ease;
+                    }
                 }
             }
 
-            &:hover {
-                box-shadow: none;
-                transition: box-shadow 1s;
+            & .site-content-link:last-of-type {
+                border: none;
+            }
+
+            .active {
+                color: var(--color-real-white);
             }
         }
-    }
 
-    & #nesDev {
-        background-image: url("/nesdev.png");
-    }
+        & #site-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: #ffffff50;
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
 
-    & #nesCart {
-        background-image: url("/nescartdb.png");
-    }
+            & #site-content-header {
+                display: flex;
+                justify-content: space-around;
+                font-size: 1.5rem;
+                color: #ffffff50;
+                padding: 1.5rem 0;
 
-    & #nesNinja {
-        background-image: url("/nesninja.png");
-    }
+                & .content-header-link {
+                    width: fit-content;
+                    transition: all 0.5s ease;
 
-    & #romDetectives {
-        background-image: url("/romdetectives.png");
+                    &:hover {
+                        cursor: pointer;
+                        color: var(--color-real-white);
+                        transition: all 0.5s ease;
+                    }
+                }
+
+                .active {
+                    color: var(--color-real-white);
+                }
+            }
+
+            & .other-information {
+                display: flex;
+                flex-direction: column;
+
+                & .button__link {
+                    align-self: flex-end;
+                }
+            }
+
+            & .site-image {
+                height: 330px;
+                width: 250px;
+            }
+        }
     }
 }
 
