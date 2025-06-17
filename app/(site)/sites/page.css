@@ -109,6 +109,8 @@
                 padding: 1.5rem 0;
                 background-color: #ffffff10;
                 border-bottom: 1px solid #ffffff20;
+                border-top-left-radius: 12px;
+                border-top-right-radius: 12px;
 
                 & .content-header-link {
                     width: fit-content;
