@@ -472,9 +472,9 @@ textarea {
 
 
 
-/*********************************
-* Input Login and Register Forms *
-*********************************/
+/*************************
+* Various Input Elements *
+*************************/
 
 .input {
     width: 100%;
@@ -590,6 +590,8 @@ textarea {
         cursor: pointer;
     }
 }
+
+
 
 
 

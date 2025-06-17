@@ -36,7 +36,12 @@ export type User = {
     created_at: Date,
     last_name: string,
     first_name: string,
+    full_name: string,
     password_hash: string,
+    birth_date: string,
+    city: string,
+    address: string,
+    country: string,
     role: string,
     image: string,
     bio: string
@@ -71,4 +76,17 @@ export type TimelineEvent = {
     title: string,
     text: string,
     image: string
+}
+
+export type InitialUserState = {
+    birthDate: string,
+    city: string,
+    country: string,
+    fullName: string,
+    message: string, 
+    address: string,
+    success: boolean, 
+    firstName: string, 
+    lastName: string, 
+    bio: string
 }

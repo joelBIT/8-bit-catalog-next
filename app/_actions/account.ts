@@ -1,9 +1,9 @@
 'use server';
 
-import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser } from "@/app/_db/db";
+import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser, updateUserInformationById } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
-import { ActionState } from "@/app/_types/types";
+import { ActionState, InitialUserState } from "@/app/_types/types";
 
 /**
  * This function is invoked when a user updates account information such as account password.
@@ -51,22 +51,34 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 /**
  * This function is invoked when updating user information such as name and bio.
  */
-export async function updateUserDetails(userId: number, _prevState: {message: string, success: boolean, firstName: string, lastName: string, bio: string}, formData: FormData): Promise<{message: string, success: boolean, firstName: string, lastName: string, bio: string}> {
+export async function updateUserDetails(userId: number, _prevState: InitialUserState, formData: FormData): Promise<InitialUserState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
-        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '' };
+        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '', birthDate: '',
+            city: '', country: '', fullName: '', address: ''
+         };
     }
     
     try {
-        const firstName = formData.get('firstName') as string;
-        const lastName = formData.get('lastName') as string;
+        const firstName = formData.get('first_name') as string;
+        const fullName = formData.get('full_name') as string;
+        const lastName = formData.get('last_name') as string;
+        const birthDate = formData.get('birth_date') as string;
+        const city = formData.get('city') as string;
+        const address = formData.get('address') as string;
+        const phone = formData.get('phone') as string;
         const userBio = formData.get('bio') as string;
+        const country = formData.get('country') as string;
         await updateUser(userId, lastName, firstName, userBio);
+        await updateUserInformationById(userId, fullName, phone, address, city, country, birthDate);
 
-        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName, bio: userBio };
+        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName, 
+            bio: userBio, birthDate: birthDate, city: city, country: country, fullName: fullName, address: address };
     } catch (error) {
         console.log(error);
-        return { message: 'The account could not be updated', success: false, firstName: '', lastName: '', bio: '' };
+        return { message: 'The account could not be updated', success: false, firstName: '', lastName: '', bio: '', birthDate: '',
+            city: '', country: '', fullName: '', address: ''
+         };
     }
 }
 

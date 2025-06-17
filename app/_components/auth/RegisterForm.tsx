@@ -156,7 +156,7 @@ export function RegisterForm(): ReactElement {
                         />
                     </section>
 
-                    <SelectCountry />
+                    <SelectCountry selected="SE" />
 
                     <section className="information-input">
                         <label className="input-label" htmlFor="address">
