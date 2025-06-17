@@ -69,11 +69,11 @@ export default function SitesPage(): ReactElement {
                         overview ?
                             <section className="other-information">
                                 <h2 className="site-title"> { currentSite.title } </h2>
-                                <div className="site-description">
-                                    { currentSite.description }
-                                </div>
+                                <div className="site-description"> { currentSite.description } </div>
 
-                                <Link className="button__link" href={currentSite.link} target="_blank"> Visit <span className="material-symbols-outlined"> open_in_new </span> </Link> 
+                                <Link className="button__link" href={currentSite.link} target="_blank">
+                                    Visit <span className="material-symbols-outlined"> open_in_new </span> 
+                                </Link> 
                             </section>
                             :
                             <Link href={currentSite.image} target="_blank" className="site-image-link">
