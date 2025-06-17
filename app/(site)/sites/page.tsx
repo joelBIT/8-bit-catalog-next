@@ -9,8 +9,11 @@ import "./page.css";
 export default function SitesPage(): ReactElement {
     return (
         <main id="sitesPage">
-            <div className="darken-image-top" />
-            <h1 className="sites-title playfair-display-regular"> Other 8-bit resources </h1>
+            <section id="sitesBackground">
+                <div className="darken-image-top" />
+                <h1 className="sites-title playfair-display-regular"> Other 8-bit resources </h1>
+                <div className="darken-image-bottom" />
+            </section>
 
             <section id="other-site-cards">
                 <Link id="nesDev" className="other-page-card" href="https://www.nesdev.org/" target="_blank">
