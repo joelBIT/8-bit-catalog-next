@@ -19,6 +19,7 @@ export function AccountContextProvider({ children }: ContextProviderChildren): R
 
     async function addUser(): Promise<void> {
         const authenticatedUser = await getUserFromSession();
+        console.log(authenticatedUser);
         if (authenticatedUser) {
             setUser(authenticatedUser);
         }

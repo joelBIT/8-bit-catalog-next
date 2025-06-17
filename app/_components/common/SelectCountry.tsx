@@ -6,9 +6,9 @@ import { arima } from "@/app/_fonts/fonts";
 import "./SelectCountry.css";
 
 /**
- * A Select list containing various countries and their flags.
+ * A Select list containing various countries and their flags. The 'selected' parameter corresponds to the chosen initial country.
  */
-export function SelectCountry(): ReactElement {
+export function SelectCountry({ selected }: { selected: string }): ReactElement {
     const [ countries, setCountries ] = useState<{"value": string, "label": string}[]>([]);
     const [ selectedCountry, setSelectedCountry ] = useState<{"value": string, "label": string}>({value: "SE", label: "🇸🇪 Sweden"});
 
@@ -20,7 +20,7 @@ export function SelectCountry(): ReactElement {
         .then((data) => {
             data.countries.sort((a: { label: string; }, b: { label: string; }) => a.label.substring(4).localeCompare(b.label.substring(4)));
             setCountries(data.countries);
-            setSelectedCountry(data.userSelectValue);
+            setSelectedCountry(data.countries.find((country: { value: string; }) => country.value === selected));
         });
     }, []);
 
@@ -43,7 +43,7 @@ export function SelectCountry(): ReactElement {
             <select 
                 id="selectCountry" 
                 name="country" 
-                value={selectedCountry.value} 
+                value={selected} 
                 onChange={selectCountry} 
                 className={`${arima.className} input-field`}
             >
@@ -51,7 +51,7 @@ export function SelectCountry(): ReactElement {
             { 
                 countries.length > 0 ?
                 <>
-                    <option value={selectedCountry.value} key="DEFAULT"> {selectedCountry.label} </option>
+                    <option value={selectedCountry?.value} key="DEFAULT"> {selectedCountry?.label} </option>
                     {countries.map(country => <option value={country.value} key={country.value}> {country.label} </option>)}
                 </>
                     :

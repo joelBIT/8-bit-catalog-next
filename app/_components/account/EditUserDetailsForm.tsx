@@ -10,16 +10,15 @@ import { SelectCountry } from "../common";
 import 'react-phone-input-2/lib/style.css';
 import "./EditUserDetailsForm.css";
 
+const initialState = { 
+    message: '', success: false, firstName: '', lastName: '', bio: '',
+    country: '', fullName: '', address: '', birthDate: '', city: '' 
+}
+
 export function EditUserDetailsForm(): ReactElement {
     const { user, addUser } = useContext(AccountContext);
-    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), { message: '', success: false, firstName: '', lastName: '', bio: '' });
+    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), initialState);
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
-    const [ fullName, setFullName ] = useState<string>('');
-    const [ firstName, setFirstName ] = useState<string>('');
-    const [ lastName, setLastName ] = useState<string>('');
-    const [ address, setAddress ] = useState<string>('');
-    const [ city, setCity ] = useState<string>('');
-    const [ birthDate, setBirthDate ] = useState<string>('');
 
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time
@@ -45,12 +44,10 @@ export function EditUserDetailsForm(): ReactElement {
                     <input 
                         id="first_name"
                         name="first_name"
-                        value={firstName}
-                        onChange={e => setFirstName(e.target.value)} 
                         type="text"
                         className={`${arima.className} input-field`}
                         autoComplete="none"
-                        defaultValue={state?.success ? state.firstName : user?.first_name} 
+                        defaultValue={state.firstName ? state.firstName : user.first_name} 
                     />
                 </section>
 
@@ -62,12 +59,10 @@ export function EditUserDetailsForm(): ReactElement {
                     <input 
                         id="last_name"
                         name="last_name"
-                        value={lastName}
-                        onChange={e => setLastName(e.target.value)} 
                         type="text"
                         className={`${arima.className} input-field`}
                         autoComplete="none"
-                        defaultValue={state?.success ? state.lastName : user?.last_name} 
+                        defaultValue={state.lastName ? state.lastName : user.last_name} 
                     />
                 </section>
 
@@ -91,8 +86,7 @@ export function EditUserDetailsForm(): ReactElement {
                         name="birth_date" 
                         type="date"
                         max={new Date().toLocaleDateString('en-ca')}
-                        value={birthDate}
-                        onChange={e => setBirthDate(e.target.value)}
+                        defaultValue={state.birthDate ? state.birthDate : user?.birth_date} 
                         className={`${arima.className} form__field`}
                     />
 
@@ -109,15 +103,14 @@ export function EditUserDetailsForm(): ReactElement {
                     <input 
                         id="fullName"
                         name="full_name"
-                        value={fullName}
-                        onChange={e => setFullName(e.target.value)} 
+                        defaultValue={state.fullName ? state.fullName : user?.full_name} 
                         type="text"
                         className={`${arima.className} input-field`}
                         autoComplete="none" 
                     />
                 </section>
 
-                <SelectCountry />
+                <SelectCountry selected={state.country ? state.country : user.country} />
 
                 <section className="information-input">
                     <label className="input-label" htmlFor="address">
@@ -128,8 +121,7 @@ export function EditUserDetailsForm(): ReactElement {
                         id="address"
                         name="address" 
                         type="text"
-                        value={address}
-                        onChange={e => setAddress(e.target.value)}
+                        defaultValue={state.address ? state.address : user?.address} 
                         className={`${arima.className} input-field`}
                         autoComplete="none"
                     />
@@ -144,8 +136,7 @@ export function EditUserDetailsForm(): ReactElement {
                         id="city"
                         name="city" 
                         type="text"
-                        value={city}
-                        onChange={e => setCity(e.target.value)}
+                        defaultValue={state.city ? state.city : user?.city} 
                         className={`${arima.className} input-field`}
                         autoComplete="none"
                     />
