@@ -6,6 +6,7 @@
     align-items: center;
     padding-bottom: 5rem;
     background-color: var(--color-black);
+    background: linear-gradient(to bottom, var(--color-black) 70%, var(--color-black-light));
 
     & #sitesBackground {
         background-image: url("/sites_background.jpeg");
@@ -52,6 +53,7 @@
         display: flex;
         width: 80%;
         gap: 4rem;
+        background: transparent;
 
         & #change-site-content {
             display: flex;
@@ -59,7 +61,6 @@
 
             & .site-content-link {
                 display: flex;
-                font-size: 3rem;
                 align-items: baseline;
                 gap: 1rem;
                 text-transform: uppercase;
@@ -74,6 +75,7 @@
 
                 & > h1 {
                     font-weight: 100;
+                    font-size: 3rem;
 
                     &:hover {
                         cursor: pointer;
@@ -96,19 +98,22 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            background-color: #ffffff50;
+            background-color: #ffffff10;
             backdrop-filter: blur(10px);
             border-radius: 12px;
 
             & #site-content-header {
                 display: flex;
                 justify-content: space-around;
-                font-size: 1.5rem;
-                color: #ffffff50;
+                color: #ffffff40;
                 padding: 1.5rem 0;
+                background-color: #ffffff10;
+                border-bottom: 1px solid #ffffff20;
 
                 & .content-header-link {
                     width: fit-content;
+                    font-size: 1.5rem;
+                    font-weight: 100;
                     transition: all 0.5s ease;
 
                     &:hover {
@@ -116,6 +121,11 @@
                         color: var(--color-real-white);
                         transition: all 0.5s ease;
                     }
+                }
+                
+                & > hr {
+                    border-color: darkgrey;
+                    border-right-style: none;
                 }
 
                 .active {
@@ -126,15 +136,22 @@
             & .other-information {
                 display: flex;
                 flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
 
                 & .button__link {
                     align-self: flex-end;
                 }
             }
 
-            & .site-image {
-                height: 330px;
-                width: 250px;
+            & .site-image-link {
+                margin: 2rem;
+                width: fit-content;
+                
+                & .site-image {
+                    height: 300px;
+                    width: 250px;
+                }
             }
         }
     }

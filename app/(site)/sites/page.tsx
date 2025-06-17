@@ -29,32 +29,20 @@ export default function SitesPage(): ReactElement {
 
             <section id="sites">
                 <section id="change-site-content">
-                    <article 
-                        className={currentSite.title === sites[0].title ? "site-content-link active" : "site-content-link"} 
-                        onClick={() => setCurrentSite(sites[0])}
-                    >
-                         <p>01.</p> <h1>Nesdev</h1> 
+                    <article className={currentSite.title === sites[0].title ? "site-content-link active" : "site-content-link"}>
+                         <p>01.</p> <h1 onClick={() => setCurrentSite(sites[0])}> Nesdev </h1> 
                     </article>
 
-                    <article 
-                        className={currentSite.title === sites[1].title ? "site-content-link active" : "site-content-link"}  
-                        onClick={() => setCurrentSite(sites[1])}
-                    > 
-                        <p>02.</p> <h1>CartDB</h1> 
+                    <article className={currentSite.title === sites[1].title ? "site-content-link active" : "site-content-link"}> 
+                        <p>02.</p> <h1 onClick={() => setCurrentSite(sites[1])}> CartDB </h1> 
                     </article>
                     
-                    <article 
-                        className={currentSite.title === sites[2].title ? "site-content-link active" : "site-content-link"}
-                        onClick={() => setCurrentSite(sites[2])}
-                    > 
-                        <p>03.</p> <h1>Ninja</h1> 
+                    <article className={currentSite.title === sites[2].title ? "site-content-link active" : "site-content-link"}> 
+                        <p>03.</p> <h1 onClick={() => setCurrentSite(sites[2])}> Ninja </h1> 
                     </article>
                     
-                    <article 
-                        className={currentSite.title === sites[3].title ? "site-content-link active" : "site-content-link"} 
-                        onClick={() => setCurrentSite(sites[3])}
-                    > 
-                        <p>04.</p> <h1>Detectives</h1> 
+                    <article className={currentSite.title === sites[3].title ? "site-content-link active" : "site-content-link"}> 
+                        <p>04.</p> <h1 onClick={() => setCurrentSite(sites[3])}> Detectives </h1> 
                     </article>
                 </section>
 
@@ -66,6 +54,8 @@ export default function SitesPage(): ReactElement {
                         > 
                             Overview 
                         </h1>
+
+                        <hr/>
                         
                         <h1 
                             onClick={() => setOverview(false)} 
@@ -83,12 +73,13 @@ export default function SitesPage(): ReactElement {
                                     { currentSite.description }
                                 </div>
 
-                                <Link className="button__link" href={currentSite.link} target="_blank"> Visit </Link> 
+                                <Link className="button__link" href={currentSite.link} target="_blank"> Visit <span className="material-symbols-outlined"> open_in_new </span> </Link> 
                             </section>
                             :
-                            <img src={currentSite.image} className="site-image" />
+                            <Link href={currentSite.image} target="_blank" className="site-image-link">
+                                <img src={currentSite.image} className="site-image" />
+                            </Link>
                     }
-                    
                 </section>
             </section>
         </main>
