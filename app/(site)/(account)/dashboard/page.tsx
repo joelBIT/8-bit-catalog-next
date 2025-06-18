@@ -16,7 +16,6 @@ export default function DashboardPage(): ReactElement {
         <main id="dashboardPage">
             <article className="user-information">
                 <h1> Role: { user.role } </h1>
-                <h1> Email: { user.email } </h1>
             </article>
 
             <EditUserDetailsForm />
