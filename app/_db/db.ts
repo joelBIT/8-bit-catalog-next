@@ -354,6 +354,14 @@ export async function updateEmail(id: number, email: string): Promise<void> {
     }
 }
 
+export async function updateUsername(id: number, username: string): Promise<void> {
+    const { error } = await databaseClient.from(USER_TABLE).update({username}).eq('id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 // Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
 async function updateUserImage(id: number, image: string): Promise<void> {
     const { error } = await databaseClient.from(USER_TABLE).update({image}).eq('id', id);

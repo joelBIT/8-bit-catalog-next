@@ -37,6 +37,7 @@ export type User = {
     last_name: string,
     first_name: string,
     full_name: string,
+    username: string,
     password_hash: string,
     birth_date: string,
     city: string,
