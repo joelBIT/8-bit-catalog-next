@@ -9,7 +9,7 @@
         flex-direction: column;
         align-items: flex-end;
         text-align-last: end;
-        gap: 1rem;
+        gap: 3rem;
 
         & .profile-image {
             border-radius: 250px;
