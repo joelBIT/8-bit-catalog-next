@@ -323,24 +323,44 @@ export async function getAllUsers(): Promise<User[]> {
 }
 
 export async function updateUser(id: number, last_name: string, first_name: string, bio: string): Promise<void> {
-    await databaseClient.from(USER_TABLE).update({last_name, first_name, bio}).eq('id', id);
+    const { error } = await databaseClient.from(USER_TABLE).update({last_name, first_name, bio}).eq('id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 export async function updateUserInformationById(id: number, full_name: string, phone: string, address: string, city: string, country: string, birth_date: string): Promise<void> {
-    await databaseClient.from(USER_TABLE).update({full_name, phone, address, city, country, birth_date}).eq('id', id);
+    const { error } = await databaseClient.from(USER_TABLE).update({full_name, phone, address, city, country, birth_date}).eq('id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 export async function updatePassword(id: number, password_hash: string): Promise<void> {
-    await databaseClient.from(USER_TABLE).update({password_hash}).eq('id', id);
+    const { error } = await databaseClient.from(USER_TABLE).update({password_hash}).eq('id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 export async function updateEmail(id: number, email: string): Promise<void> {
-    await databaseClient.from(USER_TABLE).update({email}).eq('id', id);
+    const { error } = await databaseClient.from(USER_TABLE).update({email}).eq('id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 // Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
 async function updateUserImage(id: number, image: string): Promise<void> {
-    await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
+    const { error } = await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 /**
