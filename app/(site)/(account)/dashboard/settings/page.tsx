@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { EditAccountSettings } from "@/app/_components/account/EditAccountSettings";
+import { EditEmailForm, EditPasswordForm, EditUsernameForm } from "@/app/_components/account";
 
 import "./page.css";
 
@@ -9,7 +9,9 @@ import "./page.css";
 export default function AccountSettingsPage(): ReactElement {
     return (
         <main id="settingsPage">
-            <EditAccountSettings />
+            <EditEmailForm />
+            <EditUsernameForm />
+            <EditPasswordForm />
         </main>
     );
 }
