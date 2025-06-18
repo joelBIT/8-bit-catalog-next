@@ -100,7 +100,9 @@ export function EditAccountSettings(): ReactElement {
                         </section>
                     </section>
 
-                    <button className="button__link" type="submit"> Save </button>
+                    <button className="authButton" type="submit">
+                        <span className="authButton__text"> Update </span>
+                    </button>
                 </form>
             </section>
 

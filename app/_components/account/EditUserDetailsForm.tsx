@@ -150,7 +150,9 @@ export function EditUserDetailsForm(): ReactElement {
                     <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone', autoComplete: "none"}} />
                 </section>
                 
-                <button className="button__link"> Save </button>
+                <button className="authButton" type="submit">
+                    <span className="authButton__text"> Save </span>
+                </button>
             </form>
 
             { 
