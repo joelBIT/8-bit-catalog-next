@@ -55,7 +55,7 @@ export function Search(): ReactElement {
             {
                 searchResult.length > 0 ? 
                     <>
-                        <h1 className="search-result-text"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""} for "${title}"`} </h1>
+                        <h1 className="search-result-text"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
                         <section className="show-pagination-toggle">
                             <div className="invisible" />
 
