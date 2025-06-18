@@ -7,40 +7,58 @@
     & .edit-profile-image {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        text-align-last: end;
+        align-items: center;
         gap: 3rem;
 
         & .profile-image {
-            border-radius: 250px;
-            max-width: 10rem;
-            height: 10rem;
+            border-radius: 100%;
+            width: 15rem;
+            max-width: 15rem;
+            height: 15rem;
         }
 
         & .edit-profile__change-image {
             display: flex;
             flex-direction: column;
+            text-align-last: center;
+            align-items: center;
             gap: 1rem;
+            width: fit-content;
+
+            & > h1 {
+                color: var(--color-footer-heading);
+                font-size: 2rem;
+                width: fit-content;
+            }
 
             & .edit-profile__input {
                 height: 2rem;
                 font-size: 1.2rem;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }
 
     & .button__link {
         padding: .3rem 1rem;
+        align-self: center;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 410px) {
     #editProfileForm {
-        width: 90vw;
+        width: 95vw;
         padding-right: 0.6rem;
 
         & .edit-profile-image {
             & .edit-profile__change-image {
+                & > h1 {
+                    font-size: 1.6rem;
+                }
+
                 & .edit-profile__input {
                     font-size: 0.9rem;
                 }
