@@ -1,0 +1,11 @@
+#editUsernameForm {
+    & .editUsernameForm__title {
+        align-self: center;
+        font-size: 1rem;
+    }
+
+    .message-success,
+    .message-failure {
+        margin-top: 2rem;
+    }
+}

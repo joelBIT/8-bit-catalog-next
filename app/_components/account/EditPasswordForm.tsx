@@ -25,8 +25,8 @@ export function EditPasswordForm(): ReactElement {
     }, [state]);
 
     return (
-        <form id="passwordForm" action={formAction}>
-            <h1 className="accountCard__title"> Change Password </h1>
+        <form id="editPasswordForm" action={formAction}>
+            <h1 className="editPasswordForm__title"> Change Password </h1>
 
             <section id="password-inputs">
                 <section className="input">
