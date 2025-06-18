@@ -1,0 +1,29 @@
+#editUsernameForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40%;
+    margin-bottom: 1rem;
+
+    & .editUsernameForm__title {
+        align-self: center;
+        font-size: 1rem;
+    }
+
+    .message-success,
+    .message-failure {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    #editUsernameForm {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1000px) {
+    #editUsernameForm {
+        width: 80%;
+    }
+}

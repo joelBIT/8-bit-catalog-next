@@ -5,10 +5,16 @@
     background-image: url("../../../../../assets/backgrounds/account_wallpaper.png");
     min-height: 90vh;
     padding-top: 10rem;
+    padding-bottom: 5rem;
+    gap: 4rem;
 }
 
 @media (max-width: 700px) {
     #settingsPage {
+        padding-top: 5rem;
+        align-items: flex-end;
+        padding-right: 1rem;
+
         .message-success, .message-failure {
             font-size: 1rem;
             text-align: center;
@@ -17,9 +23,8 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
     #settingsPage {
-        align-items: flex-end;
-        padding: 1rem;
+        padding-right: 0.5rem;
     }
 }
