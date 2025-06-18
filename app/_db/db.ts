@@ -334,6 +334,10 @@ export async function updatePassword(id: number, password_hash: string): Promise
     await databaseClient.from(USER_TABLE).update({password_hash}).eq('id', id);
 }
 
+export async function updateEmail(id: number, email: string): Promise<void> {
+    await databaseClient.from(USER_TABLE).update({email}).eq('id', id);
+}
+
 // Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
 async function updateUserImage(id: number, image: string): Promise<void> {
     await databaseClient.from(USER_TABLE).update({image}).eq('id', id);

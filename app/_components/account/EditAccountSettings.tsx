@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
 import { AccountContext } from "@/app/_contexts/AccountContextProvider";
-import { updateAccountPassword } from "@/app/_actions/account";
+import { updateAccountEmail, updateAccountPassword } from "@/app/_actions/account";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./EditAccountSettings.css";
@@ -13,7 +13,9 @@ import "./EditAccountSettings.css";
 export function EditAccountSettings(): ReactElement {
     const { user } = useContext(AccountContext);
     const [ state, formAction ] = useActionState(updateAccountPassword.bind(null, user.id), { message: '', success: false });
+    const [ emailState, emailAction ] = useActionState(updateAccountEmail.bind(null, user.id), { message: '', success: false, email: user?.email });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
+    const [ showEmailMessage, setShowEmailMessage ] = useState<boolean>(false);
     const [ isVisible, setVisible ] = useState<boolean>(false);
     const [ isVisibleRepeat, setVisibleRepeat ] = useState<boolean>(false);
     const [ isOldVisible, setOldVisible ] = useState<boolean>(false);
@@ -25,14 +27,46 @@ export function EditAccountSettings(): ReactElement {
                 setShowMessage(false);
             }, 5000);
         }
-    }, [state]);
+
+        if (emailState?.message && !showEmailMessage) {       // Show message for a fixed amount of time
+            setShowEmailMessage(true);
+            setTimeout(() => {
+                setShowEmailMessage(false);
+            }, 5000);
+        }
+    }, [state, emailState]);
 
     return (
         <>
             <section id="accountCard" className={arima.className}>
-                <h1 className="accountCard__title">Change password</h1>
+                <form id="emailForm" action={emailAction}>
+                    <h1 className="accountCard__title">Change Email</h1>
+
+                    <section className="input">
+                        <input 
+                            id="email"
+                            name="email" 
+                            type="email"
+                            placeholder="EMAIL"
+                            className={`${arima.className} form__field`}
+                            defaultValue={emailState?.email ? emailState.email : user?.email} 
+                            autoComplete="off" 
+                            required 
+                        />
+
+                        <span className="form__field-label">
+                            Email
+                        </span>
+                    </section>
+
+                    <button className="authButton" type="submit">
+                        <span className="authButton__text"> Update </span>
+                    </button>
+                </form>
 
                 <form id="passwordForm" action={formAction}>
+                    <h1 className="accountCard__title">Change Password</h1>
+
                     <section id="password-inputs">
                         <section className="input">
                             <input 
@@ -109,6 +143,12 @@ export function EditAccountSettings(): ReactElement {
             { showMessage ? 
                 <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
                     {state?.message}
+                </h2> : <></> 
+            }
+
+            { showEmailMessage ? 
+                <h2 className={emailState?.success ? "message-success message-fade" : "message-failure message-fade"}>
+                    {emailState?.message}
                 </h2> : <></> 
             }
         </>

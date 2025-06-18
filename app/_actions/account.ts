@@ -1,6 +1,6 @@
 'use server';
 
-import { createActivatedAccount, getUserById, updatePassword, updateProfileImageById, updateUser, updateUserInformationById } from "@/app/_db/db";
+import { createActivatedAccount, getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUserInformationById } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
 import { ActionState, InitialUserState } from "@/app/_types/types";
@@ -134,5 +134,26 @@ export async function createUserAndAccount(_prevState: ActionState, formData: Fo
             return { message: error.message, success: false };
         }
         return { message: 'The account could not be created', success: false };
+    }
+}
+
+export async function updateAccountEmail(userId: number, _prevState: {message: string, success: boolean, email: string}, formData: FormData): Promise<{message: string, success: boolean, email: string}> {
+    const authenticated = await isAuthenticated();
+    if (!authenticated) {
+        return { message: 'Must be authenticated to update email', success: false, email: _prevState.email };
+    }
+    
+    const email = formData.get('email') as string;
+    if (!email) {
+        return { message: 'An email address must be supplied', success: false, email: _prevState.email };
+    }
+
+    try {
+        await updateEmail(userId, email);
+
+        return { message: 'The email address was successfully updated', success: true, email: email };
+    } catch (error) {
+        console.log(error);
+        return { message: 'The email address could not be updated', success: false, email: _prevState.email };
     }
 }
