@@ -3,12 +3,15 @@
     flex-direction: column;
     align-items: center;
     background-image: url("../../../../../assets/backgrounds/account_wallpaper.png");
-    min-height: 100vh;
+    min-height: 90vh;
     padding-top: 10rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
     #profilePage {
+        padding-top: 5rem;
+        padding-left: 2rem;
+
         .message-success, .message-failure {
             font-size: 1rem;
             text-align: center;

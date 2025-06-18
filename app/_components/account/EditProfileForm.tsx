@@ -14,17 +14,17 @@ export function EditProfileForm(): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     useEffect(() => {
-            if (state?.message && !showMessage) {       // Show message for a fixed amount of time
-                setShowMessage(true);
-                setTimeout(() => {
-                    setShowMessage(false);
-                }, 5000);
-            }
+        if (state?.message && !showMessage) {       // Show message for a fixed amount of time
+            setShowMessage(true);
+            setTimeout(() => {
+                setShowMessage(false);
+            }, 5000);
+        }
 
-            if (state.success) {
-                addUser();      // Update user in AccountContext
-            }
-        }, [state]);
+        if (state.success) {
+            addUser();      // Update user in AccountContext
+        }
+    }, [state]);
 
     return (
         <>
@@ -32,10 +32,10 @@ export function EditProfileForm(): ReactElement {
                 <section className="edit-profile-image">
                     <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + user?.image} className="profile-image" alt="Profile image" />
 
-                    <h2 className="edit-profile__change-image"> 
-                        Change profile image 
+                    <section className="edit-profile__change-image"> 
+                        <h1> Change profile image </h1> 
                         <input name="profileImage" className="edit-profile__input" type="file" accept={imageTypes.toString()} />
-                    </h2>
+                    </section>
                 </section>
 
                 <button className="button__link" > Update </button>
