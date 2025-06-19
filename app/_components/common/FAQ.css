@@ -4,6 +4,7 @@
     width: 50rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid #f0cca430;
+    z-index: 1;
 
     & .faq-card {
         display: flex;
