@@ -125,8 +125,9 @@ export async function textSearch(filters: SearchFilter): Promise<SearchResult> {
         query = query.eq('publisher', filters.publisher);
     }
 
-    const { data, error, count } = await query.textSearch('description', `${filters.title.replaceAll(' ', ' & ')}`)
-    .range(from(parseInt(filters.page)), to(parseInt(filters.page)));
+    const { data, error, count } = await query.textSearch('title', `${filters.title.replaceAll(' ', ' & ')
+        .replaceAll(' the ', ' & ').replaceAll(' in ', ' & ').replaceAll(' jr. ', ' & ').replaceAll(' of ', ' & ').replaceAll(' and ', ' & ')}`)
+        .range(from(parseInt(filters.page)), to(parseInt(filters.page)));
 
     if (error) {
         console.log(error);
