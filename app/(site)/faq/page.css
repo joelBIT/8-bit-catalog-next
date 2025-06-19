@@ -3,13 +3,16 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    background: linear-gradient(to top left, var(--color-black) 70%, var(--color-black-light));
+    background: var(--color-real-black);
     padding-bottom: 10rem;
     padding-top: 10rem;
+    overflow-x: hidden;
+    position: relative;
 
     & .title-section {
         width: 70%;
         align-self: center;
+        z-index: 1;
 
         & .faqPage-title {
             font-size: 3rem;
@@ -29,6 +32,7 @@
         display: flex;
         gap: 2rem;
         padding: 2rem 0;
+        z-index: 1;
 
         & .toggle-button {
             padding: 0.2rem 1rem;
@@ -52,6 +56,17 @@
             color: var(--color-black);
             border-color: var(--color-link-active);
         }
+    }
+
+    & #faq-background {
+        position: fixed;
+        top: 0;
+        filter: brightness(0.2);
+        height: 100%;
+    }
+
+    & .faq:last-of-type {
+        border: none;
     }
 }
 

@@ -30,7 +30,7 @@ export default function FaqPage(): ReactElement {
         <main id="faqPage">
             <section className="title-section">
                 <h1 className="faqPage-title bit-font"> Frequently Asked Questions </h1>
-                <h2 className="title-text"> The most frequently asked questions are gathered here. If you do not find what you are looking for, let me know, and I will be happy to assist you. </h2>
+                <h2 className="title-text"> The most popular questions are gathered here. If you do not find what you are looking for, let me know, and I will be happy to assist you. </h2>
             </section>
 
             <section className="faq-toggle-topics">
@@ -44,6 +44,8 @@ export default function FaqPage(): ReactElement {
             { faqPage === FAQ_ACCOUNT ? faqs?.filter(faq => faq.type === FAQ_ACCOUNT).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
 
             { faqPage === FAQ_GAMES ? faqs?.filter(faq => faq.type === FAQ_GAMES).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
+   
+            <img src="/faq.png" alt="Catalog FAQ background image" id="faq-background" />
         </main>
     );
 }
