@@ -403,6 +403,22 @@ export async function emailExists(email: string): Promise<boolean> {
     return true;
 }
 
+/**
+ * Check if supplied password hash is a match for the given email address.
+ */
+export async function isCurrentPassword(email: string, password_hash: string): Promise<boolean> {
+    const { data, error } = await databaseClient.from(USER_TABLE).select().eq('email', email).single();
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+
+    if (data.password_hash === password_hash) {
+        return true;
+    }
+    return false;
+}
+
 
 
 

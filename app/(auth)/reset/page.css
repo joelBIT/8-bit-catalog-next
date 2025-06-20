@@ -1,0 +1,88 @@
+#resetPasswordPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: fixed;
+    background-image: url("../../../assets/backgrounds/nes-gaming-set-in-dark.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+
+    & .email-parameter {
+        font-size: 1.4rem;
+        margin-bottom: 3rem;
+        padding: 1rem;
+    }
+
+    & #resetPasswordForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 30%;
+        margin-bottom: 1rem;
+
+        & .resetPasswordForm__title {
+            align-self: center;
+            font-size: 1rem;
+        }
+        
+        & #password-inputs {
+            & .input:first-of-type {
+                margin-bottom: 1rem;
+                border-radius: 6px 6px 6px 6px;
+            }
+
+            & .input:nth-of-type(2) {
+                border-radius: 6px 6px 0 0;
+                border-bottom: 0.5px solid var(--color-auth-border-bottom);
+            }
+        }
+
+        .message-success,
+        .message-failure {
+            margin-top: 2rem;
+        }
+
+        & #login-link-section {
+            display: flex;
+            margin-top: 1.5rem;
+
+            & #login-link {
+                padding: 0;
+                background: var(--color-auth-background);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                font-size: .8rem;
+                font-weight: 600;
+                text-align: center;
+                align-content: center;
+                text-transform: uppercase;
+                cursor: pointer;
+                color: var(--color-white);
+                transition: all .25s;
+
+                &:hover {
+                    background-color: var(--color-real-white);
+                    color: var(--color-black);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    #resetPasswordPage {
+        #resetPasswordForm {
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    #resetPasswordPage {
+        #resetPasswordForm {
+            width: 80%;
+        }
+    }
+}
