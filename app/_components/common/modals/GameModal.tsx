@@ -46,6 +46,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                         className={suppliedGames.length < 5 ? "hidden" : "item first-game"}
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.cover}
                         onClick={twicePrevSlide}
+                        title={suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.title}
                         alt="Game 2 clicks back"
                     />
 
@@ -53,12 +54,14 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                         className={suppliedGames.length < 2 ? "hidden" : `item previous-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.cover}
                         onClick={prevSlide}
+                        title={suppliedGames[slide === 0 ? games.length - 1 : slide - 1]?.title}
                         alt="Previous game"
                     />
 
                     <img
                         className={`item selected-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide]?.cover}
+                        title={suppliedGames[slide]?.title}
                         alt="Current game"
                     />
 
@@ -66,6 +69,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                         className={suppliedGames.length < 3 ? "hidden" : `item next-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 0 : slide + 1]?.cover}
                         onClick={nextSlide}
+                        title={suppliedGames[slide === games.length - 1 ? 0 : slide + 1]?.title}
                         alt="Next game"
                     />
 
@@ -73,6 +77,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                         className={suppliedGames.length < 4 ? "hidden" : `item last-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.cover}
                         onClick={twiceNextSlide}
+                        title={suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.title}
                         alt="Game 2 clicks forward"
                     />
                 </section>
