@@ -7,7 +7,6 @@
 -   [Introduction](#introduction)
 -   [Features](#features)
 -   [Screenshots](#screenshots)
--   [Roadmap](#roadmap)
 
 </details>
 
@@ -75,10 +74,3 @@ The 8-bit Catalog is a searchable library of games released for the Nintendo Ent
 
 
 
-<br>
-<a name="roadmap"></a>
-
-## Roadmap
-  -  Finish functionality related to accounts.
-  -  Migrate from Supabase to a standalone Postgres server.
-  -  Deploy the project as a Docker image on AWS.
