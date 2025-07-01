@@ -39,7 +39,7 @@ footer {
 
 @media (max-width: 800px) {
     footer {
-        #footerComponents {
+        & #footerComponents {
             margin-left: 2rem;
             margin-right: 2rem;
         }
@@ -48,16 +48,20 @@ footer {
 
 @media (max-width: 500px) {
     footer {
-        #footerComponents {
+        & #footerComponents {
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 1rem;
             margin-left: 0.5rem;
             margin-right: 0.5rem;
 
             & a {
                 text-align: center;
             }
+        }
+
+        & #copyright {
+            padding-top: 0;
         }
     }
 }
