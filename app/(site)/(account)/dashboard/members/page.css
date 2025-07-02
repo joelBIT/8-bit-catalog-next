@@ -24,6 +24,9 @@
 
             > input {
                 padding-left: 2.5rem;
+                font-size: 1rem;
+                border-radius: 9px;
+                outline: none;
             }
 
             & .material-symbols-outlined {
@@ -38,7 +41,7 @@
 
         & .add-member__button {
             width: fit-content;
-            padding: 0.5rem 1rem;
+            padding: 0.2rem 0.5rem;
         }
     }
 
