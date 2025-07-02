@@ -53,7 +53,8 @@ export default function MembersPage(): ReactElement {
             <section id="heading">
                 <search className="search-members">
                     <span className="material-symbols-outlined"> search </span>
-                    <input 
+                    <input
+                        id="searchMember"
                         className={`${arima.className}`} 
                         type="text" 
                         placeholder="Search by email" 

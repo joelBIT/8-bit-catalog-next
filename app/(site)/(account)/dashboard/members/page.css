@@ -36,7 +36,7 @@
         & .search-members {
             display: flex;
 
-            > input {
+            & #searchMember {
                 padding-left: 2.5rem;
                 font-size: 1rem;
                 border-radius: 9px;
@@ -55,6 +55,7 @@
 
         & .add-member__button {
             width: fit-content;
+            font-size: 1.5rem;
             padding: 0.2rem 0.5rem;
         }
     }
@@ -86,15 +87,11 @@
 @media (max-width: 1300px) {
     #membersPage {
         #heading {
-            margin-left: 2rem;
-
-            & .search-members > input {
-                width: 13rem;
-                font-size: 1rem;
-            }
-
-            & .add-member__button {
-                font-size: 1rem;
+            & .search-members {
+                & #searchMember {
+                    width: 14rem;
+                    font-size: 1rem;
+                }
             }
         }
     }
@@ -108,6 +105,10 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 1.5rem;
+
+            & .add-member__button {
+                font-size: 1rem;
+            }
         }
 
         #members-list { 
@@ -162,6 +163,8 @@
 
 @media (max-width: 500px) {
     #membersPage {
+        padding-top: 5rem;
+
         #members-list { 
             width: 79vw;
         }
