@@ -12,6 +12,20 @@
         font-size: 3rem;
         font-weight: 300;
         padding-bottom: 1rem;
+        color: var(--color-footer-heading);
+        position: relative;
+
+        & #members-count {
+            position: absolute;
+            font-size: 1rem;
+            top: 10px;
+            color: var(--color-white);
+            right: -22px;
+            background-color: var(--color-black-light);
+            border-radius: 100%;
+            padding: 0.1rem 0.3rem;
+            font-family: 'rancho';
+        }
     }
 
     #heading {
