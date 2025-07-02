@@ -309,6 +309,10 @@ textarea {
     background-color: hsl(from var(--color-warning) h s l / 0.2);
 }
 
+.message-fade {
+    margin-top: 1rem;
+}
+
 
 
 
