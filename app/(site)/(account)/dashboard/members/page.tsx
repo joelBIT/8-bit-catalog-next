@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { User } from "@/app/_types/types";
-import { arima } from "@/app/_fonts/fonts";
+import { arima, rancho } from "@/app/_fonts/fonts";
 import { getUsers } from "@/app/_client/client";
 import { AddUserModal, UserListEntry } from "@/app/_components/common";
 
@@ -42,13 +42,19 @@ export default function MembersPage(): ReactElement {
 
     return (
         <main id="membersPage">
-            <h1 className="title"> Members </h1>
+            <h1 className="title">
+                Members {
+                members?.length > 0 ?
+                    <p id="members-count" className={`material-symbols-outlined ${rancho.className}`}>
+                        {members?.length}
+                    </p> : <></>
+                }
+            </h1>
             <section id="heading">
-                <h2 className="members-count__text"> All members ({members.length}) </h2>
-
                 <search className="search-members">
                     <span className="material-symbols-outlined"> search </span>
-                    <input 
+                    <input
+                        id="searchMember"
                         className={`${arima.className}`} 
                         type="text" 
                         placeholder="Search by email" 
