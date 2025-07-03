@@ -1,52 +1,77 @@
 .userListEntry {
     display: flex;
+    height: 4rem;
+    width: 100%;
     align-items: center;
-    gap: 2rem;
-    color: var(--color-black);
-    border-radius: 8px;
-    justify-content: space-between;
-    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+    border-top: 1px solid var(--color-list-border);
+    position: relative;
 
-    & .profile-info {
+    & .userCard-name__heading,
+    .userCard-role__heading,
+    .userCard-account__heading,
+    .userCard-enrolled__heading {
+        display: none;
+    }
+
+    & .image-modal-show {
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 20vw;
+        position: absolute;
+        left: 3rem;
+        z-index: 10;
 
-        & .member-name {
-            display: flex;
-            flex-direction: column;
-
-            & .member-name__email {
-                font-size: 1rem;
-            }
-        }
-
-        & .listEntry-figure {
-            align-content: center;
-    
-            & .listEntry-figure__cover {
-                border-radius: 180px;
-                margin: 0.2rem;
-                margin-left: 0.5rem;
-                width: 4rem;
-                height: 4rem;
-                vertical-align: middle;
-            }
+        & .listEntry-figure__cover {
+            width: 15rem;
+            height: 20rem;
+            border-radius: 9px;
         }
     }
 
-    & .admin-role, & .account-inactive {
-        border-radius: 9px;
-        padding: 0.4rem;
+    & .listEntry-figure__cover {
+        width: 2rem;
+        height: 2.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
-    & .admin-role {
-        background-color: #6ebd77c2;
+    & .userCard-email {
+        text-align: left;
+        padding-left: 1rem;
+        width: 30%;
+
+        & .userCard-email__link {
+            transition: all 0.5s;
+            width: fit-content;
+
+            &:hover {
+                cursor: pointer;
+                filter: brightness(0.5);
+                transition: filter 0.5s;
+            }
+        }
     }
 
-    & .account-inactive {
-        background-color: #74171788;
+    & .userCard-name,
+    .userCard-role,
+    .userCard-account,
+    .userCard-enrolled {
+        font-size: 1.2rem;
+        font-weight: 100;
+        color: var(--color-nintendo-gray);
+    }
+
+    & .name-section {
+        width: 20%;
+    }
+
+    & .role-section {
+        width: 10%;
+    }
+
+    & .account-section,
+    .enrolled-section {
+        width: 20%;
     }
 
     & .enrollment-date {
