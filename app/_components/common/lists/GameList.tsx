@@ -17,7 +17,7 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     const { selectedGame, setSelectedGame } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
-    const showModal = params.get('show') ? true : false;
+    const showModal = !!params.get('show');
     const [ active, setActive ] = useState<string>('');
     const [ ascending, setAscending ] = useState<boolean>(false);
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
