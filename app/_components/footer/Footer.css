@@ -37,6 +37,13 @@ footer {
     }
 }
 
+.landing {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: transparent;
+}
+
 @media (max-width: 800px) {
     footer {
         & #footerComponents {

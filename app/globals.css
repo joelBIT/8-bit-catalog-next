@@ -49,6 +49,7 @@ body {
     flex-direction: column;
     color: var(--color-white);
     min-height: 100svh;
+    position: relative;
 
     main {
         flex: 5;
