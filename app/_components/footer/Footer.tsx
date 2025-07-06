@@ -1,11 +1,16 @@
+'use client';
+
 import { ReactElement } from "react";
+import { usePathname } from "next/navigation";
 import { SiteLinks, Text } from ".";
 
 import "./Footer.css";
 
 export function Footer(): ReactElement {
+    const pathname = usePathname();
+
     return (
-        <footer>
+        <footer className={pathname === "/" || pathname === "/sites" ? "landing" : ""}>
             <section id="footerComponents">
                 <Text />
                 <SiteLinks />

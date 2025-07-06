@@ -7,6 +7,7 @@
     padding-bottom: 5rem;
     background-color: var(--color-black);
     background: linear-gradient(to bottom, var(--color-black) 70%, var(--color-black-light));
+    position: relative;
 
     & #sitesBackground {
         background-image: url("/sites_background.jpeg");
@@ -54,6 +55,7 @@
         width: 80%;
         gap: 4rem;
         background: transparent;
+        padding-bottom: 10rem;
 
         & #change-site-content {
             display: flex;
