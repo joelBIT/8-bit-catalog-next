@@ -24,7 +24,7 @@
             background-color: var(--color-black-light);
             border-radius: 100%;
             padding: 0.1rem 0.3rem;
-            font-family: 'rancho';
+            font-family: 'rancho', serif;
         }
     }
 
@@ -59,29 +59,6 @@
             padding: 0.2rem 0.5rem;
         }
     }
-
-    #members-list {
-        display: flex;
-        flex-direction: column;
-        margin-top: 3rem;
-        margin-bottom: 2rem;
-        gap: 1rem;
-        width: 80vw;
-
-        & .members-list__heading {
-            display: flex;
-            justify-content: space-between;
-
-            & .members-list__heading-name {
-                width: 20vw;
-                padding-left: 5rem;
-            }
-
-            & .members-list__heading-joined {
-                width: 14vw;
-            }
-        }
-    }
 }
 
 @media (max-width: 1300px) {
@@ -110,63 +87,11 @@
                 font-size: 1rem;
             }
         }
-
-        #members-list { 
-            width: 87vw;
-            margin-left: 2rem;
-
-            & .members-list__heading {
-                & .members-list__heading-name {
-                    width: 22vw;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 900px) {
-    #membersPage {
-        #members-list { 
-            width: 87vw;
-            margin-left: 2rem;
-
-            & .members-list__heading {
-                font-size: 0.7rem;
-
-                & .members-list__heading-name {
-                    width: 48vw;
-                }
-
-                & .members-list__heading-joined {
-                    text-align: center;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 650px) {
-    #membersPage {
-        #members-list { 
-            & .members-list__heading {
-                & .members-list__heading-name {
-                    width: 37vw;
-                }
-
-                > h2 {
-                    font-size: 1rem;
-                }
-            }
-        }
     }
 }
 
 @media (max-width: 500px) {
     #membersPage {
         padding-top: 5rem;
-
-        #members-list { 
-            width: 79vw;
-        }
     }
 }

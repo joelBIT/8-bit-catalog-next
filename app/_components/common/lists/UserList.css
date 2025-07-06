@@ -1,3 +1,14 @@
 #userList {
     display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    & #listHeading {
+        display: flex;
+        justify-content: space-around;
+
+        & .user-email {
+            width: 34%;
+        }
+    }
 }
