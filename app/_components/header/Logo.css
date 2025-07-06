@@ -8,3 +8,9 @@
         filter: drop-shadow(12px -6px 16px black);
     }
 }
+
+@media (max-width: 500px) {
+    #logo {
+        padding-bottom: 5rem;
+    }
+}
