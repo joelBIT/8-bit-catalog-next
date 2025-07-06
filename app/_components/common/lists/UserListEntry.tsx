@@ -11,7 +11,7 @@ import "./UserListEntry.css";
  * Corresponds to an entry in a user list. The 'active' parameter is true is the user's account is activated, false otherwise.
  * The 'enrolled' parameter is the date when the user was registered.
  */
-export function UserListEntry({ user, active } : { user: User, active: boolean }): ReactElement {
+export function UserListEntry({ user, active, click } : { user: User, active: boolean, click: (user: User) => void }): ReactElement {
     const [ showModal, setShowModal ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
@@ -27,6 +27,7 @@ export function UserListEntry({ user, active } : { user: User, active: boolean }
                 className="listEntry-figure__cover"
                 onMouseEnter={() => setShowModal(true)}
                 onMouseLeave={() => setShowModal(false)}
+                onClick={() => click(user)}
                 alt="Member profile image"
                 width={100}
                 height={100}
@@ -44,7 +45,7 @@ export function UserListEntry({ user, active } : { user: User, active: boolean }
             </section>
 
             <h2 className="userCard-email">
-                <section className="userCard-email__link">
+                <section className="userCard-email__link" onClick={() => click(user)}>
                     {user.email}
                 </section>
             </h2>

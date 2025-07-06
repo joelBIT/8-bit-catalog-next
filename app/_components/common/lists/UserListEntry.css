@@ -6,6 +6,7 @@
     align-items: center;
     border-top: 1px solid var(--color-list-border);
     position: relative;
+    font-size: 0.8rem;
 
     & .userCard-name__heading,
     .userCard-role__heading,
@@ -83,61 +84,113 @@
 
 @media (max-width: 1100px) {
     .userListEntry {
-        font-size: 0.8rem;
+        display: grid;
+        grid-template-columns: 0.8fr 4fr 2fr 2fr;
+        grid-template-rows: 2fr 1fr 1fr;
+        height: 8rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        & a:first-of-type {
+            width: fit-content;
+        }
+
+        & .userCard-name__heading,
+        .userCard-role__heading,
+        .userCard-account__heading,
+        .userCard-enrolled__heading {
+            display: block;
+            color: var(--color-footer-heading);
+            font-weight: 100;
+            font-size: 1rem;
+            grid-row: 2;
+            width: 100%;
+        }
+
+        & .name-section {
+            grid-column: 2 / 3;
+            padding-left: 4rem;
+        }
+
+        & .role-section {
+            grid-column: 1 / 2;
+        }
+
+        & .account-section {
+            grid-column: 3 / 4;
+        }
+
+        & .enrolled-section {
+            grid-column: 4 / 5;
+        }
+
+        & .name-section,
+        .role-section,
+        .account-section,
+        .enrolled-section {
+            grid-row: 3;
+            width: 100%;
+        }
+
+        & .userCard-email {
+            grid-column: 2 / 4;
+            grid-row: 1;
+            width: 100%;
+        }
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
     .userListEntry {
-        font-size: 0.7rem;
+        height: fit-content;
+        max-height: 15rem;
+        padding-left: 1rem;
 
-        & .profile-info {
-            width: 45vw;
+        & .userCard-role__heading,
+        .userCard-enrolled__heading {
+            padding-top: 0.5rem;
         }
-        
-        & .enrollment-date {
-            width: 12vw;
+
+        & .name-section,
+        .role-section {
+            grid-column: 1 / 3;
+            align-self: flex-start;
+        }
+
+        & .account-section,
+        .enrolled-section {
+            grid-column: 3 / 5;
+            align-self: flex-start;
+        }
+
+        & .name-section,
+        .account-section {
+            grid-row: 2;
+            padding-left: 0;
+        }
+
+        & .role-section,
+        .enrolled-section {
+            grid-row: 3;
+        }
+
+        & .userCard-title {
+            font-size: 1.3rem;
         }
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 450px) {
     .userListEntry {
-        font-size: 0.6rem;
-        height: 3rem;
-
-        & .profile-info {
-            padding-left: 1rem;
-            width: 35vw;
-
-            & .listEntry-figure {
-                display: none;
-            }
-
-            & .member-name {    
-                & .member-name__email {
-                    font-size: 0.6rem;
-                }
-            }
+        & .userCard-email {
+            font-size: 0.8rem;
         }
-        
-        & .enrollment-date {
-            width: 12vw;
-        }
-    }
-}
 
-@media (max-width: 500px) {
-    .userListEntry {
-        font-size: 0.5rem;
-
-        & .profile-info {
-            padding-left: 0.5rem;
-            width: 20vw;
-        }
-        
-        & .enrollment-date {
-            padding-right: 0.5rem;
+        & .userCard-name,
+        .userCard-role,
+        .userCard-account,
+        .userCard-enrolled {
+            font-size: 1rem;
         }
     }
 }

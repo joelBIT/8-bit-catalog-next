@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useEffect, useRef, useState } from 'react';
-import { GameDetailsCard } from '../../gamedetails/GameDetailsCard';
+import { GameDetailsCard } from '@/app/_components/gamedetails';
 import { Game } from '@/app/_types/types';
 
 import "./GameModal.css";
