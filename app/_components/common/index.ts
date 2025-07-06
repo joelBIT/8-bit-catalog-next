@@ -11,4 +11,6 @@ export * from "./modals/Modal";
 export * from "./ScrollTopButton";
 export * from "./SelectCountry";
 export * from "./lists/SlidingToggle";
+export * from "./lists/UserList";
 export * from "./lists/UserListEntry";
+export * from "./modals/UserModal";

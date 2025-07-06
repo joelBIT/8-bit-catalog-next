@@ -1,52 +1,79 @@
 .userListEntry {
     display: flex;
-    align-items: center;
-    gap: 2rem;
-    color: var(--color-black);
-    border-radius: 8px;
     justify-content: space-between;
-    background: linear-gradient(var(--color-nintendo-gray), var(--color-form));
+    height: 4rem;
+    width: 100%;
+    align-items: center;
+    border-top: 1px solid var(--color-list-border);
+    position: relative;
+    font-size: 0.8rem;
 
-    & .profile-info {
+    & .userCard-name__heading,
+    .userCard-role__heading,
+    .userCard-account__heading,
+    .userCard-enrolled__heading {
+        display: none;
+    }
+
+    & .image-modal-show {
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 20vw;
+        position: absolute;
+        left: 3rem;
+        z-index: 10;
 
-        & .member-name {
-            display: flex;
-            flex-direction: column;
-
-            & .member-name__email {
-                font-size: 1rem;
-            }
-        }
-
-        & .listEntry-figure {
-            align-content: center;
-    
-            & .listEntry-figure__cover {
-                border-radius: 180px;
-                margin: 0.2rem;
-                margin-left: 0.5rem;
-                width: 4rem;
-                height: 4rem;
-                vertical-align: middle;
-            }
+        & .listEntry-figure__cover {
+            width: 15rem;
+            height: 20rem;
+            border-radius: 9px;
         }
     }
 
-    & .admin-role, & .account-inactive {
-        border-radius: 9px;
-        padding: 0.4rem;
+    & .listEntry-figure__cover {
+        width: 2rem;
+        height: 2.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
-    & .admin-role {
-        background-color: #6ebd77c2;
+    & .userCard-email {
+        text-align: left;
+        padding-left: 1rem;
+        width: 30%;
+
+        & .userCard-email__link {
+            transition: all 0.5s;
+            width: fit-content;
+
+            &:hover {
+                cursor: pointer;
+                filter: brightness(0.5);
+                transition: filter 0.5s;
+            }
+        }
     }
 
-    & .account-inactive {
-        background-color: #74171788;
+    & .userCard-name,
+    .userCard-role,
+    .userCard-account,
+    .userCard-enrolled {
+        font-size: 1.2rem;
+        font-weight: 100;
+        color: var(--color-nintendo-gray);
+    }
+
+    & .name-section {
+        width: 20%;
+    }
+
+    & .role-section {
+        width: 10%;
+    }
+
+    & .account-section,
+    .enrolled-section {
+        width: 10%;
     }
 
     & .enrollment-date {
@@ -57,61 +84,113 @@
 
 @media (max-width: 1100px) {
     .userListEntry {
-        font-size: 0.8rem;
+        display: grid;
+        grid-template-columns: 0.8fr 4fr 2fr 2fr;
+        grid-template-rows: 2fr 1fr 1fr;
+        height: 8rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        & a:first-of-type {
+            width: fit-content;
+        }
+
+        & .userCard-name__heading,
+        .userCard-role__heading,
+        .userCard-account__heading,
+        .userCard-enrolled__heading {
+            display: block;
+            color: var(--color-footer-heading);
+            font-weight: 100;
+            font-size: 1rem;
+            grid-row: 2;
+            width: 100%;
+        }
+
+        & .name-section {
+            grid-column: 2 / 3;
+            padding-left: 4rem;
+        }
+
+        & .role-section {
+            grid-column: 1 / 2;
+        }
+
+        & .account-section {
+            grid-column: 3 / 4;
+        }
+
+        & .enrolled-section {
+            grid-column: 4 / 5;
+        }
+
+        & .name-section,
+        .role-section,
+        .account-section,
+        .enrolled-section {
+            grid-row: 3;
+            width: 100%;
+        }
+
+        & .userCard-email {
+            grid-column: 2 / 4;
+            grid-row: 1;
+            width: 100%;
+        }
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
     .userListEntry {
-        font-size: 0.7rem;
+        height: fit-content;
+        max-height: 15rem;
+        padding-left: 1rem;
 
-        & .profile-info {
-            width: 45vw;
+        & .userCard-role__heading,
+        .userCard-enrolled__heading {
+            padding-top: 0.5rem;
         }
-        
-        & .enrollment-date {
-            width: 12vw;
+
+        & .name-section,
+        .role-section {
+            grid-column: 1 / 3;
+            align-self: flex-start;
+        }
+
+        & .account-section,
+        .enrolled-section {
+            grid-column: 3 / 5;
+            align-self: flex-start;
+        }
+
+        & .name-section,
+        .account-section {
+            grid-row: 2;
+            padding-left: 0;
+        }
+
+        & .role-section,
+        .enrolled-section {
+            grid-row: 3;
+        }
+
+        & .userCard-title {
+            font-size: 1.3rem;
         }
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 450px) {
     .userListEntry {
-        font-size: 0.6rem;
-        height: 3rem;
-
-        & .profile-info {
-            padding-left: 1rem;
-            width: 35vw;
-
-            & .listEntry-figure {
-                display: none;
-            }
-
-            & .member-name {    
-                & .member-name__email {
-                    font-size: 0.6rem;
-                }
-            }
+        & .userCard-email {
+            font-size: 0.8rem;
         }
-        
-        & .enrollment-date {
-            width: 12vw;
-        }
-    }
-}
 
-@media (max-width: 500px) {
-    .userListEntry {
-        font-size: 0.5rem;
-
-        & .profile-info {
-            padding-left: 0.5rem;
-            width: 20vw;
-        }
-        
-        & .enrollment-date {
-            padding-right: 0.5rem;
+        & .userCard-name,
+        .userCard-role,
+        .userCard-account,
+        .userCard-enrolled {
+            font-size: 1rem;
         }
     }
 }

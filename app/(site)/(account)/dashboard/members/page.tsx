@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { User } from "@/app/_types/types";
 import { arima, rancho } from "@/app/_fonts/fonts";
 import { getUsers } from "@/app/_client/client";
-import { AddUserModal, UserListEntry } from "@/app/_components/common";
+import { AddUserModal, UserList } from "@/app/_components/common";
 
 import "./page.css";
 
@@ -50,6 +50,7 @@ export default function MembersPage(): ReactElement {
                     </p> : <></>
                 }
             </h1>
+
             <section id="heading">
                 <search className="search-members">
                     <span className="material-symbols-outlined"> search </span>
@@ -68,16 +69,7 @@ export default function MembersPage(): ReactElement {
 
             { modal ? <AddUserModal close={close} /> : <></> }
 
-            <section id="members-list">
-                <section className="members-list__heading">
-                    <h2 className="members-list__heading-name"> Name </h2>
-                    <h2> Role </h2>
-                    <h2> Account </h2>
-                    <h2 className="members-list__heading-joined"> Joined </h2>
-                </section>
-
-                { result.map(member => <UserListEntry user={member} active={true} key={member.email} />) }
-            </section>
+            <UserList users={result} />
         </main>
     );
 }
