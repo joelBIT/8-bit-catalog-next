@@ -20,17 +20,75 @@
 
     & #user-information {
         display: flex;
-        height: 45%;
-    }
-
-    & #info-links {
-        display: flex;
         gap: 2rem;
+        height: 45%;
+        color: var(--color-real-white);
+
+        & .profile-image {
+            border-radius: 9px;
+        }
+
+        & #user-name {
+            font-size: 3rem;
+        }
+
+        & #user-details {
+            display: flex;
+            flex-direction: column;
+            align-self: flex-end;
+            gap: 1rem;
+
+            & #user-address {
+                color: var(--color-nintendo-gray);
+                font-size: 1rem;
+            }
+        }
+
+        & #private-message {
+            width: fit-content;
+        }
     }
 
-    & #link-page {
+    & #user-pages {
         display: flex;
-        height: 45%;
+        flex-wrap: wrap;
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"]:checked + label + .tab {
+            display: block;
+        }
+
+        input[type="radio"]:checked + label {
+            background: var(--color-black-light);
+        }
+
+        label {
+            padding: 1rem;
+            background: var(--color-black);
+            font-weight: bold;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        label:hover {
+            cursor: pointer;
+        }
+
+        .tab {
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-black-light);
+            order: 1;
+            display: none;
+            text-align: left;
+            padding: 2rem;
+            border-top-right-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
     }
 
     & .closeButton {

@@ -24,15 +24,44 @@ export function UserModal({ user, close }: { user: User, close: () => void }): R
 
             <section id="user-information">
                 <img src={STORAGE_URL + user?.image} className="profile-image" alt="Profile image" />
+
+                <section id="user-details">
+                    <h1 id="user-name"> {user.first_name + " " + user.last_name} </h1>
+
+                    <section id="user-address">
+                        <h2> {user.address} </h2>
+                        <h2> {user.city + ", " + user.country} </h2>
+                    </section>
+
+                    <button id="private-message" className="button__link">
+                        Message
+                    </button>
+                </section>
             </section>
 
-            <section id="info-links">
-                <h2> Favourites </h2>
-                <h2> About </h2>
-            </section>
+            <section id="user-pages">
+                <input type="radio" id="tabFavourites" name="tabs" defaultChecked/>
+                <label htmlFor="tabFavourites">Favourites</label>
+                <div className="tab">
+                    <section id="ingredientInformation">
+                        <article id="favouritesList">
+                            <h1>
+                                Ett spel
+                            </h1>
+                            <h1>
+                                Ett till spel
+                            </h1>
+                        </article>
+                    </section>
+                </div>
 
-            <section id="link-page">
-
+                <input type="radio" id="tabAbout" name="tabs" />
+                <label htmlFor="tabAbout">About</label>
+                <div className="tab">
+                    <section>
+                        <h3> {user.bio} </h3>
+                    </section>
+                </div>
             </section>
         </dialog>
     );
