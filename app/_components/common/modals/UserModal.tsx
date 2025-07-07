@@ -10,6 +10,7 @@ import "./UserModal.css";
  */
 export function UserModal({ user, close }: { user: User, close: () => void }): ReactElement {
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     useEffect(() => {
         if (!dialogRef.current?.open) {
@@ -19,8 +20,20 @@ export function UserModal({ user, close }: { user: User, close: () => void }): R
 
     return (
         <dialog id="userModal" ref={dialogRef}>
-            { user.id }
             <span onClick={close} className="closeButton" />
+
+            <section id="user-information">
+                <img src={STORAGE_URL + user?.image} className="profile-image" alt="Profile image" />
+            </section>
+
+            <section id="info-links">
+                <h2> Favourites </h2>
+                <h2> About </h2>
+            </section>
+
+            <section id="link-page">
+
+            </section>
         </dialog>
     );
 }

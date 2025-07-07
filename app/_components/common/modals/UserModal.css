@@ -1,3 +1,47 @@
 #userModal {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed;
+    padding: 2rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 8px;
+    background-color: black;
+    color: var(--color-white);
+    border: 1px solid var(--color-real-white);
+    border-right: none;
+    border-left: none;
+    scrollbar-color: var(--color-black) #FFFFFF20;
+    overflow-x: hidden;
+
+    & #user-information {
+        display: flex;
+        height: 45%;
+    }
+
+    & #info-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    & #link-page {
+        display: flex;
+        height: 45%;
+    }
+
+    & .closeButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    #userModal {
+        width: 100%;
+    }
 }
