@@ -1,10 +1,12 @@
 'use client';
 
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { ReactElement, useContext, useEffect, useRef, useState } from "react";
+import { AccountContext } from "@/app/_contexts";
 import { User } from "@/app/_types/types";
 import { arima, rancho } from "@/app/_fonts/fonts";
 import { getUsers } from "@/app/_client/client";
 import { AddUserModal, UserList } from "@/app/_components/common";
+import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
 
 import "./page.css";
 
@@ -13,6 +15,7 @@ import "./page.css";
  * by entering letters in the search input. The list is updated instantly and users matching the combination of letters are listed.
  */
 export default function MembersPage(): ReactElement {
+    const { user } = useContext(AccountContext);
     const [ members, setMembers ] = useState<User[]>([]);
     const [ result, setResult ] = useState<User[]>([]);
     const [ modal, setModal ] = useState<boolean>(false);
@@ -63,8 +66,13 @@ export default function MembersPage(): ReactElement {
                         onChange={updateMemberList} 
                     />
                 </search>
-                    
-                <button className="button__link add-member__button" onClick={() => setModal(true)}> + Add member </button>
+
+                {
+                    user?.role === USER_ROLE_ADMIN ?
+                        <button className="button__link add-member__button" onClick={() => setModal(true)}> + Add member </button>
+                        : <></>
+                }
+
             </section>
 
             { modal ? <AddUserModal close={close} /> : <></> }

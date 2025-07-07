@@ -28,6 +28,7 @@
         .message-success {
             width: fit-content;
             align-self: center;
+            margin-bottom: 1rem;
             filter: brightness(0.8);
         }
     }
