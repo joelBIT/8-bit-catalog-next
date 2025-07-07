@@ -10,7 +10,7 @@
     position: relative;
 
     & #sitesBackground {
-        background-image: url("/sites_background.jpeg");
+        background-image: url("/nesconsole.webp");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -23,11 +23,12 @@
             width: fit-content;
             z-index: 10;
             backdrop-filter: blur(10px);
+            color: var(--color-real-white);
             font-size: 3rem;
-            border: 1px solid;
+            border: 1px solid var(--color-black);
             padding: 2rem;
             text-shadow: 2px 4px 6px black;
-            margin-top: 10rem;
+            margin-top: 12rem;
             margin-left: 5rem;
         }
 

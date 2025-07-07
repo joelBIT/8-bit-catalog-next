@@ -14,7 +14,7 @@ export function SiteLinks(): ReactElement {
         <section id="siteLinks">
             <Link href={URL_CONTACT_PAGE} className={pathname === URL_CONTACT_PAGE ? "active" : ""}> Contact </Link>
             <Link href={URL_FAQ_PAGE} className={pathname === URL_FAQ_PAGE ? "active" : ""}> FAQ </Link>
-            <Link href={URL_SITES_PAGE} className={pathname === URL_SITES_PAGE ? "active" : ""}> Other sites </Link>
+            <Link href={URL_SITES_PAGE} className={pathname === URL_SITES_PAGE ? "active" : ""}> Resources </Link>
         </section>
     );
 }
