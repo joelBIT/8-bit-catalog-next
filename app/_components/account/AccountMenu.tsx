@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useState, MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "@/app/_session/session";
