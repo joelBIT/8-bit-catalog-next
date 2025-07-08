@@ -1,88 +1,44 @@
 #landingPage {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    background: var(--color-black);
+    padding-top: 15rem;
 
     & #image-wrapper {
+        width: 25rem;
+    }
+
+    & #landing-register {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding-top: 5rem;
-        padding-bottom: 3rem;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        background: linear-gradient(to bottom left, var(--color-black) 70%, var(--color-black-light));
-        
-        & #logo {
-            width: 20%;
+        gap: 1rem;
+
+        & .landing-text {
+            color: var(--color-nintendo-gray);
+            font-weight: 100;
+            font-size: 1.5rem;
+            font-family: system-ui;
+            padding-left: 0.2rem;
+            padding-right: 0.2rem;
+            text-align: center;
         }
-    }
-}
 
-@media (max-width: 1500px) {
-    #landingPage {
-        & #image-wrapper {
-            & #logo {
-                width: 25%;
-            }
-        }
-    }
-}
-
-@media (max-width: 1300px) {
-    #landingPage {
-        & #image-wrapper {
-            & #logo {
-                width: 30%;
-            }
-        }
-    }
-}
-
-@media (max-width: 1000px) {
-    #landingPage {
-        & #image-wrapper {
-            & #logo {
-                width: 40%;
-            }
-
-            & .landing-text {
-                font-size: 4rem;
-            }
-        }
-    }
-}
-
-@media (max-width: 600px) {
-    #landingPage {
-        & #image-wrapper {
-            & #logo {
-                width: 60%;
-            }
-
-            & .landing-text {
-                font-size: 3rem;
-            }
+        & #registerButton {
+            width: 50%;
+            align-content: center;
+            text-align: center;
         }
     }
 }
 
 @media (max-width: 500px) {
     #landingPage {
+        padding-top: 5rem;
+
         & #image-wrapper {
-            justify-content: center;
-
-            & #logo {
-                width: 90%;
-            }
-
-            & #landing-text {
-                display: none;
-            }
+            width: 15rem;
         }
     }
 }

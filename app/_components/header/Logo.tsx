@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Image from 'next/image';
-import logo from "../../../assets/Logo.jpeg";
+import logo from "../../../assets/logo.png";
 
 import "./Logo.css";
 
@@ -10,7 +10,7 @@ export function Logo(): ReactElement {
             <Image 
                 src={logo} 
                 alt="logo" 
-                width={200} 
+                width={300}
                 className="logo__image" 
             />
         </figure>
