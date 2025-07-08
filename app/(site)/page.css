@@ -1,7 +1,44 @@
 #landingPage {
     display: flex;
-    justify-content: center;
-    position: relative;
+    flex-direction: column;
+    align-items: center;
     background: var(--color-black);
-    padding-top: 5rem;
+    padding-top: 15rem;
+
+    & #image-wrapper {
+        width: 25rem;
+    }
+
+    & #landing-register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        & .landing-text {
+            color: var(--color-nintendo-gray);
+            font-weight: 100;
+            font-size: 1.5rem;
+            font-family: system-ui;
+            padding-left: 0.2rem;
+            padding-right: 0.2rem;
+            text-align: center;
+        }
+
+        & #registerButton {
+            width: 50%;
+            align-content: center;
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #landingPage {
+        padding-top: 5rem;
+
+        & #image-wrapper {
+            width: 15rem;
+        }
+    }
 }
