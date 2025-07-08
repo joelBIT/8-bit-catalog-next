@@ -10,7 +10,7 @@ export function Footer(): ReactElement {
     const pathname = usePathname();
 
     return (
-        <footer className={pathname === "/" || pathname === "/sites" ? "landing" : ""}>
+        <footer className={pathname === "/sites" ? "landing" : ""}>
             <section id="footerComponents">
                 <Text />
                 <SiteLinks />
