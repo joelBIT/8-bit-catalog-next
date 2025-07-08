@@ -12,7 +12,7 @@
         align-self: flex-start;
         min-width: 100%;
         min-height: 100%;
-        margin-top: 5rem;
+        margin-top: 10rem;
 
         & #searchFilters {
             display: flex;
@@ -101,6 +101,14 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #searchPage {
+        & #searchPage-wrapper {
+            margin-top: 5rem;
         }
     }
 }
