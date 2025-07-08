@@ -1,7 +1,9 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
-import {isAuthenticated} from "@/app/_session/utils";
+import { TitleSearch } from "@/app/_components/home/TitleSearch";
+import { getAllTitles } from "@/app/_db/db";
+import { isAuthenticated } from "@/app/_session/utils";
 
 import "./page.css";
 
@@ -18,8 +20,12 @@ export default async function Home(): Promise<ReactElement> {
 
             <section id="landing-register">
                 <h2 className="landing-text"> Become a member to connect with other 8-bit enthusiasts </h2>
-                {await isAuthenticated() ? <></> : <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link> }
+                {
+                    await isAuthenticated() ? <></> : <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
+                }
             </section>
+
+            <TitleSearch titles={await getAllTitles()} />
         </main>
     );
 }
