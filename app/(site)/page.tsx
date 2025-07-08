@@ -18,12 +18,15 @@ export default async function Home(): Promise<ReactElement> {
                 <Logo />
             </section>
 
-            <section id="landing-register">
-                <h2 className="landing-text"> Become a member to connect with other 8-bit enthusiasts </h2>
-                {
-                    await isAuthenticated() ? <></> : <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
-                }
-            </section>
+            {
+                await isAuthenticated() ?
+                    <></>
+                :
+                    <section id="landing-register">
+                        <h2 className="landing-text"> Become a member to connect with other 8-bit enthusiasts </h2>
+                        <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
+                    </section>
+            }
 
             <TitleSearch titles={await getAllTitles()} />
         </main>
