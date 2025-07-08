@@ -61,6 +61,7 @@
                             border-radius: 9px;
                             font-size: 1.2rem;
                             outline: none;
+                            width: 400px;
                         }
                     }
 
@@ -93,11 +94,16 @@
     #searchPage {
         & #searchPage-wrapper {
             & #searchFilters {
-                & #searchInput {
-                    flex-direction: column;
+                & #searchFilters__form {
+                    & #searchInput {
+                        flex-direction: column;
 
-                    & #searchTitle {
-                        margin-right: 2rem;
+                        & .input-wrapper {
+                            & #searchTitle {
+                                margin-right: 2rem;
+                                width: 300px;
+                            }
+                        }
                     }
                 }
             }

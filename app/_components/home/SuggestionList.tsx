@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./SuggestionList.css";
@@ -9,6 +9,8 @@ import "./SuggestionList.css";
  * Show suggestions of game titles and open a Game Modal showing game details when clicked.
  */
 export function SuggestionList({ options }: { options: string[]}): ReactElement {
+    const searchRef = useRef<HTMLInputElement>(null);
+
     return (
         <>
             <section id="suggestion-search">
@@ -16,6 +18,7 @@ export function SuggestionList({ options }: { options: string[]}): ReactElement 
                     id="gameSearch"
                     type="text"
                     list="suggestions"
+                    ref={searchRef}
                     className={arima.className}
                     placeholder="Game Title"
                 />
@@ -25,7 +28,7 @@ export function SuggestionList({ options }: { options: string[]}): ReactElement 
                     }
                 </datalist>
 
-                <button id="viewButton" className="button__link"> View </button>
+                <button id="viewButton" className="button__link" onClick={() => console.log(searchRef.current.value)}> View </button>
             </section>
         </>
     );
