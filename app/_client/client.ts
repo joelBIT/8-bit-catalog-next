@@ -22,6 +22,19 @@ export async function getGames(filters: SearchFilter): Promise<SearchResult> {
     return {games: [], count: 0};
 }
 
+export async function getGameByTitle(title: string): Promise<Game> {
+    try {
+        const response = await fetch(`/api/game?title=${title}`);
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+    return {} as Game;
+}
+
 /**
  * Retrieve all users.
  */

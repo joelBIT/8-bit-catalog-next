@@ -6,10 +6,14 @@ import { arima } from "@/app/_fonts/fonts";
 import "./SuggestionList.css";
 
 /**
- * Show suggestions of game titles and open a Game Modal showing game details when clicked.
+ * Show suggestions of game titles and return selected game title when clicked.
  */
-export function SuggestionList({ options }: { options: string[]}): ReactElement {
+export function SuggestionList({ options, click }: { options: string[], click: (title: string) => void }): ReactElement {
     const searchRef = useRef<HTMLInputElement>(null);
+
+    function selectGame(): void {
+        click(searchRef.current.value);
+    }
 
     return (
         <>
@@ -28,7 +32,7 @@ export function SuggestionList({ options }: { options: string[]}): ReactElement 
                     }
                 </datalist>
 
-                <button id="viewButton" className="button__link" onClick={() => console.log(searchRef.current.value)}> View </button>
+                <button id="viewButton" className="button__link" onClick={selectGame}> View </button>
             </section>
         </>
     );

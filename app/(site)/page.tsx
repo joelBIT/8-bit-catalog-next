@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
-import { SuggestionList } from "@/app/_components/home/SuggestionList";
-import { isAuthenticated } from "@/app/_session/utils";
+import { TitleSearch } from "@/app/_components/home/TitleSearch";
 import { getAllTitles } from "@/app/_db/db";
+import { isAuthenticated } from "@/app/_session/utils";
 
 import "./page.css";
 
@@ -25,7 +25,7 @@ export default async function Home(): Promise<ReactElement> {
                 }
             </section>
 
-            <SuggestionList options={await getAllTitles()} />
+            <TitleSearch titles={await getAllTitles()} />
         </main>
     );
 }
