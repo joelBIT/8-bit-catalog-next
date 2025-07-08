@@ -65,6 +65,11 @@ export async function getGameById(id: number): Promise<Game> {
     return data;
 }
 
+export async function getGameByTitle(title: string): Promise<Game> {
+    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('title', title).single();
+    return data;
+}
+
 export async function getAllTitles(): Promise<string[]> {
     const { data } = await databaseClient.from(GAMES_TABLE).select("title");
     const titles = data.map(title => title.title);

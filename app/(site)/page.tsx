@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
+import { SuggestionList } from "@/app/_components/home/SuggestionList";
 import { isAuthenticated } from "@/app/_session/utils";
-import { arima } from "@/app/_fonts/fonts";
 import { getAllTitles } from "@/app/_db/db";
 
 import "./page.css";
@@ -25,22 +25,7 @@ export default async function Home(): Promise<ReactElement> {
                 }
             </section>
 
-            <section id="suggestion-search">
-                <input
-                    id="gameSearch"
-                    type="text"
-                    list="suggestions"
-                    className={arima.className}
-                    placeholder="Game Title"
-                />
-                <datalist id="suggestions">
-                    {
-                        (await getAllTitles()).map(title => <option value={title} key={title} />)
-                    }
-                </datalist>
-
-                <button id="viewButton" className="button__link"> View </button>
-            </section>
+            <SuggestionList options={await getAllTitles()} />
         </main>
     );
 }
