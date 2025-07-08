@@ -43,6 +43,8 @@
         gap: 0;
 
         & #landing-register {
+            padding-bottom: 1rem;
+
             & .landing-text {
                 font-size: 1rem;
             }
@@ -62,7 +64,7 @@
 
 @media (max-width: 500px) {
     #landingPage {
-        padding-top: 3rem;
+        padding-top: 5rem;
 
         & #image-wrapper {
             width: 15rem;
