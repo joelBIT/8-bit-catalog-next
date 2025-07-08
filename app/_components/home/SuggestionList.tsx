@@ -12,7 +12,7 @@ export function SuggestionList({ options, click }: { options: string[], click: (
     const searchRef = useRef<HTMLInputElement>(null);
 
     function selectGame(): void {
-        click(searchRef.current.value);
+        click(searchRef.current?.value ?? "");
     }
 
     return (

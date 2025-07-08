@@ -15,7 +15,7 @@ export async function GET(request: Request) {
             return NextResponse.json(title);
         } catch (error) {
             console.log(error);
-            return NextResponse.json({ error: `Could not retrieve game ${title}` }, { status: 500 });
+            return NextResponse.json({ error: `Could not retrieve game ${gameTitle}` }, { status: 500 });
         }
     }
 

@@ -32,6 +32,10 @@
             text-align: center;
         }
     }
+
+    .message-failure {
+        margin-bottom: 15rem;
+    }
 }
 
 @media (max-width: 630px) {

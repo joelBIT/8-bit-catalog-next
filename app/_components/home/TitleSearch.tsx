@@ -23,7 +23,7 @@ export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
         setOpenModal(showModal);
     });
 
-    async function click(title: string): void {
+    async function click(title: string): Promise<void> {
         closeGameModal();       // Handles when back button on mobile phone is used, makes sure the url is really updated before opening modal
 
         if (!title) {
@@ -45,7 +45,7 @@ export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
                 setOpenModal(true);
             }, 200);
         } catch (error) {
-            setMessage(error.message);
+            console.log(error);
         }
     }
 
