@@ -35,7 +35,7 @@ export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
             const game = await getGameByTitle(title);
             setSelectedGame(game);
             if (!game) {
-                setMessage(`${title} does not exist`);
+                setMessage(`${title} is not a valid title`);
                 return;
             }
 
