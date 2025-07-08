@@ -3,7 +3,6 @@
     align-items: center;
     gap: 2rem;
     padding-top: 3rem;
-    padding-bottom: 1rem;
 
     & #gameSearch {
         border-radius: 8px;
