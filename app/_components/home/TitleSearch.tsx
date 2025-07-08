@@ -43,6 +43,7 @@ export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
                 params.set('show', "true");
                 window.history.pushState(null, '', `?${params.toString()}`);
                 setOpenModal(true);
+                setMessage("");
             }, 200);
         } catch (error) {
             console.log(error);
