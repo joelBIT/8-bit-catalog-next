@@ -41,7 +41,7 @@
 
 @media (max-width: 630px) {
     #landingPage {
-        gap: 0;
+        gap: 1rem;
 
         & #landing-register {
             padding-bottom: 1rem;
