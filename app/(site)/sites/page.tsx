@@ -23,7 +23,7 @@ export default function SitesPage(): ReactElement {
         <main id="sitesPage">
             <section id="sitesBackground">
                 <div className="darken-image-top" />
-                <h1 className="sites-title playfair-display-regular"> Other 8-bit resources </h1>
+                <h1 className="sites-title playfair-display-regular"> OTHER 8-BIT RESOURCES </h1>
                 <div className="darken-image-bottom" />
             </section>
 
