@@ -11,6 +11,19 @@
 
         & .pagination-page__number {
             font-weight: 100;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .bolder {
+            font-weight: 700;
+            color: var(--color-footer-heading);
+
+            &:hover {
+                cursor: default;
+            }
         }
     }
 
@@ -28,6 +41,11 @@
         & .pagination-page__text {
             gap: 0.5rem;
             font-size: 1.2rem;
+        }
+
+        & #previous,
+        #next {
+            width: 3rem;
         }
     }
 }
