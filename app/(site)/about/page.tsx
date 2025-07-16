@@ -15,7 +15,7 @@ export default function AboutPage(): ReactElement {
     const [ timeline, setTimeline ] = useState<TimelineEvent[]>([]);
     const modalRef = useRef<HTMLDialogElement>(null);
     let position = 0;
-    const yearPositions = {"1983": 0, "1985": 252, "1986": 452, "1987": 682, "1990": 982, "1995": 1302, "1997": 1542, "2025": 1782};
+    const yearPositions = {"1983": 0, "1985": 252, "1986": 452, "1987": 682, "1990": 982, "1995": 1302, "1997": 1542, "2025": 1782} as {[key: string]: number};
 
     useEffect(() => {
         window.addEventListener("scroll", scroll, false);
