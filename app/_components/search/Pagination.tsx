@@ -60,7 +60,7 @@ export function Pagination({ currentPage, setCurrentPage, totalPages, setSearchR
             
             <div className={`pagination-page__text ${arima.className}`}>
                 {
-                    pages.map(page => page > currentPage - 4 && page < currentPage + 4 ?
+                    pages.map(page => page > currentPage - 4 && page < currentPage + (currentPage < 4 ? 8 - currentPage : 4) ?
                         <p
                             key={page}
                             className={`pagination-page__number ${page === currentPage ? "bolder" : ""}`}
