@@ -8,13 +8,14 @@ import { getTimelineEvents } from "@/app/_client/client";
 import "./page.css";
 
 /**
- * Show some significant events in the history of the NES.
+ * Show some significant events in the history of the NES. Click on a specific year in the timeline to scroll to that year.
  */
 export default function AboutPage(): ReactElement {
     const [ year, setYear ] = useState<number>(1983);
     const [ timeline, setTimeline ] = useState<TimelineEvent[]>([]);
     const modalRef = useRef<HTMLDialogElement>(null);
     let position = 0;
+    const yearPositions = {"1983": 0, "1985": 252, "1986": 452, "1987": 682, "1990": 982, "1995": 1302, "1997": 1542, "2025": 1782} as {[key: string]: number};
 
     useEffect(() => {
         window.addEventListener("scroll", scroll, false);
@@ -73,6 +74,15 @@ export default function AboutPage(): ReactElement {
         }
     }
 
+    function updateYear(year: number): void {
+        setYear(year);
+        position = yearPositions[year];
+        window.scrollTo({
+            top: yearPositions[year],
+            behavior: 'smooth'
+        });
+    }
+
     return (
         <main id="aboutPage">
             <section id="timeline-inner">
@@ -92,7 +102,7 @@ export default function AboutPage(): ReactElement {
                 <section id="timeline-years">
                     { 
                         timeline?.map(event => 
-                            <article className="timeline-year" onClick={() => setYear(event.year)} key={event.year}>
+                            <article className="timeline-year" onClick={() => updateYear(event.year)} key={event.year}>
                                 <h2 className={year === event.year ? "timeline-year__title active" : "timeline-year__title"}> { event.year } </h2>
                                 <div className="hexagon" />
                             </article>
