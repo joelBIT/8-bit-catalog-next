@@ -54,6 +54,11 @@
                 cursor: pointer;
             }
         }
+
+        & #game-publisher {
+            width: 20%;
+            margin-left: 1.5rem;
+        }
     }
 
     & li:last-of-type {
