@@ -89,15 +89,16 @@
         color: var(--color-footer-heading);
 
         & #searchGameArea {
-            align-self: center;
-            justify-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
             position: absolute;
             top: 2rem;
+            left: 0;
             right: 0;
-            width: fit-content;
 
             & > h2 {
-                justify-self: flex-end;
                 backdrop-filter: blur(10px);
                 padding: 1rem;
                 border-radius: 9px;
@@ -124,9 +125,7 @@
             }
         }
 
-        & #firstSection,
-        #secondSection,
-        #thirdSection {
+        & #firstSection {
             min-width: 90%;
             padding-left: 2rem;
             padding-right: 2rem;
@@ -134,7 +133,7 @@
     }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 650px) {
     #landingPage {
         gap: 1rem;
 
@@ -146,7 +145,16 @@
             }
         }
 
+        & #secondSection {
+            & #searchGameArea {
+                & > h2 {
+                    width: 80%;
+                }
+            }
+        }
+
         & #suggestion-search {
+            flex-direction: column;
             padding-top: 1rem;
             gap: 0.5rem;
 
@@ -183,9 +191,16 @@
             padding-right: 1rem;
         }
 
-        & #suggestion-search {
-            flex-direction: column;
+        & #secondSection {
+            & #searchGameArea {
+                & > h2 {
+                    width: 50%;
+                    font-size: 1.2rem;
+                }
+            }
+        }
 
+        & #suggestion-search {
             & #viewButton {
                 margin-bottom: 0.5rem;
             }

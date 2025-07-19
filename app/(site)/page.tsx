@@ -53,10 +53,6 @@ export default async function Home(): Promise<ReactElement> {
                     <TitleSearch titles={await getAllTitles()} />
                 </section>
             </section>
-
-            <section id="thirdSection">
-
-            </section>
         </main>
     );
 }
