@@ -14,21 +14,45 @@ export default async function Home(): Promise<ReactElement> {
 
     return (
         <main id="landingPage">
-            <section id="image-wrapper">
-                <Logo />
+            <section id="firstSection">
+                <section id="image-wrapper">
+                    <Logo />
+                </section>
+
+                <section id="catalogDescription">
+                    <hr />
+                    <h1 className="description-heading bit-font">
+                        8-BIT ENTHUSIASTS
+                    </h1>
+                    <h2 className="catalog-description">
+                        The 8-bit Catalog provides a way to connect with other 8-bit enthusiasts.
+                    </h2>
+                    <h3 className="description-text">
+                        The purpose of the 8-bit Catalog is to be an as accomplished source of NES games as possible.
+                        This catalog is continuously updated with new information. Games supported by the emulator
+                        found at <Link href="https://emulator.joel-rollny.eu/" target="_blank"> emulator.joel-rollny.eu </Link>
+                        can be played in a browser.
+                        Become a member to connect with other 8-bit enthusiasts.
+                    </h3>
+
+                    {
+                        await isAuthenticated() ?
+                            <></>
+                            :
+                            <section id="landing-register">
+                                <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
+                            </section>
+                    }
+                    <hr />
+                </section>
             </section>
 
-            {
-                await isAuthenticated() ?
-                    <></>
-                :
-                    <section id="landing-register">
-                        <h2 className="landing-text"> Become a member to connect with other 8-bit enthusiasts </h2>
-                        <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
-                    </section>
-            }
-
-            <TitleSearch titles={await getAllTitles()} />
+            <section id="secondSection">
+                <section id="searchGameArea">
+                    <h2> Give the catalog a try and see if you can find the game you are looking for! </h2>
+                    <TitleSearch titles={await getAllTitles()} />
+                </section>
+            </section>
         </main>
     );
 }
