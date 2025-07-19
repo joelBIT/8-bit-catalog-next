@@ -48,8 +48,10 @@ export default async function Home(): Promise<ReactElement> {
             </section>
 
             <section id="secondSection">
-                <h2> Try the catalog and see if you can find the game you are looking for! </h2>
-                <TitleSearch titles={await getAllTitles()} />
+                <section id="searchGameArea">
+                    <h2> Give the catalog a try and see if you can find the game you are looking for! </h2>
+                    <TitleSearch titles={await getAllTitles()} />
+                </section>
             </section>
 
             <section id="thirdSection">
