@@ -110,7 +110,8 @@
     & #thirdSection {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        justify-content: space-evenly;
+        gap: 5rem;
         width: 100%;
         padding: 5rem 1rem 1rem;
         position: relative;
@@ -137,6 +138,14 @@
                 text-transform: uppercase;
                 letter-spacing: 3px;
             }
+        }
+
+        & #newsCards {
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
 
         & #newsletter {
