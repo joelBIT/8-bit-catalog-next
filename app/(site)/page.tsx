@@ -74,10 +74,10 @@ export default async function Home(): Promise<ReactElement> {
                     <img src="/metroidscreen.webp" id="newsletterBackground" alt="Metroid newsletter background" />
                     <h2 className="subscription-text"> Subscribe to receive the newsletter.</h2>
 
-                    <section id="newsletterSignup">
-                        <input id="subscribeEmail" type="email" placeholder="Enter Email" />
-                        <button id="subscribeButton" className={`button__link ${arima.className}`}> Subscribe </button>
-                    </section>
+                    <form id="newsletterSignup">
+                        <input id="subscribeEmail" type="email" placeholder="Enter Email" required={true} />
+                        <button id="subscribeButton" type="submit" className={`button__link ${arima.className}`}> Subscribe </button>
+                    </form>
                 </section>
             </section>
         </main>

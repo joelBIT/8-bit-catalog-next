@@ -174,6 +174,7 @@
 
                 & #subscribeButton {
                     padding: .2rem 1rem;
+                    width: fit-content;
                 }
 
                 & #subscribeEmail {
@@ -209,6 +210,23 @@
             min-width: 90%;
             padding-left: 2rem;
             padding-right: 2rem;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    #landingPage {
+        & #thirdSection {
+            & #newsletter {
+                & #newsletterSignup {
+                    flex-direction: column;
+                    align-items: center;
+
+                    & #subscribeEmail {
+                        width: 70vw;
+                    }
+                }
+            }
         }
     }
 }
@@ -283,6 +301,22 @@
         & #suggestion-search {
             & #viewButton {
                 margin-bottom: 0.5rem;
+            }
+        }
+
+        & #thirdSection {
+            & #newsletter {
+                padding: 1rem;
+
+                & .subscription-text {
+                    font-size: 1.2rem;
+                }
+
+                & #newsletterSignup {
+                    & #subscribeEmail {
+                        width: 90vw;
+                    }
+                }
             }
         }
     }
