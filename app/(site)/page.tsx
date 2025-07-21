@@ -2,8 +2,9 @@ import { ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
 import { TitleSearch } from "@/app/_components/home/TitleSearch";
-import { getAllTitles } from "@/app/_db/db";
+import { getAllTitles, getAllNews } from "@/app/_db/db";
 import { isAuthenticated } from "@/app/_session/utils";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./page.css";
 
@@ -21,6 +22,7 @@ export default async function Home(): Promise<ReactElement> {
 
                 <section id="catalogDescription">
                     <hr />
+
                     <h1 className="description-heading bit-font">
                         8-BIT ENTHUSIASTS
                     </h1>
@@ -43,6 +45,7 @@ export default async function Home(): Promise<ReactElement> {
                                 <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
                             </section>
                     }
+
                     <hr />
                 </section>
             </section>
@@ -51,6 +54,30 @@ export default async function Home(): Promise<ReactElement> {
                 <section id="searchGameArea">
                     <h2> Give the catalog a try and see if you can find the game you are looking for! </h2>
                     <TitleSearch titles={await getAllTitles()} />
+                </section>
+            </section>
+
+            <section id="thirdSection">
+                <section id="newsHeading" className="bit-font">
+                    <hr />
+                    <h2 className="news-heading"> News </h2>
+                    <hr />
+                </section>
+
+                <section id="newsCards">
+                    {
+                        (await getAllNews()).map(news => <NewsCard text={news.text} date={news.date} />)
+                    }
+                </section>
+
+                <section id="newsletter">
+                    <img src="/metroidscreen.webp" id="newsletterBackground" alt="Metroid newsletter background" />
+                    <h2 className="subscription-text"> Subscribe to receive the newsletter.</h2>
+
+                    <section id="newsletterSignup">
+                        <input id="subscribeEmail" type="email" placeholder="Enter Email" />
+                        <button id="subscribeButton" className={`button__link ${arima.className}`}> Subscribe </button>
+                    </section>
                 </section>
             </section>
         </main>

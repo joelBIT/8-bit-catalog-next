@@ -25,6 +25,7 @@ const ACCOUNT_TABLE = "account";
 const FILTERS_TABLE = "filters";
 const TIMELINE_TABLE = "timeline";
 const FAQ_TABLE = "faq";
+const NEWS_TABLE = "news";
 
 
 
@@ -610,5 +611,22 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
         throw error;
     }
   
+    return data;
+}
+
+
+
+
+/********
+ * News *
+ *******/
+
+export async function getAllNews(): Promise<string[]> {
+    const { data, error } = await databaseClient.from(NEWS_TABLE).select();
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+
     return data;
 }
