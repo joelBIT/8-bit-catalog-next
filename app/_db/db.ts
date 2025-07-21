@@ -622,7 +622,7 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
  *******/
 
 export async function getAllNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select();
+    const { data, error } = await databaseClient.from(NEWS_TABLE).select().order("date", { ascending: false });
     if (error) {
         console.log(error);
         throw error;
