@@ -2,8 +2,7 @@ import { ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
 import { TitleSearch } from "@/app/_components/home/TitleSearch";
-import { NewsCard } from "@/app/_components/home/NewsCard";
-import { getAllTitles, getAllNews } from "@/app/_db/db";
+import { getAllTitles } from "@/app/_db/db";
 import { isAuthenticated } from "@/app/_session/utils";
 import { arima } from "@/app/_fonts/fonts";
 
@@ -65,11 +64,7 @@ export default async function Home(): Promise<ReactElement> {
                     <hr />
                 </section>
 
-                <section id="newsCards">
-                    {
-                        (await getAllNews()).map(news => <NewsCard key={news.text} text={news.text} date={news.date} />)
-                    }
-                </section>
+
 
                 <section id="newsletter">
                     <img src="/metroidscreen.webp" id="newsletterBackground" alt="Metroid newsletter background" />
