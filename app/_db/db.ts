@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, Session, TimelineEvent, User } from '@/app/_types/types';
+import { Account, FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, Session, TimelineEvent, User, News } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/app/_utils/utils';
 
@@ -621,7 +621,7 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
  * News *
  *******/
 
-export async function getAllNews(): Promise<string[]> {
+export async function getAllNews(): Promise<News[]> {
     const { data, error } = await databaseClient.from(NEWS_TABLE).select();
     if (error) {
         console.log(error);

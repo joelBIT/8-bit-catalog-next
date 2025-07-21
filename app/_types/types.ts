@@ -91,3 +91,8 @@ export type InitialUserState = {
     lastName: string, 
     bio: string
 }
+
+export type News = {
+    text: string,
+    date: Date
+}

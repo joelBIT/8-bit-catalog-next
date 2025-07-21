@@ -114,6 +114,7 @@
         width: 100%;
         padding: 5rem 1rem 1rem;
         position: relative;
+        min-height: fit-content;
 
         & #newsHeading {
             display: flex;
@@ -259,6 +260,21 @@
             & #gameSearch {
                 font-size: 1rem;
                 width: 380px;
+            }
+        }
+
+        & #thirdSection {
+            & #newsHeading {
+                width: 90vw;
+                align-self: center;
+
+                & > hr:last-of-type {
+                    width: 100%;
+                }
+
+                & .news-heading {
+                    font-size: 1.4rem;
+                }
             }
         }
     }
