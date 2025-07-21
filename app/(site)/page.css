@@ -114,6 +114,7 @@
         width: 100%;
         padding: 5rem 1rem 1rem;
         position: relative;
+        min-height: fit-content;
 
         & #newsHeading {
             display: flex;
