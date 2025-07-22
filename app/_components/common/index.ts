@@ -8,6 +8,7 @@ export * from "./lists/GameListEntry";
 export * from "./modals/GameModal";
 export * from "./modals/InputModal";
 export * from "./modals/Modal";
+export * from "./lists/NewsList";
 export * from "./ScrollTopButton";
 export * from "./SelectCountry";
 export * from "./lists/SlidingToggle";

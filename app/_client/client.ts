@@ -1,4 +1,4 @@
-import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, TimelineEvent, User } from '@/app/_types/types';
+import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, TimelineEvent, User, News } from '@/app/_types/types';
 
 
 /********************************************************************************************
