@@ -1,10 +1,9 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
-import { TitleSearch, NewsCard } from "@/app/_components/home";
+import { TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
 import { getAllTitles, getAllNews } from "@/app/_db/db";
 import { isAuthenticated } from "@/app/_session/utils";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./page.css";
 
@@ -70,15 +69,7 @@ export default async function Home(): Promise<ReactElement> {
                     }
                 </section>
 
-                <section id="newsletter">
-                    <img src="/metroidscreen.webp" id="newsletterBackground" alt="Metroid newsletter background" />
-                    <h2 className="subscription-text"> Subscribe to receive the newsletter.</h2>
-
-                    <form id="newsletterSignup">
-                        <input id="subscribeEmail" type="email" placeholder="Enter Email" required={true} />
-                        <button id="subscribeButton" type="submit" className={`button__link ${arima.className}`}> Subscribe </button>
-                    </form>
-                </section>
+                <SubscriptionBox />
             </section>
         </main>
     );
