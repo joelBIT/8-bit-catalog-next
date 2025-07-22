@@ -1,26 +1,41 @@
 'use client';
 
-import { ReactElement, useRef } from "react";
+import { ReactElement, useRef, useState } from "react";
 import { News } from "@/app/_types/types";
+import { arima } from "@/app/_fonts/fonts";
 
 import "./NewsList.css";
-import {arima} from "@/app/_fonts/fonts";
 
 /**
  * Contains a list of all existing news. Click on the send button after choosing which news to send out to all
  * subscribed email addresses.
  */
 export function NewsList({ news }: { news: News[] }): ReactElement {
+    const [ isDisabled, setDisabled ] = useState<boolean>(true);
     const selectRef = useRef<HTMLSelectElement>(null);
+    const NONE_CHOSEN = "none";
+
+    function sendNewsletter() {
+        console.log(selectRef.current?.value);
+    }
 
     return (
         <section id="newsList" className="selectSection">
-            <h2 className={`selectSection__title ${arima.className}`}> News </h2>
+            <button id="sendNewsletterButton" className="button__link" disabled={isDisabled} onClick={sendNewsletter}>
+                Send Newsletter
+            </button>
 
-            <select name="news" ref={selectRef} className="selectSection__select">
+            <h2 className={`selectSection__title ${arima.className}`}> Choose Newsletter </h2>
+
+            <select
+                name="news"
+                ref={selectRef}
+                className="selectSection__select"
+                onChange={() => setDisabled(selectRef.current?.value === NONE_CHOSEN)}
+            >
+                <option key={NONE_CHOSEN} value={NONE_CHOSEN}> --- </option>
                 { news ? news.map((element, index) => <option key={index} value={element.heading}> {element.heading} </option>) : <></> }
             </select>
-
         </section>
     );
 }
