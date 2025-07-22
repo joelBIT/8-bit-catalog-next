@@ -46,6 +46,11 @@
     }
 }
 
+.message-success,
+.message-failure {
+    max-width: 80vw;
+}
+
 @media (max-width: 700px) {
     #newsletter {
         & #newsletterSignup {
