@@ -1,7 +1,8 @@
 'use server';
 
 import { ActionState } from "@/app/_types/types";
-import { subscribeNewsletter } from "@/app/_db/db";
+import { createNews, subscribeNewsletter } from "@/app/_db/db";
+import { isAuthenticatedAdmin } from "@/app/_session/utils";
 
 /**
  * Creates a newsletter subscription for the supplied email. It is not required to have an account. A person only needs to enter an email
@@ -24,5 +25,34 @@ export async function createNewsletterSubscription(_prevState: ActionState, form
         }
 
         return { message: 'Subscription was not successful', success: false };
+    }
+}
+
+/**
+ * Create news. It is possible to send out news as a newsletter. Only Admin is allowed to create news.
+ */
+export async function createNewsAction(_prevState: ActionState, formData: FormData): Promise<ActionState> {
+    const isAdmin = await isAuthenticatedAdmin();
+    if (!isAdmin) {
+        return { message: 'Only admins may create news', success: false };
+    }
+
+    const heading = formData.get('heading') as string;
+    const text = formData.get('message') as string;
+    if (!heading || !text) {
+        return { message: 'Heading and text are required', success: false };
+    }
+
+    try {
+        await createNews(heading, text);
+
+        return { message: 'The news was successfully created', success: true };
+    } catch (error) {
+        console.log(error);
+
+        if (error instanceof Error) {
+            return { message: error.message, success: false };
+        }
+        return { message: 'The news could not be created', success: false };
     }
 }
