@@ -618,9 +618,11 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
 
 
 
-/********
- * News *
- *******/
+
+
+/*********************
+ * News & Newsletter *
+ ********************/
 
 export async function getAllNews(): Promise<News[]> {
     const { data, error } = await databaseClient.from(NEWS_TABLE).select().order("date", { ascending: false });
@@ -630,6 +632,14 @@ export async function getAllNews(): Promise<News[]> {
     }
 
     return data;
+}
+
+export async function createNews(heading: string, text: string): Promise<void> {
+    const { error } = await databaseClient.from(NEWS_TABLE).insert({ heading, text, date: new Date() });
+    if (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 export async function subscribeNewsletter(email: string): Promise<void> {
