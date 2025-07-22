@@ -16,13 +16,13 @@ export async function createNewsletterSubscription(_prevState: ActionState, form
     try {
         await subscribeNewsletter(email);
 
-        return { message: `${email} has now subscribed`, success: true };
+        return { message: `${email} subscribed`, success: true };
     } catch (error) {
         console.log(error);
         if (error instanceof Error) {
             return { message: error.message, success: false };
         }
 
-        return { message: 'Subscription could not be created', success: false };
+        return { message: 'Subscription was not successful', success: false };
     }
 }

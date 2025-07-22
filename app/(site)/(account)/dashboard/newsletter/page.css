@@ -1,0 +1,7 @@
+#newsletterPage {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-image: url("../../../../../assets/backgrounds/account_wallpaper.png");
+    min-height: 90vh;
+}
