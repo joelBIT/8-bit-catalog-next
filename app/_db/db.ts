@@ -26,6 +26,7 @@ const FILTERS_TABLE = "filters";
 const TIMELINE_TABLE = "timeline";
 const FAQ_TABLE = "faq";
 const NEWS_TABLE = "news";
+const NEWSLETTER_TABLE = "newsletter";
 
 
 
@@ -629,4 +630,17 @@ export async function getAllNews(): Promise<News[]> {
     }
 
     return data;
+}
+
+export async function subscribeNewsletter(email: string): Promise<void> {
+    const { error } = await databaseClient.from(NEWSLETTER_TABLE).insert({ email });
+    if (error) {
+        console.log(error);
+
+        if (error.code == '23505' && error.details.includes("email")) {
+            throw new Error(`The email ${email} has already subscribed`);
+        }
+
+        throw error;
+    }
 }
