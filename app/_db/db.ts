@@ -414,11 +414,7 @@ export async function updateUserPassword(email: string, password_hash: string): 
  */
 export async function emailExists(email: string): Promise<boolean> {
     const { data, error } = await databaseClient.from(USER_TABLE).select().eq('email', email);
-    if (error || data.length === 0) {
-        return false;
-    }
- 
-    return true;
+    return !(error || data.length === 0);
 }
 
 /**
@@ -431,10 +427,7 @@ export async function isCurrentPassword(email: string, password_hash: string): P
         throw error;
     }
 
-    if (data.password_hash === password_hash) {
-        return true;
-    }
-    return false;
+    return data.password_hash === password_hash;
 }
 
 
@@ -653,4 +646,14 @@ export async function subscribeNewsletter(email: string): Promise<void> {
 
         throw error;
     }
+}
+
+export async function getAllNewsletterSubscribers(): Promise<string[]> {
+    const { data, error } = await databaseClient.from(NEWSLETTER_TABLE).select("email");
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+
+    return data.map(element => element.email);
 }

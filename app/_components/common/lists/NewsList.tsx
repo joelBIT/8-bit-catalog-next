@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactElement, useRef, useState } from "react";
+import { sendNewsLetter } from "@/app/_client/client";
 import { News } from "@/app/_types/types";
 import { arima } from "@/app/_fonts/fonts";
 
@@ -12,11 +13,14 @@ import "./NewsList.css";
  */
 export function NewsList({ news }: { news: News[] }): ReactElement {
     const [ isDisabled, setDisabled ] = useState<boolean>(true);
+    const [ allNews ] = useState<News[]>(news ?? []);
     const selectRef = useRef<HTMLSelectElement>(null);
     const NONE_CHOSEN = "none";
 
     function sendNewsletter() {
         console.log(selectRef.current?.value);
+        console.log(allNews.filter(news => news.heading === selectRef.current?.value));
+        sendNewsLetter(allNews.filter(news => news.heading === selectRef.current?.value)[0]);
     }
 
     return (
