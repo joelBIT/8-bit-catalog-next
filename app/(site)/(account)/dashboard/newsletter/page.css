@@ -7,3 +7,16 @@
     min-height: 90vh;
     padding-top: 5rem;
 }
+
+@media (max-width: 1300px) {
+    #newsletterPage {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    #newsletterPage {
+        align-items: flex-end;
+        padding-right: 1rem;
+    }
+}

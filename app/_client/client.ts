@@ -1,4 +1,4 @@
-import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, TimelineEvent, User } from '@/app/_types/types';
+import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, TimelineEvent, User, News } from '@/app/_types/types';
 
 
 /********************************************************************************************
@@ -155,4 +155,18 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
     }
 
     return [];
+}
+
+/**
+ * Send newsletter to all emails subscribed for receiving the newsletter.
+ */
+export async function sendNewsLetter(news: News): Promise<void> {
+    try {
+        await fetch(`/api/newsletter`, {
+            method: "POST",
+            body: JSON.stringify({ text: news.text, heading: news.heading })
+        });
+    } catch (error) {
+        console.error(error);
+    }
 }

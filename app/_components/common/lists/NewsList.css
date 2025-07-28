@@ -1,0 +1,33 @@
+#newsList {
+    display: flex;
+    flex-direction: column;
+
+    & #sendNewsletterButton {
+        width: fit-content;
+        margin-bottom: 3rem;
+        padding: .2rem 1rem;
+        align-self: center;
+
+        &:disabled {
+            filter: brightness(0.1);
+
+            &:hover {
+                cursor: default;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #newsList {
+        & .selectSection__title {
+            align-self: center;
+        }
+
+        & .selectSection__select {
+            width: 90%;
+            align-self: flex-end;
+            font-size: 0.8rem;
+        }
+    }
+}
