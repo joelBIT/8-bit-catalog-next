@@ -32,3 +32,28 @@
         margin-top: 2rem;
     }
 }
+
+@media (max-width: 1300px) {
+    #newsletterForm {
+        width: 40rem;
+    }
+}
+
+@media (max-width: 750px) {
+    #newsletterForm {
+        padding: 1rem 0.4rem;
+        width: 80%;
+
+        & .information-input {
+            width: 90%;
+
+            & #heading {
+                width: 100%;
+            }
+
+            & #message {
+                width: 100%;
+            }
+        }
+    }
+}
