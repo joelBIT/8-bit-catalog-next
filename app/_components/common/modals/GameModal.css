@@ -120,6 +120,7 @@
             background-position: center;
             position: absolute;
             width: 100%;
+            left: 0;
             height: 50rem;
             filter: brightness(0.2);
         }
