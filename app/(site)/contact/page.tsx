@@ -30,7 +30,7 @@ export default function ContactPage(): ReactElement {
 
                     <section className="contact__info">
                         <span className={`material-symbols-outlined mail`}> mail </span>
-                        <p> joel.rollny@gmail.com </p>
+                        <p> contact@joel-rollny.eu </p>
                     </section>
 
                     <section className="contact__info">

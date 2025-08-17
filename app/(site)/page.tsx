@@ -20,8 +20,6 @@ export default async function Home(): Promise<ReactElement> {
                 </section>
 
                 <section id="catalogDescription">
-                    <hr />
-
                     <h1 className="description-heading bit-font">
                         8-BIT ENTHUSIASTS
                     </h1>
@@ -44,8 +42,6 @@ export default async function Home(): Promise<ReactElement> {
                                 <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
                             </section>
                     }
-
-                    <hr />
                 </section>
             </section>
 
