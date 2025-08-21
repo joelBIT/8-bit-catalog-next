@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
+import { JSX } from "react";
 
 import "./NewsCard.css";
 
-export function NewsCard({ text, date, heading }: { text: string, date: Date, heading: string }): ReactElement {
+export function NewsCard({ text, date, heading }: { text: string, date: Date, heading: string }): JSX.Element {
     return (
         <section className="news-card">
             <h2 className="news-date"> {date.toString()} </h2>

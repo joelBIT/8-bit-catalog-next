@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { SuggestionList } from "@/app/_components/home/SuggestionList";
 import { GameModal } from "@/app/_components/common";
@@ -11,7 +11,7 @@ import { Game } from "@/app/_types/types";
  * Show titles of existing games in a list of suggestions matching the letters a user types. Opens a modal containing
  * information about the selected game when a user clicks on the view button.
  */
-export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
+export function TitleSearch({ titles }: { titles: string[] }): JSX.Element {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;

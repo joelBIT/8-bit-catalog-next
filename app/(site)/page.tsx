@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { JSX } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
 import { TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
@@ -10,7 +10,7 @@ import "./page.css";
 /**
  * Landing page of the application.
  */
-export default async function Home(): Promise<ReactElement> {
+export default async function Home(): Promise<JSX.Element> {
 
     return (
         <main id="landingPage">

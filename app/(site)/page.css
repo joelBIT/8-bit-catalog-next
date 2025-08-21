@@ -4,6 +4,9 @@
     align-items: center;
     gap: 2rem;
     background: var(--color-black);
+    background-image: url("/mariobros3screen.png");
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
     padding-top: 10rem;
     padding-bottom: 5rem;
 
