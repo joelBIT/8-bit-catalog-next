@@ -35,16 +35,33 @@ export default async function Home(): Promise<JSX.Element> {
                 }
 
                 <section id="catalogDescription">
-                    <h2 className="catalog-description">
-                        The 8-bit Catalog provides a way to connect with other 8-bit enthusiasts.
-                    </h2>
-                    <h3 className="description-text">
-                        The purpose of the 8-bit Catalog is to be an as accomplished source of NES games as possible.
-                        This catalog is continuously updated with new information. Games supported by the emulator
-                        found at <Link href="https://emulator.joel-rollny.eu/" target="_blank"> emulator.joel-rollny.eu </Link>
-                        can be played in a browser.
-                        Become a member to connect with other 8-bit enthusiasts.
-                    </h3>
+                    <section id="catalogVision">
+                        <article className="description-heading">
+                            <hr/>
+                            <h2 className="catalog-description">
+                                Vision
+                            </h2>
+                        </article>
+
+                        <h3 className="description-text">
+                            A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts.
+                        </h3>
+                    </section>
+
+                    <section id="catalogSolution">
+                        <article className="description-heading">
+                            <hr/>
+                            <h2 className="catalog-description">
+                                Solution
+                            </h2>
+                        </article>
+
+                        <h3 className="description-text">
+                            The 8-bit Catalog.
+                            This catalog is continuously updated with new information and functionality.
+                            Become a member to connect with other 8-bit enthusiasts.
+                        </h3>
+                    </section>
                 </section>
             </section>
 
