@@ -19,10 +19,22 @@ export default async function Home(): Promise<JSX.Element> {
                     <Logo />
                 </section>
 
+                {
+                    await isAuthenticated() ?
+                        <></>
+                        :
+                        <section id="registerButtonSection">
+                            <h1 className="description-heading bit-font">
+                                8-BIT ENTHUSIASTS
+                            </h1>
+
+                            <section id="landing-register">
+                                <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
+                            </section>
+                        </section>
+                }
+
                 <section id="catalogDescription">
-                    <h1 className="description-heading bit-font">
-                        8-BIT ENTHUSIASTS
-                    </h1>
                     <h2 className="catalog-description">
                         The 8-bit Catalog provides a way to connect with other 8-bit enthusiasts.
                     </h2>
@@ -33,15 +45,6 @@ export default async function Home(): Promise<JSX.Element> {
                         can be played in a browser.
                         Become a member to connect with other 8-bit enthusiasts.
                     </h3>
-
-                    {
-                        await isAuthenticated() ?
-                            <></>
-                            :
-                            <section id="landing-register">
-                                <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
-                            </section>
-                    }
                 </section>
             </section>
 
