@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useRef } from "react";
+import { JSX, useRef } from "react";
 import { arima } from "@/app/_fonts/fonts";
 
 import "./SuggestionList.css";
@@ -8,7 +8,7 @@ import "./SuggestionList.css";
 /**
  * Show suggestions of game titles and return selected game title when clicked.
  */
-export function SuggestionList({ options, click }: { options: string[], click: (title: string) => void }): ReactElement {
+export function SuggestionList({ options, click }: { options: string[], click: (title: string) => void }): JSX.Element {
     const searchRef = useRef<HTMLInputElement>(null);
 
     function selectGame(): void {
