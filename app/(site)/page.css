@@ -76,6 +76,7 @@
             line-height: 40px;
             color: var(--color-real-white);
             align-self: flex-end;
+            text-align: center;
         }
 
         & #landing-register {
@@ -214,6 +215,18 @@
     }
 }
 
+@media (max-width: 720px) {
+    #landingPage {
+        & #registerButtonSection {
+            flex-direction: column;
+
+            & .description-heading {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
 @media (max-width: 650px) {
     #landingPage {
         gap: 1rem;
@@ -271,12 +284,26 @@
         }
 
         & #catalogDescription {
-            & .description-heading {
-                font-size: 1.5rem;
-            }
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
 
-            & .catalog-description {
-                width: 100%;
+            & #catalogVision,
+            #catalogSolution {
+                max-width: 90vw;
+                width: 90vw;
+
+                & .description-heading {
+                    font-size: 1.5rem;
+
+                    & hr {
+                        height: auto;
+                    }
+                }
+
+                & .description-text {
+                    max-width: 90vw;
+                }
             }
         }
 
