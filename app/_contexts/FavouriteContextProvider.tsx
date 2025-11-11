@@ -80,8 +80,6 @@ export function FavouriteContextProvider({ children }: ContextProviderChildren):
         } else if (isLocalStorageAvailable()) {
             setFavouritesList(games);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
-        } else {
-            setFavouritesList(sortFavourites(games));
         }
 
         setTotalPages(getTotalPages(games));
@@ -93,6 +91,7 @@ export function FavouriteContextProvider({ children }: ContextProviderChildren):
      */
     async function removeFavouriteGame(game: Game): Promise<void> {
         const games = favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id);
+
         const authenticated = await isAuthenticated();
         if (authenticated) {
             setFavouritesList(games);
@@ -100,8 +99,6 @@ export function FavouriteContextProvider({ children }: ContextProviderChildren):
         } else if (isLocalStorageAvailable()) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
             setFavouritesList(games);
-        } else {
-            setFavouritesList(favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id));
         }
 
         updateFavouritePage();
