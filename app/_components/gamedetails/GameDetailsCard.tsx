@@ -44,7 +44,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
                     <section id="titleLink">
                         <h1 className="gameDetails__title"> {game?.title} </h1>
                         { game?.rom ? 
-                            <Link className="button__link" target="_blank" href={`https://emulator.joel-rollny.eu?id=${game?.id}`}>
+                            <Link className="button__link" target="_blank" href={`https://rollnes.joel-rollny.eu/game/${game?.id}`}>
                                 Play 
                                 <span className="material-symbols-outlined"> open_in_new </span>
                             </Link>  : <></> 
