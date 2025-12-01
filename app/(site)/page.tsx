@@ -1,16 +1,14 @@
-import { JSX } from "react";
-import Link from "next/link";
+import { type ReactElement } from "react";
 import { Logo } from "../_components/header";
 import { TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
 import { getAllTitles, getAllNews } from "@/app/_db/db";
-import { isAuthenticated } from "@/app/_session/utils";
 
 import "./page.css";
 
 /**
  * Landing page of the application.
  */
-export default async function Home(): Promise<JSX.Element> {
+export default async function Home(): Promise<ReactElement> {
 
     return (
         <main id="landingPage">
@@ -18,21 +16,6 @@ export default async function Home(): Promise<JSX.Element> {
                 <section id="image-wrapper">
                     <Logo />
                 </section>
-
-                {
-                    await isAuthenticated() ?
-                        <></>
-                        :
-                        <section id="registerButtonSection">
-                            <h1 className="description-heading bit-font">
-                                8-BIT ENTHUSIASTS
-                            </h1>
-
-                            <section id="landing-register">
-                                <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
-                            </section>
-                        </section>
-                }
 
                 <section id="catalogDescription">
                     <section id="catalogVision">
