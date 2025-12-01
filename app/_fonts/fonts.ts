@@ -30,5 +30,6 @@ export const singleDay = Single_Day({
 });
 
 export const iceland = Iceland({
+    subsets: ["latin"],
     weight: "400"
 });
