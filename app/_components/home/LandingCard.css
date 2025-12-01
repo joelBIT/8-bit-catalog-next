@@ -9,7 +9,7 @@
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(4px);
     border-radius: 20px;
-    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 0 10px var(--color-real-white);
 
     & .landingCard-heading {
         font-family: "iceland", sans-serif;
