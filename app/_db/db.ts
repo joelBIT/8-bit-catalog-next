@@ -641,7 +641,7 @@ export async function subscribeNewsletter(email: string): Promise<void> {
         console.log(error);
 
         if (error.code == '23505' && error.details.includes("email")) {
-            throw new Error(`The email ${email} has already subscribed`);
+            throw new Error(`Already subscribed`);
         }
 
         throw error;

@@ -11,7 +11,7 @@ import { isAuthenticatedAdmin } from "@/app/_session/utils";
 export async function createNewsletterSubscription(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const email = formData.get('email') as string;
     if (!email) {
-        return { message: 'An email address is required', success: false };
+        return { message: 'Email required', success: false };
     }
 
     try {
@@ -24,7 +24,7 @@ export async function createNewsletterSubscription(_prevState: ActionState, form
             return { message: error.message, success: false };
         }
 
-        return { message: 'Subscription was not successful', success: false };
+        return { message: 'Subscription failed', success: false };
     }
 }
 

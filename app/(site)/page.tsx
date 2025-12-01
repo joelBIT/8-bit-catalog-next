@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
 import { Logo } from "../_components/header";
-import { LandingCard, TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
+import { LandingCard, TitleSearch, NewsCard } from "@/app/_components/home";
 import { getAllTitles, getAllNews } from "@/app/_db/db";
 
 import "./page.css";
@@ -42,8 +42,6 @@ export default async function Home(): Promise<ReactElement> {
                         (await getAllNews()).map(news => <NewsCard key={news.text} text={news.text} date={news.date} heading={news.heading} />)
                     }
                 </section>
-
-                <SubscriptionBox />
             </section>
         </main>
     );

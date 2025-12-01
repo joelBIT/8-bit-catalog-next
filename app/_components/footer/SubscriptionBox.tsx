@@ -6,6 +6,9 @@ import { arima } from "@/app/_fonts/fonts";
 
 import "./SubscriptionBox.css";
 
+/**
+ * Enables users to sign up for the newsletter.
+ */
 export function SubscriptionBox(): ReactElement {
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
     const [ state, formAction ] = useActionState(createNewsletterSubscription, { message: '', success: false });
@@ -14,19 +17,17 @@ export function SubscriptionBox(): ReactElement {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time
             setShowMessage(true);
         }
+        setTimeout(() => setShowMessage(false), 5000);
     }, [state]);
 
     return (
-        <>
-            <section id="newsletter">
-                <img src="/metroidscreen.webp" id="newsletterBackground" alt="Metroid newsletter background" />
-                <h2 className="subscription-text"> Subscribe to receive the newsletter.</h2>
+        <section id="newsletter">
+            <h2 className="subscription-text"> Subscribe to receive the newsletter</h2>
 
-                <form id="newsletterSignup" action={formAction}>
-                    <input id="subscribeEmail" type="email" name="email" placeholder="Enter Email" required={true} />
-                    <button id="subscribeButton" type="submit" className={`button__link ${arima.className}`}> Subscribe </button>
-                </form>
-            </section>
+            <form id="newsletterSignup" action={formAction}>
+                <input id="subscribeEmail" type="email" name="email" placeholder="Enter Email" required={true} autoComplete="off" />
+                <button id="subscribeButton" type="submit" className={`button__link ${arima.className}`}> Subscribe </button>
+            </form>
 
             {
                 showMessage ?
@@ -34,6 +35,6 @@ export function SubscriptionBox(): ReactElement {
                         {state?.message}
                     </h2> : <></>
             }
-        </>
+        </section>
     );
 }
