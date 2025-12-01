@@ -140,9 +140,13 @@
 @media (max-width: 800px) {
     #gameModal {
         & .carousel-container {
-            height: 5rem;
+            height: 1rem;
 
             & .carousel {
+                display: none;
+            }
+
+            & #carousel-buttons {
                 display: none;
             }
         }
@@ -152,9 +156,5 @@
 @media (max-width: 500px) {
     #gameModal {
         width: 100%;
-
-        & .carousel-container {
-            height: 4rem;
-        }
     }
 }
