@@ -1,0 +1,59 @@
+#newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+
+    & .subscription-text {
+        color: var(--color-nintendo-gray);
+        font-weight: 500;
+        font-size: 1rem;
+        padding-bottom: 0.2rem;
+    }
+
+    & #newsletterSignup {
+        display: flex;
+        flex-direction: column;
+        width: 16rem;
+        gap: 1rem;
+
+        & #subscribeButton {
+            align-self: flex-end;
+            padding: .2rem 1rem;
+            width: fit-content;
+            font-size: 1.3rem;
+        }
+
+        & #subscribeEmail {
+            border-radius: 9px;
+            font-size: 1rem;
+            outline: none;
+            font-family: "arima", serif;
+        }
+    }
+
+    & .message-success,
+    .message-failure {
+        max-width: 80vw;
+        margin: 0.4rem;
+        position: absolute;
+        bottom: -25px;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 600px) {
+    #newsletter {
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+
+        & #newsletterSignup {
+            width: 100%;
+
+            & #subscribeButton {
+                align-self: center;
+            }
+        }
+    }
+}
