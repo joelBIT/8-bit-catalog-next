@@ -1,0 +1,38 @@
+.landingCard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 30rem;
+    border: 1px solid var(--color-auth-border);
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+
+    & .landingCard-heading {
+        font-family: "iceland", sans-serif;
+        color: var(--color-real-white);
+        font-weight: 500;
+        font-size: 2.5rem;
+        color: var(--color-footer-heading);
+    }
+
+    & .landingCard-text {
+        font-family: "iceland", sans-serif;
+        align-self: center;
+        text-align: left;
+        color: var(--color-real-white);
+        font-size: 1.5rem;
+        font-weight: 100;
+        padding-bottom: 1rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 500px) {
+    .landingCard {
+        max-width: 90vw;
+    }
+}

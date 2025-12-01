@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
 import { Logo } from "../_components/header";
-import { TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
+import { LandingCard, TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
 import { getAllTitles, getAllNews } from "@/app/_db/db";
 
 import "./page.css";
@@ -18,33 +18,8 @@ export default async function Home(): Promise<ReactElement> {
                 </section>
 
                 <section id="catalogDescription">
-                    <section id="catalogVision">
-                        <article className="description-heading">
-                            <hr/>
-                            <h2 className="catalog-description">
-                                Vision
-                            </h2>
-                        </article>
-
-                        <h3 className="description-text">
-                            A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts.
-                        </h3>
-                    </section>
-
-                    <section id="catalogSolution">
-                        <article className="description-heading">
-                            <hr/>
-                            <h2 className="catalog-description">
-                                Solution
-                            </h2>
-                        </article>
-
-                        <h3 className="description-text">
-                            The 8-bit Catalog.
-                            This catalog is continuously updated with new information and functionality.
-                            Become a member to connect with other 8-bit enthusiasts.
-                        </h3>
-                    </section>
+                    <LandingCard heading="Vision" text="A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts."/>
+                    <LandingCard heading="Solution" text="The 8-bit Catalog. This catalog is continuously updated with new information and functionality. Become a member to connect with other 8-bit enthusiasts." />
                 </section>
             </section>
 
