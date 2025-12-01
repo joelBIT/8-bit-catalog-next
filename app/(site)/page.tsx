@@ -1,16 +1,14 @@
-import { JSX } from "react";
-import Link from "next/link";
+import { type ReactElement } from "react";
 import { Logo } from "../_components/header";
-import { TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
+import { LandingCard, TitleSearch, NewsCard, SubscriptionBox } from "@/app/_components/home";
 import { getAllTitles, getAllNews } from "@/app/_db/db";
-import { isAuthenticated } from "@/app/_session/utils";
 
 import "./page.css";
 
 /**
  * Landing page of the application.
  */
-export default async function Home(): Promise<JSX.Element> {
+export default async function Home(): Promise<ReactElement> {
 
     return (
         <main id="landingPage">
@@ -19,49 +17,9 @@ export default async function Home(): Promise<JSX.Element> {
                     <Logo />
                 </section>
 
-                {
-                    await isAuthenticated() ?
-                        <></>
-                        :
-                        <section id="registerButtonSection">
-                            <h1 className="description-heading bit-font">
-                                8-BIT ENTHUSIASTS
-                            </h1>
-
-                            <section id="landing-register">
-                                <Link href="/register" id="registerButton" className="authButton"> REGISTER </Link>
-                            </section>
-                        </section>
-                }
-
                 <section id="catalogDescription">
-                    <section id="catalogVision">
-                        <article className="description-heading">
-                            <hr/>
-                            <h2 className="catalog-description">
-                                Vision
-                            </h2>
-                        </article>
-
-                        <h3 className="description-text">
-                            A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts.
-                        </h3>
-                    </section>
-
-                    <section id="catalogSolution">
-                        <article className="description-heading">
-                            <hr/>
-                            <h2 className="catalog-description">
-                                Solution
-                            </h2>
-                        </article>
-
-                        <h3 className="description-text">
-                            The 8-bit Catalog.
-                            This catalog is continuously updated with new information and functionality.
-                            Become a member to connect with other 8-bit enthusiasts.
-                        </h3>
-                    </section>
+                    <LandingCard heading="Vision" text="A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts."/>
+                    <LandingCard heading="Solution" text="The 8-bit Catalog. This catalog is continuously updated with new information and functionality. Become a member to connect with other 8-bit enthusiasts." />
                 </section>
             </section>
 
