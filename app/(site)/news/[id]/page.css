@@ -1,0 +1,175 @@
+#newsPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-black);
+    color: var(--color-real-white);
+    padding: 5rem;
+
+    & .newsPage-error {
+        font-size: 3rem;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+    }
+
+    & .not-found__link {
+        padding: 1rem;
+        backdrop-filter: brightness(0.3);
+        border-radius: 25px;
+        transition: all 0.5s;
+
+        &:hover {
+            filter: brightness(1.5);
+        }
+    }
+
+    & #news-top {
+        display: flex;
+        justify-content: center;
+        max-height: 30rem;
+        max-width: 1600px;
+        position: relative;
+
+        & .news-top-image {
+            object-fit: cover;
+            filter: brightness(0.4);
+            max-width: 1600px;
+            min-width: 80vw;
+            width: 100%;
+            border-top-left-radius: 9px;
+            border-top-right-radius: 9px;
+        }
+
+        & .darken-image-bottom {
+            position: absolute;
+            bottom: 0;
+            height: 6rem;
+            width: 100%;
+            background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
+            z-index: 1;
+        }
+
+        & .news-top-content {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 35%;
+            text-align: center;
+
+            & .material-symbols-outlined {
+                color: var(--color-link-active);
+            }
+
+            & .news-subheading {
+                font-family: 'Iceland', sans-serif;
+                color: var(--color-link-active);
+                font-size: 2rem;
+                padding-bottom: 3rem;
+            }
+
+            & .news-heading {
+                font-size: 3rem;
+                font-family: "iceland", sans-serif;
+            }
+        }
+    }
+
+    & #news-bottom {
+        display: flex;
+        max-width: 1800px;
+        width: 100%;
+
+        & #news-text {
+            flex: 2;
+            font-size: 1.2rem;
+            white-space: break-spaces;
+        }
+
+        & #top-news {
+            flex: 1;
+
+            & .top-news-heading {
+                font-family: 'Iceland', sans-serif;
+                font-size: 2rem;
+                text-decoration: underline;
+            }
+
+            & .top-news-list {
+                display: flex;
+                flex-direction: column;
+
+                & .top-news-list__heading {
+                    margin-top: 1.5rem;
+                    font-size: 1.5rem;
+                    width: fit-content;
+                }
+
+                & .top-news-list__calendar {
+                    color: var(--color-footer-heading);
+                    font-size: 1rem;
+                }
+
+                & .disabled-link {
+                    pointer-events: none;
+                    color: var(--color-link-active);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    #newsPage {
+        padding: 2rem;
+
+        & #news-top {
+            margin-top: 3rem;
+        }
+
+        & #news-bottom {
+            flex-direction: column-reverse;
+            gap: 3rem;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    #newsPage {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+
+        & #news-top {
+            margin-top: 5rem;
+
+            & .news-top-content {
+                & .news-subheading {
+                    font-size: 1rem;
+                    padding-bottom: 1rem;
+                }
+
+                & .news-heading {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        & #news-bottom {
+            & #top-news {
+                align-self: center;
+
+                & .top-news-heading {
+                    font-size: 1.5rem;
+                    text-align: center;
+                }
+
+                & .top-news-list {
+                    text-align: center;
+
+                    & .top-news-list__heading {
+                        align-self: center;
+                    }
+                }
+            }
+        }
+    }
+}
