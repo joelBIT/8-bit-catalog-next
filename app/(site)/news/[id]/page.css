@@ -83,6 +83,7 @@
             flex: 2;
             font-size: 1.2rem;
             white-space: break-spaces;
+            padding-right: 3rem;
         }
 
         & #top-news {
@@ -97,11 +98,14 @@
             & .top-news-list {
                 display: flex;
                 flex-direction: column;
+                position: relative;
 
                 & .top-news-list__heading {
-                    margin-top: 1.5rem;
+                    font-family: "iceland", sans-serif;
+                    margin-top: 1.8rem;
                     font-size: 1.5rem;
                     width: fit-content;
+                    z-index: 2;
                 }
 
                 & .top-news-list__calendar {
@@ -109,6 +113,7 @@
                     align-items: center;
                     color: var(--color-footer-heading);
                     font-size: 1rem;
+                    z-index: 2;
 
                     & .material-symbols-outlined {
                         font-size: 1.2rem;
@@ -119,6 +124,16 @@
                     pointer-events: none;
                     color: var(--color-link-active);
                 }
+
+                & .top-news-list-number {
+                    position: absolute;
+                    bottom: 0;
+                    color: var(--color-auth-border);
+                    left: -13px;
+                    font-size: 4rem;
+                    opacity: 0.6;
+                    z-index: 0;
+                }
             }
         }
     }
@@ -127,6 +142,7 @@
 @media (max-width: 900px) {
     #newsPage {
         padding: 2rem;
+        padding-bottom: 3rem;
 
         & #news-top {
             margin-top: 3rem;
@@ -135,6 +151,10 @@
         & #news-bottom {
             flex-direction: column-reverse;
             gap: 3rem;
+
+            & #news-text {
+                padding-right: 0;
+            }
         }
     }
 }
@@ -145,8 +165,6 @@
         padding-right: 0.5rem;
 
         & #news-top {
-            margin-top: 5rem;
-
             & .news-top-content {
                 & .news-subheading {
                     font-size: 1rem;
@@ -177,6 +195,10 @@
 
                     & .top-news-list__calendar {
                         align-self: center;
+                    }
+
+                    & .top-news-list-number {
+                        left: 45%;
                     }
                 }
             }

@@ -42,7 +42,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                     <h2 className="top-news-heading"> Top News </h2>
 
                     {
-                        (await getTopNews()).map(news => 
+                        (await getTopNews()).map((news, index) => 
                             <section className="top-news-list" key={news.id}>
                                 <Link 
                                     href={URL_NEWS_PAGE + `/${news.id}`} 
@@ -55,6 +55,8 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                                     <span className="material-symbols-outlined"> calendar_month </span>
                                     {news.date.toString()}
                                 </article>
+
+                                <h2 className="top-news-list-number">{index + 1}</h2>
                             </section>
                         )
                     }
