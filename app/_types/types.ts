@@ -95,5 +95,6 @@ export type InitialUserState = {
 export type News = {
     text: string,
     heading: string,
-    date: Date
+    date: Date,
+    image: string
 }

@@ -41,7 +41,7 @@ export default async function Home(): Promise<ReactElement> {
 
                 <section id="newsCards">
                     {
-                        (await getAllNews()).map(news => <NewsCard key={news.text} text={news.text} date={news.date} heading={news.heading} />)
+                        (await getAllNews()).map(news => <NewsCard key={news.text} news={news} />)
                     }
                 </section>
             </section>
