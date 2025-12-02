@@ -27,11 +27,24 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
     return (
         <main id="newsPage">
             <section id="news-top">
-                {news.heading}
+                <img src={`/${news.image}`} className="news-top-image" />
+                <div className="darken-image-bottom" />
+
+                <section className="news-top-content">
+                    <span className="material-symbols-outlined"> breaking_news </span>
+                    <h3 className="news-subheading"> In the spotlight </h3>
+                    <h2 className="news-heading"> {news.heading} </h2>
+                </section>
             </section>
 
             <section id="news-bottom">
-                {news.text}
+                <article id="news-text">
+                    {news.text}
+                </article>
+                
+                <article id="top-news">
+                    <h2 className="top-news-heading"> Top News </h2>
+                </article>
             </section>
             
         </main>
