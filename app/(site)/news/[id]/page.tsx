@@ -2,8 +2,8 @@
 
 import { ReactElement } from "react";
 import Link from "next/link";
-import { getNewsById } from "@/app/_db/db";
-import { URL_HOME } from "@/app/_utils/utils";
+import { getNewsById, getTopNews } from "@/app/_db/db";
+import { URL_HOME, URL_NEWS_PAGE } from "@/app/_utils/utils";
 
 import "./page.css";
 
@@ -38,15 +38,32 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
             </section>
 
             <section id="news-bottom">
+                <article id="top-news">
+                    <h2 className="top-news-heading"> Top News </h2>
+
+                    {
+                        (await getTopNews()).map(news => 
+                            <section className="top-news-list" key={news.id}>
+                                <Link 
+                                    href={URL_NEWS_PAGE + `/${news.id}`} 
+                                    className={`top-news-list__heading ${parseInt(id) === news.id ? "disabled-link" : ""}`}
+                                >
+                                    {news.heading}
+                                </Link>
+                                
+                                <article className="top-news-list__calendar">
+                                    <span className="material_symbols_outlined"> calendar_month </span>
+                                    {news.date.toString()}
+                                </article>
+                            </section>
+                        )
+                    }
+                </article>
+
                 <article id="news-text">
                     {news.text}
                 </article>
-                
-                <article id="top-news">
-                    <h2 className="top-news-heading"> Top News </h2>
-                </article>
             </section>
-            
         </main>
     )
 }
