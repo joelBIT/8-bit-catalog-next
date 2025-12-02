@@ -618,7 +618,17 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
  ********************/
 
 export async function getAllNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select("heading, text, date, image").order("date", { ascending: false });
+    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image").order("date", { ascending: false });
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+
+    return data;
+}
+
+export async function getNewsById(id: number): Promise<News> {
+    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image").eq("id", id).single();
     if (error) {
         console.log(error);
         throw error;

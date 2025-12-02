@@ -93,6 +93,7 @@ export type InitialUserState = {
 }
 
 export type News = {
+    id: number,
     text: string,
     heading: string,
     date: Date,

@@ -1,5 +1,7 @@
 import { ReactElement } from "react";
+import Link from "next/link";
 import { News } from "@/app/_types/types";
+import { URL_NEWS_PAGE } from "@/app/_utils/utils";
 
 import "./NewsCard.css";
 
@@ -31,7 +33,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
                 </section>
 
                 <h2 className="news-text"> {adjustLength(news.text)} </h2>
-                <button className="news-read-button"> Read More </button>
+                <Link href={URL_NEWS_PAGE + `/${news.id}`} className="news-read-button"> Read More </Link>
             </section>
         </section>
     );
