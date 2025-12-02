@@ -2,7 +2,6 @@
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { createNewsletterSubscription } from "@/app/_actions/newsletter";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./SubscriptionBox.css";
 
@@ -26,7 +25,7 @@ export function SubscriptionBox(): ReactElement {
 
             <form id="newsletterSignup" action={formAction}>
                 <input id="subscribeEmail" type="email" name="email" placeholder="Enter Email" required={true} autoComplete="off" />
-                <button id="subscribeButton" type="submit" className={`button__link ${arima.className}`}> Subscribe </button>
+                <button id="subscribeButton" type="submit" className="button__link"> Subscribe </button>
             </form>
 
             {

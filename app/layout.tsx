@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { blinker } from "@/app/_fonts/fonts";
 import { GameContextProvider } from "./_contexts";
 
 import "./globals.css";
@@ -16,7 +15,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${blinker.className}`}>
+            <body>
                 <GameContextProvider>
                     {children} 
                 </GameContextProvider>

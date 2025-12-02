@@ -50,6 +50,7 @@ body {
     color: var(--color-white);
     min-height: 100svh;
     position: relative;
+    font-family: "blinker", sans-serif;
 
     main {
         flex: 5;

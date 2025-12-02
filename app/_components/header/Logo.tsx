@@ -11,6 +11,7 @@ export function Logo(): ReactElement {
                 src={logo} 
                 alt="logo" 
                 width={300}
+                priority
                 className="logo__image" 
             />
         </figure>

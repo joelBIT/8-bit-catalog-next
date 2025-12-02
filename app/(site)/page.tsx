@@ -1,3 +1,5 @@
+'use server';
+
 import { type ReactElement } from "react";
 import { Logo } from "../_components/header";
 import { LandingCard, TitleSearch, NewsCard } from "@/app/_components/home";
