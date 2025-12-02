@@ -105,8 +105,14 @@
                 }
 
                 & .top-news-list__calendar {
+                    display: flex;
+                    align-items: center;
                     color: var(--color-footer-heading);
                     font-size: 1rem;
+
+                    & .material-symbols-outlined {
+                        font-size: 1.2rem;
+                    }
                 }
 
                 & .disabled-link {
