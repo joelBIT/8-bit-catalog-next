@@ -23,16 +23,13 @@ export default async function Home(): Promise<ReactElement> {
                     <LandingCard heading="Vision" text="A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts."/>
                     <LandingCard heading="Solution" text="The 8-bit Catalog. This catalog is continuously updated with new information and functionality. Become a member to connect with other 8-bit enthusiasts." />
                 </section>
-            </section>
 
-            <section id="secondSection">
                 <section id="searchGameArea">
-                    <h2> Give the catalog a try and see if you can find the game you are looking for! </h2>
                     <TitleSearch titles={await getAllTitles()} />
                 </section>
             </section>
 
-            <section id="thirdSection">
+            <section id="secondSection">
                 <section id="newsHeading" className="bit-font">
                     <hr />
                     <h2 className="news-heading"> News </h2>
@@ -45,6 +42,8 @@ export default async function Home(): Promise<ReactElement> {
                     }
                 </section>
             </section>
+
+            <div className="darken-image-bottom" />
         </main>
     );
 }

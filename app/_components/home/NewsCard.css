@@ -7,6 +7,7 @@
     height: 20rem;
     position: relative;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    z-index: 2;
 
     & img {
         height: 100%;
@@ -83,6 +84,10 @@
             font-size: 1rem;
             font-weight: 600;
             letter-spacing: 1px;
+
+            &:hover {
+                background-color: var(--color-black-light);
+            }
         }
     }
 }
