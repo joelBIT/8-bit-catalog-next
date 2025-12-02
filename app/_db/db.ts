@@ -618,7 +618,7 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
  ********************/
 
 export async function getAllNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image").order("date", { ascending: false });
+    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image, author").order("date", { ascending: false });
     if (error) {
         console.log(error);
         throw error;
@@ -628,7 +628,7 @@ export async function getAllNews(): Promise<News[]> {
 }
 
 export async function getTopNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image").limit(6).order("date", { ascending: false });
+    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image, author").limit(6).order("date", { ascending: false });
     if (error) {
         console.log(error);
         throw error;
@@ -638,7 +638,7 @@ export async function getTopNews(): Promise<News[]> {
 }
 
 export async function getNewsById(id: number): Promise<News> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image").eq("id", id).single();
+    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image, author").eq("id", id).single();
     if (error) {
         console.log(error);
         throw error;

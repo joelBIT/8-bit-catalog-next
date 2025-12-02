@@ -63,6 +63,17 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                 </article>
 
                 <article id="news-text">
+                    <section className="news-text-author">
+                        <article>
+                            <span className="material-symbols-outlined article-person"> article_person </span>
+                            <h3 className="news-author"> {news.author} </h3>
+                        </article>
+
+                        <article>
+                            <span className="material-symbols-outlined"> calendar_month </span>
+                            {news.date.toString()}
+                        </article>
+                    </section>
                     {news.text}
                 </article>
             </section>

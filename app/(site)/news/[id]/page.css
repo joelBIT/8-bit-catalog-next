@@ -84,6 +84,29 @@
             font-size: 1.2rem;
             white-space: break-spaces;
             padding-right: 3rem;
+
+            & .news-text-author {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                margin-bottom: 1rem;
+
+                & > article {
+                    display: flex;
+                    align-items: center;
+                    color: var(--color-footer-heading);
+                }
+
+                & .article-person {
+                    color: var(--color-tag-text);
+                }
+
+                & .news-author {
+                    color: var(--color-tag-text);
+                    font-size: 1.2rem;
+                }
+            }
         }
 
         & #top-news {

@@ -97,5 +97,6 @@ export type News = {
     text: string,
     heading: string,
     date: Date,
-    image: string
+    image: string,
+    author: string
 }
