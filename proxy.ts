@@ -7,7 +7,7 @@ import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_FORBIDDEN_PAGE, URL_LOGIN_PAG
 /**
  * Check if user has an active session. If not, redirect the user when trying to navigate to certain pages.
  */
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const cookie = (await cookies()).get("session")?.value ?? null;
     if (!cookie) {
         if (request.nextUrl.pathname.startsWith(URL_DASHBOARD_PAGE)) {
@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: [URL_DASHBOARD_PAGE, `${URL_DASHBOARD_PAGE}/:path`, URL_LOGIN_PAGE, URL_REGISTER_PAGE]
+    matcher: ["/dashboard", `/dashboard/:path`, "/login", "/register"]
 }
 
 function redirect(request: NextRequest, page: string) {
