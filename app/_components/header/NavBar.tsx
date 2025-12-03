@@ -4,7 +4,6 @@ import { ReactElement, useContext, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { FavouritesContext } from "@/app/_contexts";
-import { rancho } from "@/app/_fonts/fonts";
 import { signOut } from "@/app/_session/session";
 import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { Hamburger } from ".";
@@ -53,7 +52,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                             >
                                 { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
-                                <h2 className={`navbar__list-element-title ${rancho.className} ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>
+                                <h2 className={`navbar__list-element-title ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>
                             </Link>
                         </li>
                     )
@@ -64,11 +63,11 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                         href={URL_FAVOURITES_PAGE}
                         className={pathname === URL_FAVOURITES_PAGE ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
-                        <h2 id="favourite-link" className={`navbar__list-element-title ${rancho.className}`}> 
+                        <h2 id="favourite-link" className="navbar__list-element-title"> 
                             Favourites
                             { 
                                 favouritesList?.length > 0 ? 
-                                    <p id="favourites-amount" className={`material-symbols-outlined ${rancho.className}`}> 
+                                    <p id="favourites-amount" className="material-symbols-outlined"> 
                                         {favouritesList?.length} 
                                     </p> : <></> 
                             }
@@ -85,19 +84,20 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                             >
                                 { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
-                                <h2 className={`navbar__list-element-title ${rancho.className} ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>
+                                <h2 className={`navbar__list-element-title ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>
                             </Link>
                         </li>
                     )
                 }
 
-                { authenticated ?
-                    <li className="navbar__list-element" onClick={logout}>
-                        <Link href={URL_HOME} className="navbar__list-element-link">
-                            <span className="material-symbols-outlined wideScreen">logout</span>
-                            <h2 className={`navbar__list-element-title ${rancho.className} smallScreen`}> Logout </h2>
-                        </Link>
-                    </li>
+                { 
+                    authenticated ?
+                        <li className="navbar__list-element" onClick={logout}>
+                            <Link href={URL_HOME} className="navbar__list-element-link">
+                                <span className="material-symbols-outlined wideScreen">logout</span>
+                                <h2 className="navbar__list-element-title smallScreen"> Logout </h2>
+                            </Link>
+                        </li>
                     : <></>
                 }
             </ul>
