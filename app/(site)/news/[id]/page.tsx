@@ -74,6 +74,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                             {news.date.toString()}
                         </article>
                     </section>
+                    
                     {news.text}
                 </article>
             </section>
