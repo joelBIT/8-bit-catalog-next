@@ -24,7 +24,6 @@
             & .loginPage-link {
                 display: flex;
                 align-items: flex-start;
-                font-family: sans-serif;
                 gap: 0.2rem;
                 transition: all 0.5s;
 
@@ -34,6 +33,7 @@
                 }
 
                 & .loginPage-link__text {
+                    font-family: "rancho", sans-serif;
                     align-self: center;
                     font-weight: 600;
                     font-size: 1.1rem;
