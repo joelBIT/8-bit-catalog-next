@@ -81,6 +81,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                         <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
                             <Link 
                                 href={link.url}
+                                prefetch={link.url === URL_ABOUT_PAGE}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                             >
                                 { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
