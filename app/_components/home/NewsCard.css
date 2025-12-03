@@ -50,6 +50,7 @@
                 color: var(--color-footer-heading);
                 font-size: 1.2rem;
                 white-space: nowrap;
+                align-content: center;
             }
 
             & .news-heading {

@@ -16,24 +16,22 @@ export function SuggestionList({ options, click }: { options: string[], click: (
     }
 
     return (
-        <>
-            <section id="suggestion-search">
-                <input
-                    id="gameSearch"
-                    type="text"
-                    list="suggestions"
-                    ref={searchRef}
-                    className={arima.className}
-                    placeholder="Game Title"
-                />
-                <datalist id="suggestions">
-                    {
-                        options.map(title => <option value={title} key={title} />)
-                    }
-                </datalist>
+        <section id="suggestion-search">
+            <input
+                id="gameSearch"
+                type="text"
+                list="suggestions"
+                ref={searchRef}
+                className={arima.className}
+                placeholder="Game Title"
+            />
+            <datalist id="suggestions">
+                {
+                    options.map(title => <option value={title} key={title} />)
+                }
+            </datalist>
 
-                <button id="viewButton" className="button__link" onClick={selectGame}> View </button>
-            </section>
-        </>
+            <button id="viewButton" className="button__link" onClick={selectGame}> View </button>
+        </section>
     );
 }
