@@ -15,5 +15,30 @@
 
     & #viewButton {
         padding: 0.2rem 0.9rem;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    #suggestion-search {
+        flex-direction: column;
+        padding-top: 1rem;
+        gap: 0.5rem;
+
+        & #gameSearch {
+            font-size: 1rem;
+            max-width: 380px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #suggestion-search {
+        
+
+        & #gameSearch {
+            font-size: 0.9rem;
+            width: 280px;
+        }
     }
 }
