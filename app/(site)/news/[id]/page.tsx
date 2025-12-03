@@ -64,12 +64,12 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
 
                 <article id="news-text">
                     <section className="news-text-author">
-                        <article>
+                        <article title="Author">
                             <span className="material-symbols-outlined article-person"> article_person </span>
                             <h3 className="news-author"> {news.author} </h3>
                         </article>
 
-                        <article>
+                        <article title="Published">
                             <span className="material-symbols-outlined"> calendar_month </span>
                             {news.date.toString()}
                         </article>

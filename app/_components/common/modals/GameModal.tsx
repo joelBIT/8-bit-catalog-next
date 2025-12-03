@@ -7,8 +7,7 @@ import { Game } from '@/app/_types/types';
 import "./GameModal.css";
 
 /**
- * Modal showing metadata about the supplied game. It is possible to navigate between the supplied games by using the 'previous' and
- * 'next' buttons.
+ * Modal showing metadata about the supplied game. It is possible to navigate between the supplied games by clicking on respective cover image.
  */
 export function GameModal({ games, game, close }: { games: Game[], game: Game, close: () => void }): ReactElement {
     const [ slide, setSlide ] = useState<number>(games.findIndex(element => element.id === game.id));
@@ -41,7 +40,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
     return (
         <dialog id="gameModal" ref={dialogRef}>
             <section className="carousel-container">
-                <section className="carousel">
+                <section className={suppliedGames.length === 1 ? "hidden" : "carousel"}>
                     <img
                         className={suppliedGames.length < 5 ? "hidden" : "item first-game"}
                         src={STORAGE_URL + suppliedGames[slide === 0 ? games.length - 2 : (slide === 1 ? games.length - 1 : slide - 2)]?.cover}
@@ -59,7 +58,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                     />
 
                     <img
-                        className={`item selected-game cards-${suppliedGames.length}`}
+                        className={suppliedGames.length === 1 ? "hidden" : `item selected-game cards-${suppliedGames.length}`}
                         src={STORAGE_URL + suppliedGames[slide]?.cover}
                         title={suppliedGames[slide]?.title}
                         alt="Current game"
@@ -80,16 +79,6 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
                         title={suppliedGames[slide === games.length - 1 ? 1 : (slide === games.length - 2 ? 0 : slide + 2)]?.title}
                         alt="Game 2 clicks forward"
                     />
-                </section>
-
-                <section id="carousel-buttons" className={suppliedGames.length < 2 ? "hidden" : ""}>
-                    <button className="prevButton" onClick={prevSlide}>
-                        <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
-                    </button>
-
-                    <button className="nextButton" onClick={nextSlide}>
-                        <span className={suppliedGames.length < 2 ? "hidden" : "arrow"}> </span>
-                    </button>
                 </section>
             </section>
 
