@@ -18,9 +18,8 @@ footer {
     & #copyright {
         display: flex;
         align-items: center;
-        align-self: flex-start;
+        align-self: center;
         margin-bottom: 1rem;
-        margin-left: 5rem;
         padding-top: 2rem;
 
         & .material-symbols-outlined {
@@ -55,10 +54,6 @@ footer {
                 grid-row: 1;
             }
         }
-
-        & #copyright {
-            margin-left: 2rem;
-        }
     }
 }
 
@@ -74,11 +69,6 @@ footer {
             & #siteLinks {
                 text-align: center;
             }
-        }
-
-        & #copyright {
-            padding-top: 0;
-            margin-left: 0.5rem;
         }
     }
 }
