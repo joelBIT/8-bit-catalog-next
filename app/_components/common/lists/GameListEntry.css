@@ -1,3 +1,7 @@
+/*************************
+* Game Card in List View *
+**************************/
+
 .gameListEntry {
     display: flex;
     height: 4rem;

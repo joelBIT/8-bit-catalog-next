@@ -1,12 +1,13 @@
-/**********************
-* Game Card Grid View *
-**********************/
+/*************************
+* Game Card in Grid View *
+**************************/
 
 .gameCard {
     display: flex;
     flex-direction: column;
     width: 18rem;
     height: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     transition: all 0.3s;
 
     & .gameCard-figure {
