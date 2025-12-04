@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useGame } from "@/app/_hooks/useGame";
+import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
 import { GameCard, GameModal } from "..";
 
@@ -19,6 +19,8 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
     const [ currentPage, setCurrentPage ] = useState<number>(-1);
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
     const { selectedGame, setSelectedGame } = useGame();
+
+    console.log("gamedrid")
 
     useEffect(() => {
         if (page !== currentPage) {         // New page containing new games so list of games and current page are updated

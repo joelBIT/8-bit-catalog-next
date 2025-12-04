@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useGame } from "@/app/_hooks/useGame";
+import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
 import { GameListEntry } from "./GameListEntry";
 import { GameModal } from "..";
@@ -30,6 +30,8 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     const GAME_PUBLISHER = "game-publisher";
     const HEADING_CLASSES = [GAME_TITLE, GAME_CATEGORY, GAME_PLAYERS, GAME_DEVELOPER, GAME_PUBLISHER];
     const HEADINGS = ["Title", "Category", "Players", "Developer", "Publisher"];
+
+    console.log("gamellist")
 
     useEffect(() => {
         if (active) {                           // The selected sorting is executed on each render

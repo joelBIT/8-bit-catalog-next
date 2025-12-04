@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useContext } from "react";
-import { useGame } from "@/app/_hooks/useGame";
+import { useGame } from "@/app/_hooks";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { Pagination } from "@/app/_components/favourites/Pagination";
 import { FavouritesContext } from "@/app/_contexts";

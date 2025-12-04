@@ -1,9 +1,8 @@
 'use client';
 
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useGames } from "@/app/_hooks/useGames";
-import { GameContext } from "@/app/_contexts";
+import { useGame, useGames } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
 import { SlidingToggle, ScrollTopButton, GameList, GameGrid } from "../common";
 
@@ -15,7 +14,6 @@ import "./Search.css";
  * is set to inform the user that no games matched the search query.
  */
 export function Search(): ReactElement {
-    const { gridView } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const title = params.get('title') || '';
@@ -26,6 +24,7 @@ export function Search(): ReactElement {
     const [ showHeading, setShowHeading ] = useState<boolean>(false);
     const [ totalCount, setTotalCount ] = useState<number>();
     const { getFilteredGames } = useGames();
+    const { gridView } = useGame();
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
