@@ -1,0 +1,53 @@
+'use client';
+
+import { createContext, type ReactElement, type ReactNode, useEffect, useState } from "react";
+import { Game, SearchFilter } from "../_types/types";
+import { getAllGames } from "../_client/client";
+import { ALL_OPTION_VALUE } from "../_utils/utils";
+
+export interface GamesContextProvider {
+    games: Game[];
+    getFilteredGames: (filters: SearchFilter) => Game[];
+}
+
+export const GamesContext = createContext<GamesContextProvider>({} as GamesContextProvider);
+
+/**
+ * Applies chosen filters to the list of all playable games. The first selected filter type is marked because all other filter values should
+ * be updated with how many games that matches the first selected filter type and the other filter 
+ */
+export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
+    const [games, setGames] = useState<Game[]>([]);
+
+    useEffect(() => {
+        loadGames();
+    }, []);
+
+    /**
+     * Retrieve all games.
+     */
+    async function loadGames(): Promise<void> {
+        try {
+            const result = await getAllGames();
+            setGames(result.games);
+        } catch (error) {
+            setGames([]);
+        }
+    }
+
+    function getFilteredGames(filters: SearchFilter): Game[] {
+        let filteredGames = [...games];
+        filteredGames = filters.developer !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.developer === filters.developer) : filteredGames;
+        filteredGames = filters.publisher !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.publisher === filters.publisher) : filteredGames;
+        filteredGames = filters.category !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.category === filters.category) : filteredGames;
+        filteredGames = filters.title.trim() !== "" ? filteredGames.filter(game => game.title.toLowerCase().includes(filters.title.toLowerCase())) : filteredGames;
+
+        return filteredGames;
+    }
+    
+    return (
+        <GamesContext.Provider value={{ games, getFilteredGames }}>
+            { children }
+        </GamesContext.Provider>
+    );
+}

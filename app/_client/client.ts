@@ -7,6 +7,23 @@ import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult
 
 
 /**
+ * Retrieve all games.
+ */
+export async function getAllGames(): Promise<SearchResult> {
+    try {
+        const response = await fetch("/api/games?all=true");
+        if (response.ok) {
+            const games = await response.json();
+            return {games: games, count: games.length};
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+    return {games: [], count: 0};
+}
+
+/**
  * Retrieve games that match the search filters.
  */
 export async function getGames(filters: SearchFilter): Promise<SearchResult> {

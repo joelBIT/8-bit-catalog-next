@@ -1,15 +1,16 @@
-.favourite-pagination {
+.pagination {
     display: flex;
     gap: 1rem;
     align-items: center;
 
-    & .favourite-pagination-page__text {
+    & .pagination-page__text {
         display: flex;
         gap: 1rem;
+        font-family: "arima", sans-serif;
         font-size: 1.4rem;
         font-weight: 600;
 
-        & .favourite-pagination-page__number {
+        & .pagination-page__number {
             font-weight: 100;
         }
     }
@@ -24,8 +25,8 @@
 }
 
 @media (max-width: 500px) {
-    .favourite-pagination {
-        & .favourite-pagination-page__text {
+    .pagination {
+        & .pagination-page__text {
             gap: 0.5rem;
             font-size: 1.2rem;
         }

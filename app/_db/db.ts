@@ -83,6 +83,15 @@ export async function getAllTitles(): Promise<string[]> {
     return [];
 }
 
+export async function getAllGamesRequest(): Promise<Game[]> {
+    const { data } = await databaseClient.from(GAMES_TABLE).select().order("title", {ascending: true});
+    if (data) {
+        return data;
+    }
+
+    return [];
+}
+
 
 
 

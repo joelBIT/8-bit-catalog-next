@@ -1,2 +1,2 @@
 export * from "./FavouriteButton";
-export * from "./FavouritePagination";
+export * from "./Pagination";

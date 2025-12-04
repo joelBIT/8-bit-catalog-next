@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import Form from 'next/form';
 import { SearchFilter } from "@/app/_types/types";
-import { arima, rancho } from "@/app/_fonts/fonts";
 import { CategoryFilter, DeveloperFilter, PublisherFilter, Search, SearchButton } from "@/app/_components/search";
 
 import "./page.css";
@@ -16,7 +15,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
         <main id="searchPage">
             <section id="searchPage-wrapper">
                 <search id="searchFilters">
-                    <h1 className={`searchFilters__title ${rancho.className}`}> Search Games </h1>
+                    <h1 className="searchFilters__title"> Search Games </h1>
                     <Form id="searchFilters__form" action="" scroll={false}>
                         <article className="searchFilters__filters">
                             <CategoryFilter defaultValue={params.category} />
@@ -30,7 +29,6 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                                 <input 
                                     id="searchTitle"
                                     name="title"
-                                    className={arima.className} 
                                     type="text"
                                     placeholder="Game Title"
                                 />

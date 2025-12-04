@@ -20,10 +20,11 @@
             padding-bottom: 0.5rem;
 
             & .searchFilters__title {
+                font-family: "rancho", sans-serif;
+                align-self: center;
                 font-size: 50px;
                 font-weight: 500;
                 margin: 1rem 0;
-                align-self: center;
             }
         
             & #searchFilters__form {
@@ -57,6 +58,7 @@
                         }
                     
                         & #searchTitle {
+                            font-family: "arima", sans-serif;
                             padding-left: 2.5rem;
                             border-radius: 9px;
                             font-size: 1.2rem;
