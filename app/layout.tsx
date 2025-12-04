@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GameContextProvider } from "./_contexts";
+import { GameContextProvider, GamesProvider } from "./_contexts";
 
 import "./globals.css";
 
@@ -16,9 +16,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <GameContextProvider>
-                    {children} 
-                </GameContextProvider>
+                <GamesProvider>
+                    <GameContextProvider>
+                        {children} 
+                    </GameContextProvider>
+                </GamesProvider>
             </body>
         </html>
     );
