@@ -1,19 +1,19 @@
 'use client';
 
 import { ReactElement, useContext } from "react";
+import { useGame } from "@/app/_hooks/useGame";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { Pagination } from "@/app/_components/favourites/Pagination";
-import { FavouritesContext, GameContext } from "@/app/_contexts";
+import { FavouritesContext } from "@/app/_contexts";
 import { GameGrid, GameList, SlidingToggle, ScrollTopButton } from "@/app/_components/common";
 
 import "./page.css";
-
 /**
  * Renders the current user's favourite games as game cards either in Grid view or List view.
  */
 export default function FavouritesPage(): ReactElement {
     const { favouritesList, favouritesPage } = useContext(FavouritesContext);
-    const { gridView } = useContext(GameContext);
+    const { gridView } = useGame();
 
     function from(page: number): number {
         return (page - 1) * PAGINATION_PAGE_SIZE;
@@ -44,12 +44,11 @@ export default function FavouritesPage(): ReactElement {
             }
 
             { 
-                favouritesList.length === 0 ? 
-                        <></> : 
+                favouritesList.length === 0 ? <></> : 
                         gridView ?  
-                        <GameGrid games={favouritesList.slice(from(favouritesPage), to(favouritesPage))} page={favouritesPage} />
-                                :
-                        <GameList games={favouritesList.slice(from(favouritesPage), to(favouritesPage))} page={favouritesPage} />
+                            <GameGrid games={favouritesList.slice(from(favouritesPage), to(favouritesPage))} page={favouritesPage} />
+                                    :
+                            <GameList games={favouritesList.slice(from(favouritesPage), to(favouritesPage))} page={favouritesPage} />
             }
 
             <ScrollTopButton />

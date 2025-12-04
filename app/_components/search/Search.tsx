@@ -12,7 +12,7 @@ import "./Search.css";
 /**
  * Searches for games that matches the supplied filter values as well as the given title text.
  * The searchResult state contains the games that matches the search query. The showHeading state
- * is set on each search to inform the user about how many games that matches the search query.
+ * is set to inform the user that no games matched the search query.
  */
 export function Search(): ReactElement {
     const { gridView } = useContext(GameContext);
@@ -34,8 +34,7 @@ export function Search(): ReactElement {
     }, [title, category, developer, publisher])
 
     /**
-     * Performs a search based on given title text and filters. The search is executed either
-     * when the button is pressed or when the Enter key is pressed in the input field.
+     * Performs a search based on given title text and filters.
      */
     async function search(): Promise<void> {
         const filteredGames = getFilteredGames({title, category, developer, publisher, page: "1"});

@@ -1,15 +1,21 @@
 'use client';
 
-import { createContext, ReactElement, useState } from "react";
-import { ContextProviderChildren, GamesContextProvider } from "@/app/_interfaces/interfaces";
+import { createContext, ReactElement, ReactNode, useState } from "react";
 import { Game } from "@/app/_types/types";
 
-export const GameContext = createContext<GamesContextProvider>({} as GamesContextProvider);
+export interface GameContextProvider {
+    selectedGame: Game;
+    setSelectedGame: (game: Game) => void;
+    gridView: boolean;
+    toggleGridView: () => void;
+}
+
+export const GameContext = createContext<GameContextProvider>({} as GameContextProvider);
 
 /**
  * Localstorage is used to keep track of which view is chosen.
  */
-export function GameContextProvider({ children }: ContextProviderChildren): ReactElement {
+export function GameProvider({ children }: { children: ReactNode }): ReactElement {
     const [ selectedGame, setSelectedGame ] = useState<Game>({} as Game);
     const [ gridView, setGridView ] = useState<boolean>(true);              // The chosen list view for game lists
 
