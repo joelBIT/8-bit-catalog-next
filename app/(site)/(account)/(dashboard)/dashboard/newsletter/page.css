@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     gap: 4rem;
-    background-image: url("../../../../../assets/backgrounds/account_wallpaper.png");
+    background-color: var(--color-black);
     min-height: 90vh;
     padding-top: 5rem;
 }

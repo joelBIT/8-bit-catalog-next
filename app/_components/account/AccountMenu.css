@@ -1,5 +1,5 @@
 #accountMenu-wrapper {
-    background: var(--color-black);
+    background: var(--color-black-light);
     position: fixed;
     height: 100vh;
     z-index: 1;
