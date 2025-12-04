@@ -1,8 +1,8 @@
 'use client';
 
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { GameContext } from "@/app/_contexts";
+import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
 import { GameListEntry } from "./GameListEntry";
 import { GameModal } from "..";
@@ -14,15 +14,15 @@ import "./GameList.css";
  * list of games by clicking on each heading.
  */
 export function GameList({ games, page }: { games: Game[], page: number }): ReactElement {
-    const { selectedGame, setSelectedGame } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
-    const showModal = !!params.get('show');
+    const showModal = params.get('show') ? true : false;
     const [ active, setActive ] = useState<string>('');
     const [ ascending, setAscending ] = useState<boolean>(false);
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(-1);
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
+    const { selectedGame, setSelectedGame } = useGame();
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";
     const GAME_PLAYERS = "game-players";
@@ -45,9 +45,11 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
         if (!active && page === currentPage) {      // Set games when user e.g., refreshes the browser (resets sorting)
             setCurrentGames(games);
         }
-
-        setOpenModal(showModal);        // Close modal if navigating back from modal to page
     })
+
+    useEffect(() => {
+        setOpenModal(showModal);
+    }, [showModal])
 
     /**
      * The games are sorted differently depending on if a heading is clicked multiple times in a row or clicked for the first time.

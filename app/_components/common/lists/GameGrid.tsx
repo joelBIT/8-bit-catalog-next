@@ -1,8 +1,8 @@
 'use client';
 
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { GameContext } from "@/app/_contexts";
+import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
 import { GameCard, GameModal } from "..";
 
@@ -12,13 +12,13 @@ import "./GameGrid.css";
  * This component consists of a game list in Grid View.
  */
 export function GameGrid({ games, page }: { games: Game[], page: number }): ReactElement {
-    const { selectedGame, setSelectedGame } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(-1);
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
+    const { selectedGame, setSelectedGame } = useGame();
 
     useEffect(() => {
         if (page !== currentPage) {         // New page containing new games so list of games and current page are updated
@@ -29,9 +29,11 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
         if (page === currentPage) {
             setCurrentGames(games);
         }
-
-        setOpenModal(showModal);        // Close modal if navigating back from modal to page
     })
+
+    useEffect(() => {
+        setOpenModal(showModal);
+    }, [showModal])
 
     function openGameModal(game: Game): void {
         closeGameModal();       // Handles when back button on mobile phone is used, makes sure the url is really updated before opening modal

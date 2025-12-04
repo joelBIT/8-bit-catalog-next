@@ -1,8 +1,8 @@
 'use client';
 
-import { ReactElement, useContext, useState } from "react";
-import { GameContext } from "@/app/_contexts";
+import { ReactElement, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
 
 import "./SlidingToggle.css";
@@ -13,8 +13,8 @@ import "./SlidingToggle.css";
 export function SlidingToggle(): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
-    const { gridView, toggleGridView, setSelectedGame } = useContext(GameContext);
-    const [ grid, setGrid ] = useState<boolean>(gridView);
+    const { gridView, toggleGridView, setSelectedGame } = useGame();
+    const [grid, setGrid] = useState<boolean>(gridView);
 
     function toggleView(): void {
         setSelectedGame({} as Game);

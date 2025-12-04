@@ -2,6 +2,7 @@
 
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
+import { useGame } from "@/app/_hooks";
 import { FavouriteButton } from "@/app/_components/favourites";
 import { Game } from "@/app/_types/types";
 import { rancho } from "@/app/_fonts/fonts";
@@ -16,10 +17,16 @@ import "./GameCard.css";
 export function GameCard({ game, click }: { game: Game, click: (game: Game) => void }): ReactElement {
     const [ isFadingOut, setIsFadingOut ] = useState<boolean>(false);
     const [ removeCard, setRemoveCard ] = useState<boolean>(false);
+    const { setSelectedGame } = useGame();
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
+
+    function clickedCard(): void {
+        setSelectedGame(game);
+        click(game);
+    }
     
     return (
-        <section className={isFadingOut ? "is-fading" : ""} onClick={() => click(game)}>
+        <section className={isFadingOut ? "is-fading" : ""} onClick={clickedCard}>
             <section className={removeCard ? "hidden" : "gameCard"}>
                 <figure className="gameCard-figure">
                     <Image 
