@@ -1,12 +1,13 @@
 'use client';
 
 import { createContext, type ReactElement, type ReactNode, useEffect, useState } from "react";
-import { Game } from "../_types/types";
-import { getGames } from "../_client/client";
+import { Game, SearchFilter } from "../_types/types";
+import { getAllGames } from "../_client/client";
 import { ALL_OPTION_VALUE } from "../_utils/utils";
 
 export interface GamesContextProvider {
     games: Game[];
+    getFilteredGames: (filters: SearchFilter) => Game[];
 }
 
 export const GamesContext = createContext<GamesContextProvider>({} as GamesContextProvider);
@@ -27,15 +28,25 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
      */
     async function loadGames(): Promise<void> {
         try {
-            const result = await getGames({category: ALL_OPTION_VALUE, developer: ALL_OPTION_VALUE, page: ALL_OPTION_VALUE, publisher: ALL_OPTION_VALUE, title: ""});
+            const result = await getAllGames();
             setGames(result.games);
         } catch (error) {
             setGames([]);
         }
     }
+
+    function getFilteredGames(filters: SearchFilter): Game[] {
+        let filteredGames = [...games];
+        filteredGames = filters.developer !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.developer === filters.developer) : filteredGames;
+        filteredGames = filters.publisher !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.publisher === filters.publisher) : filteredGames;
+        filteredGames = filters.category !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.category === filters.category) : filteredGames;
+        filteredGames = filters.title.trim() !== "" ? filteredGames.filter(game => game.title.toLowerCase().includes(filters.title.toLowerCase())) : filteredGames;
+
+        return filteredGames;
+    }
     
     return (
-        <GamesContext.Provider value={{ games }}>
+        <GamesContext.Provider value={{ games, getFilteredGames }}>
             { children }
         </GamesContext.Provider>
     );

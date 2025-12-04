@@ -10,6 +10,7 @@ import { SlidingToggle, ScrollTopButton, GameList, GameGrid } from "../common";
 import { Pagination } from ".";
 
 import "./Search.css";
+import { useGames } from "@/app/_hooks/useGames";
 
 /**
  * Searches for games that matches the supplied filter values as well as the given title text.
@@ -30,6 +31,7 @@ export function Search(): ReactElement {
     const [ currentPage, setCurrentPage ] = useState<number>(parseInt(page));
     const [ totalCount, setTotalCount ] = useState<number>();
     const [ totalPages, setTotalPages ] = useState<number>(1);
+    const { getFilteredGames } = useGames();
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
@@ -42,10 +44,10 @@ export function Search(): ReactElement {
      * when the button is pressed or when the Enter key is pressed in the input field.
      */
     async function search(): Promise<void> {
-        const result = await getGames({title, category, developer, publisher, page});
-        setSearchResult(result.games);
-        setTotalCount(result.count);
-        setTotalPages(Math.floor(result.count / PAGINATION_PAGE_SIZE) + 1);
+        const filteredGames = getFilteredGames({title, category, developer, publisher, page});
+        setSearchResult(filteredGames);
+        setTotalCount(filteredGames.length);
+        setTotalPages(Math.floor(filteredGames.length / PAGINATION_PAGE_SIZE) + 1);
         setCurrentPage(parseInt(page) || 1);
         setShowHeading(true);
     }
