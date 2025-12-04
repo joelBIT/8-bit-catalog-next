@@ -2,7 +2,6 @@
 
 import { ReactElement, useContext } from "react";
 import { FavouritesContext } from "@/app/_contexts/FavouriteContextProvider";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./Pagination.css";
 
@@ -24,26 +23,26 @@ export function Pagination({ currentPage }: { currentPage: number }): ReactEleme
     }
 
     return (
-        <section className="favourite-pagination">
+        <section className="pagination">
             <button 
                 id="previous" 
-                className={`prevButton ${arima.className}`}
+                className="prevButton"
                 onClick={() => previousPage()} 
                 disabled={currentPage <= 1}
             >
                 <span className="arrow" />
             </button>
             
-            <div className={`favourite-pagination-page__text ${arima.className}`}>
+            <div className="pagination-page__text">
                 Page 
-                <p className="favourite-pagination-page__number">
+                <p className="pagination-page__number">
                     {currentPage} / {totalPages} 
                 </p>
             </div>
             
             <button 
                 id="next" 
-                className={`nextButton ${arima.className}`}
+                className="nextButton"
                 onClick={() => nextPage()} 
                 disabled={currentPage >= totalPages}
             >

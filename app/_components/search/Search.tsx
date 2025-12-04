@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { useGames } from "@/app/_hooks/useGames";
 import { GameContext } from "@/app/_contexts";
 import { Game } from "@/app/_types/types";
-import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { SlidingToggle, ScrollTopButton, GameList, GameGrid } from "../common";
 
 import "./Search.css";
@@ -19,16 +18,13 @@ export function Search(): ReactElement {
     const { gridView } = useContext(GameContext);
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
-    const page =  params.get('page') as string || '1';
     const title = params.get('title') || '';
     const category = params.get('category') as string;
     const developer = params.get('developer') as string;
     const publisher = params.get('publisher') as string;
     const [ searchResult, setSearchResult ] = useState<Game[]>([]);
     const [ showHeading, setShowHeading ] = useState<boolean>(false);
-    const [ currentPage, setCurrentPage ] = useState<number>(parseInt(page));
     const [ totalCount, setTotalCount ] = useState<number>();
-    const [ totalPages, setTotalPages ] = useState<number>(1);
     const { getFilteredGames } = useGames();
     
     useEffect(() => {
@@ -42,11 +38,9 @@ export function Search(): ReactElement {
      * when the button is pressed or when the Enter key is pressed in the input field.
      */
     async function search(): Promise<void> {
-        const filteredGames = getFilteredGames({title, category, developer, publisher, page});
+        const filteredGames = getFilteredGames({title, category, developer, publisher, page: "1"});
         setSearchResult(filteredGames);
         setTotalCount(filteredGames.length);
-        setTotalPages(Math.floor(filteredGames.length / PAGINATION_PAGE_SIZE) + 1);
-        setCurrentPage(parseInt(page) || 1);
         setShowHeading(true);
     }
 
@@ -64,9 +58,9 @@ export function Search(): ReactElement {
 
                         { 
                             gridView ?
-                                <GameGrid games={searchResult} page={currentPage} />
+                                <GameGrid games={searchResult} page={1} />
                                 :
-                                <GameList games={searchResult} page={currentPage} />
+                                <GameList games={searchResult} page={1} />
                         }
                     </>
                 :   <>
