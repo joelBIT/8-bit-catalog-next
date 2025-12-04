@@ -2,7 +2,7 @@
 
 import { ReactElement, useContext } from "react";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
-import { FavouritePagination } from "@/app/_components/favourites/FavouritePagination";
+import { Pagination } from "@/app/_components/favourites/Pagination";
 import { FavouritesContext, GameContext } from "@/app/_contexts";
 import { GameGrid, GameList, SlidingToggle, ScrollTopButton } from "@/app/_components/common";
 
@@ -33,7 +33,7 @@ export default function FavouritesPage(): ReactElement {
 
                             {
                                 favouritesList.length > PAGINATION_PAGE_SIZE ?
-                                    <FavouritePagination currentPage={favouritesPage} /> 
+                                    <Pagination currentPage={favouritesPage} /> 
                                     : <></>
                             }
 
@@ -54,7 +54,7 @@ export default function FavouritesPage(): ReactElement {
 
             <ScrollTopButton />
 
-            {favouritesList.length > PAGINATION_PAGE_SIZE ? <FavouritePagination currentPage={favouritesPage} /> : <></>}
+            {favouritesList.length > PAGINATION_PAGE_SIZE ? <Pagination currentPage={favouritesPage} /> : <></>}
         </main>
     );
 }

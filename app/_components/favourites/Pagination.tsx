@@ -4,12 +4,12 @@ import { ReactElement, useContext } from "react";
 import { FavouritesContext } from "@/app/_contexts/FavouriteContextProvider";
 import { arima } from "@/app/_fonts/fonts";
 
-import "./FavouritePagination.css";
+import "./Pagination.css";
 
 /**
  * Pagination is used to navigate between pages of favourite games.
  */
-export function FavouritePagination({ currentPage }: { currentPage: number }): ReactElement {
+export function Pagination({ currentPage }: { currentPage: number }): ReactElement {
     const { setFavouritesPage, totalPages } = useContext(FavouritesContext);
 
     /**
