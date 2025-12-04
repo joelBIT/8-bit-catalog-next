@@ -2,15 +2,13 @@
 
 import { ReactElement, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useGames } from "@/app/_hooks/useGames";
 import { GameContext } from "@/app/_contexts";
-import { getGames } from "@/app/_client/client";
 import { Game } from "@/app/_types/types";
 import { PAGINATION_PAGE_SIZE } from "@/app/_utils/utils";
 import { SlidingToggle, ScrollTopButton, GameList, GameGrid } from "../common";
-import { Pagination } from ".";
 
 import "./Search.css";
-import { useGames } from "@/app/_hooks/useGames";
 
 /**
  * Searches for games that matches the supplied filter values as well as the given title text.
@@ -61,17 +59,6 @@ export function Search(): ReactElement {
                         <section className="show-pagination-toggle">
                             <div className="invisible" />
 
-                            {
-                                totalPages > 1 ?
-                                    <Pagination 
-                                        currentPage={currentPage} 
-                                        setCurrentPage={setCurrentPage} 
-                                        setSearchResult={setSearchResult} 
-                                        totalPages={totalPages} 
-                                    /> 
-                                : <></>
-                            }
-
                             { searchResult.length > 0 ? <SlidingToggle /> : <></> }
                         </section>
 
@@ -92,17 +79,6 @@ export function Search(): ReactElement {
             }
         
             <ScrollTopButton />
-
-            {
-                totalPages > 1 ? 
-                    <Pagination 
-                        currentPage={currentPage} 
-                        setCurrentPage={setCurrentPage}
-                        setSearchResult={setSearchResult} 
-                        totalPages={totalPages} 
-                    /> 
-                : <></>
-            }
         </section>
     );
 }
