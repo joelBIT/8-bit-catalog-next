@@ -16,7 +16,7 @@ import "./GameList.css";
 export function GameList({ games, page }: { games: Game[], page: number }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
-    const showModal = !!params.get('show');
+    const showModal = params.get('show') ? true : false;
     const [ active, setActive ] = useState<string>('');
     const [ ascending, setAscending ] = useState<boolean>(false);
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
@@ -30,8 +30,6 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     const GAME_PUBLISHER = "game-publisher";
     const HEADING_CLASSES = [GAME_TITLE, GAME_CATEGORY, GAME_PLAYERS, GAME_DEVELOPER, GAME_PUBLISHER];
     const HEADINGS = ["Title", "Category", "Players", "Developer", "Publisher"];
-
-    console.log("gamellist")
 
     useEffect(() => {
         if (active) {                           // The selected sorting is executed on each render
@@ -47,9 +45,11 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
         if (!active && page === currentPage) {      // Set games when user e.g., refreshes the browser (resets sorting)
             setCurrentGames(games);
         }
-
-        setOpenModal(showModal);        // Close modal if navigating back from modal to page
     })
+
+    useEffect(() => {
+        setOpenModal(showModal);
+    }, [showModal])
 
     /**
      * The games are sorted differently depending on if a heading is clicked multiple times in a row or clicked for the first time.

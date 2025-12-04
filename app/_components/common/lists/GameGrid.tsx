@@ -20,8 +20,6 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
     const { selectedGame, setSelectedGame } = useGame();
 
-    console.log("gamedrid")
-
     useEffect(() => {
         if (page !== currentPage) {         // New page containing new games so list of games and current page are updated
             setCurrentGames(games);
@@ -31,9 +29,11 @@ export function GameGrid({ games, page }: { games: Game[], page: number }): Reac
         if (page === currentPage) {
             setCurrentGames(games);
         }
-
-        setOpenModal(showModal);        // Close modal if navigating back from modal to page
     })
+
+    useEffect(() => {
+        setOpenModal(showModal);
+    }, [showModal])
 
     function openGameModal(game: Game): void {
         closeGameModal();       // Handles when back button on mobile phone is used, makes sure the url is really updated before opening modal
