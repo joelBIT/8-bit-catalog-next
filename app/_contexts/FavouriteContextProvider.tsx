@@ -6,7 +6,7 @@ import { isLocalStorageAvailable } from "@/app/_utils/utils";
 import { addFavouriteGameToDatabase, deleteFavouriteGameFromDatabase, getFavourites } from "@/app/_client/client";
 import { isAuthenticated } from "@/app/_session/utils";
 
-interface FavouritesContextProvider {
+export interface FavouritesContextProvider {
     favouritesList: Game[];
     addFavouriteGame: (game: Game) => void;
     removeFavouriteGame: (game: Game) => void;
