@@ -1,15 +1,15 @@
 'use client';
 
-import { ReactElement, useContext } from "react";
-import { usePathname } from 'next/navigation'
+import { ReactElement } from "react";
+import { usePathname } from 'next/navigation';
+import { useFavourites } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
-import { FavouritesContext } from "@/app/_contexts/FavouriteContextProvider";
 import { URL_FAVOURITES_PAGE } from "@/app/_utils/utils";
 
 import "./FavouriteButton.css";
 
 export function FavouriteButton({ game, setFading, removeCard }: { game: Game, setFading: (fading: boolean) => void, removeCard: (remove: boolean) => void }): ReactElement {
-    const { favouritesList, addFavouriteGame, removeFavouriteGame } = useContext(FavouritesContext);
+    const { favouritesList, addFavouriteGame, removeFavouriteGame } = useFavourites();
     const isFavorite = favouritesList.some((favourite: { id: number; }) => favourite.id === game.id);
     const pathname = usePathname();
 
@@ -37,7 +37,8 @@ export function FavouriteButton({ game, setFading, removeCard }: { game: Game, s
     return (
         <button 
             className={ isFavorite ? `favouriteButton isFavourite` : `favouriteButton noFavourite` } 
-            onClick={(event) => handleFavourites(event)}>
+            onClick={(event) => handleFavourites(event)}
+        >
         </button>
     );
 }

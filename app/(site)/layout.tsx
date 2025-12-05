@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/app/_components/header";
 import { Footer } from "@/app/_components/footer";
-import { FavouriteContextProvider } from "@/app/_contexts";
+import { FavouritesProvider } from "@/app/_contexts";
 
 import "../globals.css";
 
@@ -16,10 +16,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <FavouriteContextProvider>
+        <FavouritesProvider>
             <Header />
             {children} 
             <Footer />
-        </FavouriteContextProvider>
+        </FavouritesProvider>
     );
 }

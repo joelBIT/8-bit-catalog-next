@@ -6,7 +6,7 @@ import { isLocalStorageAvailable } from "@/app/_utils/utils";
 import { addFavouriteGameToDatabase, deleteFavouriteGameFromDatabase, getFavourites } from "@/app/_client/client";
 import { isAuthenticated } from "@/app/_session/utils";
 
-interface FavouritesContextProvider {
+export interface FavouritesContextProvider {
     favouritesList: Game[];
     addFavouriteGame: (game: Game) => void;
     removeFavouriteGame: (game: Game) => void;
@@ -19,7 +19,7 @@ export const FavouritesContext = createContext<FavouritesContextProvider>({} as 
  * Favourite games are placed in localstorage if localstorage is available. If not available, the favourite games
  * are only temporarily stored in this Context's favouritesList variable.
  */
-export function FavouriteContextProvider({ children }: {children: ReactNode}): ReactElement {
+export function FavouritesProvider({ children }: { children: ReactNode }): ReactElement {
     const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
     const STORAGE_KEY = 'favouriteGames';
 
