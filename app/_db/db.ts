@@ -61,16 +61,6 @@ export async function updateGameById(game: Game, file: File): Promise<void> {
     }
 }
 
-export async function getGameById(id: number): Promise<Game> {
-    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('id', id).single();
-    return data;
-}
-
-export async function getGameByTitle(title: string): Promise<Game> {
-    const { data } = await databaseClient.from(GAMES_TABLE).select().eq('title', title).single();
-    return data;
-}
-
 export async function getAllTitles(): Promise<string[]> {
     const { data } = await databaseClient.from(GAMES_TABLE).select("title");
     if (data) {
