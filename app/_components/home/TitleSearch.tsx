@@ -1,53 +1,48 @@
 'use client';
 
-import { JSX, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { SuggestionList } from "@/app/_components/home/SuggestionList";
+import { useGames } from "@/app/_hooks";
+import { SuggestionList } from "@/app/_components/home";
 import { GameModal } from "@/app/_components/common";
-import { getGameByTitle } from "@/app/_client/client";
 import { Game } from "@/app/_types/types";
 
 /**
  * Show titles of existing games in a list of suggestions matching the letters a user types. Opens a modal containing
  * information about the selected game when a user clicks on the view button.
  */
-export function TitleSearch({ titles }: { titles: string[] }): JSX.Element {
+export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
     const [ selectedGame, setSelectedGame ] = useState<Game>({} as Game);
     const [ message, setMessage ] = useState<string>("");
+    const { getGameByTitle } = useGames();
 
     useEffect(() => {
         setOpenModal(showModal);
-    });
+    }, [showModal]);
 
-    async function click(title: string): Promise<void> {
-        closeGameModal();       // Handles when back button on mobile phone is used, makes sure the url is really updated before opening modal
-
+    async function selectGame(title: string): Promise<void> {
         if (!title) {
             setMessage("Please enter a title");
             return;
         }
 
-        try {
-            const game = await getGameByTitle(title);
-            setSelectedGame(game);
-            if (!game) {
-                setMessage(`${title} is not a valid title`);
-                return;
-            }
-
-            setTimeout(() => {
-                params.set('show', "true");
-                window.history.pushState(null, '', `?${params.toString()}`);
-                setOpenModal(true);
-                setMessage("");
-            }, 200);
-        } catch (error) {
-            console.log(error);
+        const game = getGameByTitle(title);
+        if (!game) {
+            setMessage(`${title} is not a valid title`);
+            return;
         }
+        setSelectedGame(game);
+
+        setTimeout(() => {
+            params.set('show', "true");
+            window.history.pushState(null, '', `?${params.toString()}`);
+            setOpenModal(true);
+            setMessage("");
+        }, 200);
     }
 
     function closeGameModal(): void {
@@ -59,7 +54,7 @@ export function TitleSearch({ titles }: { titles: string[] }): JSX.Element {
 
     return (
         <>
-            <SuggestionList options={titles} click={click} />
+            <SuggestionList options={titles} click={selectGame} />
 
             { message.length > 0 ? <h2 className="message-failure"> {message} </h2> : <></> }
 
