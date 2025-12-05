@@ -1,8 +1,7 @@
 import 'server-only';
 
-import { Account, FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, Session, TimelineEvent, User, News } from '@/app/_types/types';
+import { Account, FilterValues, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
-import { ALL_OPTION_VALUE, PAGINATION_PAGE_SIZE } from '@/app/_utils/utils';
 
 const databaseClient = createClient(databaseURL(), databaseKey());
 
@@ -118,84 +117,6 @@ async function uploadFile(fileName: string, file: File, storage: string, folder:
 
 
 
-
-
-/**********
- * SEARCH *
- **********/
-
-/**
- * Performs a text search if a title is given by the user. Otherwise a search is executed based on supplied filters.
- */
-export async function getGamesBySearchFilters(filters: SearchFilter): Promise<SearchResult> {
-    if (filters.title) {
-        return await textSearch(filters);
-    }
-    
-    return await filterSearch(filters);
-}
-
-/**
- * Retrieve games based on text search performed on game descriptions. 
- * A count property corresponding to the number of matched games is added to the response.
- */
-export async function textSearch(filters: SearchFilter): Promise<SearchResult> {
-    let query = databaseClient.from(GAMES_TABLE).select('*', { count: 'exact' });
-
-    if (filters.developer !== ALL_OPTION_VALUE) {
-        query = query.eq('developer', filters.developer);
-    }
-    if (filters.category !== ALL_OPTION_VALUE) {
-        query = query.eq('category', filters.category);
-    }
-    if (filters.publisher !== ALL_OPTION_VALUE) {
-        query = query.eq('publisher', filters.publisher);
-    }
-
-    const { data, error, count } = await query.textSearch('title', `${filters.title.replaceAll(' ', ' & ')
-        .replaceAll(' the ', ' & ').replaceAll(' in ', ' & ').replaceAll(' jr. ', ' & ').replaceAll(' of ', ' & ').replaceAll(' and ', ' & ')}`)
-        .range(from(parseInt(filters.page)), to(parseInt(filters.page)));
-
-    if (error) {
-        console.log(error);
-        return {games: [], count: 0};
-    }
-
-    return { games: data, count: count ? count : 0 };
-}
-
-function from(page: number): number {
-    return (page-1) * PAGINATION_PAGE_SIZE;
-}
-
-function to(page: number): number {
-    return (page-1) * PAGINATION_PAGE_SIZE + PAGINATION_PAGE_SIZE - 1;
-}
-
-/**
- * Retrieve games based on supplied search filters. A count property corresponding to the number of matched games is added to the response.
- */
-export async function filterSearch(filters: SearchFilter): Promise<SearchResult> {
-    const { data, error, count } = await databaseClient.rpc('games', {
-        filter_title: '%' + filters.title + '%', 
-        filter_category: convertFilterAll(filters.category), 
-        filter_developer: convertFilterAll(filters.developer),
-        filter_publisher: convertFilterAll(filters.publisher)},
-        {count: 'exact'})
-        .range(from(parseInt(filters.page)), to(parseInt(filters.page)));
-
-    if (error) {
-        console.log(error);
-        return {games: [], count: 0};
-    }
-
-    return {games: data, count: count ? count : 0};
-}
-
-// Convert 'All' to % because the postgres function named 'games' uses % as wildcard (matches sequences of characters).
-function convertFilterAll(value: string): string {
-    return value === 'All' ? '%' : value;
-}
 
 
 

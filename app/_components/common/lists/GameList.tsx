@@ -13,14 +13,13 @@ import "./GameList.css";
  * This component consists of a game list (in List View) and its heading. It is possible to sort the supplied
  * list of games by clicking on each heading.
  */
-export function GameList({ games, page }: { games: Game[], page: number }): ReactElement {
+export function GameList({ games }: { games: Game[] }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
     const [ active, setActive ] = useState<string>('');
     const [ ascending, setAscending ] = useState<boolean>(false);
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
-    const [ currentPage, setCurrentPage ] = useState<number>(-1);
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
     const { selectedGame, setSelectedGame } = useGame();
     const GAME_TITLE = "game-title";
@@ -34,17 +33,9 @@ export function GameList({ games, page }: { games: Game[], page: number }): Reac
     useEffect(() => {
         if (active) {                           // The selected sorting is executed on each render
             sortAscending(active, ascending);
-            setCurrentGames(games);
         }
 
-        if (page !== currentPage) {         // New page containing new games so list of games and current page are updated
-            setCurrentGames(games);
-            setCurrentPage(page);
-        }
-
-        if (!active && page === currentPage) {      // Set games when user e.g., refreshes the browser (resets sorting)
-            setCurrentGames(games);
-        }
+        setCurrentGames(games);
     })
 
     useEffect(() => {

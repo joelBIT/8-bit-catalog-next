@@ -11,24 +11,16 @@ import "./GameGrid.css";
 /**
  * This component consists of a game list in Grid View.
  */
-export function GameGrid({ games, page }: { games: Game[], page: number }): ReactElement {
+export function GameGrid({ games }: { games: Game[] }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
     const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
-    const [ currentPage, setCurrentPage ] = useState<number>(-1);
     const [ openModal, setOpenModal ] = useState<boolean>(showModal);
     const { selectedGame, setSelectedGame } = useGame();
 
     useEffect(() => {
-        if (page !== currentPage) {         // New page containing new games so list of games and current page are updated
-            setCurrentGames(games);
-            setCurrentPage(page);
-        }
-
-        if (page === currentPage) {
-            setCurrentGames(games);
-        }
+        setCurrentGames(games);
     })
 
     useEffect(() => {
