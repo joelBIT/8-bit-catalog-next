@@ -37,6 +37,7 @@
         }
 
         & .input-field {
+            font-family: "arima", sans-serif;
             background-color: var(--color-real-black);
             border-color: var(--color-real-black);
             color: var(--color-real-white);

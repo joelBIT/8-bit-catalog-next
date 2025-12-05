@@ -2,10 +2,12 @@
 
 import { ReactElement, useActionState } from "react";
 import { sendMessage } from "@/app/_actions/contact";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./ContactForm.css";
 
+/**
+ * Lets a user send an email to me.
+ */
 export function ContactForm(): ReactElement {
     const [ state, formAction ] = useActionState(sendMessage, { message: '', success: false });
     
@@ -20,7 +22,7 @@ export function ContactForm(): ReactElement {
                     id="name"
                     name="name"
                     type="text"
-                    className={`${arima.className} input-field`}
+                    className="input-field"
                     autoComplete="none" 
                 />
             </section>
@@ -34,7 +36,7 @@ export function ContactForm(): ReactElement {
                     id="email"
                     name="email" 
                     type="email"
-                    className={`${arima.className} input-field`}
+                    className="input-field"
                     autoComplete="off" 
                     required 
                 />
@@ -49,7 +51,7 @@ export function ContactForm(): ReactElement {
                     id="subject"
                     name="subject"
                     type="text"
-                    className={`${arima.className} input-field`}
+                    className="input-field"
                     autoComplete="none" 
                 />
             </section>
@@ -59,7 +61,7 @@ export function ContactForm(): ReactElement {
                     Message
                 </label>
 
-                    <textarea id="message" name="message" className={`${arima.className} input-field`} required />
+                    <textarea id="message" name="message" className="input-field" required />
             </section>
 
             { 
