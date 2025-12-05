@@ -1,5 +1,4 @@
 export const ALL_OPTION_VALUE = "All";
-export const PAGINATION_PAGE_SIZE = 15;
 
 export const URL_ABOUT_PAGE = "/about";
 export const URL_ACTIVATION_PAGE = "/activate";

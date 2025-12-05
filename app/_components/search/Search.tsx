@@ -56,9 +56,9 @@ export function Search(): ReactElement {
 
                         { 
                             gridView ?
-                                <GameGrid games={searchResult} page={1} />
+                                <GameGrid games={searchResult} />
                                 :
-                                <GameList games={searchResult} page={1} />
+                                <GameList games={searchResult} />
                         }
                     </>
                 :   <>

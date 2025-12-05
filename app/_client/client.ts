@@ -11,7 +11,7 @@ import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult
  */
 export async function getAllGames(): Promise<SearchResult> {
     try {
-        const response = await fetch("/api/games?all=true");
+        const response = await fetch("/api/games");
         if (response.ok) {
             const games = await response.json();
             return {games: games, count: games.length};
