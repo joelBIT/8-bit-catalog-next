@@ -12,8 +12,8 @@ import "./page.css";
  * Page containing answers to frequently asked questions about the 8-bit catalog.
  */
 export default function FaqPage(): ReactElement {
-    const [ faqPage, setFaqPage ] = useState<typeof FAQ_GENERAL | typeof FAQ_ACCOUNT | typeof FAQ_GAMES>(FAQ_GENERAL);
-    const [ faqs, setFaqs ] = useState<FrequentlyAskedQuestion[]>([]);
+    const [faqPage, setFaqPage] = useState<typeof FAQ_GENERAL | typeof FAQ_ACCOUNT | typeof FAQ_GAMES>(FAQ_GENERAL);
+    const [faqs, setFaqs] = useState<FrequentlyAskedQuestion[]>([]);
 
      useEffect(() => {    
         getQuestions();

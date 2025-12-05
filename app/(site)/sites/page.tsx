@@ -16,14 +16,14 @@ const sites = [
  * Site containing links and descriptions about other related and interesting sites.
  */
 export default function SitesPage(): ReactElement {
-    const [ currentSite, setCurrentSite ] = useState<{title: string, description: string, image: string, link: string}>(sites[0]);
-    const [ overview, setOverview ] = useState<boolean>(true);
+    const [currentSite, setCurrentSite] = useState<{title: string, description: string, image: string, link: string}>(sites[0]);
+    const [overview, setOverview] = useState<boolean>(true);
 
     return (
         <main id="sitesPage">
             <section id="sitesBackground">
                 <div className="darken-image-top" />
-                <h1 className="sites-title playfair-display-regular"> OTHER 8-BIT RESOURCES </h1>
+                <h1 className="sites-title"> OTHER 8-BIT RESOURCES </h1>
                 <div className="darken-image-bottom" />
             </section>
 

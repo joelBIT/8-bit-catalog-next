@@ -148,7 +148,7 @@
                 gap: 2rem;
 
                 & .site-title {
-                    color: var(--color-real-white);
+                    color: var(--color-footer-heading);
                     font-size: 2rem;
                 }
 
