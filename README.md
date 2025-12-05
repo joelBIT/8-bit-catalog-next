@@ -13,7 +13,8 @@ The 8-bit Catalog is a searchable library of games released for the Nintendo Ent
 
 
 
-<img width="1825" height="958" alt="catalog3" src="https://github.com/user-attachments/assets/8f5bcbd7-c547-4879-8fa8-6da15aa50304" />
+
+<img width="1823" height="957" alt="catalog3" src="https://github.com/user-attachments/assets/7c2a91cf-b249-4930-acdd-b6298fc5213d" />
 
 
 
