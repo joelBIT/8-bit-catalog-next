@@ -21,11 +21,7 @@ export default function SitesPage(): ReactElement {
 
     return (
         <main id="sitesPage">
-            <section id="sitesBackground">
-                <div className="darken-image-top" />
-                <h1 className="sites-title"> OTHER 8-BIT RESOURCES </h1>
-                <div className="darken-image-bottom" />
-            </section>
+            <h1 className="sites-title"> Resources </h1>
 
             <section id="sites">
                 <section id="change-site-content">
