@@ -8,6 +8,7 @@ import { ALL_OPTION_VALUE } from "../_utils/utils";
 export interface GamesContextProvider {
     games: Game[];
     getFilteredGames: (filters: SearchFilter) => Game[];
+    getGameByTitle: (title: string) => Game | undefined;
 }
 
 export const GamesContext = createContext<GamesContextProvider>({} as GamesContextProvider);
@@ -44,9 +45,13 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
 
         return filteredGames;
     }
+
+    function getGameByTitle(title: string): Game | undefined {
+        return games.find(game => game.title === title);
+    }
     
     return (
-        <GamesContext.Provider value={{ games, getFilteredGames }}>
+        <GamesContext.Provider value={{ games, getFilteredGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );
