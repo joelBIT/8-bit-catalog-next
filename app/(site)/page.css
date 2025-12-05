@@ -119,6 +119,8 @@
         }
 
         & #secondSection {
+            gap: 2rem;
+            
             & #newsHeading {
                 width: 90vw;
                 align-self: center;
