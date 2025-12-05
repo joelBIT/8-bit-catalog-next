@@ -1,4 +1,4 @@
-import { FilterValues, FrequentlyAskedQuestion, Game, SearchFilter, SearchResult, TimelineEvent, User, News } from '@/app/_types/types';
+import { FilterValues, FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News } from '@/app/_types/types';
 
 
 /********************************************************************************************
@@ -15,22 +15,6 @@ export async function getAllGames(): Promise<SearchResult> {
         if (response.ok) {
             const games = await response.json();
             return {games: games, count: games.length};
-        }
-    } catch (error) {
-        console.error(error);
-    }
-
-    return {games: [], count: 0};
-}
-
-/**
- * Retrieve games that match the search filters.
- */
-export async function getGames(filters: SearchFilter): Promise<SearchResult> {
-    try {
-        const response = await fetch(`/api/games?title=${filters.title.trim()}&category=${filters.category}&developer=${filters.developer}&publisher=${filters.publisher}&page=${filters.page}`);
-        if (response.ok) {
-            return await response.json();
         }
     } catch (error) {
         console.error(error);

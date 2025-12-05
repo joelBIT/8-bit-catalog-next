@@ -36,10 +36,10 @@ export function Search(): ReactElement {
      * Performs a search based on given title text and filters.
      */
     async function search(): Promise<void> {
-        const filteredGames = getFilteredGames({title, category, developer, publisher, page: "1"});
+        const filteredGames = getFilteredGames({title, category, developer, publisher});
         setSearchResult(filteredGames);
         setTotalCount(filteredGames.length);
-        setShowHeading(true);
+        setShowHeading(true);           // Set to true after first search is executed
     }
 
     return (

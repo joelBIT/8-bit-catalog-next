@@ -15,8 +15,7 @@ export type SearchFilter = {
     title: string,
     category: string,
     developer: string,
-    publisher: string,
-    page: string
+    publisher: string
 }
 
 export type SearchResult = {
