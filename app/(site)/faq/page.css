@@ -18,6 +18,7 @@
         z-index: 1;
 
         & .faqPage-title {
+            font-family: 'Playfair Display', sans-serif;
             font-size: 3rem;
             text-align: center;
             color: var(--color-footer-heading);

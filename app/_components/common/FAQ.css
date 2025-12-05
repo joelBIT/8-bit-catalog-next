@@ -46,10 +46,12 @@
 
         & .faq-open::before {
             content: "-";
+            color: var(--color-white);
         }
 
         & .faq-closed::before {
             content: "+";
+            color: var(--color-white);
         }
     }
 
