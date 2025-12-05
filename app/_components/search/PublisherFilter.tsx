@@ -1,7 +1,6 @@
 'use server';
 
 import { ReactElement } from "react";
-import { arima } from "@/app/_fonts/fonts";
 import { addAllOption } from "@/app/_utils/utils";
 import { getAllPublishers } from "@/app/_db/db";
 
@@ -11,7 +10,7 @@ import { getAllPublishers } from "@/app/_db/db";
 export async function PublisherFilter({ defaultValue } : { defaultValue: string }): Promise<ReactElement> {
     return (
         <section className="selectSection">
-            <h2 className={`selectSection__title ${arima.className}`}> Publisher </h2>
+            <h2 className="selectSection__title"> Publisher </h2>
 
             <select className="selectSection__select" name="publisher" defaultValue={defaultValue}>
                 { addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}> {element} </option>) }

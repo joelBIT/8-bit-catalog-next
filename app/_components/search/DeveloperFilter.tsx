@@ -1,7 +1,6 @@
 'use server';
 
 import { ReactElement } from "react";
-import { arima } from "@/app/_fonts/fonts";
 import { addAllOption } from "@/app/_utils/utils";
 import { getAllDevelopers } from "@/app/_db/db";
 
@@ -11,7 +10,7 @@ import { getAllDevelopers } from "@/app/_db/db";
 export async function DeveloperFilter({ defaultValue } : { defaultValue: string }): Promise<ReactElement> {
     return (
         <section className="selectSection">
-            <h2 className={`selectSection__title ${arima.className}`}> Developer </h2>
+            <h2 className="selectSection__title"> Developer </h2>
 
             <select className="selectSection__select" name="developer" defaultValue={defaultValue}>
                 { addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
