@@ -20,14 +20,14 @@
         position: relative;
 
         & #subscribeButton {
-            align-self: flex-end;
+            align-self: center;
             padding: .2rem 0.5rem;
             width: fit-content;
-            height: 96%;
+            height: 84%;
             position: absolute;
             bottom: 0;
             top: 0;
-            right: 0;
+            right: 3px;
             background-color: var(--color-white);
 
             &:hover {
@@ -62,7 +62,6 @@
         width: 100%;
 
         & #newsletterSignup {
-            width: 100%;
             max-width: 400px;
 
             & #subscribeButton {
