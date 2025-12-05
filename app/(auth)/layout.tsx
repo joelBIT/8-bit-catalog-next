@@ -1,10 +1,7 @@
-import { GuestOnly } from "../_components/auth/GuestOnly";
+import { GuestOnly } from "../_components/auth";
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <GuestOnly>
             {children} 

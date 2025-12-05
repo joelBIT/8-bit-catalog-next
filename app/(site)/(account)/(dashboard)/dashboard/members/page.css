@@ -24,7 +24,7 @@
             background-color: var(--color-black-light);
             border-radius: 100%;
             padding: 0.1rem 0.3rem;
-            font-family: 'rancho', serif;
+            font-family: 'rancho', sans-serif;
         }
     }
 
@@ -37,6 +37,7 @@
             display: flex;
 
             & #searchMember {
+                font-family: "arima", sans-serif;
                 padding-left: 2.5rem;
                 font-size: 1rem;
                 border-radius: 9px;

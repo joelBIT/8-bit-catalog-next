@@ -10,6 +10,12 @@
         font-size: 1rem;
     }
 
+    & .input {
+        & #email {
+            font-family: "arima", sans-serif;
+        }
+    }
+
     .message-success,
     .message-failure {
         margin-top: 2rem;

@@ -1,14 +1,14 @@
 'use client';
 
-import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
+import { ReactElement, useActionState, useEffect, useState } from "react";
+import { useAccount } from "@/app/_hooks";
 import { imageTypes } from "@/app/_utils/utils";
 import { updateProfileImage } from "@/app/_actions/account";
-import { AccountContext } from "@/app/_contexts/AccountContextProvider";
 
 import "./EditProfileForm.css";
 
 export function EditProfileForm(): ReactElement {
-    const { user, addUser } = useContext(AccountContext);
+    const { user, addUser } = useAccount();
     const [ state, formAction ] = useActionState(updateProfileImage.bind(null, user.id), { message: '', success: false, image: user?.image });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;

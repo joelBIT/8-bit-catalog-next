@@ -1,16 +1,16 @@
 'use client';
 
-import { ReactElement, useContext } from "react";
-import { useGame } from "@/app/_hooks";
-import { FavouritesContext } from "@/app/_contexts";
+import { ReactElement } from "react";
+import { useFavourites, useGame } from "@/app/_hooks";
 import { GameGrid, GameList, SlidingToggle, ScrollTopButton } from "@/app/_components/common";
 
 import "./page.css";
+
 /**
  * Renders the current user's favourite games as game cards either in Grid view or List view.
  */
 export default function FavouritesPage(): ReactElement {
-    const { favouritesList } = useContext(FavouritesContext);
+    const { favouritesList } = useFavourites();
     const { gridView } = useGame();
 
     return (
