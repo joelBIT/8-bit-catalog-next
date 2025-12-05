@@ -20,7 +20,7 @@
             padding-bottom: 0.5rem;
 
             & .searchFilters__title {
-                font-family: "rancho", sans-serif;
+                font-family: "iceland", sans-serif;
                 align-self: center;
                 color: var(--color-footer-heading);
                 font-size: 50px;
