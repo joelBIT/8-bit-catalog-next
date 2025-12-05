@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
+import { AccountProvider } from "@/app/_contexts";
 import { AccountMenu } from "@/app/_components/account";
-import { AccountContextProvider } from "@/app/_contexts";
 import { getUserFromSession } from "@/app/_session/utils";
 import { User } from "@/app/_types/types";
 
@@ -10,7 +10,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     return (
         <section id="dashboardLayout">
             <AccountMenu user={await getUserFromSession() as User} />
-            <AccountContextProvider> {children} </AccountContextProvider>
+            <AccountProvider> {children} </AccountProvider>
         </section>
     );
 }

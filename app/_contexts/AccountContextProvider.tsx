@@ -1,16 +1,20 @@
 'use client';
 
-import { createContext, ReactElement, useEffect, useState } from "react";
-import { ContextProviderChildren, AccountsContextProvider } from "@/app/_interfaces/interfaces";
+import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
 import { User } from "@/app/_types/types";
 import { getUserFromSession } from "@/app/_session/utils";
 
-export const AccountContext = createContext<AccountsContextProvider>({} as AccountsContextProvider);
+export interface AccountContextProvider {
+    user: User;
+    addUser: () => Promise<void>
+}
+
+export const AccountContext = createContext<AccountContextProvider>({} as AccountContextProvider);
 
 /**
  * This is the context for an authenticated user in the account environment.
  */
-export function AccountContextProvider({ children }: ContextProviderChildren): ReactElement {
+export function AccountProvider({ children }: { children: ReactNode }): ReactElement {
     const [ user, setUser ] = useState<User>({} as User);
 
     useEffect(() => {

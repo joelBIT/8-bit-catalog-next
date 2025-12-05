@@ -1,9 +1,9 @@
 'use client';
 
-import { ReactElement, useActionState, useState, useEffect, useContext } from "react";
+import { ReactElement, useActionState, useState, useEffect } from "react";
+import { useAccount } from "@/app/_hooks";
 import { arima } from "@/app/_fonts/fonts";
 import { updateUserDetails } from "@/app/_actions/account";
-import { AccountContext } from "@/app/_contexts/AccountContextProvider";
 import PhoneInput from "react-phone-input-2";
 import { SelectCountry } from "../common";
 
@@ -16,7 +16,7 @@ const initialState = {
 }
 
 export function EditUserDetailsForm(): ReactElement {
-    const { user, addUser } = useContext(AccountContext);
+    const { user, addUser } = useAccount();
     const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), initialState);
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
 

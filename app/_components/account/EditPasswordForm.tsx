@@ -1,14 +1,13 @@
 'use client';
 
-import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
+import { ReactElement, useActionState, useEffect, useState } from "react";
+import { useAccount } from "@/app/_hooks";
 import { updateAccountPassword } from "@/app/_actions/account";
-import { AccountContext } from "@/app/_contexts";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./EditPasswordForm.css";
 
 export function EditPasswordForm(): ReactElement {
-    const { user } = useContext(AccountContext);
+    const { user } = useAccount();
     const [ state, formAction ] = useActionState(updateAccountPassword.bind(null, user.id), { message: '', success: false });
     const [ isVisible, setVisible ] = useState<boolean>(false);
     const [ isVisibleRepeat, setVisibleRepeat ] = useState<boolean>(false);
@@ -35,7 +34,7 @@ export function EditPasswordForm(): ReactElement {
                         name="oldPassword"
                         type={isOldVisible ? "text" : "password"}
                         placeholder="OLD PASSWORD"
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                         autoComplete="none" 
                         required 
                     />
@@ -60,7 +59,7 @@ export function EditPasswordForm(): ReactElement {
                         name="password"
                         type={isVisible ? "text" : "password"}
                         placeholder="SET NEW PASSWORD"
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                         autoComplete="none" 
                         required 
                     />
@@ -80,7 +79,7 @@ export function EditPasswordForm(): ReactElement {
                         name="passwordRepeat"
                         type={isVisibleRepeat ? "text" : "password"}
                         placeholder="CONFIRM PASSWORD"
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                         autoComplete="none" 
                         required 
                     />

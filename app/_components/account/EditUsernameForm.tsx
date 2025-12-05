@@ -1,14 +1,13 @@
 'use client';
 
-import { ReactElement, useActionState, useContext, useEffect, useState } from "react";
-import { AccountContext } from "@/app/_contexts";
+import { ReactElement, useActionState, useEffect, useState } from "react";
+import { useAccount } from "@/app/_hooks";
 import { updateAccountUsername } from "@/app/_actions/account";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./EditUsernameForm.css";
 
 export function EditUsernameForm(): ReactElement {
-    const { user } = useContext(AccountContext);
+    const { user } = useAccount();
     const [ state, formAction ] = useActionState(updateAccountUsername.bind(null, user.id), { message: '', success: false, username: user?.username });
     const [ showMessage, setShowMessage ] = useState<boolean>(false);
     
@@ -31,7 +30,7 @@ export function EditUsernameForm(): ReactElement {
                     name="username" 
                     type="text"
                     placeholder="SET USERNAME"
-                    className={`${arima.className} form__field`}
+                    className="form__field"
                     defaultValue={state?.username ? state.username : user?.username} 
                     autoComplete="off" 
                     required 

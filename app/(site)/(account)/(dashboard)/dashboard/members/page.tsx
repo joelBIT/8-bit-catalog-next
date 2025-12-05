@@ -1,9 +1,8 @@
 'use client';
 
-import { ReactElement, useContext, useEffect, useRef, useState } from "react";
-import { AccountContext } from "@/app/_contexts";
+import { ReactElement, useEffect, useRef, useState } from "react";
+import { useAccount } from "@/app/_hooks";
 import { User } from "@/app/_types/types";
-import { arima, rancho } from "@/app/_fonts/fonts";
 import { getUsers } from "@/app/_client/client";
 import { AddUserModal, UserList } from "@/app/_components/common";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
@@ -15,7 +14,7 @@ import "./page.css";
  * by entering letters in the search input. The list is updated instantly and users matching the combination of letters are listed.
  */
 export default function MembersPage(): ReactElement {
-    const { user } = useContext(AccountContext);
+    const { user } = useAccount();
     const [ members, setMembers ] = useState<User[]>([]);
     const [ result, setResult ] = useState<User[]>([]);
     const [ modal, setModal ] = useState<boolean>(false);
@@ -46,11 +45,13 @@ export default function MembersPage(): ReactElement {
     return (
         <main id="membersPage">
             <h1 className="title">
-                Members {
-                members?.length > 0 ?
-                    <p id="members-count" className={`material-symbols-outlined ${rancho.className}`}>
-                        {members?.length}
-                    </p> : <></>
+                Members 
+                {
+                    members?.length > 0 ?
+                        <p id="members-count" className="material-symbols-outlined">
+                            {members?.length}
+                        </p> 
+                    : <></>
                 }
             </h1>
 
@@ -59,7 +60,6 @@ export default function MembersPage(): ReactElement {
                     <span className="material-symbols-outlined"> search </span>
                     <input
                         id="searchMember"
-                        className={`${arima.className}`} 
                         type="text" 
                         placeholder="Search by email" 
                         ref={searchRef} 

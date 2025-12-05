@@ -10,11 +10,7 @@ export const metadata: Metadata = {
     description: "Contains information about 8-bit NES games",
 };
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <FavouritesProvider>
             <Header />
