@@ -41,7 +41,12 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
         filteredGames = filters.developer !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.developer === filters.developer) : filteredGames;
         filteredGames = filters.publisher !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.publisher === filters.publisher) : filteredGames;
         filteredGames = filters.category !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.category === filters.category) : filteredGames;
-        filteredGames = filters.title.trim() !== "" ? filteredGames.filter(game => game.title.toLowerCase().includes(filters.title.toLowerCase())) : filteredGames;
+
+        const titleWords = filters.title.split(" ");
+        for (let i = 0; i < titleWords.length; i++) {       // If search string consists of several words, title must include all words
+            const word = titleWords[i].trim();
+            filteredGames = word !== "" ? filteredGames.filter(game => game.title.toLowerCase().includes(word.toLowerCase())) : filteredGames;
+        }
 
         return filteredGames;
     }

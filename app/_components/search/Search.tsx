@@ -5,9 +5,9 @@ import { useSearchParams } from "next/navigation";
 import { useGame, useGames } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
 import { SlidingToggle, ScrollTopButton, GameList, GameGrid } from "../common";
+import { RangeSlider } from "./RangeSlider";
 
 import "./Search.css";
-import { RangeSlider } from "./RangeSlider";
 
 /**
  * Searches for games that matches the supplied filter values as well as the given title text.
@@ -24,7 +24,7 @@ export function Search(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const [numberGamesShowing, setNumberGamesShowing] = useState<number>(50);
+    const [numberGamesShowing, setNumberGamesShowing] = useState<number>(50);           // Minimum 50 games visible
     const { getFilteredGames } = useGames();
     const { gridView } = useGame();
     
