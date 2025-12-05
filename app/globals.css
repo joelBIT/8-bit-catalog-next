@@ -31,6 +31,7 @@
     --color-nintendo-gray-light: #ADA8AD;
     --color-real-black: #000000;
     --color-real-white: #fff;
+    --color-slider-knob: var(--color-card-light);
     --color-success: #45ca4e;
     --color-tag-background: #D3D3D3;
     --color-tag-text: #666666;
@@ -546,6 +547,8 @@ textarea {
     & .selectSection__title {
         font-weight: 900;
         font-size: 1.2rem;
+        font-family: "arima", sans-serif;
+        color: var(--color-real-white);
     }
 
     & .selectSection__select {
