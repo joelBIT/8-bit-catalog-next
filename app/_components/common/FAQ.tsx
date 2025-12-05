@@ -9,12 +9,17 @@ import "./FAQ.css";
  * A frequently asked question.
  */
 export function FAQ({ faq }: { faq: FrequentlyAskedQuestion }): ReactElement {
-    const [isShowing, setIsShowing] = useState(false);
+    const [isShowing, setIsShowing] = useState<boolean>(false);
     
     return (
         <section className="faq">
              <section className="faq-card">
-                <h2 className="faq-card__question" onClick={() => setIsShowing(!isShowing)}> { faq.question } </h2> 
+                <h2 
+                    className="faq-card__question" 
+                    onClick={() => setIsShowing(!isShowing)}
+                > 
+                    { faq.question } 
+                </h2> 
 
                 <div className={isShowing ? "faq-open" : "faq-closed"} onClick={() => setIsShowing(!isShowing)} />
             </section>
