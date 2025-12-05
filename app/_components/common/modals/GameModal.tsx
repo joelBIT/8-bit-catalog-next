@@ -10,8 +10,8 @@ import "./GameModal.css";
  * Modal showing metadata about the supplied game. It is possible to navigate between the supplied games by clicking on respective cover image.
  */
 export function GameModal({ games, game, close }: { games: Game[], game: Game, close: () => void }): ReactElement {
-    const [ slide, setSlide ] = useState<number>(games.findIndex(element => element.id === game.id));
-    const [ suppliedGames ] = useState<Game[]>(games);
+    const [slide, setSlide] = useState<number>(games.findIndex(element => element.id === game.id));
+    const [suppliedGames] = useState<Game[]>(games);
     const dialogRef = useRef<HTMLDialogElement>(null);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
