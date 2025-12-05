@@ -65,6 +65,7 @@
             }
 
             & .gameDetails__title {
+                color: var(--color-footer-heading);
                 font-size: 2.5rem;
                 letter-spacing: 2px;
                 font-family: 'Rancho', sans-serif;

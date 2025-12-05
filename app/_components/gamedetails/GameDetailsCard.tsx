@@ -8,7 +8,7 @@ import { Game } from "@/app/_types/types";
 import "./GameDetailsCard.css";
 
 /**
- * Show metadata of the supplied game in the UI.
+ * Show metadata of the supplied game.
  */
 export function GameDetailsCard({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
@@ -42,12 +42,17 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
 
                 <article id="gameDetails">
                     <section id="titleLink">
-                        <h1 className="gameDetails__title"> {game?.title} </h1>
-                        { game?.rom ? 
-                            <Link className="button__link" target="_blank" href={`https://rollnes.joel-rollny.eu/games/${game?.id}`}>
-                                Play 
-                                <span className="material-symbols-outlined"> open_in_new </span>
-                            </Link>  : <></> 
+                        <h1 className="gameDetails__title">
+                            {game?.title} 
+                        </h1>
+
+                        { 
+                            game?.rom ? 
+                                <Link className="button__link" target="_blank" href={`https://rollnes.joel-rollny.eu/games/${game?.id}`}>
+                                    Play 
+                                    <span className="material-symbols-outlined"> open_in_new </span>
+                                </Link> 
+                            : <></> 
                         }
                     </section>
 
