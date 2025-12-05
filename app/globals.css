@@ -548,7 +548,7 @@ textarea {
         font-weight: 900;
         font-size: 1.2rem;
         font-family: "arima", sans-serif;
-        color: var(--color-real-white);
+        color: var(--color-footer-heading);
     }
 
     & .selectSection__select {
@@ -560,14 +560,11 @@ textarea {
         font-size: 1.2rem;
         padding: 0.3rem;
         font-family: sans-serif;
+        cursor: pointer;
 
         & option {
             background-color: var(--color-black);
             color: var(--color-real-white);
-        }
-
-        &:hover {
-            cursor: pointer;
         }
     }
 }
