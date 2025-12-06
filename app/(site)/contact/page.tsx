@@ -21,17 +21,17 @@ export default function ContactPage(): ReactElement {
                 </p>
 
                 <article id="contact-info">
-                    <section className="contact__info">
+                    <section className="contact__info" title="Location">
                         <span className={`material-symbols-outlined location`}> location_on </span> Karlstad, Sweden
                     </section>
 
                     <section className="contact__info">
-                        <span className={`material-symbols-outlined mail`}> mail </span>
+                        <span className={`material-symbols-outlined mail`} title="Email"> mail </span>
                         <a href="mailto:contact@joel-rollny.eu"> contact@joel-rollny.eu </a>
                     </section>
 
                     <section className="contact__info">
-                        <span className={`material-symbols-outlined globe`}> globe </span> 
+                        <span className={`material-symbols-outlined globe`} title="Website"> globe </span> 
                         <a href="https://www.joel-rollny.eu" target="_blank" className="contact__link"> www.joel-rollny.eu</a>
                     </section>
                 </article>
