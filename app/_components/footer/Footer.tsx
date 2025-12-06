@@ -16,8 +16,7 @@ export function Footer(): ReactElement {
             </section>
             
             <article id="copyright">
-                <span className="material-symbols-outlined"> copyright </span> 
-                <h4 className="copyright__text"> 2025 Joel Rollny </h4>
+                <h4 className="copyright__text"> &#169; 2025 Joel Rollny </h4>
             </article>
         </footer>
     );

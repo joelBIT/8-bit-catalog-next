@@ -22,14 +22,7 @@ footer {
         margin-bottom: 1rem;
         padding-top: 2rem;
 
-        & .material-symbols-outlined {
-            padding-left: 0.2rem;
-            padding-right: 0.2rem;
-            font-size: 0.7rem;
-        }
-
-        & .material-symbols-outlined, 
-        .copyright__text {
+        & .copyright__text {
             align-self: first baseline;
             text-align: left;
             font-weight: 400;
