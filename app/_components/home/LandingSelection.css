@@ -31,12 +31,7 @@
                     font-size: 3rem;
                     font-weight: 100;
                     white-space: nowrap;
-                    transition: all 0.3s ease-in-out;
-                }
-
-                & .item-arrow {
-                    display: none;
-                    animation: fadeout 2s ease-in-out;
+                    transition: all 0.5s ease-in-out;
                 }
 
                 &:hover {
@@ -54,7 +49,7 @@
                     font-size: 2.5rem;
                     position: absolute;
                     transition: all 1s ease-in-out;
-                    animation: fadeout 1s reverse ease-in-out;
+                    animation: fadeout 2s reverse ease-in-out;
                 }
 
                 & .item-title {
