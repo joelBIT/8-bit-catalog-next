@@ -33,10 +33,10 @@
                 }
 
                 & .loginPage-link__text {
-                    font-family: "rancho", sans-serif;
+                    font-family: "iceland", sans-serif;
                     align-self: center;
                     font-weight: 600;
-                    font-size: 1.1rem;
+                    font-size: 1.2rem;
                 }
 
                 &:hover {

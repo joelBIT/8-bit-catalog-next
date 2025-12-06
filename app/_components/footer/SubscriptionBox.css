@@ -5,10 +5,10 @@
     position: relative;
 
     & .subscription-text {
-        font-family: "iceland", sans-serif;
+        font-family: "blinker", sans-serif;
         color: var(--color-nintendo-gray);
         font-weight: 500;
-        font-size: 1.15rem;
+        font-size: 1rem;
         padding-bottom: 0.2rem;
     }
 
