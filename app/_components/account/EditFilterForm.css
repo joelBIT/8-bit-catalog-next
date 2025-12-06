@@ -4,6 +4,7 @@
     min-width: 20rem;
 
     & .selectSection__title {
+        font-family: "arima", sans-serif;
         text-align: center;
         font-weight: 600;
         margin-top: 2rem;
@@ -11,8 +12,10 @@
 
     & .filter-wrapper {
         display: flex;
+        flex-direction: column;
         align-self: center;
-        gap: 0.7rem;
+        align-items: center;
+        gap: 0.2rem;
 
         & .selectSection__select {
             width: fit-content;
@@ -22,10 +25,7 @@
 
         & .material-symbols-outlined {
             align-content: center;
-
-            &:hover {
-                cursor: pointer;
-            }
+            cursor: pointer;
         }
     }
 }
