@@ -10,8 +10,8 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
     const [active, setActive] = useState<number>(0);
 
     const text = [
-        "I publish news when something interesting occurs in this hobby project. An email is sent to those who have an active newsletter subscription when news is published.",
-        "Choose your favourite game. You can label games as favourites by clicking on their heart-shaped icon. Such games are easily accessed by visiting the Favourites page. If you have chosen favourites you will see a number on the Favourites link corresponding to the number of labeled games. Favourites are persisted permanently if you have signed in to your account when labeling them.",
+        "I publish news when something interesting occurs in this hobby project. An email is sent to those who have an active newsletter subscription when news is published. A subscription can always be discontinued when desired.",
+        "Choose your favourite game. You can label games as favourites by clicking on their heart-shaped icon. Such games are easily accessed by visiting the Favourites page. Favourites are persisted permanently if you have signed in to your account when labeling them.",
         "Connect with other retro enthusiasts. When logged in you can scan through existing profiles and interact with people. Create an account now and make your own profile."
     ]
     

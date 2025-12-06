@@ -65,13 +65,15 @@
             font-size: 1.3rem;
             color: var(--color-nintendo-gray);
             max-width: 60rem;
-            height: 10rem;
+            height: auto;
+            min-height: 10rem;
         }
     }
 
     & .recent-news__heading {
         align-self: center;
         font-family: 'Playfair Display', sans-serif;
+        font-size: 2rem;
         text-transform: uppercase;
         color: var(--color-real-white);
 
@@ -91,5 +93,54 @@
         justify-content: center;
         flex-wrap: wrap;
         gap: 2rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    #landingSelection {
+        & #landing-selection-top {
+            gap: 5rem;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    #landingSelection {
+        & #landing-selection-top {
+            flex-direction: column;
+            gap: 0;
+            padding-bottom: 0;
+
+            & #landing-selection-text {
+                padding-top: 1rem;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #landingSelection {
+        padding: 0;
+
+        & #landing-selection-top {
+            & #landing-selection-list {
+                & .landing-selection-list__item {
+                    & .item-title {
+                        font-size: 2rem;
+                    }
+                }
+
+                & .active {
+                    & .item-arrow {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+
+        & .recent-news__heading {
+            font-size: 1.2rem;
+        }
     }
 }
