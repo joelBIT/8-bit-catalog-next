@@ -1,12 +1,14 @@
 #landingSelection {
     display: flex;
     flex-direction: column;
+    gap: 5rem;
     background-color: #00000080;
     border-radius: 14px;
     padding: 1rem;
 
     & #landing-selection-top {
         display: flex;
+        gap: 10rem;
         padding-bottom: 3rem;
 
         & #landing-selection-list {
@@ -20,7 +22,7 @@
                 cursor: pointer;
                 width: fit-content;
                 list-style: none;
-                color: #666666a0;
+                color: #f0cca460;
                 position: relative;
                 transition: color 0.3s ease-in-out;
 
@@ -28,6 +30,7 @@
                     font-family: "iceland", sans-serif;
                     font-size: 3rem;
                     font-weight: 100;
+                    white-space: nowrap;
                     transition: all 0.3s ease-in-out;
                 }
 
@@ -37,13 +40,13 @@
                 }
 
                 &:hover {
-                    color: var(--color-real-white);
+                    color: var(--color-link-active);
                     transition: color 0.3s ease-in-out;
                 }
             }
 
             & .active {
-                color: var(--color-real-white);
+                color: var(--color-link-active);
 
                 & .item-arrow {
                     display: block;
@@ -65,7 +68,7 @@
             font-family: "blinker", sans-serif;
             font-size: 1.5rem;
             color: var(--color-real-white);
-            padding-left: 5rem;
+            max-width: 60rem;
         }
     }
 

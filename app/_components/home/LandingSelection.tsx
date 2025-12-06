@@ -34,18 +34,24 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
                 {
                     active === "favourites" ? 
                             <p id="landing-selection-text"> 
-                                Select your favourite games.
+                                You can label games of your choosing as favourites. Such games are easily accessed by clicking on the Favourites link.
+                                Favourites are persisted permanently if you have signed in to your account when labeling them.
                             </p>
                             :
                             <p id="landing-selection-text"> 
-                                I publish news every now and then when I have done something interesting on this hobby project.
+                                I publish news when something interesting occurs in this hobby project.
+                                An email is sent to those who have an active newsletter subscription when news is published.
                             </p>
                 }
             </section>
 
             {
                 active === "favourites" ?
-                    <></>
+                    <section id="favouriteCarousel">
+                        {
+                            news.map(news => <NewsCard key={news.text} news={news} />)
+                        }
+                    </section>
                     :
                     <section id="newsCards">
                         {
