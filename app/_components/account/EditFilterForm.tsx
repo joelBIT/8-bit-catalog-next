@@ -6,6 +6,7 @@ import { arima } from "@/app/_fonts/fonts";
 import { updateFilterValues } from "@/app/_client/client";
 
 import "./EditFilterForm.css";
+import { Filter } from "@/app/_types/types";
 
 /**
  * Update the values of a search filter. The 'filter' input corresponds to the name of the column in the database filter table that is going
@@ -13,7 +14,7 @@ import "./EditFilterForm.css";
  * The 'filterValues' input is retrieved directly from the database since this is an admin page for modifying filter values, and the updates
  * are stored in the database.
  */
-export function EditFilterForm( { title, filterValues, filter } : { title: string, filterValues: string[], filter: string }): ReactElement {
+export function EditFilterForm( { title, filterValues, filter } : { title: string, filterValues: string[], filter: Filter }): ReactElement {
     const [ valuesList, setValuesList ] = useState<string[]>(filterValues);
     const [ modalText, setModalText ] = useState<string>("Are you sure you want to delete the value?");
     const [ inputModalText, setInputModalText ] = useState<string>("Add filter value");

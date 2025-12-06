@@ -1,4 +1,4 @@
-import { FilterValues, FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News } from '@/app/_types/types';
+import { FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News, Filter } from '@/app/_types/types';
 
 
 /********************************************************************************************
@@ -86,7 +86,7 @@ export async function deleteFavouriteGameFromDatabase(game_id: number): Promise<
 /**
  * Updates the list of values for a supplied search filter (e.g., categories, developers, publishers).
  */
-export async function updateFilterValues(values: string[], filter: string): Promise<void> {
+export async function updateFilterValues(values: string[], filter: Filter): Promise<void> {
     try {
         await fetch(`/api/filter`, {
             method: "PUT",

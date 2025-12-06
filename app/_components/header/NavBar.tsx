@@ -82,7 +82,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                                 href={link.url}
                                 prefetch={link.url === URL_ABOUT_PAGE}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
-                                title={link.url === URL_LOGIN_PAGE ? "Login" : ""}
+                                title={link.url !== URL_ABOUT_PAGE ? link.title : ""}
                             >
                                 { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
                                 <h2 className={`navbar__list-element-title ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>

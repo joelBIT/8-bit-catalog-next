@@ -13,19 +13,19 @@ export default async function FiltersPage(): Promise<ReactElement> {
             <EditFilterForm 
                 filterValues={await getAllCategories()} 
                 title="Category" 
-                filter="categories"
+                filter="category"
             />
 
             <EditFilterForm 
                 filterValues={await getAllPublishers()} 
                 title="Publisher" 
-                filter="publishers" 
+                filter="publisher" 
             />
 
             <EditFilterForm 
                 filterValues={await getAllDevelopers()} 
                 title="Developer" 
-                filter="developers" 
+                filter="developer" 
             />
         </main>
     );

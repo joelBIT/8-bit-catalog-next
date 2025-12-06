@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, FilterValues, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News } from '@/app/_types/types';
+import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 
 const databaseClient = createClient(databaseURL(), databaseKey());

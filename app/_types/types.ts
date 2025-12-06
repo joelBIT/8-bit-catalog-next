@@ -66,6 +66,8 @@ export type FilterValues = {
     developers: string[]
 }
 
+export type Filter = "category" | "publisher" | "developer" | "title";
+
 export type ActionState = {
     message: string,
     success: boolean
