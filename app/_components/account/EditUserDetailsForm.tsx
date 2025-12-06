@@ -2,7 +2,6 @@
 
 import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
-import { arima } from "@/app/_fonts/fonts";
 import { updateUserDetails } from "@/app/_actions/account";
 import PhoneInput from "react-phone-input-2";
 import { SelectCountry } from "../common";
@@ -45,7 +44,7 @@ export function EditUserDetailsForm(): ReactElement {
                         id="first_name"
                         name="first_name"
                         type="text"
-                        className={`${arima.className} input-field`}
+                        className="input-field"
                         autoComplete="none"
                         defaultValue={state.firstName ? state.firstName : user.first_name} 
                     />
@@ -60,7 +59,7 @@ export function EditUserDetailsForm(): ReactElement {
                         id="last_name"
                         name="last_name"
                         type="text"
-                        className={`${arima.className} input-field`}
+                        className="input-field"
                         autoComplete="none"
                         defaultValue={state.lastName ? state.lastName : user.last_name} 
                     />
@@ -74,7 +73,7 @@ export function EditUserDetailsForm(): ReactElement {
                     <textarea 
                         id="bio"
                         name="bio" 
-                        className={`${arima.className} input-field edit-profile__bio`}
+                        className="input-field edit-profile__bio"
                         defaultValue={state.bio ? state.bio : user.bio} 
                         placeholder="About me" 
                     />
@@ -87,7 +86,7 @@ export function EditUserDetailsForm(): ReactElement {
                         type="date"
                         max={new Date().toLocaleDateString('en-ca')}
                         defaultValue={state.birthDate ? state.birthDate : user?.birth_date} 
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                     />
 
                     <span className="form__field-label">
@@ -105,7 +104,7 @@ export function EditUserDetailsForm(): ReactElement {
                         name="full_name"
                         defaultValue={state.fullName ? state.fullName : user?.full_name} 
                         type="text"
-                        className={`${arima.className} input-field`}
+                        className="input-field"
                         autoComplete="none" 
                     />
                 </section>
@@ -122,7 +121,7 @@ export function EditUserDetailsForm(): ReactElement {
                         name="address" 
                         type="text"
                         defaultValue={state.address ? state.address : user?.address} 
-                        className={`${arima.className} input-field`}
+                        className="input-field"
                         autoComplete="none"
                     />
                 </section>
@@ -137,7 +136,7 @@ export function EditUserDetailsForm(): ReactElement {
                         name="city" 
                         type="text"
                         defaultValue={state.city ? state.city : user?.city} 
-                        className={`${arima.className} input-field`}
+                        className="input-field"
                         autoComplete="none"
                     />
                 </section>

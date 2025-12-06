@@ -66,6 +66,11 @@
             }
         }
     }
+
+    .input-field,
+    .form__field {
+        font-family: "arima", sans-serif;
+    }
 }
 
 @media (max-width: 550px) {
