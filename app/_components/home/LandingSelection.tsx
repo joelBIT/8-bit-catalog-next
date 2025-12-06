@@ -18,14 +18,16 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
                         className={active === options[0] ? "landing-selection-list__item active" : "landing-selection-list__item"} 
                         onClick={() => setActive(options[0])}
                     > 
-                        {active === options[0] ? <h3 className="item-arrow"> &#10148; </h3> : <></>} News
+                        {active === options[0] ? <h3 className="item-arrow"> &#10148; </h3> : <></>}
+                        <h3 className="item-title"> News </h3>
                     </li>
 
                     <li 
                         className={active === options[1] ? "landing-selection-list__item active" : "landing-selection-list__item"} 
                         onClick={() => setActive(options[1])}
                     > 
-                        {active === options[1] ? <h3 className="item-arrow"> &#10148; </h3> : <></>} Choose Favourites 
+                        {active === options[1] ? <h3 className="item-arrow"> &#10148; </h3> : <></>}
+                        <h3 className="item-title"> Choose Favourites </h3>
                     </li>
                 </ul>
                 

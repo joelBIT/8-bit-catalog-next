@@ -17,13 +17,24 @@
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
-                font-family: "iceland", sans-serif;
-                font-size: 3rem;
                 cursor: pointer;
                 width: fit-content;
                 list-style: none;
                 color: #666666a0;
+                position: relative;
                 transition: color 0.3s ease-in-out;
+
+                & .item-title {
+                    font-family: "iceland", sans-serif;
+                    font-size: 3rem;
+                    font-weight: 100;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                & .item-arrow {
+                    display: none;
+                    animation: fadeout 2s ease-in-out;
+                }
 
                 &:hover {
                     color: var(--color-real-white);
@@ -35,7 +46,17 @@
                 color: var(--color-real-white);
 
                 & .item-arrow {
+                    display: block;
+                    opacity: 1;
                     font-size: 2.5rem;
+                    position: absolute;
+                    transition: all 1s ease-in-out;
+                    animation: fadeout 1s reverse ease-in-out;
+                }
+
+                & .item-title {
+                    transform: translateX(40);
+                    transition: transform 1s ease-in-out;
                 }
             }
         }
