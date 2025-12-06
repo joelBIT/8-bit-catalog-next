@@ -8,6 +8,7 @@
         padding-bottom: 2rem;
         font-size: 1.1rem;
         color: var(--color-nintendo-gray);
+        font-weight: 100;
     }
     
     & .show-pagination-toggle {
