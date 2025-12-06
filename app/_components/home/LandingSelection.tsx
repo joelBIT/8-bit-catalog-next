@@ -11,7 +11,8 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
 
     const text = [
         "I publish news when something interesting occurs in this hobby project. An email is sent to those who have an active newsletter subscription when news is published.",
-        "You can label games of your choosing as favourites. Such games are easily accessed by clicking on the Favourites link. Favourites are persisted permanently if you have signed in to your account when labeling them."
+        "Choose your favourite game. You can label games as favourites by clicking on their heart-shaped icon. Such games are easily accessed by visiting the Favourites page. If you have chosen favourites you will see a number on the Favourites link corresponding to the number of labeled games. Favourites are persisted permanently if you have signed in to your account when labeling them.",
+        "Connect with other retro enthusiasts. When logged in you can scan through existing profiles and interact with people. Create an account now and make your own profile."
     ]
     
     return (
@@ -33,12 +34,24 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
                         {active === 1 ? <h3 className="item-arrow"> &#10148; </h3> : <></>}
                         <h3 className="item-title"> Choose Favourites </h3>
                     </li>
+
+                    <li 
+                        className={active === 2 ? "landing-selection-list__item active" : "landing-selection-list__item"} 
+                        onClick={() => setActive(2)}
+                    > 
+                        {active === 2 ? <h3 className="item-arrow"> &#10148; </h3> : <></>}
+                        <h3 className="item-title"> Connect </h3>
+                    </li>
                 </ul>
                 
                 <p id="landing-selection-text"> 
                     { text[active] }
                 </p>
             </section>
+
+            <h2 className="recent-news__heading">
+                Most recent news
+            </h2>
 
             <section id="newsCards">
                 {
