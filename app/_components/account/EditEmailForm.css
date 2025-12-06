@@ -6,6 +6,7 @@
     margin-bottom: 1rem;
 
     & .editEmailForm__title {
+        color: var(--color-footer-heading);
         align-self: center;
         font-size: 1rem;
     }

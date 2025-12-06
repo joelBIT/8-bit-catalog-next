@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, MouseEvent, JSX } from "react";
+import { useState, MouseEvent, ReactElement } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "@/app/_session/session";
@@ -12,8 +12,8 @@ import "./AccountMenu.css";
 /**
  * Used to navigate between account-specific sections. Some links are only visible for users with the admin role.
  */
-export function AccountMenu({ user } : { user: User }): JSX.Element {
-    const [ showMenu, setShowMenu ] = useState<boolean>(false);
+export function AccountMenu({ user } : { user: User }): ReactElement {
+    const [showMenu, setShowMenu] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
 
