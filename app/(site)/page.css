@@ -61,38 +61,6 @@
         padding: 5rem 1rem 1rem;
         position: relative;
         min-height: fit-content;
-
-        & #newsHeading {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-
-            & > hr {
-                height: 1px;
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-
-            & > hr:last-of-type {
-                width: 100%;
-            }
-
-            & .news-heading {
-                align-self: center;
-                color: var(--color-real-white);
-                font-size: 2rem;
-                text-transform: uppercase;
-                letter-spacing: 3px;
-            }
-        }
-
-        & #newsCards {
-            display: flex;
-            align-self: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
     }
 }
 
@@ -115,23 +83,6 @@
 
             & .landing-text {
                 font-size: 1rem;
-            }
-        }
-
-        & #secondSection {
-            gap: 2rem;
-            
-            & #newsHeading {
-                width: 90vw;
-                align-self: center;
-
-                & > hr:last-of-type {
-                    width: 100%;
-                }
-
-                & .news-heading {
-                    font-size: 1.4rem;
-                }
             }
         }
     }

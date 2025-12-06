@@ -15,7 +15,7 @@ export const AccountContext = createContext<AccountContextProvider>({} as Accoun
  * This is the context for an authenticated user in the account environment.
  */
 export function AccountProvider({ children }: { children: ReactNode }): ReactElement {
-    const [ user, setUser ] = useState<User>({} as User);
+    const [user, setUser] = useState<User>({} as User);
 
     useEffect(() => {
         addUser();

@@ -1,0 +1,58 @@
+#landingSelection {
+    display: flex;
+    flex-direction: column;
+    background-color: #00000080;
+    border-radius: 14px;
+    padding: 1rem;
+
+    & #landing-selection-top {
+        display: flex;
+        padding-bottom: 3rem;
+
+        & #landing-selection-list {
+            display: flex;
+            flex-direction: column;
+
+            & .landing-selection-list__item {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-family: "iceland", sans-serif;
+                font-size: 3rem;
+                cursor: pointer;
+                width: fit-content;
+                list-style: none;
+                color: #666666a0;
+                transition: color 0.3s ease-in-out;
+
+                &:hover {
+                    color: var(--color-real-white);
+                    transition: color 0.3s ease-in-out;
+                }
+            }
+
+            & .active {
+                color: var(--color-real-white);
+
+                & .item-arrow {
+                    font-size: 2.5rem;
+                }
+            }
+        }
+
+        & #landing-selection-text {
+            font-family: "blinker", sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-real-white);
+            padding-left: 5rem;
+        }
+    }
+
+    & #newsCards {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+}

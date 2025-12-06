@@ -2,8 +2,8 @@
 
 import { type ReactElement } from "react";
 import { Logo } from "../_components/header";
-import { LandingCard, TitleSearch, NewsCard } from "@/app/_components/home";
-import { getAllTitles, getAllNews } from "@/app/_db/db";
+import { LandingCard, LandingSelection, TitleSearch } from "@/app/_components/home";
+import { getAllNews, getAllTitles } from "@/app/_db/db";
 
 import "./page.css";
 
@@ -30,17 +30,7 @@ export default async function Home(): Promise<ReactElement> {
             </section>
 
             <section id="secondSection">
-                <section id="newsHeading" className="bit-font">
-                    <hr />
-                    <h2 className="news-heading"> News </h2>
-                    <hr />
-                </section>
-
-                <section id="newsCards">
-                    {
-                        (await getAllNews()).map(news => <NewsCard key={news.text} news={news} />)
-                    }
-                </section>
+                <LandingSelection news={await getAllNews()} />
             </section>
 
             <div className="darken-image-bottom" />

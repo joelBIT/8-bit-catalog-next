@@ -20,7 +20,7 @@ export const FavouritesContext = createContext<FavouritesContextProvider>({} as 
  * are only temporarily stored in this Context's favouritesList variable.
  */
 export function FavouritesProvider({ children }: { children: ReactNode }): ReactElement {
-    const [ favouritesList, setFavouritesList ] = useState<Game[]>([]);
+    const [favouritesList, setFavouritesList] = useState<Game[]>([]);
     const STORAGE_KEY = 'favouriteGames';
 
     useEffect(() => {
