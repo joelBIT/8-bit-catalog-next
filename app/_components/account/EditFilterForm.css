@@ -8,6 +8,12 @@
         text-align: center;
         font-weight: 600;
         margin-top: 2rem;
+
+        & .material-symbols-outlined {
+            color: var(--color-white);
+            vertical-align: middle;
+            cursor: pointer;
+        }
     }
 
     & .filter-wrapper {
@@ -21,11 +27,6 @@
             width: fit-content;
             font-size: 1.3rem;
             align-self: center;
-        }
-
-        & .material-symbols-outlined {
-            align-content: center;
-            cursor: pointer;
         }
     }
 }

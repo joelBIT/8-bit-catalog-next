@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useRef, useState } from "react";
-import { InputModal } from "../common";
+import { EditFilterModal } from "../common";
 import { Filter } from "@/app/_types/types";
 import { updateFilterValues } from "@/app/_client/client";
 
@@ -15,7 +15,6 @@ import "./EditFilterForm.css";
  */
 export function EditFilterForm( { title, filterValues, filter } : { title: string, filterValues: string[], filter: Filter }): ReactElement {
     const [valuesList, setValuesList] = useState<string[]>(filterValues);
-    const [modalText, setModalText] = useState<string>("Are you sure you want to update the value?");
     const [openModal, setOpenModal] = useState<boolean>(false);
     const selectRef = useRef<HTMLSelectElement>(null);
 
@@ -28,26 +27,20 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
         
         setOpenModal(false);
     }
-
-    function open(): void {
-        setModalText(`Are you sure you want to update ${selectRef.current?.value}?`);
-        setOpenModal(true);
-    }
     
     return (
         <section id="editFilterForm" className="selectSection">
-            <h2 className="selectSection__title"> {title} </h2>
+            <h2 className="selectSection__title"> {title} <span className="material-symbols-outlined" onClick={() => setOpenModal(true)}> edit </span> </h2>
             <div className="filter-wrapper">
                 <select name="values" className="selectSection__select" defaultValue={valuesList[0]} ref={selectRef}>
                     {valuesList.map(element => <option key={element} value={element}> {element} </option>)}
                 </select>
-                <span className="material-symbols-outlined" onClick={open}> edit </span>
             </div>
 
             { 
                 openModal ? 
-                    <InputModal 
-                        text={modalText} 
+                    <EditFilterModal 
+                        filterValue={selectRef.current?.value as string} 
                         confirm={confirmUpdate} 
                         close={() => setOpenModal(false)} 
                     />

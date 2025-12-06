@@ -1,14 +1,13 @@
 'use client';
 
 import { ReactElement, useEffect, useRef, useState } from "react";
-import { arima } from "@/app/_fonts/fonts";
 
-import "./InputModal.css";
+import "./EditFilterModal.css";
 
-export function InputModal({ text, confirm, close }: { text: string, confirm: (value: string) => void, close: (toggle: boolean) => void }): ReactElement {
-    const [ showMessage, setShowMessage ] = useState<boolean>();
+export function EditFilterModal({ filterValue, confirm, close }: { filterValue: string, confirm: (value: string) => void, close: (toggle: boolean) => void }): ReactElement {
+    const [showMessage, setShowMessage] = useState<boolean>();
+    const [value, setValue] = useState<string>(filterValue);
     const modalRef = useRef<HTMLDialogElement>(null);
-    const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         if (!modalRef.current?.open) {
@@ -23,9 +22,9 @@ export function InputModal({ text, confirm, close }: { text: string, confirm: (v
     }
 
     function confirmAdd(): void {
-        if (inputRef.current?.value && inputRef.current?.value.length > 2) {
+        if (value.length > 2) {
             setShowMessage(false);
-            confirm(inputRef.current?.value as string);
+            confirm(value);
             closeModal();
         } else {
             setShowMessage(true);
@@ -35,7 +34,7 @@ export function InputModal({ text, confirm, close }: { text: string, confirm: (v
     return (
         <dialog id="inputModal" ref={modalRef} className="modal-dialog">
             <form method="dialog" className="modal-content">
-                <h1 className="modal__text"> {text} </h1>
+                <h1 className="modal__text"> Update filter value </h1>
                 
                 { 
                     showMessage ? 
@@ -46,14 +45,16 @@ export function InputModal({ text, confirm, close }: { text: string, confirm: (v
 
                 <input 
                     id="filterValueInput" 
-                    className={`${arima.className} input-field`}
+                    className="input-field"
                     type="text" 
-                    ref={inputRef} 
+                    required
+                    value={value}
+                    onChange={e => setValue(e.target.value)}
                     placeholder="Filter value" 
                 />
                 
                 <span onClick={closeModal} className="closeButton" />
-                <button type="reset" onClick={confirmAdd} className="button__link"> Confirm </button>
+                <button type="reset" onClick={confirmAdd} className="button__link"> Update </button>
             </form>
         </dialog>
     );

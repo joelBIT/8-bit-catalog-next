@@ -1,21 +1,34 @@
 #inputModal {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
     & .modal-content {
         & #filterValueInput {
-            width: 50%;
+            font-family: "arima", sans-serif;
             align-self: center;
             margin-bottom: 2rem;
+            width: 80%;
         }
 
         & .modal__text {
-            font-size: 3rem;
+            font-family: "iceland", sans-serif;
+            font-size: 2rem;
             text-align: center;
             margin: 3rem;
             margin-bottom: 2rem;
+            white-space: nowrap;
+        }
+
+        & .closeButton {
+            height: 40px;
+            width: 40px;
         }
 
         & .button__link {
             align-self: center;
             margin-bottom: 2rem;
+            padding: .2rem 0.5rem;
         }
     }
 
@@ -26,21 +39,11 @@
     }
 }
 
-@media (max-width: 1000px) {
-    #inputModal {
-        & .modal-content {
-            & #filterValueInput {
-                width: 80%;
-            }
-        }
-    }
-}
-
 @media (max-width: 700px) {
     #inputModal {
         & .modal-content {
             & .modal__text {
-                font-size: 2rem;
+                font-size: 1.5rem;
                 margin-left: 2rem;
                 margin-right: 2rem;
             }
