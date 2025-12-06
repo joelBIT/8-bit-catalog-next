@@ -8,7 +8,7 @@ import { Game } from "@/app/_types/types";
 import "./SlidingToggle.css";
 
 /**
- * This is the UI component for toggling between Grid and List views. The lists themselves are changed outside of this component.
+ * Used for toggling between Grid and List views. The view state is kept in the GameContext and is used in different places in the application.
  */
 export function SlidingToggle(): ReactElement {
     const searchParams = useSearchParams();
