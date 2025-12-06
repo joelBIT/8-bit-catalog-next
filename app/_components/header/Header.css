@@ -1,6 +1,5 @@
 header {
     display: flex;
-    background-color: transparent;
     min-height: 4rem;
     z-index: 20;
     padding-right: 5rem;
