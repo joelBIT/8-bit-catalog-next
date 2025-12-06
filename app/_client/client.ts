@@ -98,22 +98,6 @@ export async function updateFilterValues(values: string[], filter: string): Prom
 }
 
 /**
- * Retrieve all existing filter (categories, developers, publishers) values. Used in, e.g., search or editing a game.
- */
-export async function getFilterValues(): Promise<FilterValues> {
-    try {
-        const response = await fetch(`/api/filters`);
-        if (response.ok) {
-            return await response.json();
-        }
-    } catch (error) {
-        console.error(error);
-    }
-
-    return { developers: [], publishers: [], categories: []};
-}
-
-/**
  * Retrieve the timeline for about page.
  */
 export async function getTimelineEvents(): Promise<TimelineEvent[]> {
