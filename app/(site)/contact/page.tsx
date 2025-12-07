@@ -10,14 +10,16 @@ export default function ContactPage(): ReactElement {
 
     return (
         <main id="contactPage">
-            <section id="contactPage-information">
-                <h1 id="contactPage-title">
-                    Get in touch
-                </h1>
+            <img src="/karlstadcontact.avif" className="contact-image" />
+            <h1 id="contactPage-title">
+                Get in touch
+            </h1>
 
+            <section id="contactPage-information">
                 <p id="information-text">
                     Send a message if you have any questions or wishes about the 8-bit catalog. I will get back to
-                    you as soon as possible.
+                    you as soon as possible. Use the form to send me a direct message.
+                    Otherwise use the contact information below.
                 </p>
 
                 <article id="contact-info">
@@ -37,7 +39,6 @@ export default function ContactPage(): ReactElement {
                 </article>
             </section>
             
-            <h2 className="contact-form__heading"> Contact </h2>
             <ContactForm />
         </main>
     );
