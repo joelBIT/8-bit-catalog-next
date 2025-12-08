@@ -25,8 +25,8 @@ export function SubscriptionBox(): ReactElement {
 
             <form id="newsletterSignup" action={formAction}>
                 <input id="subscribeEmail" type="email" name="email" placeholder="Enter Email" required={true} autoComplete="off" />
-                <button id="subscribeButton" type="submit" className="button__link">
-                    <span className="material-symbols-outlined"> send </span>
+                <button id="subscribeButton" type="submit">
+                    <img src="/arrow-right.png" />
                 </button>
             </form>
 

@@ -21,19 +21,16 @@
 
         & #subscribeButton {
             align-self: center;
-            padding: .2rem 0.5rem;
+            padding: 0;
+            padding-right: 0.1rem;
             width: fit-content;
             height: 84%;
             position: absolute;
             bottom: 0;
             top: 0;
             right: 3px;
-            background-color: var(--color-white);
-
-            &:hover {
-                background-color: var(--color-white);
-                filter: brightness(0.8);
-            }
+            background-color: var(--color-auth-background);
+            border-radius: 9px;
         }
 
         & #subscribeEmail {
