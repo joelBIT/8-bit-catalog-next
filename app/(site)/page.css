@@ -53,13 +53,60 @@
         }
     }
 
+    & #joinCatalog {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding-left: 1rem;
+        padding-right: 2rem;
+        height: 20rem;
+        width: 100%;
+        backdrop-filter: brightness(1.5);
+        box-shadow: inset 0 0 16px 0 rgba(0, 0, 0, 0.95);
+
+        & .joinCatalog-title {
+            font-family: 'Irish Grover', sans-serif;
+            color: var(--color-real-white);
+            font-size: 2.7rem;
+        }
+
+        & .joinCatalog-text {
+            font-family: "arima", sans-serif;
+            color: var(--color-nintendo-gray);
+            max-width: 40rem;
+            font-size: 1.6em;
+            line-height: 1.2em;
+            letter-spacing: -1px;
+        }
+
+        & #signup-button {
+            font-family: 'Rancho', sans-serif;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: fit-content;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+            border-radius: 4px;
+            padding: 0.5rem;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                color: var(--color-link-active);
+                border-color: var(--color-link-active);
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+
     & #secondSection {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         gap: 5rem;
         width: 100%;
-        padding: 5rem 1rem 1rem;
+        padding: 2rem 1rem 1rem;
         position: relative;
         min-height: fit-content;
     }
@@ -108,6 +155,19 @@
 
             & #searchGameArea {
                 padding-top: 2rem;
+            }
+        }
+
+        & #joinCatalog {
+            margin-top: 2rem;
+
+            & .joinCatalog-title {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            & .joinCatalog-text {
+                font-size: 1.3rem;
             }
         }
     }

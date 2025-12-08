@@ -366,19 +366,6 @@ textarea {
 
 
 
-/*************
-* Animations *
-*************/
-
-@keyframes shimmer {
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-
-
-
 
 
 
@@ -525,12 +512,12 @@ textarea {
     border-radius: 9px;
     font-family: 'Rancho';
     font-size: 1.5rem;
-    transition: all 0.35s;
+    cursor: pointer;
+    transition: all 0.25s;
 
     &:hover {
         filter: invert(1);
-        transition: all 0.35s;
-        cursor: pointer;
+        transition: all 0.25s;
     }
 }
 

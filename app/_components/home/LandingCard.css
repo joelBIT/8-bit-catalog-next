@@ -4,6 +4,7 @@
     gap: 1rem;
     flex-wrap: wrap;
     max-width: 30rem;
+    height: fit-content;
     border: 1px solid var(--color-auth-border);
     padding: 1rem;
     background: #ffffff0f;
@@ -14,7 +15,6 @@
 
     & .landingCard-heading {
         font-family: "iceland", sans-serif;
-        color: var(--color-real-white);
         font-weight: 900;
         font-size: 3.5rem;
         font-style: italic;
