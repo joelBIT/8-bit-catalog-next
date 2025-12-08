@@ -26,6 +26,7 @@
                 font-size: 50px;
                 font-weight: 500;
                 margin: 1rem 0;
+                text-shadow: 0px 4px 4px var(--color-black-light);
             }
         
             & #searchFilters__form {
