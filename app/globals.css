@@ -139,6 +139,38 @@ textarea {
     }
 }
 
+.arrowButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Rancho', sans-serif;
+    background-color: transparent;
+    min-height: 40px;
+    line-height: 20px;
+    border: 2px solid rgba(251, 251, 251, 0.65);
+    padding: 0.2rem 0.8rem 0.2rem 1rem;
+    font-size: 1rem;
+    border-radius: 22px;
+    color: #fbfbfb;
+    transition: all 0.3s ease;
+
+    & > h2 {
+        font-size: 1.2rem;
+    }
+
+    & > img {
+        padding-left: 0;
+        transition: all 0.3s ease;
+    }
+
+    &:hover {
+        & > img {
+            padding-left: 1rem;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
 .closeButton {
     font-family: 'Rancho';
     width: 50px;

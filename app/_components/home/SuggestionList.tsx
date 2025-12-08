@@ -30,7 +30,7 @@ export function SuggestionList({ options, click }: { options: string[], click: (
                 }
             </datalist>
 
-            <button id="viewButton" onClick={selectGame}> <h2>View</h2> <img src="/arrow-right-bg.png" /> </button>
+            <button id="viewButton" className="arrowButton" onClick={selectGame}> <h2>View</h2> <img src="/arrow-right-bg.png" /> </button>
         </section>
     );
 }

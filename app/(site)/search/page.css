@@ -43,9 +43,10 @@
                 & #searchInput {
                     display: flex;
                     align-self: center;
-                    margin-top: 3rem;
-                    gap: 2rem;
                     align-items: center;
+                    gap: 2rem;
+                    margin-top: 3rem;
+                    width: 40rem;
 
                     & .input-wrapper {
                         display: flex;
@@ -54,13 +55,16 @@
                             position: relative;
                             left: 2.2rem;
                             align-content: center;
-                            color: var(--color-black);
+                            color: var(--color-auth-border-bottom);
                             font-size: 1.8rem;
                             z-index: 1;
                         }
                     
                         & #searchTitle {
                             font-family: "arima", sans-serif;
+                            color: var(--color-real-white);
+                            background: var(--color-real-black);
+                            border: 1px solid var(--color-auth-border-bottom);
                             padding-left: 2.5rem;
                             border-radius: 9px;
                             font-size: 1.2rem;
@@ -102,6 +106,7 @@
                 & #searchFilters__form {
                     & #searchInput {
                         flex-direction: column;
+                        gap: 1rem;
 
                         & .input-wrapper {
                             & #searchTitle {
