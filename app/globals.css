@@ -510,7 +510,7 @@ textarea {
     background-color: var(--color-real-white);
     color: var(--color-black);
     border-radius: 9px;
-    font-family: 'Rancho';
+    font-family: 'Rancho', sans-serif;
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.25s;
@@ -520,6 +520,7 @@ textarea {
         transition: all 0.25s;
     }
 }
+
 
 
 

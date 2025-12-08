@@ -8,7 +8,7 @@
 
     & #landing-selection-top {
         display: flex;
-        gap: 10rem;
+        gap: 6rem;
         padding-bottom: 3rem;
 
         & #landing-selection-list {
@@ -61,12 +61,18 @@
 
         & #landing-selection-text {
             align-content: center;
-            font-family: "blinker", sans-serif;
+            font-family: "arima", sans-serif;
             font-size: 1.3rem;
             color: var(--color-nintendo-gray);
             max-width: 60rem;
             height: auto;
             min-height: 10rem;
+            line-height: 1.4rem;
+            border-left: 2px;
+            border-right: 0;
+	        border-style: solid;
+            border-image: linear-gradient(to bottom, #181818, #eee, #181818) 1 100%;
+            padding-left: 2rem;
         }
     }
 
@@ -113,7 +119,15 @@
 
             & #landing-selection-text {
                 padding-top: 1rem;
+                margin-top: 1rem;
                 font-size: 1.2rem;
+                border-left: 0;
+                border-top: 2px;
+                border-style: solid;
+                border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                border-bottom: 0;
             }
         }
     }
@@ -124,6 +138,11 @@
         padding: 0;
 
         & #landing-selection-top {
+            & #landing-selection-text {
+                padding-left: 0;
+                padding-right: 0.5rem;
+            }
+
             & #landing-selection-list {
                 & .landing-selection-list__item {
                     & .item-title {
