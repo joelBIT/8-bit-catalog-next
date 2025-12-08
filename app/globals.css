@@ -230,24 +230,22 @@ textarea {
 .message-failure {
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 3px;
     text-align: center;
     width: fit-content;
     align-self: center;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
     backdrop-filter: blur(10px);
+    color: var(--color-tag-background);
 }
 
 .message-success {
-    color: var(--color-success);
-    border: 2px solid var(--color-success);
-    background-color: hsl(from var(--color-success) h s l / 0.2);
+    background-color: var(--color-neon-green);
+    color: var(--color-black);
 }
 
 .message-failure {
-    color: var(--color-warning-text);
-    border: 2px solid var(--color-warning);
-    background-color: hsl(from var(--color-warning) h s l / 0.2);
+    background-color: var(--color-list-border);
 }
 
 .message-fade {
