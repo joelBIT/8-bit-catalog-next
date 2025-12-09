@@ -4,6 +4,7 @@
     align-self: center;
     height: 100%;
     width: 100%;
+    font-family: "arima", sans-serif;
 
     & #loginForm {
         display: flex;

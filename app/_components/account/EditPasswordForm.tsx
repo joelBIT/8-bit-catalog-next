@@ -8,11 +8,11 @@ import "./EditPasswordForm.css";
 
 export function EditPasswordForm(): ReactElement {
     const { user } = useAccount();
-    const [ state, formAction ] = useActionState(updateAccountPassword.bind(null, user.id), { message: '', success: false });
-    const [ isVisible, setVisible ] = useState<boolean>(false);
-    const [ isVisibleRepeat, setVisibleRepeat ] = useState<boolean>(false);
-    const [ isOldVisible, setOldVisible ] = useState<boolean>(false);
-    const [ showMessage, setShowMessage ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(updateAccountPassword.bind(null, user.id), { message: '', success: false });
+    const [isVisible, setVisible] = useState<boolean>(false);
+    const [isVisibleRepeat, setVisibleRepeat] = useState<boolean>(false);
+    const [isOldVisible, setOldVisible] = useState<boolean>(false);
+    const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time

@@ -3,7 +3,6 @@
 import { ReactElement, useActionState, useState } from "react";
 import Link from "next/link";
 import { resetPassword } from "@/app/_actions/auth";
-import { arima } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE, URL_REGISTER_PAGE } from "@/app/_utils/utils";
 
 import "./ResetPasswordForm.css";
@@ -13,11 +12,11 @@ import "./ResetPasswordForm.css";
  * is sent to the supplied mail address.
  */
 export function ResetPasswordForm(): ReactElement {
-    const [ state, formAction ] = useActionState(resetPassword, { message: '', success: false });
-    const [ email, setEmail ] = useState<string>('');
+    const [state, formAction] = useActionState(resetPassword, { message: '', success: false });
+    const [email, setEmail] = useState<string>('');
 
     return (
-        <section id="resetPasswordCard" className={arima.className}>
+        <section id="resetPasswordCard">
             <form id="resetPasswordForm" action={formAction}>
                 <section id="login-input">
                     <section className="input">
@@ -28,7 +27,7 @@ export function ResetPasswordForm(): ReactElement {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             placeholder="Email"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="off" 
                             required 
                         />

@@ -3,7 +3,6 @@
 import { ReactElement, useRef, useState } from "react";
 import { sendNewsLetter } from "@/app/_client/client";
 import { News } from "@/app/_types/types";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./NewsList.css";
 
@@ -12,14 +11,12 @@ import "./NewsList.css";
  * subscribed email addresses.
  */
 export function NewsList({ news }: { news: News[] }): ReactElement {
-    const [ isDisabled, setDisabled ] = useState<boolean>(true);
-    const [ allNews ] = useState<News[]>(news ?? []);
+    const [isDisabled, setDisabled] = useState<boolean>(true);
+    const [allNews] = useState<News[]>(news ?? []);
     const selectRef = useRef<HTMLSelectElement>(null);
     const NONE_CHOSEN = "none";
 
     function sendNewsletter() {
-        console.log(selectRef.current?.value);
-        console.log(allNews.filter(news => news.heading === selectRef.current?.value));
         sendNewsLetter(allNews.filter(news => news.heading === selectRef.current?.value)[0]);
     }
 
@@ -29,7 +26,7 @@ export function NewsList({ news }: { news: News[] }): ReactElement {
                 Send Newsletter
             </button>
 
-            <h2 className={`selectSection__title ${arima.className}`}> Choose Newsletter </h2>
+            <h2 className="selectSection__title"> Choose Newsletter </h2>
 
             <select
                 name="news"

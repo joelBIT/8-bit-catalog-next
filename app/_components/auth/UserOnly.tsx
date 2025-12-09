@@ -9,6 +9,7 @@ import { validateSession } from "@/app/_session/session";
  */
 export async function UserOnly({ children }: { children: ReactNode }) {
     const cookie = (await cookies()).get("session")?.value ?? null;
+    
     if (cookie) {
         const session = await validateSession(cookie);
         if (session) {

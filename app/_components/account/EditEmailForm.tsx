@@ -8,8 +8,8 @@ import "./EditEmailForm.css";
 
 export function EditEmailForm(): ReactElement {
     const { user } = useAccount();
-    const [ state, formAction ] = useActionState(updateAccountEmail.bind(null, user.id), { message: '', success: false, email: user?.email });
-    const [ showMessage, setShowMessage ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(updateAccountEmail.bind(null, user.id), { message: '', success: false, email: user?.email });
+    const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time

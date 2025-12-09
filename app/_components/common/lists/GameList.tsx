@@ -17,10 +17,10 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
-    const [ active, setActive ] = useState<string>('');
-    const [ ascending, setAscending ] = useState<boolean>(false);
-    const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
-    const [ openModal, setOpenModal ] = useState<boolean>(showModal);
+    const [active, setActive] = useState<string>('');
+    const [ascending, setAscending] = useState<boolean>(false);
+    const [currentGames, setCurrentGames] = useState<Game[]>([]);
+    const [openModal, setOpenModal] = useState<boolean>(showModal);
     const { selectedGame, setSelectedGame } = useGame();
     const GAME_TITLE = "game-title";
     const GAME_CATEGORY = "game-category";

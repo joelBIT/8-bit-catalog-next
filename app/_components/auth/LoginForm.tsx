@@ -3,7 +3,6 @@
 import { ReactElement, useRef, useActionState, useState } from "react";
 import Link from "next/link";
 import { URL_FORGOT_PAGE, URL_REGISTER_PAGE } from "@/app/_utils/utils";
-import { arima } from "@/app/_fonts/fonts";
 import { login } from "@/app/_actions/auth";
 
 import "./LoginForm.css";
@@ -13,10 +12,10 @@ import "./LoginForm.css";
  * It is also possible to navigate to the register page as well as the 'forgot password' page.
  */
 export function LoginForm(): ReactElement {
-    const [ state, formAction ] = useActionState(login, { message: '', success: false });
-    const [ isVisible, setVisible ] = useState<boolean>(false);
-    const [ password, setPassword ] = useState<string>('');
-    const [ email, setEmail ] = useState<string>('');
+    const [state, formAction] = useActionState(login, { message: '', success: false });
+    const [isVisible, setVisible] = useState<boolean>(false);
+    const [password, setPassword] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
     const formRef = useRef<HTMLFormElement>(null);
 
     if (formRef.current) {
@@ -24,7 +23,7 @@ export function LoginForm(): ReactElement {
     }
 
     return (
-        <section id="loginCard" className={arima.className}>
+        <section id="loginCard">
             <form id="loginForm" ref={formRef} action={formAction}>
                 <section id="login-input">
                     <section className="input">
@@ -35,7 +34,7 @@ export function LoginForm(): ReactElement {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             placeholder="Email"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="off" 
                             required 
                         />
@@ -53,7 +52,7 @@ export function LoginForm(): ReactElement {
                             onChange={e => setPassword(e.target.value)}
                             type={isVisible ? "text" : "password"}
                             placeholder="PASSWORD"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="none" 
                             required 
                         />

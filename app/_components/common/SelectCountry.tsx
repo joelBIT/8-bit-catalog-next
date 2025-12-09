@@ -1,7 +1,6 @@
 'use client';
 
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./SelectCountry.css";
 
@@ -9,8 +8,8 @@ import "./SelectCountry.css";
  * A Select list containing various countries and their flags. The 'selected' parameter corresponds to the chosen initial country.
  */
 export function SelectCountry({ selected }: { selected: string }): ReactElement {
-    const [ countries, setCountries ] = useState<{"value": string, "label": string}[]>([]);
-    const [ selectedCountry, setSelectedCountry ] = useState<{"value": string, "label": string}>({value: "SE", label: "🇸🇪 Sweden"});
+    const [countries, setCountries] = useState<{"value": string, "label": string}[]>([]);
+    const [selectedCountry, setSelectedCountry] = useState<{"value": string, "label": string}>({value: "SE", label: "🇸🇪 Sweden"});
 
     useEffect(() => {
         fetch(
@@ -45,7 +44,7 @@ export function SelectCountry({ selected }: { selected: string }): ReactElement 
                 name="country" 
                 value={selectedCountry?.value ? selectedCountry?.value : selected}
                 onChange={selectCountry} 
-                className={`${arima.className} input-field`}
+                className="input-field"
             >
                 
             { 

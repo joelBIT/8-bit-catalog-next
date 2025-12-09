@@ -4,7 +4,6 @@ import { ReactElement, useActionState, useEffect, useRef, useState } from "react
 import Link from "next/link";
 import { SelectCountry } from "../common";
 import PhoneInput from "react-phone-input-2";
-import { arima } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/auth";
 
@@ -15,17 +14,17 @@ import "./RegisterForm.css";
  * Enter information and submit form in order to register a new user.
  */
 export function RegisterForm(): ReactElement {
-    const [ state, formAction ] = useActionState(register, { message: '', success: false });
-    const [ isVisible, setVisible ] = useState<boolean>(false);
-    const [ isVisibleRepeat, setVisibleRepeat ] = useState<boolean>(false);
-    const [ password, setPassword ] = useState<string>('');
-    const [ passwordRepeat, setPasswordRepeat ] = useState<string>('');
-    const [ email, setEmail ] = useState<string>('');
-    const [ fullName, setFullName ] = useState<string>('');
-    const [ address, setAddress ] = useState<string>('');
-    const [ city, setCity ] = useState<string>('');
-    const [ birthDate, setBirthDate ] = useState<string>('');
-    const [ showInputs, setShowInputs ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(register, { message: '', success: false });
+    const [isVisible, setVisible] = useState<boolean>(false);
+    const [isVisibleRepeat, setVisibleRepeat] = useState<boolean>(false);
+    const [password, setPassword] = useState<string>('');
+    const [passwordRepeat, setPasswordRepeat] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [fullName, setFullName] = useState<string>('');
+    const [address, setAddress] = useState<string>('');
+    const [city, setCity] = useState<string>('');
+    const [birthDate, setBirthDate] = useState<string>('');
+    const [showInputs, setShowInputs] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
 
     useEffect(() => {     
@@ -52,7 +51,7 @@ export function RegisterForm(): ReactElement {
     }
 
     return (
-        <section id="registerCard" className={arima.className}>
+        <section id="registerCard">
             <form id="registerForm" ref={formRef} action={formAction}>                        
                 <section className="input">
                     <input 
@@ -62,7 +61,7 @@ export function RegisterForm(): ReactElement {
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         placeholder="SET EMAIL"
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                         autoComplete="off" 
                         required 
                     />
@@ -86,7 +85,7 @@ export function RegisterForm(): ReactElement {
                             onChange={e => setPassword(e.target.value)}
                             type={isVisible ? "text" : "password"}
                             placeholder="SET PASSWORD"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="none" 
                             required 
                         />
@@ -108,7 +107,7 @@ export function RegisterForm(): ReactElement {
                             onChange={e => setPasswordRepeat(e.target.value)}
                             type={isVisibleRepeat ? "text" : "password"}
                             placeholder="CONFIRM PASSWORD"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="none" 
                             required 
                         />
@@ -131,7 +130,7 @@ export function RegisterForm(): ReactElement {
                         max={new Date().toLocaleDateString('en-ca')}
                         value={birthDate}
                         onChange={e => setBirthDate(e.target.value)}
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                     />
 
                     <span className="form__field-label">
@@ -151,7 +150,7 @@ export function RegisterForm(): ReactElement {
                             value={fullName}
                             onChange={e => setFullName(e.target.value)} 
                             type="text"
-                            className={`${arima.className} input-field`}
+                            className="input-field"
                             autoComplete="none" 
                         />
                     </section>
@@ -169,7 +168,7 @@ export function RegisterForm(): ReactElement {
                             type="text"
                             value={address}
                             onChange={e => dropdown(e.target.value)}
-                            className={`${arima.className} input-field`}
+                            className="input-field"
                             autoComplete="none"
                         />
                     </section>
@@ -186,7 +185,7 @@ export function RegisterForm(): ReactElement {
                                 type="text"
                                 value={city}
                                 onChange={e => setCity(e.target.value)}
-                                className={`${arima.className} input-field`}
+                                className="input-field"
                                 autoComplete="none"
                             />
                         </section>

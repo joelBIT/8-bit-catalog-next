@@ -11,9 +11,9 @@ export function UserList({ users }: { users: User[] }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = !!params.get('show');
-    const [ openModal, setOpenModal ] = useState<boolean>(showModal);
-    const [ selectedUser, setSelectedUser] = useState<User>({} as User);
-    const [ currentUsers, setCurrentUsers ] = useState<User[]>([]);
+    const [openModal, setOpenModal] = useState<boolean>(showModal);
+    const [selectedUser, setSelectedUser] = useState<User>({} as User);
+    const [currentUsers, setCurrentUsers] = useState<User[]>([]);
     const USER_NAME = "user-name";
     const USER_EMAIL = "user-email";
     const USER_ROLE = "user-role";

@@ -12,8 +12,8 @@ import "./GameListEntry.css";
  * When hovering a game cover that cover will appear enlarged in a modal.
  */
 export function GameListEntry({ game, click }: { game: Game, click: (game: Game) => void }): ReactElement {
-    const [ removeCard, setRemoveCard ] = useState<boolean>(false);
-    const [ showModal, setShowModal ] = useState<boolean>(false);
+    const [removeCard, setRemoveCard] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     return (

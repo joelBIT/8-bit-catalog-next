@@ -8,8 +8,8 @@ import "./EditUsernameForm.css";
 
 export function EditUsernameForm(): ReactElement {
     const { user } = useAccount();
-    const [ state, formAction ] = useActionState(updateAccountUsername.bind(null, user.id), { message: '', success: false, username: user?.username });
-    const [ showMessage, setShowMessage ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(updateAccountUsername.bind(null, user.id), { message: '', success: false, username: user?.username });
+    const [showMessage, setShowMessage] = useState<boolean>(false);
     
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time

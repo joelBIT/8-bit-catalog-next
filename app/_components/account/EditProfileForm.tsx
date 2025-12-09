@@ -9,8 +9,8 @@ import "./EditProfileForm.css";
 
 export function EditProfileForm(): ReactElement {
     const { user, addUser } = useAccount();
-    const [ state, formAction ] = useActionState(updateProfileImage.bind(null, user.id), { message: '', success: false, image: user?.image });
-    const [ showMessage, setShowMessage ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(updateProfileImage.bind(null, user.id), { message: '', success: false, image: user?.image });
+    const [showMessage, setShowMessage] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     useEffect(() => {

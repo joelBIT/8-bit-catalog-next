@@ -2,12 +2,11 @@
 
 import { ReactElement, useActionState } from "react";
 import { createNewsAction } from "@/app/_actions/newsletter";
-import { arima } from "@/app/_fonts/fonts";
 
 import "./NewsletterForm.css";
 
 export function NewsletterForm(): ReactElement {
-    const [ state, formAction ] = useActionState(createNewsAction, { message: '', success: false });
+    const [state, formAction] = useActionState(createNewsAction, { message: '', success: false });
 
     return (
         <form id="newsletterForm" action={formAction}>
@@ -18,13 +17,13 @@ export function NewsletterForm(): ReactElement {
                     type="text"
                     placeholder="Heading"
                     required={true}
-                    className={`${arima.className} input-field`}
+                    className="input-field"
                     autoComplete="none"
                 />
             </section>
 
             <section className="information-input">
-                <textarea id="message" name="message" placeholder="Text" className={`${arima.className} input-field`} required />
+                <textarea id="message" name="message" placeholder="Text" className="input-field" required />
             </section>
 
             {

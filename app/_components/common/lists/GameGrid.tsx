@@ -15,8 +15,8 @@ export function GameGrid({ games }: { games: Game[] }): ReactElement {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const showModal = params.get('show') ? true : false;
-    const [ currentGames, setCurrentGames ] = useState<Game[]>([]);
-    const [ openModal, setOpenModal ] = useState<boolean>(showModal);
+    const [currentGames, setCurrentGames] = useState<Game[]>([]);
+    const [openModal, setOpenModal] = useState<boolean>(showModal);
     const { selectedGame, setSelectedGame } = useGame();
 
     useEffect(() => {

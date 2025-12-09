@@ -16,8 +16,8 @@ const initialState = {
 
 export function EditUserDetailsForm(): ReactElement {
     const { user, addUser } = useAccount();
-    const [ state, formAction ] = useActionState(updateUserDetails.bind(null, user.id), initialState);
-    const [ showMessage, setShowMessage ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(updateUserDetails.bind(null, user.id), initialState);
+    const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time

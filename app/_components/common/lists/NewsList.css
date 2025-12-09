@@ -2,6 +2,10 @@
     display: flex;
     flex-direction: column;
 
+    & .selectSection__title {
+        font-family: "arima", sans-serif;
+    }
+
     & #sendNewsletterButton {
         width: fit-content;
         margin-bottom: 3rem;

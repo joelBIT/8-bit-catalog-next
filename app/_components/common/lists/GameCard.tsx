@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useGame } from "@/app/_hooks";
 import { FavouriteButton } from "@/app/_components/favourites";
 import { Game } from "@/app/_types/types";
-import { rancho } from "@/app/_fonts/fonts";
 
 import "./GameCard.css";
 
@@ -15,8 +14,8 @@ import "./GameCard.css";
  * add a game card to the list of favourite games. This game card is used in Grid Views.
  */
 export function GameCard({ game, click }: { game: Game, click: (game: Game) => void }): ReactElement {
-    const [ isFadingOut, setIsFadingOut ] = useState<boolean>(false);
-    const [ removeCard, setRemoveCard ] = useState<boolean>(false);
+    const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
+    const [removeCard, setRemoveCard] = useState<boolean>(false);
     const { setSelectedGame } = useGame();
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
@@ -44,7 +43,7 @@ export function GameCard({ game, click }: { game: Game, click: (game: Game) => v
 
                     <div className="darken-image-bottom" />
 
-                    <article id="gameCardTitle" className={`${rancho.className}`}>
+                    <article id="gameCardTitle">
                         {game.title}
                     </article>
                 </figure>

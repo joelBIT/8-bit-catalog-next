@@ -13,11 +13,17 @@
     background: rgba(100, 100, 100, .05);
     backdrop-filter: blur(10px);
 
-    #heading {
+    & .information-input {
+        & .input-field {
+            font-family: "arima", sans-serif;
+        }
+    }
+
+    & #heading {
         width: 30rem;
     }
 
-    #message {
+    & #message {
         width: 30rem;
         height: 20rem;
     }

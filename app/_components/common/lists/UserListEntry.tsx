@@ -12,7 +12,7 @@ import "./UserListEntry.css";
  * The 'enrolled' parameter is the date when the user was registered.
  */
 export function UserListEntry({ user, active, click } : { user: User, active: boolean, click: (user: User) => void }): ReactElement {
-    const [ showModal, setShowModal ] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     function convertDate(date: Date): string {

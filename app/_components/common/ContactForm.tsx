@@ -9,7 +9,7 @@ import "./ContactForm.css";
  * Lets a user send an email to me.
  */
 export function ContactForm(): ReactElement {
-    const [ state, formAction ] = useActionState(sendMessage, { message: '', success: false });
+    const [state, formAction] = useActionState(sendMessage, { message: '', success: false });
     
     return (
         <form id="contactForm" action={formAction}>
