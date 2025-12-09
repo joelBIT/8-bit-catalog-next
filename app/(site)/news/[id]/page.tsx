@@ -54,7 +54,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                                 
                                 <article className="top-news-list__calendar">
                                     <span className="material-symbols-outlined"> calendar_month </span>
-                                    {news.date.toString()}
+                                    <h3 className="top-news-published">{news.date.toString()}</h3>
                                 </article>
 
                                 <h2 className="top-news-list-number">{index + 1}</h2>

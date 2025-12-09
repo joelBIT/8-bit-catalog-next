@@ -147,8 +147,13 @@
                     font-size: 1rem;
                     z-index: 2;
 
+                    & .top-news-published {
+                        font-weight: 100;
+                        font-size: 1rem;
+                    }
+
                     & .material-symbols-outlined {
-                        font-size: 0.8rem;
+                        font-size: 0.9rem;
                     }
                 }
 
