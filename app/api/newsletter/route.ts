@@ -7,7 +7,7 @@ import { getAllNewsletterSubscribers } from "@/app/_db/db";
 /**
  * Send the chosen news as a newsletter to all subscribed email addresses.
  */
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<NextResponse> {
     const { text, heading } = await request.json();
     const isAdmin = await isAuthenticatedAdmin();
 

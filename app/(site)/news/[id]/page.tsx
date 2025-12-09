@@ -13,6 +13,7 @@ import "./page.css";
 export default async function NewsPage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
     let news;
+    
     try {
         news = await getNewsById(parseInt(id));
     } catch (error) {

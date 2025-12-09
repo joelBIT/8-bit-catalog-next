@@ -9,8 +9,8 @@ import "./SubscriptionBox.css";
  * Enables users to sign up for the newsletter.
  */
 export function SubscriptionBox(): ReactElement {
-    const [ showMessage, setShowMessage ] = useState<boolean>(false);
-    const [ state, formAction ] = useActionState(createNewsletterSubscription, { message: '', success: false });
+    const [showMessage, setShowMessage] = useState<boolean>(false);
+    const [state, formAction] = useActionState(createNewsletterSubscription, { message: '', success: false });
 
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time

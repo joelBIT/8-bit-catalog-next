@@ -4,7 +4,7 @@ import { getFAQs } from "@/app/_db/db";
 /**
  * Returns FAQs for FAQ page.
  */
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
     try {
         const faqs = await getFAQs();
         return NextResponse.json(faqs);

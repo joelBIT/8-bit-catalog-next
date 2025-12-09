@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useEffect, useRef, useState } from "react";
-import { arima } from "@/app/_fonts/fonts";
 import { TimelineEvent } from "@/app/_types/types";
 import { getTimelineEvents } from "@/app/_client/client";
 
@@ -11,8 +10,8 @@ import "./page.css";
  * Show some significant events in the history of the NES. Click on a specific year in the timeline to scroll to that year.
  */
 export default function AboutPage(): ReactElement {
-    const [ year, setYear ] = useState<number>(1983);
-    const [ timeline, setTimeline ] = useState<TimelineEvent[]>([]);
+    const [year, setYear] = useState<number>(1983);
+    const [timeline, setTimeline] = useState<TimelineEvent[]>([]);
     const modalRef = useRef<HTMLDialogElement>(null);
     let position = 0;
     const yearPositions = {"1983": 0, "1985": 252, "1986": 452, "1987": 682, "1990": 982, "1995": 1302, "1997": 1542, "2025": 1782} as {[key: string]: number};
@@ -114,7 +113,7 @@ export default function AboutPage(): ReactElement {
                     <form method="dialog" className="modal-content">
                         <h1 className="modal__title"> {timeline?.filter(event => event.year === year).map(event => event.title)[0]} </h1>
                         <h1 className="modal__text"> {timeline?.filter(event => event.year === year).map(event => event.text)[0]} </h1>
-                        <span onClick={() => modalRef.current?.close()} className={`closeButton ${arima.className}`} />
+                        <span onClick={() => modalRef.current?.close()} className="closeButton" />
                     </form>
                 </dialog>
 

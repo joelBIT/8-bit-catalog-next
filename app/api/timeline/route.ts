@@ -4,7 +4,7 @@ import { getTimeline } from "@/app/_db/db";
 /**
  * Returns timeline for about page.
  */
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
     try {
         const timeline = await getTimeline();
         return NextResponse.json(timeline);

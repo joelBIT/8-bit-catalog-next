@@ -4,7 +4,6 @@ import { ReactElement, useActionState, useEffect, useState, Suspense } from "rea
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
 import { changeAccountPassword } from "@/app/_actions/auth";
-import { arima } from "@/app/_fonts/fonts";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 
 import "./page.css";
@@ -14,11 +13,11 @@ import "./page.css";
  * performing a reset of an account password.
  */
 export default function ResetPasswordPage(): ReactElement {
-    const [ state, formAction ] = useActionState(changeAccountPassword, { message: '', success: false });
-    const [ isVisible, setVisible ] = useState<boolean>(false);
-    const [ isVisibleRepeat, setVisibleRepeat ] = useState<boolean>(false);
-    const [ isOldVisible, setOldVisible ] = useState<boolean>(false);
-    const [ showMessage, setShowMessage ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(changeAccountPassword, { message: '', success: false });
+    const [isVisible, setVisible] = useState<boolean>(false);
+    const [isVisibleRepeat, setVisibleRepeat] = useState<boolean>(false);
+    const [isOldVisible, setOldVisible] = useState<boolean>(false);
+    const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time
@@ -46,7 +45,7 @@ export default function ResetPasswordPage(): ReactElement {
                             name="oldPassword"
                             type={isOldVisible ? "text" : "password"}
                             placeholder="OLD PASSWORD"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="none" 
                             required 
                         />
@@ -71,7 +70,7 @@ export default function ResetPasswordPage(): ReactElement {
                             name="password"
                             type={isVisible ? "text" : "password"}
                             placeholder="SET NEW PASSWORD"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="none" 
                             required 
                         />
@@ -91,7 +90,7 @@ export default function ResetPasswordPage(): ReactElement {
                             name="passwordRepeat"
                             type={isVisibleRepeat ? "text" : "password"}
                             placeholder="CONFIRM PASSWORD"
-                            className={`${arima.className} form__field`}
+                            className="form__field"
                             autoComplete="none" 
                             required 
                         />

@@ -6,7 +6,7 @@ import { updateCategoryFilter, updateDeveloperFilter, updatePublisherFilter } fr
  * Updates the search filters (e.g., categories, publishers, developers). Only admin is allowed
  * to update the filter values.
  */
-export async function PUT(request: Request) {
+export async function PUT(request: Request): Promise<NextResponse> {
     const { values, filter } = await request.json();
     const isAuthenticated = await isAuthenticatedAdmin();
 

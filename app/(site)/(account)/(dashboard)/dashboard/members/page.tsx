@@ -14,11 +14,11 @@ import "./page.css";
  * by entering letters in the search input. The list is updated instantly and users matching the combination of letters are listed.
  */
 export default function MembersPage(): ReactElement {
-    const { user } = useAccount();
-    const [ members, setMembers ] = useState<User[]>([]);
-    const [ result, setResult ] = useState<User[]>([]);
-    const [ modal, setModal ] = useState<boolean>(false);
+    const [members, setMembers] = useState<User[]>([]);
+    const [result, setResult] = useState<User[]>([]);
+    const [modal, setModal] = useState<boolean>(false);
     const searchRef = useRef<HTMLInputElement>(null);
+    const { user } = useAccount();
 
     useEffect(() => {
         getAllMembers();

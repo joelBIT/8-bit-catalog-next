@@ -25,6 +25,7 @@
 
         h2 {
             font-weight: 900;
+            font-family: "arima", sans-serif;
         }
     }
 
@@ -36,6 +37,7 @@
         
         & .coverSection__title {
             white-space: nowrap;
+            font-family: "arima", sans-serif;
         }
     }
 

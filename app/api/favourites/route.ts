@@ -5,7 +5,7 @@ import { getValidatedSession } from "@/app/_session/cookie";
 /**
  * Retrieves the authenticated user's favourite games.
  */
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
     const session = await getValidatedSession();
 
     if (session) {
@@ -19,7 +19,7 @@ export async function GET() {
 /**
  * Adds a game to the authenticated user's list of favourite games.
  */
-export async function POST(request: Request) {
+export async function POST(request: Request): Promise<NextResponse> {
     const { game_id } = await request.json();
     const session = await getValidatedSession();
 
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 /**
  * Deletes a game from the authenticated user's list of favourite games.
  */
-export async function DELETE(request: Request) {
+export async function DELETE(request: Request): Promise<NextResponse> {
     const { game_id } = await request.json();
     const session = await getValidatedSession();
 

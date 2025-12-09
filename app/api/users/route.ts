@@ -5,7 +5,7 @@ import { isAuthenticated } from "@/app/_session/utils";
 /**
  * Used to retrieve a list of all existing users. 
  */
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
     const authenticated = await isAuthenticated();
     if (authenticated) {
         try {

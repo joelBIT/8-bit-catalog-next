@@ -1,8 +1,9 @@
+import { ReactElement } from 'react';
 import Link from 'next/link';
 
 import "./page.css";
  
-export default function ForbiddenPage() {
+export default function ForbiddenPage(): ReactElement {
     return (
         <main id="forbiddenPage">
             <h2 className='forbidden__title'> Forbidden </h2>
