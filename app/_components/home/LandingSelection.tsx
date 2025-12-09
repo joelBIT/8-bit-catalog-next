@@ -11,7 +11,7 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
 
     const text = [
         "News is published every now and then. An email is sent to those who have an active newsletter subscription at the time of publication. A subscription can always be discontinued when desired.",
-        "Choose your favourite game. You can label games as favourites by clicking on their heart-shaped icon. Such games are easily accessed by visiting the Favourites page. Favourites are persisted permanently if you have signed in to your account when labeling them.",
+        "Select your favourite games. You can label a game as a favourite by clicking on its heart-shaped icon. Such games are easily accessed by visiting the Favourites page. Favourites are persisted permanently if you have signed in to your account when labeling them.",
         "Connect with other retro enthusiasts. When logged in you can scan through existing profiles and interact with people. Create an account now and make your own profile."
     ]
     

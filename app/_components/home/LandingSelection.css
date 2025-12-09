@@ -124,6 +124,7 @@
             padding-bottom: 0;
 
             & #landing-selection-text {
+                align-content: flex-start;
                 padding-top: 1rem;
                 margin-top: 1rem;
                 font-size: 1.2rem;
@@ -148,6 +149,7 @@
                 padding-left: 0;
                 padding-right: 0.5rem;
                 margin-right: 1rem;
+                min-height: 14rem;
             }
 
             & #landing-selection-list {
