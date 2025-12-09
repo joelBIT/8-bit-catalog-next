@@ -82,14 +82,20 @@
         font-size: 2rem;
         text-transform: uppercase;
         color: var(--color-real-white);
+        text-align: center;
 
         &::after {
             content: "";
             display: block;
             margin: 0 auto;
             width: 10rem;
-            border-bottom: 2px solid var(--color-nintendo-gray);
             margin-top: 0.8rem;
+            border-top: 2px;
+            border-style: solid;
+            border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            border-bottom: 0;
         }
     }
 
