@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useActionState, useEffect, useRef, useState } from "react";
-import { arima } from "@/app/_fonts/fonts";
 import { createUserAndAccount } from "@/app/_actions/account";
 
 import "./AddUserModal.css";
@@ -11,8 +10,8 @@ import "./AddUserModal.css";
  * verification process.
  */
 export function AddUserModal({ close }: { close: () => void }): ReactElement {
-    const [ state, formAction ] = useActionState(createUserAndAccount, { message: '', success: false });
-    const [ isVisible, setVisible ] = useState<boolean>(false);
+    const [state, formAction] = useActionState(createUserAndAccount, { message: '', success: false });
+    const [isVisible, setVisible] = useState<boolean>(false);
     const modalRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
@@ -40,7 +39,7 @@ export function AddUserModal({ close }: { close: () => void }): ReactElement {
                         name="email" 
                         type="email"
                         placeholder="SET EMAIL"
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                         autoComplete="off" 
                         required 
                     />
@@ -56,7 +55,7 @@ export function AddUserModal({ close }: { close: () => void }): ReactElement {
                         name="password"
                         type={isVisible ? "text" : "password"}
                         placeholder="SET PASSWORD"
-                        className={`${arima.className} form__field`}
+                        className="form__field"
                         autoComplete="none" 
                         required 
                     />

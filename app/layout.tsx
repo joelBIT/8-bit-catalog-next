@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { GameProvider, GamesProvider } from "./_contexts";
 
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     description: "Catalog covering 8-bit NES games",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
         <html lang="en">
             <body>

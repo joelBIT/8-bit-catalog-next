@@ -12,7 +12,6 @@ export * from "./lists/UserListEntry";
 export * from "./modals/AddUserModal";
 export * from "./modals/GameModal";
 export * from "./modals/EditFilterModal";
-export * from "./modals/Modal";
 export * from "./modals/UserModal";
 export * from "./ScrollTopButton";
 export * from "./SelectCountry";
