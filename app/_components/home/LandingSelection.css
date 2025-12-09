@@ -147,6 +147,7 @@
             & #landing-selection-text {
                 padding-left: 0;
                 padding-right: 0.5rem;
+                margin-right: 1rem;
             }
 
             & #landing-selection-list {
