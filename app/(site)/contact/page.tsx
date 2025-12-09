@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { ContactForm } from "@/app/_components/common";
 
 import "./page.css";
 
@@ -10,7 +9,7 @@ export default function ContactPage(): ReactElement {
 
     return (
         <main id="contactPage">
-            <img src="/karlstadcontact.avif" className="contact-image" />
+            <img src="/donkeykong.avif" className="contact-image" />
             <h1 id="contactPage-title">
                 Get in touch
             </h1>
@@ -62,8 +61,6 @@ export default function ContactPage(): ReactElement {
                     </section>
                 </article>
             </section>
-            
-            <ContactForm />
         </main>
     );
 }
