@@ -3,10 +3,11 @@ header {
     min-height: 4rem;
     z-index: 20;
     padding-right: 5rem;
-    position: absolute;
+    position: fixed;
     right: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: #ffffff10;
 
     & #logoLink {
         display: none;
@@ -15,6 +16,7 @@ header {
         font-size: 0.5rem;
 
         & .header__title {
+            font-family: "irishGrover", sans-serif;
             letter-spacing: 0.2rem;
             font-weight: bold;
             transition: all 0.3s;

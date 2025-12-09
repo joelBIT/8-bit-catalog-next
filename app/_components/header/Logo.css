@@ -6,3 +6,11 @@
         height: auto;
     }
 }
+
+@media(max-width: 500px) {
+    #logo {
+        &.logo__image {
+            width: 100vw;
+        }
+    }
+}

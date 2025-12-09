@@ -9,7 +9,7 @@ import "./ScrollTopButton.css";
  * component the window scrolls to top.
  */
 export function ScrollTopButton(): ReactElement {
-    const [ isVisible, setIsVisible ] = useState<boolean>(false);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
     let position = 0;
 
     useEffect(() => {
