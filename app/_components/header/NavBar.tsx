@@ -1,9 +1,9 @@
 'use client';
 
-import { ReactElement, useContext, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { FavouritesContext } from "@/app/_contexts";
+import { useFavourites } from "@/app/_hooks";
 import { signOut } from "@/app/_session/session";
 import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { Hamburger } from ".";
@@ -15,10 +15,34 @@ import "./NavBar.css";
  * Favourites Page are always rendered. The remaining links are rendered depending on if the user is authenticated or not.
  */
 export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
-    const { favouritesList } = useContext(FavouritesContext);
-    const [ isChecked, setIsChecked ] = useState<boolean>(false);
+    const { favouritesList } = useFavourites();
+    const [isChecked, setIsChecked] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
+    let position = 0;
+
+    useEffect(() => {
+        window.addEventListener("scroll", scroll, false);
+
+        return () => {
+            window.removeEventListener("scroll", scroll, false);
+        };
+    }, []);
+
+    /**
+     * Increase/reduce opacity when scrolling up/down at the top of the page.
+     */
+    function scroll(): void {
+        const headerElement = document.getElementById("header");
+        
+        if (position <= 700 && headerElement) {
+            headerElement.style.setProperty('background-color', `rgba(0,0,0,${position / 700})`);
+        }  else if (headerElement) {
+            headerElement.style.setProperty('background-color', `#000000`);
+        }
+        
+        position = window.scrollY;
+    }
 
     async function logout(): Promise<void> {
         signOut();

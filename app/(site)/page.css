@@ -140,7 +140,10 @@
 @media (max-width: 500px) {
     #landingPage {
         & #image-wrapper {
-            width: 15rem;
+            width: 100%;
+            text-align: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
         & #catalogDescription {
