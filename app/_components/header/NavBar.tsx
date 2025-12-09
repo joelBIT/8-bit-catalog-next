@@ -30,12 +30,12 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     }, []);
 
     /**
-     * Increase/reduce opacity when scrolling up/down at the top of the page.
+     * Increase/reduce opacity when scrolling up/down at the top of the page. Should not be used when screen width is below 500px.
      */
     function scroll(): void {
         const headerElement = document.getElementById("header");
         
-        if (position <= 700 && headerElement) {
+        if (position <= 700 && headerElement && window.screen.width > 500) {
             headerElement.style.setProperty('background-color', `rgba(0,0,0,${position / 700})`);
         }  else if (headerElement) {
             headerElement.style.setProperty('background-color', `#000000`);
