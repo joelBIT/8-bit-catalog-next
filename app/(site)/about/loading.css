@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: var(--color-black);
 
     & .loading-spinner {
         width: 200px;
