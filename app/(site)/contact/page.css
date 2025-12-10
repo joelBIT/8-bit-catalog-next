@@ -4,143 +4,70 @@
     align-items: center;
     gap: 2rem;
     background-color: var(--color-black);
-    padding-top: 4rem;
-    padding-bottom: 3rem;
-    position: relative;
-    min-height: 100vh;
-
-    & .contact-image {
-        height: 25rem;
-        width: 100%;
-        object-fit: cover;
-        filter: brightness(0.9);
-    }
+    padding: 4rem 2rem;
 
     & #contactPage-title {
-        font-family: "iceland";
+        font-family: Playfair Display, sans-serif;
         font-size: 5rem;
-        padding-top: 2rem;
+        font-weight: 100;
         color: var(--color-footer-heading);
-        position: absolute;
-        left: 10rem;
+        width: 60%;
+        padding-top: 3rem;
+        text-align: center;
+        text-transform: uppercase;
+        border-style: solid;
+        border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
+        border-top: 0;
+        border-bottom-width: 2px;
     }
 
     & #contactPage-information {
         display: flex;
         flex-direction: column;
         align-items: center;
-        align-self: flex-end;
-        text-align: center;
-        width: 40%;
-        padding-right: 1rem;
-        padding-left: 1rem;
+        max-width: 800px;
 
         & #information-text {
             font-size: 1.4rem;
             padding-bottom: 5rem;
             color: var(--color-real-white);
-        }
-
-        & .contact-info__heading {
-            font-family: 'Iceland', sans-serif;
-            font-size: 3rem;
-            color: var(--color-footer-heading);
+            letter-spacing: 1px;
         }
 
         & #contact-info {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
             gap: 1rem;
 
             & .contact__info {
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
-                white-space: nowrap;
-                color: var(--color-nintendo-gray);
                 text-align: left;
                 padding: 1rem;
-                width: 12rem;
 
-                & .contact__info-title {
-                    display: flex;
-                    gap: 0.4rem;
-
-                    & > img {
-                        width: 22px;
-                    }
-
-                    & .contact__info-title-text {
-                        font-family: 'Iceland', sans-serif;
-                        letter-spacing: 1px;
-                        align-items: center;
-                        color: var(--color-real-white);
-                        font-size: 1.5rem;
-                    }
-                }
-
-                & .location {
-                    color: var(--color-footer-heading);
-                }
-
-                & .globe {
-                    color: var(--color-neon-blue);
-                }
-
-                & .mail {
+                & .contact__info-heading {
+                    font-family: "iceland", sans-serif;
                     color: var(--color-real-white);
+                    font-size: 2rem;
+                    font-weight: 600;
                 }
 
-                & .contact__link:hover {
-                    filter: brightness(0.5);
+                & .contact__info-text {
+                    color: var(--color-nintendo-gray);
+                    font-size: 1.3rem;
+                    font-weight: 100;
+
+                    & > a {
+                        color: var(--color-footer-heading);
+                        text-decoration: none;
+
+                        &:hover {
+                            filter: brightness(1.2);
+                        }
+                    }
                 }
             }
-        }
-    }
-
-    & #contactForm {
-        position: absolute;
-        left: 1rem;
-        top: 25rem;
-        background-color: var(--color-black);
-        width: 40rem;
-
-        & #sendButton {
-            width: 50%;
-        }
-    }
-}
-
-@media (max-width: 1200px) {
-    #contactPage {
-        & #contactPage-information {
-            width: 50%;
-
-            & #information-text {
-                font-size: 1.3rem;
-            }
-        }
-
-        & #contactForm {
-            width: 30rem;
-            padding: 1rem 0;
-        }
-    }
-}
-
-@media (max-width: 1050px) {
-    #contactPage {
-        & #contactPage-information {
-            & #information-text {
-                font-size: 1.2rem;
-            }
-        }
-
-        & #contactForm {
-            width: 25rem;
         }
     }
 }
@@ -151,62 +78,29 @@
             font-size: 3rem;
         }
 
-        & .contact-image {
-            height: 15rem;
-        }
-
         & #contactPage-information {
-            width: 100%;
-
             & #information-text {
-                padding-bottom: 2rem;
+                font-size: 1.2rem;
+                padding-bottom: 3rem;
             }
 
             & #contact-info {
-                flex-direction: row;
-
                 & .contact__info {
-                    align-items: center;
+                    & .contact__info-text {
+                        font-size: 1.2rem;
+                    }
                 }
             }
-        }
-
-        & #contactForm {
-            width: 80vw;
-            position: static;
         }
     }
 }
 
 @media (max-width: 500px) {
     #contactPage {
-        padding-top: 3rem;
+        padding: 3rem 1rem;
 
         & #contactPage-title {
-            left: 4rem;
-        }
-
-        & #contactPage-information {
-            & #contact-info {
-                gap: 0;
-            }
-
-            & #information-text {
-                font-size: 1.2rem;
-            }
-        }
-
-        & #contactForm {
-            padding: 0.5rem;
-            width: 95%;
-
-            & .information-input {
-                width: 100%;
-            }
-
-            & #sendButton {
-                margin-top: 1rem;
-            }
+            width: 100%;
         }
     }
 }
