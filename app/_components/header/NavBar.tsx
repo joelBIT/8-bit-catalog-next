@@ -17,31 +17,36 @@ import "./NavBar.css";
 export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
     const { favouritesList } = useFavourites();
     const [isChecked, setIsChecked] = useState<boolean>(false);
+    const [scrollPosition, setScrollPosition] = useState<number>(0);
     const pathname = usePathname();
     const router = useRouter();
-    let position = 0;
-
-    useEffect(() => {
-        window.addEventListener("scroll", scroll, false);
-
-        return () => {
-            window.removeEventListener("scroll", scroll, false);
-        };
-    }, []);
 
     /**
      * Increase/reduce opacity when scrolling up/down at the top of the page. Should not be used when screen width is below 500px.
      */
-    function scroll(): void {
+    useEffect(() => {
         const headerElement = document.getElementById("header");
-        
-        if (position <= 700 && headerElement && window.screen.width > 500) {
-            headerElement.style.setProperty('background-color', `rgba(0,0,0,${position / 700})`);
-        }  else if (headerElement) {
-            headerElement.style.setProperty('background-color', `#000000`);
+        if (headerElement && window.screenY < 10 && window.screen.width > 500) {
+            headerElement.style.setProperty('background-color', `rgba(0,0,0,0)`);
         }
-        
-        position = window.scrollY;
+        if (scrollPosition <= 700 && headerElement && window.screen.width > 500) {
+            headerElement.style.setProperty('background-color', `rgba(0,0,0,${scrollPosition / 700})`);
+        } else if (headerElement) {
+            headerElement.style.setProperty('background-color', `rgba(0,0,0,1)`);
+        }
+    })
+
+    useEffect(() => {
+        window.addEventListener("scroll", trackVerticalScroll, false);
+
+        return () => {
+            window.removeEventListener("scroll", trackVerticalScroll, false);
+        };
+    }, []);
+
+    
+    function trackVerticalScroll(): void {
+        setScrollPosition(window.scrollY);
     }
 
     async function logout(): Promise<void> {
