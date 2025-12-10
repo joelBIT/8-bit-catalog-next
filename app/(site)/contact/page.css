@@ -12,13 +12,13 @@
         font-weight: 100;
         color: var(--color-footer-heading);
         width: 60%;
-        padding-top: 5rem;
+        padding-top: 3rem;
         text-align: center;
         text-transform: uppercase;
         border-style: solid;
         border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
         border-top: 0;
-        border-bottom-width: 4px;
+        border-bottom-width: 2px;
     }
 
     & #contactPage-information {
@@ -50,6 +50,7 @@
                     font-family: "iceland", sans-serif;
                     color: var(--color-real-white);
                     font-size: 2rem;
+                    font-weight: 600;
                 }
 
                 & .contact__info-text {
@@ -76,11 +77,30 @@
         & #contactPage-title {
             font-size: 3rem;
         }
+
+        & #contactPage-information {
+            & #information-text {
+                font-size: 1.2rem;
+                padding-bottom: 3rem;
+            }
+
+            & #contact-info {
+                & .contact__info {
+                    & .contact__info-text {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
     }
 }
 
 @media (max-width: 500px) {
     #contactPage {
-        padding-top: 3rem;
+        padding: 3rem 1rem;
+
+        & #contactPage-title {
+            width: 100%;
+        }
     }
 }
