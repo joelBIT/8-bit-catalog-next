@@ -25,10 +25,9 @@
                 font-size: 4rem;
                 text-align: center;
                 margin: 1rem 0;
-                font-weight: 300;
-                text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 3px var(--color-footer-heading), 0 0 10px var(--color-footer-heading);
-                filter: saturate(60%);
-                color: var(--color-link-background);
+                font-weight: 500;
+                text-shadow: 0 0 30px rgba(255, 52, 10, 0.5);
+                color: var(--color-footer-heading);
             }
         
             & #searchFilters__form {
