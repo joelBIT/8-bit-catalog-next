@@ -11,10 +11,11 @@
     position: relative;
 
     & .sites-title {
-        font-family: "iceland";
+        font-family: Playfair Display, sans-serif;
         font-size: 5rem;
         padding-top: 2rem;
         color: var(--color-footer-heading);
+        font-weight: 100;
     }
 
     & #sites {
