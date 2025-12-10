@@ -14,8 +14,10 @@
         font-family: Playfair Display, sans-serif;
         font-size: 5rem;
         padding-top: 2rem;
-        color: var(--color-footer-heading);
-        font-weight: 100;
+        text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 3px var(--color-footer-heading), 0 0 10px var(--color-footer-heading);
+        filter: saturate(60%);
+        color: var(--color-link-background);
+        font-weight: 300;
     }
 
     & #sites {
@@ -114,6 +116,7 @@
                     font-family: 'Playfair Display', sans-serif;
                     color: var(--color-footer-heading);
                     font-size: 2rem;
+                    letter-spacing: 1px;
                 }
 
                 & .site-description {

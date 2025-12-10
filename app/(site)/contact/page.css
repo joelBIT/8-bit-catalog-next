@@ -9,8 +9,10 @@
     & #contactPage-title {
         font-family: Playfair Display, sans-serif;
         font-size: 5rem;
-        font-weight: 100;
-        color: var(--color-footer-heading);
+        text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 40px var(--color-footer-heading), 0 0 60px var(--color-footer-heading);
+        filter: saturate(60%);
+        color: var(--color-link-background);
+        font-weight: 300;
         width: 60%;
         padding-top: 3rem;
         text-align: center;

@@ -21,9 +21,12 @@
             font-family: 'Playfair Display', sans-serif;
             font-size: 3rem;
             text-align: center;
-            color: var(--color-footer-heading);
             padding-bottom: 1rem;
             line-height: 65px;
+            text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 3px var(--color-footer-heading), 0 0 10px var(--color-footer-heading);
+            filter: saturate(60%);
+            color: var(--color-link-background);
+            font-weight: 300;
         }
 
         & .title-text {
