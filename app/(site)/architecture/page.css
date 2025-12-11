@@ -1,0 +1,41 @@
+#architecturePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-black);
+
+    & #architecture-top {
+        display: flex;
+        justify-content: center;
+        max-height: 30rem;
+        position: relative;
+
+        & .architecture-image {
+            object-fit: cover;
+            filter: brightness(0.4);
+            width: 100%;
+        }
+
+        & .darken-image-bottom {
+            position: absolute;
+            bottom: 0;
+            height: 6rem;
+            width: 100%;
+            background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
+            z-index: 1;
+        }
+    }
+
+    & .architecturePage-title {
+        font-family: "playfair display", sans-serif;
+        font-size: 3rem;
+        color: var(--color-real-white);
+        padding: 1rem;
+    }
+
+    & .architecturePage-title-text {
+        color: var(--color-tag-text);
+        font-size: 2rem;
+        font-weight: 100;
+    }
+}

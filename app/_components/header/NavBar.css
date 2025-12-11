@@ -89,7 +89,7 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .navbar {
         & .navbar__list {
             gap: 1rem;
@@ -98,7 +98,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
     .navbar {
         position: fixed;
         top: 0;
