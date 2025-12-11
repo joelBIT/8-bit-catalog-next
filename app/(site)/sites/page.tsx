@@ -6,10 +6,10 @@ import Link from "next/link";
 import "./page.css";
 
 const sites = [
-    {title: 'NesDev', description: 'A community of homebrew game developers and hardware researchers for the Nintendo Entertainment System (NES) and other retro consoles. Includes NES and SNES wikis as well as forums where you can find answers to many emulator-related questions.', image: '/nesdev.png', link: 'https://www.nesdev.org/'},
-    {title: 'Nes Cart Database', description: 'Dive into detailed information about NES carts and their hardware (e.g., PCB class and chip manufacturer). The site list games for each mapper. Good for finding games corresponding to various cart and hardware properties.', image: '/nescartdb.png', link: 'https://nescartdb.com/'},
-    {title: 'NES Ninja', description: 'Play all the classic 8-bit Nintendo video games online for free. Download retro NES game on NESNinja.com. The site also contains games for other retro consoles.', image: '/nesninja.png', link: 'https://nesninja.com/game/nes/'},
-    {title: 'ROM Detectives', description: 'Your Wiki guide to video game hacking. Their goal is to reverse engineer every video game ever made to understand how they were programmed.', image: '/romdetectives.png', link: 'http://www.romdetectives.com/Wiki/index.php'}
+    {title: 'NesDev', description: 'NesDev is a community of game developers and hardware researchers for the Nintendo Entertainment System (NES) and other retro consoles. The site includes NES and SNES wikis as well as forums where you can find answers to many emulator-related questions.', image: '/nesdev.png', link: 'https://www.nesdev.org/'},
+    {title: 'Nes Cart Database', description: 'Dive into detailed information about NES carts and their hardware (e.g., PCB class and chip manufacturer). The site lists games for each mapper and is excellent for finding games corresponding to various cart and hardware properties.', image: '/nescartdb.png', link: 'https://nescartdb.com/'},
+    {title: 'NES Ninja', description: 'Play all the classic 8-bit Nintendo video games for free. Download NES games on NES Ninja. The site also contains games for other retro consoles (e.g., SNES, Sega, Atari).', image: '/nesninja.png', link: 'https://nesninja.com/game/nes/'},
+    {title: 'NESmakers', description: 'A forum for all things related to the NESmaker software. NESmaker is a PC software that lets anyone create playable, cartridge-based games for the original Nintendo Entertainment System (NES) without the need to write code.', image: '/nesmaker.png', link: 'https://www.nesmakers.com/'}
 ]
 
 /**
@@ -38,7 +38,7 @@ export default function SitesPage(): ReactElement {
                     </article>
                     
                     <article className={currentSite.title === sites[3].title ? "site-content-link active" : "site-content-link"}> 
-                        <p>04.</p> <h1 onClick={() => setCurrentSite(sites[3])}> Detectives </h1> 
+                        <p>04.</p> <h1 onClick={() => setCurrentSite(sites[3])}> NESmakers </h1> 
                     </article>
                 </section>
 

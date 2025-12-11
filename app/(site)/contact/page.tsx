@@ -42,7 +42,7 @@ export default function ContactPage(): ReactElement {
                
                         <p className="contact__info-text">
                             You can find contact information at <a href="https://www.joel-rollny.eu" target="_blank"> www.joel-rollny.eu</a>.
-                            The site also contains a form that can be used to send me a direct message.
+                            That site also contains a form that you can use to send me a direct message.
                         </p>
                     </section>
                 </article>
