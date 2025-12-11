@@ -6,9 +6,9 @@ import Link from "next/link";
 import "./page.css";
 
 const sites = [
-    {title: 'NesDev', description: 'A community of homebrew game developers and hardware researchers for the Nintendo Entertainment System (NES) and other retro consoles.', image: '/nesdev.png', link: 'https://www.nesdev.org/'},
-    {title: 'Nes Cart Database', description: 'Dive into detailed information about NES carts and their hardware.', image: '/nescartdb.png', link: 'https://nescartdb.com/'},
-    {title: 'NES Ninja', description: 'Play all the classic 8-bit Nintendo video games online for free. Download retro NES game on NESNinja.com.', image: '/nesninja.png', link: 'https://nesninja.com/game/nes/'},
+    {title: 'NesDev', description: 'A community of homebrew game developers and hardware researchers for the Nintendo Entertainment System (NES) and other retro consoles. Includes NES and SNES wikis as well as forums where you can find answers to many emulator-related questions.', image: '/nesdev.png', link: 'https://www.nesdev.org/'},
+    {title: 'Nes Cart Database', description: 'Dive into detailed information about NES carts and their hardware (e.g., PCB class and chip manufacturer). The site list games for each mapper. Good for finding games corresponding to various cart and hardware properties.', image: '/nescartdb.png', link: 'https://nescartdb.com/'},
+    {title: 'NES Ninja', description: 'Play all the classic 8-bit Nintendo video games online for free. Download retro NES game on NESNinja.com. The site also contains games for other retro consoles.', image: '/nesninja.png', link: 'https://nesninja.com/game/nes/'},
     {title: 'ROM Detectives', description: 'Your Wiki guide to video game hacking. Their goal is to reverse engineer every video game ever made to understand how they were programmed.', image: '/romdetectives.png', link: 'http://www.romdetectives.com/Wiki/index.php'}
 ]
 
