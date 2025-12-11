@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useFavourites } from "@/app/_hooks";
 import { signOut } from "@/app/_session/session";
-import { URL_ABOUT_PAGE, URL_ARCHITECTURE_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
+import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { Hamburger } from ".";
 
 import "./NavBar.css";
@@ -22,14 +22,14 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     const router = useRouter();
 
     /**
-     * Increase/reduce opacity when scrolling up/down at the top of the page. Should not be used when screen width is below 650px.
+     * Increase/reduce opacity when scrolling up/down at the top of the page. Should not be used when screen width is below 500px.
      */
     useEffect(() => {
         const headerElement = document.getElementById("header");
-        if (headerElement && window.screenY < 10 && window.screen.width > 650) {
+        if (headerElement && window.screenY < 10 && window.screen.width > 500) {
             headerElement.style.setProperty('background-color', `rgba(0,0,0,0)`);
         }
-        if (scrollPosition <= 700 && headerElement && window.screen.width > 650) {
+        if (scrollPosition <= 700 && headerElement && window.screen.width > 500) {
             headerElement.style.setProperty('background-color', `rgba(0,0,0,${scrollPosition / 700})`);
         } else if (headerElement) {
             headerElement.style.setProperty('background-color', `rgba(0,0,0,1)`);
@@ -61,7 +61,6 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
 
     const LINKS_FIRST = [
         {url: URL_HOME, render: true, title: "Home", icon: null},
-        {url: URL_ARCHITECTURE_PAGE, render: true, title: "Architecture", icon: null},
         {url: URL_SEARCH_PAGE, render: true, title: "Games", icon: null}
     ];
 
