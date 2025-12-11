@@ -1,12 +1,12 @@
 #accountMenu-wrapper {
-    background: var(--color-black-light);
+    background: var(--color-auth-background);
     position: fixed;
     height: 100vh;
     z-index: 1;
     top: 0;
     padding-top: 13rem;
 
-    #side-menu_button {
+    & #side-menu_button {
         display: flex;
         position: fixed;
         left: 1rem;
@@ -19,7 +19,7 @@
         }
     }
 
-    #accountMenu {
+    & #accountMenu {
         display: flex;
         flex-direction: column;
         gap: 4rem;
@@ -28,12 +28,12 @@
         width: 3.5rem;
         height: 100%;
 
-        #pages {
+        & #pages {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
 
-            .pages-title {
+            & .pages-title {
                 font-size: 1rem;
                 margin-left: 0.5rem;
                 margin-top: 3rem;
