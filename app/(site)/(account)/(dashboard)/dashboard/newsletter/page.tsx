@@ -2,7 +2,7 @@
 
 import { ReactElement } from "react";
 import { NewsletterForm } from "@/app/_components/account";
-import { NewsList } from "@/app/_components/common";
+import { NewsList } from "@/app/_components/lists";
 import { getAllNews } from "@/app/_db/db";
 
 import "./page.css";

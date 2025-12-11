@@ -2,8 +2,9 @@
 
 import {ReactElement, useEffect, useState} from "react";
 import {useSearchParams} from "next/navigation";
-import {UserListEntry, UserModal} from "@/app/_components/common";
 import {User} from "@/app/_types/types";
+import { UserModal } from "../account/modals";
+import { UserListEntry } from ".";
 
 import "./UserList.css";
 

@@ -2,7 +2,8 @@
 
 import { ReactElement } from "react";
 import { useFavourites, useGame } from "@/app/_hooks";
-import { GameGrid, GameList, SlidingToggle, ScrollTopButton } from "@/app/_components/common";
+import { ScrollTopButton } from "@/app/_components/common";
+import { GameGrid, GameList, SlidingToggle } from "@/app/_components/lists";
 
 import "./page.css";
 

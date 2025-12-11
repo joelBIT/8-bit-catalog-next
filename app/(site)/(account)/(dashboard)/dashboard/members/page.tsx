@@ -4,8 +4,9 @@ import { ReactElement, useEffect, useRef, useState } from "react";
 import { useAccount } from "@/app/_hooks";
 import { User } from "@/app/_types/types";
 import { getUsers } from "@/app/_client/client";
-import { AddUserModal, UserList } from "@/app/_components/common";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
+import { AddUserModal } from "@/app/_components/account/modals";
+import { UserList } from "@/app/_components/lists";
 
 import "./page.css";
 

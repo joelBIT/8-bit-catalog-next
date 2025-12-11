@@ -4,8 +4,9 @@ import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useGame, useGames } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
-import { SlidingToggle, ScrollTopButton, GameList, GameGrid } from "../common";
-import { RangeSlider } from "./RangeSlider";
+import { ScrollTopButton } from "../common";
+import { RangeSlider } from ".";
+import { GameGrid, GameList, SlidingToggle } from "../lists";
 
 import "./Search.css";
 

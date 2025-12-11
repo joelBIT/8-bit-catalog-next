@@ -1,9 +1,9 @@
 'use client';
 
 import { ReactElement, useRef, useState } from "react";
-import { EditFilterModal } from "../common";
 import { Filter } from "@/app/_types/types";
 import { updateFilterValues } from "@/app/_client/client";
+import { EditFilterModal } from "./modals";
 
 import "./EditFilterForm.css";
 

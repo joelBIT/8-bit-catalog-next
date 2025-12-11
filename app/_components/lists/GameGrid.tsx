@@ -4,7 +4,8 @@ import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
-import { GameCard, GameModal } from "..";
+import { GameModal } from "../common";
+import { GameCard } from ".";
 
 import "./GameGrid.css";
 
