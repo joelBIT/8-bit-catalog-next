@@ -22,7 +22,7 @@
             & .searchFilters__title {
                 font-family: "iceland", sans-serif;
                 align-self: center;
-                font-size: 4rem;
+                font-size: 5rem;
                 text-align: center;
                 margin: 1rem 0;
                 font-weight: 500;
@@ -88,6 +88,10 @@
     #searchPage {
         & #searchPage-wrapper {
             & #searchFilters {
+                & .searchFilters__title {
+                    font-size: 4rem;
+                }
+
                 & #searchFilters__form {
                     text-align: center;
 
