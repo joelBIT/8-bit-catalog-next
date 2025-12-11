@@ -3,26 +3,57 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--color-black);
+    padding: 4rem 1rem;
 
     & #architecture-top {
         display: flex;
         justify-content: center;
+        gap: 0.5rem;
         max-height: 30rem;
         position: relative;
 
-        & .architecture-image {
-            object-fit: cover;
-            filter: brightness(0.4);
-            width: 100%;
+        & .architecture-top-left {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 0.5rem;
+
+            & .nintendo-presentation {
+                display: flex;
+                flex: 2;
+                border-radius: 19px;
+            }
+
+            & .nintendo-info {
+                display: flex;
+                flex: 1;
+                gap: 0.5rem;
+
+                & .nintendo-info-sold {
+                    display: flex;
+                    flex: 1;
+                    border-radius: 19px;
+                }
+
+                & .nintendo-info-community {
+                    display: flex;
+                    flex: 1;
+                    border-radius: 19px;
+                }
+            }
         }
 
-        & .darken-image-bottom {
-            position: absolute;
-            bottom: 0;
-            height: 6rem;
-            width: 100%;
-            background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
-            z-index: 1;
+        & .architecture-top-right {
+            display: flex;
+            flex: 1;
+            border-radius: 19px;
+
+            & .architecture-image {
+                object-fit: cover;
+                filter: brightness(0.4);
+                width: 100%;
+                border-radius: 19px;
+            }
         }
     }
 

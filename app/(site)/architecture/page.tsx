@@ -6,8 +6,20 @@ export default function ArchitecturePage(): ReactElement {
     return (
         <main id="architecturePage">
             <section id="architecture-top">
-                <img src="/nesconsole.webp" className="architecture-image" />
-                <div className="darken-image-bottom" />
+                <article className="architecture-top-left">
+                    <div className="nintendo-presentation">
+                        Upper part
+                    </div>
+
+                    <section className="nintendo-info">
+                        <div className="nintendo-info-sold"> Lower part left </div>
+                        <div className="nintendo-info-community"> Lower part right </div>
+                    </section>
+                </article>
+
+                <article className="architecture-top-right">
+                    <img src="/nesconsole.webp" className="architecture-image" />
+                </article>
             </section>
             
             <h2 className="architecturePage-title"> NES Console Architecture </h2>
