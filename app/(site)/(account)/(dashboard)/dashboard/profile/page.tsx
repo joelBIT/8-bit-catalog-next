@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { EditProfileForm } from "@/app/_components/account";
+import { EditProfileForm } from "@/app/_components/account/forms";
 
 import "./page.css";
 

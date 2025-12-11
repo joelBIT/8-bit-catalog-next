@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/db";
-import { EditFilterForm } from "@/app/_components/account";
+import { EditFilterForm } from "@/app/_components/account/forms";
 
 import "./page.css";
 

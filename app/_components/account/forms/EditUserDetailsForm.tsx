@@ -4,7 +4,7 @@ import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
 import { updateUserDetails } from "@/app/_actions/account";
 import PhoneInput from "react-phone-input-2";
-import { SelectCountry } from "../common";
+import { SelectCountry } from "../../common";
 
 import 'react-phone-input-2/lib/style.css';
 import "./EditUserDetailsForm.css";
