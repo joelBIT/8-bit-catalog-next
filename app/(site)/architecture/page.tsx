@@ -3,6 +3,10 @@ import { ArticleCard } from "@/app/_components/common";
 
 import "./page.css";
 
+const articles = [
+    {id: 1, image: "/famicom.webp", title: "Picture Processing Unit", tags: ["Graphics", "Scanline"], text: "The PPU generates a composite video signal with 240 lines of pixels, designed to be received by a television."}
+]
+
 export default function ArchitecturePage(): ReactElement {
     return (
         <main id="architecturePage">
@@ -22,13 +26,21 @@ export default function ArchitecturePage(): ReactElement {
                     <section className="nintendo-info">
                         <ul className="nintendo-info-hardware__list">
                             <li className="nintendo-info-hardware__list-item">
-                                <h4>CPU</h4> <p>8-bit, 1.66 Mhz</p>
+                                <h4>CPU</h4> 
+                                <p>8-bit</p> 
+                                <p>1.66 Mhz</p>
                             </li>
                             <li className="nintendo-info-hardware__list-item">
-                                <h4>Memory</h4>	<p>2 Kb RAM - Video RAM 2 Kb</p>
+                                <h4>Memory</h4>	
+                                <p>2 Kb RAM</p> 
+                                <p>Video RAM 2 Kb</p>
                             </li>
                             <li className="nintendo-info-hardware__list-item">
-                                <h4>Display</h4> <p>256 x 240 pixel maximum resolution, 52 colours, 8 x 16 pixel maximum sprite size, 64 sprites on-screen</p>
+                                <h4>Display</h4> 
+                                <p>256 x 240 pixel maximum resolution</p>
+                                <p>52 colours</p> 
+                                <p>8 x 16 pixel maximum sprite size</p> 
+                                <p>64 sprites on-screen</p>
                             </li>
                         </ul>
                     </section>
@@ -61,7 +73,9 @@ export default function ArchitecturePage(): ReactElement {
                 </h3>
 
                 <section id="articles">
-                    <ArticleCard article={{image: "/famicom.webp", title: "Picture Processing Unit", tags: ["Graphics"], link: "", text: "Some text about PPU"}}/>
+                    {
+                        articles.map(article => <ArticleCard article={article} key={article.title}/>)
+                    }
                 </section>
             </section>
 

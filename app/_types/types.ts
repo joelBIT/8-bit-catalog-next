@@ -103,9 +103,9 @@ export type News = {
 }
 
 export type Article = {
+    id: number,
     text: string,
     title: string,
     tags: string[],
-    link: string,
     image: string
 }
