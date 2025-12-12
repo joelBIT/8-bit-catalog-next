@@ -39,13 +39,13 @@
                 & .nintendo-presentation__heading {
                     font-family: 'Playfair Display', sans-serif;
                     font-size: 2rem;
-                    color: var(--color-real-white);
+                    color: var(--color-footer-heading);
                     letter-spacing: 1px;
                 }
 
                 & .nintendo-presentation__text {
                     font-family: "arima", sans-serif;
-                    color: var(--color-nintendo-gray);
+                    color: var(--color-real-white);
                     font-size: 1.3rem;
                     line-height: 1.7rem;
                 }
@@ -59,6 +59,7 @@
                 & .nintendo-info-sold,
                 .nintendo-info-other {
                     display: flex;
+                    align-items: center;
                     gap: 1rem;
                     color: var(--color-real-white);
                     background-color: #000000d0;
@@ -92,11 +93,10 @@
     }
 
     & .architecture-video {
-        margin: 1rem;
+        margin: 3rem 1rem;
         border-radius: 8px;
         border-left-style: none;
         border-right-style: none;
-        margin-bottom: 3rem;
         z-index: 2;
     }
 
