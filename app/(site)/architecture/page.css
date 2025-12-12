@@ -5,6 +5,14 @@
     gap: 5rem;
     background-color: var(--color-black);
     padding: 4rem 1rem;
+    position: relative;
+
+    & .background-image {
+        position: absolute;
+        filter: brightness(0.2);
+        top: -3rem;
+        height: 100%;
+    }
 
     & #architecture-top {
         display: flex;
@@ -23,18 +31,22 @@
                 display: flex;
                 flex-direction: column;
                 flex: 2;
+                gap: 1.5rem;
                 border-radius: 19px;
-                background-color: var(--color-real-black);
+                background-color: #000000d0;
                 padding: 1rem;
 
                 & .nintendo-presentation__heading {
+                    font-family: 'Playfair Display', sans-serif;
                     font-size: 2rem;
                     color: var(--color-real-white);
+                    text-align: center;
                 }
 
                 & .nintendo-presentation__text {
-                    font-size: 1.5rem;
-                    color: var(--color-tag-text);
+                    color: var(--color-nintendo-gray);
+                    font-size: 1.3rem;
+                    font-family: "blinker", sans-serif;
                 }
             }
 
@@ -42,46 +54,30 @@
                 display: flex;
                 flex: 1;
                 gap: 0.5rem;
+                border-radius: 19px;
+                background-color: #000000d0;
+                padding: 0.5rem;
 
-                & .nintendo-info-hardware {
+                & .nintendo-info-hardware__list {
                     display: flex;
-                    flex: 1;
-                    border-radius: 19px;
-                    background-color: var(--color-real-black);
-                    padding: 0.5rem;
+                    gap: 1rem;
+                    list-style-type: none;
 
-                    & .nintendo-info-hardware__list {
+                    & .nintendo-info-hardware__list-item {
                         display: flex;
                         flex-direction: column;
+                        align-items: center;
                         gap: 0.3rem;
-                        list-style-type: none;
 
-                        & .nintendo-info-hardware__list-item {
-                            display: flex;
-                            gap: 0.3rem;
-
-                            & > h4 {
-                                color: var(--color-real-white);
-                            }
-                            
-                            & > p {
-                                color: var(--color-tag-text);
-                            }
+                        & > h4 {
+                            color: var(--color-footer-heading);
                         }
-
-                        & .nintendo-info-hardware__list-item:last-of-type {
-                            flex-direction: column;
+                        
+                        & > p {
+                            color: var(--color-real-white);
+                            text-align: center;
                         }
                     }
-                }
-
-                & .nintendo-info-sold {
-                    display: flex;
-                    flex: 1;
-                    border-radius: 19px;
-                    background-color: var(--color-real-black);
-                    padding: 0.5rem;
-                    color: var(--color-real-white);
                 }
             }
         }
@@ -93,7 +89,7 @@
 
             & .architecture-image {
                 object-fit: cover;
-                filter: brightness(0.4);
+                filter: brightness(0.8);
                 width: 100%;
                 border-radius: 19px;
             }
@@ -103,10 +99,12 @@
     & #architecture-video {
         display: flex;
         flex-direction: column;
+        z-index: 2;
 
         & .architecture-video__heading {
+            font-family: 'Playfair Display', sans-serif;
             color: var(--color-real-white);
-            font-size: 1.5rem;
+            font-size: 2rem;
             align-self: center;
         }
 
@@ -121,8 +119,10 @@
 
     & #architecture-articles {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
+        z-index: 2;
 
         & .architecturePage-title {
             font-family: "playfair display", sans-serif;
@@ -137,16 +137,48 @@
             padding-bottom: 2rem;
         }
 
-        & .articleCard {
+        & #articles {
             display: flex;
-            flex-direction: column;
-            border: 1px solid var(--color-real-white);
-            border-radius: 9px;
-            padding: 0.5rem;
+            flex-wrap: wrap;
 
-            & > img {
-                width: 300px;
+            & .articleCard {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                border: 1px solid var(--color-real-white);
+                border-radius: 9px;
+                padding: 0.5rem;
+                background-color: var(--color-black);
+
+                & > img {
+                    width: 300px;
+                    border-radius: 9px;
+                }
+
+                & .article-tag {
+                    color: var(--color-real-white);
+                    border: 1px solid var(--color-real-white);
+                    width: fit-content;
+                    padding: 0.5rem;
+                    border-radius: 20px;
+                }
+
+                & .article-title {
+                    color: var(--color-footer-heading);
+                }
+
+                & .article-text {
+                    color: var(--color-real-white);
+                }
             }
         }
+    }
+
+    & .darken-image-bottom {
+        position: absolute;
+        bottom: 3rem;
+        height: 6rem;
+        width: 100%;
+        background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
     }
 }
