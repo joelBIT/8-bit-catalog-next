@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 5rem;
     background-color: var(--color-black);
     padding: 4rem 1rem;
 
@@ -20,8 +21,21 @@
 
             & .nintendo-presentation {
                 display: flex;
+                flex-direction: column;
                 flex: 2;
                 border-radius: 19px;
+                background-color: var(--color-real-black);
+                padding: 1rem;
+
+                & .nintendo-presentation__heading {
+                    font-size: 2rem;
+                    color: var(--color-real-white);
+                }
+
+                & .nintendo-presentation__text {
+                    font-size: 1.5rem;
+                    color: var(--color-tag-text);
+                }
             }
 
             & .nintendo-info {
@@ -29,16 +43,45 @@
                 flex: 1;
                 gap: 0.5rem;
 
+                & .nintendo-info-hardware {
+                    display: flex;
+                    flex: 1;
+                    border-radius: 19px;
+                    background-color: var(--color-real-black);
+                    padding: 0.5rem;
+
+                    & .nintendo-info-hardware__list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.3rem;
+                        list-style-type: none;
+
+                        & .nintendo-info-hardware__list-item {
+                            display: flex;
+                            gap: 0.3rem;
+
+                            & > h4 {
+                                color: var(--color-real-white);
+                            }
+                            
+                            & > p {
+                                color: var(--color-tag-text);
+                            }
+                        }
+
+                        & .nintendo-info-hardware__list-item:last-of-type {
+                            flex-direction: column;
+                        }
+                    }
+                }
+
                 & .nintendo-info-sold {
                     display: flex;
                     flex: 1;
                     border-radius: 19px;
-                }
-
-                & .nintendo-info-community {
-                    display: flex;
-                    flex: 1;
-                    border-radius: 19px;
+                    background-color: var(--color-real-black);
+                    padding: 0.5rem;
+                    color: var(--color-real-white);
                 }
             }
         }
@@ -57,16 +100,53 @@
         }
     }
 
-    & .architecturePage-title {
-        font-family: "playfair display", sans-serif;
-        font-size: 3rem;
-        color: var(--color-real-white);
-        padding: 1rem;
+    & #architecture-video {
+        display: flex;
+        flex-direction: column;
+
+        & .architecture-video__heading {
+            color: var(--color-real-white);
+            font-size: 1.5rem;
+            align-self: center;
+        }
+
+        & .architecture-video {
+            margin: 1rem;
+            border-radius: 8px;
+            border-left-style: none;
+            border-right-style: none;
+            margin-bottom: 3rem;
+        }
     }
 
-    & .architecturePage-title-text {
-        color: var(--color-tag-text);
-        font-size: 2rem;
-        font-weight: 100;
+    & #architecture-articles {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        & .architecturePage-title {
+            font-family: "playfair display", sans-serif;
+            font-size: 3rem;
+            color: var(--color-real-white);
+        }
+
+        & .architecturePage-title-text {
+            color: var(--color-tag-text);
+            font-size: 2rem;
+            font-weight: 100;
+            padding-bottom: 2rem;
+        }
+
+        & .articleCard {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-real-white);
+            border-radius: 9px;
+            padding: 0.5rem;
+
+            & > img {
+                width: 300px;
+            }
+        }
     }
 }
