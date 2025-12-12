@@ -13,8 +13,6 @@ const articles = [
 export default function ArchitecturePage(): ReactElement {
     return (
         <main id="architecturePage">
-            <img src="/donkeykong.avif" className="background-image" />
-
             <section id="architecture-top">
                 <article className="architecture-top-left">
                     <section className="nintendo-presentation">
