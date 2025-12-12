@@ -40,13 +40,14 @@
                     font-family: 'Playfair Display', sans-serif;
                     font-size: 2rem;
                     color: var(--color-real-white);
-                    text-align: center;
+                    letter-spacing: 1px;
                 }
 
                 & .nintendo-presentation__text {
+                    font-family: "arima", sans-serif;
                     color: var(--color-nintendo-gray);
                     font-size: 1.3rem;
-                    font-family: "blinker", sans-serif;
+                    line-height: 1.7rem;
                 }
             }
 
@@ -70,16 +71,9 @@
                         display: flex;
                         flex-direction: column;
                         gap: 0.3rem;
-
-                        & > h4 {
-                            color: var(--color-footer-heading);
-                        }
-                        
-                        & > p {
-                            color: var(--color-real-white);
-                            text-align: left;
-                            white-space: nowrap;
-                        }
+                        color: var(--color-real-white);
+                        text-align: left;
+                        white-space: nowrap;
                     }
                 }
             }
@@ -99,26 +93,13 @@
         }
     }
 
-    & #architecture-video {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    & .architecture-video {
+        margin: 1rem;
+        border-radius: 8px;
+        border-left-style: none;
+        border-right-style: none;
+        margin-bottom: 3rem;
         z-index: 2;
-
-        & .architecture-video__heading {
-            font-family: 'Playfair Display', sans-serif;
-            color: var(--color-real-white);
-            font-size: 2rem;
-            align-self: center;
-        }
-
-        & .architecture-video {
-            margin: 1rem;
-            border-radius: 8px;
-            border-left-style: none;
-            border-right-style: none;
-            margin-bottom: 3rem;
-        }
     }
 
     & #architecture-articles {
@@ -132,18 +113,27 @@
             font-family: "playfair display", sans-serif;
             font-size: 3rem;
             color: var(--color-real-white);
+            letter-spacing: 1px;
         }
 
         & .architecturePage-title-text {
+            font-family: "arima", sans-serif;
             color: var(--color-nintendo-gray);
             font-size: 1.5rem;
             max-width: 900px;
             font-weight: 100;
             padding-bottom: 2rem;
+            border-top: 2px;
+            border-style: solid;
+            border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            border-bottom: 2px;
         }
 
         & #articles {
             display: flex;
+            gap: 3rem;
             flex-wrap: wrap;
         }
     }
