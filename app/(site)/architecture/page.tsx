@@ -4,8 +4,10 @@ import { ArticleCard } from "@/app/_components/common";
 import "./page.css";
 
 const articles = [
-    {id: 1, image: "/scanlines.jpeg", title: "Picture Processing Unit", tags: ["Graphics", "Scanlines"], text: "The PPU generates a composite video signal with 240 lines of pixels, designed to be received by a television."},
-    {id: 2, image: "/cpu.jpg", title: "Central Processing Unit", tags: ["CPU"], text: "The NES CPU core is based on the 6502 processor and runs at approximately 1.79 MHz (1.66 MHz in a PAL NES)."}
+    {id: 1, image: "/scanlines.jpeg", title: "Picture Processing Unit", tags: ["PPU", "Graphics", "Scanlines"], text: "The PPU generates a composite video signal with 240 lines of pixels, designed to be received by a television."},
+    {id: 2, image: "/cpu.jpg", title: "Central Processing Unit", tags: ["CPU", "Registers"], text: "The NES CPU core is based on the 6502 processor and runs at approximately 1.79 MHz (1.66 MHz in a PAL NES)."},
+    {id: 3, image: "/soundwaves.jpeg", title: "Audio Processing Unit", tags: ["APU", "Sound", "Channels"], text: "The NES APU is the audio processing unit in the NES console which generates sound for games."},
+    {id: 4, image: "/cartridges.jpeg", title: "Cartridges", tags: ["Games", "Mappers"], text: "NES games come in cartridges, and inside of those cartridges are various circuits and hardware."}
 ]
 
 export default function ArchitecturePage(): ReactElement {
