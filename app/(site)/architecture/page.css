@@ -55,25 +55,23 @@
                 display: flex;
                 flex: 1;
                 gap: 0.5rem;
-                border-radius: 19px;
-                background-color: #000000d0;
-                padding: 0.5rem;
 
-                & .nintendo-info-hardware__list {
+                & .nintendo-info-sold,
+                .nintendo-info-other {
                     display: flex;
-                    justify-content: space-evenly;
                     gap: 1rem;
-                    flex-wrap: wrap;
-                    list-style-type: none;
-                    width: 100%;
+                    color: var(--color-real-white);
+                    background-color: #000000d0;
+                    border-radius: 19px;
+                    padding: 1rem;
+                    flex: 1;
 
-                    & .nintendo-info-hardware__list-item {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 0.3rem;
-                        color: var(--color-real-white);
-                        text-align: left;
-                        white-space: nowrap;
+                    & > h2 {
+                        font-size: 2.3rem;
+                    }
+
+                    & > p {
+                        font-size: 1.5rem;
                     }
                 }
             }

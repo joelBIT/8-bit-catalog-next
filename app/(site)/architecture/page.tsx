@@ -25,12 +25,15 @@ export default function ArchitecturePage(): ReactElement {
                     </section>
 
                     <section className="nintendo-info">
-                        <ul className="nintendo-info-hardware__list">
-                            <li className="nintendo-info-hardware__list-item">256 x 240 pixel maximum resolution</li>
-                            <li className="nintendo-info-hardware__list-item">52 colours</li> 
-                            <li className="nintendo-info-hardware__list-item">8 x 16 pixel maximum sprite size</li> 
-                            <li className="nintendo-info-hardware__list-item">64 sprites on-screen</li>
-                        </ul>
+                        <article className="nintendo-info-sold">
+                            <h2>14th</h2>
+                            <p>best-selling console of all time</p>
+                        </article>
+
+                        <article className="nintendo-info-other">
+                            <h2>1,377</h2>
+                            <p>licensed games globally.</p>
+                        </article>
                     </section>
                 </article>
 
