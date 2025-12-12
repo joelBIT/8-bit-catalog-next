@@ -101,3 +101,11 @@ export type News = {
     image: string,
     author: string
 }
+
+export type Article = {
+    text: string,
+    title: string,
+    tags: string[],
+    link: string,
+    image: string
+}

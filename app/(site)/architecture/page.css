@@ -140,37 +140,6 @@
         & #articles {
             display: flex;
             flex-wrap: wrap;
-
-            & .articleCard {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-                border: 1px solid var(--color-real-white);
-                border-radius: 9px;
-                padding: 0.5rem;
-                background-color: var(--color-black);
-
-                & > img {
-                    width: 300px;
-                    border-radius: 9px;
-                }
-
-                & .article-tag {
-                    color: var(--color-real-white);
-                    border: 1px solid var(--color-real-white);
-                    width: fit-content;
-                    padding: 0.5rem;
-                    border-radius: 20px;
-                }
-
-                & .article-title {
-                    color: var(--color-footer-heading);
-                }
-
-                & .article-text {
-                    color: var(--color-real-white);
-                }
-            }
         }
     }
 

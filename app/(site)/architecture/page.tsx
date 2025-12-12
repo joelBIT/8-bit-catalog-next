@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { ArticleCard } from "@/app/_components/common";
 
 import "./page.css";
 
@@ -60,12 +61,7 @@ export default function ArchitecturePage(): ReactElement {
                 </h3>
 
                 <section id="articles">
-                    <section className="articleCard">
-                        <img src="/famicom.webp" alt="PPU article" />
-                        <div className="article-tag"> Graphics </div>
-                        <h2 className="article-title">PPU</h2>
-                        <p className="article-text">Some text about PPU</p>
-                    </section>
+                    <ArticleCard article={{image: "/famicom.webp", title: "Picture Processing Unit", tags: ["Graphics"], link: "", text: "Some text about PPU"}}/>
                 </section>
             </section>
 
