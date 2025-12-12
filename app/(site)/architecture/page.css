@@ -24,14 +24,16 @@
                 flex: 2;
                 gap: 1.5rem;
                 border-radius: 19px;
-                background-color: #000000d0;
                 padding: 1rem;
+                max-width: 1800px;
 
                 & .nintendo-presentation__heading {
                     font-family: 'Playfair Display', sans-serif;
                     font-size: 2rem;
+                    font-weight: 600;
                     color: var(--color-footer-heading);
                     letter-spacing: 1px;
+                    padding-top: 2rem;
                 }
 
                 & .nintendo-presentation__text {
@@ -45,7 +47,7 @@
             & .nintendo-info {
                 display: flex;
                 flex: 1;
-                gap: 0.5rem;
+                gap: 1rem;
 
                 & .nintendo-info-sold,
                 .nintendo-info-other {
@@ -57,12 +59,23 @@
                     padding: 1rem;
                     flex: 1;
 
-                    & > h2 {
+                    & h2 {
+                        font-family: 'Playfair Display', sans-serif;
                         font-size: 2.3rem;
                     }
 
-                    & > p {
+                    & p {
                         font-size: 1.5rem;
+                        color: var(--color-nintendo-gray);
+                        font-style: italic;
+                    }
+
+                    & > img {
+                        width: 140px;
+                        border: 2px solid var(--color-footer-heading);
+                        padding: 1rem;
+                        border-radius: 100%;
+                        border-block: none;
                     }
                 }
             }

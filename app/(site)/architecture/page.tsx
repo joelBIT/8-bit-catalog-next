@@ -26,13 +26,21 @@ export default function ArchitecturePage(): ReactElement {
 
                     <section className="nintendo-info">
                         <article className="nintendo-info-sold">
-                            <h2>14th</h2>
-                            <p>best-selling console of all time</p>
+                            <img src="/nesconsole.svg" />
+
+                            <section>
+                                <h2>14th</h2>
+                                <p>best-selling console of all time</p>
+                            </section>
                         </article>
 
                         <article className="nintendo-info-other">
-                            <h2>1,377</h2>
-                            <p>licensed games globally.</p>
+                            <img src="/gamepad.svg" />
+
+                            <section>
+                                <h2>1,377</h2>
+                                <p>licensed games globally</p>
+                            </section>
                         </article>
                     </section>
                 </article>
