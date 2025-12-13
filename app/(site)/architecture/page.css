@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5rem;
+    gap: 3rem;
     background-color: var(--color-black);
     padding: 4rem 1rem;
 
@@ -10,7 +10,6 @@
         display: flex;
         justify-content: center;
         gap: 0.5rem;
-        max-height: 30rem;
         position: relative;
 
         & .architecture-top-left {
@@ -21,11 +20,10 @@
             & .nintendo-presentation {
                 display: flex;
                 flex-direction: column;
-                flex: 2;
                 gap: 1.5rem;
                 border-radius: 19px;
                 padding: 1rem;
-                max-width: 1800px;
+                max-width: 1400px;
 
                 & .nintendo-presentation__heading {
                     font-family: 'Playfair Display', sans-serif;
@@ -46,7 +44,9 @@
 
             & .nintendo-info {
                 display: flex;
-                flex: 1;
+                flex-direction: column;
+                align-content: center;
+                flex-wrap: wrap;
                 gap: 1rem;
 
                 & .nintendo-info-sold,
@@ -58,6 +58,7 @@
                     border-radius: 19px;
                     padding: 1rem;
                     flex: 1;
+                    min-width: 330px;
 
                     & h2 {
                         font-family: 'Playfair Display', sans-serif;
@@ -78,6 +79,11 @@
                         border-block: none;
                     }
                 }
+
+                & .nintendo-info-other {
+                    justify-content: center;
+                    padding-left: 5rem;
+                }
             }
         }
 
@@ -90,6 +96,7 @@
                 object-fit: cover;
                 filter: brightness(0.8);
                 width: 100%;
+                max-height: 32rem;
                 border-radius: 19px;
             }
         }
@@ -123,6 +130,7 @@
             font-size: 3rem;
             color: var(--color-real-white);
             letter-spacing: 1px;
+            text-align: center;
         }
 
         & .architecturePage-title-text {
@@ -138,10 +146,12 @@
             padding-left: 2rem;
             padding-right: 2rem;
             border-bottom: 2px;
+            text-align: center;
         }
 
         & #articles {
             display: flex;
+            justify-content: center;
             gap: 3rem;
             flex-wrap: wrap;
         }
@@ -158,12 +168,8 @@
 
 @media (max-width: 1200px) {
     #architecturePage {
-        & #architecture-video {
-            width: 100vw;
-
-            & .architecture-video {
-                width: 95%;
-            }
+        & .architecture-video {
+            width: 95%;
         }
     }
 }
