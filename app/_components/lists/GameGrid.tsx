@@ -50,7 +50,7 @@ export function GameGrid({ games }: { games: Game[] }): ReactElement {
         <section id="gameGrid">
             { openModal && Object.keys(selectedGame).length > 0 ? <GameModal games={currentGames} game={selectedGame} close={() => closeGameModal()} /> : <></> }
             
-            { currentGames.length > 0 ? currentGames.map(game => <GameCard game={game} key={game.id} click={openGameModal} />) : <></> }
+            { currentGames.length > 0 ? currentGames.map(game => <GameCard game={game} key={game.id} openModal={openGameModal} />) : <></> }
         </section>
     );
 }

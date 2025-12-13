@@ -6,72 +6,97 @@
     display: flex;
     flex-direction: column;
     width: 18rem;
-    height: 100%;
+    height: 27rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
     transition: all 0.3s;
 
     & .gameCard-figure {
         position: relative;
         border-radius: 9px;
 
-        & .darken-image-bottom {
+        & .game-favourite {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.2rem;
             position: absolute;
-            bottom: 0;
-            height: 15rem;
-            width: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 90%);
-            border-bottom-left-radius: 9px;
-            border-bottom-right-radius: 9px;
+            top: 2rem;
+            box-shadow: 0 0 6px 0 var(--color-real-black);
+            background-color: #d3deea;
+            padding: 0.1rem 0.7rem;
+
+            & > img {
+                width: 12px;
+            }
+
+            & .game-favourite__text {
+                color: var(--color-real-black);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 0.78rem;
+                height: 18px;
+                line-height: 19px;
+                white-space: nowrap;
+            }
         }
 
         & .gameCard-figure__cover {
             width: 100%;
-            border-radius: 9px;
-            height: 25rem;
+            border-radius: 4px;
+            height: 24rem;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
 
-        & #gameCardTitle {
-            display: flex;
+        & .game-title-area {
+            display: none;
             position: absolute;
             bottom: 0;
-            width: 85%;
-            background: transparent;
-            filter: brightness(0.8);
-            color: var(--color-white);
-            font-family: "rancho", sans-serif;
-            font-size: 1.8rem;
-            font-weight: 100;
-            margin: 1rem 0 0.5rem 1rem;
+            max-height: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: #101010c0;
+
+            & .game-title {
+                font-family: "iceland", sans-serif;
+                color: var(--color-real-white);
+                letter-spacing: 1px;
+            }
         }
 
-        & .gameCard-favourite {
-            backdrop-filter: brightness(0.2);
-            padding: 0;
-            border-radius: 250%;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-
-            & .favouriteButton {
-                height: 2.2rem;
-                width: 2.2rem;
-                margin: 0.35rem;
-                min-width: 2.2rem;
-
-                &:hover {
-                    transform: none;
-                    border-radius: 250%;
-                    opacity: 1;
-                    filter: brightness(1.5);
-                }
+        &:hover {
+            .game-title-area {
+                display: block;
+                max-height: 10rem;
             }
         }
     }
 
-    &:hover {
-        transition: transform 0.3s ease;
-        cursor: pointer;
-        filter: brightness(1.35);
-        transition: all 0.5s;
+    & .gameCard-favourite {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        height: 100%;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        transition: all 0.3s ease;
+
+        & > h3 {
+            color: var(--color-real-white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 100;
+        }
+
+        & .game-is-favourite {
+            color: var(--color-footer-heading);
+        }
+
+        &:hover {
+            background-color: #ffffff10;
+            transition: all 0.3s ease;
+        }
     }
 }

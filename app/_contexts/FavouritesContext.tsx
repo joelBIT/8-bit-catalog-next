@@ -10,6 +10,7 @@ export interface FavouritesContextProvider {
     favouritesList: Game[];
     addFavouriteGame: (game: Game) => void;
     removeFavouriteGame: (game: Game) => void;
+    isFavourite: (gameId: number) => boolean;
 }
 
 export const FavouritesContext = createContext<FavouritesContextProvider>({} as FavouritesContextProvider);
@@ -90,8 +91,12 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
         }
     }
 
+    function isFavourite(gameId: number): boolean {
+        return favouritesList.some((favourite: { id: number; }) => favourite.id === gameId);
+    }
+
     return (
-        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame }}>
+        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, isFavourite }}>
             { children }
         </FavouritesContext.Provider>
     );
