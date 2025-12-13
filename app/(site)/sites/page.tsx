@@ -78,6 +78,8 @@ export default function SitesPage(): ReactElement {
                     }
                 </section>
             </section>
+            
+            <div className="darken-image-bottom" />
         </main>
     );
 }
