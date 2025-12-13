@@ -9,6 +9,7 @@
     height: 27rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 4px;
+    cursor: pointer;
     transition: all 0.3s;
 
     & .gameCard-figure {
@@ -47,6 +48,29 @@
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
+
+        & .game-title-area {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            max-height: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: #101010c0;
+
+            & .game-title {
+                font-family: "iceland", sans-serif;
+                color: var(--color-real-white);
+                letter-spacing: 1px;
+            }
+        }
+
+        &:hover {
+            .game-title-area {
+                display: block;
+                max-height: 10rem;
+            }
+        }
     }
 
     & .gameCard-favourite {
@@ -55,7 +79,6 @@
         justify-content: center;
         gap: 1rem;
         height: 100%;
-        cursor: pointer;
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
         transition: all 0.3s ease;
@@ -75,9 +98,5 @@
             background-color: #ffffff10;
             transition: all 0.3s ease;
         }
-    }
-
-    &:hover {
-        cursor: pointer;
     }
 }

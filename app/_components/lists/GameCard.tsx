@@ -69,6 +69,10 @@ export function GameCard({ game, openModal }: { game: Game, openModal: (game: Ga
                         width={100}
                         height={300}
                     />
+
+                    <section className="game-title-area">
+                        <h2 className="game-title"> {game.title} </h2>
+                    </section>
                 </figure>
 
                 <section className="gameCard-favourite" onClick={handleFavourites}>
