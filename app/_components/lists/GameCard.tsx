@@ -16,11 +16,13 @@ import "./GameCard.css";
 export function GameCard({ game, openModal }: { game: Game, openModal: (game: Game) => void }): ReactElement {
     const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
     const [removeCard, setRemoveCard] = useState<boolean>(false);
+    const [isShowingTitle, setIsShowingTitle] = useState<boolean>(false);
     const { setSelectedGame } = useGame();
     const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
     const favourite = isFavourite(game.id);
     const pathname = usePathname();
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
+    
 
     function showGame(): void {
         setSelectedGame(game);
@@ -51,7 +53,7 @@ export function GameCard({ game, openModal }: { game: Game, openModal: (game: Ga
     return (
         <section className={isFadingOut ? "is-fading" : ""} onClick={showGame}>
             <section className={removeCard ? "hidden" : "gameCard"}>
-                <figure className="gameCard-figure">
+                <figure className="gameCard-figure" onMouseEnter={() => setIsShowingTitle(true)} onMouseLeave={() => setIsShowingTitle(false)}>
                     {
                         favourite ? 
                             <section className="game-favourite">
@@ -70,7 +72,7 @@ export function GameCard({ game, openModal }: { game: Game, openModal: (game: Ga
                         height={300}
                     />
 
-                    <section className="game-title-area">
+                    <section className={isShowingTitle ? "game-title-area dropdown" : "game-title-area"}>
                         <h2 className="game-title"> {game.title} </h2>
                     </section>
                 </figure>

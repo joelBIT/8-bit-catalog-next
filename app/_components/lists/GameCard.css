@@ -50,26 +50,28 @@
         }
 
         & .game-title-area {
-            display: none;
             position: absolute;
             bottom: 0;
-            max-height: 0;
             width: 100%;
-            padding: 1rem;
             background-color: #101010c0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.15s ease-in;
 
             & .game-title {
                 font-family: "iceland", sans-serif;
                 color: var(--color-real-white);
                 letter-spacing: 1px;
+                padding: 1rem;
             }
         }
 
-        &:hover {
-            .game-title-area {
-                display: block;
-                max-height: 10rem;
-            }
+        & .dropdown {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            max-height: 8rem;
+            transition: max-height 0.15s ease-in;
         }
     }
 
