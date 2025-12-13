@@ -23,7 +23,6 @@ export function GameCard({ game, openModal }: { game: Game, openModal: (game: Ga
     const pathname = usePathname();
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
     
-
     function showGame(): void {
         setSelectedGame(game);
         openModal(game);

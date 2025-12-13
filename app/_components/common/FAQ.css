@@ -56,9 +56,9 @@
     }
 
     & .accordion-panel {
-        display: flex;
         max-height: 0;
         overflow: hidden;
+        transition: max-height 0.35s ease-out;
 
         & .accordion__text {
             font-size: 1.3rem;
@@ -69,7 +69,8 @@
     }
 
     & .dropdown {
-        max-height: 2000px;
+        max-height: 400px;
+        transition: max-height 0.35s ease-in;
     }
 }
 
