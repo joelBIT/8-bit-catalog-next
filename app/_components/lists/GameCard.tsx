@@ -76,11 +76,11 @@ export function GameCard({ game, openModal }: { game: Game, openModal: (game: Ga
                     </section>
                 </figure>
 
-                <section className="gameCard-favourite" onClick={handleFavourites}>
+                <button className="gameCard-favourite" onClick={handleFavourites}>
                     {
                         favourite ? <h3 className="game-is-favourite"> Remove favourite </h3> : <h3> Add as favourite </h3>
                     }
-                </section>
+                </button>
             </section>
         </section>
     );
