@@ -7,7 +7,7 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
 
     return (
         <main id="articlePage">
-            {id}
+            <h2> ({id}) Under construction </h2>
         </main>
     )
 }

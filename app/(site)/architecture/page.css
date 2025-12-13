@@ -69,6 +69,7 @@
                         font-size: 1.5rem;
                         color: var(--color-nintendo-gray);
                         font-style: italic;
+                        font-weight: 100;
                     }
 
                     & > img {
@@ -179,6 +180,27 @@
         & #architecture-top {
             flex-direction: column-reverse;
             max-height: fit-content;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #architecturePage {
+        & .architecture-video {
+            width: 100%;
+        }
+
+        & #architecture-articles {
+            & .architecturePage-title {
+                font-size: 2.3rem;
+            }
+
+            & .architecturePage-title-text {
+                padding-right: 0.2rem;
+                padding-left: 0.2rem;
+                line-height: 27px;
+                padding-top: 1rem;
+            }
         }
     }
 }

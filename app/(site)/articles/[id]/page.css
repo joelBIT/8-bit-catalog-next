@@ -4,4 +4,11 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-black);
+
+    & > h2 {
+        color: var(--color-real-white);
+        border: 1px solid var(--color-real-white);
+        padding: 1rem;
+        border-radius: 8px;
+    }
 }
