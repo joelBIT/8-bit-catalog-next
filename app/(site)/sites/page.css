@@ -141,6 +141,14 @@
             }
         }
     }
+
+    & .darken-image-bottom {
+        position: absolute;
+        bottom: 0;
+        height: 6rem;
+        width: 100%;
+        background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
+    }
 }
 
 @media (max-width: 1000px) {
