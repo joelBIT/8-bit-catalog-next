@@ -45,6 +45,7 @@
         width: 50%;
 
         & .gameCard-title__link {
+            font-family: "iceland", sans-serif;
             transition: all 0.5s;
             width: fit-content;
 

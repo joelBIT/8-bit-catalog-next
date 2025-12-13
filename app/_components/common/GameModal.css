@@ -36,6 +36,7 @@
 
             & > img:not(.selected-game) {
                 cursor: pointer;
+                border-radius: 4px;
             }
 
             & .item {
@@ -52,6 +53,7 @@
                 transform: translateZ(170px);
                 width: 25%;
                 height: 270px;
+                border-radius: 4px;
                 box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 100px 1px #FFFFFF80;
             }
 

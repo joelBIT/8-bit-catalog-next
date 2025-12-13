@@ -60,7 +60,7 @@
 
             & .game-title {
                 font-family: "iceland", sans-serif;
-                color: var(--color-real-white);
+                color: var(--color-white);
                 letter-spacing: 1px;
                 padding: 1rem;
             }
