@@ -9,8 +9,8 @@ import { URL_FAVOURITES_PAGE } from "@/app/_utils/utils";
 import "./FavouriteButton.css";
 
 export function FavouriteButton({ game, setFading, removeCard }: { game: Game, setFading: (fading: boolean) => void, removeCard: (remove: boolean) => void }): ReactElement {
-    const { favouritesList, addFavouriteGame, removeFavouriteGame } = useFavourites();
-    const isFavorite = favouritesList.some((favourite: { id: number; }) => favourite.id === game.id);
+    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
+    const isFavorite = isFavourite(game.id);
     const pathname = usePathname();
 
     /**

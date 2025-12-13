@@ -56,7 +56,7 @@ export default function ArchitecturePage(): ReactElement {
                 src="https://www.youtube.com/embed/PwZEBE66an0?si=vpFN433xh8l4Dptt" 
                 title="NES Hacker's NES architecture video" 
                 className="architecture-video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 referrerPolicy="strict-origin-when-cross-origin" 
                 allowFullScreen 
             />
