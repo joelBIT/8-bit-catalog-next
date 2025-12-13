@@ -2,9 +2,10 @@
 
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
+import { usePathname } from "next/navigation";
 import { useFavourites, useGame } from "@/app/_hooks";
-import { FavouriteButton } from "@/app/_components/favourites";
 import { Game } from "@/app/_types/types";
+import { URL_FAVOURITES_PAGE } from "@/app/_utils/utils";
 
 import "./GameCard.css";
 
@@ -16,13 +17,35 @@ export function GameCard({ game, openModal }: { game: Game, openModal: (game: Ga
     const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
     const [removeCard, setRemoveCard] = useState<boolean>(false);
     const { setSelectedGame } = useGame();
-    const { isFavourite } = useFavourites();
+    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
     const favourite = isFavourite(game.id);
+    const pathname = usePathname();
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     function showGame(): void {
         setSelectedGame(game);
         openModal(game);
+    }
+
+    /**
+     * Adds or removes a game from the list of favourites. The event is prevented so
+     * that a user is not redirected to the game details page when clicking on the favourite button.
+     */
+    function handleFavourites(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (favourite) {
+            if (pathname === URL_FAVOURITES_PAGE) {           // If a game card is removed from favourites page, it fades out
+                setIsFadingOut(true);
+                setTimeout(() => removeFavouriteGame(game), 300);
+                setTimeout(() => { setRemoveCard(true) }, 500);
+            } else {
+                removeFavouriteGame(game);
+            }
+        } else {
+            addFavouriteGame(game);
+        }
     }
     
     return (
@@ -46,11 +69,13 @@ export function GameCard({ game, openModal }: { game: Game, openModal: (game: Ga
                         width={100}
                         height={300}
                     />
-
-                    <section className="gameCard-favourite">
-                        <FavouriteButton game={game} setFading={setIsFadingOut} removeCard={setRemoveCard} />
-                    </section>
                 </figure>
+
+                <section className="gameCard-favourite" onClick={handleFavourites}>
+                    {
+                        favourite ? <h3 className="game-is-favourite"> Remove favourite </h3> : <h3> Add as favourite </h3>
+                    }
+                </section>
             </section>
         </section>
     );
