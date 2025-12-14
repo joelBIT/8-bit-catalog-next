@@ -3,9 +3,12 @@ import { Game } from "@/app/_types/types";
 
 import "./GameSorting.css";
 
+/**
+ * Sort games.
+ */
 export function GameSorting({games, setSortedGames}: {games: Game[], setSortedGames: (games: Game[]) => void}): ReactElement {
 
-        /**
+    /**
      * Sort games according to selected option.
      */
     function sortGames(sort: string): void {
