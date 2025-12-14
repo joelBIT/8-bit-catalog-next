@@ -11,7 +11,7 @@ import "./GameListEntry.css";
  * An entry in a list of games. Corresponds to a row in a regular list in List View.
  * When hovering a game cover that cover will appear enlarged in a modal.
  */
-export function GameListEntry({ game, click }: { game: Game, click: (game: Game) => void }): ReactElement {
+export function GameListEntry({ game, openModal }: { game: Game, openModal: (game: Game) => void }): ReactElement {
     const [removeCard, setRemoveCard] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
@@ -24,7 +24,7 @@ export function GameListEntry({ game, click }: { game: Game, click: (game: Game)
                 className="gameListEntry-figure__cover"
                 onMouseEnter={() => setShowModal(true)}
                 onMouseLeave={() => setShowModal(false)}
-                onClick={() => click(game)}
+                onClick={() => openModal(game)}
                 alt="Game Cover"
                 width={100}
                 height={100}
@@ -42,7 +42,7 @@ export function GameListEntry({ game, click }: { game: Game, click: (game: Game)
             </section>
 
             <section className="gameListEntry-information">
-                <section className="gameListEntry-title__link" onClick={() => click(game)}> 
+                <section className="gameListEntry-title__link" onClick={() => openModal(game)}> 
                     {game.title} 
                 </section> 
 

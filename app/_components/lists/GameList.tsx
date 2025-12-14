@@ -50,7 +50,7 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
         <ul id="gameList">
             { openModal && Object.keys(selectedGame).length > 0 ? <GameModal games={currentGames} game={selectedGame} close={() => closeGameModal()} /> : <></> }
             
-            { currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} click={openGameModal} />) : <></> }
+            { currentGames.length > 0 ? currentGames.map(game => <GameListEntry game={game} key={game.id} openModal={openGameModal} />) : <></> }
         </ul>
     );
 }
