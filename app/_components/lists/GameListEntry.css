@@ -7,8 +7,7 @@
     align-items: center;
     gap: 1rem;
     height: 8rem;
-    max-width: 1000px;
-    width: 100%;
+    width: 1000px;
     padding: 0.5rem;
     position: relative;
     background-color: #ffffff10;
@@ -98,15 +97,41 @@
 
     & .gameListEntry-favourite {
         display: flex;
-        flex-direction: column;
-        width: fit-content;
+        width: 3rem;
 
+        & .isFavourite {
+            background-image: url("/isFavourite.png");
+            background-size: cover;
+            border: none;
+        }
+
+        & .noFavourite {
+            background-image: url("/noFavouriteBeige.png");
+            background-size: cover;
+            border: none;
+        }
+  
         & .favouriteButton {
-            height: 3rem;
-            width: 2rem;
             margin: 0;
             transform: scale(0.5);
+            height: 3rem;
+            min-width: 3rem;
+            align-self: self-end;
+            margin-right: 0.8rem;
+            margin-bottom: 0.8rem;
+            background-color: transparent;
+            border: none;
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
+    }
+}
+
+@media (max-width: 1050px) {
+    .gameListEntry {
+        width: 90vw;
     }
 }
 
@@ -142,6 +167,10 @@
 
         & .gameListEntry-figure__cover {
             display: none;
+        }
+
+        & .gameListEntry-favourite {
+            width: 2rem;
         }
     }
 }
