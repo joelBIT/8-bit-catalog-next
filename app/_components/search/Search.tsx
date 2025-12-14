@@ -52,7 +52,7 @@ export function Search(): ReactElement {
                     <>
                         <h1 className="search-result-text"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
                         <section className="show-pagination-toggle">
-                            <GameSorting games={searchResult} setSortedGames={setSearchResult}/>
+                            <GameSorting games={searchResult} setSortedGames={setSearchResult} />
                             
                             {searchResult.length > 80 ? <RangeSlider min={50} max={searchResult.length} setSliderValue={setNumberGamesShowing} /> : <></>}
 
