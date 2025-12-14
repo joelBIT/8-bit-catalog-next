@@ -184,12 +184,28 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     #architecturePage {
         & .architecture-video {
             width: 100%;
         }
 
+        & #architecture-top {
+            & .architecture-top-left {
+                & .nintendo-info {
+                    & .nintendo-info-other,
+                    .nintendo-info-sold {
+                        padding-left: 0;
+                        justify-content: flex-start;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #architecturePage {
         & #architecture-articles {
             & .architecturePage-title {
                 font-size: 2.3rem;
