@@ -4,189 +4,144 @@
 
 .gameListEntry {
     display: flex;
-    height: 4rem;
-    width: 100%;
     align-items: center;
-    border-top: 1px solid var(--color-list-border);
+    gap: 1rem;
+    height: 8rem;
+    max-width: 1000px;
+    width: 100%;
+    padding: 0.5rem;
     position: relative;
-
-    & .gameCard-category__heading,
-    .gameCard-players__heading,
-    .gameCard-developer__heading,
-    .gameCard-publisher__heading {
-        display: none;
-    }
+    background-color: #ffffff10;
+    border-radius: 4px;
 
     & .image-modal-show {
         display: flex;
         position: absolute;
-        left: 3rem;
+        left: 15rem;
         z-index: 10;
 
-        & .gameCard-figure__cover {
+        & .gameListEntry-figure__cover {
             width: 15rem;
             height: 20rem;
             border-radius: 9px;
         }
     }
 
-    & .gameCard-figure__cover {
-        width: 2rem;
-        height: 2.5rem;
-
-        &:hover {
-            cursor: pointer;
-        }
+    & .gameListEntry-figure__cover {
+        object-fit: cover;
+        width: 14rem;
+        height: 100%;
+        border-radius: 4px;
+        cursor: pointer;
     }
 
-    & .gameCard-title {
-        text-align: left;
-        padding-left: 1rem;
-        width: 50%;
+    & .gameListEntry-information {
+        display: flex;
+        flex-direction: column;
+        flex: 8;
+        gap: 0.5rem;
 
-        & .gameCard-title__link {
+        & .gameListEntry-title__link {
             font-family: "iceland", sans-serif;
-            transition: all 0.5s;
+            font-size: 2rem;
+            cursor: pointer;
             width: fit-content;
+            transition: all 0.5s;
 
             &:hover {
-                cursor: pointer;
                 filter: brightness(0.5);
                 transition: filter 0.5s;
             }
         }
+
+        & .gameListEntry-tags {
+            display: flex;
+            gap: 1rem;
+
+            & .gameListEntry-tag {
+                font-family: "arima", sans-serif;
+                font-size: 11px;
+                padding: 2px 5px;
+                border: 1px solid rgba(255, 255, 255, .2);
+                color: #8f98a0;
+                border-radius: 3px;
+            }
+        }
+
+        & .gameListEntry-details {
+            display: flex;
+            flex-direction: column;
+
+            & .details-section {
+                display: flex;
+                gap: 0.5rem;
+
+                & .details__heading {
+                    color: var(--color-footer-heading);
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    font-weight: 100;
+                }
+
+                & .details-publisher {
+                    margin-right: 4px;
+                }
+
+                & .details__text {
+                    color: #8f98a0;
+                    font-size: 1rem;
+                    font-weight: 100;
+                }
+            }
+        }
     }
 
-    & .gameCard-category,
-    .gameCard-developer,
-    .gameCard-players,
-    .gameCard-publisher {
-        font-size: 1.2rem;
-        font-weight: 100;
-        color: var(--color-nintendo-gray);
-    }
-
-    & .category-section {
-        width: 20%;
-    }
-
-    & .players-section {
-        width: 10%;
-    }
-
-    & .developer-section,
-    .publisher-section {
-        width: 30%;
-    }
-
-    & .favouriteButton {
-        height: 3rem;
-        width: 2rem;
-        margin: 0;
-        align-self: center;
-        justify-self: flex-end;
-        transform: scale(0.7);
-    }
-}
-
-@media (max-width: 1100px) {
-    .gameListEntry {
-        display: grid;
-        grid-template-columns: 0.8fr 4fr 4fr 4fr;
-        grid-template-rows: 2fr 1fr 1fr;
-        height: 8rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-
-        & a:first-of-type {
-            width: fit-content;
-        }
-
-        & .gameCard-category__heading,
-        .gameCard-publisher__heading,
-        .gameCard-players__heading,
-        .gameCard-developer__heading {
-            display: block;
-            color: var(--color-footer-heading);
-            font-weight: 100;
-            font-size: 1rem;
-            grid-row: 2;
-            width: 100%;
-        }
-
-        & .category-section {
-            grid-column: 2 / 3;
-            padding-left: 4rem;
-        }
-
-        & .players-section {
-            grid-column: 1 / 2;
-        }
-
-        & .developer-section {
-            grid-column: 3 / 4;
-        }
-
-        & .publisher-section {
-            grid-column: 4 / 5;
-        }
-
-        & .category-section,
-        .developer-section,
-        .players-section,
-        .publisher-section {
-            grid-row: 3;
-            width: 100%;
-        }
-
-        & .gameCard-title {
-            grid-column: 2 / 4;
-            grid-row: 1;
-            width: 100%;
-        }
+    & .gameListEntry-favourite {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
 
         & .favouriteButton {
-            grid-column: 4 / 5;
-            grid-row: 1;
+            height: 3rem;
+            width: 2rem;
+            margin: 0;
+            transform: scale(0.5);
         }
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+    .gameListEntry {
+        height: 9rem;
+
+        & .gameListEntry-information {
+            & .gameListEntry-title__link {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .gameListEntry {
+        & .gameListEntry-figure__cover {
+            width: 6rem;
+        }
+
+        & .gameListEntry-information {
+            & .gameListEntry-title__link {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
     .gameListEntry {
         height: fit-content;
-        max-height: 15rem;
 
-        & .gameCard-players__heading,
-        .gameCard-publisher__heading {
-            padding-top: 0.5rem;
-        }
-
-        & .category-section,
-        .players-section {
-            grid-column: 1 / 3;
-            align-self: flex-start;
-        }
-
-        & .developer-section,
-        .publisher-section {
-            grid-column: 3 / 5;
-            align-self: flex-start;
-        }
-
-        & .category-section,
-        .developer-section {
-            grid-row: 2;
-            padding-left: 0;
-        }
-
-        & .players-section,
-        .publisher-section {
-            grid-row: 3;
-        }
-
-        & .gameCard-title {
-            font-size: 1.3rem;
+        & .gameListEntry-figure__cover {
+            display: none;
         }
     }
 }
