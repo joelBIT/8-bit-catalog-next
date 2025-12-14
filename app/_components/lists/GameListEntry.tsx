@@ -58,7 +58,7 @@ export function GameListEntry({ game, openModal }: { game: Game, openModal: (gam
                     </section>
 
                     <section className="details-section">
-                        <h2 className="details__heading"> Publisher: </h2>
+                        <h2 className="details__heading details-publisher"> Publisher: </h2>
                         <h2 className="details__text"> {game.publisher} </h2>
                     </section>
                 </section>

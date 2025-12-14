@@ -83,6 +83,10 @@
                     font-weight: 100;
                 }
 
+                & .details-publisher {
+                    margin-right: 4px;
+                }
+
                 & .details__text {
                     color: #8f98a0;
                     font-size: 1rem;
