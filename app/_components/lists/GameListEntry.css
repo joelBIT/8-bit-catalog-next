@@ -164,7 +164,6 @@
 @media (max-width: 500px) {
     .gameListEntry {
         height: fit-content;
-        width: 85vw;
 
         & .gameListEntry-figure__cover {
             display: none;
