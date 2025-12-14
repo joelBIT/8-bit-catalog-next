@@ -7,10 +7,12 @@
     align-items: center;
     gap: 1rem;
     height: 8rem;
+    max-width: 1000px;
     width: 100%;
-    border-top: 1px solid var(--color-list-border);
     padding: 0.5rem;
     position: relative;
+    background-color: #ffffff10;
+    border-radius: 4px;
 
     & .image-modal-show {
         display: flex;
@@ -18,14 +20,14 @@
         left: 15rem;
         z-index: 10;
 
-        & .gameCard-figure__cover {
+        & .gameListEntry-figure__cover {
             width: 15rem;
             height: 20rem;
             border-radius: 9px;
         }
     }
 
-    & .gameCard-figure__cover {
+    & .gameListEntry-figure__cover {
         object-fit: cover;
         width: 14rem;
         height: 100%;
@@ -33,34 +35,40 @@
         cursor: pointer;
     }
 
-    & .gameCard-information {
+    & .gameListEntry-information {
         display: flex;
         flex-direction: column;
+        gap: 0.5rem;
         flex: 3;
 
-        & .gameCard-title__link {
+        & .gameListEntry-title__link {
             font-family: "iceland", sans-serif;
-            transition: all 0.5s;
+            font-size: 2rem;
+            cursor: pointer;
             width: fit-content;
+            transition: all 0.5s;
 
             &:hover {
-                cursor: pointer;
                 filter: brightness(0.5);
                 transition: filter 0.5s;
             }
         }
 
-        & .gameCard-tags {
+        & .gameListEntry-tags {
             display: flex;
             gap: 1rem;
 
-            & .gameCard-tag {
-                font-size: 1rem;
-                border: 1px solid var(--color-list-border);
+            & .gameListEntry-tag {
+                font-family: "arima", sans-serif;
+                font-size: 11px;
+                padding: 2px 5px;
+                border: 1px solid rgba(255, 255, 255, .2);
+                color: #8f98a0;
+                border-radius: 3px;
             }
         }
 
-        & .gameCard-details {
+        & .gameListEntry-details {
             display: flex;
             flex-direction: column;
 
@@ -69,19 +77,22 @@
                 gap: 0.5rem;
 
                 & .details__heading {
-                    color: var(--color-real-white);
+                    color: #8f98a0;
                     font-size: 1rem;
+                    text-transform: uppercase;
+                    font-weight: 100;
                 }
 
                 & .details__text {
-                    color: var(--color-real-white);
+                    color: #8f98a0;
                     font-size: 1rem;
+                    font-weight: 100;
                 }
             }
         }
     }
 
-    & .gameCard-favourite {
+    & .gameListEntry-favourite {
         display: flex;
         flex-direction: column;
         flex: 1;

@@ -21,7 +21,7 @@ export function GameListEntry({ game, click }: { game: Game, click: (game: Game)
             <Image 
                 src={STORAGE_URL + game.cover}
                 unoptimized
-                className="gameCard-figure__cover"
+                className="gameListEntry-figure__cover"
                 onMouseEnter={() => setShowModal(true)}
                 onMouseLeave={() => setShowModal(false)}
                 onClick={() => click(game)}
@@ -34,37 +34,37 @@ export function GameListEntry({ game, click }: { game: Game, click: (game: Game)
                 <Image 
                     src={STORAGE_URL + game.cover}
                     unoptimized
-                    className="gameCard-figure__cover"
+                    className="gameListEntry-figure__cover"
                     alt="Game Cover"
                     width={300}
                     height={300}
                 />
             </section>
 
-            <section className="gameCard-information">
-                <section className="gameCard-title__link" onClick={() => click(game)}> 
+            <section className="gameListEntry-information">
+                <section className="gameListEntry-title__link" onClick={() => click(game)}> 
                     {game.title} 
                 </section> 
 
-                <section className="gameCard-tags">
-                    <h2 className="gameCard-tag"> {game.category} </h2>
-                    <h2 className="gameCard-tag"> {game.players} </h2>
+                <section className="gameListEntry-tags">
+                    <h2 className="gameListEntry-tag" title="Category"> {game.category} </h2>
+                    <h2 className="gameListEntry-tag"> {game.players} player{game.players > 1 ? "s": ""} </h2>
                 </section>
 
-                <section className="gameCard-details">
+                <section className="gameListEntry-details">
                      <section className="details-section">
-                        <h2 className="details__heading"> Developer </h2>
+                        <h2 className="details__heading"> Developer: </h2>
                         <h2 className="details__text"> {game.developer} </h2>
                     </section>
 
                     <section className="details-section">
-                        <h2 className="details__heading"> Publisher </h2>
+                        <h2 className="details__heading"> Publisher: </h2>
                         <h2 className="details__text"> {game.publisher} </h2>
                     </section>
                 </section>
             </section>
 
-            <section className="gameCard-favourite">
+            <section className="gameListEntry-favourite">
                 <FavouriteButton game={game} setFading={() => {}} removeCard={setRemoveCard} />
             </section>
         </li>
