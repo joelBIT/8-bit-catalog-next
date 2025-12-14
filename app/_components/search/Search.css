@@ -10,6 +10,57 @@
         color: var(--color-nintendo-gray);
         font-weight: 100;
     }
+
+    & #games-sort {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: "arima", sans-serif;
+
+        & #games-sort-label {
+            font-weight: 600;
+            color: var(--color-real-white);
+        }
+
+        & #games-sort-select,
+        ::picker(select) {
+            appearance: base-select;
+            align-items: center;
+            width: fit-content;
+            font-family: "arima", sans-serif;
+            border: 1px solid var(--color-real-white);
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+
+            & .games-sort-select__options {
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                background-color: var(--color-modal-background);
+                border: 1px solid var(--color-real-white);
+                border-radius: 4px;
+            }
+        }
+
+        option {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            width: 200px;
+            color: var(--color-real-white);
+
+            &:checked {
+                background-color: var(--color-real-black);
+            }
+        }
+
+        option::checkmark {
+            color: var(--color-success);
+            font-size: 1.5rem;
+        }
+    }
     
     & .show-pagination-toggle {
         display: flex;
@@ -20,10 +71,6 @@
         padding-top: 1rem;
         border-bottom: 1px solid var(--color-auth-border);
         margin-bottom: 3rem;
-    }
-
-    & .invisible {
-        width: 10rem;
     }
 }
 
