@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useGame, useGames } from "@/app/_hooks";
 import { Game } from "@/app/_types/types";
-import { ScrollTopButton } from "../common";
+import { GameSorting, ScrollTopButton } from "../common";
 import { RangeSlider } from ".";
 import { GameGrid, GameList, SlidingToggle } from "../lists";
 
@@ -52,7 +52,8 @@ export function Search(): ReactElement {
                     <>
                         <h1 className="search-result-text"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
                         <section className="show-pagination-toggle">
-                            <div className="invisible" />
+                            <GameSorting games={searchResult} setSortedGames={setSearchResult} />
+                            
                             {searchResult.length > 80 ? <RangeSlider min={50} max={searchResult.length} setSliderValue={setNumberGamesShowing} /> : <></>}
 
                             {searchResult.length > 0 ? <SlidingToggle /> : <></>}

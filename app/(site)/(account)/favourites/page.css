@@ -15,10 +15,6 @@
         padding-bottom: 1rem;
         padding-top: 1rem;
         margin-bottom: 3rem;
-
-        & .invisible {
-            width: 10rem;
-        }
     }
 }
 
@@ -29,10 +25,6 @@
             flex-direction: column-reverse;
             align-items: center;
             gap: 2rem;
-
-            & .invisible {
-                display: none;
-            }
         }
     }
 }
