@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useFavourites, useGame } from "@/app/_hooks";
 import { GameSorting, ScrollTopButton } from "@/app/_components/common";
 import { GameGrid, GameList, SlidingToggle } from "@/app/_components/lists";
@@ -16,10 +16,14 @@ export default function FavouritesPage(): ReactElement {
     const [favourites, setFavourites] = useState<Game[]>(favouritesList);
     const { gridView } = useGame();
 
+    useEffect(() => {
+        setFavourites(favouritesList);
+    }, [favouritesList])
+
     return (
         <main id="favouritesPage">
             {
-                favouritesList.length > 0 ?
+                favourites.length > 0 ?
                         <section className="show-pagination-toggle">
                             <GameSorting games={favourites} setSortedGames={setFavourites} />
                             
@@ -29,7 +33,7 @@ export default function FavouritesPage(): ReactElement {
             }
 
             { 
-                favouritesList.length === 0 ? <></> : 
+                favourites.length === 0 ? <></> : 
                         gridView ?  
                             <GameGrid games={favourites} />
                                     :
