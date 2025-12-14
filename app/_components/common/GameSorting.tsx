@@ -38,6 +38,12 @@ export function GameSorting({games, setSortedGames}: {games: Game[], setSortedGa
         } else if (sort === "developerDes") {
             const sorted = gamesToSort.sort((a, b) => b.developer.localeCompare(a.developer));
             setSortedGames([...sorted]);
+        } else if (sort === "categoryAsc") {
+            const sorted = gamesToSort.sort((a, b) => a.category.localeCompare(b.category));
+            setSortedGames([...sorted]);
+        } else if (sort === "categoryDes") {
+            const sorted = gamesToSort.sort((a, b) => b.category.localeCompare(a.category));
+            setSortedGames([...sorted]);
         }
     }
 
@@ -54,6 +60,8 @@ export function GameSorting({games, setSortedGames}: {games: Game[], setSortedGa
                     <option value="publisherDes"> Publisher Descending </option>
                     <option value="developerAsc"> Developer Ascending </option>
                     <option value="developerDes"> Developer Descending </option>
+                    <option value="categoryAsc"> Category Ascending </option>
+                    <option value="categoryDes"> Category Descending </option>
                 </optgroup>
             </select>
         </section>
