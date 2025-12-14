@@ -6,6 +6,7 @@
 
         & #games-sort-label {
             font-weight: 600;
+            font-size: 1rem;
             color: var(--color-real-white);
         }
 
@@ -15,6 +16,7 @@
             align-items: center;
             width: fit-content;
             font-family: "arima", sans-serif;
+            font-size: 1rem;
             border: 1px solid var(--color-real-white);
             border-radius: 4px;
             cursor: pointer;
@@ -47,5 +49,14 @@
         & option::checkmark {
             color: var(--color-success);
             font-size: 1.5rem;
+        }
+
+        @-moz-document url-prefix() { 
+            & #games-sort-select,
+            & ::picker(select) {
+                color: var(--color-white);
+                background-color: transparent;
+                appearance: none;
+            }
         }
     }
