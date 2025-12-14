@@ -13,10 +13,6 @@ export interface GamesContextProvider {
 
 export const GamesContext = createContext<GamesContextProvider>({} as GamesContextProvider);
 
-/**
- * Applies chosen filters to the list of all playable games. The first selected filter type is marked because all other filter values should
- * be updated with how many games that matches the first selected filter type and the other filter 
- */
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
 
@@ -25,7 +21,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     }, []);
 
     /**
-     * Retrieve all games.
+     * Retrieve all games. Store games in local storage if available.
      */
     async function loadGames(): Promise<void> {
         try {
@@ -36,6 +32,10 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
         }
     }
 
+    /**
+     * Applies chosen filters to the list of all playable games. The first selected filter type is marked because all other filter values should
+     * be updated with how many games that matches the first selected filter type and the other filter.
+     */
     function getFilteredGames(filters: SearchFilter): Game[] {
         let filteredGames = [...games];
         filteredGames = filters.developer !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.developer === filters.developer) : filteredGames;

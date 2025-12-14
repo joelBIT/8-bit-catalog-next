@@ -74,7 +74,7 @@ export const fileTypes = [
  * 
  * @returns true if localstorage is available, false otherwise
  */
-export function isLocalStorageAvailable() {
+export function isLocalStorageAvailable(): boolean {
     try {
         const key = 'testingLocalStorage';
         localStorage.setItem(key, 'add');
@@ -105,7 +105,7 @@ export const imageTypes = [
 /**
  * Converts the supplied month (number) into the corresponding month as a text representation.
  */
-export function getMonthText(month: number) {
+export function getMonthText(month: number): string {
     switch(month) {
         case 0:
             return "January";

@@ -17,7 +17,7 @@ export default function FavouritesPage(): ReactElement {
     const { gridView } = useGame();
 
     useEffect(() => {
-        setFavourites(favouritesList);
+        setFavourites(favouritesList);  // Handle page refresh
     }, [favouritesList])
 
     return (

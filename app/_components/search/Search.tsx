@@ -26,7 +26,7 @@ export function Search(): ReactElement {
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
     const [numberGamesShowing, setNumberGamesShowing] = useState<number>(50);           // Minimum 50 games visible
-    const { getFilteredGames } = useGames();
+    const { games, getFilteredGames } = useGames();
     const { gridView } = useGame();
     
     useEffect(() => {
@@ -34,6 +34,15 @@ export function Search(): ReactElement {
             search();                   // Perform a search on query params
         }
     }, [title, category, developer, publisher])
+
+    /**
+     * Handle page refresh.
+     */
+    useEffect(() => {
+        if (games.length && showHeading) {      // When showHeading is true a search has taken place earlier.
+            search();           // Perform a search again when page is refreshed to show the same results as before the refresh
+        }
+    }, [games.length])          // Length of games become 0 when refreshing the page because the context is emptied and must retrieve games again.
 
     /**
      * Performs a search based on given title text and filters.
