@@ -3,7 +3,7 @@
 import { createContext, type ReactElement, type ReactNode, useEffect, useState } from "react";
 import { Game, SearchFilter } from "../_types/types";
 import { getAllGames } from "../_client/client";
-import { ALL_OPTION_VALUE, isLocalStorageAvailable } from "../_utils/utils";
+import { ALL_OPTION_VALUE } from "../_utils/utils";
 
 export interface GamesContextProvider {
     games: Game[];
@@ -15,7 +15,6 @@ export const GamesContext = createContext<GamesContextProvider>({} as GamesConte
 
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
-    const STORAGE_KEY = "retroGames";
 
     useEffect(() => {
         loadGames();
@@ -25,26 +24,11 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
      * Retrieve all games. Store games in local storage if available.
      */
     async function loadGames(): Promise<void> {
-        if (isLocalStorageAvailable()) {
-            if (localStorage.getItem(STORAGE_KEY)) {
-                const games = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');    // Retrieve existing games in local storage
-                setGames(games);
-            } else {
-                try {
-                    const result = await getAllGames();
-                    setGames(result.games);
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(result.games));   // Store retrieved games in local storage
-                } catch (error) {
-                    setGames([]);
-                }
-            }
-        } else {
-            try {
-                const result = await getAllGames();
-                setGames(result.games);
-            } catch (error) {
-                setGames([]);
-            }
+        try {
+            const result = await getAllGames();
+            setGames(result.games);
+        } catch (error) {
+            setGames([]);
         }
     }
 
