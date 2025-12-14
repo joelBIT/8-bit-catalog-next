@@ -91,6 +91,10 @@
                 background-color: var(--color-black-light);
                 transition: background-color 0.2s ease-in;
             }
+
+            &:active {
+                border: 2px solid var(--color-real-black);
+            }
         }
     }
 }
