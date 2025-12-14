@@ -7,10 +7,12 @@
     gap: 2rem;
 
     & .not-found__title {
+        font-family: "iceland", sans-serif;
         font-size: 4rem;
         backdrop-filter: brightness(0.3);
         border-radius: 9px;
         padding: 0.5rem 1rem;
+        color: var(--color-footer-heading);
     }
 
     & .not-found__text {
@@ -18,13 +20,13 @@
         backdrop-filter: brightness(0.3);
         border-radius: 9px;
         padding: 0.5rem 1rem;
+        color: var(--color-real-white);
     }
 
     & .not-found__link {
         padding: 1rem;
         backdrop-filter: brightness(0.3);
         border-radius: 25px;
-        transition: all 0.5s;
 
         &:hover {
             filter: brightness(1.5);
