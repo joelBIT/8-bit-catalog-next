@@ -50,18 +50,18 @@ export function GameSorting({games, setSortedGames}: {games: Game[], setSortedGa
     return (
         <section id="games-sort">
             <label id="games-sort-label" htmlFor="games-sort-select"> Sort by: </label> 
-            <select id="games-sort-select" name="games-sort-select" onChange={e => sortGames(e.target.value)}>
+            <select id="games-sort-select" name="games-sort-select" onChange={e => sortGames(e.target.value)} defaultValue={"titleAsc"}>
                 <optgroup className="games-sort-select__options">
-                    <option value="titleAsc" defaultChecked> Title Ascending </option>
-                    <option value="titleDes"> Title Descending </option>
+                    <option value="categoryAsc"> Category Ascending </option>
+                    <option value="categoryDes"> Category Descending </option>
+                    <option value="developerAsc"> Developer Ascending </option>
+                    <option value="developerDes"> Developer Descending </option>
                     <option value="playersAsc"> Players Ascending </option>
                     <option value="playersDes"> Players Descending </option>
                     <option value="publisherAsc"> Publisher Ascending </option>
                     <option value="publisherDes"> Publisher Descending </option>
-                    <option value="developerAsc"> Developer Ascending </option>
-                    <option value="developerDes"> Developer Descending </option>
-                    <option value="categoryAsc"> Category Ascending </option>
-                    <option value="categoryDes"> Category Descending </option>
+                    <option value="titleAsc" defaultChecked> Title Ascending </option>
+                    <option value="titleDes"> Title Descending </option>
                 </optgroup>
             </select>
         </section>
