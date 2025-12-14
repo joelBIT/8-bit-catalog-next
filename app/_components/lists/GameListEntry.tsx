@@ -41,33 +41,32 @@ export function GameListEntry({ game, click }: { game: Game, click: (game: Game)
                 />
             </section>
 
-            <h2 className="gameCard-title"> 
+            <section className="gameCard-information">
                 <section className="gameCard-title__link" onClick={() => click(game)}> 
                     {game.title} 
                 </section> 
-            </h2>
-            
-            <section className="category-section">
-                <h2 className="gameCard-category__heading"> Category </h2>
-                <h2 className="gameCard-category"> {game.category} </h2>
+
+                <section className="gameCard-tags">
+                    <h2 className="gameCard-tag"> {game.category} </h2>
+                    <h2 className="gameCard-tag"> {game.players} </h2>
+                </section>
+
+                <section className="gameCard-details">
+                     <section className="details-section">
+                        <h2 className="details__heading"> Developer </h2>
+                        <h2 className="details__text"> {game.developer} </h2>
+                    </section>
+
+                    <section className="details-section">
+                        <h2 className="details__heading"> Publisher </h2>
+                        <h2 className="details__text"> {game.publisher} </h2>
+                    </section>
+                </section>
             </section>
 
-            <section className="players-section">
-                <h2 className="gameCard-players__heading"> Players </h2>
-                <h2 className="gameCard-players"> {game.players} </h2>
+            <section className="gameCard-favourite">
+                <FavouriteButton game={game} setFading={() => {}} removeCard={setRemoveCard} />
             </section>
-
-            <section className="developer-section">
-                <h2 className="gameCard-developer__heading"> Developer </h2>
-                <h2 className="gameCard-developer"> {game.developer} </h2>
-            </section>
-
-            <section className="publisher-section">
-                <h2 className="gameCard-publisher__heading"> Publisher </h2>
-                <h2 className="gameCard-publisher"> {game.publisher} </h2>
-            </section>
-
-            <FavouriteButton game={game} setFading={() => {}} removeCard={setRemoveCard} />
         </li>
     );
 }
