@@ -38,8 +38,8 @@
     & .gameListEntry-information {
         display: flex;
         flex-direction: column;
+        flex: 8;
         gap: 0.5rem;
-        flex: 3;
 
         & .gameListEntry-title__link {
             font-family: "iceland", sans-serif;
@@ -95,13 +95,49 @@
     & .gameListEntry-favourite {
         display: flex;
         flex-direction: column;
-        flex: 1;
+        width: fit-content;
 
         & .favouriteButton {
             height: 3rem;
             width: 2rem;
             margin: 0;
             transform: scale(0.7);
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .gameListEntry {
+        height: 9rem;
+
+        & .gameListEntry-information {
+            & .gameListEntry-title__link {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .gameListEntry {
+        & .gameListEntry-figure__cover {
+            width: 6rem;
+        }
+
+        & .gameListEntry-information {
+            & .gameListEntry-title__link {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .gameListEntry {
+        height: fit-content;
+        
+        & .gameListEntry-figure__cover {
+            display: none;
         }
     }
 }
