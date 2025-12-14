@@ -7,6 +7,7 @@ import { ALL_OPTION_VALUE } from "../_utils/utils";
 
 export interface GamesContextProvider {
     games: Game[];
+    categories: string[];
     getFilteredGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
 }
@@ -15,10 +16,11 @@ export const GamesContext = createContext<GamesContextProvider>({} as GamesConte
 
 /**
  * Applies chosen filters to the list of all playable games. The first selected filter type is marked because all other filter values should
- * be updated with how many games that matches the first selected filter type and the other filter 
+ * be updated with how many games that matches the first selected filter type and the other filter.
  */
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
+    const [categories, setCategories] = useState<string[]>([]);
 
     useEffect(() => {
         loadGames();
@@ -31,8 +33,10 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
         try {
             const result = await getAllGames();
             setGames(result.games);
+            setCategories(Array.from(new Set(games.map(game => game.category))));
         } catch (error) {
             setGames([]);
+            setCategories([]);
         }
     }
 
@@ -56,7 +60,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     }
     
     return (
-        <GamesContext.Provider value={{ games, getFilteredGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ games, categories, getFilteredGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );
