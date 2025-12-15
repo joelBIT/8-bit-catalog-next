@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement } from "react";
-import { SiteLinks, SubscriptionBox, FooterLogo } from ".";
+import { SiteLinks, FooterLogo } from ".";
 
 import "./Footer.css";
 
@@ -12,7 +12,6 @@ export function Footer(): ReactElement {
             <section id="footerComponents">
                 <FooterLogo />
                 <SiteLinks />
-                <SubscriptionBox />
             </section>
             
             <article id="copyright">

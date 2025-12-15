@@ -3,12 +3,9 @@
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { createNewsletterSubscription } from "@/app/_actions/newsletter";
 
-import "./SubscriptionBox.css";
+import "./Newsletter.css";
 
-/**
- * Enables users to sign up for the newsletter.
- */
-export function SubscriptionBox(): ReactElement {
+export function Newsletter(): ReactElement {
     const [showMessage, setShowMessage] = useState<boolean>(false);
     const [state, formAction] = useActionState(createNewsletterSubscription, { message: '', success: false });
 
@@ -18,16 +15,20 @@ export function SubscriptionBox(): ReactElement {
         }
         setTimeout(() => setShowMessage(false), 5000);
     }, [state]);
-
+        
     return (
         <section id="newsletter">
-            <h2 className="subscription-text"> Subscribe to receive the newsletter</h2>
+            <h2 className="newsletter-heading"> Newsletter </h2>
+
+            <p className="newsletter-text">
+                News, updates and exclusive goodies directly in your inbox.
+            </p>
 
             <form id="newsletterSignup" action={formAction}>
                 <input id="subscribeEmail" type="email" name="email" placeholder="Enter Email" required={true} autoComplete="off" />
 
-                <button id="subscribeButton" type="submit">
-                    <img src="/arrow-right-bg.png" />
+                <button id="newsletterButton">
+                    Subscribe 
                 </button>
             </form>
 
@@ -38,5 +39,5 @@ export function SubscriptionBox(): ReactElement {
                     </h2> : <></>
             }
         </section>
-    );
+    )
 }

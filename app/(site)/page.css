@@ -3,14 +3,13 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    gap: 2rem;
     background: var(--color-black);
     background-image: url("/mariobros3screen.png");
     background-repeat: no-repeat;
     background-blend-mode: overlay;
     background-size: cover;
     padding-top: 10rem;
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
 
     & .darken-image-bottom {
         position: absolute;
@@ -33,11 +32,6 @@
         margin-top: 2rem;
     }
 
-    .message-failure {
-        margin-bottom: 1rem;
-        margin-top: 0.5rem;
-    }
-
     & #firstSection {
         display: flex;
         flex-direction: column;
@@ -50,6 +44,17 @@
             align-items: center;
             text-align: center;
             padding-top: 5rem;
+            padding-bottom: 2rem;
+            position: relative;
+
+            & .message-failure {
+                margin-bottom: 1rem;
+                margin-top: 0.5rem;
+                position: absolute;
+                top: 3rem;
+                white-space: nowrap;
+                font-size: 1.1rem;
+            }
         }
     }
 
@@ -106,7 +111,6 @@
         justify-content: space-evenly;
         gap: 5rem;
         width: 100%;
-        padding: 2rem 1rem 1rem;
         position: relative;
         min-height: fit-content;
     }
@@ -124,7 +128,6 @@
 
 @media (max-width: 650px) {
     #landingPage {
-        gap: 1rem;
         padding-top: 5rem;
 
         & #landing-register {
@@ -158,11 +161,17 @@
 
             & #searchGameArea {
                 padding-top: 2rem;
+
+                & .message-failure {
+                    top: 0;
+                    font-size: 1rem;
+                }
             }
         }
 
         & #joinCatalog {
             margin-top: 2rem;
+            margin-bottom: 4rem;
 
             & .joinCatalog-title {
                 font-size: 2rem;

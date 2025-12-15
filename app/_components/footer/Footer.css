@@ -34,18 +34,8 @@ footer {
 @media (max-width: 900px) {
     footer {
         & #footerComponents {
-            display: grid;
             margin-left: 2rem;
             margin-right: 2rem;
-
-            & #siteLinks {
-                grid-column: 1;
-            }
-
-            & #newsletter {
-                grid-column: 2;
-                grid-row: 1;
-            }
         }
     }
 }
