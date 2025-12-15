@@ -10,19 +10,23 @@ export default function ContactPage(): ReactElement {
     return (
         <main id="contactPage">
             <section id="contact-presentation">
-                <h1 id="contactPage-title">
-                    Contact
-                </h1>
+                <article id="contact-heading">
+                    <h1 id="contactPage-title">
+                        Contact
+                    </h1>
 
-                <p id="information-text">
-                    Please contact me if you have any questions or wishes about the 8-bit catalog. I will get back to
-                    you as soon as possible.
-                </p>
+                    <p id="information-text">
+                        Please contact me if you have any questions or wishes about the 8-bit catalog. I will get back to
+                        you as soon as possible.
+                    </p>
+                </article>
+
+                <figure className="contact-figure">
+                    <img src="/contact.png" alt="Contact Image" className="contact-image" />
+                </figure>
             </section>
 
-            <section id="contact-image">
-                <img src="/contact.png" />
-            </section>
+        
 
             <section id="contactPage-information">
                 <article id="contact-info">
