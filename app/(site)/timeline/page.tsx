@@ -9,7 +9,7 @@ import "./page.css";
 /**
  * Show some significant events in the history of the NES. Click on a specific year in the timeline to scroll to that year.
  */
-export default function AboutPage(): ReactElement {
+export default function TimelinePage(): ReactElement {
     const [year, setYear] = useState<number>(1983);
     const [timeline, setTimeline] = useState<TimelineEvent[]>([]);
     const modalRef = useRef<HTMLDialogElement>(null);

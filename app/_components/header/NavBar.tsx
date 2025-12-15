@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useFavourites } from "@/app/_hooks";
 import { signOut } from "@/app/_session/session";
-import { URL_ABOUT_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
+import { URL_TIMELINE_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { Hamburger } from ".";
 
 import "./NavBar.css";
@@ -65,7 +65,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     ];
 
     const LINKS_LAST = [
-        {url: URL_ABOUT_PAGE, render: true, title: "About", icon: null},
+        {url: URL_TIMELINE_PAGE, render: true, title: "Timeline", icon: null},
         {url: URL_LOGIN_PAGE, render: !authenticated, title: "Login", icon: "login"},
         {url: URL_DASHBOARD_PAGE, render: authenticated, title: "Account", icon: "account_circle"}
     ];
@@ -109,9 +109,9 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                         <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
                             <Link 
                                 href={link.url}
-                                prefetch={link.url === URL_ABOUT_PAGE}
+                                prefetch={link.url === URL_TIMELINE_PAGE}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
-                                title={link.url !== URL_ABOUT_PAGE ? link.title : ""}
+                                title={link.url !== URL_TIMELINE_PAGE ? link.title : ""}
                             >
                                 { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
                                 <h2 className={`navbar__list-element-title ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>

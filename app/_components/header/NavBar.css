@@ -98,6 +98,20 @@
     }
 }
 
+@media (max-width: 550px) {
+    .navbar {
+        & .navbar__list {
+            & .navbar__list-element {
+                & .navbar__list-element-link {
+                    & .navbar__list-element-title {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 500px) {
     .navbar {
         position: fixed;
