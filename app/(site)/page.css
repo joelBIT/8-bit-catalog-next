@@ -11,27 +11,34 @@
     padding-top: 10rem;
     padding-bottom: 2rem;
 
-    & .landing-title {
-        font-family: "logofont-italic", sans-serif;
-        text-transform: uppercase;
-        color: var(--color-real-white);
-        font-size: 5rem;
-        font-weight: 100;
-        align-self: center;
-        text-align: center;
-        max-width: 900px;
-        width: 100%;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
     & #catalogDescription {
         display: flex;
-        justify-content: space-evenly;
+        flex-direction: column;
+        align-content: center;
         gap: 2rem;
         flex-wrap: wrap;
         width: 100vw;
         margin-top: 2rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+
+        & .landing-title {
+            font-family: "logofont-italic", sans-serif;
+            text-transform: uppercase;
+            color: var(--color-real-white);
+            font-size: 5rem;
+            font-weight: 100;
+            align-self: center;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        & .landingCard:last-of-type {
+            align-self: flex-end;
+        }
     }
 
     & #firstSection {
@@ -152,14 +159,18 @@
 
 @media (max-width: 500px) {
     #landingPage {
-        & .landing-title {
-            font-size: 3.5rem;
-        }
-
         & #catalogDescription {
             flex-direction: column;
             align-items: center;
             gap: 3rem;
+
+            & .landing-title {
+                font-size: 3.5rem;
+            }
+
+            & .landingCard:last-of-type {
+                align-self: center;
+            }
         }
 
         & #firstSection {
