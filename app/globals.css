@@ -371,7 +371,7 @@ textarea {
         height: 100%;
 
         & .modal__title {
-            color: var(--color-real-white);
+            color: var(--color-footer-heading);
             padding-top: 1rem;
             padding-left: 1rem;
             padding-right: 3rem;
@@ -387,7 +387,7 @@ textarea {
 
         & .closeButton {
             position: absolute;
-            top: 0;
+            top: 0.5rem;
             right: 0;
         }
     }
