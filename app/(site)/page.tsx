@@ -18,9 +18,7 @@ export default async function Home(): Promise<ReactElement> {
     return (
         <main id="landingPage">
             <section id="firstSection">
-                <section id="image-wrapper">
-                    <Logo />
-                </section>
+                <h2 className="landing-title">THe 8-bit catalog</h2>
 
                 <section id="catalogDescription">
                     <LandingCard heading="Vision" text="A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts."/>
