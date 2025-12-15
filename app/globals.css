@@ -387,12 +387,13 @@ textarea {
 
         & .closeButton {
             position: absolute;
-            top: 0.5rem;
+            top: 0.34rem;
             right: 0;
+            width: 30px;
+            height: 30px;
         }
     }
 }
-
 
 
 
