@@ -16,6 +16,12 @@
         font-size: 1.2rem;
         width: 500px;
     }
+
+    & #viewButton {
+        &:active {
+            filter: brightness(0.3);
+        }
+    }
 }
 
 @media (max-width: 700px) {
