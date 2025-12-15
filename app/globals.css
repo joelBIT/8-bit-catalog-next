@@ -169,6 +169,11 @@ textarea {
             transition: all 0.3s ease;
         }
     }
+
+    &:disabled {
+        color: var(--color-nintendo-gray);
+        filter: brightness(0.3);
+    }
 }
 
 .closeButton {
