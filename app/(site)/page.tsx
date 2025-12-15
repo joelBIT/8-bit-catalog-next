@@ -4,6 +4,7 @@ import { type ReactElement } from "react";
 import Link from "next/link";
 import { Logo } from "../_components/header";
 import { LandingCard, LandingSelection, TitleSearch } from "@/app/_components/home";
+import { Newsletter } from "../_components/common";
 import { getAllNews, getAllTitles } from "@/app/_db/db";
 import { URL_REGISTER_PAGE } from "../_utils/utils";
 
@@ -44,6 +45,7 @@ export default async function Home(): Promise<ReactElement> {
                 <LandingSelection news={await getAllNews()} />
             </section>
 
+            <Newsletter />
             <div className="darken-image-bottom" />
         </main>
     );
