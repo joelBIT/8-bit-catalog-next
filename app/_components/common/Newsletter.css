@@ -85,7 +85,7 @@
         max-width: 80vw;
         margin: 0.4rem;
         position: absolute;
-        bottom: -25px;
+        bottom: 3rem;
         white-space: nowrap;
         z-index: 50;
     }
