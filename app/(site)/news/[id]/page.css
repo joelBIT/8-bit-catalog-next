@@ -107,11 +107,13 @@
                 }
 
                 & .news-author {
+                    font-family: "arima", sans-serif;
                     color: var(--color-tag-text);
                     font-size: 1.2rem;
                 }
 
                 & .news-published {
+                    font-family: "arima", sans-serif;
                     font-size: 1.2rem;
                 }
             }
