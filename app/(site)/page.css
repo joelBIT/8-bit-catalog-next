@@ -10,7 +10,7 @@
     background-blend-mode: overlay;
     background-size: cover;
     padding-top: 10rem;
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
 
     & .darken-image-bottom {
         position: absolute;

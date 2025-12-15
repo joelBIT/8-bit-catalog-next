@@ -3,8 +3,9 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 2rem;
+    padding: 2rem 2rem 5rem 2rem;
     width: 100%;
+    background-image: url("/pinball.avif");
 
     & .newsletter-heading {
         font-size: 2.5rem;
@@ -15,48 +16,74 @@
     }
 
     & .newsletter-text {
+        font-family: "arima", sans-serif;
         font-size: 1.5rem;
-        color: var(--color-real-white);
+        color: var(--color-nintendo-gray);
     }
 
-    & #subscribeEmail {
-        border-radius: 9px;
-        font-size: 1rem;
-        outline: none;
-        font-family: "arima", serif;
-        padding-right: 4rem;
-        color: var(--color-real-white);
-        background: var(--color-real-black);
-        border: 1px solid var(--color-auth-border-bottom);
-    }
-
-    & #newsletterButton {
+    & #newsletterSignup {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        background-color: transparent;
-        border: 2px solid var(--color-real-white);
-        color: var(--color-real-white);
-        cursor: pointer;
-        width: fit-content;
-        height: 3rem;
-        justify-content: center;
-        line-height: 24px;
-        padding: 0 17px;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: "rancho", sans-serif;
-        font-size: 1rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        transition: background-color 0.2s ease-out;
 
-        &:hover {
-            background-color: var(--color-black-light);
-            transition: background-color 0.2s ease-in;
+        & #subscribeEmail {
+            font-size: 1rem;
+            outline: none;
+            font-family: "arima", serif;
+            text-align: center;
+            color: var(--color-real-white);
+            background: transparent;
+            border: 1px solid var(--color-auth-border-bottom);
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+            width: 400px;
+
+            &::placeholder {
+                text-align: center;
+            }
         }
 
-        &:active {
-            border: 2px solid var(--color-real-black);
+        & #newsletterButton {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: 2px solid var(--color-real-white);
+            color: var(--color-real-white);
+            cursor: pointer;
+            width: fit-content;
+            height: 3rem;
+            justify-content: center;
+            line-height: 24px;
+            padding: 0 17px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.15s ease;
+
+            &:hover {
+                border-color: var(--color-white);
+                color: var(--color-white);
+                transition: all 0.15s ease;
+            }
+
+            &:active {
+                border: 2px solid var(--color-black);
+                color: var(--color-black);
+            }
         }
+    }
+
+    & .message-success,
+    & .message-failure {
+        max-width: 80vw;
+        margin: 0.4rem;
+        position: absolute;
+        bottom: -25px;
+        white-space: nowrap;
+        z-index: 50;
     }
 }
