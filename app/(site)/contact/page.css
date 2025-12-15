@@ -1,40 +1,60 @@
 #contactPage {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     background-color: var(--color-black);
     padding: 4rem 2rem;
 
-    & #contactPage-title {
-        font-family: Playfair Display, sans-serif;
-        font-size: 5rem;
-        text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 40px var(--color-footer-heading), 0 0 60px var(--color-footer-heading);
-        filter: saturate(60%);
-        color: var(--color-real-white);
-        font-weight: 300;
-        width: 60%;
+    & #contact-presentation {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        border-right: 2px solid var(--color-link-background);
         padding-top: 3rem;
-        text-align: center;
-        text-transform: uppercase;
-        border-style: solid;
-        border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
-        border-top: 0;
-        border-bottom-width: 2px;
+        padding-bottom: 8rem;
+        padding-right: 1rem;
+        max-width: 600px;
+
+        & #contactPage-title {
+            font-family: Playfair Display, sans-serif;
+            font-size: 3rem;
+            text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 40px var(--color-footer-heading), 0 0 60px var(--color-footer-heading);
+            filter: saturate(60%);
+            color: var(--color-real-white);
+            font-weight: 300;
+            align-self: center;
+            text-align: center;
+            text-transform: uppercase;
+            border-style: solid;
+            border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
+            border-top: 0;
+            border-bottom-width: 2px;
+        }
+
+        & #information-text {
+            font-size: 1.3rem;
+            color: var(--color-nintendo-gray);
+            letter-spacing: 1px;
+        }
+    }
+
+    & #contact-image {
+        max-width: 600px;
+
+        & img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
     }
 
     & #contactPage-information {
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 800px;
-
-        & #information-text {
-            font-size: 1.4rem;
-            padding-bottom: 5rem;
-            color: var(--color-real-white);
-            letter-spacing: 1px;
-        }
+        max-width: 400px;
+        margin-left: 5rem;
 
         & #contact-info {
             display: flex;
@@ -48,18 +68,28 @@
                 text-align: left;
                 padding: 1rem;
 
-                & .contact__info-heading {
-                    font-family: "iceland", sans-serif;
-                    color: var(--color-real-white);
-                    font-size: 2rem;
-                    font-weight: 600;
+                & .contact__info-top {
+                    display: flex;
+                    gap: 0.5rem;
+
+                    & .contact__info-icon {
+                        width: 30px;
+                    }
+
+                    & .contact__info-heading {
+                        font-family: "iceland", sans-serif;
+                        color: var(--color-real-white);
+                        font-size: 2rem;
+                        font-weight: 600;
+                    }
                 }
 
                 & .contact__info-text {
                     color: var(--color-nintendo-gray);
-                    font-size: 1.4rem;
+                    font-size: 1.2rem;
                     font-weight: 100;
                     letter-spacing: 1px;
+                    padding-left: 2.5rem;
 
                     & > a {
                         color: var(--color-footer-heading);
@@ -75,35 +105,46 @@
     }
 }
 
-@media (max-width: 870px) {
+@media (max-width: 1300px) {
     #contactPage {
-        & #contactPage-title {
-            font-size: 3rem;
+        & #contactPage-information {
+            margin-left: 0;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    #contactPage {
+        display: grid;
+
+        & #contact-presentation,
+        & #contact-image {
+            grid-row: 1;
         }
 
         & #contactPage-information {
-            & #information-text {
-                font-size: 1.2rem;
-                padding-bottom: 3rem;
-            }
+            grid-row: 2;
+            max-width: 100%;
+            grid-column: 1 / 3;
+        }
+    }
+}
 
-            & #contact-info {
-                & .contact__info {
-                    & .contact__info-text {
-                        font-size: 1.2rem;
-                    }
-                }
-            }
+@media (max-width: 900px) {
+    #contactPage {
+        display: flex;
+        flex-direction: column;
+
+        & #contact-presentation {
+            border-right: none;
+            max-width: 100%;
+            padding-bottom: 3rem;
         }
     }
 }
 
 @media (max-width: 500px) {
     #contactPage {
-        padding: 3rem 1rem;
-
-        & #contactPage-title {
-            width: 100%;
-        }
+        padding: 3rem 0.5rem;
     }
 }

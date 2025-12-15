@@ -9,25 +9,37 @@ export default function ContactPage(): ReactElement {
 
     return (
         <main id="contactPage">
-            <h1 id="contactPage-title">
-                Contact
-            </h1>
+            <section id="contact-presentation">
+                <h1 id="contactPage-title">
+                    Contact
+                </h1>
 
-            <section id="contactPage-information">
                 <p id="information-text">
                     Please contact me if you have any questions or wishes about the 8-bit catalog. I will get back to
                     you as soon as possible.
                 </p>
+            </section>
 
+            <section id="contact-image">
+                <img src="/contact.png" />
+            </section>
+
+            <section id="contactPage-information">
                 <article id="contact-info">
                     <section className="contact__info">
-                        <h2 className="contact__info-heading"> Location </h2>
+                        <section className="contact__info-top">
+                            <img src="/location.svg" className="contact__info-icon" />
+                            <h2 className="contact__info-heading"> Location </h2>
+                        </section>
 
                         <p className="contact__info-text">I reside in Karlstad, Sweden.</p>
                     </section>
 
                     <section className="contact__info">
-                        <h2 className="contact__info-heading"> Email </h2>
+                        <section className="contact__info-top">
+                            <img src="/email.svg" className="contact__info-icon" />
+                            <h2 className="contact__info-heading"> Email </h2>
+                        </section>
 
                         <p className="contact__info-text">
                             Please send an email to <a href="mailto:contact@joel-rollny.eu"> contact@joel-rollny.eu </a> for anything 
@@ -35,10 +47,11 @@ export default function ContactPage(): ReactElement {
                         </p>
                     </section>
 
-                    <section className="contact__info"> 
-                        <h2 className="contact__info-heading"> 
-                            Website
-                        </h2>
+                    <section className="contact__info">
+                        <section className="contact__info-top">
+                            <img src="/website.svg" className="contact__info-icon" />
+                            <h2 className="contact__info-heading"> Website </h2>
+                        </section>
                
                         <p className="contact__info-text">
                             You can find contact information at <a href="https://www.joel-rollny.eu" target="_blank"> www.joel-rollny.eu</a>.
