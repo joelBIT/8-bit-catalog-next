@@ -26,8 +26,6 @@ export default function ContactPage(): ReactElement {
                 </figure>
             </section>
 
-        
-
             <section id="contactPage-information">
                 <article id="contact-info">
                     <section className="contact__info">
