@@ -1,21 +1,22 @@
-#text {
+#footerLogo {
     display: flex;
     flex-direction: column;
 
-    & .text__title {
+    & .footerLogo__title {
+        font-family: "iceland", sans-serif;
         text-align: left;
         color: var(--color-footer-heading);
         font-weight: 500;
     }
 
-    & > p {
+    & .footerLogo__text {
         color: var(--color-nintendo-gray);
     }
 }
 
 @media (max-width: 600px) {
-    #text {
-        & .text__title {
+    #footerLogo {
+        & .footerLogo__title {
             text-align: center;
         }
     }
