@@ -137,6 +137,10 @@
                     font-size: 1.5rem;
                     width: fit-content;
                     z-index: 2;
+
+                    &:hover {
+                        color: var(--color-link-active);
+                    }
                 }
 
                 & .top-news-list__calendar {
