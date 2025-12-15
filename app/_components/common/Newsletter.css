@@ -33,7 +33,7 @@
     & #newsletterButton {
         display: flex;
         align-items: center;
-        background-color: var(--color-black);
+        background-color: transparent;
         border: 2px solid var(--color-real-white);
         color: var(--color-real-white);
         cursor: pointer;
