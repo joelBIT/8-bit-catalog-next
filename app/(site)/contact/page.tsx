@@ -9,16 +9,22 @@ export default function ContactPage(): ReactElement {
 
     return (
         <main id="contactPage">
-            <h1 id="contactPage-title">
-                Contact
-            </h1>
+            <section id="contact-presentation">
+                <h1 id="contactPage-title">
+                    Contact
+                </h1>
 
-            <section id="contactPage-information">
                 <p id="information-text">
                     Please contact me if you have any questions or wishes about the 8-bit catalog. I will get back to
                     you as soon as possible.
                 </p>
+            </section>
 
+            <section id="contact-image">
+                <img src="/contact.jpg" />
+            </section>
+
+            <section id="contactPage-information">
                 <article id="contact-info">
                     <section className="contact__info">
                         <h2 className="contact__info-heading"> Location </h2>
