@@ -6,6 +6,7 @@
     padding: 2rem 2rem 5rem 2rem;
     width: 100%;
     background-image: url("/pinball.avif");
+    background-position: bottom;
 
     & .newsletter-heading {
         font-size: 2.5rem;
@@ -25,6 +26,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
 
         & #subscribeEmail {
             font-size: 1rem;
@@ -37,6 +39,7 @@
             border-left: 0;
             border-right: 0;
             border-radius: 0;
+            padding-left: 0;
             width: 400px;
 
             &::placeholder {
@@ -85,5 +88,19 @@
         bottom: -25px;
         white-space: nowrap;
         z-index: 50;
+    }
+}
+
+@media (max-width: 420px) {
+    #newsletter {
+        & .newsletter-text {
+            font-size: 1.2rem;
+        }
+
+        & #newsletterSignup {
+            & #subscribeEmail {
+                width: 280px;
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@
         & #landing-selection-list {
             display: flex;
             flex-direction: column;
+            padding-left: 0.5rem;
 
             & .landing-selection-list__item {
                 display: flex;
@@ -146,9 +147,10 @@
 
         & #landing-selection-top {
             & #landing-selection-text {
-                padding-left: 0;
                 padding-right: 0.5rem;
+                padding-left: 0.5rem;
                 margin-right: 1rem;
+                margin-left: 1rem;
                 min-height: 14rem;
             }
 
