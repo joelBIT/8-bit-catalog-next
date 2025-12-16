@@ -72,8 +72,9 @@
             & .contact__info {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 gap: 0.5rem;
-                text-align: left;
+                text-align: center;
                 padding: 1rem;
 
                 & .contact__info-top {
@@ -97,7 +98,6 @@
                     font-size: 1.2rem;
                     font-weight: 100;
                     letter-spacing: 1px;
-                    padding-left: 2.5rem;
 
                     & > a {
                         color: var(--color-white);
