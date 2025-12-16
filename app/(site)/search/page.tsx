@@ -23,49 +23,47 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                 </p>
             </section>
 
-            <search id="searchFilters">
-                <Form id="searchFilters__form" action="" scroll={false}>
-                    <article className="searchFilters__filters">
-                        <section className="selectSection">
-                            <h2 className="selectSection__title"> Category </h2>
-                
-                            <select className="selectSection__select" name="category" defaultValue={params.category}>
-                                { addAllOption(await getAllCategories()).map((element, index) => <option key={index} value={element}> {element} </option>) }
-                            </select>
-                        </section>
+            <Form id="searchFilters__form" action="" scroll={false}>
+                <article className="searchFilters__filters">
+                    <section className="selectSection">
+                        <h2 className="selectSection__title"> Category </h2>
+            
+                        <select className="selectSection__select" name="category" defaultValue={params.category}>
+                            { addAllOption(await getAllCategories()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                        </select>
+                    </section>
 
-                        <section className="selectSection">
-                            <h2 className="selectSection__title"> Publisher </h2>
-                
-                            <select className="selectSection__select" name="publisher" defaultValue={params.publisher}>
-                                { addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
-                            </select>
-                        </section>
-                        
-                        <section className="selectSection">
-                            <h2 className="selectSection__title"> Developer </h2>
-                
-                            <select className="selectSection__select" name="developer" defaultValue={params.developer}>
-                                { addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
-                            </select>
-                        </section>
-                    </article>
+                    <section className="selectSection">
+                        <h2 className="selectSection__title"> Publisher </h2>
+            
+                        <select className="selectSection__select" name="publisher" defaultValue={params.publisher}>
+                            { addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                        </select>
+                    </section>
+                    
+                    <section className="selectSection">
+                        <h2 className="selectSection__title"> Developer </h2>
+            
+                        <select className="selectSection__select" name="developer" defaultValue={params.developer}>
+                            { addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                        </select>
+                    </section>
+                </article>
 
-                    <search id="searchInput">
-                        <section className="input-wrapper">
-                            <span className="material-symbols-outlined"> search </span>
-                            <input 
-                                id="searchTitle"
-                                name="title"
-                                type="text"
-                                placeholder="Game Title"
-                            />
-                        </section>
+                <search id="searchInput">
+                    <section className="input-wrapper">
+                        <span className="material-symbols-outlined"> search </span>
+                        <input 
+                            id="searchTitle"
+                            name="title"
+                            type="text"
+                            placeholder="Game Title"
+                        />
+                    </section>
 
-                        <SearchButton />
-                    </search>
-                </Form>
-            </search>
+                    <SearchButton />
+                </search>
+            </Form>
             <Search />
         </main>
     );

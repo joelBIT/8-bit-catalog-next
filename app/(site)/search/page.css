@@ -44,60 +44,55 @@
         }
     }
 
-    & #searchFilters {
+    & #searchFilters__form {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: 3rem;
+        align-self: center;
         padding-bottom: 0.5rem;
-    
-        & #searchFilters__form {
+
+        & .searchFilters__filters {
             display: flex;
-            flex-direction: column;
             gap: 3rem;
+        }
+
+        & #searchInput {
+            display: flex;
             align-self: center;
-    
-            & .searchFilters__filters {
-                display: flex;
-                gap: 3rem;
-            }
-    
-            & #searchInput {
-                display: flex;
-                align-self: center;
-                align-items: center;
-                gap: 2rem;
-                margin-top: 3rem;
-                width: 40rem;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            width: 40rem;
 
-                & .input-wrapper {
-                    display: flex;
+            & .input-wrapper {
+                display: flex;
 
-                    & .material-symbols-outlined {
-                        position: relative;
-                        left: 2.2rem;
-                        align-content: center;
-                        color: var(--color-auth-border-bottom);
-                        font-size: 1.8rem;
-                        z-index: 1;
-                    }
-                
-                    & #searchTitle {
-                        font-family: "arima", sans-serif;
-                        color: var(--color-real-white);
-                        background: var(--color-real-black);
-                        border: 1px solid var(--color-auth-border-bottom);
-                        padding-left: 2.5rem;
-                        border-radius: 9px;
-                        font-size: 1.2rem;
-                        outline: none;
-                        width: 400px;
-                    }
+                & .material-symbols-outlined {
+                    position: relative;
+                    left: 2.2rem;
+                    align-content: center;
+                    color: var(--color-auth-border-bottom);
+                    font-size: 1.8rem;
+                    z-index: 1;
                 }
-
-                & #searchButton {
-                    padding: 0.2rem 0.9rem;
+            
+                & #searchTitle {
+                    font-family: "arima", sans-serif;
+                    color: var(--color-real-white);
+                    background: var(--color-real-black);
+                    border: 1px solid var(--color-auth-border-bottom);
+                    padding-left: 2.5rem;
+                    border-radius: 9px;
                     font-size: 1.2rem;
+                    outline: none;
+                    width: 400px;
                 }
+            }
+
+            & #searchButton {
+                padding: 0.2rem 0.9rem;
+                font-size: 1.2rem;
             }
         }
     }
@@ -110,13 +105,11 @@
             padding-left: 0;
         }
 
-        & #searchFilters {
-            & #searchFilters__form {
-                text-align: center;
+        & #searchFilters__form {
+            text-align: center;
 
-                & .searchFilters__filters {
-                    flex-direction: column;
-                }
+            & .searchFilters__filters {
+                flex-direction: column;
             }
         }
     }
@@ -124,19 +117,17 @@
 
 @media (max-width: 600px) {
     #searchPage {
-        & #searchFilters {
+        & #searchFilters__form {
             margin-top: 3rem;
 
-            & #searchFilters__form {
-                & #searchInput {
-                    flex-direction: column;
-                    gap: 1rem;
+            & #searchInput {
+                flex-direction: column;
+                gap: 1rem;
 
-                    & .input-wrapper {
-                        & #searchTitle {
-                            margin-right: 2rem;
-                            width: 300px;
-                        }
+                & .input-wrapper {
+                    & #searchTitle {
+                        margin-right: 2rem;
+                        width: 300px;
                     }
                 }
             }
