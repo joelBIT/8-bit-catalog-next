@@ -87,23 +87,23 @@
         padding-top: 3rem;
 
         & .Released {
-            background-image: url("/released.webp");
+            background-image: url("/game/released.webp");
         }
 
         & .Publisher {
-            background-image: url("/publisher.webp");
+            background-image: url("/game/publisher.webp");
         }
 
         & .Players {
-            background-image: url("/players.webp");
+            background-image: url("/game/players.webp");
         }
 
         & .Category {
-            background-image: url("/category.webp");
+            background-image: url("/game/category.webp");
         }
 
         & .Developer {
-            background-image: url("/developer.webp");
+            background-image: url("/game/developer.webp");
         }
 
         & .metadata-card {

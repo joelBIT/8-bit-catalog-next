@@ -84,7 +84,7 @@ export function GameModal({ games, game, close }: { games: Game[], game: Game, c
 
             <section id="slide-space" className={"slide"} key={game.id}>
                 <div className="darken-image-top" />
-                <img id="slide-background" src="/playing.webp" alt="Playing nintendo" />
+                <img id="slide-background" src="/game/playing.webp" alt="Playing nintendo" />
                 <div className="darken-image-bottom" />
                 <GameDetailsCard game={suppliedGames[slide > -1 ? slide : 0]} />
             </section>
