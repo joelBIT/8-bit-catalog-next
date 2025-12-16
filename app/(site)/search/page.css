@@ -4,23 +4,51 @@
     align-items: center;
     background-color: var(--color-black);
 
+    & #search-presentation {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        margin-top: 10rem;
+        padding-left: 3rem;
+        margin-bottom: 3rem;
+
+        & .search__subtitle {
+            font-family: 'Arima', sans-serif;
+            font-size: 1rem;
+            padding-left: 4rem;
+            line-height: 1px;
+            font-weight: 100;
+            color: var(--color-nintendo-gray);
+            text-transform: uppercase;
+        }
+
+        & .search__title {
+            font-family: "iceland", sans-serif;
+            align-self: center;
+            font-size: 5rem;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 40px var(--color-footer-heading), 0 0 60px var(--color-footer-heading);
+            filter: saturate(60%);
+            color: var(--color-real-white);
+        }
+
+        & .search__text {
+            font-family: 'Arima', sans-serif;
+            font-weight: 100;
+            font-size: 1.5rem;
+            color: var(--color-real-white);
+            max-width: 400px;
+            line-height: 27px;
+            padding-left: 2rem;
+        }
+    }
+
     & #searchFilters {
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding-bottom: 0.5rem;
-        margin-top: 10rem;
-
-        & .searchFilters__title {
-            font-family: "iceland", sans-serif;
-            align-self: center;
-            font-size: 5rem;
-            text-align: center;
-            margin: 1rem 0;
-            font-weight: 500;
-            text-shadow: 0 0 30px rgba(255, 52, 10, 0.5);
-            color: var(--color-footer-heading);
-        }
     
         & #searchFilters__form {
             display: flex;
@@ -77,11 +105,12 @@
 
 @media (max-width: 950px) {
     #searchPage {
-        & #searchFilters {
-            & .searchFilters__title {
-                font-size: 4rem;
-            }
+        & #search-presentation {
+            align-self: center;
+            padding-left: 0;
+        }
 
+        & #searchFilters {
             & #searchFilters__form {
                 text-align: center;
 
@@ -96,11 +125,7 @@
 @media (max-width: 600px) {
     #searchPage {
         & #searchFilters {
-            margin-top: 5rem;
-
-            & .searchFilters__title {
-                font-size: 3.2rem;
-            }
+            margin-top: 3rem;
 
             & #searchFilters__form {
                 & #searchInput {
@@ -114,6 +139,33 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #searchPage {
+        & #search-presentation {
+            margin-top: 7rem;
+            margin-bottom: 0;
+
+            & .search__title {
+                font-size: 4rem;
+            }
+
+            & .search__text {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    #searchPage {
+        & #search-presentation {
+            & .search__title {
+                font-size: 3.45rem;
             }
         }
     }

@@ -15,9 +15,15 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
 
     return (
         <main id="searchPage">
-            <search id="searchFilters">
-                <h1 className="searchFilters__title"> Search Games </h1>
+            <section id="search-presentation">
+                <h1 className="search__subtitle"> Discover the catalog </h1>
+                <h1 className="search__title"> Search Games </h1>
+                <p className="search__text">
+                    Browse through the catalog to find games that match your needs.
+                </p>
+            </section>
 
+            <search id="searchFilters">
                 <Form id="searchFilters__form" action="" scroll={false}>
                     <article className="searchFilters__filters">
                         <section className="selectSection">
