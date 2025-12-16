@@ -38,6 +38,10 @@
 
         & .landingCard:last-of-type {
             align-self: flex-end;
+            
+            & .landingCard-heading {
+                transform: skewY(6deg);
+            }
         }
     }
 
