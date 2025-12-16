@@ -2,7 +2,6 @@
 
 import { type ReactElement } from "react";
 import Link from "next/link";
-import { Logo } from "../_components/header";
 import { LandingCard, LandingSelection, TitleSearch } from "@/app/_components/home";
 import { Newsletter } from "../_components/common";
 import { getAllNews, getAllTitles } from "@/app/_db/db";
@@ -20,7 +19,7 @@ export default async function Home(): Promise<ReactElement> {
             <section id="firstSection">
                 <section id="catalogDescription">
                     <LandingCard heading="Vision" text="A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts."/>
-                    <h2 className="landing-title">THe 8-bit catalog</h2>
+                    <h2 className="landing-title">The 8-bit catalog</h2>
                     <LandingCard heading="Solution" text="The 8-bit Catalog. This catalog is continuously updated with new information and functionality. Become a member to connect with other 8-bit enthusiasts." />
                 </section>
 

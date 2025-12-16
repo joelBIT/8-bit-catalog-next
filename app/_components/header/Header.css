@@ -16,7 +16,7 @@ header {
         font-size: 0.5rem;
 
         & .header__title {
-            font-family: "irishGrover", sans-serif;
+            font-family: "irish grover", sans-serif;
             letter-spacing: 0.2rem;
             font-weight: bold;
             transition: all 0.3s;
