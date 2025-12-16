@@ -30,7 +30,7 @@ export default function ContactPage(): ReactElement {
                 <article id="contact-info">
                     <section className="contact__info">
                         <section className="contact__info-top">
-                            <img src="/location.svg" className="contact__info-icon" />
+                            <img src="/svg/location.svg" className="contact__info-icon" />
                             <h2 className="contact__info-heading"> Location </h2>
                         </section>
 
@@ -39,7 +39,7 @@ export default function ContactPage(): ReactElement {
 
                     <section className="contact__info">
                         <section className="contact__info-top">
-                            <img src="/email.svg" className="contact__info-icon" />
+                            <img src="/svg/email.svg" className="contact__info-icon" />
                             <h2 className="contact__info-heading"> Email </h2>
                         </section>
 
@@ -51,7 +51,7 @@ export default function ContactPage(): ReactElement {
 
                     <section className="contact__info">
                         <section className="contact__info-top">
-                            <img src="/website.svg" className="contact__info-icon" />
+                            <img src="/svg/website.svg" className="contact__info-icon" />
                             <h2 className="contact__info-heading"> Website </h2>
                         </section>
                
