@@ -6,108 +6,120 @@
     background-color: var(--color-black);
     padding: 4rem 1rem;
 
-    & #architecture-top {
+    & #nes-introduction {
         display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        position: relative;
+        align-items: center;
+        gap: 4rem;
+        padding-top: 5rem;
 
-        & .architecture-top-left {
+        & .nes-introduction__content {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
 
-            & .nintendo-presentation {
+            & .nes-introduction__subheading {
+                font-family: 'Arima', sans-serif;
+                font-weight: 100;
+                font-size: 1.2rem;
+                line-height: 1px;
+                color: var(--color-nintendo-gray);
+            }
+
+            & .nes-introduction__heading {
+                font-family: 'Playfair Display', sans-serif;
+                font-size: 2.7rem;
+                font-weight: 300;
+                color: var(--color-real-white);
+            }
+        }
+
+        & .architecture-figure {
+            display: flex;
+            align-self: flex-end;
+            height: auto;
+            max-width: 40rem;
+
+            & > img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    & #architecture-top {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+
+        & .nintendo-presentation {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            border-radius: 19px;
+            padding: 1rem;
+            max-width: 1400px;
+
+            & .nintendo-presentation__heading {
+                font-family: 'Playfair Display', sans-serif;
+                font-size: 2rem;
+                font-weight: 600;
+                color: var(--color-footer-heading);
+                letter-spacing: 1px;
+                padding-top: 2rem;
+            }
+
+            & .nintendo-presentation__text {
+                font-family: "arima", sans-serif;
+                color: var(--color-real-white);
+                font-size: 1.3rem;
+                line-height: 1.7rem;
+            }
+        }
+
+        & .nintendo-info {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            & .nintendo-info-sold,
+            .nintendo-info-other {
                 display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
+                align-items: center;
+                gap: 1rem;
+                color: var(--color-real-white);
                 border-radius: 19px;
                 padding: 1rem;
-                max-width: 1400px;
+                flex: 1;
+                min-width: 330px;
 
-                & .nintendo-presentation__heading {
+                & h2 {
                     font-family: 'Playfair Display', sans-serif;
-                    font-size: 2rem;
-                    font-weight: 600;
-                    color: var(--color-footer-heading);
-                    letter-spacing: 1px;
-                    padding-top: 2rem;
+                    font-size: 2.3rem;
                 }
 
-                & .nintendo-presentation__text {
-                    font-family: "arima", sans-serif;
-                    color: var(--color-real-white);
-                    font-size: 1.3rem;
-                    line-height: 1.7rem;
+                & p {
+                    font-size: 1.5rem;
+                    color: var(--color-nintendo-gray);
+                    font-style: italic;
+                    font-weight: 100;
                 }
-            }
 
-            & .nintendo-info {
-                display: flex;
-                flex-direction: column;
-                align-content: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-
-                & .nintendo-info-sold,
-                .nintendo-info-other {
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    color: var(--color-real-white);
-                    border-radius: 19px;
+                & > img {
+                    width: 140px;
+                    border: 2px solid var(--color-footer-heading);
                     padding: 1rem;
-                    flex: 1;
-                    min-width: 330px;
-
-                    & h2 {
-                        font-family: 'Playfair Display', sans-serif;
-                        font-size: 2.3rem;
-                    }
-
-                    & p {
-                        font-size: 1.5rem;
-                        color: var(--color-nintendo-gray);
-                        font-style: italic;
-                        font-weight: 100;
-                    }
-
-                    & > img {
-                        width: 140px;
-                        border: 2px solid var(--color-footer-heading);
-                        padding: 1rem;
-                        border-radius: 100%;
-                        border-block: none;
-                    }
-                }
-
-                & .nintendo-info-other {
-                    justify-content: center;
-                    padding-left: 5rem;
+                    border-radius: 100%;
+                    border-block: none;
                 }
             }
-        }
 
-        & .architecture-top-right {
-            display: flex;
-            border-radius: 19px;
-            position: relative;
-            
-            & .architecture-image {
-                object-fit: cover;
-                filter: brightness(0.8);
-                width: 100%;
-                max-height: 32rem;
-                border-radius: 19px;
+            & .nintendo-info-other {
+                justify-content: center;
+                padding-left: 5rem;
             }
-        }
-
-        & .architecture-top-right::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            box-shadow: inset 0 0 16px 15px #101010f0;
-            border-radius: 17px;
         }
     }
 

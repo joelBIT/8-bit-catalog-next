@@ -13,41 +13,47 @@ const articles = [
 export default function ArchitecturePage(): ReactElement {
     return (
         <main id="architecturePage">
+            <section id="nes-introduction">
+                <section className="nes-introduction__content">
+                    <h3 className="nes-introduction__subheading"> Introducing the </h3>
+                    <h2 className="nes-introduction__heading"> Nintendo <i>Entertainment</i> System </h2>
+                </section>
+
+                <figure className="architecture-figure">
+                    <img src="/architecture/nesconsole.png" className="architecture-image" />
+                </figure>
+            </section>
+
+
             <section id="architecture-top">
-                <article className="architecture-top-left">
-                    <section className="nintendo-presentation">
-                        <h2 className="nintendo-presentation__heading"> Regarded as one of the most influential gaming consoles. </h2>
-                        <p className="nintendo-presentation__text">
-                            The NES pioneered a now-standard business model of licensing third-party developers to produce and distribute games.
-                            It was released in Japan on July 15, 1983, as the Family Computer (Famicom). Today, the NES is the 14th best-selling console 
-                            of all time and has a thriving community.
-                        </p>
-                    </section>
+                <section className="nintendo-presentation">
+                    <h2 className="nintendo-presentation__heading"> Regarded as one of the most influential gaming consoles. </h2>
+                    <p className="nintendo-presentation__text">
+                        The NES pioneered a now-standard business model of licensing third-party developers to produce and distribute games.
+                        It was released in Japan on July 15, 1983, as the Family Computer (Famicom). Today, the NES is the 14th best-selling console 
+                        of all time and has a thriving community.
+                    </p>
+                </section>
 
-                    <section className="nintendo-info">
-                        <article className="nintendo-info-sold">
-                            <img src="/svg/nesconsole.svg" />
+                <section className="nintendo-info">
+                    <article className="nintendo-info-sold">
+                        <img src="/svg/nesconsole.svg" />
 
-                            <section>
-                                <h2>14th</h2>
-                                <p>best-selling console of all time</p>
-                            </section>
-                        </article>
+                        <section>
+                            <h2>14th</h2>
+                            <p>best-selling console of all time</p>
+                        </section>
+                    </article>
 
-                        <article className="nintendo-info-other">
-                            <img src="/svg/gamepad.svg" />
+                    <article className="nintendo-info-other">
+                        <img src="/svg/gamepad.svg" />
 
-                            <section>
-                                <h2>1,377</h2>
-                                <p>licensed games globally</p>
-                            </section>
-                        </article>
-                    </section>
-                </article>
-
-                <article className="architecture-top-right">
-                    <img src="/architecture/nesconsole.webp" className="architecture-image" />
-                </article>
+                        <section>
+                            <h2>1,377</h2>
+                            <p>licensed games globally</p>
+                        </section>
+                    </article>
+                </section>
             </section>
 
             <iframe 
