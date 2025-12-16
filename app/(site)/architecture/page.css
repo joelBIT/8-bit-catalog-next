@@ -38,7 +38,7 @@
             height: auto;
             max-width: 40rem;
 
-            & > img {
+            & .architecture-image {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -95,6 +95,7 @@
             color: var(--color-real-white);
             letter-spacing: 1px;
             text-align: center;
+            font-weight: 100;
         }
 
         & .architecturePage-title-text {
@@ -103,7 +104,6 @@
             font-size: 1.5rem;
             max-width: 900px;
             font-weight: 100;
-            padding-bottom: 2rem;
             border-top: 2px;
             border-style: solid;
             border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
@@ -111,6 +111,8 @@
             padding-right: 2rem;
             border-bottom: 2px;
             text-align: center;
+            padding: 1rem 0.2rem 2rem 0.2rem;
+            line-height: 27px;
         }
 
         & #articles {
@@ -176,13 +178,6 @@
         & #architecture-articles {
             & .architecturePage-title {
                 font-size: 2.3rem;
-            }
-
-            & .architecturePage-title-text {
-                padding-right: 0.2rem;
-                padding-left: 0.2rem;
-                line-height: 27px;
-                padding-top: 1rem;
             }
         }
     }
