@@ -49,7 +49,7 @@ export default function ArchitecturePage(): ReactElement {
             <section id="architecture-articles">
                 <h2 className="architecturePage-title"> NES Architecture </h2>
                 <h3 className="architecturePage-title-text">
-                    Read about the NES architecture. An overview of the architecture is covered in the articles below.
+                    Read about the NES architecture. You can find an overview in the articles below.
                 </h3>
 
                 <section id="articles">
