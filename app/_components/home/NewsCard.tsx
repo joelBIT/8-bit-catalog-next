@@ -23,7 +23,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
 
     return (
         <section className="news-card">
-            <img src={`/${news.image}`} />
+            <img src={`/news/${news.image}`} />
             <div className="darken-image-right" />
 
             <section className="news-card-text">

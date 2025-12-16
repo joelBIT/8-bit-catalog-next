@@ -28,7 +28,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
     return (
         <main id="newsPage">
             <section id="news-top">
-                <img src={`/${news.image}`} className="news-top-image" />
+                <img src={`/news/${news.image}`} className="news-top-image" />
                 <div className="darken-image-bottom" />
 
                 <section className="news-top-content">
