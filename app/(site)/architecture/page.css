@@ -6,108 +6,71 @@
     background-color: var(--color-black);
     padding: 4rem 1rem;
 
-    & #architecture-top {
+    & #nes-introduction {
         display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        position: relative;
+        align-items: center;
+        gap: 4rem;
+        padding-top: 5rem;
 
-        & .architecture-top-left {
+        & .nes-introduction__content {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
 
-            & .nintendo-presentation {
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-                border-radius: 19px;
-                padding: 1rem;
-                max-width: 1400px;
-
-                & .nintendo-presentation__heading {
-                    font-family: 'Playfair Display', sans-serif;
-                    font-size: 2rem;
-                    font-weight: 600;
-                    color: var(--color-footer-heading);
-                    letter-spacing: 1px;
-                    padding-top: 2rem;
-                }
-
-                & .nintendo-presentation__text {
-                    font-family: "arima", sans-serif;
-                    color: var(--color-real-white);
-                    font-size: 1.3rem;
-                    line-height: 1.7rem;
-                }
+            & .nes-introduction__subheading {
+                font-family: 'Arima', sans-serif;
+                font-weight: 100;
+                font-size: 1.2rem;
+                line-height: 1px;
+                color: var(--color-nintendo-gray);
             }
 
-            & .nintendo-info {
-                display: flex;
-                flex-direction: column;
-                align-content: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-
-                & .nintendo-info-sold,
-                .nintendo-info-other {
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    color: var(--color-real-white);
-                    border-radius: 19px;
-                    padding: 1rem;
-                    flex: 1;
-                    min-width: 330px;
-
-                    & h2 {
-                        font-family: 'Playfair Display', sans-serif;
-                        font-size: 2.3rem;
-                    }
-
-                    & p {
-                        font-size: 1.5rem;
-                        color: var(--color-nintendo-gray);
-                        font-style: italic;
-                        font-weight: 100;
-                    }
-
-                    & > img {
-                        width: 140px;
-                        border: 2px solid var(--color-footer-heading);
-                        padding: 1rem;
-                        border-radius: 100%;
-                        border-block: none;
-                    }
-                }
-
-                & .nintendo-info-other {
-                    justify-content: center;
-                    padding-left: 5rem;
-                }
+            & .nes-introduction__heading {
+                font-family: 'Playfair Display', sans-serif;
+                font-size: 2.7rem;
+                font-weight: 300;
+                color: var(--color-real-white);
             }
         }
 
-        & .architecture-top-right {
+        & .architecture-figure {
             display: flex;
-            border-radius: 19px;
-            position: relative;
-            
-            & .architecture-image {
-                object-fit: cover;
-                filter: brightness(0.8);
+            align-self: flex-end;
+            height: auto;
+            max-width: 40rem;
+
+            & > img {
                 width: 100%;
-                max-height: 32rem;
-                border-radius: 19px;
+                height: 100%;
+                object-fit: cover;
             }
         }
+    }
 
-        & .architecture-top-right::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            box-shadow: inset 0 0 16px 15px #101010f0;
-            border-radius: 17px;
+    & .nintendo-presentation {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        border-radius: 19px;
+        padding: 2rem;
+        max-width: 1200px;
+        background-color: #00000050;
+
+        & .nintendo-presentation__heading {
+            align-self: center;
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-footer-heading);
+            letter-spacing: 1px;
+        }
+
+        & .nintendo-presentation__text {
+            font-family: "arima", sans-serif;
+            color: var(--color-real-white);
+            font-size: 1.3rem;
+            line-height: 1.7rem;
+            column-count: 2;
+            column-gap: 2rem;
         }
     }
 
@@ -177,35 +140,39 @@
 
 @media (max-width: 1000px) {
     #architecturePage {
-        & #architecture-top {
-            flex-direction: column-reverse;
-            max-height: fit-content;
+        & #nes-introduction {
+            flex-direction: column;
         }
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     #architecturePage {
-        & .architecture-video {
-            width: 100%;
+        & #nes-introduction {
+            padding-top: 3rem;
         }
 
-        & #architecture-top {
-            & .architecture-top-left {
-                & .nintendo-info {
-                    & .nintendo-info-other,
-                    .nintendo-info-sold {
-                        padding-left: 0;
-                        justify-content: flex-start;
-                    }
-                }
+        .nintendo-presentation {
+            & .nintendo-presentation__text {
+                column-count: 1;
+                column-gap: 0;
             }
+        }
+
+        & .architecture-video {
+            width: 100%;
         }
     }
 }
 
 @media (max-width: 500px) {
     #architecturePage {
+        & .nintendo-presentation {
+            & .nintendo-presentation__heading {
+                font-size: 1.7rem;
+            }
+        }
+
         & #architecture-articles {
             & .architecturePage-title {
                 font-size: 2.3rem;
