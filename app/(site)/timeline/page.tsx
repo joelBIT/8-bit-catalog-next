@@ -89,7 +89,7 @@ export default function TimelinePage(): ReactElement {
                     {
                         timeline?.map(event => 
                             <img 
-                                src={event.image}
+                                src={"/timeline/" + event.image}
                                 className={`backgroundImage ${year === event.year ? `b${year} display-element` : "hidden-element"}`} 
                                 key={event.image}
                                 alt="Timeline image"
