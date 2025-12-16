@@ -27,40 +27,44 @@ export default function ContactPage(): ReactElement {
             </section>
 
             <section id="contactPage-information">
-                <article id="contact-info">
-                    <section className="contact__info">
-                        <section className="contact__info-top">
-                            <img src="/svg/location.svg" className="contact__info-icon" />
-                            <h2 className="contact__info-heading"> Location </h2>
-                        </section>
+                <section className="contact__info">
+                    <figure className="contact__info-figure">
+                        <img src="/contact/location.png" className="contact__info-image" alt="Location Contact Image" />
+                    </figure>
 
-                        <p className="contact__info-text">I reside in Karlstad, Sweden.</p>
+                    <section className="contact__info-right">
+                        <h2 className="contact__info-heading"> Location </h2>
+                        <p className="contact__info-text">I reside in Karlstad, Sweden. Visit me if you are in the neighborhood.</p>
                     </section>
+                </section>
 
-                    <section className="contact__info">
-                        <section className="contact__info-top">
-                            <img src="/svg/email.svg" className="contact__info-icon" />
-                            <h2 className="contact__info-heading"> Email </h2>
-                        </section>
+                <section className="contact__info">
+                    <figure className="contact__info-figure">
+                        <img src="/contact/email.jpeg" className="contact__info-image" alt="Email Contact Image" />
+                    </figure>
 
+                    <section className="contact__info-right">
+                        <h2 className="contact__info-heading"> Email </h2>
                         <p className="contact__info-text">
                             Please send an email to <a href="mailto:contact@joel-rollny.eu"> contact@joel-rollny.eu </a> for anything 
                             related to the 8-bit Catalog.
                         </p>
                     </section>
+                </section>
 
-                    <section className="contact__info">
-                        <section className="contact__info-top">
-                            <img src="/svg/website.svg" className="contact__info-icon" />
-                            <h2 className="contact__info-heading"> Website </h2>
-                        </section>
-               
+                <section className="contact__info">
+                    <figure className="contact__info-figure">
+                        <img src="/contact/website.jpeg" className="contact__info-image" alt="Website Contact Image" />
+                    </figure>
+
+                    <section className="contact__info-right">
+                        <h2 className="contact__info-heading"> Website </h2>
                         <p className="contact__info-text">
                             You can find contact information at <a href="https://www.joel-rollny.eu" target="_blank"> www.joel-rollny.eu</a>.
                             That site also contains a form that you can use to send me a direct message.
                         </p>
                     </section>
-                </article>
+                </section>
             </section>
         </main>
     );
