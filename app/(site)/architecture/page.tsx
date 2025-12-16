@@ -30,7 +30,7 @@ export default function ArchitecturePage(): ReactElement {
                     It is regarded as one of the most influential gaming consoles.
                     The NES pioneered a now-standard business model of licensing third-party developers to produce and distribute games.
                     It was released in Japan on July 15, 1983, as the Family Computer (Famicom). Today, the NES is the 14th best-selling console 
-                    of all time and has a thriving community. The console has 1,377 licensed games globally.
+                    of all time and has a thriving community.
                     The console has 1,377 licensed games globally, and the community has produced many unofficial games.
                 </p>
             </section>
