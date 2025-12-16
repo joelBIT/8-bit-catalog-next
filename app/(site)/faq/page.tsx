@@ -45,7 +45,7 @@ export default function FaqPage(): ReactElement {
 
             { faqPage === FAQ_GAMES ? faqs?.filter(faq => faq.type === FAQ_GAMES).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
    
-            <img src="/faq.png" alt="Catalog FAQ background image" id="faq-background" />
+            <img src="/faq/faq.png" alt="Catalog FAQ background image" id="faq-background" />
             <div className="darken-image-bottom" />
         </main>
     );

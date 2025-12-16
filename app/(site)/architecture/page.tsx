@@ -46,7 +46,7 @@ export default function ArchitecturePage(): ReactElement {
                 </article>
 
                 <article className="architecture-top-right">
-                    <img src="/nesconsole.webp" className="architecture-image" />
+                    <img src="/architecture/nesconsole.webp" className="architecture-image" />
                 </article>
             </section>
 

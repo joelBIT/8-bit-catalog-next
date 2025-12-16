@@ -22,7 +22,7 @@ export default function ContactPage(): ReactElement {
                 </article>
 
                 <figure className="contact-figure">
-                    <img src="/contact.png" alt="Contact Image" className="contact-image" />
+                    <img src="/contact/contact.png" alt="Contact Image" className="contact-image" />
                 </figure>
             </section>
 
