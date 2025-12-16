@@ -21,7 +21,7 @@ export const URL_NEWS_PAGE = "/news";
 export const URL_REGISTER_PAGE = "/register";
 export const URL_RESET_PAGE = "/reset";
 export const URL_SEARCH_PAGE = "/search";
-export const URL_SITES_PAGE = "/sites";
+export const URL_RESOURCES_PAGE = "/resources";
 export const URL_TIMELINE_PAGE = "/timeline";
 
 export const USER_ROLE_ADMIN = "admin";
