@@ -21,7 +21,8 @@
         color: var(--color-footer-heading);
         position: absolute;
         top: -23px;
-        left: 30%;
+        left: 0;
+        width: fit-content;
         transform: skewY(-6deg);
         -webkit-text-stroke-width: 3px;
         -webkit-text-stroke-color: var(--color-list-border);

@@ -41,6 +41,8 @@
             
             & .landingCard-heading {
                 transform: skewY(6deg);
+                right: 0;
+                left: auto;
             }
         }
     }
