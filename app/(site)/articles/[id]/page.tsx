@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { URL_HOME } from "@/app/_utils/utils";
 import { getArticleById } from "@/app/_db/db";
@@ -23,7 +24,7 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
     return (
         <main id="articlePage">
             <figure id="article-image">
-                <img src={`/articles/architecture.avif`} className="article-image" alt="Article image" />
+                <Image src={`/articles/architecture.avif`} className="article-image" alt="Article image" width={1600} height={480} />
 
                 <section id="article-title">
                     <h2 className="article-title"> {article.title} </h2>
