@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import Image from "next/image";
 import { ArticleCard } from "@/app/_components/common";
 import { getAllArticlesRequest } from "@/app/_db/db";
 import { Article } from "@/app/_types/types";
@@ -23,7 +24,7 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
                 </section>
 
                 <figure className="architecture-figure">
-                    <img src="/architecture/nesconsole.png" className="architecture-image" alt="NES console" />
+                    <Image src="/architecture/nesconsole.png" className="architecture-image" alt="NES console" width={640} height={640} />
                 </figure>
             </section>
 
