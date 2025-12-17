@@ -22,12 +22,12 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
 
     return (
         <main id="articlePage">
-            <section id="article-top">
-                <img src={`/articles/${article.image}`} className="article-top-image" alt="Article image" />
+            <figure id="article-image">
+                <img src={`/articles/architecture.avif`} className="article-image" alt="Article image" />
                 <div className="darken-image-bottom" />
+            </figure>
 
-                <h2 className="article-heading"> {article.title} </h2>
-            </section>
+            <h2 className="article-heading"> {article.title} </h2>
         </main>
     )
 }
