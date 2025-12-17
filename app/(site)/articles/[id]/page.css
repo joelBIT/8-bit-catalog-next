@@ -80,7 +80,7 @@
     }
 
     & .article-text {
-        color: var(--color-real-white);
+        color: var(--color-nintendo-gray);
         font-size: 1.5rem;
         font-weight: 100;
         max-width: 1200px;
