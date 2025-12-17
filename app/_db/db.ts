@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News } from '@/app/_types/types';
+import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News, Article } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 
 const databaseClient = createClient(databaseURL(), databaseKey());
@@ -13,19 +13,21 @@ function databaseKey() {
     return process.env?.SUPABASE_KEY as string;
 }
 
-const COVERS_STORAGE = "covers";
 const PROFILE_IMAGES_STORAGE = "catalog";
+const COVERS_STORAGE = "covers";
 
-const GAMES_TABLE = "games";
-const SESSION_TABLE = "sessions";
-const USER_TABLE = "users";
-const FAVOURITES_TABLE = "favourites";
 const ACCOUNT_TABLE = "account";
-const FILTERS_TABLE = "filters";
-const TIMELINE_TABLE = "timeline";
+const ARTICLES_TABLE = "articles"
+const FAVOURITES_TABLE = "favourites";
 const FAQ_TABLE = "faq";
+const FILTERS_TABLE = "filters";
+const GAMES_TABLE = "games";
 const NEWS_TABLE = "news";
 const NEWSLETTER_TABLE = "newsletter";
+const SESSION_TABLE = "sessions";
+const TIMELINE_TABLE = "timeline";
+const USER_TABLE = "users";
+
 
 
 
@@ -584,4 +586,66 @@ export async function getAllNewsletterSubscribers(): Promise<string[]> {
     }
 
     return data.map(element => element.email);
+}
+
+
+
+
+
+/************
+ * ARTICLES *
+ ************/
+
+/**
+ * Send a GET request and retrieve all articles.
+ */
+export async function getAllArticlesRequest(): Promise<Article[]> {
+    try {
+        const { data } = await databaseClient.from(ARTICLES_TABLE).select(`
+            id,
+            title,
+            tags,
+            introduction,
+            image,
+            article_contents (
+                heading,
+                text
+            )
+        `);
+
+        if (data) {
+            return data;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    return [];
+}
+
+/**
+ * Send a GET request and retrieve article.
+ */
+export async function getArticleById(id: number): Promise<Article> {
+    try {
+        const { data } = await databaseClient.from(ARTICLES_TABLE).select(`
+            id,
+            title,
+            tags,
+            introduction,
+            image,
+            article_contents (
+                heading,
+                text
+            )
+        `).eq("id", id).single();
+
+        if (data) {
+            return data;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    throw new Error(`Could not find article with id ${id}`);
 }

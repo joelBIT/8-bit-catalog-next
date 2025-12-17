@@ -1,22 +1,16 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { URL_HOME } from "@/app/_utils/utils";
+import { getArticleById } from "@/app/_db/db";
 
 import "./page.css";
-
-const ARTICLES = [
-    {image: "scanlines.jpeg", title: "Picture Processing Unit"},
-    {image: "cpu.jpg", title: "Central Processing Unit"},
-    {image: "soundwaves.jpeg", title: "Audio Processing Unit"},
-    {image: "cartridges.jpeg", title: "Cartridges"}
-]
 
 export default async function ArticlePage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
     let article;
     
     try {
-        article = ARTICLES[parseInt(id)];
+        article = await getArticleById(parseInt(id));
     } catch (error) {
         return (
             <main id="articlePage">

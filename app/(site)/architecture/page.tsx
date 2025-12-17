@@ -1,16 +1,19 @@
 import { ReactElement } from "react";
 import { ArticleCard } from "@/app/_components/common";
+import { getAllArticlesRequest } from "@/app/_db/db";
+import { Article } from "@/app/_types/types";
 
 import "./page.css";
 
-const articles = [
-    {id: 0, image: "scanlines.jpeg", title: "Picture Processing Unit", tags: ["PPU", "Graphics", "Scanlines"], text: "The PPU generates a composite video signal with 240 lines of pixels, designed to be received by a television."},
-    {id: 1, image: "cpu.jpg", title: "Central Processing Unit", tags: ["CPU", "Registers"], text: "The NES CPU core is based on the 6502 processor and runs at approximately 1.79 MHz (1.66 MHz in a PAL NES)."},
-    {id: 2, image: "soundwaves.jpeg", title: "Audio Processing Unit", tags: ["APU", "Sound", "Channels"], text: "The NES APU is the audio processing unit in the NES console which generates sound for games."},
-    {id: 3, image: "cartridges.jpeg", title: "Cartridges", tags: ["Games", "Mappers"], text: "NES games come in cartridges, and inside of those cartridges are various circuits and hardware."}
-]
+export default async function ArchitecturePage(): Promise<ReactElement> {
+    let articles = [] as Article[];
+    
+    try {
+        articles = await getAllArticlesRequest();
+    } catch (error) {
+        console.log(error);
+    }
 
-export default function ArchitecturePage(): ReactElement {
     return (
         <main id="architecturePage">
             <section id="nes-introduction">
@@ -54,7 +57,10 @@ export default function ArchitecturePage(): ReactElement {
 
                 <section id="articles">
                     {
-                        articles.map(article => <ArticleCard article={article} key={article.title}/>)
+                        articles.length > 0 ? 
+                            articles?.map(article => <ArticleCard article={article} key={article.title}/>)
+                            :
+                            <h2 className="message-failure"> Could not load articles </h2>
                     }
                 </section>
             </section>

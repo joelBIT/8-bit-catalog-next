@@ -17,11 +17,11 @@ export function ArticleCard({ article }: { article: Article }): ReactElement {
 
             <section id="article-tags">
                 {
-                    article.tags.map(tag => <div className="article-tag" key={tag}> {tag} </div>)
+                    article.tags?.map(tag => <div className="article-tag" key={tag}> {tag} </div>)
                 }
             </section>
             
-            <p className="article-text"> {article.text} </p>
+            <p className="article-text"> {article.introduction} </p>
         </Link>
     )
 }
