@@ -11,7 +11,7 @@ import "./ArticleCard.css";
 export function ArticleCard({ article }: { article: Article }): ReactElement {
     return (
         <Link href={URL_ARTICLES_PAGE + "/" + article.id} className="articleCard" title={`Article about ${article.title}`}>
-            <img src={article.image} alt="Article image" className="article-image" />
+            <img src={"/articles/" + article.image} alt="Article image" className="article-image" />
 
             <h2 className="article-title"> {article.title} </h2>
 
