@@ -83,7 +83,7 @@
 
         & .nintendo-presentation__text {
             font-family: "arima", sans-serif;
-            color: var(--color-real-white);
+            color: var(--color-nintendo-gray);
             font-size: 1.3rem;
             line-height: 1.7rem;
             column-count: 2;
