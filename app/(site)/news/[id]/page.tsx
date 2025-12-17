@@ -1,6 +1,7 @@
 'use server';
 
 import { ReactElement } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { getNewsById, getTopNews } from "@/app/_db/db";
 import { URL_HOME, URL_NEWS_PAGE } from "@/app/_utils/utils";
@@ -28,7 +29,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
     return (
         <main id="newsPage">
             <section id="news-top">
-                <img src={`/news/${news.image}`} className="news-top-image" />
+                <Image src={`/news/${news.image}`} className="news-top-image" alt="News Image" width={1600} height={480} />
                 <div className="darken-image-bottom" />
 
                 <section className="news-top-content">
