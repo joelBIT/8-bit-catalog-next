@@ -1,16 +1,19 @@
 import { ReactElement } from "react";
 import { ArticleCard } from "@/app/_components/common";
+import { getAllArticlesRequest } from "@/app/_db/db";
+import { Article } from "@/app/_types/types";
 
 import "./page.css";
 
-const articles = [
-    {id: 1, image: "/articles/scanlines.jpeg", title: "Picture Processing Unit", tags: ["PPU", "Graphics", "Scanlines"], text: "The PPU generates a composite video signal with 240 lines of pixels, designed to be received by a television."},
-    {id: 2, image: "/articles/cpu.jpg", title: "Central Processing Unit", tags: ["CPU", "Registers"], text: "The NES CPU core is based on the 6502 processor and runs at approximately 1.79 MHz (1.66 MHz in a PAL NES)."},
-    {id: 3, image: "/articles/soundwaves.jpeg", title: "Audio Processing Unit", tags: ["APU", "Sound", "Channels"], text: "The NES APU is the audio processing unit in the NES console which generates sound for games."},
-    {id: 4, image: "/articles/cartridges.jpeg", title: "Cartridges", tags: ["Games", "Mappers"], text: "NES games come in cartridges, and inside of those cartridges are various circuits and hardware."}
-]
+export default async function ArchitecturePage(): Promise<ReactElement> {
+    let articles = [] as Article[];
+    
+    try {
+        articles = await getAllArticlesRequest();
+    } catch (error) {
+        console.log(error);
+    }
 
-export default function ArchitecturePage(): ReactElement {
     return (
         <main id="architecturePage">
             <section id="nes-introduction">
@@ -20,7 +23,7 @@ export default function ArchitecturePage(): ReactElement {
                 </section>
 
                 <figure className="architecture-figure">
-                    <img src="/architecture/nesconsole.png" className="architecture-image" />
+                    <img src="/architecture/nesconsole.png" className="architecture-image" alt="NES console" />
                 </figure>
             </section>
 
@@ -32,6 +35,15 @@ export default function ArchitecturePage(): ReactElement {
                     It was released in Japan on July 15, 1983, as the Family Computer (Famicom). Today, the NES is the 14th best-selling console 
                     of all time and has a thriving community.
                     The console has 1,377 licensed games globally, and the community has produced many unofficial games.
+                    <br /><br />
+                    The Nintendo Entertainment System has the following components: 2A03 CPU based on the MOS Technology 6502 8-bit microprocessor, 
+                    2C02 PPU (picture processing unit), serial input for game controllers, audio output comprising four tone generators and a delta 
+                    modulation playback device, 2 KiB of RAM for use by the CPU and 2 KiB of RAM for use by the PPU.
+                    <br /><br />
+                    The NES has two general-purpose controller ports on the front of the console, as well as a (rarely used) 48-pin expansion port 
+                    underneath. The Famicom's standard controllers are hardwired to the front of the unit, and a special 15-pin expansion port 
+                    is commonly used for third-party controllers. The AV Famicom, however, features detachable controllers using the same 
+                    ports as the NES. The NES and Famicom have a set of I/O ports used for controllers and other peripherals.
                 </p>
             </section>
 
@@ -54,7 +66,10 @@ export default function ArchitecturePage(): ReactElement {
 
                 <section id="articles">
                     {
-                        articles.map(article => <ArticleCard article={article} key={article.title}/>)
+                        articles.length > 0 ? 
+                            articles?.map(article => <ArticleCard article={article} key={article.title}/>)
+                            :
+                            <h2 className="message-failure"> Could not load articles </h2>
                     }
                 </section>
             </section>

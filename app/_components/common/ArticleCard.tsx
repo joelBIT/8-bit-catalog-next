@@ -11,17 +11,17 @@ import "./ArticleCard.css";
 export function ArticleCard({ article }: { article: Article }): ReactElement {
     return (
         <Link href={URL_ARTICLES_PAGE + "/" + article.id} className="articleCard" title={`Article about ${article.title}`}>
-            <img src={article.image} alt="Article image" className="article-image" />
+            <img src={"/articles/" + article.image} alt="Article image" className="article-image" />
 
             <h2 className="article-title"> {article.title} </h2>
 
             <section id="article-tags">
                 {
-                    article.tags.map(tag => <div className="article-tag" key={tag}> {tag} </div>)
+                    article.tags?.map(tag => <div className="article-tag" key={tag}> {tag} </div>)
                 }
             </section>
             
-            <p className="article-text"> {article.text} </p>
+            <p className="article-text"> {article.introduction} </p>
         </Link>
     )
 }

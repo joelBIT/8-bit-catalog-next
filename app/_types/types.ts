@@ -104,8 +104,15 @@ export type News = {
 
 export type Article = {
     id: number,
-    text: string,
+    introduction: string,
     title: string,
     tags: string[],
+    text: string,
+    article_contents: ArticleContent[],
     image: string
+}
+
+export type ArticleContent = {
+    heading: string,
+    text: string
 }
