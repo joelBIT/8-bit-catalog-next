@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import Image from "next/image";
 
 import "./page.css";
 
@@ -22,7 +23,7 @@ export default function ContactPage(): ReactElement {
                 </article>
 
                 <figure className="contact-figure">
-                    <img src="/contact/contact.png" alt="Contact Image" className="contact-image" />
+                    <Image src="/contact/contact.png" alt="Contact Image" className="contact-image" width={600} height={800} />
                 </figure>
             </section>
 
