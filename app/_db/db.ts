@@ -606,6 +606,7 @@ export async function getAllArticlesRequest(): Promise<Article[]> {
             title,
             tags,
             introduction,
+            text,
             image,
             article_contents (
                 heading,

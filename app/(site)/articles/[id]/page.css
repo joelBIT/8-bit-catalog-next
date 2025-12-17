@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-black);
+    padding-bottom: 3rem;
 
     & .articlePage-error {
         font-size: 3rem;
@@ -28,6 +29,7 @@
         max-height: 30rem;
         max-width: 1600px;
         position: relative;
+        margin-top: 5rem;
 
         & .article-image {
             object-fit: cover;
@@ -77,10 +79,34 @@
         }
     }
 
-    & .article-heading {
+    & .article-text {
         color: var(--color-real-white);
-        border: 1px solid var(--color-real-white);
+        font-size: 1.5rem;
+        font-weight: 100;
+        max-width: 1200px;
         padding: 1rem;
-        border-radius: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    #articlePage {
+        & #article-image {
+            & #article-title {
+                top: 2rem;
+                right: 0;
+
+                & .article-title {
+                    font-size: 2rem;
+                }
+
+                & .article-title-text {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        & .article-text {
+            font-size: 1.2rem;
+        }
     }
 }
