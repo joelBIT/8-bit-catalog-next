@@ -24,10 +24,16 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
         <main id="articlePage">
             <figure id="article-image">
                 <img src={`/articles/architecture.avif`} className="article-image" alt="Article image" />
+
+                <section id="article-title">
+                    <h2 className="article-title"> {article.title} </h2>
+                    <p className="article-title-text"> {article.introduction} </p>
+                </section>
+
                 <div className="darken-image-bottom" />
             </figure>
 
-            <h2 className="article-heading"> {article.title} </h2>
+            <h2 className="article-text"> {article.text} </h2>
         </main>
     )
 }

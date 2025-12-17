@@ -40,6 +40,33 @@
             border-top-right-radius: 9px;
         }
 
+        & #article-title {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 5rem;
+            right: 4rem;
+            max-width: 500px;
+            padding: 1rem;
+            background: #00000080;
+            border-radius: 4px;
+
+            & .article-title {
+                font-family: 'Playfair Display', sans-serif;
+                font-size: 3rem;
+                font-weight: 200;
+                color: var(--color-footer-heading);
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            & .article-title-text {
+                font-family: "arima", sans-serif;
+                color: var(--color-real-white);
+                font-size: 1.5rem;
+            }
+        }
+
         & .darken-image-bottom {
             position: absolute;
             bottom: 0;

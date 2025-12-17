@@ -107,6 +107,7 @@ export type Article = {
     introduction: string,
     title: string,
     tags: string[],
+    text: string,
     article_contents: ArticleContent[],
     image: string
 }

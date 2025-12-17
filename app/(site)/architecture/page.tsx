@@ -35,6 +35,15 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
                     It was released in Japan on July 15, 1983, as the Family Computer (Famicom). Today, the NES is the 14th best-selling console 
                     of all time and has a thriving community.
                     The console has 1,377 licensed games globally, and the community has produced many unofficial games.
+                    <br /><br />
+                    The Nintendo Entertainment System has the following components: 2A03 CPU based on the MOS Technology 6502 8-bit microprocessor, 
+                    2C02 PPU (picture processing unit), serial input for game controllers, audio output comprising four tone generators and a delta 
+                    modulation playback device, 2 KiB of RAM for use by the CPU and 2 KiB of RAM for use by the PPU.
+                    <br /><br />
+                    The NES has two general-purpose controller ports on the front of the console, as well as a (rarely used) 48-pin expansion port 
+                    underneath. The Famicom's standard controllers are hardwired to the front of the unit, and a special 15-pin expansion port 
+                    is commonly used for third-party controllers. The AV Famicom, however, features detachable controllers using the same 
+                    ports as the NES. The NES and Famicom have a set of I/O ports used for controllers and other peripherals.
                 </p>
             </section>
 
