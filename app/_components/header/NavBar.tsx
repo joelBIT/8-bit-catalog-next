@@ -109,7 +109,6 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                         <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
                             <Link 
                                 href={link.url}
-                                prefetch={link.url === URL_TIMELINE_PAGE}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                                 title={link.url !== URL_TIMELINE_PAGE ? link.title : ""}
                             >
