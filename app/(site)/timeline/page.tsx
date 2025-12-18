@@ -83,7 +83,7 @@ export default function TimelinePage(): ReactElement {
     }
 
     return (
-        <main id="aboutPage">
+        <main id="timelinePage">
             <section id="timeline-inner">
                 <section id="timeline-container">
                     {
@@ -122,7 +122,7 @@ export default function TimelinePage(): ReactElement {
                         timeline?.map(event => 
                             <article className={`timeline-text ${year === event.year ? "display-element" : "hidden-element"}`} key={event.title}>
                                 <h2 className="timeline-text__title"> {event.title} </h2>
-                                <p className="aboutPage__paragraph"> {event.text} </p>
+                                <p className="timelinePage__paragraph"> {event.text} </p>
                                 <button className="button__link" onClick={() => modalRef.current?.showModal()}> Show text </button>
                             </article>
                         )
