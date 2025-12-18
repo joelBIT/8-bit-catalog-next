@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { News } from "@/app/_types/types";
 import { URL_NEWS_PAGE } from "@/app/_utils/utils";
@@ -23,7 +24,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
 
     return (
         <section className="news-card">
-            <img src={`/news/${news.image}`} />
+            <Image src={`/news/${news.image}`} alt="News Card image" className="news-card-image" width={200} height={200} />
             <div className="darken-image-right" />
 
             <section className="news-card-text">
