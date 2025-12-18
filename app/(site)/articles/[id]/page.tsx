@@ -31,7 +31,7 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
                     src="/articles/architecture.avif"
                     className="article-image" 
                     alt="Article image" 
-                    width={1134} 
+                    width={1232} 
                     height={480} 
                     loading="eager" 
                     placeholder="blur"

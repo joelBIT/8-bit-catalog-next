@@ -81,11 +81,13 @@
 
     & .article-text {
         color: var(--color-nintendo-gray);
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 100;
         max-width: 1200px;
         padding: 1rem;
         white-space: break-spaces;
+        font-family: arima, sans-serif;
+        line-height: 1.7rem;
     }
 
     & .article-content {
@@ -106,9 +108,25 @@
 
         & .article-content__text {
             color: var(--color-nintendo-gray);
-            font-size: 1.5rem;
             border-top: 1px solid var(--color-black-light);
             white-space: break-spaces;
+            column-count: 2;
+            column-gap: 2rem;
+            font-family: arima, sans-serif;
+            font-size: 1.3rem;
+            line-height: 1.7rem;
+            padding-top: 0.4rem;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    #articlePage {
+        & .article-content {
+            & .article-content__text {
+                column-count: 1;
+                column-gap: 0;
+            }
         }
     }
 }
