@@ -1,7 +1,5 @@
 import { ReactElement } from "react";
 
-import "./loading.css";
-
 /**
  * Loading page containing a loading spinner shown in the UI while page content is loading.
  */

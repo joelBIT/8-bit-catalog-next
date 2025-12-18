@@ -613,9 +613,12 @@ textarea {
 
 
 
-/*****************************
-* Styling for Not Found Page *
-******************************/
+
+
+
+/****************************
+* Styling for not-found.tsx *
+****************************/
 
 #notFoundPage {
     background-image: url("/auth/nes-gaming-set-in-dark.webp");
@@ -650,5 +653,63 @@ textarea {
         &:hover {
             filter: brightness(1.5);
         }
+    }
+}
+
+
+
+
+/**************************
+* Styling for loading.tsx *
+**************************/
+
+#loadingPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-black);
+
+    & .loading-spinner {
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        overflow: hidden;
+
+        & .loading-spinner-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform: translateZ(0) scale(1);
+            backface-visibility: hidden;
+            transform-origin: 0 0;
+
+            & div {
+                box-sizing: content-box;
+                position: absolute;
+                animation: spinner 1s linear infinite;
+                width: 160px;
+                height: 160px;
+                top: 20px;
+                left: 20px;
+                border-radius: 50%;
+                box-shadow: 0 4px 0 0 var(--color-neon-blue);
+                transform-origin: 80px 82px;
+            }
+        }
+    }
+}
+
+@keyframes spinner {
+    0% { 
+        transform: rotate(0deg) 
+    }
+
+    50% { 
+        transform: rotate(180deg)
+    }
+
+    100% { 
+        transform: rotate(360deg)
     }
 }
