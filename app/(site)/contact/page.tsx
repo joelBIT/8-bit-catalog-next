@@ -23,7 +23,16 @@ export default function ContactPage(): ReactElement {
                 </article>
 
                 <figure className="contact-figure">
-                    <Image src="/contact/contact.png" alt="Contact Image" className="contact-image" width={600} height={800} />
+                    <Image 
+                        src="/contact/contact.png" 
+                        alt="Contact Image" 
+                        className="contact-image" 
+                        width={600} 
+                        height={626}
+                        loading="eager"
+                        placeholder="blur"
+                        blurDataURL="/contact/contact.png" 
+                    />
                 </figure>
             </section>
 
