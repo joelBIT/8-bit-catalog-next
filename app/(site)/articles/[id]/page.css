@@ -85,6 +85,31 @@
         font-weight: 100;
         max-width: 1200px;
         padding: 1rem;
+        white-space: break-spaces;
+    }
+
+    & .article-content {
+        display: flex;
+        flex-direction: column;
+        max-width: 1200px;
+        padding: 2rem 1rem;
+
+        & .article-content__heading {
+            font-family: 'Playfair Display', sans-serif;
+            color: var(--color-real-white);
+            font-size: 2rem;
+            border-bottom: 1px solid var(--color-footer-heading);
+            width: fit-content;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        & .article-content__text {
+            color: var(--color-nintendo-gray);
+            font-size: 1.5rem;
+            border-top: 1px solid var(--color-black-light);
+            white-space: break-spaces;
+        }
     }
 }
 
@@ -107,6 +132,20 @@
 
         & .article-text {
             font-size: 1.2rem;
+        }
+
+        & .article-content {
+            & .article-content__heading {
+                border-bottom: none;
+                font-size: 1.6rem;
+                text-align: center;
+                padding-bottom: 1.3rem;
+            }
+
+            & .article-content__text {
+                font-size: 1.2rem;
+                border-top: none;
+            }
         }
     }
 }

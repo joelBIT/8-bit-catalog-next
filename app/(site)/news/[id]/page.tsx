@@ -29,7 +29,17 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
     return (
         <main id="newsPage">
             <section id="news-top">
-                <Image src={`/news/${news.image}`} className="news-top-image" alt="News Image" width={1600} height={480} />
+                <Image 
+                    src={`/news/${news.image}`} 
+                    className="news-top-image" 
+                    alt="News Image" 
+                    width={1228} 
+                    height={480} 
+                    loading="eager" 
+                    placeholder="blur"
+                    blurDataURL={`/news/${news.image}`}
+                />
+
                 <div className="darken-image-bottom" />
 
                 <section className="news-top-content">

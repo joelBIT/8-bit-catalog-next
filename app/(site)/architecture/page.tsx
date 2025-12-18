@@ -24,7 +24,15 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
                 </section>
 
                 <figure className="architecture-figure">
-                    <Image src="/architecture/nesconsole.png" className="architecture-image" alt="NES console" width={640} height={640} />
+                    <Image 
+                        src="/architecture/nesconsole.png" 
+                        className="architecture-image" 
+                        alt="NES console" 
+                        width={640} 
+                        height={348} 
+                        placeholder="blur"
+                        blurDataURL="/architecture/nesconsole.png" 
+                    />
                 </figure>
             </section>
 

@@ -6,6 +6,9 @@ import { getArticleById } from "@/app/_db/db";
 
 import "./page.css";
 
+/**
+ * Article about some part of the NES architecture.
+ */
 export default async function ArticlePage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
     let article;
@@ -24,7 +27,16 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
     return (
         <main id="articlePage">
             <figure id="article-image">
-                <Image src={`/articles/architecture.avif`} className="article-image" alt="Article image" width={1600} height={480} />
+                <Image 
+                    src="/articles/architecture.avif"
+                    className="article-image" 
+                    alt="Article image" 
+                    width={1228} 
+                    height={480} 
+                    loading="eager" 
+                    placeholder="blur"
+                    blurDataURL="/articles/architecture.avif"
+                />
 
                 <section id="article-title">
                     <h2 className="article-title"> {article.title} </h2>
@@ -35,6 +47,15 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
             </figure>
 
             <h2 className="article-text"> {article.text} </h2>
+
+            {
+                article.article_contents?.map(content => 
+                    <section key={content.heading} className="article-content">
+                        <h2 className="article-content__heading"> {content.heading} </h2>
+                        <p className="article-content__text"> {content.text} </p>
+                    </section>
+                )
+            }
         </main>
     )
 }
