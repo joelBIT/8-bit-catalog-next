@@ -121,7 +121,6 @@
         }
 
         & #slide-background {
-            background-image: url("/playing.png");
             background-position: center;
             position: absolute;
             width: 100%;
