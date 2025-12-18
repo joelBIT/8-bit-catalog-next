@@ -610,3 +610,45 @@ textarea {
         }
     }
 }
+
+
+
+/*****************************
+* Styling for Not Found Page *
+******************************/
+
+#notFoundPage {
+    background-image: url("/auth/nes-gaming-set-in-dark.webp");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    & .not-found__title {
+        font-family: "iceland", sans-serif;
+        font-size: 4rem;
+        backdrop-filter: brightness(0.3);
+        border-radius: 9px;
+        padding: 0.5rem 1rem;
+        color: var(--color-footer-heading);
+    }
+
+    & .not-found__text {
+        font-size: 2rem;
+        backdrop-filter: brightness(0.3);
+        border-radius: 9px;
+        padding: 0.5rem 1rem;
+        color: var(--color-real-white);
+    }
+
+    & .not-found__link {
+        padding: 1rem;
+        backdrop-filter: brightness(0.3);
+        border-radius: 25px;
+
+        &:hover {
+            filter: brightness(1.5);
+        }
+    }
+}
