@@ -157,7 +157,8 @@
                 border-bottom: none;
                 font-size: 1.6rem;
                 text-align: center;
-                padding-bottom: 1.3rem;
+                padding-bottom: 1rem;
+                align-self: center;
             }
 
             & .article-content__text {
