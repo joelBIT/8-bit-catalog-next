@@ -34,16 +34,17 @@ export function SelectCountry({ selected }: { selected: string }): ReactElement 
     }
 
     return (
-        <section className="information-input">
-            <label className="input-label">
+        <section id="selectCountry" className="information-input">
+            <label className="input-label" htmlFor="country">
                 Country or Region
             </label>
 
             <select 
-                id="selectCountry" 
+                id="country" 
                 name="country" 
                 value={selectedCountry?.value ? selectedCountry?.value : selected}
                 onChange={selectCountry} 
+                autoComplete="off"
                 className="input-field"
             >
                 

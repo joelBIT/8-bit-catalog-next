@@ -1,4 +1,6 @@
 #selectCountry {
-    font-family: "arima", sans-serif;
-    padding-left: 12px;
+    & #country {
+        font-family: "arima", sans-serif;
+        padding-left: 12px;
+    }
 }

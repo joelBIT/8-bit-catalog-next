@@ -145,7 +145,7 @@ export function RegisterForm(): ReactElement {
                         </label>
 
                         <input 
-                            id="fullName"
+                            id="full_name"
                             name="full_name"
                             value={fullName}
                             onChange={e => setFullName(e.target.value)} 
@@ -195,7 +195,7 @@ export function RegisterForm(): ReactElement {
                                 Phone number
                             </label>
 
-                            <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone', autoComplete: "none"}} />
+                            <PhoneInput country={state.success ? "se" : undefined} inputProps={{id: 'phone', name: 'phone', autoComplete: "none"}} />
                         </section>
                     </section>
                 </section>
