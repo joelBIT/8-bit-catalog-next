@@ -129,8 +129,11 @@
             z-index: 120;
 
             & .navbar__list-element {
-                & .navbar__list-element-title {
-                    margin-left: 1rem;
+                & .navbar__list-element-link {
+                    & .navbar__list-element-title {
+                        font-size: 2rem;
+                        margin-left: 1rem;
+                    }
                 }
 
                 & .wideScreen {

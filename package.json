@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "jest",
     "email": "email dev --dir components/email"
   },
   "dependencies": {
@@ -16,7 +17,7 @@
     "@react-email/components": "^1.0.1",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.46.1",
-    "next": "16.0.7",
+    "next": "^16.0.10",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-phone-input-2": "^2.15.1",
@@ -25,10 +26,16 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "eslint": "^8",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "react-email": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5"

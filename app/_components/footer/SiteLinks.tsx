@@ -13,6 +13,7 @@ export function SiteLinks(): ReactElement {
     return (
         <section id="siteLinks">
             <h4 className="siteLinks-heading"> Site </h4>
+            
             <section id="links">
                 <Link href={URL_ARCHITECTURE_PAGE} className={pathname === URL_ARCHITECTURE_PAGE ? "active" : ""}> Architecture </Link>
                 <Link href={URL_CONTACT_PAGE} className={pathname === URL_CONTACT_PAGE ? "active" : ""}> Contact </Link>
