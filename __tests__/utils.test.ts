@@ -18,5 +18,5 @@ test('Convert numbers to corresponding months', () => {
 
 test('The All option should be added to supplied list if not already in the list', () => {
     expect(addAllOption(["Action, Adventure"])).toContain(ALL_OPTION_VALUE);
-    expect(addAllOption(["Action, Adventure", ALL_OPTION_VALUE])).toEqual(["Action, Adventure", ALL_OPTION_VALUE]);
+    expect(addAllOption(["Action, Adventure", ALL_OPTION_VALUE])).toStrictEqual(["Action, Adventure", ALL_OPTION_VALUE]);
 })
