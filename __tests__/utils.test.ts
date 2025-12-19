@@ -1,8 +1,4 @@
-/**
- * @jest-environment jsdom
- */
-
-import { getMonthText } from "@/app/_utils/utils";
+import { addAllOption, ALL_OPTION_VALUE, getMonthText } from "@/app/_utils/utils";
 
 test('Convert numbers to corresponding months', () => {
     expect(getMonthText(0)).toBe("January");
@@ -18,4 +14,8 @@ test('Convert numbers to corresponding months', () => {
     expect(getMonthText(10)).toBe("November");
     expect(getMonthText(11)).toBe("December");
     expect(getMonthText(12)).toBe("");
+});
+
+test('The All option should be added to list', () => {
+    expect(addAllOption(["Action, Adventure"])).toContain(ALL_OPTION_VALUE);
 })
