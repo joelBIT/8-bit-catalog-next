@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { useAccount } from "@/app/_hooks";
-import { imageTypes } from "@/app/_utils/utils";
+import { fileTypes } from "@/app/_utils/utils";
 import { updateProfileImage } from "@/app/_actions/account";
 
 import "./EditProfileForm.css";
@@ -34,7 +34,7 @@ export function EditProfileForm(): ReactElement {
 
                     <section className="edit-profile__change-image"> 
                         <h1> Change profile image </h1> 
-                        <input name="profileImage" className="edit-profile__input" type="file" accept={imageTypes.toString()} />
+                        <input name="profileImage" className="edit-profile__input" type="file" accept={fileTypes.toString()} />
                     </section>
                 </section>
 

@@ -88,22 +88,6 @@ export function isLocalStorageAvailable(): boolean {
 }
 
 /**
- * These are the allowed image types for profile images.
- */
-export const imageTypes = [
-    'image/apng',
-    'image/bmp',
-    'image/gif',
-    'image/jpeg',
-    'image/pjpeg',
-    'image/png',
-    'image/svg+xml',
-    'image/tiff',
-    'image/webp',
-    `image/x-icon`
-];
-
-/**
  * Converts the supplied month (number) into the corresponding month as a text representation.
  */
 export function getMonthText(month: number): string {
