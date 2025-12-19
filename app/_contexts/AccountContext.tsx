@@ -6,7 +6,7 @@ import { getUserFromSession } from "@/app/_session/utils";
 
 export interface AccountContextProvider {
     user: User;
-    addUser: () => Promise<void>
+    addUser: () => Promise<void>;
 }
 
 export const AccountContext = createContext<AccountContextProvider>({} as AccountContextProvider);

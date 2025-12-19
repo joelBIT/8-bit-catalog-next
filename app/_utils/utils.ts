@@ -120,3 +120,14 @@ export function getMonthText(month: number): string {
             return "";
     }
 }
+
+/**
+ * Text should not be longer than 'maxLength' characters. If it is, replace the remaining characters with three dots.
+ */
+export function adjustTextLength(text: string, maxLength: number): string {
+    if (text.length > maxLength) {
+        return text.slice(0, maxLength) + "...";
+    }
+
+    return text;
+}
