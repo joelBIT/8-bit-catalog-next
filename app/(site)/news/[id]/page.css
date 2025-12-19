@@ -76,7 +76,7 @@
 
     & #news-bottom {
         display: flex;
-        max-width: 1800px;
+        max-width: 1600px;
         width: 100%;
 
         & #news-text {
