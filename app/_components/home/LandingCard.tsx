@@ -5,7 +5,7 @@ import "./LandingCard.css";
 export function LandingCard({heading, text}: {heading: string, text: string}): ReactElement {
     return (
         <section className="landingCard">
-            <h2 className="landingCard-heading iceland-regular">
+            <h2 className="landingCard-heading">
                 {heading}
             </h2>
 
