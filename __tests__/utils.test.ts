@@ -21,6 +21,7 @@ test('The All option should be added to supplied list if not already in the list
     expect(addAllOption(["Action, Adventure", ALL_OPTION_VALUE])).toStrictEqual(["Action, Adventure", ALL_OPTION_VALUE]);
 });
 
-test('Shorten text to supplied number of characters and add three dots in the end', () => {
+test('Shorten text to supplied number of characters and add three dots in the end if text is longer', () => {
     expect(adjustTextLength("Testing if text is shortened with three dots added.", 7)).toStrictEqual("Testing...");
+    expect(adjustTextLength("Testing if text is without three dots added.", 70)).toStrictEqual("Testing if text is without three dots added.");
 })
