@@ -56,7 +56,7 @@ export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
 
     return (
         <>
-            <SuggestionList options={titles} click={openGameModal} />
+            <SuggestionList options={titles} setGameTitle={openGameModal} />
 
             { message.length > 0 ? <h2 className="message-failure"> {message} </h2> : <></> }
 

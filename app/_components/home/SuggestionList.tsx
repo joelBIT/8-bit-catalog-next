@@ -7,11 +7,11 @@ import "./SuggestionList.css";
 /**
  * Show suggestions of game titles and return selected game title when clicked.
  */
-export function SuggestionList({ options, click }: { options: string[], click: (title: string) => void }): ReactElement {
+export function SuggestionList({ options, setGameTitle }: { options: string[], setGameTitle: (title: string) => void }): ReactElement {
     const searchRef = useRef<HTMLInputElement>(null);
 
     function selectGame(): void {
-        click(searchRef.current?.value ?? "");
+        setGameTitle(searchRef.current?.value ?? "");
     }
 
     return (
