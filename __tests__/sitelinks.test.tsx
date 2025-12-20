@@ -4,7 +4,7 @@ import { URL_ARCHITECTURE_PAGE, URL_CONTACT_PAGE, URL_FAQ_PAGE, URL_RESOURCES_PA
 import { SiteLinks } from '@/app/_components/footer';
 
 describe('Site Links', () => {
-    it('renders site links in footer and check if the links are in ascending order', () => {
+    it('renders site links in footer and checks if the links are in ascending order', () => {
         render(<SiteLinks />)
   
         const links = screen.getAllByRole('link');
