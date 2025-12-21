@@ -44,17 +44,25 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
         };
     }, []);
 
-    
+    /**
+     * Keep track of vertical scroll in order to increase/decrease header opacity.
+     */
     function trackVerticalScroll(): void {
         setScrollPosition(window.scrollY);
     }
 
+    /**
+     * Log out and update header to only show navbar links that are available to unauthenticated users.
+     */
     async function logout(): Promise<void> {
         signOut();
         setIsChecked(false);
         router.refresh();
     }
 
+    /**
+     * Close Hamburger menu when choosing a menu alternative.
+     */
     function closeMenu(): void  {
         setIsChecked(!isChecked);
     }
