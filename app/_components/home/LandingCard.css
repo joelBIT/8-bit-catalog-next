@@ -20,10 +20,11 @@
         font-style: italic;
         color: var(--color-footer-heading);
         position: absolute;
-        top: -23px;
-        left: 0;
+        top: -16px;
+        transform: skewY(6deg);
+        right: 0;
+        left: auto;
         width: fit-content;
-        transform: skewY(-6deg);
         -webkit-text-stroke-width: 3px;
         -webkit-text-stroke-color: var(--color-list-border);
         text-shadow: 3px 3px 2px #000, -3px 3px 2px #000, -3px -3px 0 #000, 3px -3px 0 #000;
@@ -45,5 +46,6 @@
 @media (max-width: 500px) {
     .landingCard {
         max-width: 90vw;
+        align-self: flex-start;
     }
 }
