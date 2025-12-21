@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { LandingCard } from '@/app/_components/home';
+import { VisionCard } from '@/app/_components/home';
 
-describe('LandingCard', () => {
-    it('should render heading and text in LandingCard', () => {
-        render(<LandingCard heading='Vision' text='This is the vision of the project'  />)
+describe('VisionCard', () => {
+    it('should render heading and text in VisionCard', () => {
+        render(<VisionCard heading='Vision' text='This is the vision of the project'  />)
   
         const heading = screen.getByRole('heading', {name: 'Vision'});
         expect(heading).toBeInTheDocument();
