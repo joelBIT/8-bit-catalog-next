@@ -1,0 +1,31 @@
+name: Run Jest tests and generate badges
+
+on: [push]
+
+jobs:
+  my-workflow:
+    name: 📣 Generate cool badges
+    runs-on: ubuntu-latest
+
+    env:
+      SUPABASE_URL: ${{secrets.SUPABASE_URL}}
+      SUPABASE_KEY: ${{secrets.SUPABASE_KEY}}
+      NEXT_PUBLIC_COVER: ${{secrets.NEXT_PUBLIC_COVER}}
+
+    steps:
+
+    # Necessary to push the generated badges to the repo
+    - name: ⬇️ Checkout repo
+      uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+    # ...
+
+    # Necessary to generate the coverage report.
+    # Make sure to add 'json-summary' to the coverageReporters in jest options
+    - name: 🔍 Tests
+      run: npm test-ci
+
+    - name: ⚙️ Generating coverage badges
+      uses: jpb06/coverage-badges-action@latest
+      with:
+        branches: master,preprod,staging
