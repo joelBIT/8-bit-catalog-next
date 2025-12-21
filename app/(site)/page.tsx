@@ -2,7 +2,7 @@
 
 import { type ReactElement } from "react";
 import Link from "next/link";
-import { LandingCard, LandingSelection, TitleSearch } from "@/app/_components/home";
+import { LandingCard, TopicSelection, TitleSearch } from "@/app/_components/home";
 import { Newsletter } from "../_components/common";
 import { getAllNews, getAllTitles } from "@/app/_db/db";
 import { URL_REGISTER_PAGE } from "../_utils/utils";
@@ -50,7 +50,7 @@ export default async function Home(): Promise<ReactElement> {
             </section>
 
             <section id="secondSection">
-                <LandingSelection news={await getAllNews()} />
+                <TopicSelection news={await getAllNews()} />
             </section>
 
             <Newsletter />

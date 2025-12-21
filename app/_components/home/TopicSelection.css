@@ -1,4 +1,4 @@
-#landingSelection {
+#topicSelection {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -6,17 +6,17 @@
     border-radius: 14px;
     padding: 1rem;
 
-    & #landing-selection-top {
+    & #topic-selection-top {
         display: flex;
         gap: 6rem;
         padding-bottom: 3rem;
 
-        & #landing-selection-list {
+        & #topic-selection-list {
             display: flex;
             flex-direction: column;
             padding-left: 0.5rem;
 
-            & .landing-selection-list__item {
+            & .topic-selection-list__item {
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
@@ -60,7 +60,7 @@
             }
         }
 
-        & #landing-selection-text {
+        & #topic-selection-text {
             align-content: center;
             font-family: "arima", sans-serif;
             font-size: 1.3rem;
@@ -110,21 +110,21 @@
 }
 
 @media (max-width: 1100px) {
-    #landingSelection {
-        & #landing-selection-top {
+    #topicSelection {
+        & #topic-selection-top {
             gap: 5rem;
         }
     }
 }
 
 @media (max-width: 1000px) {
-    #landingSelection {
-        & #landing-selection-top {
+    #topicSelection {
+        & #topic-selection-top {
             flex-direction: column;
             gap: 0;
             padding-bottom: 0;
 
-            & #landing-selection-text {
+            & #topic-selection-text {
                 align-content: flex-start;
                 padding-top: 1rem;
                 margin-top: 1rem;
@@ -142,11 +142,11 @@
 }
 
 @media (max-width: 500px) {
-    #landingSelection {
+    #topicSelection {
         padding: 0;
 
-        & #landing-selection-top {
-            & #landing-selection-text {
+        & #topic-selection-top {
+            & #topic-selection-text {
                 padding-right: 0.5rem;
                 padding-left: 0.5rem;
                 margin-right: 1rem;
@@ -154,8 +154,8 @@
                 min-height: 14rem;
             }
 
-            & #landing-selection-list {
-                & .landing-selection-list__item {
+            & #topic-selection-list {
+                & .topic-selection-list__item {
                     & .item-title {
                         font-size: 2rem;
                     }

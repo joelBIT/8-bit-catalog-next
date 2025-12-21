@@ -3,9 +3,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { SuggestionList } from '@/app/_components/home';
 
 const mockSetGameTitle = jest.fn();
-const optionList = ["Mega Man 2", "Battletoads", "Castlevania"];
 
 describe('Suggestion List', () => {
+    const optionList = ["Mega Man 2", "Battletoads", "Castlevania"];
 
     describe('Render', () => {
         it('should render the supplied game titles', () => {

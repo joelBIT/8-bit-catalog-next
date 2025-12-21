@@ -4,9 +4,12 @@ import { ReactElement, useState } from "react";
 import { NewsCard } from ".";
 import { News } from "@/app/_types/types";
 
-import "./LandingSelection.css";
+import "./TopicSelection.css";
 
-export function LandingSelection({news}: {news: News[]}): ReactElement {
+/**
+ * Choose which topic to show information about.
+ */
+export function TopicSelection({news}: {news: News[]}): ReactElement {
     const [active, setActive] = useState<number>(0);
 
     const text = [
@@ -16,11 +19,11 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
     ]
     
     return (
-        <section id="landingSelection">
-            <section id="landing-selection-top">
-                <ul id="landing-selection-list">
+        <section id="topicSelection">
+            <section id="topic-selection-top">
+                <ul id="topic-selection-list">
                     <li 
-                        className={active === 0 ? "landing-selection-list__item active" : "landing-selection-list__item"} 
+                        className={active === 0 ? "topic-selection-list__item active" : "topic-selection-list__item"} 
                         onClick={() => setActive(0)}
                     > 
                         {active === 0 ? <h3 className="item-arrow"> &#10148; </h3> : <></>}
@@ -28,7 +31,7 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
                     </li>
 
                     <li 
-                        className={active === 1 ? "landing-selection-list__item active" : "landing-selection-list__item"} 
+                        className={active === 1 ? "topic-selection-list__item active" : "topic-selection-list__item"} 
                         onClick={() => setActive(1)}
                     > 
                         {active === 1 ? <h3 className="item-arrow"> &#10148; </h3> : <></>}
@@ -36,7 +39,7 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
                     </li>
 
                     <li 
-                        className={active === 2 ? "landing-selection-list__item active" : "landing-selection-list__item"} 
+                        className={active === 2 ? "topic-selection-list__item active" : "topic-selection-list__item"} 
                         onClick={() => setActive(2)}
                     > 
                         {active === 2 ? <h3 className="item-arrow"> &#10148; </h3> : <></>}
@@ -44,7 +47,7 @@ export function LandingSelection({news}: {news: News[]}): ReactElement {
                     </li>
                 </ul>
                 
-                <p id="landing-selection-text"> 
+                <p id="topic-selection-text"> 
                     { text[active] }
                 </p>
             </section>
