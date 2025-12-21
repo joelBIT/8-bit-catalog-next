@@ -23,7 +23,7 @@ describe('Suggestion List', () => {
             const button = screen.getByRole('button');
             expect(button).toBeInTheDocument();
         });
-    })
+    });
 
     describe('Behavior', () => {
         it('should call setGameTitle when button is clicked', () => {
@@ -33,5 +33,15 @@ describe('Suggestion List', () => {
             fireEvent(button, new MouseEvent('click', {bubbles: true, cancelable: true}));
             expect(mockSetGameTitle).toHaveBeenCalledTimes(1)
         });
-    })
+
+        it('should call setGameTitle with the selected game title as argument', () => {
+            render(<SuggestionList options={optionList} setGameTitle={mockSetGameTitle} />)
+  
+            const input = screen.getByPlaceholderText('Game Title');
+            fireEvent.change(input, {target: {value: optionList[1]}});
+            const button = screen.getByRole('button');
+            fireEvent(button, new MouseEvent('click', {bubbles: true, cancelable: true}));
+            expect(mockSetGameTitle.mock.calls[0][0]).toBe(optionList[1]);
+        });
+    });
 });

@@ -18,6 +18,7 @@ export function SuggestionList({ options, setGameTitle }: { options: string[], s
         <section id="suggestion-search">
             <input
                 id="gameSearch"
+                name="gameSearch"
                 type="text"
                 list="suggestions"
                 ref={searchRef}
