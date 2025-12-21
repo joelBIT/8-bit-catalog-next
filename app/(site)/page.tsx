@@ -2,7 +2,7 @@
 
 import { type ReactElement } from "react";
 import Link from "next/link";
-import { VisionCard, TopicSelection, TitleSearch } from "@/app/_components/home";
+import { TopicSelection, TitleSearch } from "@/app/_components/home";
 import { Newsletter } from "../_components/common";
 import { getAllNews, getAllTitles } from "@/app/_db/db";
 import { URL_REGISTER_PAGE } from "../_utils/utils";
@@ -18,7 +18,15 @@ export default async function Home(): Promise<ReactElement> {
         <main id="landingPage">
             <section id="firstSection">
                 <section id="catalogDescription">
-                    <VisionCard heading="Vision" text="A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts."/>
+                    <section className="visionCard">
+                        <h2 className="visionCard-heading">
+                            Vision
+                        </h2>
+
+                        <p className="visionCard-text">
+                            A place for all things related to the Nintendo Entertainment System, where it is possible to connect with other 8-bit enthusiasts.
+                        </p>
+                    </section>
                     
                     <section className="landing-title">
                         <h2 className="landing-heading"> 
