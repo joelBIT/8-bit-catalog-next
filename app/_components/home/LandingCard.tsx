@@ -9,9 +9,9 @@ export function LandingCard({heading, text}: {heading: string, text: string}): R
                 {heading}
             </h2>
 
-            <h3 className="landingCard-text">
+            <p className="landingCard-text">
                 {text}
-            </h3>
+            </p>
         </section>
     )
 }
