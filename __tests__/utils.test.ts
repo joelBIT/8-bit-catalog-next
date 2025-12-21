@@ -1,6 +1,6 @@
 import { addAllOption, adjustTextLength, ALL_OPTION_VALUE, getMonthText } from "@/app/_utils/utils";
 
-test('Convert numbers to corresponding months', () => {
+test('should convert numbers to corresponding months', () => {
     expect(getMonthText(0)).toBe("January");
     expect(getMonthText(1)).toBe("February");
     expect(getMonthText(2)).toBe("March");
@@ -16,12 +16,12 @@ test('Convert numbers to corresponding months', () => {
     expect(getMonthText(12)).toBe("");
 });
 
-test('The All option should be added to supplied list if not already in the list', () => {
+test('should add the All option to the supplied list if not already in the list', () => {
     expect(addAllOption(["Action, Adventure"])).toContain(ALL_OPTION_VALUE);
     expect(addAllOption(["Action, Adventure", ALL_OPTION_VALUE])).toStrictEqual(["Action, Adventure", ALL_OPTION_VALUE]);
 });
 
-test('Shorten text to supplied number of characters and add three dots in the end if text is longer', () => {
+test('should shorten text to supplied number of characters and add three dots in the end if text is longer', () => {
     expect(adjustTextLength("Testing if text is shortened with three dots added.", 7)).toStrictEqual("Testing...");
     expect(adjustTextLength("Testing if text is without three dots added.", 70)).toStrictEqual("Testing if text is without three dots added.");
 })

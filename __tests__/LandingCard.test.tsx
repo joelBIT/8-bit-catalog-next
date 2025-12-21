@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { LandingCard } from '@/app/_components/home';
 
 describe('LandingCard', () => {
-    it('renders heading and text in LandingCard', () => {
+    it('should render heading and text in LandingCard', () => {
         render(<LandingCard heading='Vision' text='This is the vision of the project'  />)
   
         const heading = screen.getByRole('heading', {name: 'Vision'});

@@ -17,7 +17,7 @@ jest.mock("next/navigation", () => ({
 }));
 
 describe('NavBar', () => {
-    it('renders navbar links in header when user is not logged in and check if the links are the unauthenticated links', () => {
+    it('should render specific links in navbar when user is not authenticated', () => {
         render(<NavBar authenticated={false} />)
   
         const links = screen.getAllByRole('link');
@@ -28,7 +28,7 @@ describe('NavBar', () => {
         expect(links[4]).toHaveAttribute('href', URL_LOGIN_PAGE);
     });
 
-    it('renders navbar links in header when user is logged in and check if the links are the authenticated links', () => {
+    it('should render specific links in navbar when user is authenticated', () => {
         render(<NavBar authenticated={true} />)
   
         const links = screen.getAllByRole('link');
