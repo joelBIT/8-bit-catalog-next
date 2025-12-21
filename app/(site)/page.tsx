@@ -29,7 +29,9 @@ export default async function Home(): Promise<ReactElement> {
                     </section>
 
                     <p className="landing-title-text">
-                        This catalog is continuously updated with new information and functionality. Become a member to connect with other 8-bit enthusiasts.
+                        This catalog is continuously updated with new information and functionality. 
+                        Become a member to connect with other 8-bit enthusiasts.
+                        Test the catalog by entering a game title and clicking view.
                     </p>
                 </section>
 
