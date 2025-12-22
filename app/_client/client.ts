@@ -1,4 +1,4 @@
-import { FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News, Filter } from '@/app/_types/types';
+import { FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News, Filter, Profile } from '@/app/_types/types';
 
 
 /********************************************************************************************
@@ -37,6 +37,23 @@ export async function getUsers(): Promise<User[]> {
     }
 
     return [];
+}
+
+/**
+ * Retrieve profile for supplied user ID.
+ */
+export async function getProfileByUserIdRequest(user_id: number): Promise<Profile> {
+    try {
+        const response = await fetch(`/api/profile?user_id=${user_id}`);
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+
+    throw new Error(`Could not find profile for user id ${user_id}`);
 }
 
 /**

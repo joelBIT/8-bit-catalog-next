@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News, Article } from '@/app/_types/types';
+import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News, Article, Profile } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 
 const databaseClient = createClient(databaseURL(), databaseKey());
@@ -24,6 +24,7 @@ const FILTERS_TABLE = "filters";
 const GAMES_TABLE = "games";
 const NEWS_TABLE = "news";
 const NEWSLETTER_TABLE = "newsletter";
+const PROFILES_TABLE = "profiles";
 const SESSION_TABLE = "sessions";
 const TIMELINE_TABLE = "timeline";
 const USERS_TABLE = "users";
@@ -190,7 +191,7 @@ export async function updateDeveloperFilter(values: string[]): Promise<void> {
  * USERS *
  *********/
 
-const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name, email, bio, image, username, country, phone, full_name, city, address, birth_date";
+const USER_COLUMNS = "id, created_at, password_hash, role, email, username";
 
 /**
  * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
@@ -293,7 +294,7 @@ export async function updateUsername(id: number, username: string): Promise<void
 
 // Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
 async function updateUserImage(id: number, image: string): Promise<void> {
-    const { error } = await databaseClient.from(USERS_TABLE).update({image}).eq('id', id);
+    const { error } = await databaseClient.from(PROFILES_TABLE).update({image}).eq('user_id', id);
     if (error) {
         console.log(error);
         throw error;
@@ -339,6 +340,26 @@ export async function isCurrentPassword(email: string, password_hash: string): P
 
     return data.password_hash === password_hash;
 }
+
+
+
+
+
+
+/************
+ * PROFILES *
+ ***********/
+
+export async function getProfileByUserId(user_id: number): Promise<Profile> {
+    const { data, error } = await databaseClient.from(PROFILES_TABLE).select().eq('id', user_id).single();
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+    return data;
+}
+
+
 
 
 
@@ -524,7 +545,7 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
 
 
 /*********************
- * News & Newsletter *
+ * NEWS & NEWSLETTER *
  ********************/
 
 export async function getAllNews(): Promise<News[]> {
