@@ -1,9 +1,10 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import Image from "next/image";
-import { User } from "@/app/_types/types";
+import { Profile, User } from "@/app/_types/types";
 import { getMonthText } from "@/app/_utils/utils";
+import { getProfileByUserIdRequest } from "@/app/_client/client";
 
 import "./UserListEntry.css";
 
@@ -13,7 +14,21 @@ import "./UserListEntry.css";
  */
 export function UserListEntry({ user, active, click } : { user: User, active: boolean, click: (user: User) => void }): ReactElement {
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [profile, setProfile] = useState<Profile>();
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
+
+    useEffect(() => {
+        getProfile();
+    }, [])
+
+    async function getProfile(): Promise<void> {
+        try {
+            const profile = await getProfileByUserIdRequest(user.id);
+            setProfile(profile);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function convertDate(date: Date): string {
         return `${getMonthText(date.getMonth())} ${date.getUTCDate()}, ${date.getFullYear()}`;
@@ -22,7 +37,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
     return (
         <li className="userListEntry" key={user.id}>
             <Image
-                src={STORAGE_URL + user?.image}
+                src={STORAGE_URL + profile?.image}
                 unoptimized
                 className="listEntry-figure__cover"
                 onMouseEnter={() => setShowModal(true)}
@@ -35,7 +50,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
 
             <section className={showModal ? "image-modal-show" : "hidden"}>
                 <Image
-                    src={STORAGE_URL + user?.image}
+                    src={STORAGE_URL + profile?.image}
                     unoptimized
                     className="listEntry-figure__cover"
                     alt="Member profile image"
@@ -52,7 +67,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
 
             <section className="name-section">
                 <h2 className="userCard-name__heading"> Name </h2>
-                <h2 className="userCard-name"> {`${user.first_name} ${user.last_name}`} </h2>
+                <h2 className="userCard-name"> {`${profile?.first_name} ${profile?.last_name}`} </h2>
             </section>
 
             <section className="role-section">
