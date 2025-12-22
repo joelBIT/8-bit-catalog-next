@@ -1,3 +1,4 @@
+export * from "./EditAddressForm";
 export * from "./EditEmailForm";
 export * from "./EditFilterForm";
 export * from "./EditPasswordForm";

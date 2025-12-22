@@ -1,4 +1,4 @@
-import { FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News, Filter, Profile } from '@/app/_types/types';
+import { FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News, Filter, Profile, Address } from '@/app/_types/types';
 
 
 /********************************************************************************************
@@ -54,6 +54,20 @@ export async function getProfileByUserIdRequest(user_id: number): Promise<Profil
     }
 
     throw new Error(`Could not find profile for user id ${user_id}`);
+}
+
+export async function getAddressByUserIdRequest(user_id: number): Promise<Address> {
+    try {
+        const response = await fetch(`/api/address?user_id=${user_id}`);
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+
+    throw new Error(`Could not find address for user id ${user_id}`);
 }
 
 /**

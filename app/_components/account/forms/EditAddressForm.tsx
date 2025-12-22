@@ -4,15 +4,16 @@ import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
 import { updateUserAddress } from "@/app/_actions/account";
 import { SelectCountry } from "../../common";
+import { ActionState, Address } from "@/app/_types/types";
 
 import "./EditAddressForm.css";
 
-const initialState = { 
-    message: '', success: false, zip_code: '', country: '', city: '', street: '' 
+const initialState: ActionState & Address = { 
+    message: '', success: false, zip_code: '', country: '', city: '', street: '', user_id: 0
 }
 
 export function EditAddressForm(): ReactElement {
-    const { user } = useAccount();
+    const { user, address } = useAccount();
     const [state, formAction] = useActionState(updateUserAddress.bind(null, user.id), initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
@@ -28,7 +29,7 @@ export function EditAddressForm(): ReactElement {
     return (
         <>
             <form id="userAddressForm" action={formAction}>
-                <SelectCountry selected={state.country ? state.country : user.country} />
+                <SelectCountry selected={state.country ? state.country : address.country} />
 
                 <section className="information-input">
                     <label className="input-label" htmlFor="zip_code">
@@ -39,7 +40,7 @@ export function EditAddressForm(): ReactElement {
                         id="zip_code"
                         name="zip_code" 
                         type="text"
-                        defaultValue={state.zip_code ? state.zip_code : user?.zip_code} 
+                        defaultValue={state.zip_code ? state.zip_code : address?.zip_code} 
                         className="input-field"
                         autoComplete="none"
                     />
@@ -54,7 +55,7 @@ export function EditAddressForm(): ReactElement {
                         id="city"
                         name="city" 
                         type="text"
-                        defaultValue={state.city ? state.city : user?.city} 
+                        defaultValue={state.city ? state.city : address?.city} 
                         className="input-field"
                         autoComplete="none"
                     />

@@ -1,13 +1,14 @@
 'use client';
 
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
-import { Profile, User } from "@/app/_types/types";
+import { Address, Profile, User } from "@/app/_types/types";
 import { getUserFromSession } from "@/app/_session/utils";
-import { getProfileByUserIdRequest } from "../_client/client";
+import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "../_client/client";
 
 export interface AccountContextProvider {
     user: User;
     profile: Profile;
+    address: Address;
     addUser: () => Promise<void>;
 }
 
@@ -19,6 +20,7 @@ export const AccountContext = createContext<AccountContextProvider>({} as Accoun
 export function AccountProvider({ children }: { children: ReactNode }): ReactElement {
     const [user, setUser] = useState<User>({} as User);
     const [profile, setProfile] = useState<Profile>({} as Profile);
+    const [address, setAddress] = useState<Address>({} as Address);
 
     useEffect(() => {
         addUser();
@@ -31,6 +33,8 @@ export function AccountProvider({ children }: { children: ReactNode }): ReactEle
             try {
                 const profile = await getProfileByUserIdRequest(authenticatedUser.id);
                 setProfile(profile);
+                const address = await getAddressByUserIdRequest(authenticatedUser.id);
+                setAddress(address);
             } catch (error) {
                 console.log(error);
             }
@@ -38,7 +42,7 @@ export function AccountProvider({ children }: { children: ReactNode }): ReactEle
     }
 
     return (
-        <AccountContext.Provider value={{ user, addUser, profile }}>
+        <AccountContext.Provider value={{ user, addUser, profile, address }}>
             { children }
         </AccountContext.Provider>
     );
