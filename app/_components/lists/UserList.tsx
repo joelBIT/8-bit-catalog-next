@@ -56,7 +56,7 @@ export function UserList({ users }: { users: User[] }): ReactElement {
                 }
             </section>
 
-            { openModal && Object.keys(selectedUser).length > 0 ? <UserModal user={selectedUser} close={() => closeUserModal()} /> : <></> }
+            { openModal && Object.keys(selectedUser).length > 0 ? <UserModal user_id={selectedUser.id} close={() => closeUserModal()} /> : <></> }
 
             { currentUsers.length > 0 ? currentUsers.map(user => <UserListEntry user={user} active={true} key={user.id} click={openUserModal} />) : <></> }
         </ul>
