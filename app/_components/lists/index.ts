@@ -4,5 +4,3 @@ export * from "./GameList";
 export * from "./GameListEntry";
 export * from "./NewsList";
 export * from "./SlidingToggle";
-export * from "./UserList";
-export * from "./UserListEntry";

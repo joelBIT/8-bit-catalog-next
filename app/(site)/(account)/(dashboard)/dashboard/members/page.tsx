@@ -6,7 +6,7 @@ import { User } from "@/app/_types/types";
 import { getUsers } from "@/app/_client/client";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
 import { AddUserModal } from "@/app/_components/account/modals";
-import { UserList } from "@/app/_components/lists";
+import { UserList } from "@/app/_components/account/lists";
 
 import "./page.css";
 
