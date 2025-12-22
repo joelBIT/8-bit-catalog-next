@@ -29,20 +29,29 @@ export type Session = {
     token_value: string
 }
 
+export type Address = {
+    user_id: number,
+    street: string,
+    city: string,
+    country: string,
+    zip_code: string
+}
+
 export type User = {
     id: number,
     email: string,
     created_at: Date,
+    username: string,
+    password_hash: string,
+    role: string
+}
+
+export type Profile = {
+    user_id: number,
     last_name: string,
     first_name: string,
     full_name: string,
-    username: string,
-    password_hash: string,
     birth_date: string,
-    city: string,
-    address: string,
-    country: string,
-    role: string,
     image: string,
     bio: string
 }
@@ -51,7 +60,9 @@ export type Account = {
     id: number,
     user_id: number,
     activated: boolean,
-    activation_code: string
+    activation_code: string,
+    last_login: string,
+    failed_login_attemps: number
 }
 
 export type FrequentlyAskedQuestion = {

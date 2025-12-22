@@ -16,7 +16,7 @@ function databaseKey() {
 const PROFILE_IMAGES_STORAGE = "catalog";
 const COVERS_STORAGE = "covers";
 
-const ACCOUNT_TABLE = "account";
+const ACCOUNTS_TABLE = "accounts";
 const ARTICLES_TABLE = "articles"
 const FAVOURITES_TABLE = "favourites";
 const FAQ_TABLE = "faq";
@@ -26,7 +26,7 @@ const NEWS_TABLE = "news";
 const NEWSLETTER_TABLE = "newsletter";
 const SESSION_TABLE = "sessions";
 const TIMELINE_TABLE = "timeline";
-const USER_TABLE = "users";
+const USERS_TABLE = "users";
 
 
 
@@ -200,7 +200,7 @@ const USER_COLUMNS = "id, created_at, password_hash, role, last_name, first_name
  */
 export async function registerUser(userEmail: string, password_hash: string, username: string): Promise<{id: number, email: string}> {
     const lowerCaseEmail = userEmail.toLowerCase();
-    const { data, error } = await databaseClient.from(USER_TABLE).insert({email: lowerCaseEmail, password_hash, username}).select('id, email').single();
+    const { data, error } = await databaseClient.from(USERS_TABLE).insert({email: lowerCaseEmail, password_hash, username}).select('id, email').single();
     
     if (error) {
         console.log(error);
@@ -225,7 +225,7 @@ export async function registerUser(userEmail: string, password_hash: string, use
  */
 export async function getUserByEmail(email: string): Promise<User> {
     const lowerCaseEmail = email.toLowerCase();
-    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('email', lowerCaseEmail).single();
+    const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS).eq('email', lowerCaseEmail).single();
     if (error) {
         console.log(error);
         throw error;
@@ -234,7 +234,7 @@ export async function getUserByEmail(email: string): Promise<User> {
 }
 
 export async function getUserById(id: number): Promise<User> {
-    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS).eq('id', id).single();
+    const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS).eq('id', id).single();
     if (error) {
         console.log(error);
         throw error;
@@ -243,7 +243,7 @@ export async function getUserById(id: number): Promise<User> {
 }
 
 export async function getAllUsers(): Promise<User[]> {
-    const { data, error } = await databaseClient.from(USER_TABLE).select(USER_COLUMNS);
+    const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS);
     if (error) {
         console.log(error);
         return [];
@@ -252,7 +252,7 @@ export async function getAllUsers(): Promise<User[]> {
 }
 
 export async function updateUser(id: number, last_name: string, first_name: string, bio: string): Promise<void> {
-    const { error } = await databaseClient.from(USER_TABLE).update({last_name, first_name, bio}).eq('id', id);
+    const { error } = await databaseClient.from(USERS_TABLE).update({last_name, first_name, bio}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;
@@ -260,7 +260,7 @@ export async function updateUser(id: number, last_name: string, first_name: stri
 }
 
 export async function updateUserInformationById(id: number, full_name: string, phone: string, address: string, city: string, country: string, birth_date: string): Promise<void> {
-    const { error } = await databaseClient.from(USER_TABLE).update({full_name, phone, address, city, country, birth_date}).eq('id', id);
+    const { error } = await databaseClient.from(USERS_TABLE).update({full_name, phone, address, city, country, birth_date}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;
@@ -268,7 +268,7 @@ export async function updateUserInformationById(id: number, full_name: string, p
 }
 
 export async function updatePassword(id: number, password_hash: string): Promise<void> {
-    const { error } = await databaseClient.from(USER_TABLE).update({password_hash}).eq('id', id);
+    const { error } = await databaseClient.from(USERS_TABLE).update({password_hash}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;
@@ -276,7 +276,7 @@ export async function updatePassword(id: number, password_hash: string): Promise
 }
 
 export async function updateEmail(id: number, email: string): Promise<void> {
-    const { error } = await databaseClient.from(USER_TABLE).update({email}).eq('id', id);
+    const { error } = await databaseClient.from(USERS_TABLE).update({email}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;
@@ -284,7 +284,7 @@ export async function updateEmail(id: number, email: string): Promise<void> {
 }
 
 export async function updateUsername(id: number, username: string): Promise<void> {
-    const { error } = await databaseClient.from(USER_TABLE).update({username}).eq('id', id);
+    const { error } = await databaseClient.from(USERS_TABLE).update({username}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;
@@ -293,7 +293,7 @@ export async function updateUsername(id: number, username: string): Promise<void
 
 // Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
 async function updateUserImage(id: number, image: string): Promise<void> {
-    const { error } = await databaseClient.from(USER_TABLE).update({image}).eq('id', id);
+    const { error } = await databaseClient.from(USERS_TABLE).update({image}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;
@@ -312,7 +312,7 @@ export async function updateProfileImageById(id: number, image: File): Promise<v
  * Update password hash for the account that corresponds to the supplied email.
  */
 export async function updateUserPassword(email: string, password_hash: string): Promise<void> {
-    const { error } = await databaseClient.from(USER_TABLE).update({password_hash}).eq('email', email);
+    const { error } = await databaseClient.from(USERS_TABLE).update({password_hash}).eq('email', email);
     if (error) {
         console.log(error);
         throw error;
@@ -323,7 +323,7 @@ export async function updateUserPassword(email: string, password_hash: string): 
  * Check if a user with the supplied email exists.
  */
 export async function emailExists(email: string): Promise<boolean> {
-    const { data, error } = await databaseClient.from(USER_TABLE).select().eq('email', email);
+    const { data, error } = await databaseClient.from(USERS_TABLE).select().eq('email', email);
     return !(error || data.length === 0);
 }
 
@@ -331,7 +331,7 @@ export async function emailExists(email: string): Promise<boolean> {
  * Check if supplied password hash is a match for the given email address.
  */
 export async function isCurrentPassword(email: string, password_hash: string): Promise<boolean> {
-    const { data, error } = await databaseClient.from(USER_TABLE).select().eq('email', email).single();
+    const { data, error } = await databaseClient.from(USERS_TABLE).select().eq('email', email).single();
     if (error) {
         console.log(error);
         throw error;
@@ -429,7 +429,7 @@ export async function deleteFavouriteForUserId(user_id: number, game_id: number)
  ***********/
 
 export async function createAccount(user_id: number, activation_code: string): Promise<void> {
-    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id, activation_code });
+    await databaseClient.from(ACCOUNTS_TABLE).insert({ user_id, activation_code });
 }
 
 /**
@@ -438,7 +438,7 @@ export async function createAccount(user_id: number, activation_code: string): P
  */
 export async function copyProfileImageToFolder(activation_code: string): Promise<void> {
     try {
-        const response = await databaseClient.from(ACCOUNT_TABLE).select().eq('activation_code', activation_code).single();
+        const response = await databaseClient.from(ACCOUNTS_TABLE).select().eq('activation_code', activation_code).single();
         await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response.data?.user_id}/profile.png`);
     } catch (error) {
         console.log(error);
@@ -446,7 +446,7 @@ export async function copyProfileImageToFolder(activation_code: string): Promise
 }
 
 export async function getAccountByUserId(user_id: number): Promise<Account> {
-    const { data, error } = await databaseClient.from(ACCOUNT_TABLE).select().eq('user_id', user_id).single();
+    const { data, error } = await databaseClient.from(ACCOUNTS_TABLE).select().eq('user_id', user_id).single();
     if (error) {
         console.log(error);
         throw error;
@@ -458,12 +458,12 @@ export async function getAccountByUserId(user_id: number): Promise<Account> {
  * First a check is done to see if the activation code is valid. Then the corresponding account is activated.
  */
 export async function activateAccount(activation_code: string): Promise<boolean> {
-    const { data, error } = await databaseClient.from(ACCOUNT_TABLE).select().eq('activation_code', activation_code).eq('activated', false);
+    const { data, error } = await databaseClient.from(ACCOUNTS_TABLE).select().eq('activation_code', activation_code).eq('activated', false);
     if (error || data.length === 0) {
         return false;
     }
 
-    await databaseClient.from(ACCOUNT_TABLE).update({activated: true}).eq('activation_code', activation_code);    
+    await databaseClient.from(ACCOUNTS_TABLE).update({activated: true}).eq('activation_code', activation_code);    
     return true;
 }
 
@@ -472,7 +472,7 @@ export async function activateAccount(activation_code: string): Promise<boolean>
  */
 export async function createActivatedAccount(email: string, password_hash: string, username: string): Promise<void> {
     const user = await registerUser(email, password_hash, username);
-    await databaseClient.from(ACCOUNT_TABLE).insert({ user_id: user.id, activated: true });
+    await databaseClient.from(ACCOUNTS_TABLE).insert({ user_id: user.id, activated: true });
     await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }
 
