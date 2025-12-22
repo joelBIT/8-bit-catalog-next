@@ -253,15 +253,15 @@ export async function getAllUsers(): Promise<User[]> {
 }
 
 export async function updateUser(id: number, last_name: string, first_name: string, bio: string): Promise<void> {
-    const { error } = await databaseClient.from(USERS_TABLE).update({last_name, first_name, bio}).eq('id', id);
+    const { error } = await databaseClient.from(PROFILES_TABLE).update({last_name, first_name, bio}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;
     }
 }
 
-export async function updateUserInformationById(id: number, full_name: string, phone: string, address: string, city: string, country: string, birth_date: string): Promise<void> {
-    const { error } = await databaseClient.from(USERS_TABLE).update({full_name, phone, address, city, country, birth_date}).eq('id', id);
+export async function updateUserInformationById(id: number, full_name: string, phone: string, birth_date: string): Promise<void> {
+    const { error } = await databaseClient.from(PROFILES_TABLE).update({full_name, phone, birth_date}).eq('id', id);
     if (error) {
         console.log(error);
         throw error;

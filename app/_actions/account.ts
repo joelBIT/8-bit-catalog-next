@@ -54,8 +54,7 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 export async function updateUserDetails(userId: number, _prevState: InitialUserState, formData: FormData): Promise<InitialUserState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
-        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '', birthDate: '',
-            city: '', country: '', fullName: '', address: ''
+        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '', birthDate: '', fullName: ''
          };
     }
     
@@ -64,20 +63,16 @@ export async function updateUserDetails(userId: number, _prevState: InitialUserS
         const fullName = formData.get('full_name') as string;
         const lastName = formData.get('last_name') as string;
         const birthDate = formData.get('birth_date') as string;
-        const city = formData.get('city') as string;
-        const address = formData.get('address') as string;
         const phone = formData.get('phone') as string;
         const userBio = formData.get('bio') as string;
-        const country = formData.get('country') as string;
         await updateUser(userId, lastName, firstName, userBio);
-        await updateUserInformationById(userId, fullName, phone, address, city, country, birthDate);
+        await updateUserInformationById(userId, fullName, phone, birthDate);
 
         return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName, 
-            bio: userBio, birthDate: birthDate, city: city, country: country, fullName: fullName, address: address };
+            bio: userBio, birthDate: birthDate, fullName: fullName };
     } catch (error) {
         console.log(error);
-        return { message: 'The account could not be updated', success: false, firstName: '', lastName: '', bio: '', birthDate: '',
-            city: '', country: '', fullName: '', address: ''
+        return { message: 'The account could not be updated', success: false, firstName: '', lastName: '', bio: '', birthDate: '', fullName: ''
          };
     }
 }
@@ -177,4 +172,8 @@ export async function updateAccountUsername(userId: number, _prevState: {message
         console.log(error);
         return { message: 'The username could not be updated', success: false, username: _prevState.username };
     }
+}
+
+export async function updateUserAddress(userId: number, _prevState: {message: string, success: boolean, }, formData: FormData): Promise<{message: string, success: boolean}> {
+    return { message: 'The address was successfully updated', success: true };
 }

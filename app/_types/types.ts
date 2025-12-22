@@ -92,11 +92,8 @@ export type TimelineEvent = {
 
 export type InitialUserState = {
     birthDate: string,
-    city: string,
-    country: string,
     fullName: string,
     message: string, 
-    address: string,
     success: boolean, 
     firstName: string, 
     lastName: string, 
