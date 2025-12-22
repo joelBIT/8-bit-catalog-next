@@ -261,14 +261,6 @@ export async function updateUser(id: number, last_name: string, first_name: stri
     }
 }
 
-export async function updateUserInformationById(id: number, full_name: string, phone: string, birth_date: string): Promise<void> {
-    const { error } = await databaseClient.from(PROFILES_TABLE).update({full_name, phone, birth_date}).eq('id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-}
-
 export async function updatePassword(id: number, password_hash: string): Promise<void> {
     const { error } = await databaseClient.from(USERS_TABLE).update({password_hash}).eq('id', id);
     if (error) {
@@ -352,12 +344,20 @@ export async function isCurrentPassword(email: string, password_hash: string): P
  ***********/
 
 export async function getProfileByUserId(user_id: number): Promise<Profile> {
-    const { data, error } = await databaseClient.from(PROFILES_TABLE).select().eq('id', user_id).single();
+    const { data, error } = await databaseClient.from(PROFILES_TABLE).select().eq('user_id', user_id).single();
     if (error) {
         console.log(error);
         throw error;
     }
     return data;
+}
+
+export async function updateUserInformationById(id: number, full_name: string, phone: string, birth_date: string): Promise<void> {
+    const { error } = await databaseClient.from(PROFILES_TABLE).update({full_name, phone, birth_date}).eq('user_id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
 }
 
 
@@ -376,6 +376,13 @@ export async function getAddressByUserId(user_id: number): Promise<Address> {
     return data;
 }
 
+export async function updateUserAddressById(id: number, street: string, city: string, country: string): Promise<void> {
+    const { error } = await databaseClient.from(ADDRESS_TABLE).update({user_id: id, street, city, country}).eq('user_id', id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+}
 
 
 

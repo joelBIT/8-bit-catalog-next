@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { emailExists, createAccount, getAccountByUserId, getUserByEmail, registerUser, updateUserPassword, updateUserInformationById, isCurrentPassword } from "@/app/_db/db";
+import { emailExists, createAccount, getAccountByUserId, getUserByEmail, registerUser, updateUserPassword, updateUserInformationById, isCurrentPassword, updateUserAddressById } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
@@ -55,7 +55,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const passwordRepeat = formData.get('passwordRepeat') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
-    const address = formData.get('address') as string;
+    const street = formData.get('street') as string;
     const city = formData.get('city') as string;
     const country = formData.get('country') as string;
     const fullName = formData.get('full_name') as string;
@@ -76,7 +76,8 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash, email);
-        await updateUserInformationById(user.id, fullName, phone, address, city, country, birthDate);
+        await updateUserInformationById(user.id, fullName, phone, birthDate);
+        await updateUserAddressById(user.id, street, city, country);
         const activationCode = uuidv4();
         await createAccount(user.id, activationCode);
         sendActivationMail(user.email, activationCode);
