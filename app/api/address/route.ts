@@ -1,5 +1,5 @@
+import { getAddressByUserId } from "@/app/_db/addresses-db";
 import { NextRequest, NextResponse } from "next/server";
-import { getAddressByUserId } from "@/app/_db/db";
 
 /**
  * Returns profile information for supplied user ID.

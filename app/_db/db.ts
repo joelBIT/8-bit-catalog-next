@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Session, User, Address } from '@/app/_types/types';
+import { Session, User } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { uploadFile } from './files-db';
 
@@ -17,7 +17,7 @@ function databaseKey() {
 const PROFILE_IMAGES_STORAGE = "catalog";
 
 export const ACCOUNTS_TABLE = "accounts";
-const ADDRESS_TABLE = "address";
+export const ADDRESS_TABLE = "address";
 export const ARTICLES_TABLE = "articles"
 export const FAVOURITES_TABLE = "favourites";
 export const FAQ_TABLE = "faq";
@@ -208,26 +208,6 @@ export async function isCurrentPassword(email: string, password_hash: string): P
 
 
 
-/***********
- * ADDRESS *
- **********/
-
-export async function getAddressByUserId(user_id: number): Promise<Address> {
-    const { data, error } = await databaseClient.from(ADDRESS_TABLE).select().eq('id', user_id).single();
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-    return data;
-}
-
-export async function updateUserAddressById(id: number, street: string, city: string, country: string): Promise<void> {
-    const { error } = await databaseClient.from(ADDRESS_TABLE).update({user_id: id, street, city, country}).eq('user_id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-}
 
 
 
