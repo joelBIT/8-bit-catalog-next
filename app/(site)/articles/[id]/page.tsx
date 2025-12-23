@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { URL_HOME } from "@/app/_utils/utils";
-import { getArticleById } from "@/app/_db/db";
+import { getArticleById } from "@/app/_db/articles-db";
 
 import "./page.css";
 

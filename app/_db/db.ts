@@ -18,7 +18,7 @@ const PROFILE_IMAGES_STORAGE = "catalog";
 
 const ACCOUNTS_TABLE = "accounts";
 const ADDRESS_TABLE = "address";
-const ARTICLES_TABLE = "articles"
+export const ARTICLES_TABLE = "articles"
 const FAVOURITES_TABLE = "favourites";
 const FAQ_TABLE = "faq";
 const FILTERS_TABLE = "filters";
@@ -561,64 +561,3 @@ export async function getAllNewsletterSubscribers(): Promise<string[]> {
 
 
 
-
-
-/************
- * ARTICLES *
- ************/
-
-/**
- * Send a GET request and retrieve all articles.
- */
-export async function getAllArticlesRequest(): Promise<Article[]> {
-    try {
-        const { data } = await databaseClient.from(ARTICLES_TABLE).select(`
-            id,
-            title,
-            tags,
-            introduction,
-            text,
-            image,
-            article_contents (
-                heading,
-                text
-            )
-        `);
-
-        if (data) {
-            return data;
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    return [];
-}
-
-/**
- * Send a GET request and retrieve article.
- */
-export async function getArticleById(id: number): Promise<Article> {
-    try {
-        const { data } = await databaseClient.from(ARTICLES_TABLE).select(`
-            id,
-            title,
-            tags,
-            introduction,
-            text,
-            image,
-            article_contents (
-                heading,
-                text
-            )
-        `).eq("id", id).single();
-
-        if (data) {
-            return data;
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    throw new Error(`Could not find article with id ${id}`);
-}

@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import { ArticleCard } from "@/app/_components/common";
-import { getAllArticlesRequest } from "@/app/_db/db";
 import { Article } from "@/app/_types/types";
+import { getAllArticles } from "@/app/_db/articles-db";
 
 import "./page.css";
 
@@ -10,7 +10,7 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
     let articles = [] as Article[];
     
     try {
-        articles = await getAllArticlesRequest();
+        articles = await getAllArticles();
     } catch (error) {
         console.log(error);
     }
