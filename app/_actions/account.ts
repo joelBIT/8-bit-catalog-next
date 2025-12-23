@@ -1,10 +1,11 @@
 'use server';
 
-import { createActivatedAccount, getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUsername } from "@/app/_db/db";
+import { getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUsername } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
 import { ActionState, Address, Profile } from "@/app/_types/types";
 import { updateUserInformationById } from "../_db/profiles-db";
+import { createActivatedAccount } from "../_db/accounts-db";
 
 /**
  * This function is invoked when a user updates account information such as account password.

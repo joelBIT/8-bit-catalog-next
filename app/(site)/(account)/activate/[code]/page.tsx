@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Params } from "next/dist/server/request/params";
-import { activateAccount, copyProfileImageToFolder } from "@/app/_db/db";
+import { activateAccount, copyProfileImageToFolder } from "@/app/_db/accounts-db";
 
 import "./page.css";
 

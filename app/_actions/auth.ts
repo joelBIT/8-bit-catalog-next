@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { emailExists, createAccount, getAccountByUserId, getUserByEmail, registerUser, updateUserPassword, isCurrentPassword, updateUserAddressById } from "@/app/_db/db";
+import { emailExists, getUserByEmail, registerUser, updateUserPassword, isCurrentPassword, updateUserAddressById } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
@@ -14,6 +14,7 @@ import { isAuthenticated } from "@/app/_session/utils";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
 import { updateUserInformationById } from "../_db/profiles-db";
+import { createAccount, getAccountByUserId } from "../_db/accounts-db";
 
 /**
  * This function is invoked when a user tries to log in.
