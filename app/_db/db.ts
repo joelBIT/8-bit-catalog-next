@@ -20,7 +20,7 @@ const ACCOUNTS_TABLE = "accounts";
 const ADDRESS_TABLE = "address";
 export const ARTICLES_TABLE = "articles"
 const FAVOURITES_TABLE = "favourites";
-const FAQ_TABLE = "faq";
+export const FAQ_TABLE = "faq";
 const FILTERS_TABLE = "filters";
 export const GAMES_TABLE = "games";
 const NEWS_TABLE = "news";
@@ -449,25 +449,6 @@ export async function createActivatedAccount(email: string, password_hash: strin
 
 
 
-
-
-
-
-
-
-/********
- * FAQs *
- *******/
-
-export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
-    const { data, error } = await databaseClient.from(FAQ_TABLE).select();
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-  
-    return data;
-}
 
 
 

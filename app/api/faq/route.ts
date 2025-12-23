@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getFAQs } from "@/app/_db/db";
+import { getFAQs } from "@/app/_db/faq-db";
 
 /**
  * Returns FAQs for FAQ page.
