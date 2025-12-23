@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/app/_db/db";
 import { getValidatedSession } from "@/app/_session/cookie";
+import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/app/_db/favourites-db";
 
 /**
  * Retrieves the authenticated user's favourite games.

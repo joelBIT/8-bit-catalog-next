@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Game, Session, User, Address } from '@/app/_types/types';
+import { Session, User, Address } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { uploadFile } from './files-db';
 
@@ -19,7 +19,7 @@ const PROFILE_IMAGES_STORAGE = "catalog";
 export const ACCOUNTS_TABLE = "accounts";
 const ADDRESS_TABLE = "address";
 export const ARTICLES_TABLE = "articles"
-const FAVOURITES_TABLE = "favourites";
+export const FAVOURITES_TABLE = "favourites";
 export const FAQ_TABLE = "faq";
 export const FILTERS_TABLE = "filters";
 export const GAMES_TABLE = "games";
@@ -273,40 +273,6 @@ export async function updateSession(session: Session): Promise<void> {
 
 
 
-
-/**************
- * FAVOURITES *
- **************/
-
-/**
- * Returns a user's favourite games. First all game id's of the favourite games are gathered. Then all game objects with
- * the corresponding id's are returned.
- */
-export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
-    const { data, error } = await databaseClient.from(FAVOURITES_TABLE).select("game_id").eq('user_id', user_id);
-    if (error) {
-        console.log(error);
-    }
-
-    if (data) {
-        const ids = data.map(game => game.game_id);
-        const response = await databaseClient.from(GAMES_TABLE).select().in("id", ids);
-
-        if (response.data) {
-            return response.data;
-        }
-    }
-
-    return [];
-}
-
-export async function addFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
-    await databaseClient.from(FAVOURITES_TABLE).insert({user_id, game_id});
-}
-
-export async function deleteFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
-    await databaseClient.from(FAVOURITES_TABLE).delete().eq("user_id", user_id).eq("game_id", game_id);
-}
 
 
 
