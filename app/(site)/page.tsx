@@ -4,8 +4,8 @@ import { type ReactElement } from "react";
 import Link from "next/link";
 import { TopicSelection, TitleSearch } from "@/app/_components/home";
 import { Newsletter } from "../_components/common";
-import { getAllNews } from "@/app/_db/db";
 import { getAllTitles } from "../_db/games-db";
+import { getAllNews } from "../_db/news-db";
 import { URL_REGISTER_PAGE } from "../_utils/utils";
 
 import "./page.css";

@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import { NewsletterForm } from "@/app/_components/account/forms";
 import { NewsList } from "@/app/_components/lists";
-import { getAllNews } from "@/app/_db/db";
+import { getAllNews } from "@/app/_db/news-db";
 
 import "./page.css";
 

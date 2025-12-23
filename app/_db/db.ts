@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News, Profile, Address } from '@/app/_types/types';
+import { Account, Game, Session, User, Profile, Address } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { uploadFile } from './files-db';
 
@@ -23,8 +23,8 @@ const FAVOURITES_TABLE = "favourites";
 export const FAQ_TABLE = "faq";
 const FILTERS_TABLE = "filters";
 export const GAMES_TABLE = "games";
-const NEWS_TABLE = "news";
-const NEWSLETTER_TABLE = "newsletter";
+export const NEWS_TABLE = "news";
+export const NEWSLETTER_TABLE = "newsletter";
 const PROFILES_TABLE = "profiles";
 const SESSION_TABLE = "sessions";
 export const TIMELINE_TABLE = "timeline";
@@ -455,70 +455,6 @@ export async function createActivatedAccount(email: string, password_hash: strin
 
 
 
-/*********************
- * NEWS & NEWSLETTER *
- ********************/
-
-export async function getAllNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image, author").order("date", { ascending: false });
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return data;
-}
-
-export async function getTopNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image, author").limit(6).order("date", { ascending: false });
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return data;
-}
-
-export async function getNewsById(id: number): Promise<News> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select("id, heading, text, date, image, author").eq("id", id).single();
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return data;
-}
-
-export async function createNews(heading: string, text: string): Promise<void> {
-    const { error } = await databaseClient.from(NEWS_TABLE).insert({ heading, text, date: new Date() });
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-}
-
-export async function subscribeNewsletter(email: string): Promise<void> {
-    const { error } = await databaseClient.from(NEWSLETTER_TABLE).insert({ email });
-    if (error) {
-        console.log(error);
-
-        if (error.code == '23505' && error.details.includes("email")) {
-            throw new Error(`Already subscribed`);
-        }
-
-        throw error;
-    }
-}
-
-export async function getAllNewsletterSubscribers(): Promise<string[]> {
-    const { data, error } = await databaseClient.from(NEWSLETTER_TABLE).select("email");
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return data.map(element => element.email);
-}
 
 
 
