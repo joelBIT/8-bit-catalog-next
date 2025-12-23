@@ -9,7 +9,7 @@ import { FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News,
 /**
  * Retrieve all games.
  */
-export async function getAllGames(): Promise<SearchResult> {
+export async function getAllGamesRequest(): Promise<SearchResult> {
     try {
         const response = await fetch("/api/games");
         if (response.ok) {
@@ -26,7 +26,7 @@ export async function getAllGames(): Promise<SearchResult> {
 /**
  * Retrieve all users.
  */
-export async function getUsers(): Promise<User[]> {
+export async function getUsersRequest(): Promise<User[]> {
     try {
         const response = await fetch(`/api/users`);
         if (response.ok) {
@@ -73,7 +73,7 @@ export async function getAddressByUserIdRequest(user_id: number): Promise<Addres
 /**
  * Retrieve favourite games for user with an active session.
  */
-export async function getFavourites(): Promise<Game[]> {
+export async function getFavouritesRequest(): Promise<Game[]> {
     try {
         const response = await fetch(`/api/favourites`);
         if (response.ok) {
@@ -89,7 +89,7 @@ export async function getFavourites(): Promise<Game[]> {
 /**
  * Persist a favourite game in the database for user with an active session.
  */
-export async function addFavouriteGameToDatabase(game_id: number): Promise<void> {
+export async function addFavouriteGameToDatabaseRequest(game_id: number): Promise<void> {
     try {
         await fetch(`/api/favourites`, {
             method: "POST",
@@ -103,7 +103,7 @@ export async function addFavouriteGameToDatabase(game_id: number): Promise<void>
 /**
  * Delete a favourite game in the database for user with an active session.
  */
-export async function deleteFavouriteGameFromDatabase(game_id: number): Promise<void> {
+export async function deleteFavouriteGameFromDatabaseRequest(game_id: number): Promise<void> {
     try {
         await fetch(`/api/favourites`, {
             method: "DELETE",
@@ -117,7 +117,7 @@ export async function deleteFavouriteGameFromDatabase(game_id: number): Promise<
 /**
  * Updates the list of values for a supplied search filter (e.g., categories, developers, publishers).
  */
-export async function updateFilterValues(values: string[], filter: Filter): Promise<void> {
+export async function updateFilterValuesRequest(values: string[], filter: Filter): Promise<void> {
     try {
         await fetch(`/api/filter`, {
             method: "PUT",
@@ -131,7 +131,7 @@ export async function updateFilterValues(values: string[], filter: Filter): Prom
 /**
  * Retrieve the timeline for about page.
  */
-export async function getTimelineEvents(): Promise<TimelineEvent[]> {
+export async function getTimelineEventsRequest(): Promise<TimelineEvent[]> {
     try {
         const response = await fetch(`/api/timeline`);
         if (response.ok) {
@@ -147,7 +147,7 @@ export async function getTimelineEvents(): Promise<TimelineEvent[]> {
 /**
  * Retrieve the FAQs for the FAQ page.
  */
-export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
+export async function getFAQsRequest(): Promise<FrequentlyAskedQuestion[]> {
     try {
         const response = await fetch(`/api/faq`);
         if (response.ok) {
@@ -163,7 +163,7 @@ export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
 /**
  * Send newsletter to all emails subscribed for receiving the newsletter.
  */
-export async function sendNewsLetter(news: News): Promise<void> {
+export async function sendNewsLetterRequest(news: News): Promise<void> {
     try {
         await fetch(`/api/newsletter`, {
             method: "POST",

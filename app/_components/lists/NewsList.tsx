@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useRef, useState } from "react";
-import { sendNewsLetter } from "@/app/_client/client";
+import { sendNewsLetterRequest } from "@/app/_client/client";
 import { News } from "@/app/_types/types";
 
 import "./NewsList.css";
@@ -17,7 +17,7 @@ export function NewsList({ news }: { news: News[] }): ReactElement {
     const NONE_CHOSEN = "none";
 
     function sendNewsletter() {
-        sendNewsLetter(allNews.filter(news => news.heading === selectRef.current?.value)[0]);
+        sendNewsLetterRequest(allNews.filter(news => news.heading === selectRef.current?.value)[0]);
     }
 
     return (

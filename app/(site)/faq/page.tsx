@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { FAQ } from "@/app/_components/common";
 import { FAQ_ACCOUNT, FAQ_GAMES, FAQ_GENERAL } from "@/app/_utils/utils";
 import { FrequentlyAskedQuestion } from "@/app/_types/types";
-import { getFAQs } from "@/app/_client/client";
+import { getFAQsRequest } from "@/app/_client/client";
 
 import "./page.css";
 
@@ -23,7 +23,7 @@ export default function FaqPage(): ReactElement {
      * Retrieve the FAQs.
      */
     async function getQuestions(): Promise<void> {
-        setFaqs(await getFAQs());
+        setFaqs(await getFAQsRequest());
     }
 
     return (
