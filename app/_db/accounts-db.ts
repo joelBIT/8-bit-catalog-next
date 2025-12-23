@@ -1,6 +1,7 @@
 import 'server-only';
 
-import { ACCOUNTS_TABLE, databaseClient, registerUser } from './db';
+import { ACCOUNTS_TABLE, databaseClient } from './db';
+import { registerUser } from './users-db';
 import { Account } from '../_types/types';
 
 

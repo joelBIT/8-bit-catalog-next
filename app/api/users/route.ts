@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAllUsers } from "@/app/_db/db";
+import { getAllUsers } from "@/app/_db/users-db";
 import { isAuthenticated } from "@/app/_session/utils";
 
 /**

@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { emailExists, getUserByEmail, registerUser, updateUserPassword, isCurrentPassword } from "@/app/_db/db";
+import { emailExists, getUserByEmail, registerUser, updateUserPassword, isCurrentPassword } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";

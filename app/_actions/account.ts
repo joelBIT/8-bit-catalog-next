@@ -1,6 +1,6 @@
 'use server';
 
-import { getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUsername } from "@/app/_db/db";
+import { getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUsername } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
 import { ActionState, Address, Profile } from "@/app/_types/types";
