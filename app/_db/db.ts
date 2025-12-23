@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, Game, Session, User, Profile, Address } from '@/app/_types/types';
+import { Account, Game, Session, User, Address } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { uploadFile } from './files-db';
 
@@ -25,7 +25,7 @@ export const FILTERS_TABLE = "filters";
 export const GAMES_TABLE = "games";
 export const NEWS_TABLE = "news";
 export const NEWSLETTER_TABLE = "newsletter";
-const PROFILES_TABLE = "profiles";
+export const PROFILES_TABLE = "profiles";
 const SESSION_TABLE = "sessions";
 export const TIMELINE_TABLE = "timeline";
 const USERS_TABLE = "users";
@@ -203,26 +203,7 @@ export async function isCurrentPassword(email: string, password_hash: string): P
 
 
 
-/************
- * PROFILES *
- ***********/
 
-export async function getProfileByUserId(user_id: number): Promise<Profile> {
-    const { data, error } = await databaseClient.from(PROFILES_TABLE).select().eq('user_id', user_id).single();
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-    return data;
-}
-
-export async function updateUserInformationById(id: number, full_name: string, phone: string, birth_date: string): Promise<void> {
-    const { error } = await databaseClient.from(PROFILES_TABLE).update({full_name, phone, birth_date}).eq('user_id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-}
 
 
 

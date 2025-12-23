@@ -1,5 +1,5 @@
+import { getProfileByUserId } from "@/app/_db/profiles-db";
 import { NextRequest, NextResponse } from "next/server";
-import { getProfileByUserId } from "@/app/_db/db";
 
 /**
  * Returns profile information for supplied user ID.
