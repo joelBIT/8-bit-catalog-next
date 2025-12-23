@@ -1,5 +1,5 @@
+import { getAllGamesRequest } from "@/app/_db/games-db";
 import { NextResponse } from "next/server";
-import { getAllGamesRequest } from "@/app/_db/db";
 
 /**
  * Retrieve all games.

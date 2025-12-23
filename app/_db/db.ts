@@ -2,8 +2,9 @@ import 'server-only';
 
 import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News, Article, Profile, Address } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
+import { uploadFile } from './files-db';
 
-const databaseClient = createClient(databaseURL(), databaseKey());
+export const databaseClient = createClient(databaseURL(), databaseKey());
 
 function databaseURL() {
     return process.env?.SUPABASE_URL as string;
@@ -14,7 +15,6 @@ function databaseKey() {
 }
 
 const PROFILE_IMAGES_STORAGE = "catalog";
-const COVERS_STORAGE = "covers";
 
 const ACCOUNTS_TABLE = "accounts";
 const ADDRESS_TABLE = "address";
@@ -22,7 +22,7 @@ const ARTICLES_TABLE = "articles"
 const FAVOURITES_TABLE = "favourites";
 const FAQ_TABLE = "faq";
 const FILTERS_TABLE = "filters";
-const GAMES_TABLE = "games";
+export const GAMES_TABLE = "games";
 const NEWS_TABLE = "news";
 const NEWSLETTER_TABLE = "newsletter";
 const PROFILES_TABLE = "profiles";
@@ -36,80 +36,6 @@ const USERS_TABLE = "users";
 /****************************************************************************************
 * This file contains functions that interact directly with the database/database client *
 ****************************************************************************************/
-
-
-
-
-/*********
- * GAMES *
- *********/
-
-/**
- * Updates an existing game. If a new cover has been chosen it is uploaded to a storage bucket. After that the
- * cover name is updated for the game in the database since this cover name is used to reference the
- * cover image in the storage bucket.
- */
-export async function updateGameById(game: Game, file: File): Promise<void> {
-    if (file.name !== 'undefined') {                            // New game cover was chosen so the cover file must be uploaded to the storage bucket
-        await uploadFile(game.cover, file, COVERS_STORAGE);
-        await databaseClient.from(GAMES_TABLE).update({ cover: game.cover }).eq('id', game.id);     // Update game cover name
-    } 
-    
-    const { cover, ...data } = game;             // Remove cover property since the cover is already taken care of (not updated if not changed)
-    console.log(`cover ${cover} not updated`);
-    const { error } = await databaseClient.from(GAMES_TABLE).update(data).eq('id', game.id);
-    if (error) {
-        console.log(error);
-    } else {
-        console.log(`Updated game ${game.title} successfully`);
-    }
-}
-
-export async function getAllTitles(): Promise<string[]> {
-    const { data } = await databaseClient.from(GAMES_TABLE).select("title");
-    if (data) {
-        const titles = data.map(title => title.title);
-        titles.sort();
-        return titles;
-    }
-
-    return [];
-}
-
-export async function getAllGamesRequest(): Promise<Game[]> {
-    const { data } = await databaseClient.from(GAMES_TABLE).select().order("title", {ascending: true});
-    if (data) {
-        return data;
-    }
-
-    return [];
-}
-
-
-
-
-
-/*********
- * FILES *
- *********/
-
-/**
- * Uploads file to storage (bucket). The file is stored in the supplied folder. If no folder name is supplied the file is stored in root.
- * If the file already exists (i.e., same name) at the destination, it is overwritten with the new file.
- */
-async function uploadFile(fileName: string, file: File, storage: string, folder: string = ""): Promise<void> {
-    const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file, {
-        cacheControl: '3600',
-        upsert: true
-      });
-    if (error) {
-        console.log(error);
-    } else {
-        console.log(`Uploaded file ${file} successfully`);
-    }
-}
-
-
 
 
 
