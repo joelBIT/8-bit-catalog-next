@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { isAuthenticatedAdmin } from "@/app/_session/utils";
-import { updateCategoryFilter, updateDeveloperFilter, updatePublisherFilter } from "@/app/_db/db";
+import { updateCategoryFilter, updateDeveloperFilter, updatePublisherFilter } from "@/app/_db/filters-db";
 
 /**
  * Updates the search filters (e.g., categories, publishers, developers). Only admin is allowed
