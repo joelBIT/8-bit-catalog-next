@@ -41,7 +41,7 @@ export async function getAllTitles(): Promise<string[]> {
     return [];
 }
 
-export async function getAllGamesRequest(): Promise<Game[]> {
+export async function getAllGames(): Promise<Game[]> {
     const { data } = await databaseClient.from(GAMES_TABLE).select().order("title", {ascending: true});
     if (data) {
         return data;

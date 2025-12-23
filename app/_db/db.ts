@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News, Article, Profile, Address } from '@/app/_types/types';
+import { Account, FrequentlyAskedQuestion, Game, Session, TimelineEvent, User, News, Profile, Address } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { uploadFile } from './files-db';
 
@@ -27,7 +27,7 @@ const NEWS_TABLE = "news";
 const NEWSLETTER_TABLE = "newsletter";
 const PROFILES_TABLE = "profiles";
 const SESSION_TABLE = "sessions";
-const TIMELINE_TABLE = "timeline";
+export const TIMELINE_TABLE = "timeline";
 const USERS_TABLE = "users";
 
 
@@ -447,26 +447,6 @@ export async function createActivatedAccount(email: string, password_hash: strin
     await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }
 
-
-
-
-
-
-
-
-/*********
- * ABOUT *
- ********/
-
-export async function getTimeline(): Promise<TimelineEvent[]> {
-    const { data, error } = await databaseClient.from(TIMELINE_TABLE).select().order("year");
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-  
-    return data;
-}
 
 
 
