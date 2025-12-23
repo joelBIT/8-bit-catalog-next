@@ -3,7 +3,7 @@
 import { createActivatedAccount, getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUserInformationById, updateUsername } from "@/app/_db/db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
-import { ActionState, Address, InitialUserState } from "@/app/_types/types";
+import { ActionState, Address, Profile } from "@/app/_types/types";
 
 /**
  * This function is invoked when a user updates account information such as account password.
@@ -51,11 +51,10 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 /**
  * This function is invoked when updating user information such as name and bio.
  */
-export async function updateUserDetails(userId: number, _prevState: InitialUserState, formData: FormData): Promise<InitialUserState> {
+export async function updateUserDetails(_prevState: Profile, formData: FormData): Promise<Profile & ActionState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
-        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '', birthDate: '', fullName: ''
-         };
+        return { message: 'Must be authenticated to update user information', success: false, ..._prevState };
     }
     
     try {
@@ -65,22 +64,22 @@ export async function updateUserDetails(userId: number, _prevState: InitialUserS
         const birthDate = formData.get('birth_date') as string;
         const phone = formData.get('phone') as string;
         const userBio = formData.get('bio') as string;
+        const userId = _prevState.user_id;
         await updateUser(userId, lastName, firstName, userBio);
         await updateUserInformationById(userId, fullName, phone, birthDate);
 
-        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName, 
-            bio: userBio, birthDate: birthDate, fullName: fullName };
+        return { message: 'The account was successfully updated', success: true, user_id: userId, image: '', first_name: firstName, last_name: lastName, 
+            bio: userBio, birth_date: birthDate, full_name: fullName };
     } catch (error) {
         console.log(error);
-        return { message: 'The account could not be updated', success: false, firstName: '', lastName: '', bio: '', birthDate: '', fullName: ''
-         };
+        return { message: 'The account could not be updated', success: false, ..._prevState };
     }
 }
 
 /**
  * Updates a user's profile image.
  */
-export async function updateProfileImage(userId: number, _prevState: {message: string, success: boolean, image: string}, formData: FormData): Promise<{message: string, success: boolean, image: string}> {
+export async function updateProfileImage(userId: number, _prevState: ActionState & {image: string}, formData: FormData): Promise<ActionState & {image: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update profile image', success: false, image: _prevState.image };
@@ -132,7 +131,7 @@ export async function createUserAndAccount(_prevState: ActionState, formData: Fo
     }
 }
 
-export async function updateAccountEmail(userId: number, _prevState: {message: string, success: boolean, email: string}, formData: FormData): Promise<{message: string, success: boolean, email: string}> {
+export async function updateAccountEmail(userId: number, _prevState: ActionState & {email: string}, formData: FormData): Promise<ActionState & {email: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update email', success: false, email: _prevState.email };
@@ -153,7 +152,7 @@ export async function updateAccountEmail(userId: number, _prevState: {message: s
     }
 }
 
-export async function updateAccountUsername(userId: number, _prevState: {message: string, success: boolean, username: string}, formData: FormData): Promise<{message: string, success: boolean, username: string}> {
+export async function updateAccountUsername(userId: number, _prevState: ActionState & {username: string}, formData: FormData): Promise<ActionState & {username: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update username', success: false, username: _prevState.username };

@@ -90,16 +90,6 @@ export type TimelineEvent = {
     image: string
 }
 
-export type InitialUserState = {
-    birthDate: string,
-    fullName: string,
-    message: string, 
-    success: boolean, 
-    firstName: string, 
-    lastName: string, 
-    bio: string
-}
-
 export type News = {
     id: number,
     text: string,
