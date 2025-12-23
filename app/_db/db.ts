@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { Session, User } from '@/app/_types/types';
+import { User } from '@/app/_types/types';
 import { AuthWeakPasswordError, createClient } from '@supabase/supabase-js';
 import { uploadFile } from './files-db';
 
@@ -26,7 +26,7 @@ export const GAMES_TABLE = "games";
 export const NEWS_TABLE = "news";
 export const NEWSLETTER_TABLE = "newsletter";
 export const PROFILES_TABLE = "profiles";
-const SESSION_TABLE = "sessions";
+export const SESSION_TABLE = "sessions";
 export const TIMELINE_TABLE = "timeline";
 const USERS_TABLE = "users";
 
@@ -197,76 +197,3 @@ export async function isCurrentPassword(email: string, password_hash: string): P
 
     return data.password_hash === password_hash;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***********
- * SESSION *
- ***********/
-
-/**
- * Creates a session when a user signs in.
- */
-export async function storeSession(session: Session): Promise<void> {
-    await databaseClient.from(SESSION_TABLE).insert(session);
-}
-
-export async function getSessionByTokenValue(value: string): Promise<Session> {
-    const { data, error } = await databaseClient.from(SESSION_TABLE).select('expires_at, user_id, token_value').eq('token_value', value).single();
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-    return data;
-}
-
-/**
- * Deletes a user's session when the user signs out.
- */
-export async function deleteSessionByTokenValue(token_value: string): Promise<void> {
-    await databaseClient.from(SESSION_TABLE).delete().eq('token_value', token_value);
-}
-
-/**
- * The session is usually updated when it is refreshed (so it does not expire).
- */
-export async function updateSession(session: Session): Promise<void> {
-    await databaseClient.from(SESSION_TABLE).update(session);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
