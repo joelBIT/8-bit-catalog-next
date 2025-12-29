@@ -10,12 +10,12 @@ import { createSession, generateRandomSessionToken } from "@/app/_session/sessio
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
 import ActivationEmail from "../_components/email/ActivationEmail";
 import { setSessionCookie } from "@/app/_session/cookie";
-import { isAuthenticated } from "@/app/_session/utils";
+import { isAuthenticated } from "@/app/_session/sessionUtils";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
-import { updateUserInformationById } from "../_db/profiles-db";
+import { updateProfileByUserId } from "../_db/profiles-db";
 import { createAccount, getAccountByUserId } from "../_db/accounts-db";
-import { updateUserAddressById } from "../_db/addresses-db";
+import { updateAddressByUserId } from "../_db/addresses-db";
 
 /**
  * This function is invoked when a user tries to log in.
@@ -79,8 +79,8 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash, email);
-        await updateUserInformationById(user.id, fullName, phone, birthDate);
-        await updateUserAddressById(user.id, street, city, country);
+        await updateProfileByUserId(user.id, fullName, phone, birthDate);
+        await updateAddressByUserId({user_id: user.id, street, city, country, zip_code: ''});
         const activationCode = uuidv4();
         await createAccount(user.id, activationCode);
         sendActivationMail(user.email, activationCode);

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAllUsers } from "@/app/_db/users-db";
-import { isAuthenticated } from "@/app/_session/utils";
+import { isAuthenticated } from "@/app/_session/sessionUtils";
 
 /**
  * Used to retrieve a list of all existing users. 

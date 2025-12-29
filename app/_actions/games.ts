@@ -1,7 +1,7 @@
 'use server';
 
 import { ActionState, Game } from "@/app/_types/types";
-import { isAuthenticatedAdmin } from '@/app/_session/utils';
+import { isAuthenticatedAdmin } from '@/app/_session/sessionUtils';
 import { updateGameById } from "../_db/games-db";
 
 /**

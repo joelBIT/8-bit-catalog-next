@@ -5,9 +5,7 @@ import { databaseClient, GAMES_TABLE } from './db';
 import { uploadFile } from './files-db';
 
 
-/*********
- * GAMES *
- *********/
+
 
 /**
  * Updates an existing game. If a new cover has been chosen it is uploaded to a storage bucket. After that the
@@ -30,6 +28,9 @@ export async function updateGameById(game: Game, file: File): Promise<void> {
     }
 }
 
+/**
+ * Retrieve all game titles.
+ */
 export async function getAllTitles(): Promise<string[]> {
     const { data } = await databaseClient.from(GAMES_TABLE).select("title");
     if (data) {
@@ -41,6 +42,9 @@ export async function getAllTitles(): Promise<string[]> {
     return [];
 }
 
+/**
+ * Retrieve metadata for all games and sort the list by title in ascending order.
+ */
 export async function getAllGames(): Promise<Game[]> {
     const { data } = await databaseClient.from(GAMES_TABLE).select().order("title", {ascending: true});
     if (data) {

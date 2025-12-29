@@ -4,10 +4,10 @@ import { databaseClient, FAQ_TABLE } from './db';
 import { FrequentlyAskedQuestion } from '../_types/types';
 
 
-/********
- * FAQs *
- *******/
 
+/**
+ * Send a GET request and retrieve all FAQs.
+ */
 export async function getFAQs(): Promise<FrequentlyAskedQuestion[]> {
     const { data, error } = await databaseClient.from(FAQ_TABLE).select();
     if (error) {

@@ -5,10 +5,10 @@ import { databaseClient, NEWSLETTER_TABLE } from './db';
 
 
 
-/**************
- * NEWSLETTER *
- *************/
 
+/**
+ * Adds the supplied email address to the list of newsletter subscribers.
+ */
 export async function subscribeNewsletter(email: string): Promise<void> {
     const { error } = await databaseClient.from(NEWSLETTER_TABLE).insert({ email });
     if (error) {
@@ -22,6 +22,9 @@ export async function subscribeNewsletter(email: string): Promise<void> {
     }
 }
 
+/**
+ * Return list of all email addresses that are subscribed for the newsletter.
+ */
 export async function getAllNewsletterSubscribers(): Promise<string[]> {
     const { data, error } = await databaseClient.from(NEWSLETTER_TABLE).select("email");
     if (error) {

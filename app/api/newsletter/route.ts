@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import NewsletterEmail from "@/app/_components/email/NewsletterEmail";
-import { isAuthenticatedAdmin } from "@/app/_session/utils";
+import { isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { getAllNewsletterSubscribers } from "@/app/_db/newsletter-db";
 
 /**

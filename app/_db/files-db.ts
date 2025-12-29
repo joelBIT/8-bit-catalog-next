@@ -4,9 +4,7 @@ import { databaseClient } from './db';
 
 const COVERS_STORAGE = "covers";
 
-/*********
- * FILES *
- *********/
+
 
 /**
  * Uploads file to storage (bucket). The file is stored in the supplied folder. If no folder name is supplied the file is stored in root.

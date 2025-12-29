@@ -5,9 +5,6 @@ import { Article } from '../_types/types';
 
 
 
-/************
- * ARTICLES *
- ************/
 
 /**
  * Send a GET request and retrieve all articles.

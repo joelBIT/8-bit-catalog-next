@@ -4,9 +4,7 @@ import { databaseClient, FILTERS_TABLE } from './db';
 
 
 
-/******************
- * SEARCH FILTERS *
- ******************/
+
 
 /**
  * Retrieves all game categories.

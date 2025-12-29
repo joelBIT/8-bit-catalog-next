@@ -2,7 +2,7 @@
 
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
 import { Address, Profile, User } from "@/app/_types/types";
-import { getUserFromSession } from "@/app/_session/utils";
+import { getUserFromSession } from "@/app/_session/sessionUtils";
 import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "../_client/client";
 
 export interface AccountContextProvider {

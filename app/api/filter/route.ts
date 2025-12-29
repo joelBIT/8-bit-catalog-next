@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { isAuthenticatedAdmin } from "@/app/_session/utils";
+import { isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { updateCategoryFilter, updateDeveloperFilter, updatePublisherFilter } from "@/app/_db/filters-db";
 
 /**

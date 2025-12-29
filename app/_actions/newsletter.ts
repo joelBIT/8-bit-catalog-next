@@ -1,7 +1,7 @@
 'use server';
 
 import { ActionState } from "@/app/_types/types";
-import { isAuthenticatedAdmin } from "@/app/_session/utils";
+import { isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { subscribeNewsletter } from "../_db/newsletter-db";
 import { createNews } from "../_db/news-db";
 

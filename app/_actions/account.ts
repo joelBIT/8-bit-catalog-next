@@ -2,9 +2,9 @@
 
 import { getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUsername } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
-import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
+import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { ActionState, Address, Profile } from "@/app/_types/types";
-import { updateUserInformationById } from "../_db/profiles-db";
+import { updateProfileByUserId } from "../_db/profiles-db";
 import { createActivatedAccount } from "../_db/accounts-db";
 
 /**
@@ -68,7 +68,7 @@ export async function updateUserDetails(_prevState: Profile, formData: FormData)
         const userBio = formData.get('bio') as string;
         const userId = _prevState.user_id;
         await updateUser(userId, lastName, firstName, userBio);
-        await updateUserInformationById(userId, fullName, phone, birthDate);
+        await updateProfileByUserId(userId, fullName, phone, birthDate);
 
         return { message: 'The account was successfully updated', success: true, user_id: userId, image: '', first_name: firstName, last_name: lastName, 
             bio: userBio, birth_date: birthDate, full_name: fullName };

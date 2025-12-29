@@ -6,9 +6,6 @@ import { Game } from '../_types/types';
 
 
 
-/**************
- * FAVOURITES *
- **************/
 
 /**
  * Returns a user's favourite games. First all game id's of the favourite games are gathered. Then all game objects with
@@ -32,10 +29,16 @@ export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
     return [];
 }
 
+/**
+ * Store the supplied game ID as a favourite game for user with supplied user ID.
+ */
 export async function addFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
     await databaseClient.from(FAVOURITES_TABLE).insert({user_id, game_id});
 }
 
+/**
+ * Delete the supplied game ID from list of favourite games for user with supplied user ID.
+ */
 export async function deleteFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
     await databaseClient.from(FAVOURITES_TABLE).delete().eq("user_id", user_id).eq("game_id", game_id);
 }

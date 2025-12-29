@@ -4,7 +4,7 @@ import { createContext, ReactElement, ReactNode, useEffect, useState } from "rea
 import { Game } from "@/app/_types/types";
 import { isLocalStorageAvailable } from "@/app/_utils/utils";
 import { addFavouriteGameToDatabaseRequest, deleteFavouriteGameFromDatabaseRequest, getFavouritesRequest } from "@/app/_client/client";
-import { isAuthenticated } from "@/app/_session/utils";
+import { isAuthenticated } from "@/app/_session/sessionUtils";
 
 export interface FavouritesContextProvider {
     favouritesList: Game[];

@@ -7,10 +7,6 @@ import { Session } from '../_types/types';
 
 
 
- /***********
- * SESSIONS *
- ***********/
-
 /**
  * Creates a session when a user signs in.
  */
