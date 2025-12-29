@@ -53,6 +53,7 @@ export type Profile = {
     full_name: string,
     birth_date: string,
     image: string,
+    phone: string,
     bio: string
 }
 

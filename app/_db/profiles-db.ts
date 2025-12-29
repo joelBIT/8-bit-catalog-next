@@ -21,8 +21,19 @@ export async function getProfileByUserId(user_id: number): Promise<Profile> {
 /**
  * Update profile for user with supplied user ID.
  */
-export async function updateProfileByUserId(id: number, full_name: string, phone: string, birth_date: string): Promise<void> {
-    const { error } = await databaseClient.from(PROFILES_TABLE).update({full_name, phone, birth_date}).eq('user_id', id);
+export async function updateProfileByUserId(profile: Profile): Promise<void> {
+    const { error } = await databaseClient.from(PROFILES_TABLE).update({...profile}).eq('user_id', profile.user_id);
+    if (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+/**
+ * Create profile for a newly registered user.
+ */
+export async function createProfileForUserId(user_id: number, full_name: string, phone: string, birth_date: string): Promise<void> {
+    const { error } = await databaseClient.from(PROFILES_TABLE).insert({user_id, full_name, phone, birth_date});
     if (error) {
         console.log(error);
         throw error;

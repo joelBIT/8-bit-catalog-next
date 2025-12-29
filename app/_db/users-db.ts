@@ -72,14 +72,6 @@ export async function getAllUsers(): Promise<User[]> {
     return data;
 }
 
-export async function updateUser(id: number, last_name: string, first_name: string, bio: string): Promise<void> {
-    const { error } = await databaseClient.from(PROFILES_TABLE).update({last_name, first_name, bio}).eq('id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-}
-
 export async function updatePassword(id: number, password_hash: string): Promise<void> {
     const { error } = await databaseClient.from(USERS_TABLE).update({password_hash}).eq('id', id);
     if (error) {

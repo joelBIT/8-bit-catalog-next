@@ -13,7 +13,7 @@ const PROFILE_IMAGES_STORAGE = "catalog";
  * Create an account for user with supplied user ID, and store the activation code (which is also sent to the user email).
  * The account must be activated before a user is able to sign in.
  */
-export async function createAccount(user_id: number, activation_code: string): Promise<void> {
+export async function createAccountForUserId(user_id: number, activation_code: string): Promise<void> {
     await databaseClient.from(ACCOUNTS_TABLE).insert({ user_id, activation_code });
 }
 

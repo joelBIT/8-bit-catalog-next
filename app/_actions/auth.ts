@@ -13,9 +13,9 @@ import { setSessionCookie } from "@/app/_session/cookie";
 import { isAuthenticated } from "@/app/_session/sessionUtils";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
-import { updateProfileByUserId } from "../_db/profiles-db";
-import { createAccount, getAccountByUserId } from "../_db/accounts-db";
-import { updateAddressByUserId } from "../_db/addresses-db";
+import { createProfileForUserId } from "../_db/profiles-db";
+import { createAccountForUserId, getAccountByUserId } from "../_db/accounts-db";
+import { createAddressForUserId } from "../_db/addresses-db";
 
 /**
  * This function is invoked when a user tries to log in.
@@ -79,10 +79,10 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash, email);
-        await updateProfileByUserId(user.id, fullName, phone, birthDate);
-        await updateAddressByUserId({user_id: user.id, street, city, country, zip_code: ''});
+        await createProfileForUserId(user.id, fullName, phone, birthDate);
+        await createAddressForUserId({user_id: user.id, street, city, country, zip_code: ''});
         const activationCode = uuidv4();
-        await createAccount(user.id, activationCode);
+        await createAccountForUserId(user.id, activationCode);
         sendActivationMail(user.email, activationCode);
         
         return { message: 'Registration successful. Check email for activation link.', success: true };

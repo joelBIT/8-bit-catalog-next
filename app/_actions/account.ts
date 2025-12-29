@@ -1,6 +1,6 @@
 'use server';
 
-import { getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUsername } from "@/app/_db/users-db";
+import { getUserById, updateEmail, updatePassword, updateProfileImageById, updateUsername } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { ActionState, Address, Profile } from "@/app/_types/types";
@@ -51,27 +51,26 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 }
 
 /**
- * This function is invoked when updating user information such as name and bio.
+ * This function is invoked when updating profile information such as name and bio.
  */
-export async function updateUserDetails(_prevState: Profile, formData: FormData): Promise<Profile & ActionState> {
+export async function updateProfile(_prevState: Profile, formData: FormData): Promise<Profile & ActionState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update user information', success: false, ..._prevState };
     }
     
     try {
-        const firstName = formData.get('first_name') as string;
-        const fullName = formData.get('full_name') as string;
-        const lastName = formData.get('last_name') as string;
-        const birthDate = formData.get('birth_date') as string;
+        const first_name = formData.get('first_name') as string;
+        const full_name = formData.get('full_name') as string;
+        const last_name = formData.get('last_name') as string;
+        const birth_date = formData.get('birth_date') as string;
         const phone = formData.get('phone') as string;
-        const userBio = formData.get('bio') as string;
-        const userId = _prevState.user_id;
-        await updateUser(userId, lastName, firstName, userBio);
-        await updateProfileByUserId(userId, fullName, phone, birthDate);
+        const bio = formData.get('bio') as string;
+        const user_id = _prevState.user_id;
+        await updateProfileByUserId({user_id, full_name, phone, birth_date, last_name, first_name, bio, image: ''});
 
-        return { message: 'The account was successfully updated', success: true, user_id: userId, image: '', first_name: firstName, last_name: lastName, 
-            bio: userBio, birth_date: birthDate, full_name: fullName };
+        return { message: 'The account was successfully updated', success: true, user_id, image: '', first_name, last_name, 
+            bio, birth_date, full_name, phone };
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false, ..._prevState };

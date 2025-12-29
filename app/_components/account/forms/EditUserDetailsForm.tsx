@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateUserDetails } from "@/app/_actions/account";
+import { updateProfile } from "@/app/_actions/account";
 import PhoneInput from "react-phone-input-2";
 import { ActionState, Profile } from "@/app/_types/types";
 
@@ -12,9 +12,9 @@ import "./EditUserDetailsForm.css";
 export function EditUserDetailsForm(): ReactElement {
     const { user, profile } = useAccount();
     const initialState: ActionState & Profile = { 
-        message: '', success: false, user_id: user.id, image: '', first_name: '', last_name: '', bio: '', full_name: '', birth_date: ''
+        message: '', success: false, user_id: user.id, image: '', first_name: '', last_name: '', bio: '', full_name: '', birth_date: '', phone: ''
     }
-    const [state, formAction] = useActionState(updateUserDetails, initialState);
+    const [state, formAction] = useActionState(updateProfile, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {

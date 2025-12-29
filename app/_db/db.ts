@@ -13,7 +13,7 @@ function databaseKey() {
 }
 
 export const ACCOUNTS_TABLE = "accounts";
-export const ADDRESS_TABLE = "address";
+export const ADDRESSES_TABLE = "addresses";
 export const ARTICLES_TABLE = "articles"
 export const FAVOURITES_TABLE = "favourites";
 export const FAQ_TABLE = "faq";
