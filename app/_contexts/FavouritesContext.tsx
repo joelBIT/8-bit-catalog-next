@@ -3,8 +3,8 @@
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
 import { Game } from "@/app/_types/types";
 import { isLocalStorageAvailable } from "@/app/_utils/utils";
-import { addFavouriteGameToDatabase, deleteFavouriteGameFromDatabase, getFavourites } from "@/app/_client/client";
-import { isAuthenticated } from "@/app/_session/utils";
+import { addFavouriteGameToDatabaseRequest, deleteFavouriteGameFromDatabaseRequest, getFavouritesRequest } from "@/app/_client/client";
+import { isAuthenticated } from "@/app/_session/sessionUtils";
 
 export interface FavouritesContextProvider {
     favouritesList: Game[];
@@ -49,7 +49,7 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
      * Get the favourite games for a user (with an active session) from the DB.
      */
     async function getFavouriteGames(): Promise<void> {
-        const games = await getFavourites();
+        const games = await getFavouritesRequest();
         setFavouritesList(games);
     }
 
@@ -67,7 +67,7 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
         const authenticated = await isAuthenticated();
         if (authenticated) {
             setFavouritesList(games);
-            addFavouriteGameToDatabase(game.id);
+            addFavouriteGameToDatabaseRequest(game.id);
         } else if (isLocalStorageAvailable()) {
             setFavouritesList(games);
             localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
@@ -84,7 +84,7 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
         const authenticated = await isAuthenticated();
         if (authenticated) {
             setFavouritesList(games);
-            deleteFavouriteGameFromDatabase(game.id);
+            deleteFavouriteGameFromDatabaseRequest(game.id);
         } else if (isLocalStorageAvailable()) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
             setFavouritesList(games);

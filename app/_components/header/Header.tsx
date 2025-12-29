@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import Link from "next/link";
 import { NavBar } from ".";
 import { URL_HOME } from "@/app/_utils/utils";
-import { isAuthenticated } from "@/app/_session/utils";
+import { isAuthenticated } from "@/app/_session/sessionUtils";
 
 import "./Header.css";
 

@@ -1,9 +1,11 @@
 'use server';
 
-import { createActivatedAccount, getUserById, updateEmail, updatePassword, updateProfileImageById, updateUser, updateUserInformationById, updateUsername } from "@/app/_db/db";
+import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateProfileImageById, updateUsernameByUserId } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
-import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/utils";
-import { ActionState, InitialUserState } from "@/app/_types/types";
+import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
+import { ActionState, Address, Profile } from "@/app/_types/types";
+import { updateProfileByUserId } from "../_db/profiles-db";
+import { createActivatedAccount } from "../_db/accounts-db";
 
 /**
  * This function is invoked when a user updates account information such as account password.
@@ -39,7 +41,7 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
         }
 
         const passwordHash = await hashPassword(password);
-        await updatePassword(userId, passwordHash);
+        await updatePasswordByUserId(userId, passwordHash);
 
         return { message: 'The password was successfully updated', success: true };
     } catch (error) {
@@ -49,43 +51,36 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 }
 
 /**
- * This function is invoked when updating user information such as name and bio.
+ * This function is invoked when updating profile information such as name and bio.
  */
-export async function updateUserDetails(userId: number, _prevState: InitialUserState, formData: FormData): Promise<InitialUserState> {
+export async function updateProfile(_prevState: Profile, formData: FormData): Promise<Profile & ActionState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
-        return { message: 'Must be authenticated to update user information', success: false, firstName: '', lastName: '', bio: '', birthDate: '',
-            city: '', country: '', fullName: '', address: ''
-         };
+        return { message: 'Must be authenticated to update user information', success: false, ..._prevState };
     }
     
     try {
-        const firstName = formData.get('first_name') as string;
-        const fullName = formData.get('full_name') as string;
-        const lastName = formData.get('last_name') as string;
-        const birthDate = formData.get('birth_date') as string;
-        const city = formData.get('city') as string;
-        const address = formData.get('address') as string;
+        const first_name = formData.get('first_name') as string;
+        const full_name = formData.get('full_name') as string;
+        const last_name = formData.get('last_name') as string;
+        const birth_date = formData.get('birth_date') as string;
         const phone = formData.get('phone') as string;
-        const userBio = formData.get('bio') as string;
-        const country = formData.get('country') as string;
-        await updateUser(userId, lastName, firstName, userBio);
-        await updateUserInformationById(userId, fullName, phone, address, city, country, birthDate);
+        const bio = formData.get('bio') as string;
+        const user_id = _prevState.user_id;
+        await updateProfileByUserId({user_id, full_name, phone, birth_date, last_name, first_name, bio, image: ''});
 
-        return { message: 'The account was successfully updated', success: true, firstName: firstName, lastName: lastName, 
-            bio: userBio, birthDate: birthDate, city: city, country: country, fullName: fullName, address: address };
+        return { message: 'The account was successfully updated', success: true, user_id, image: '', first_name, last_name, 
+            bio, birth_date, full_name, phone };
     } catch (error) {
         console.log(error);
-        return { message: 'The account could not be updated', success: false, firstName: '', lastName: '', bio: '', birthDate: '',
-            city: '', country: '', fullName: '', address: ''
-         };
+        return { message: 'The account could not be updated', success: false, ..._prevState };
     }
 }
 
 /**
  * Updates a user's profile image.
  */
-export async function updateProfileImage(userId: number, _prevState: {message: string, success: boolean, image: string}, formData: FormData): Promise<{message: string, success: boolean, image: string}> {
+export async function updateProfileImage(userId: number, _prevState: ActionState & {image: string}, formData: FormData): Promise<ActionState & {image: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update profile image', success: false, image: _prevState.image };
@@ -137,7 +132,7 @@ export async function createUserAndAccount(_prevState: ActionState, formData: Fo
     }
 }
 
-export async function updateAccountEmail(userId: number, _prevState: {message: string, success: boolean, email: string}, formData: FormData): Promise<{message: string, success: boolean, email: string}> {
+export async function updateAccountEmail(userId: number, _prevState: ActionState & {email: string}, formData: FormData): Promise<ActionState & {email: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update email', success: false, email: _prevState.email };
@@ -149,7 +144,7 @@ export async function updateAccountEmail(userId: number, _prevState: {message: s
     }
 
     try {
-        await updateEmail(userId, email);
+        await updateEmailByUserId(userId, email);
 
         return { message: 'The email address was successfully updated', success: true, email: email };
     } catch (error) {
@@ -158,7 +153,7 @@ export async function updateAccountEmail(userId: number, _prevState: {message: s
     }
 }
 
-export async function updateAccountUsername(userId: number, _prevState: {message: string, success: boolean, username: string}, formData: FormData): Promise<{message: string, success: boolean, username: string}> {
+export async function updateAccountUsername(userId: number, _prevState: ActionState & {username: string}, formData: FormData): Promise<ActionState & {username: string}> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update username', success: false, username: _prevState.username };
@@ -170,11 +165,15 @@ export async function updateAccountUsername(userId: number, _prevState: {message
     }
 
     try {
-        await updateUsername(userId, username);
+        await updateUsernameByUserId(userId, username);
 
         return { message: 'The username was successfully updated', success: true, username: username };
     } catch (error) {
         console.log(error);
         return { message: 'The username could not be updated', success: false, username: _prevState.username };
     }
+}
+
+export async function updateUserAddress(userId: number, _prevState: ActionState & Address, formData: FormData): Promise<ActionState & Address> {
+    return { ..._prevState, message: 'The address was successfully updated', success: true };
 }

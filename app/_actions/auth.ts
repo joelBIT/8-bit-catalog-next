@@ -4,15 +4,18 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { emailExists, createAccount, getAccountByUserId, getUserByEmail, registerUser, updateUserPassword, updateUserInformationById, isCurrentPassword } from "@/app/_db/db";
+import { emailExists, getUserByEmail, registerUser, updateUserPassword, isCurrentPassword } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
 import ActivationEmail from "../_components/email/ActivationEmail";
 import { setSessionCookie } from "@/app/_session/cookie";
-import { isAuthenticated } from "@/app/_session/utils";
+import { isAuthenticated } from "@/app/_session/sessionUtils";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
+import { createProfileForUserId } from "../_db/profiles-db";
+import { createAccountForUserId, getAccountByUserId } from "../_db/accounts-db";
+import { createAddressForUserId } from "../_db/addresses-db";
 
 /**
  * This function is invoked when a user tries to log in.
@@ -55,7 +58,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const passwordRepeat = formData.get('passwordRepeat') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
-    const address = formData.get('address') as string;
+    const street = formData.get('street') as string;
     const city = formData.get('city') as string;
     const country = formData.get('country') as string;
     const fullName = formData.get('full_name') as string;
@@ -76,9 +79,10 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash, email);
-        await updateUserInformationById(user.id, fullName, phone, address, city, country, birthDate);
+        await createProfileForUserId(user.id, fullName, phone, birthDate);
+        await createAddressForUserId({user_id: user.id, street, city, country, zip_code: ''});
         const activationCode = uuidv4();
-        await createAccount(user.id, activationCode);
+        await createAccountForUserId(user.id, activationCode);
         sendActivationMail(user.email, activationCode);
         
         return { message: 'Registration successful. Check email for activation link.', success: true };

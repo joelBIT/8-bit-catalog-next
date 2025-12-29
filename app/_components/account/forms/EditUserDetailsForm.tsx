@@ -2,21 +2,19 @@
 
 import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateUserDetails } from "@/app/_actions/account";
+import { updateProfile } from "@/app/_actions/account";
 import PhoneInput from "react-phone-input-2";
-import { SelectCountry } from "../../common";
+import { ActionState, Profile } from "@/app/_types/types";
 
 import 'react-phone-input-2/lib/style.css';
 import "./EditUserDetailsForm.css";
 
-const initialState = { 
-    message: '', success: false, firstName: '', lastName: '', bio: '',
-    country: '', fullName: '', address: '', birthDate: '', city: '' 
-}
-
 export function EditUserDetailsForm(): ReactElement {
-    const { user, addUser } = useAccount();
-    const [state, formAction] = useActionState(updateUserDetails.bind(null, user.id), initialState);
+    const { user, profile } = useAccount();
+    const initialState: ActionState & Profile = { 
+        message: '', success: false, user_id: user.id, image: '', first_name: '', last_name: '', bio: '', full_name: '', birth_date: '', phone: ''
+    }
+    const [state, formAction] = useActionState(updateProfile, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
@@ -25,10 +23,6 @@ export function EditUserDetailsForm(): ReactElement {
             setTimeout(() => {
                 setShowMessage(false);
             }, 5000);
-        }
-
-        if (state.success) {
-            addUser();      // Update user in AccountContext
         }
     }, [state]);
 
@@ -46,7 +40,7 @@ export function EditUserDetailsForm(): ReactElement {
                         type="text"
                         className="input-field"
                         autoComplete="none"
-                        defaultValue={state.firstName ? state.firstName : user.first_name} 
+                        defaultValue={state.first_name ? state.first_name : profile.first_name} 
                     />
                 </section>
 
@@ -61,7 +55,7 @@ export function EditUserDetailsForm(): ReactElement {
                         type="text"
                         className="input-field"
                         autoComplete="none"
-                        defaultValue={state.lastName ? state.lastName : user.last_name} 
+                        defaultValue={state.last_name ? state.last_name : profile.last_name} 
                     />
                 </section>
 
@@ -74,7 +68,7 @@ export function EditUserDetailsForm(): ReactElement {
                         id="bio"
                         name="bio" 
                         className="input-field edit-profile__bio"
-                        defaultValue={state.bio ? state.bio : user.bio} 
+                        defaultValue={state.bio ? state.bio : profile.bio} 
                         placeholder="About me" 
                     />
                 </section>
@@ -85,7 +79,7 @@ export function EditUserDetailsForm(): ReactElement {
                         name="birth_date" 
                         type="date"
                         max={new Date().toLocaleDateString('en-ca')}
-                        defaultValue={state.birthDate ? state.birthDate : user?.birth_date} 
+                        defaultValue={state.birth_date ? state.birth_date : profile?.birth_date} 
                         className="form__field"
                     />
 
@@ -102,42 +96,10 @@ export function EditUserDetailsForm(): ReactElement {
                     <input 
                         id="fullName"
                         name="full_name"
-                        defaultValue={state.fullName ? state.fullName : user?.full_name} 
+                        defaultValue={state.full_name ? state.full_name : profile?.full_name} 
                         type="text"
                         className="input-field"
                         autoComplete="none" 
-                    />
-                </section>
-
-                <SelectCountry selected={state.country ? state.country : user.country} />
-
-                <section className="information-input">
-                    <label className="input-label" htmlFor="address">
-                        Address
-                    </label>
-
-                    <input 
-                        id="address"
-                        name="address" 
-                        type="text"
-                        defaultValue={state.address ? state.address : user?.address} 
-                        className="input-field"
-                        autoComplete="none"
-                    />
-                </section>
-            
-                <section className="information-input">
-                    <label className="input-label" htmlFor="city">
-                        City
-                    </label>
-
-                    <input 
-                        id="city"
-                        name="city" 
-                        type="text"
-                        defaultValue={state.city ? state.city : user?.city} 
-                        className="input-field"
-                        autoComplete="none"
                     />
                 </section>
 

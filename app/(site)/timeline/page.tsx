@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { TimelineEvent } from "@/app/_types/types";
-import { getTimelineEvents } from "@/app/_client/client";
+import { getTimelineEventsRequest } from "@/app/_client/client";
 
 import "./page.css";
 
@@ -32,7 +32,7 @@ export default function TimelinePage(): ReactElement {
      * Retrieve the timeline for the NES.
      */
     async function getTimeline(): Promise<void> {
-        setTimeline(await getTimelineEvents());
+        setTimeline(await getTimelineEventsRequest());
     }
 
     /**

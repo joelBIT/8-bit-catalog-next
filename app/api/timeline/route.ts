@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getTimeline } from "@/app/_db/db";
+import { getTimeline } from "@/app/_db/timeline-db";
 
 /**
  * Returns timeline for about page.

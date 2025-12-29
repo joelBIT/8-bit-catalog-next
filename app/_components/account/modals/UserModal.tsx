@@ -1,36 +1,51 @@
 'use client';
 
-import {ReactElement, useEffect, useRef} from "react";
-import {User} from "@/app/_types/types";
+import {ReactElement, useEffect, useRef, useState} from "react";
+import {Address, Profile} from "@/app/_types/types";
+import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "@/app/_client/client";
 
 import "./UserModal.css";
 
 /**
  * Modal showing metadata about the supplied user.
  */
-export function UserModal({ user, close }: { user: User, close: () => void }): ReactElement {
+export function UserModal({ user_id, close }: { user_id: number, close: () => void }): ReactElement {
+    const [profile, setProfile] = useState<Profile>();
+    const [address, setAddress] = useState<Address>();
     const dialogRef = useRef<HTMLDialogElement>(null);
-    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
+    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user_id}/`;
 
     useEffect(() => {
+        getUserInformation();
         if (!dialogRef.current?.open) {
             dialogRef.current?.showModal();
         }
     }, []);
+
+    async function getUserInformation(): Promise<void> {
+        try {
+            const profile = await getProfileByUserIdRequest(user_id);
+            setProfile(profile);
+            const address = await getAddressByUserIdRequest(user_id);
+            setAddress(address);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <dialog id="userModal" ref={dialogRef}>
             <span onClick={close} className="closeButton" />
 
             <section id="user-information">
-                <img src={STORAGE_URL + user?.image} className="profile-image" alt="Profile image" />
+                <img src={STORAGE_URL + profile?.image} className="profile-image" alt="Profile image" />
 
                 <section id="user-details">
-                    <h1 id="user-name"> {user.first_name + " " + user.last_name} </h1>
+                    <h1 id="user-name"> {profile?.first_name + " " + profile?.last_name} </h1>
 
                     <section id="user-address">
-                        <h2> {user.address} </h2>
-                        <h2> {user.city + ", " + user.country} </h2>
+                        <h2> {address?.street} </h2>
+                        <h2> {address?.city + ", " + address?.country} </h2>
                     </section>
 
                     <button id="private-message" className="button__link">
@@ -46,10 +61,10 @@ export function UserModal({ user, close }: { user: User, close: () => void }): R
                     <section id="ingredientInformation">
                         <article id="favouritesList">
                             <h1>
-                                Ett spel
+                                Some game
                             </h1>
                             <h1>
-                                Ett till spel
+                                Some other game
                             </h1>
                         </article>
                     </section>
@@ -59,7 +74,7 @@ export function UserModal({ user, close }: { user: User, close: () => void }): R
                 <label htmlFor="tabAbout">About</label>
                 <div className="tab">
                     <section>
-                        <h3> {user.bio} </h3>
+                        <h3> {profile?.bio} </h3>
                     </section>
                 </div>
             </section>

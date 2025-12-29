@@ -1,8 +1,9 @@
 'use server';
 
 import { ActionState } from "@/app/_types/types";
-import { createNews, subscribeNewsletter } from "@/app/_db/db";
-import { isAuthenticatedAdmin } from "@/app/_session/utils";
+import { isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
+import { subscribeNewsletter } from "../_db/newsletter-db";
+import { createNews } from "../_db/news-db";
 
 /**
  * Creates a newsletter subscription for the supplied email. It is not required to have an account. A person only needs to enter an email

@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { getAllGamesRequest } from "@/app/_db/db";
+import { getAllGames } from "@/app/_db/games-db";
 
 /**
  * Retrieve all games.
  */
 export async function GET(): Promise<NextResponse> {
     try {
-        const games = await getAllGamesRequest();
+        const games = await getAllGames();
         return NextResponse.json(games);
     } catch (error) {
         console.log(error);

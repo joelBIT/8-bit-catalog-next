@@ -2,7 +2,7 @@
 
 import { createContext, type ReactElement, type ReactNode, useEffect, useState } from "react";
 import { Game, SearchFilter } from "../_types/types";
-import { getAllGames } from "../_client/client";
+import { getAllGamesRequest } from "../_client/client";
 import { ALL_OPTION_VALUE } from "../_utils/utils";
 
 export interface GamesContextProvider {
@@ -25,7 +25,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
      */
     async function loadGames(): Promise<void> {
         try {
-            const result = await getAllGames();
+            const result = await getAllGamesRequest();
             setGames(result.games);
         } catch (error) {
             setGames([]);

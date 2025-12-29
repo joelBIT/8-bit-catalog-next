@@ -3,8 +3,8 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getNewsById, getTopNews } from "@/app/_db/db";
 import { URL_HOME, URL_NEWS_PAGE } from "@/app/_utils/utils";
+import { getNewsById, getTopNews } from "@/app/_db/news-db";
 
 import "./page.css";
 

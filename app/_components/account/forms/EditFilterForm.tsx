@@ -2,7 +2,7 @@
 
 import { ReactElement, useRef, useState } from "react";
 import { Filter } from "@/app/_types/types";
-import { updateFilterValues } from "@/app/_client/client";
+import { updateFilterValuesRequest } from "@/app/_client/client";
 import { EditFilterModal } from "../modals";
 
 import "./EditFilterForm.css";
@@ -21,7 +21,7 @@ export function EditFilterForm( { title, filterValues, filter } : { title: strin
     function confirmUpdate(value: string): void {
         if (!valuesList.includes(value)) {      // Only add value if it does not already exists
             const values = [...valuesList, value].sort();
-            updateFilterValues(values, filter);
+            updateFilterValuesRequest(values, filter);
             setValuesList(values);
         }
         

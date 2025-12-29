@@ -8,8 +8,8 @@ import { updateProfileImage } from "@/app/_actions/account";
 import "./EditProfileForm.css";
 
 export function EditProfileForm(): ReactElement {
-    const { user, addUser } = useAccount();
-    const [state, formAction] = useActionState(updateProfileImage.bind(null, user.id), { message: '', success: false, image: user?.image });
+    const { user, profile } = useAccount();
+    const [state, formAction] = useActionState(updateProfileImage.bind(null, user.id), { message: '', success: false, image: profile?.image });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
@@ -20,17 +20,13 @@ export function EditProfileForm(): ReactElement {
                 setShowMessage(false);
             }, 5000);
         }
-
-        if (state.success) {
-            addUser();      // Update user in AccountContext
-        }
     }, [state]);
 
     return (
         <>
             <form id="editProfileForm" action={formAction}>
                 <section className="edit-profile-image">
-                    <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + user?.image} className="profile-image" alt="Profile image" />
+                    <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + profile?.image} className="profile-image" alt="Profile image" />
 
                     <section className="edit-profile__change-image"> 
                         <h1> Change profile image </h1> 

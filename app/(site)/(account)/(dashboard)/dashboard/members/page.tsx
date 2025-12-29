@@ -3,10 +3,10 @@
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { useAccount } from "@/app/_hooks";
 import { User } from "@/app/_types/types";
-import { getUsers } from "@/app/_client/client";
+import { getUsersRequest } from "@/app/_client/client";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
 import { AddUserModal } from "@/app/_components/account/modals";
-import { UserList } from "@/app/_components/lists";
+import { UserList } from "@/app/_components/account/lists";
 
 import "./page.css";
 
@@ -26,7 +26,7 @@ export default function MembersPage(): ReactElement {
     }, [])
 
     async function getAllMembers(): Promise<void> {
-        const users = await getUsers();
+        const users = await getUsersRequest();
         setMembers(users);
         setResult(users);
     }

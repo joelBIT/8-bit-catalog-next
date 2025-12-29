@@ -1,7 +1,18 @@
 #activationPage {
-    background-image: url("/nes-gaming-set-in-dark.webp");
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    background-color: var(--color-black);
+    min-height: 90vh;
+    padding: 10rem 1rem 5rem;
+
+    & .activationPage-heading {
+        font-family: 'Rancho', sans-serif;
+        letter-spacing: 1px;
+        font-weight: 100;
+        font-size: 3rem;
+        text-align: center;
+        color: var(--color-real-white);
+    }
 }
