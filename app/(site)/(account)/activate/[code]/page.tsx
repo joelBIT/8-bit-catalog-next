@@ -17,9 +17,11 @@ export default async function ActivationPage({ params }: { params: Promise<Param
         <main id="activationPage">
             { 
                 activated ? 
-                    <h1> Account is activated. You can now log in. </h1> 
+                    <h1 className="activationPage-heading"> Account is activated. You can now log in. </h1> 
                     : 
-                    <h1> Account could not be activated </h1> 
+                    <h1 className="activationPage-heading"> Account could not be activated. Please send an email to 
+                        <a href="mailto:contact@joel-rollny.eu"> contact@joel-rollny.eu </a>
+                    </h1> 
             }
         </main>
     );

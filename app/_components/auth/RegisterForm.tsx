@@ -21,7 +21,7 @@ export function RegisterForm(): ReactElement {
     const [passwordRepeat, setPasswordRepeat] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [fullName, setFullName] = useState<string>('');
-    const [address, setAddress] = useState<string>('');
+    const [street, setStreet] = useState<string>('');
     const [city, setCity] = useState<string>('');
     const [birthDate, setBirthDate] = useState<string>('');
     const [showInputs, setShowInputs] = useState<boolean>(false);
@@ -33,7 +33,7 @@ export function RegisterForm(): ReactElement {
             setEmail('');
             setPassword('');
             setPasswordRepeat('');
-            setAddress('');
+            setStreet('');
             setFullName('');
             setBirthDate('');
             setCity('');
@@ -43,9 +43,9 @@ export function RegisterForm(): ReactElement {
     /**
      * If a user enters more than 2 characters in the address field, extra input fields are shown in an extension of the input area.
      */
-    function dropdown(address: string): void {
-        setAddress(address);
-        if (!showInputs && address.length > 2) {
+    function dropdown(street: string): void {
+        setStreet(street);
+        if (!showInputs && street.length > 2) {
             setShowInputs(true);
         }
     }
@@ -124,7 +124,7 @@ export function RegisterForm(): ReactElement {
 
                 <section className="input">
                     <input 
-                        id="birthDate"
+                        id="birth_date"
                         name="birth_date" 
                         type="date"
                         max={new Date().toLocaleDateString('en-ca')}
@@ -158,15 +158,15 @@ export function RegisterForm(): ReactElement {
                     <SelectCountry selected="SE" />
 
                     <section className="information-input">
-                        <label className="input-label" htmlFor="address">
-                            Address
+                        <label className="input-label" htmlFor="street">
+                            Street
                         </label>
 
                         <input 
-                            id="address"
-                            name="address" 
+                            id="street"
+                            name="street" 
                             type="text"
-                            value={address}
+                            value={street}
                             onChange={e => dropdown(e.target.value)}
                             className="input-field"
                             autoComplete="none"
