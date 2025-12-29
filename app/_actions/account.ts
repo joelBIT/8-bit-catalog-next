@@ -1,6 +1,6 @@
 'use server';
 
-import { getUserById, updateEmail, updatePassword, updateProfileImageById, updateUsername } from "@/app/_db/users-db";
+import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateProfileImageById, updateUsernameByUserId } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { ActionState, Address, Profile } from "@/app/_types/types";
@@ -41,7 +41,7 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
         }
 
         const passwordHash = await hashPassword(password);
-        await updatePassword(userId, passwordHash);
+        await updatePasswordByUserId(userId, passwordHash);
 
         return { message: 'The password was successfully updated', success: true };
     } catch (error) {
@@ -144,7 +144,7 @@ export async function updateAccountEmail(userId: number, _prevState: ActionState
     }
 
     try {
-        await updateEmail(userId, email);
+        await updateEmailByUserId(userId, email);
 
         return { message: 'The email address was successfully updated', success: true, email: email };
     } catch (error) {
@@ -165,7 +165,7 @@ export async function updateAccountUsername(userId: number, _prevState: ActionSt
     }
 
     try {
-        await updateUsername(userId, username);
+        await updateUsernameByUserId(userId, username);
 
         return { message: 'The username was successfully updated', success: true, username: username };
     } catch (error) {

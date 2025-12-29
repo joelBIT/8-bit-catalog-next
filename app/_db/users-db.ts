@@ -54,6 +54,9 @@ export async function getUserByEmail(email: string): Promise<User> {
     return data;
 }
 
+/**
+ * Retrieve user with supplied user ID.
+ */
 export async function getUserById(id: number): Promise<User> {
     const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS).eq('id', id).single();
     if (error) {
@@ -63,6 +66,9 @@ export async function getUserById(id: number): Promise<User> {
     return data;
 }
 
+/**
+ * Retrieve all users.
+ */
 export async function getAllUsers(): Promise<User[]> {
     const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS);
     if (error) {
@@ -72,7 +78,10 @@ export async function getAllUsers(): Promise<User[]> {
     return data;
 }
 
-export async function updatePassword(id: number, password_hash: string): Promise<void> {
+/**
+ * Update password by replacing the existing password hash with the hash of the new password.
+ */
+export async function updatePasswordByUserId(id: number, password_hash: string): Promise<void> {
     const { error } = await databaseClient.from(USERS_TABLE).update({password_hash}).eq('id', id);
     if (error) {
         console.log(error);
@@ -80,7 +89,10 @@ export async function updatePassword(id: number, password_hash: string): Promise
     }
 }
 
-export async function updateEmail(id: number, email: string): Promise<void> {
+/**
+ * Update email adress for user with supplied user ID.
+ */
+export async function updateEmailByUserId(id: number, email: string): Promise<void> {
     const { error } = await databaseClient.from(USERS_TABLE).update({email}).eq('id', id);
     if (error) {
         console.log(error);
@@ -88,7 +100,7 @@ export async function updateEmail(id: number, email: string): Promise<void> {
     }
 }
 
-export async function updateUsername(id: number, username: string): Promise<void> {
+export async function updateUsernameByUserId(id: number, username: string): Promise<void> {
     const { error } = await databaseClient.from(USERS_TABLE).update({username}).eq('id', id);
     if (error) {
         console.log(error);
