@@ -1,11 +1,9 @@
 import 'server-only';
 
-import { AuthWeakPasswordError } from '@supabase/supabase-js';
+import { eq } from 'drizzle-orm';
 import { User } from '@/app/_types/types';
-import { databaseClient, USERS_TABLE } from './db';
-
-
-const USER_COLUMNS = "id, created_at, password_hash, role, email, username";
+import { databaseClient } from './db';
+import { usersTable } from './schema/users';
 
 
 
@@ -17,25 +15,14 @@ const USER_COLUMNS = "id, created_at, password_hash, role, email, username";
  * to login/search members due to character(s) being mixed uppercase and lowercase. Also, as default the email is also stored as
  * the username since it is unique. A user can change the username to something else when logged in.
  */
-export async function registerUser(userEmail: string, password_hash: string, username: string): Promise<{id: number, email: string}> {
-    const lowerCaseEmail = userEmail.toLowerCase();
-    const { data, error } = await databaseClient.from(USERS_TABLE).insert({email: lowerCaseEmail, password_hash, username}).select('id, email').single();
-    
-    if (error) {
-        console.log(error);
-        if (error instanceof AuthWeakPasswordError) {
-            throw new Error('Password is to weak');
-        } else if (error.code == '23505') {
-            if (error.details.includes("email")) {
-                throw new Error(`The email ${userEmail} is already in use`);
-            } else if (error.details.includes("username")) {
-                throw new Error(`The username ${username} is already in use`);
-            }
-        }
-        throw error;
-    }
+export async function registerUser(userEmail: string, passwordHash: string, username: string): Promise<{id: number, email: string}> {
+    const email = userEmail.toLowerCase();
+    const response = await databaseClient
+        .insert(usersTable)
+        .values({email, passwordHash, username, role: "regular"})
+        .returning({'id': usersTable.id, 'email': usersTable.email});
 
-    return data;
+    return {id: response[0].id, email: email};
 }
 
 /**
@@ -44,96 +31,88 @@ export async function registerUser(userEmail: string, password_hash: string, use
  */
 export async function getUserByEmail(email: string): Promise<User> {
     const lowerCaseEmail = email.toLowerCase();
-    const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS).eq('email', lowerCaseEmail).single();
-    if (error) {
-        console.log(error);
-        throw error;
+    const response = await databaseClient.select().from(usersTable).where(eq(usersTable.email, lowerCaseEmail)).limit(1);
+    if (response?.length !== 1) {
+        console.log(`Could not find user with email ${email}`);
+        throw new Error(`Could not find user with email ${email}`)
     }
-    return data;
+
+    return response[0];
 }
 
 /**
  * Retrieve user with supplied user ID.
  */
-export async function getUserById(id: number): Promise<User> {
-    const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS).eq('id', id).single();
-    if (error) {
-        console.log(error);
-        throw error;
+export async function getUserById(userId: number): Promise<User> {
+    const response = await databaseClient.select().from(usersTable).where(eq(usersTable.id, userId)).limit(1);
+    if (response?.length !== 1) {
+        console.log(`Could not find user with ID ${userId}`);
+        throw new Error(`Could not find user with ID ${userId}`)
     }
-    return data;
+
+    return response[0];
 }
 
 /**
  * Retrieve all users.
  */
 export async function getAllUsers(): Promise<User[]> {
-    const { data, error } = await databaseClient.from(USERS_TABLE).select(USER_COLUMNS);
-    if (error) {
-        console.log(error);
-        return [];
-    }
-    return data;
+    return await databaseClient.select().from(usersTable);
 }
 
 /**
  * Update password by replacing the existing password hash with the hash of the new password.
  */
-export async function updatePasswordByUserId(id: number, password_hash: string): Promise<void> {
-    const { error } = await databaseClient.from(USERS_TABLE).update({password_hash}).eq('id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+export async function updatePasswordByUserId(id: number, passwordHash: string): Promise<void> {
+    await databaseClient.update(usersTable).set({passwordHash}).where(eq(usersTable.id, id));
 }
 
 /**
- * Update email adress for user with supplied user ID.
+ * Update email address for user with supplied user ID.
  */
 export async function updateEmailByUserId(id: number, email: string): Promise<void> {
-    const { error } = await databaseClient.from(USERS_TABLE).update({email}).eq('id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+    await databaseClient.update(usersTable).set({email}).where(eq(usersTable.id, id));
 }
 
-export async function updateUsernameByUserId(id: number, username: string): Promise<void> {
-    const { error } = await databaseClient.from(USERS_TABLE).update({username}).eq('id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+/**
+ * Update username for the user with the matching userId.
+ */
+export async function updateUsernameByUserId(userId: number, username: string): Promise<void> {
+    await databaseClient.update(usersTable).set({username}).where(eq(usersTable.id, userId));
 }
 
 /**
  * Update password hash for the account that corresponds to the supplied email.
  */
-export async function updateUserPassword(email: string, password_hash: string): Promise<void> {
-    const { error } = await databaseClient.from(USERS_TABLE).update({password_hash}).eq('email', email);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+export async function updateUserPassword(email: string, passwordHash: string): Promise<void> {
+    await databaseClient.update(usersTable).set({passwordHash}).where(eq(usersTable.email, email));
 }
 
 /**
  * Check if a user with the supplied email exists.
  */
 export async function emailExists(email: string): Promise<boolean> {
-    const { data, error } = await databaseClient.from(USERS_TABLE).select().eq('email', email);
-    return !(error || data.length === 0);
+    try {
+        const response = await databaseClient.select().from(usersTable).where(eq(usersTable.email, email)).limit(1);
+        if (response.length === 1) {
+            return true;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    return false;
 }
 
 /**
  * Check if supplied password hash is a match for the given email address.
  */
-export async function isCurrentPassword(email: string, password_hash: string): Promise<boolean> {
-    const { data, error } = await databaseClient.from(USERS_TABLE).select().eq('email', email).single();
-    if (error) {
-        console.log(error);
-        throw error;
+export async function isCurrentPassword(email: string, passwordHash: string): Promise<boolean> {
+    const response = await databaseClient.select().from(usersTable).where(eq(usersTable.email, email)).limit(1);
+    if (response.length !== 1) {
+        console.log(`Could not find user with email ${email}`);
+        throw new Error(`Could not find user with email ${email}`)
     }
 
-    return data.password_hash === password_hash;
+    return response[0].passwordHash === passwordHash;
 }

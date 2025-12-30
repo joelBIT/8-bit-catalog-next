@@ -82,7 +82,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
 
             <section className="enrolled-section">
                 <h2 className="userCard-enrolled__heading"> Enrolled </h2>
-                <h2 className="userCard-enrolled"> {convertDate(new Date(user.created_at))} </h2>
+                <h2 className="userCard-enrolled"> {convertDate(new Date(user.createdAt))} </h2>
             </section>
         </li>
     );

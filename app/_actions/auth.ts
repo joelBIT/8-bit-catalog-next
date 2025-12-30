@@ -32,7 +32,7 @@ export async function login(_prevState: ActionState, formData: FormData): Promis
             return { message: 'Account is not activated', success: false };
         }
 
-        const validPassword = await verifyPasswordHash(user.password_hash, password);
+        const validPassword = await verifyPasswordHash(user.passwordHash, password);
         if (!validPassword) {
             return { message: 'Password is incorrect', success: false };
         }

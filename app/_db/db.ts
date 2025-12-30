@@ -23,8 +23,3 @@ function databaseURL() {
 function databaseKey() {
     return process.env?.SUPABASE_KEY as string;
 }
-
-
-
-
-export const USERS_TABLE = "users";

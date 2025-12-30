@@ -109,8 +109,8 @@ export type TimelineEvent = {
 export type User = {
     id: number,
     email: string,
-    created_at: Date,
+    createdAt: Date,
     username: string,
-    password_hash: string,
+    passwordHash: string,
     role: string
 }

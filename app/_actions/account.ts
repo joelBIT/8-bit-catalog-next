@@ -35,7 +35,7 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 
     try {
         const user = await getUserById(userId);
-        const validPassword = await verifyPasswordHash(user.password_hash, oldPassword);
+        const validPassword = await verifyPasswordHash(user.passwordHash, oldPassword);
         if (!validPassword) {
             return { message: 'Old password is incorrect', success: false };
         }
