@@ -1,10 +1,10 @@
-import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { date, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
 export const newsTable = pgTable('news', {
     id: serial('id').primaryKey(),
     heading: text('heading').notNull(),
     text: text('text').notNull(),
-    published: timestamp('date').notNull().defaultNow(),
+    published: date('published').notNull().defaultNow(),
     image: text('image').notNull(),
     author: text('author').notNull(),
     createdAt: timestamp('created_at').notNull().defaultNow()

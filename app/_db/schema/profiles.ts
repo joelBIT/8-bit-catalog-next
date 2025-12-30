@@ -1,4 +1,4 @@
-import { integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { date, integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
 export const profilesTable = pgTable('profiles', {
     id: serial('id').primaryKey(),
@@ -7,7 +7,7 @@ export const profilesTable = pgTable('profiles', {
     firstName: text('first_name').notNull().default(''),
     image: text('image').notNull().default(''),
     fullName: text('full_name').notNull().default(''),
-    birthDate: timestamp('birth_date'),
+    birthDate: date('birth_date'),
     phone: text('phone').notNull().default(''),
     bio: text('bio').notNull().default(''),
     createdAt: timestamp('created_at').notNull().defaultNow()

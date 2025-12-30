@@ -40,5 +40,5 @@ export async function getNewsById(id: number): Promise<News> {
  * Create news with the supplied heading and text. The current date is stored as the date of when the news is published.
  */
 export async function createNews(heading: string, text: string): Promise<void> {
-    await databaseClient.insert(newsTable).values({ heading, text, published: new Date(), author: 'Joel Rollny', image: 'keyboard.avif' });
+    await databaseClient.insert(newsTable).values({ heading, text, published: new Date().toString(), author: 'Joel Rollny', image: 'keyboard.avif' });
 }

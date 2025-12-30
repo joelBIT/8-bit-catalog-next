@@ -79,7 +79,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     try {
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash, email);
-        await createProfileForUserId(user.id, fullName, phone, new Date(birthDate));
+        await createProfileForUserId(user.id, fullName, phone, birthDate);
         await createAddressForUserId({userId: user.id, street, city, country, zipCode: ''});
         const activationCode = uuidv4();
         await createAccountForUserId(user.id, activationCode);

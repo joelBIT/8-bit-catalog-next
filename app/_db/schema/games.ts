@@ -1,4 +1,4 @@
-import { boolean, integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { boolean, date, integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
 export const gamesTable = pgTable('games', {
     id: serial('id').primaryKey(),
@@ -8,7 +8,7 @@ export const gamesTable = pgTable('games', {
     publisher: text('publisher').notNull(),
     developer: text('developer').notNull(),
     category: text('category').notNull(),
-    releaseDate: timestamp('release_date').notNull(),
+    releaseDate: date('release_date').notNull(),
     cover: text('cover').notNull(),
     description: text('description').notNull(),
     rom: boolean('rom').notNull()

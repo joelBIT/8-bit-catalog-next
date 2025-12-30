@@ -54,7 +54,7 @@ export type Game = {
     publisher: string,
     developer: string,
     category: string,
-    releaseDate: Date,
+    releaseDate: string,
     cover: string,
     players: number,
     description: string,
@@ -65,7 +65,7 @@ export type News = {
     id: number,
     text: string,
     heading: string,
-    published: Date,
+    published: string,
     image: string,
     author: string
 }
@@ -75,7 +75,7 @@ export type Profile = {
     lastName: string,
     firstName: string,
     fullName: string,
-    birthDate: Date | null,
+    birthDate: string | null,
     image: string,
     phone: string,
     bio: string

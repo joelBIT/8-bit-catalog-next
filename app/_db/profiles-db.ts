@@ -18,7 +18,7 @@ export async function getProfileByUserId(userId: number): Promise<Profile> {
         console.log(`Could not find profile for user with ID ${userId}`);
         throw new Error(`Could not find profile for user with ID ${userId}`)
     }
-    
+
     return response[0];
 }
 
@@ -32,7 +32,7 @@ export async function updateProfileByUserId(profile: Profile): Promise<void> {
 /**
  * Create profile for a newly registered user.
  */
-export async function createProfileForUserId(userId: number, fullName: string, phone: string, birthDate: Date): Promise<void> {
+export async function createProfileForUserId(userId: number, fullName: string, phone: string, birthDate: string): Promise<void> {
     await databaseClient.insert(profilesTable).values({userId, fullName, phone, birthDate});
 }
 
