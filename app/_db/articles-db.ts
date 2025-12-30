@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { eq } from 'drizzle-orm';
-import { ARTICLES_TABLE, databaseClient } from './db';
+import { databaseClient } from './db';
 import { Article } from '../_types/types';
 import { articlesTable } from './schema/articles';
 import { articleContentsTable } from './schema/article_contents';
@@ -31,7 +31,7 @@ export async function getAllArticles(): Promise<Article[]> {
  */
 export async function getArticleById(id: number): Promise<Article> {
     try {
-        const { data } = await databaseClient.from(ARTICLES_TABLE).select(`
+        const { data } = await databaseClient.from(articlesTable).select(`
             id,
             title,
             tags,

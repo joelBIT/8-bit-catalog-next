@@ -24,8 +24,7 @@ function databaseKey() {
     return process.env?.SUPABASE_KEY as string;
 }
 
-export const ARTICLES_TABLE = "articles"
-export const NEWSLETTER_TABLE = "newsletter";
+
 export const SESSION_TABLE = "sessions";
 export const TIMELINE_TABLE = "timeline";
 export const USERS_TABLE = "users";
