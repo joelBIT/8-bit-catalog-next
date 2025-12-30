@@ -126,7 +126,7 @@ async function initiateSession(userId: number): Promise<void> {
     const sessionToken = await generateRandomSessionToken();
     const session = await createSession(sessionToken, userId);
 
-    await setSessionCookie(sessionToken, session.expires_at);
+    await setSessionCookie(sessionToken, session.expiresAt);
 }
 
 /**

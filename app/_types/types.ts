@@ -94,9 +94,9 @@ export type SearchResult = {
 }
 
 export type Session = {
-    user_id: number,
-    expires_at: Date,
-    token_value: string
+    userId: number,
+    expiresAt: Date,
+    tokenValue: string
 }
 
 export type TimelineEvent = {

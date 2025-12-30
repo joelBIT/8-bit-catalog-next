@@ -25,6 +25,6 @@ function databaseKey() {
 }
 
 
-export const SESSION_TABLE = "sessions";
+
 export const TIMELINE_TABLE = "timeline";
 export const USERS_TABLE = "users";
