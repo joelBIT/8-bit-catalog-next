@@ -1,9 +1,9 @@
 export type Account = {
-    user_id: number,
+    userId: number,
     activated: boolean,
-    activation_code: string,
-    last_login: string,
-    failed_login_attemps: number
+    activationCode: string,
+    lastLogin: Date | null,     // A user may never have logged in
+    failedLoginAttempts: number
 }
 
 export type ActionState = {
