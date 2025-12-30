@@ -15,7 +15,6 @@
     "@oslojs/crypto": "^1.0.1",
     "@oslojs/encoding": "^1.1.0",
     "@react-email/components": "^1.0.1",
-    "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.46.1",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
