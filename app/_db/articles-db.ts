@@ -13,12 +13,14 @@ import { articleContentsTable } from './schema/article_contents';
  * Send a GET request and retrieve all articles.
  */
 export async function getAllArticles(): Promise<Article[]> {
-    try {
-        const response = await databaseClient.select().from(articlesTable).leftJoin(articleContentsTable, eq(articlesTable.id, articleContentsTable.articleId));
+    try {      
+        const result = await databaseClient.query.articlesTable.findMany({
+            with: {
+                articleContents: true,  // Article content will be grouped as an array under the article
+            }
+        });
 
-        if (response) {
-            return response;
-        }
+        return result;
     } catch (error) {
         console.log(error);
     }
@@ -29,27 +31,22 @@ export async function getAllArticles(): Promise<Article[]> {
 /**
  * Send a GET request and retrieve article.
  */
-export async function getArticleById(id: number): Promise<Article> {
+export async function getArticleById(articleId: number): Promise<Article> {
     try {
-        const { data } = await databaseClient.from(articlesTable).select(`
-            id,
-            title,
-            tags,
-            introduction,
-            text,
-            image,
-            article_contents (
-                heading,
-                text
-            )
-        `).eq("id", id).single();
+        const articles = await databaseClient.select().from(articlesTable).where(eq(articlesTable.id, articleId)).limit(1);
 
-        if (data) {
-            return data;
+        if (articles.length !== 1) {
+            console.log(`Could not find article with ID ${articleId}`);
+            throw new Error(`Could not find article with ID ${articleId}`)
         }
+
+        const contents = await databaseClient.select().from(articleContentsTable).where(eq(articleContentsTable.articleId, articleId));
+        const article: Article = {...articles[0], articleContents: []};
+
+        article.articleContents = contents;
+        return article;
     } catch (error) {
         console.log(error);
+        throw error;
     }
-
-    throw new Error(`Could not find article with id ${id}`);
 }

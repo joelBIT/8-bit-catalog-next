@@ -6,15 +6,16 @@ export const articleContentsTable = pgTable('article_contents', {
     id: serial('id').primaryKey(),
     heading: text('heading').notNull(),
     text: text('text').notNull(),
-    articleId: integer('article_id').references(() => articlesTable.id, { onDelete: 'cascade' }),
+    articleId: integer('article_id').notNull().references(() => articlesTable.id),
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
-export const articlesRelations = relations(articleContentsTable, ({ one }) => ({
-    article: one(articlesTable, {
-        fields: [articleContentsTable.articleId],
-        references: [articlesTable.id]
-    })
+export const articlesRelations = relations(articlesTable, ({ many }) => ({
+    articleContents: many(articleContentsTable)
+}));
+
+export const articleContentRelations = relations(articleContentsTable, ({ one }) => ({
+    article: one(articlesTable)
 }));
 
 export type InsertArticleContent = typeof articleContentsTable.$inferInsert;
