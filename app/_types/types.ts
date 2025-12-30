@@ -1,3 +1,53 @@
+export type Account = {
+    user_id: number,
+    activated: boolean,
+    activation_code: string,
+    last_login: string,
+    failed_login_attemps: number
+}
+
+export type ActionState = {
+    message: string,
+    success: boolean
+}
+
+export type Address = {
+    user_id: number,
+    street: string,
+    city: string,
+    country: string,
+    zip_code: string
+}
+
+export type Article = {
+    id: number,
+    introduction: string,
+    title: string,
+    tags: string[],
+    text: string,
+    article_contents: ArticleContent[],
+    image: string
+}
+
+export type ArticleContent = {
+    heading: string,
+    text: string
+}
+
+export type FilterValues = {
+    categories: string[],
+    publishers: string[],
+    developers: string[]
+}
+
+export type Filter = "category" | "publisher" | "developer" | "title";
+
+export type FrequentlyAskedQuestion = {
+    type: string,
+    question: string,
+    answer: string
+}
+
 export type Game = {
     id: number,
     title: string,
@@ -9,6 +59,26 @@ export type Game = {
     players: number,
     description: string,
     rom: boolean
+}
+
+export type News = {
+    id: number,
+    text: string,
+    heading: string,
+    date: Date,
+    image: string,
+    author: string
+}
+
+export type Profile = {
+    user_id: number,
+    last_name: string,
+    first_name: string,
+    full_name: string,
+    birth_date: string,
+    image: string,
+    phone: string,
+    bio: string
 }
 
 export type SearchFilter = {
@@ -29,12 +99,11 @@ export type Session = {
     token_value: string
 }
 
-export type Address = {
-    user_id: number,
-    street: string,
-    city: string,
-    country: string,
-    zip_code: string
+export type TimelineEvent = {
+    year: number,
+    title: string,
+    text: string,
+    image: string
 }
 
 export type User = {
@@ -44,73 +113,4 @@ export type User = {
     username: string,
     password_hash: string,
     role: string
-}
-
-export type Profile = {
-    user_id: number,
-    last_name: string,
-    first_name: string,
-    full_name: string,
-    birth_date: string,
-    image: string,
-    phone: string,
-    bio: string
-}
-
-export type Account = {
-    user_id: number,
-    activated: boolean,
-    activation_code: string,
-    last_login: string,
-    failed_login_attemps: number
-}
-
-export type FrequentlyAskedQuestion = {
-    type: string,
-    question: string,
-    answer: string
-}
-
-export type FilterValues = {
-    categories: string[],
-    publishers: string[],
-    developers: string[]
-}
-
-export type Filter = "category" | "publisher" | "developer" | "title";
-
-export type ActionState = {
-    message: string,
-    success: boolean
-}
-
-export type TimelineEvent = {
-    year: number,
-    title: string,
-    text: string,
-    image: string
-}
-
-export type News = {
-    id: number,
-    text: string,
-    heading: string,
-    date: Date,
-    image: string,
-    author: string
-}
-
-export type Article = {
-    id: number,
-    introduction: string,
-    title: string,
-    tags: string[],
-    text: string,
-    article_contents: ArticleContent[],
-    image: string
-}
-
-export type ArticleContent = {
-    heading: string,
-    text: string
 }
