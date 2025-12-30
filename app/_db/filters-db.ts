@@ -1,6 +1,8 @@
 import 'server-only';
 
-import { databaseClient, FILTERS_TABLE } from './db';
+import { eq } from 'drizzle-orm';
+import { databaseClient } from './db';
+import { filtersTable } from './schema/filters';
 
 
 
@@ -10,58 +12,58 @@ import { databaseClient, FILTERS_TABLE } from './db';
  * Retrieves all game categories.
  */
 export async function getAllCategories(): Promise<string[]> {
-    const { error, data } = await databaseClient.from(FILTERS_TABLE).select('categories').single();
-    if (error) {
+    try {
+        const response = await databaseClient.select({"categories": filtersTable.categories}).from(filtersTable);
+        return response[0].categories;
+    } catch (error) {
         console.log(error);
         return [];
     }
-
-    return data.categories;
 }
 
 /**
  * Retrieves all game developers.
  */
 export async function getAllDevelopers(): Promise<string[]> {
-    const { error, data } = await databaseClient.from(FILTERS_TABLE).select('developers').single();
-    if (error) {
+    try {
+        const response = await databaseClient.select({"developers": filtersTable.developers}).from(filtersTable);
+        return response[0].developers;
+    } catch (error) {
         console.log(error);
         return [];
     }
-
-    return data.developers;
 }
 
 /**
  * Retrieves all game publishers.
  */
 export async function getAllPublishers(): Promise<string[]> {
-    const { error, data } = await databaseClient.from(FILTERS_TABLE).select('publishers').single();
-    if (error) {
+    try {
+        const response = await databaseClient.select({"publishers": filtersTable.publishers}).from(filtersTable);
+        return response[0].publishers;
+    } catch (error) {
         console.log(error);
         return [];
     }
-
-    return data.publishers;
 }
 
 /**
  * Updates the Category search-filter values.
  */
 export async function updateCategoryFilter(values: string[]): Promise<void> {
-    await databaseClient.from(FILTERS_TABLE).update({ categories: values }).eq('id', 1);
+    await databaseClient.update(filtersTable).set({ categories: values }).where(eq(filtersTable.id, 1));
 }
 
 /**
  * Updates the Publisher search-filter values.
  */
 export async function updatePublisherFilter(values: string[]): Promise<void> {
-    await databaseClient.from(FILTERS_TABLE).update({ publishers: values }).eq('id', 1);
+    await databaseClient.update(filtersTable).set({ publishers: values }).where(eq(filtersTable.id, 1));
 }
 
 /**
  * Updates the Developer search-filter values.
  */
 export async function updateDeveloperFilter(values: string[]): Promise<void> {
-    await databaseClient.from(FILTERS_TABLE).update({ developers: values }).eq('id', 1);
+    await databaseClient.update(filtersTable).set({ developers: values }).where(eq(filtersTable.id, 1));
 }
