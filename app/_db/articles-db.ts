@@ -10,17 +10,18 @@ import { articleContentsTable } from './schema/article_contents';
 
 
 /**
- * Send a GET request and retrieve all articles.
+ * Send a GET request and retrieve all articles (without article content). Used for ArticleCards in architecturePage.
  */
 export async function getAllArticles(): Promise<Article[]> {
-    try {      
-        const result = await databaseClient.query.articlesTable.findMany({
-            with: {
-                articleContents: true,  // Article content will be grouped as an array under the article
-            }
-        });
+    try {
+        const response = await databaseClient.select().from(articlesTable);
+        const articles = []
+        for (let i = 0; i < response.length; i++) {
+            const article: Article = {...response[i], articleContents: []};
+            articles.push(article);
+        }
 
-        return result;
+        return articles;
     } catch (error) {
         console.log(error);
     }

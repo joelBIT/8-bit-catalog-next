@@ -1,5 +1,4 @@
 import { integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm/relations';
 import { articlesTable } from './articles';
 
 export const articleContentsTable = pgTable('article_contents', {
@@ -9,14 +8,6 @@ export const articleContentsTable = pgTable('article_contents', {
     articleId: integer('article_id').notNull().references(() => articlesTable.id),
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
-
-export const articlesRelations = relations(articlesTable, ({ many }) => ({
-    articleContents: many(articleContentsTable)
-}));
-
-export const articleContentRelations = relations(articleContentsTable, ({ one }) => ({
-    article: one(articlesTable)
-}));
 
 export type InsertArticleContent = typeof articleContentsTable.$inferInsert;
 export type SelectArticleContent = typeof articleContentsTable.$inferSelect;
