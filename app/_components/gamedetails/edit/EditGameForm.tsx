@@ -52,7 +52,7 @@ export function EditGameForm({ game, filterValues }: { game: Game, filterValues:
 
                     <section id="releasedSection">
                         <h2 className="releasedSection__title"> Released </h2>
-                        <input id="releaseDate" name="released" type="date" defaultValue={game.release_date} required />
+                        <input id="releaseDate" name="released" type="date" defaultValue={game.releaseDate.toString()} required />
                     </section>
 
                     <section className="selectSection romSection">

@@ -25,7 +25,6 @@ function databaseKey() {
 }
 
 export const ARTICLES_TABLE = "articles"
-export const FAVOURITES_TABLE = "favourites";
 export const FILTERS_TABLE = "filters";
 export const GAMES_TABLE = "games";
 export const NEWS_TABLE = "news";

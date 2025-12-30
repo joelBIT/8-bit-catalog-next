@@ -54,7 +54,7 @@ export type Game = {
     publisher: string,
     developer: string,
     category: string,
-    release_date: string,
+    releaseDate: Date,
     cover: string,
     players: number,
     description: string,

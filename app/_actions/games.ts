@@ -23,7 +23,7 @@ export async function updateGame(_prevState: ActionState, formData: FormData): P
             publisher: formData.get('publisher') as string,
             description: formData.get("description") as string,
             players: parseInt(formData.get('players') as string),
-            release_date: formData.get('released') as string,
+            releaseDate: new Date(formData.get('released') as string),
             cover: (formData.get('cover') as File).name,
             category: formData.get('category') as string,
             rom: formData.get('rom') ? true : false

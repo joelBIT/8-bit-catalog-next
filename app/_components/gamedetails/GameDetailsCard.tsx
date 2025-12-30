@@ -15,7 +15,7 @@ export function GameDetailsCard({ game }: { game: Game }): ReactElement {
 
     const GAME_DETAILS = [
         {text: game?.category, description: "It is often the case that a game falls into several categories.", type: "Category"},
-        {text: game?.release_date, description: "There are usually different release dates depending on which continent the game was released.", type: "Released"},
+        {text: game?.releaseDate.toString(), description: "There are usually different release dates depending on which continent the game was released.", type: "Released"},
         {text: game?.players, description: "Some multi-player games only allow taking turns, while others enable playing at the same time.", type: "Players"},
         {text: game?.publisher, description: "A game may have several publishers depending on which continent the game was released.", type: "Publisher"},
         {text: game?.developer, description: "Sometimes, multiple developer studios worked together on a game.", type: "Developer"}

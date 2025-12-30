@@ -8,7 +8,7 @@ export const gamesTable = pgTable('games', {
     publisher: text('publisher').notNull(),
     developer: text('developer').notNull(),
     category: text('category').notNull(),
-    releaseDate: text('release_date').notNull(),
+    releaseDate: timestamp('release_date').notNull(),
     cover: text('cover').notNull(),
     description: text('description').notNull(),
     rom: boolean('rom').notNull()

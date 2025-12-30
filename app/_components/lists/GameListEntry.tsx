@@ -73,7 +73,7 @@ export function GameListEntry({ game, openModal }: { game: Game, openModal: (gam
                     <section className="gameListEntry-tags">
                         <h2 className="gameListEntry-tag" title="Category"> {game.category} </h2>
                         <h2 className="gameListEntry-tag"> {game.players} player{game.players > 1 ? "s": ""} </h2>
-                        <h2 className="gameListEntry-tag" title="Release Date"> {game.release_date} </h2>
+                        <h2 className="gameListEntry-tag" title="Release Date"> {game.releaseDate.toString()} </h2>
                     </section>
 
                     <section className="gameListEntry-details">
