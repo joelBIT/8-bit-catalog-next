@@ -41,7 +41,7 @@ export function UserModal({ user_id, close }: { user_id: number, close: () => vo
                 <img src={STORAGE_URL + profile?.image} className="profile-image" alt="Profile image" />
 
                 <section id="user-details">
-                    <h1 id="user-name"> {profile?.first_name + " " + profile?.last_name} </h1>
+                    <h1 id="user-name"> {profile?.firstName + " " + profile?.lastName} </h1>
 
                     <section id="user-address">
                         <h2> {address?.street} </h2>

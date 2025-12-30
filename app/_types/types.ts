@@ -71,11 +71,11 @@ export type News = {
 }
 
 export type Profile = {
-    user_id: number,
-    last_name: string,
-    first_name: string,
-    full_name: string,
-    birth_date: string,
+    userId: number,
+    lastName: string,
+    firstName: string,
+    fullName: string,
+    birthDate: Date | null,
     image: string,
     phone: string,
     bio: string

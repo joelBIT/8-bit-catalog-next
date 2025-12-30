@@ -1,10 +1,10 @@
 import 'server-only';
 
+import { eq, and } from 'drizzle-orm';
 import { databaseClient, storageClient } from './db';
 import { registerUser } from './users-db';
 import { Account } from '../_types/types';
 import { accountsTable } from './schema/accounts';
-import { eq, and } from 'drizzle-orm';
 
 
 const PROFILE_IMAGES_STORAGE = "catalog";
@@ -48,8 +48,10 @@ export async function getAccountByUserId(userId: number): Promise<Account> {
  * First a check is done to see if the activation code is valid. Then the corresponding account is activated.
  */
 export async function activateAccount(activationCode: string): Promise<boolean> {
-    const response = await databaseClient.select().from(accountsTable).
-        where(and(eq(accountsTable.activationCode, activationCode), eq(accountsTable.activated, false)));
+    const response = await databaseClient
+        .select()
+        .from(accountsTable)
+        .where(and(eq(accountsTable.activationCode, activationCode), eq(accountsTable.activated, false)));
     if (response.length === 0) {
         return false;
     }
@@ -61,8 +63,8 @@ export async function activateAccount(activationCode: string): Promise<boolean> 
 /**
  * Used by admin to create a user and account directly by bypassing the email activation procedure.
  */
-export async function createActivatedAccount(email: string, password_hash: string, username: string): Promise<void> {
-    const user = await registerUser(email, password_hash, username);
+export async function createActivatedAccount(email: string, passwordHash: string, username: string): Promise<void> {
+    const user = await registerUser(email, passwordHash, username);
     await databaseClient.insert(accountsTable).values({ userId: user.id, activated: true, activationCode: "created by admin" });
     await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }

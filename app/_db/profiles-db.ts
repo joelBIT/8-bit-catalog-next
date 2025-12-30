@@ -1,7 +1,9 @@
 import 'server-only';
 
+import { eq } from 'drizzle-orm';
 import { databaseClient, PROFILES_TABLE } from './db';
 import { Profile } from '../_types/types';
+import { profilesTable } from './schema/profiles';
 
 
 
@@ -9,33 +11,25 @@ import { Profile } from '../_types/types';
 /**
  * Retrieve profile information about the user with supplied user ID.
  */
-export async function getProfileByUserId(user_id: number): Promise<Profile> {
-    const { data, error } = await databaseClient.from(PROFILES_TABLE).select().eq('user_id', user_id).single();
-    if (error) {
-        console.log(error);
-        throw error;
+export async function getProfileByUserId(userId: number): Promise<Profile> {
+    const response = await databaseClient.select().from(profilesTable).where(eq(profilesTable.userId, userId)).limit(1);
+    if (response?.length !== 1) {
+        console.log(`Could not find profile for user with ID ${userId}`);
+        throw new Error(`Could not find profile for user with ID ${userId}`)
     }
-    return data;
+    return response[0];
 }
 
 /**
  * Update profile for user with supplied user ID.
  */
 export async function updateProfileByUserId(profile: Profile): Promise<void> {
-    const { error } = await databaseClient.from(PROFILES_TABLE).update({...profile}).eq('user_id', profile.user_id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+    await databaseClient.update(profilesTable).set({...profile}).where(eq(profilesTable.userId, profile.userId));
 }
 
 /**
  * Create profile for a newly registered user.
  */
-export async function createProfileForUserId(user_id: number, full_name: string, phone: string, birth_date: string): Promise<void> {
-    const { error } = await databaseClient.from(PROFILES_TABLE).insert({user_id, full_name, phone, birth_date});
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+export async function createProfileForUserId(userId: number, fullName: string, phone: string, birthDate: Date): Promise<void> {
+    await databaseClient.insert(profilesTable).values({userId, fullName, phone, birthDate});
 }

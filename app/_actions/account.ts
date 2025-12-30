@@ -60,17 +60,17 @@ export async function updateProfile(_prevState: Profile, formData: FormData): Pr
     }
     
     try {
-        const first_name = formData.get('first_name') as string;
-        const full_name = formData.get('full_name') as string;
-        const last_name = formData.get('last_name') as string;
-        const birth_date = formData.get('birth_date') as string;
+        const firstName = formData.get('first_name') as string;
+        const fullName = formData.get('full_name') as string;
+        const lastName = formData.get('last_name') as string;
+        const birthDate = new Date(formData.get('birth_date') as string);
         const phone = formData.get('phone') as string;
         const bio = formData.get('bio') as string;
-        const user_id = _prevState.user_id;
-        await updateProfileByUserId({user_id, full_name, phone, birth_date, last_name, first_name, bio, image: ''});
+        const userId = _prevState.userId;
+        await updateProfileByUserId({userId, fullName, phone, birthDate, lastName, firstName, bio, image: ''});
 
-        return { message: 'The account was successfully updated', success: true, user_id, image: '', first_name, last_name, 
-            bio, birth_date, full_name, phone };
+        return { message: 'The account was successfully updated', success: true, userId, image: '', firstName, lastName, 
+            bio, birthDate, fullName, phone };
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false, ..._prevState };

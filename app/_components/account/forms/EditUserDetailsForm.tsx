@@ -12,7 +12,7 @@ import "./EditUserDetailsForm.css";
 export function EditUserDetailsForm(): ReactElement {
     const { user, profile } = useAccount();
     const initialState: ActionState & Profile = { 
-        message: '', success: false, user_id: user.id, image: '', first_name: '', last_name: '', bio: '', full_name: '', birth_date: '', phone: ''
+        message: '', success: false, userId: user.id, image: '', firstName: '', lastName: '', bio: '', fullName: '', birthDate: null, phone: ''
     }
     const [state, formAction] = useActionState(updateProfile, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export function EditUserDetailsForm(): ReactElement {
                         type="text"
                         className="input-field"
                         autoComplete="none"
-                        defaultValue={state.first_name ? state.first_name : profile.first_name} 
+                        defaultValue={state.firstName ? state.firstName : profile.firstName} 
                     />
                 </section>
 
@@ -55,7 +55,7 @@ export function EditUserDetailsForm(): ReactElement {
                         type="text"
                         className="input-field"
                         autoComplete="none"
-                        defaultValue={state.last_name ? state.last_name : profile.last_name} 
+                        defaultValue={state.lastName ? state.lastName : profile.lastName} 
                     />
                 </section>
 
@@ -79,7 +79,7 @@ export function EditUserDetailsForm(): ReactElement {
                         name="birth_date" 
                         type="date"
                         max={new Date().toLocaleDateString('en-ca')}
-                        defaultValue={state.birth_date ? state.birth_date : profile?.birth_date} 
+                        defaultValue={state.birthDate ? state.birthDate.toString() : profile?.birthDate?.toString()} 
                         className="form__field"
                     />
 
@@ -96,7 +96,7 @@ export function EditUserDetailsForm(): ReactElement {
                     <input 
                         id="fullName"
                         name="full_name"
-                        defaultValue={state.full_name ? state.full_name : profile?.full_name} 
+                        defaultValue={state.fullName ? state.fullName : profile?.fullName} 
                         type="text"
                         className="input-field"
                         autoComplete="none" 

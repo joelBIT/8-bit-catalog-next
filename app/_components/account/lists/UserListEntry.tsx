@@ -67,7 +67,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
 
             <section className="name-section">
                 <h2 className="userCard-name__heading"> Name </h2>
-                <h2 className="userCard-name"> {`${profile?.first_name} ${profile?.last_name}`} </h2>
+                <h2 className="userCard-name"> {`${profile?.firstName} ${profile?.lastName}`} </h2>
             </section>
 
             <section className="role-section">
