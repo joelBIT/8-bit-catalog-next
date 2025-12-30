@@ -3,8 +3,7 @@ import 'server-only';
 import { eq, and } from 'drizzle-orm';
 import { databaseClient, storageClient } from './db';
 import { registerUser } from './users-db';
-import { Account } from '../_types/types';
-import { accountsTable } from './schema/accounts';
+import { Account, accountsTable } from './schema/accounts';
 
 
 const PROFILE_IMAGES_STORAGE = "catalog";

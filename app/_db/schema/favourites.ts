@@ -8,7 +8,3 @@ export const favouritesTable = pgTable('favourites', {
     userId: integer('user_id').notNull().references(() => usersTable.id),
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
-
-export type InsertFavourite = typeof favouritesTable.$inferInsert;
-export type SelectFavourite = typeof favouritesTable.$inferSelect;
-

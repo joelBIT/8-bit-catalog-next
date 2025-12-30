@@ -1,11 +1,3 @@
-export type Account = {
-    userId: number,
-    activated: boolean,
-    activationCode: string,
-    lastLogin: Date | null,     // A user may never have logged in
-    failedLoginAttempts: number
-}
-
 export type ActionState = {
     message: string,
     success: boolean

@@ -7,8 +7,7 @@ export const accountsTable = pgTable('accounts', {
     failedLoginAttempts: integer('failed_login_attempts').notNull().default(0),
     activated: boolean('activated').notNull().default(false),
     createdAt: timestamp('created_at').notNull().defaultNow(),
-    lastLogin: timestamp('last_login').$onUpdate(() => new Date())
+    lastLogin: timestamp('last_login')      // A user may never have logged in
 });
 
-export type InsertAccount = typeof accountsTable.$inferInsert;
-export type SelectAccount = typeof accountsTable.$inferSelect;
+export type Account = typeof accountsTable.$inferSelect;
