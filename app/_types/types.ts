@@ -25,7 +25,7 @@ export type Article = {
     title: string,
     tags: string[],
     text: string,
-    article_contents: ArticleContent[],
+    articleContents: ArticleContent[],
     image: string
 }
 

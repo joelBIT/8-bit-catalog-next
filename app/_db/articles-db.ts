@@ -1,7 +1,10 @@
 import 'server-only';
 
+import { eq } from 'drizzle-orm';
 import { ARTICLES_TABLE, databaseClient } from './db';
 import { Article } from '../_types/types';
+import { articlesTable } from './schema/articles';
+import { articleContentsTable } from './schema/article_contents';
 
 
 
@@ -11,21 +14,10 @@ import { Article } from '../_types/types';
  */
 export async function getAllArticles(): Promise<Article[]> {
     try {
-        const { data } = await databaseClient.from(ARTICLES_TABLE).select(`
-            id,
-            title,
-            tags,
-            introduction,
-            text,
-            image,
-            article_contents (
-                heading,
-                text
-            )
-        `);
+        const response = await databaseClient.select().from(articlesTable).leftJoin(articleContentsTable, eq(articlesTable.id, articleContentsTable.articleId));
 
-        if (data) {
-            return data;
+        if (response) {
+            return response;
         }
     } catch (error) {
         console.log(error);
