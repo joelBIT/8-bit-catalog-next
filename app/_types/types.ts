@@ -12,11 +12,11 @@ export type ActionState = {
 }
 
 export type Address = {
-    user_id: number,
+    userId: number,
     street: string,
     city: string,
     country: string,
-    zip_code: string
+    zipCode: string
 }
 
 export type Article = {

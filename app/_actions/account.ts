@@ -1,10 +1,10 @@
 'use server';
 
-import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateProfileImageById, updateUsernameByUserId } from "@/app/_db/users-db";
+import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateUsernameByUserId } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { ActionState, Address, Profile } from "@/app/_types/types";
-import { updateProfileByUserId } from "../_db/profiles-db";
+import { updateProfileByUserId, updateProfileImageById } from "../_db/profiles-db";
 import { createActivatedAccount } from "../_db/accounts-db";
 
 /**

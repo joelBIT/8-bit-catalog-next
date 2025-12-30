@@ -9,7 +9,7 @@ import { ActionState, Address } from "@/app/_types/types";
 import "./EditAddressForm.css";
 
 const initialState: ActionState & Address = { 
-    message: '', success: false, zip_code: '', country: '', city: '', street: '', user_id: 0
+    message: '', success: false, zipCode: '', country: '', city: '', street: '', userId: 0
 }
 
 export function EditAddressForm(): ReactElement {
@@ -40,7 +40,7 @@ export function EditAddressForm(): ReactElement {
                         id="zip_code"
                         name="zip_code" 
                         type="text"
-                        defaultValue={state.zip_code ? state.zip_code : address?.zip_code} 
+                        defaultValue={state.zipCode ? state.zipCode : address?.zipCode} 
                         className="input-field"
                         autoComplete="none"
                     />
