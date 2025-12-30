@@ -19,7 +19,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
             <section className="news-card-text">
                 <section className="news-card-title">
                     <h2 className="news-heading"> {news.heading} </h2>
-                    <h2 className="news-date"> {news.date.toString()} </h2>
+                    <h2 className="news-date"> {news.published.toString()} </h2>
                 </section>
 
                 <h2 className="news-text"> {adjustTextLength(news.text, 200)} </h2>
