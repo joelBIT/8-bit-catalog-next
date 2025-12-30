@@ -2,8 +2,7 @@ import 'server-only';
 
 import { eq } from 'drizzle-orm';
 import { databaseClient } from './db';
-import { Address } from '../_types/types';
-import { addressesTable } from './schema/addresses';
+import { Address, InsertAddress, addressesTable } from './schema/addresses';
 
 
 /**
@@ -21,13 +20,13 @@ export async function getAddressByUserId(userId: number): Promise<Address> {
 /**
  * Update address for user with supplied user ID.
  */
-export async function updateAddressByUserId(address: Address): Promise<void> {
+export async function updateAddressByUserId(address: InsertAddress): Promise<void> {
     await databaseClient.update(addressesTable).set({...address}).where(eq(addressesTable.userId, address.userId));
 }
 
 /**
  * Create address for a newly registered user.
  */
-export async function createAddressForUserId(address: Address): Promise<void> {
+export async function createAddressForUserId(address: InsertAddress): Promise<void> {
     await databaseClient.insert(addressesTable).values({...address});
 }

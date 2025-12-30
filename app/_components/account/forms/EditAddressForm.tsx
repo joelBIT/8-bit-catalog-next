@@ -4,12 +4,13 @@ import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
 import { updateUserAddress } from "@/app/_actions/account";
 import { SelectCountry } from "../../common";
-import { ActionState, Address } from "@/app/_types/types";
+import { ActionState } from "@/app/_types/types";
+import { Address } from "@/app/_db/schema/addresses";
 
 import "./EditAddressForm.css";
 
 const initialState: ActionState & Address = { 
-    message: '', success: false, zipCode: '', country: '', city: '', street: '', userId: 0
+    message: '', success: false, zipCode: '', country: '', city: '', street: '', userId: 0, id: 0, createdAt: new Date()
 }
 
 export function EditAddressForm(): ReactElement {

@@ -10,5 +10,5 @@ export const addressesTable = pgTable('addresses', {
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
+export type Address = typeof addressesTable.$inferSelect;
 export type InsertAddress = typeof addressesTable.$inferInsert;
-export type SelectAddress = typeof addressesTable.$inferSelect;

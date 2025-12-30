@@ -3,9 +3,10 @@
 import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateUsernameByUserId } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
-import { ActionState, Address, Profile } from "@/app/_types/types";
+import { ActionState, Profile } from "@/app/_types/types";
 import { updateProfileByUserId, updateProfileImageById } from "../_db/profiles-db";
 import { createActivatedAccount } from "../_db/accounts-db";
+import { Address } from "../_db/schema/addresses";
 
 /**
  * This function is invoked when a user updates account information such as account password.

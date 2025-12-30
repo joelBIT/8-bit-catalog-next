@@ -1,7 +1,8 @@
 'use client';
 
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
-import { Address, Profile, User } from "@/app/_types/types";
+import { Profile, User } from "@/app/_types/types";
+import { Address } from "../_db/schema/addresses";
 import { getUserFromSession } from "@/app/_session/sessionUtils";
 import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "../_client/client";
 

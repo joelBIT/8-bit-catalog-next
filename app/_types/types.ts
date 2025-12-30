@@ -3,14 +3,6 @@ export type ActionState = {
     success: boolean
 }
 
-export type Address = {
-    userId: number,
-    street: string,
-    city: string,
-    country: string,
-    zipCode: string
-}
-
 export type Article = {
     id: number,
     introduction: string,

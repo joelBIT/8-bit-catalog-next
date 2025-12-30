@@ -1,7 +1,8 @@
 'use client';
 
 import {ReactElement, useEffect, useRef, useState} from "react";
-import {Address, Profile} from "@/app/_types/types";
+import {Profile} from "@/app/_types/types";
+import { Address } from "@/app/_db/schema/addresses";
 import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "@/app/_client/client";
 
 import "./UserModal.css";
