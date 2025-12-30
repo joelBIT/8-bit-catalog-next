@@ -63,7 +63,7 @@ export async function updateProfile(_prevState: Profile, formData: FormData): Pr
         const firstName = formData.get('first_name') as string;
         const fullName = formData.get('full_name') as string;
         const lastName = formData.get('last_name') as string;
-        const birthDate = new Date(formData.get('birth_date') as string);
+        const birthDate = formData.get('birth_date') as string;
         const phone = formData.get('phone') as string;
         const bio = formData.get('bio') as string;
         const userId = _prevState.userId;
