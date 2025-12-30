@@ -2,11 +2,9 @@ import 'server-only';
 
 import { AuthWeakPasswordError } from '@supabase/supabase-js';
 import { User } from '@/app/_types/types';
-import { uploadFile } from './files-db';
-import { databaseClient, PROFILES_TABLE, USERS_TABLE } from './db';
+import { databaseClient, USERS_TABLE } from './db';
 
 
-const PROFILE_IMAGES_STORAGE = "catalog";
 const USER_COLUMNS = "id, created_at, password_hash, role, email, username";
 
 
@@ -106,23 +104,6 @@ export async function updateUsernameByUserId(id: number, username: string): Prom
         console.log(error);
         throw error;
     }
-}
-
-// Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
-async function updateUserImage(id: number, image: string): Promise<void> {
-    const { error } = await databaseClient.from(PROFILES_TABLE).update({image}).eq('user_id', id);
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-}
-
-/**
- * The profile image is stored in a folder named as the user's id.
- */
-export async function updateProfileImageById(id: number, image: File): Promise<void> {
-    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");   // uploads the image file to a bucket.
-    await updateUserImage(id, image.name);  // updates the image name since this name is used to reference the uploaded image file.
 }
 
 /**

@@ -1,11 +1,12 @@
 import 'server-only';
 
 import { eq } from 'drizzle-orm';
-import { databaseClient, PROFILES_TABLE } from './db';
+import { databaseClient } from './db';
 import { Profile } from '../_types/types';
 import { profilesTable } from './schema/profiles';
+import { uploadFile } from './files-db';
 
-
+const PROFILE_IMAGES_STORAGE = "catalog";
 
 
 /**
@@ -32,4 +33,17 @@ export async function updateProfileByUserId(profile: Profile): Promise<void> {
  */
 export async function createProfileForUserId(userId: number, fullName: string, phone: string, birthDate: Date): Promise<void> {
     await databaseClient.insert(profilesTable).values({userId, fullName, phone, birthDate});
+}
+
+/**
+ * The profile image is stored in a folder named as the user's id.
+ */
+export async function updateProfileImageById(id: number, image: File): Promise<void> {
+    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");   // uploads the image file to a bucket.
+    await updateUserImage(id, image.name);  // updates the image name since this name is used to reference the uploaded image file.
+}
+
+// Updates the name of the image used as a profile image. This image name is used to reference the image file stored in a bucket somewhere else.
+async function updateUserImage(id: number, image: string): Promise<void> {
+    await databaseClient.update(profilesTable).set({image}).where(eq(profilesTable.userId, id));
 }
