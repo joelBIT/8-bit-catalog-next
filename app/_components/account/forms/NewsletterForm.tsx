@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useActionState } from "react";
-import { createNewsAction } from "@/app/_actions/newsletter";
+import { createNewsAction } from "@/app/_actions/news";
 
 import "./NewsletterForm.css";
 
