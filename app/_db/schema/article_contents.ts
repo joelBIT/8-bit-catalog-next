@@ -9,5 +9,4 @@ export const articleContentsTable = pgTable('article_contents', {
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
-export type InsertArticleContent = typeof articleContentsTable.$inferInsert;
-export type SelectArticleContent = typeof articleContentsTable.$inferSelect;
+export type ArticleContent = typeof articleContentsTable.$inferInsert;

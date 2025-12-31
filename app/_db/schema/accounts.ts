@@ -1,8 +1,9 @@
 import { boolean, integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { usersTable } from './users';
 
 export const accountsTable = pgTable('accounts', {
     id: serial('id').primaryKey(),
-    userId: integer('user_id').notNull().unique(),
+    userId: integer('user_id').notNull().unique().references(() => usersTable.id),
     activationCode: text('activation_code').notNull().unique(),
     failedLoginAttempts: integer('failed_login_attempts').notNull().default(0),
     activated: boolean('activated').notNull().default(false),

@@ -1,8 +1,9 @@
 import { date, integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { usersTable } from './users';
 
 export const profilesTable = pgTable('profiles', {
     id: serial('id').primaryKey(),
-    userId: integer('user_id').notNull(),
+    userId: integer('user_id').notNull().references(() => usersTable.id),
     lastName: text('last_name').notNull().default(''),
     firstName: text('first_name').notNull().default(''),
     image: text('image').notNull().default(''),

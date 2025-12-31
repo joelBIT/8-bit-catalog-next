@@ -1,3 +1,5 @@
+import { ArticleContent } from "../_db/schema/article_contents";
+
 export type ActionState = {
     message: string,
     success: boolean
@@ -11,11 +13,6 @@ export type Article = {
     text: string,
     articleContents: ArticleContent[],
     image: string
-}
-
-export type ArticleContent = {
-    heading: string,
-    text: string
 }
 
 export type FilterValues = {
