@@ -10,6 +10,4 @@ export const newsTable = pgTable('news', {
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
-export type InsertNews = typeof newsTable.$inferInsert;
-export type SelectNews = typeof newsTable.$inferSelect;
-
+export type News = typeof newsTable.$inferSelect;

@@ -24,15 +24,6 @@ export type FilterValues = {
 
 export type Filter = "category" | "publisher" | "developer" | "title";
 
-export type News = {
-    id: number,
-    text: string,
-    heading: string,
-    published: string,
-    image: string,
-    author: string
-}
-
 export type Profile = {
     userId: number,
     lastName: string,

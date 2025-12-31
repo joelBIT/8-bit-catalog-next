@@ -2,7 +2,7 @@
 
 import { ReactElement, useState } from "react";
 import { NewsCard } from ".";
-import { News } from "@/app/_types/types";
+import { News } from "@/app/_db/schema/news";
 
 import "./TopicSelection.css";
 

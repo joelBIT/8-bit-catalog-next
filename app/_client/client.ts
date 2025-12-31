@@ -1,7 +1,8 @@
-import { SearchResult, TimelineEvent, User, News, Filter, Profile } from '@/app/_types/types';
+import { SearchResult, TimelineEvent, User, Filter, Profile } from '@/app/_types/types';
 import { Address } from '../_db/schema/addresses';
 import { FrequentlyAskedQuestion } from '../_db/schema/faqs';
 import { Game } from '../_db/schema/games';
+import { News } from '../_db/schema/news';
 
 
 /********************************************************************************************

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { News } from "@/app/_types/types";
+import { News } from "@/app/_db/schema/news";
 import { adjustTextLength, URL_NEWS_PAGE } from "@/app/_utils/utils";
 
 import "./NewsCard.css";

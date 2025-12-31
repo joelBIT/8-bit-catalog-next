@@ -2,8 +2,7 @@ import 'server-only';
 
 import { desc, eq } from 'drizzle-orm';
 import { databaseClient } from './db';
-import { News } from '../_types/types';
-import { newsTable } from './schema/news';
+import { News, newsTable } from './schema/news';
 
 
 
