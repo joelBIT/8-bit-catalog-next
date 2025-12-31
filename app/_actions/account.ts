@@ -6,7 +6,7 @@ import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUti
 import { ActionState, Profile } from "@/app/_types/types";
 import { updateProfileByUserId, updateProfileImageById } from "../_db/profiles-db";
 import { createActivatedAccount } from "../_db/accounts-db";
-import { Address } from "../_db/schema/addresses";
+import { InsertAddress } from "../_db/schema/addresses";
 
 /**
  * This function is invoked when a user updates account information such as account password.
@@ -175,6 +175,6 @@ export async function updateAccountUsername(userId: number, _prevState: ActionSt
     }
 }
 
-export async function updateUserAddress(userId: number, _prevState: ActionState & Address, formData: FormData): Promise<ActionState & Address> {
+export async function updateUserAddress(_prevState: ActionState & InsertAddress, formData: FormData): Promise<ActionState & InsertAddress> {
     return { ..._prevState, message: 'The address was successfully updated', success: true };
 }

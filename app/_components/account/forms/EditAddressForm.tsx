@@ -5,17 +5,15 @@ import { useAccount } from "@/app/_hooks";
 import { updateUserAddress } from "@/app/_actions/account";
 import { SelectCountry } from "../../common";
 import { ActionState } from "@/app/_types/types";
-import { Address } from "@/app/_db/schema/addresses";
+import { InsertAddress } from "@/app/_db/schema/addresses";
 
 import "./EditAddressForm.css";
 
-const initialState: ActionState & Address = { 
-    message: '', success: false, zipCode: '', country: '', city: '', street: '', userId: 0, id: 0, createdAt: new Date()
-}
-
 export function EditAddressForm(): ReactElement {
     const { user, address } = useAccount();
-    const [state, formAction] = useActionState(updateUserAddress.bind(null, user.id), initialState);
+    const initialState: ActionState & InsertAddress = {message: '', success: false, zipCode: address.zipCode, 
+        country: address.country, city: address.city, street: address.street, userId: user.id};
+    const [state, formAction] = useActionState(updateUserAddress, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
