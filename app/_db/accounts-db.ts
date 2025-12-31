@@ -13,19 +13,6 @@ const PROFILE_IMAGES_STORAGE = "catalog";
 
 
 /**
- * Copies the default profile image to the folder created for the newly registered user. The folder is named
- * after the registered user's id.
- */
-export async function copyProfileImageToFolder(activationCode: string): Promise<void> {
-    try {
-        const response = await databaseClient.select().from(accountsTable).where(eq(accountsTable.activationCode, activationCode)).limit(1);
-        await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response[0]?.userId}/profile.png`);
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-/**
  * Retrieve account information for user with supplied user ID.
  */
 export async function getAccountByUserId(userId: number): Promise<Account> {
@@ -38,7 +25,8 @@ export async function getAccountByUserId(userId: number): Promise<Account> {
 }
 
 /**
- * First a check is done to see if the activation code is valid. Then the corresponding account is activated.
+ * First a check is done to see if the activation code is valid. Then the corresponding account is activated. A default profile image is copied
+ * to the folder associated with the activated account.
  */
 export async function activateAccount(activationCode: string): Promise<boolean> {
     const response = await databaseClient
@@ -49,8 +37,22 @@ export async function activateAccount(activationCode: string): Promise<boolean> 
         return false;
     }
 
-    await databaseClient.update(accountsTable).set({activated: true}).where(eq(accountsTable.activationCode, activationCode));    
+    await databaseClient.update(accountsTable).set({activated: true}).where(eq(accountsTable.activationCode, activationCode));
+    await copyProfileImageToFolder(activationCode);  
     return true;
+}
+
+/**
+ * Copies the default profile image to the folder created for the newly registered user. The folder is named
+ * after the registered user's id.
+ */
+export async function copyProfileImageToFolder(activationCode: string): Promise<void> {
+    try {
+        const response = await databaseClient.select().from(accountsTable).where(eq(accountsTable.activationCode, activationCode)).limit(1);
+        await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response[0]?.userId}/profile.png`);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 /**

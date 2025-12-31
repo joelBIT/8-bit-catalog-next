@@ -131,6 +131,7 @@ export function RegisterForm(): ReactElement {
                         value={birthDate}
                         onChange={e => setBirthDate(e.target.value)}
                         className="form__field"
+                        required
                     />
 
                     <span className="form__field-label">
