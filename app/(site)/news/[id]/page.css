@@ -145,6 +145,11 @@
                     }
                 }
 
+                & .disabled-link {
+                    pointer-events: none;
+                    color: var(--color-link-active);
+                }
+
                 & .top-news-list__calendar {
                     display: flex;
                     align-items: center;
@@ -161,11 +166,6 @@
                     & .material-symbols-outlined {
                         font-size: 0.9rem;
                     }
-                }
-
-                & .disabled-link {
-                    pointer-events: none;
-                    color: var(--color-link-active);
                 }
 
                 & .top-news-list-number {

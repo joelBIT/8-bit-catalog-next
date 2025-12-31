@@ -58,7 +58,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                             <section className="top-news-list" key={news.id}>
                                 <Link 
                                     href={URL_NEWS_PAGE + `/${news.id}`} 
-                                    className={`top-news-list__heading ${parseInt(id) === news.id ? "disabled-link" : ""}`}
+                                    className={`top-news-list__heading ${parseInt(id) == news.id ? "disabled-link" : ""}`}
                                 >
                                     {news.heading}
                                 </Link>
