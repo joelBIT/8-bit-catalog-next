@@ -23,10 +23,3 @@ export async function getAddressByUserId(userId: number): Promise<Address> {
 export async function updateAddressByUserId(address: InsertAddress): Promise<void> {
     await databaseClient.update(addressesTable).set({...address}).where(eq(addressesTable.userId, address.userId));
 }
-
-/**
- * Create address for a newly registered user.
- */
-export async function createAddressForUserId(address: InsertAddress): Promise<void> {
-    await databaseClient.insert(addressesTable).values({...address});
-}

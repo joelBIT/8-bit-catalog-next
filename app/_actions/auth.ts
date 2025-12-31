@@ -1,51 +1,11 @@
 'use server';
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { emailExists, getUserByEmail, updateUserPassword, isCurrentPassword, createUserAndAccount } from "@/app/_db/users-db";
-import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
-import { createSession, generateRandomSessionToken } from "@/app/_session/session";
+import { emailExists, updateUserPassword, isCurrentPassword, createUserAndAccount } from "@/app/_db/users-db";
+import { hashPassword } from "@/app/_session/password";
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
-import { setSessionCookie } from "@/app/_session/cookie";
-import { isAuthenticated } from "@/app/_session/sessionUtils";
-import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
-import { getAccountByUserId } from "../_db/accounts-db";
-
-/**
- * This function is invoked when a user tries to log in.
- */
-export async function login(_prevState: ActionState, formData: FormData): Promise<ActionState> {
-    const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
-
-    try {
-        const user = await getUserByEmail(email);
-        const account = await getAccountByUserId(user.id);
-
-        if (!account.activated) {
-            return { message: 'Account is not activated', success: false };
-        }
-
-        const validPassword = await verifyPasswordHash(user.passwordHash, password);
-        if (!validPassword) {
-            return { message: 'Password is incorrect', success: false };
-        }
-
-        const authenticated = await isAuthenticated();
-        if (!authenticated) {                           // Only create a new session when the user is not logged in
-            await initiateSession(user.id);
-        }
-    } catch (error) {
-        console.log(error);
-        return { message: 'Could not log in', success: false };
-    }
-
-    revalidatePath('/', 'layout');
-    redirect(URL_DASHBOARD_PAGE);
-}
 
 /**
  * This function is invoked when a user tries to create an account.
@@ -109,16 +69,6 @@ export async function resetPassword(_prevState: ActionState, formData: FormData)
         }
         return { message: 'Could not change password', success: false };
     }
-}
-
-/**
- * Creates a session in the database and a cookie for the browser when a user signs in.
- */
-async function initiateSession(userId: number): Promise<void> {
-    const sessionToken = await generateRandomSessionToken();
-    const session = await createSession(sessionToken, userId);
-
-    await setSessionCookie(sessionToken, session.expiresAt);
 }
 
 /**

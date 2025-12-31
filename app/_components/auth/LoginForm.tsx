@@ -2,8 +2,8 @@
 
 import { ReactElement, useRef, useActionState, useState } from "react";
 import Link from "next/link";
+import { login } from "@/app/_actions/login";
 import { URL_FORGOT_PAGE, URL_REGISTER_PAGE } from "@/app/_utils/utils";
-import { login } from "@/app/_actions/auth";
 
 import "./LoginForm.css";
 
