@@ -65,7 +65,7 @@ export async function updateProfile(_prevState: InsertProfile, formData: FormDat
         const firstName = formData.get('first_name') as string;
         const fullName = formData.get('full_name') as string;
         const lastName = formData.get('last_name') as string;
-        const birthDate = formData.get('birth_date') as string;
+        const birthDate = new Date(formData.get('birth_date') as string);
         const phone = formData.get('phone') as string;
         const bio = formData.get('bio') as string;
         const userId = _prevState.userId;
@@ -106,7 +106,7 @@ export async function updateProfileImage(userId: number, _prevState: ActionState
  * Used by admin to create a new user and account by bypassing the email verification process. There are no
  * restrictions on the password when adding a user as admin.
  */
-export async function createUserAndAccount(_prevState: ActionState, formData: FormData): Promise<ActionState> {
+export async function createUserAndAccountAsAdmin(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const isAdmin = await isAuthenticatedAdmin();
     if (!isAdmin) {
         return { message: 'Only admins may create accounts', success: false };

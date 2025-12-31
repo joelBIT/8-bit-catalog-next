@@ -11,14 +11,6 @@ const PROFILE_IMAGES_STORAGE = "catalog";
 
 
 /**
- * Create an account for user with supplied user ID, and store the activation code (which is also sent to the user email).
- * The account must be activated before a user is able to sign in.
- */
-export async function createAccountForUserId(userId: number, activationCode: string): Promise<void> {
-    await databaseClient.insert(accountsTable).values({ userId, activationCode });
-}
-
-/**
  * Copies the default profile image to the folder created for the newly registered user. The folder is named
  * after the registered user's id.
  */
@@ -66,4 +58,5 @@ export async function createActivatedAccount(email: string, passwordHash: string
     const user = await registerUser(email, passwordHash, username);
     await databaseClient.insert(accountsTable).values({ userId: user.id, activated: true, activationCode: "created by admin" });
     await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
+    // TODO: Add address and profile in database for new user
 }

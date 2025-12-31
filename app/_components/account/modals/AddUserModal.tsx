@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useActionState, useEffect, useRef, useState } from "react";
-import { createUserAndAccount } from "@/app/_actions/account";
+import { createUserAndAccountAsAdmin } from "@/app/_actions/account";
 
 import "./AddUserModal.css";
 
@@ -10,7 +10,7 @@ import "./AddUserModal.css";
  * verification process.
  */
 export function AddUserModal({ close }: { close: () => void }): ReactElement {
-    const [state, formAction] = useActionState(createUserAndAccount, { message: '', success: false });
+    const [state, formAction] = useActionState(createUserAndAccountAsAdmin, { message: '', success: false });
     const [isVisible, setVisible] = useState<boolean>(false);
     const modalRef = useRef<HTMLDialogElement>(null);
 

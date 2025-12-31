@@ -4,18 +4,15 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { emailExists, getUserByEmail, registerUser, updateUserPassword, isCurrentPassword } from "@/app/_db/users-db";
+import { emailExists, getUserByEmail, updateUserPassword, isCurrentPassword, createUserAndAccount } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { createSession, generateRandomSessionToken } from "@/app/_session/session";
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
-import ActivationEmail from "../_components/email/ActivationEmail";
 import { setSessionCookie } from "@/app/_session/cookie";
 import { isAuthenticated } from "@/app/_session/sessionUtils";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 import { ActionState } from "@/app/_types/types";
-import { createProfileForUserId } from "../_db/profiles-db";
-import { createAccountForUserId, getAccountByUserId } from "../_db/accounts-db";
-import { createAddressForUserId } from "../_db/addresses-db";
+import { getAccountByUserId } from "../_db/accounts-db";
 
 /**
  * This function is invoked when a user tries to log in.
@@ -78,12 +75,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
 
     try {
         const passwordHash = await hashPassword(password);
-        const user = await registerUser(email, passwordHash, email);
-        await createProfileForUserId(user.id, fullName, phone, birthDate);
-        await createAddressForUserId({userId: user.id, street, city, country, zipCode: ''});
-        const activationCode = uuidv4();
-        await createAccountForUserId(user.id, activationCode);
-        sendActivationMail(user.email, activationCode);
+        await createUserAndAccount(passwordHash, email, {userId: 0, phone, fullName, birthDate: new Date(birthDate)}, {userId: 0, street, city, country});       // TODO: userID is set to 0 because this value is not used in the function but required by the type. Fix this.
         
         return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {
@@ -127,20 +119,6 @@ async function initiateSession(userId: number): Promise<void> {
     const session = await createSession(sessionToken, userId);
 
     await setSessionCookie(sessionToken, session.expiresAt);
-}
-
-/**
- * Sends an email containing a link with the activation code to the supplied email address.
- */
-async function sendActivationMail(email: string, activationCode: string): Promise<void> {
-    const resend = new Resend(process.env.RESEND_API_KEY as string);
-
-    await resend.emails.send({
-        from: '8bit <onboarding@joel-rollny.eu>',
-        to: email,
-        subject: 'Finish registration',
-        react: ActivationEmail(activationCode),
-    });
 }
 
 /**

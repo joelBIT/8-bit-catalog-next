@@ -29,13 +29,6 @@ export async function updateProfileByUserId(profile: InsertProfile): Promise<voi
 }
 
 /**
- * Create profile for a newly registered user.
- */
-export async function createProfileForUserId(userId: number, fullName: string, phone: string, birthDate: string): Promise<void> {
-    await databaseClient.insert(profilesTable).values({userId, fullName, phone, birthDate});
-}
-
-/**
  * The profile image is stored in a folder named as the user's id.
  */
 export async function updateProfileImageById(id: number, image: File): Promise<void> {

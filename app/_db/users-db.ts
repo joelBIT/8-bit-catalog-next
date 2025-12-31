@@ -1,8 +1,14 @@
 import 'server-only';
 
 import { eq } from 'drizzle-orm';
+import { v4 as uuidv4 } from 'uuid';
 import { databaseClient } from './db';
 import { User, usersTable } from './schema/users';
+import { InsertProfile, profilesTable } from './schema/profiles';
+import { addressesTable, InsertAddress } from './schema/addresses';
+import { Resend } from 'resend';
+import ActivationEmail from '../_components/email/ActivationEmail';
+import { accountsTable } from './schema/accounts';
 
 
 
@@ -114,4 +120,36 @@ export async function isCurrentPassword(email: string, passwordHash: string): Pr
     }
 
     return response[0].passwordHash === passwordHash;
+}
+
+/**
+ * Creates a user, profile, address, and account in a transaction when a registration of a new user occurs.
+ */
+export async function createUserAndAccount(passwordHash: string, userEmail: string, profile: InsertProfile, address: InsertAddress): Promise<void> {
+    await databaseClient.transaction(async (tx) => {
+        const email = userEmail.toLowerCase();
+        const user = await tx.insert(usersTable).values({email, passwordHash, username: email, role: "regular"})
+            .returning({'id': usersTable.id, 'email': usersTable.email});
+        
+        const userId = user[0].id;
+        await tx.insert(profilesTable).values({...profile, userId});
+        await tx.insert(addressesTable).values({...address, userId});
+        const activationCode = uuidv4();
+        await tx.insert(accountsTable).values({ userId, activationCode });
+        sendActivationMail(email, activationCode);
+    });
+}
+
+/**
+ * Sends an email containing a link with the activation code to the supplied email address.
+ */
+async function sendActivationMail(email: string, activationCode: string): Promise<void> {
+    const resend = new Resend(process.env.RESEND_API_KEY as string);
+
+    await resend.emails.send({
+        from: '8bit <onboarding@joel-rollny.eu>',
+        to: email,
+        subject: 'Finish registration',
+        react: ActivationEmail(activationCode),
+    });
 }
