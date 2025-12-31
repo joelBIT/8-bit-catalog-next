@@ -10,49 +10,6 @@ import { InsertAddress } from "../_db/schema/addresses";
 import { InsertProfile } from "../_db/schema/profiles";
 
 /**
- * This function is invoked when a user updates account information such as account password.
- * A user must enter the correct current password before it is updated to the new password.
- */
-export async function updateAccountPassword(userId: number, _prevState: ActionState, formData: FormData): Promise<ActionState> {
-    const authenticated = await isAuthenticated();
-    if (!authenticated) {
-        return { message: 'Must be authenticated to update password', success: false };
-    }
-    
-    const oldPassword = formData.get('oldPassword') as string;
-    const password = formData.get('password') as string;
-    const passwordRepeat = formData.get('passwordRepeat') as string;
-
-    if (password !== passwordRepeat) {
-        return { message: 'The entered passwords must be equal', success: false };
-    }
-
-    if (password.length < 8) {
-        return { message: 'Password must be at least 8 characters', success: false };
-    }
-
-    if (!/\d/.test(password)) {
-        return { message: 'Password must contain at least 1 number', success: false };
-    }
-
-    try {
-        const user = await getUserById(userId);
-        const validPassword = await verifyPasswordHash(user.passwordHash, oldPassword);
-        if (!validPassword) {
-            return { message: 'Old password is incorrect', success: false };
-        }
-
-        const passwordHash = await hashPassword(password);
-        await updatePasswordByUserId(userId, passwordHash);
-
-        return { message: 'The password was successfully updated', success: true };
-    } catch (error) {
-        console.log(error);
-        return { message: 'The password could not be updated', success: false };
-    }
-}
-
-/**
  * This function is invoked when updating profile information such as name and bio.
  */
 export async function updateProfile(_prevState: InsertProfile, formData: FormData): Promise<InsertProfile & ActionState> {

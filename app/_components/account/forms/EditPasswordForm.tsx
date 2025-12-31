@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateAccountPassword } from "@/app/_actions/account";
+import { updateAccountPassword } from "@/app/_actions/password";
 
 import "./EditPasswordForm.css";
 

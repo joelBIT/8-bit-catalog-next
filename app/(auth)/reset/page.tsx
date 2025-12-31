@@ -3,7 +3,7 @@
 import { ReactElement, useActionState, useEffect, useState, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
-import { changeAccountPassword } from "@/app/_actions/password";
+import { changePassword } from "@/app/_actions/password";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 
 import "./page.css";
@@ -13,7 +13,7 @@ import "./page.css";
  * performing a reset of an account password.
  */
 export default function ResetPasswordPage(): ReactElement {
-    const [state, formAction] = useActionState(changeAccountPassword, { message: '', success: false });
+    const [state, formAction] = useActionState(changePassword, { message: '', success: false });
     const [isVisible, setVisible] = useState<boolean>(false);
     const [isVisibleRepeat, setVisibleRepeat] = useState<boolean>(false);
     const [isOldVisible, setOldVisible] = useState<boolean>(false);
