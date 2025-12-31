@@ -2,13 +2,13 @@
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateAccountEmail } from "@/app/_actions/account";
+import { updateEmail } from "@/app/_actions/user";
 
 import "./EditEmailForm.css";
 
 export function EditEmailForm(): ReactElement {
     const { user } = useAccount();
-    const [state, formAction] = useActionState(updateAccountEmail.bind(null, user.id), { message: '', success: false, email: user?.email });
+    const [state, formAction] = useActionState(updateEmail.bind(null, user.id), { message: '', success: false, email: user?.email });
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {

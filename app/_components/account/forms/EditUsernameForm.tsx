@@ -2,13 +2,13 @@
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateAccountUsername } from "@/app/_actions/account";
+import { updateUsername } from "@/app/_actions/user";
 
 import "./EditUsernameForm.css";
 
 export function EditUsernameForm(): ReactElement {
     const { user } = useAccount();
-    const [state, formAction] = useActionState(updateAccountUsername.bind(null, user.id), { message: '', success: false, username: user?.username });
+    const [state, formAction] = useActionState(updateUsername.bind(null, user.id), { message: '', success: false, username: user?.username });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     
     useEffect(() => {
