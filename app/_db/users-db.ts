@@ -12,24 +12,6 @@ import { accountsTable } from './schema/accounts';
 
 
 
-
-
-/**
- * Creates a user in the user table and returns the newly created user. Emails are unique so an error will be thrown in case the
- * email already exists in the user table. Email is used as lowercase in this system. This is to avoid users not being able 
- * to login/search members due to character(s) being mixed uppercase and lowercase. Also, as default the email is also stored as
- * the username since it is unique. A user can change the username to something else when logged in.
- */
-export async function registerUser(userEmail: string, passwordHash: string, username: string): Promise<{id: number, email: string}> {
-    const email = userEmail.toLowerCase();
-    const response = await databaseClient
-        .insert(usersTable)
-        .values({email, passwordHash, username, role: "regular"})
-        .returning({'id': usersTable.id, 'email': usersTable.email});
-
-    return {id: response[0].id, email: email};
-}
-
 /**
  * Email is used as lowercase in this system. This is to avoid users not being able to login/search members due to character(s) being mixed
  * uppercase and lowercase.
@@ -124,6 +106,9 @@ export async function isCurrentPassword(email: string, passwordHash: string): Pr
 
 /**
  * Creates a user, profile, address, and account in a transaction when a registration of a new user occurs.
+ * Email is used as lowercase in this system. This is to avoid users not being able 
+ * to login/search members due to character(s) being mixed uppercase and lowercase. Also, as default the email is also stored as
+ * the username since it is unique. A user can change the username to something else when logged in.
  */
 export async function createUserAndAccount(passwordHash: string, userEmail: string, profile: InsertProfile, address: InsertAddress): Promise<void> {
     await databaseClient.transaction(async (tx) => {

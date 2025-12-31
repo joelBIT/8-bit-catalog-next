@@ -2,8 +2,10 @@ import 'server-only';
 
 import { eq, and } from 'drizzle-orm';
 import { databaseClient, storageClient } from './db';
-import { registerUser } from './users-db';
 import { Account, accountsTable } from './schema/accounts';
+import { usersTable } from './schema/users';
+import { profilesTable } from './schema/profiles';
+import { addressesTable } from './schema/addresses';
 
 
 const PROFILE_IMAGES_STORAGE = "catalog";
@@ -54,9 +56,17 @@ export async function activateAccount(activationCode: string): Promise<boolean> 
 /**
  * Used by admin to create a user and account directly by bypassing the email activation procedure.
  */
-export async function createActivatedAccount(email: string, passwordHash: string, username: string): Promise<void> {
-    const user = await registerUser(email, passwordHash, username);
-    await databaseClient.insert(accountsTable).values({ userId: user.id, activated: true, activationCode: "created by admin" });
-    await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
-    // TODO: Add address and profile in database for new user
+export async function createActivatedAccount(userEmail: string, passwordHash: string, username: string): Promise<void> {
+    await databaseClient.transaction(async (tx) => {
+        const email = userEmail.toLowerCase();
+        const user = await tx.insert(usersTable).values({email, passwordHash, username, role: "regular"})
+            .returning({'id': usersTable.id, 'email': usersTable.email});
+        
+        const userId = user[0].id;
+        await tx.insert(profilesTable).values({userId});
+        await tx.insert(addressesTable).values({userId});
+
+        await tx.insert(accountsTable).values({ userId, activated: true, activationCode: "created by admin" });
+        await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${userId}/profile.png`);
+    });
 }
