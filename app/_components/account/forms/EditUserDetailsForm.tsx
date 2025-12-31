@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateProfile } from "@/app/_actions/account";
+import { updateProfile } from "@/app/_actions/profile";
 import PhoneInput from "react-phone-input-2";
 import { ActionState } from "@/app/_types/types";
 import { InsertProfile } from "@/app/_db/schema/profiles";

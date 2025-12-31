@@ -3,7 +3,7 @@
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { useAccount } from "@/app/_hooks";
 import { fileTypes } from "@/app/_utils/utils";
-import { updateProfileImage } from "@/app/_actions/account";
+import { updateProfileImage } from "@/app/_actions/profile";
 
 import "./EditProfileForm.css";
 
