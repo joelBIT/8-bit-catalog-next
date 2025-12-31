@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SelectCountry } from "../common";
 import PhoneInput from "react-phone-input-2";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
-import { register } from "@/app/_actions/auth";
+import { register } from "@/app/_actions/register";
 
 import 'react-phone-input-2/lib/style.css';
 import "./RegisterForm.css";
