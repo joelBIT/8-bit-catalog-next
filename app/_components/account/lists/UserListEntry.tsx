@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import Image from "next/image";
-import { User } from "@/app/_types/types";
+import { User } from "@/app/_db/schema/users";
 import { Profile } from "@/app/_db/schema/profiles";
 import { getMonthText } from "@/app/_utils/utils";
 import { getProfileByUserIdRequest } from "@/app/_client/client";

@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
-import { User } from "@/app/_types/types";
+import { User } from "../_db/schema/users";
 import { Address } from "../_db/schema/addresses";
 import { Profile } from "../_db/schema/profiles";
 import { getUserFromSession } from "@/app/_session/sessionUtils";

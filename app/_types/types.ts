@@ -35,12 +35,3 @@ export type SearchResult = {
     games: Game[],
     count: number
 }
-
-export type User = {
-    id: number,
-    email: string,
-    createdAt: Date,
-    username: string,
-    passwordHash: string,
-    role: string
-}

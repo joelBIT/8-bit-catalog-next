@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { useAccount } from "@/app/_hooks";
-import { User } from "@/app/_types/types";
+import { User } from "@/app/_db/schema/users";
 import { getUsersRequest } from "@/app/_client/client";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
 import { AddUserModal } from "@/app/_components/account/modals";

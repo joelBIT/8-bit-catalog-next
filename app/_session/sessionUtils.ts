@@ -2,7 +2,7 @@
 
 import { getValidatedSession } from "@/app/_session/cookie";
 import { getUserById } from "@/app/_db/users-db";
-import { User } from "@/app/_types/types";
+import { User } from "../_db/schema/users";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
 
 
