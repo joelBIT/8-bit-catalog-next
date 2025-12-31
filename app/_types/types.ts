@@ -23,12 +23,6 @@ export type FilterValues = {
 
 export type Filter = "category" | "publisher" | "developer" | "title";
 
-export type FrequentlyAskedQuestion = {
-    type: string,
-    question: string,
-    answer: string
-}
-
 export type Game = {
     id: number,
     title: string,

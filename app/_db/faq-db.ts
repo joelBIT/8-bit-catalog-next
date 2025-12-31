@@ -1,8 +1,7 @@
 import 'server-only';
 
 import { databaseClient } from './db';
-import { FrequentlyAskedQuestion } from '../_types/types';
-import { faqTable } from './schema/faqs';
+import { faqTable, FrequentlyAskedQuestion } from './schema/faqs';
 
 
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useState } from "react";
-import { FrequentlyAskedQuestion } from "@/app/_types/types";
+import { FrequentlyAskedQuestion } from "@/app/_db/schema/faqs";
 
 import "./FAQ.css";
 

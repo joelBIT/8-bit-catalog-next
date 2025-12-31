@@ -8,6 +8,4 @@ export const faqTable = pgTable('faq', {
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
-export type InsertFAQ = typeof faqTable.$inferInsert;
-export type SelectFAQ = typeof faqTable.$inferSelect;
-
+export type FrequentlyAskedQuestion = typeof faqTable.$inferInsert;

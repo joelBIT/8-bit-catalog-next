@@ -13,4 +13,3 @@ export const articlesTable = pgTable('articles', {
 
 export type InsertArticle = typeof articlesTable.$inferInsert;
 export type SelectArticle = typeof articlesTable.$inferSelect;
-

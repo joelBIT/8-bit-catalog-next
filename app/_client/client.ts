@@ -1,5 +1,6 @@
-import { FrequentlyAskedQuestion, Game, SearchResult, TimelineEvent, User, News, Filter, Profile } from '@/app/_types/types';
+import { Game, SearchResult, TimelineEvent, User, News, Filter, Profile } from '@/app/_types/types';
 import { Address } from '../_db/schema/addresses';
+import { FrequentlyAskedQuestion } from '../_db/schema/faqs';
 
 
 /********************************************************************************************
