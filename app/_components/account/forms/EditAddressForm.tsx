@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateUserAddress } from "@/app/_actions/account";
+import { updateAddress } from "@/app/_actions/address";
 import { SelectCountry } from "../../common";
 import { ActionState } from "@/app/_types/types";
 import { InsertAddress } from "@/app/_db/schema/addresses";
@@ -13,7 +13,7 @@ export function EditAddressForm(): ReactElement {
     const { user, address } = useAccount();
     const initialState: ActionState & InsertAddress = {message: '', success: false, zipCode: address.zipCode, 
         country: address.country, city: address.city, street: address.street, userId: user.id};
-    const [state, formAction] = useActionState(updateUserAddress, initialState);
+    const [state, formAction] = useActionState(updateAddress, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
