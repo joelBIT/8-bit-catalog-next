@@ -1,6 +1,7 @@
 import 'server-only';
 
-import { databaseClient, NEWSLETTER_TABLE } from './db';
+import { databaseClient } from './db';
+import { newsletterTable } from './schema/newsletter';
 
 
 
@@ -10,15 +11,11 @@ import { databaseClient, NEWSLETTER_TABLE } from './db';
  * Adds the supplied email address to the list of newsletter subscribers.
  */
 export async function subscribeNewsletter(email: string): Promise<void> {
-    const { error } = await databaseClient.from(NEWSLETTER_TABLE).insert({ email });
-    if (error) {
+    try {
+        await databaseClient.insert(newsletterTable).values({ email });
+    } catch (error) {
         console.log(error);
-
-        if (error.code == '23505' && error.details.includes("email")) {
-            throw new Error(`Already subscribed`);
-        }
-
-        throw error;
+        throw new Error(`Could not subscribe`);
     }
 }
 
@@ -26,11 +23,10 @@ export async function subscribeNewsletter(email: string): Promise<void> {
  * Return list of all email addresses that are subscribed for the newsletter.
  */
 export async function getAllNewsletterSubscribers(): Promise<string[]> {
-    const { data, error } = await databaseClient.from(NEWSLETTER_TABLE).select("email");
-    if (error) {
-        console.log(error);
-        throw error;
+    const response = await databaseClient.select({ "email": newsletterTable.email}).from(newsletterTable);
+    if (response) {
+        return response.map(element => element.email);
     }
 
-    return data.map(element => element.email);
+    return [];
 }

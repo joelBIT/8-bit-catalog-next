@@ -1,8 +1,9 @@
 import 'server-only';
 
-import { ACCOUNTS_TABLE, databaseClient } from './db';
+import { eq, and } from 'drizzle-orm';
+import { databaseClient, storageClient } from './db';
 import { registerUser } from './users-db';
-import { Account } from '../_types/types';
+import { Account, accountsTable } from './schema/accounts';
 
 
 const PROFILE_IMAGES_STORAGE = "catalog";
@@ -13,18 +14,18 @@ const PROFILE_IMAGES_STORAGE = "catalog";
  * Create an account for user with supplied user ID, and store the activation code (which is also sent to the user email).
  * The account must be activated before a user is able to sign in.
  */
-export async function createAccountForUserId(user_id: number, activation_code: string): Promise<void> {
-    await databaseClient.from(ACCOUNTS_TABLE).insert({ user_id, activation_code });
+export async function createAccountForUserId(userId: number, activationCode: string): Promise<void> {
+    await databaseClient.insert(accountsTable).values({ userId, activationCode });
 }
 
 /**
  * Copies the default profile image to the folder created for the newly registered user. The folder is named
  * after the registered user's id.
  */
-export async function copyProfileImageToFolder(activation_code: string): Promise<void> {
+export async function copyProfileImageToFolder(activationCode: string): Promise<void> {
     try {
-        const response = await databaseClient.from(ACCOUNTS_TABLE).select().eq('activation_code', activation_code).single();
-        await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response.data?.user_id}/profile.png`);
+        const response = await databaseClient.select().from(accountsTable).where(eq(accountsTable.activationCode, activationCode)).limit(1);
+        await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response[0]?.userId}/profile.png`);
     } catch (error) {
         console.log(error);
     }
@@ -33,33 +34,36 @@ export async function copyProfileImageToFolder(activation_code: string): Promise
 /**
  * Retrieve account information for user with supplied user ID.
  */
-export async function getAccountByUserId(user_id: number): Promise<Account> {
-    const { data, error } = await databaseClient.from(ACCOUNTS_TABLE).select().eq('user_id', user_id).single();
-    if (error) {
-        console.log(error);
-        throw error;
+export async function getAccountByUserId(userId: number): Promise<Account> {
+    const response = await databaseClient.select().from(accountsTable).where(eq(accountsTable.userId, userId)).limit(1);
+    if (response?.length !== 1) {
+        console.log(`Could not find account for user with ID ${userId}`);
+        throw new Error(`Could not find account for user with ID ${userId}`);
     }
-    return data;
+    return response[0];
 }
 
 /**
  * First a check is done to see if the activation code is valid. Then the corresponding account is activated.
  */
-export async function activateAccount(activation_code: string): Promise<boolean> {
-    const { data, error } = await databaseClient.from(ACCOUNTS_TABLE).select().eq('activation_code', activation_code).eq('activated', false);
-    if (error || data.length === 0) {
+export async function activateAccount(activationCode: string): Promise<boolean> {
+    const response = await databaseClient
+        .select()
+        .from(accountsTable)
+        .where(and(eq(accountsTable.activationCode, activationCode), eq(accountsTable.activated, false)));
+    if (response.length === 0) {
         return false;
     }
 
-    await databaseClient.from(ACCOUNTS_TABLE).update({activated: true}).eq('activation_code', activation_code);    
+    await databaseClient.update(accountsTable).set({activated: true}).where(eq(accountsTable.activationCode, activationCode));    
     return true;
 }
 
 /**
  * Used by admin to create a user and account directly by bypassing the email activation procedure.
  */
-export async function createActivatedAccount(email: string, password_hash: string, username: string): Promise<void> {
-    const user = await registerUser(email, password_hash, username);
-    await databaseClient.from(ACCOUNTS_TABLE).insert({ user_id: user.id, activated: true });
-    await databaseClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
+export async function createActivatedAccount(email: string, passwordHash: string, username: string): Promise<void> {
+    const user = await registerUser(email, passwordHash, username);
+    await databaseClient.insert(accountsTable).values({ userId: user.id, activated: true, activationCode: "created by admin" });
+    await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${user.id}/profile.png`);
 }

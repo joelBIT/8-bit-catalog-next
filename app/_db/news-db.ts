@@ -1,7 +1,8 @@
 import 'server-only';
 
-import { databaseClient, NEWS_TABLE } from './db';
-import { News } from '../_types/types';
+import { desc, eq } from 'drizzle-orm';
+import { databaseClient } from './db';
+import { News, newsTable } from './schema/news';
 
 
 
@@ -11,48 +12,32 @@ import { News } from '../_types/types';
  * Retrieve all news.
  */
 export async function getAllNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select().order("date", { ascending: false });
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return data;
+    return await databaseClient.select().from(newsTable).orderBy(desc(newsTable.createdAt));
 }
 
 /**
  * Retrieve the 6 most viewed news.
  */
 export async function getTopNews(): Promise<News[]> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select().limit(6).order("date", { ascending: false });
-    if (error) {
-        console.log(error);
-        throw error;
-    }
-
-    return data;
+    return await databaseClient.select().from(newsTable).limit(6).orderBy(desc(newsTable.createdAt));
 }
 
 /**
  * Get news with the supplied news ID.
  */
 export async function getNewsById(id: number): Promise<News> {
-    const { data, error } = await databaseClient.from(NEWS_TABLE).select().eq("id", id).single();
-    if (error) {
-        console.log(error);
-        throw error;
+    const response = await databaseClient.select().from(newsTable).where(eq(newsTable.id, id)).limit(1);
+    if (response.length !== 1) {
+        console.log(`Could not find news with ID ${id}`);
+        throw new Error(`Could not find news with ID ${id}`)
     }
 
-    return data;
+    return response[0];
 }
 
 /**
  * Create news with the supplied heading and text. The current date is stored as the date of when the news is published.
  */
 export async function createNews(heading: string, text: string): Promise<void> {
-    const { error } = await databaseClient.from(NEWS_TABLE).insert({ heading, text, date: new Date() });
-    if (error) {
-        console.log(error);
-        throw error;
-    }
+    await databaseClient.insert(newsTable).values({ heading, text, published: new Date().toString(), author: 'Joel Rollny', image: 'keyboard.avif' });
 }

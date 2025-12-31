@@ -2,7 +2,7 @@
 
 import { getValidatedSession } from "@/app/_session/cookie";
 import { getUserById } from "@/app/_db/users-db";
-import { User } from "@/app/_types/types";
+import { User } from "../_db/schema/users";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
 
 
@@ -38,7 +38,7 @@ export async function isAuthenticatedAdmin(): Promise<boolean> {
         return false;       // If no session exist, the user is not authenticated
     }
 
-    const user = await getUserById(session.user_id);
+    const user = await getUserById(session.userId);
     return user.role === USER_ROLE_ADMIN;
 }
 
@@ -48,6 +48,6 @@ export async function isAuthenticatedAdmin(): Promise<boolean> {
 export async function getUserFromSession(): Promise<User | undefined> {
     const session = await getValidatedSession();
     if (session) {
-        return await getUserById(session.user_id);
+        return await getUserById(session.userId);
     }
 }

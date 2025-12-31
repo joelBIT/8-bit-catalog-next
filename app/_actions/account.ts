@@ -1,11 +1,13 @@
 'use server';
 
-import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateProfileImageById, updateUsernameByUserId } from "@/app/_db/users-db";
+import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateUsernameByUserId } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
-import { ActionState, Address, Profile } from "@/app/_types/types";
-import { updateProfileByUserId } from "../_db/profiles-db";
+import { ActionState } from "@/app/_types/types";
+import { updateProfileByUserId, updateProfileImageById } from "../_db/profiles-db";
 import { createActivatedAccount } from "../_db/accounts-db";
+import { InsertAddress } from "../_db/schema/addresses";
+import { InsertProfile } from "../_db/schema/profiles";
 
 /**
  * This function is invoked when a user updates account information such as account password.
@@ -35,7 +37,7 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 
     try {
         const user = await getUserById(userId);
-        const validPassword = await verifyPasswordHash(user.password_hash, oldPassword);
+        const validPassword = await verifyPasswordHash(user.passwordHash, oldPassword);
         if (!validPassword) {
             return { message: 'Old password is incorrect', success: false };
         }
@@ -53,24 +55,24 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 /**
  * This function is invoked when updating profile information such as name and bio.
  */
-export async function updateProfile(_prevState: Profile, formData: FormData): Promise<Profile & ActionState> {
+export async function updateProfile(_prevState: InsertProfile, formData: FormData): Promise<InsertProfile & ActionState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update user information', success: false, ..._prevState };
     }
     
     try {
-        const first_name = formData.get('first_name') as string;
-        const full_name = formData.get('full_name') as string;
-        const last_name = formData.get('last_name') as string;
-        const birth_date = formData.get('birth_date') as string;
+        const firstName = formData.get('first_name') as string;
+        const fullName = formData.get('full_name') as string;
+        const lastName = formData.get('last_name') as string;
+        const birthDate = formData.get('birth_date') as string;
         const phone = formData.get('phone') as string;
         const bio = formData.get('bio') as string;
-        const user_id = _prevState.user_id;
-        await updateProfileByUserId({user_id, full_name, phone, birth_date, last_name, first_name, bio, image: ''});
+        const userId = _prevState.userId;
+        await updateProfileByUserId({userId, fullName, phone, birthDate, lastName, firstName, bio, image: ''});
 
-        return { message: 'The account was successfully updated', success: true, user_id, image: '', first_name, last_name, 
-            bio, birth_date, full_name, phone };
+        return { message: 'The account was successfully updated', success: true, userId, image: '', firstName, lastName, 
+            bio, birthDate, fullName, phone };
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false, ..._prevState };
@@ -174,6 +176,6 @@ export async function updateAccountUsername(userId: number, _prevState: ActionSt
     }
 }
 
-export async function updateUserAddress(userId: number, _prevState: ActionState & Address, formData: FormData): Promise<ActionState & Address> {
+export async function updateUserAddress(_prevState: ActionState & InsertAddress, formData: FormData): Promise<ActionState & InsertAddress> {
     return { ..._prevState, message: 'The address was successfully updated', success: true };
 }

@@ -1,7 +1,8 @@
 import 'server-only';
 
-import { databaseClient, SESSION_TABLE } from './db';
-import { Session } from '../_types/types';
+import { eq } from 'drizzle-orm';
+import { databaseClient } from './db';
+import { Session, sessionsTable } from './schema/sessions';
 
 
 
@@ -11,28 +12,33 @@ import { Session } from '../_types/types';
  * Creates a session when a user signs in.
  */
 export async function storeSession(session: Session): Promise<void> {
-    await databaseClient.from(SESSION_TABLE).insert(session);
+    await databaseClient.insert(sessionsTable).values(session);
 }
 
 export async function getSessionByTokenValue(value: string): Promise<Session> {
-    const { data, error } = await databaseClient.from(SESSION_TABLE).select('expires_at, user_id, token_value').eq('token_value', value).single();
-    if (error) {
-        console.log(error);
-        throw error;
+    const response = await databaseClient
+        .select()
+        .from(sessionsTable)
+        .where(eq(sessionsTable.tokenValue, value))
+        .limit(1);
+    if (response?.length !== 1) {
+        console.log(`Could not find session for token value ${value}`);
+        throw new Error(`Could not find session for token value ${value}`)
     }
-    return data;
+
+    return response[0];
 }
 
 /**
  * Deletes a user's session when the user signs out.
  */
-export async function deleteSessionByTokenValue(token_value: string): Promise<void> {
-    await databaseClient.from(SESSION_TABLE).delete().eq('token_value', token_value);
+export async function deleteSessionByTokenValue(tokenValue: string): Promise<void> {
+    await databaseClient.delete(sessionsTable).where(eq(sessionsTable.tokenValue, tokenValue));
 }
 
 /**
  * The session is usually updated when it is refreshed (so it does not expire).
  */
 export async function updateSession(session: Session): Promise<void> {
-    await databaseClient.from(SESSION_TABLE).update(session);
+    await databaseClient.update(sessionsTable).set(session);
 }

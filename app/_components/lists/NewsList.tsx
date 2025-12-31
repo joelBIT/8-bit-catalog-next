@@ -2,7 +2,7 @@
 
 import { ReactElement, useRef, useState } from "react";
 import { sendNewsLetterRequest } from "@/app/_client/client";
-import { News } from "@/app/_types/types";
+import { News } from "@/app/_db/schema/news";
 
 import "./NewsList.css";
 

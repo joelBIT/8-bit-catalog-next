@@ -4,7 +4,7 @@ import { ReactElement, useState } from "react";
 import Image from 'next/image';
 import { usePathname } from "next/navigation";
 import { useFavourites, useGame } from "@/app/_hooks";
-import { Game } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 import { URL_FAVOURITES_PAGE } from "@/app/_utils/utils";
 
 import "./GameCard.css";

@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { deleteSessionByTokenValue, getSessionByTokenValue, storeSession, updateSession } from "@/app/_db/sessions-db";
-import { Session } from "@/app/_types/types";
+import { Session } from "../_db/schema/sessions";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import { deleteSessionCookie, getValidatedSession } from "./cookie";
@@ -40,9 +40,9 @@ export async function createSession(sessionToken: string, user_id: number): Prom
     const token_value = fromSessionTokenToSessionValue(sessionToken);
 
     const session: Session = {
-        user_id: user_id,
-        expires_at: new Date(Date.now() + SESSION_MAX_DURATION_MS),
-        token_value: token_value
+        userId: user_id,
+        expiresAt: new Date(Date.now() + SESSION_MAX_DURATION_MS),
+        tokenValue: token_value
     };
 
     storeSession(session);  // Stores session in database
@@ -64,23 +64,23 @@ export async function validateSession(sessionToken: string): Promise<Session | u
         const result = await getSessionByTokenValue(tokenValue);
 
         if (result) {
-            const { user_id, expires_at, token_value } = result;
+            const { userId, expiresAt, tokenValue } = result;
     
             const session: Session = {
-                user_id: user_id,
-                expires_at: expires_at,
-                token_value: token_value
+                userId,
+                expiresAt,
+                tokenValue
             }
       
             // If the session has expired, delete it
-            if (Date.now() >= new Date(session.expires_at).getTime()) {
-                await deleteSessionByTokenValue(session.token_value);
+            if (Date.now() >= new Date(session.expiresAt).getTime()) {
+                await deleteSessionByTokenValue(session.tokenValue);
                 return;
             }
         
             // If there are 15 days left until the session expires, refresh the session
-            if (Date.now() >= new Date(session.expires_at).getTime() - SESSION_REFRESH_INTERVAL_MS) {
-                session.expires_at = new Date(Date.now() + SESSION_MAX_DURATION_MS);
+            if (Date.now() >= new Date(session.expiresAt).getTime() - SESSION_REFRESH_INTERVAL_MS) {
+                session.expiresAt = new Date(Date.now() + SESSION_MAX_DURATION_MS);
                 await updateSession(session);
             }
         
@@ -101,7 +101,7 @@ export async function signOut(): Promise<void> {
     const session = await getValidatedSession();
       
     if (session) {
-        await deleteSessionByTokenValue(session.token_value);       // Delete session from database
+        await deleteSessionByTokenValue(session.tokenValue);       // Delete session from database
         await deleteSessionCookie();                                // Delete cookie in browser
     }
 

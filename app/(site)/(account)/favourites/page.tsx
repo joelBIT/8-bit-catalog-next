@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { useFavourites, useGame } from "@/app/_hooks";
 import { GameSorting, ScrollTopButton } from "@/app/_components/common";
 import { GameGrid, GameList, SlidingToggle } from "@/app/_components/lists";
-import { Game } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 
 import "./page.css";
 

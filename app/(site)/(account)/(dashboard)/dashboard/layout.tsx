@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { AccountProvider } from "@/app/_contexts";
 import { AccountMenu } from "@/app/_components/account";
 import { getUserFromSession } from "@/app/_session/sessionUtils";
-import { User } from "@/app/_types/types";
+import { User } from "@/app/_db/schema/users";
 
 import "./layout.css";
 

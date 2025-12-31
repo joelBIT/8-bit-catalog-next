@@ -3,7 +3,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { FAQ } from "@/app/_components/common";
 import { FAQ_ACCOUNT, FAQ_GAMES, FAQ_GENERAL } from "@/app/_utils/utils";
-import { FrequentlyAskedQuestion } from "@/app/_types/types";
+import { FrequentlyAskedQuestion } from "@/app/_db/schema/faqs";
 import { getFAQsRequest } from "@/app/_client/client";
 
 import "./page.css";

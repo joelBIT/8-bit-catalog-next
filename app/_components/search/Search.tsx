@@ -3,7 +3,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useGame, useGames } from "@/app/_hooks";
-import { Game } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 import { GameSorting, ScrollTopButton } from "../common";
 import { RangeSlider } from ".";
 import { GameGrid, GameList, SlidingToggle } from "../lists";

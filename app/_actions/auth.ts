@@ -32,7 +32,7 @@ export async function login(_prevState: ActionState, formData: FormData): Promis
             return { message: 'Account is not activated', success: false };
         }
 
-        const validPassword = await verifyPasswordHash(user.password_hash, password);
+        const validPassword = await verifyPasswordHash(user.passwordHash, password);
         if (!validPassword) {
             return { message: 'Password is incorrect', success: false };
         }
@@ -80,7 +80,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
         const passwordHash = await hashPassword(password);
         const user = await registerUser(email, passwordHash, email);
         await createProfileForUserId(user.id, fullName, phone, birthDate);
-        await createAddressForUserId({user_id: user.id, street, city, country, zip_code: ''});
+        await createAddressForUserId({userId: user.id, street, city, country, zipCode: ''});
         const activationCode = uuidv4();
         await createAccountForUserId(user.id, activationCode);
         sendActivationMail(user.email, activationCode);
@@ -126,7 +126,7 @@ async function initiateSession(userId: number): Promise<void> {
     const sessionToken = await generateRandomSessionToken();
     const session = await createSession(sessionToken, userId);
 
-    await setSessionCookie(sessionToken, session.expires_at);
+    await setSessionCookie(sessionToken, session.expiresAt);
 }
 
 /**

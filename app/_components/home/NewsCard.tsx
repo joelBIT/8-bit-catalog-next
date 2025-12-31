@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { News } from "@/app/_types/types";
+import { News } from "@/app/_db/schema/news";
 import { adjustTextLength, URL_NEWS_PAGE } from "@/app/_utils/utils";
 
 import "./NewsCard.css";
@@ -19,7 +19,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
             <section className="news-card-text">
                 <section className="news-card-title">
                     <h2 className="news-heading"> {news.heading} </h2>
-                    <h2 className="news-date"> {news.date.toString()} </h2>
+                    <h2 className="news-date"> {news.published?.toString()} </h2>
                 </section>
 
                 <h2 className="news-text"> {adjustTextLength(news.text, 200)} </h2>

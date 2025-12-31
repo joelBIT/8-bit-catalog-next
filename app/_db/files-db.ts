@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { databaseClient } from './db';
+import { storageClient } from './db';
 
 const COVERS_STORAGE = "covers";
 
@@ -11,7 +11,7 @@ const COVERS_STORAGE = "covers";
  * If the file already exists (i.e., same name) at the destination, it is overwritten with the new file.
  */
 export async function uploadFile(fileName: string, file: File, storage: string = COVERS_STORAGE, folder: string = ""): Promise<void> {
-    const { error } = await databaseClient.storage.from(storage).upload(folder + fileName, file, {
+    const { error } = await storageClient.storage.from(storage).upload(folder + fileName, file, {
         cacheControl: '3600',
         upsert: true
       });

@@ -2,7 +2,8 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import Image from "next/image";
-import { Profile, User } from "@/app/_types/types";
+import { User } from "@/app/_db/schema/users";
+import { Profile } from "@/app/_db/schema/profiles";
 import { getMonthText } from "@/app/_utils/utils";
 import { getProfileByUserIdRequest } from "@/app/_client/client";
 
@@ -67,7 +68,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
 
             <section className="name-section">
                 <h2 className="userCard-name__heading"> Name </h2>
-                <h2 className="userCard-name"> {`${profile?.first_name} ${profile?.last_name}`} </h2>
+                <h2 className="userCard-name"> {`${profile?.firstName} ${profile?.lastName}`} </h2>
             </section>
 
             <section className="role-section">
@@ -82,7 +83,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
 
             <section className="enrolled-section">
                 <h2 className="userCard-enrolled__heading"> Enrolled </h2>
-                <h2 className="userCard-enrolled"> {convertDate(new Date(user.created_at))} </h2>
+                <h2 className="userCard-enrolled"> {convertDate(new Date(user.createdAt))} </h2>
             </section>
         </li>
     );

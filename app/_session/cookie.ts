@@ -2,7 +2,7 @@ import 'server-only';
 
 import { cookies } from "next/headers";
 import { validateSession } from "./session";
-import { Session } from "@/app/_types/types";
+import { Session } from '../_db/schema/sessions';
 
 
 

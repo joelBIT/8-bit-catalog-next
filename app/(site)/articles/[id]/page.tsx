@@ -49,7 +49,7 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
             <h2 className="article-text"> {article.text} </h2>
 
             {
-                article.article_contents?.map(content => 
+                article.articleContents?.map(content => 
                     <section key={content.heading} className="article-content">
                         <h2 className="article-content__heading"> {content.heading} </h2>
                         <p className="article-content__text"> {content.text} </p>

@@ -4,17 +4,16 @@ import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
 import { updateUserAddress } from "@/app/_actions/account";
 import { SelectCountry } from "../../common";
-import { ActionState, Address } from "@/app/_types/types";
+import { ActionState } from "@/app/_types/types";
+import { InsertAddress } from "@/app/_db/schema/addresses";
 
 import "./EditAddressForm.css";
 
-const initialState: ActionState & Address = { 
-    message: '', success: false, zip_code: '', country: '', city: '', street: '', user_id: 0
-}
-
 export function EditAddressForm(): ReactElement {
     const { user, address } = useAccount();
-    const [state, formAction] = useActionState(updateUserAddress.bind(null, user.id), initialState);
+    const initialState: ActionState & InsertAddress = {message: '', success: false, zipCode: address.zipCode, 
+        country: address.country, city: address.city, street: address.street, userId: user.id};
+    const [state, formAction] = useActionState(updateUserAddress, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
@@ -40,7 +39,7 @@ export function EditAddressForm(): ReactElement {
                         id="zip_code"
                         name="zip_code" 
                         type="text"
-                        defaultValue={state.zip_code ? state.zip_code : address?.zip_code} 
+                        defaultValue={state.zipCode ? state.zipCode : address?.zipCode} 
                         className="input-field"
                         autoComplete="none"
                     />

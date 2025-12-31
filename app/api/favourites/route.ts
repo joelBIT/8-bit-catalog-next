@@ -9,7 +9,7 @@ export async function GET(): Promise<NextResponse> {
     const session = await getValidatedSession();
 
     if (session) {
-        const games = await getFavouritesByUserId(session.user_id);
+        const games = await getFavouritesByUserId(session.userId);
         return NextResponse.json(games);
     }
 
@@ -25,7 +25,7 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     if (session) {
         try {
-            await addFavouriteForUserId(session.user_id, game_id);
+            await addFavouriteForUserId(session.userId, game_id);
             return NextResponse.json({ message: 'Game added to favourites' }, { status: 200 });
         } catch (error) {
             console.log(error);
@@ -45,7 +45,7 @@ export async function DELETE(request: Request): Promise<NextResponse> {
 
     if (session) {
         try {
-            await deleteFavouriteForUserId(session.user_id, game_id);
+            await deleteFavouriteForUserId(session.userId, game_id);
             return NextResponse.json({ message: 'Game removed from favourites' }, { status: 200 });
         } catch (error) {
             console.log(error);

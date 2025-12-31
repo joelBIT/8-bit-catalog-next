@@ -1,7 +1,8 @@
 'use client';
 
 import { ReactElement, useActionState } from "react";
-import { FilterValues, Game } from "@/app/_types/types";
+import { FilterValues } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 import { fileTypes, getPlayersList } from "@/app/_utils/utils";
 import { updateGame } from "@/app/_actions/games";
 import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from "..";
@@ -52,7 +53,7 @@ export function EditGameForm({ game, filterValues }: { game: Game, filterValues:
 
                     <section id="releasedSection">
                         <h2 className="releasedSection__title"> Released </h2>
-                        <input id="releaseDate" name="released" type="date" defaultValue={game.release_date} required />
+                        <input id="releaseDate" name="released" type="date" defaultValue={game.releaseDate.toString()} required />
                     </section>
 
                     <section className="selectSection romSection">

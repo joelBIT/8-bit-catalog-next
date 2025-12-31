@@ -1,7 +1,9 @@
 import 'server-only';
 
-import { databaseClient, FAVOURITES_TABLE, GAMES_TABLE } from './db';
-import { Game } from '../_types/types';
+import { and, eq, inArray } from 'drizzle-orm';
+import { databaseClient } from './db';
+import { favouritesTable } from './schema/favourites';
+import { Game, gamesTable } from './schema/games';
 
 
 
@@ -11,19 +13,12 @@ import { Game } from '../_types/types';
  * Returns a user's favourite games. First all game id's of the favourite games are gathered. Then all game objects with
  * the corresponding id's are returned.
  */
-export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
-    const { data, error } = await databaseClient.from(FAVOURITES_TABLE).select("game_id").eq('user_id', user_id);
-    if (error) {
-        console.log(error);
-    }
+export async function getFavouritesByUserId(userId: number): Promise<Game[]> {
+    const response = await databaseClient.select().from(favouritesTable).where(eq(favouritesTable.userId, userId));
 
-    if (data) {
-        const ids = data.map(game => game.game_id);
-        const response = await databaseClient.from(GAMES_TABLE).select().in("id", ids);
-
-        if (response.data) {
-            return response.data;
-        }
+    if (response) {
+        const ids = response.map((game: { gameId: number; }) => game.gameId);
+        return await databaseClient.select().from(gamesTable).where(inArray(gamesTable.id, ids));
     }
 
     return [];
@@ -32,13 +27,13 @@ export async function getFavouritesByUserId(user_id: number): Promise<Game[]> {
 /**
  * Store the supplied game ID as a favourite game for user with supplied user ID.
  */
-export async function addFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
-    await databaseClient.from(FAVOURITES_TABLE).insert({user_id, game_id});
+export async function addFavouriteForUserId(userId: number, gameId: number): Promise<void> {
+    await databaseClient.insert(favouritesTable).values({userId, gameId});
 }
 
 /**
  * Delete the supplied game ID from list of favourite games for user with supplied user ID.
  */
-export async function deleteFavouriteForUserId(user_id: number, game_id: number): Promise<void> {
-    await databaseClient.from(FAVOURITES_TABLE).delete().eq("user_id", user_id).eq("game_id", game_id);
+export async function deleteFavouriteForUserId(userId: number, gameId: number): Promise<void> {
+    await databaseClient.delete(favouritesTable).where(and(eq(favouritesTable.userId, userId), eq(favouritesTable.gameId, gameId)));
 }
