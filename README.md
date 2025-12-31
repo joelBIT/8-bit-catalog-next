@@ -2,7 +2,7 @@
 
 <br>
 
-The 8-bit Catalog is a searchable library of games released for the Nintendo Entertainment System. The React framework Next.js is used for both frontend and backend. Supabase is currently used to persist data. This project is a work in progress.
+The 8-bit Catalog is a searchable library of games released for the Nintendo Entertainment System. The React framework Next.js is used for both frontend and backend. Files are persisted in Supabase storage. Drizzle ORM communicates directly with the Supabase Postgres database. This project is a work in progress.
 
 
 
