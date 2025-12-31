@@ -3,7 +3,7 @@
 import { ReactElement, useActionState, useEffect, useState, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
-import { changeAccountPassword } from "@/app/_actions/auth";
+import { changeAccountPassword } from "@/app/_actions/password";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 
 import "./page.css";

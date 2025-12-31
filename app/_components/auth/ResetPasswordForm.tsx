@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useState } from "react";
 import Link from "next/link";
-import { resetPassword } from "@/app/_actions/auth";
+import { resetPassword } from "@/app/_actions/password";
 import { URL_LOGIN_PAGE, URL_REGISTER_PAGE } from "@/app/_utils/utils";
 
 import "./ResetPasswordForm.css";

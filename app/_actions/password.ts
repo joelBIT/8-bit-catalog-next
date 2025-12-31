@@ -2,7 +2,7 @@
 
 import { Resend } from "resend";
 import { v4 as uuidv4 } from 'uuid';
-import { emailExists, updateUserPassword, isCurrentPassword, createUserAndAccount } from "@/app/_db/users-db";
+import { emailExists, updateUserPassword, isCurrentPassword } from "@/app/_db/users-db";
 import { hashPassword } from "@/app/_session/password";
 import ResetPasswordEmail from "../_components/email/ResetPasswordEmail";
 import { ActionState } from "@/app/_types/types";
