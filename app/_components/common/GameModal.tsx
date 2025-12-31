@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { GameDetailsCard } from '@/app/_components/gamedetails';
-import { Game } from '@/app/_types/types';
+import { Game } from '@/app/_db/schema/games';
 
 import "./GameModal.css";
 

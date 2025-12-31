@@ -1,10 +1,9 @@
 import 'server-only';
 
 import { asc, eq } from 'drizzle-orm';
-import { Game } from '../_types/types';
 import { databaseClient } from './db';
 import { uploadFile } from './files-db';
-import { gamesTable } from './schema/games';
+import { Game, gamesTable, InsertGame } from './schema/games';
 
 
 
@@ -14,15 +13,15 @@ import { gamesTable } from './schema/games';
  * cover name is updated for the game in the database since this cover name is used to reference the
  * cover image in the storage bucket.
  */
-export async function updateGameById(game: Game, file: File): Promise<void> {
+export async function updateGameById(gameId: number, game: InsertGame, file: File): Promise<void> {
     if (file.name !== 'undefined') {                            // New game cover was chosen so the cover file must be uploaded to the storage bucket
         await uploadFile(game.cover, file);
-        await databaseClient.update(gamesTable).set({ cover: game.cover }).where(eq(gamesTable.id, game.id));     // Update game cover name
+        await databaseClient.update(gamesTable).set({ cover: game.cover }).where(eq(gamesTable.id, gameId));     // Update game cover name
     } 
     
     const { cover, ...data } = game;             // Remove cover property since the cover is already taken care of (not updated if not changed)
     console.log(`cover ${cover} not updated`);
-    await databaseClient.update(gamesTable).set(data).where(eq(gamesTable.id, game.id));
+    await databaseClient.update(gamesTable).set(data).where(eq(gamesTable.id, gameId));
     console.log(`Updated game ${game.title} successfully`);
 }
 

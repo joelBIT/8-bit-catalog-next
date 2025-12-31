@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Game } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 
 import "./GameSorting.css";
 

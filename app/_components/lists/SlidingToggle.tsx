@@ -3,7 +3,7 @@
 import { ReactElement, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useGame } from "@/app/_hooks";
-import { Game } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 
 import "./SlidingToggle.css";
 

@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useGames } from "@/app/_hooks";
 import { SuggestionList } from "@/app/_components/home";
 import { GameModal } from "@/app/_components/common";
-import { Game } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 
 /**
  * Show titles of existing games in a list of suggestions matching the letters a user types. Opens a modal containing

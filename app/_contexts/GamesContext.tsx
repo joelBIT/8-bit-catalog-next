@@ -1,7 +1,8 @@
 'use client';
 
 import { createContext, type ReactElement, type ReactNode, useEffect, useState } from "react";
-import { Game, SearchFilter } from "../_types/types";
+import { SearchFilter } from "../_types/types";
+import { Game } from "../_db/schema/games";
 import { getAllGamesRequest } from "../_client/client";
 import { ALL_OPTION_VALUE } from "../_utils/utils";
 

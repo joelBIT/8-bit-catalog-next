@@ -15,4 +15,4 @@ export const gamesTable = pgTable('games', {
 });
 
 export type InsertGame = typeof gamesTable.$inferInsert;
-export type SelectGame = typeof gamesTable.$inferSelect;
+export type Game = typeof gamesTable.$inferSelect;

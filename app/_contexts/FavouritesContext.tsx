@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
-import { Game } from "@/app/_types/types";
+import { Game } from "../_db/schema/games";
 import { isLocalStorageAvailable } from "@/app/_utils/utils";
 import { addFavouriteGameToDatabaseRequest, deleteFavouriteGameFromDatabaseRequest, getFavouritesRequest } from "@/app/_client/client";
 import { isAuthenticated } from "@/app/_session/sessionUtils";

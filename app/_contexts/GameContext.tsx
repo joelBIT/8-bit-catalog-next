@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, ReactElement, ReactNode, useState } from "react";
-import { Game } from "@/app/_types/types";
+import { Game } from "../_db/schema/games";
 
 export interface GameContextProvider {
     selectedGame: Game;

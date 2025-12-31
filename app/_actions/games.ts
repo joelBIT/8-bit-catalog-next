@@ -1,8 +1,9 @@
 'use server';
 
-import { ActionState, Game } from "@/app/_types/types";
+import { ActionState } from "@/app/_types/types";
 import { isAuthenticatedAdmin } from '@/app/_session/sessionUtils';
 import { updateGameById } from "../_db/games-db";
+import { InsertGame } from "../_db/schema/games";
 
 /**
  * Updates an existing game's metadata. 
@@ -16,8 +17,7 @@ export async function updateGame(_prevState: ActionState, formData: FormData): P
     try {
         const id = parseInt(formData.get('id') as string);
 
-        const game: Game = {
-            id: id,
+        const game: InsertGame = {
             title: formData.get('title') as string,
             developer: formData.get('developer') as string,
             publisher: formData.get('publisher') as string,
@@ -29,7 +29,7 @@ export async function updateGame(_prevState: ActionState, formData: FormData): P
             rom: formData.get('rom') ? true : false
         };
 
-        await updateGameById(game, formData.get('cover') as File);
+        await updateGameById(id, game, formData.get('cover') as File);
     } catch (error) {
         console.log(error);
         return { message: 'Could not update game', success: false };

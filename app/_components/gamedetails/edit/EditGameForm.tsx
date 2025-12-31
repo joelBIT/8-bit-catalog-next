@@ -1,7 +1,8 @@
 'use client';
 
 import { ReactElement, useActionState } from "react";
-import { FilterValues, Game } from "@/app/_types/types";
+import { FilterValues } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 import { fileTypes, getPlayersList } from "@/app/_utils/utils";
 import { updateGame } from "@/app/_actions/games";
 import { EditGameCategory, EditGameDeveloper, EditGamePublisher } from "..";

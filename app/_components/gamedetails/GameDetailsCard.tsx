@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { Game } from "@/app/_types/types";
+import { Game } from "@/app/_db/schema/games";
 
 import "./GameDetailsCard.css";
 

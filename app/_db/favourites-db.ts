@@ -2,9 +2,8 @@ import 'server-only';
 
 import { and, eq, inArray } from 'drizzle-orm';
 import { databaseClient } from './db';
-import { Game } from '../_types/types';
 import { favouritesTable } from './schema/favourites';
-import { gamesTable } from './schema/games';
+import { Game, gamesTable } from './schema/games';
 
 
 

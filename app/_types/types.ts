@@ -1,4 +1,5 @@
 import { ArticleContent } from "../_db/schema/article_contents";
+import { Game } from "../_db/schema/games";
 
 export type ActionState = {
     message: string,
@@ -22,19 +23,6 @@ export type FilterValues = {
 }
 
 export type Filter = "category" | "publisher" | "developer" | "title";
-
-export type Game = {
-    id: number,
-    title: string,
-    publisher: string,
-    developer: string,
-    category: string,
-    releaseDate: string,
-    cover: string,
-    players: number,
-    description: string,
-    rom: boolean
-}
 
 export type News = {
     id: number,
