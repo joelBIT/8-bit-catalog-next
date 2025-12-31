@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { deleteSessionByTokenValue, getSessionByTokenValue, storeSession, updateSession } from "@/app/_db/sessions-db";
-import { Session } from "@/app/_types/types";
+import { Session } from "../_db/schema/sessions";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import { deleteSessionCookie, getValidatedSession } from "./cookie";

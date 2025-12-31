@@ -9,6 +9,4 @@ export const sessionsTable = pgTable('sessions', {
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
-export type InsertSession = typeof sessionsTable.$inferInsert;
-export type SelectSession = typeof sessionsTable.$inferSelect;
-
+export type Session = typeof sessionsTable.$inferInsert;

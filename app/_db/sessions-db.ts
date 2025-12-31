@@ -2,8 +2,7 @@ import 'server-only';
 
 import { eq } from 'drizzle-orm';
 import { databaseClient } from './db';
-import { Session } from '../_types/types';
-import { sessionsTable } from './schema/sessions';
+import { Session, sessionsTable } from './schema/sessions';
 
 
 

@@ -36,12 +36,6 @@ export type SearchResult = {
     count: number
 }
 
-export type Session = {
-    userId: number,
-    expiresAt: Date,
-    tokenValue: string
-}
-
 export type TimelineEvent = {
     year: number,
     title: string,
