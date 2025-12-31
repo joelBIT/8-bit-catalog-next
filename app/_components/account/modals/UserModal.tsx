@@ -1,7 +1,7 @@
 'use client';
 
 import {ReactElement, useEffect, useRef, useState} from "react";
-import {Profile} from "@/app/_types/types";
+import { Profile } from "@/app/_db/schema/profiles";
 import { Address } from "@/app/_db/schema/addresses";
 import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "@/app/_client/client";
 

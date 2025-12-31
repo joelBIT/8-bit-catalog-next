@@ -2,8 +2,7 @@ import 'server-only';
 
 import { eq } from 'drizzle-orm';
 import { databaseClient } from './db';
-import { Profile } from '../_types/types';
-import { profilesTable } from './schema/profiles';
+import { Profile, profilesTable, InsertProfile } from './schema/profiles';
 import { uploadFile } from './files-db';
 
 const PROFILE_IMAGES_STORAGE = "catalog";
@@ -25,7 +24,7 @@ export async function getProfileByUserId(userId: number): Promise<Profile> {
 /**
  * Update profile for user with supplied user ID.
  */
-export async function updateProfileByUserId(profile: Profile): Promise<void> {
+export async function updateProfileByUserId(profile: InsertProfile): Promise<void> {
     await databaseClient.update(profilesTable).set({...profile}).where(eq(profilesTable.userId, profile.userId));
 }
 

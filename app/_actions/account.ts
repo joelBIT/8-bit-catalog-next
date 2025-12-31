@@ -3,10 +3,11 @@
 import { getUserById, updateEmailByUserId, updatePasswordByUserId, updateUsernameByUserId } from "@/app/_db/users-db";
 import { hashPassword, verifyPasswordHash } from "@/app/_session/password";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
-import { ActionState, Profile } from "@/app/_types/types";
+import { ActionState } from "@/app/_types/types";
 import { updateProfileByUserId, updateProfileImageById } from "../_db/profiles-db";
 import { createActivatedAccount } from "../_db/accounts-db";
 import { InsertAddress } from "../_db/schema/addresses";
+import { InsertProfile } from "../_db/schema/profiles";
 
 /**
  * This function is invoked when a user updates account information such as account password.
@@ -54,7 +55,7 @@ export async function updateAccountPassword(userId: number, _prevState: ActionSt
 /**
  * This function is invoked when updating profile information such as name and bio.
  */
-export async function updateProfile(_prevState: Profile, formData: FormData): Promise<Profile & ActionState> {
+export async function updateProfile(_prevState: InsertProfile, formData: FormData): Promise<InsertProfile & ActionState> {
     const authenticated = await isAuthenticated();
     if (!authenticated) {
         return { message: 'Must be authenticated to update user information', success: false, ..._prevState };

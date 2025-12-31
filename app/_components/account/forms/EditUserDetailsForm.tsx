@@ -4,15 +4,17 @@ import { ReactElement, useActionState, useState, useEffect } from "react";
 import { useAccount } from "@/app/_hooks";
 import { updateProfile } from "@/app/_actions/account";
 import PhoneInput from "react-phone-input-2";
-import { ActionState, Profile } from "@/app/_types/types";
+import { ActionState } from "@/app/_types/types";
+import { InsertProfile } from "@/app/_db/schema/profiles";
 
 import 'react-phone-input-2/lib/style.css';
 import "./EditUserDetailsForm.css";
 
 export function EditUserDetailsForm(): ReactElement {
     const { user, profile } = useAccount();
-    const initialState: ActionState & Profile = { 
-        message: '', success: false, userId: user.id, image: '', firstName: '', lastName: '', bio: '', fullName: '', birthDate: null, phone: ''
+    const initialState: ActionState & InsertProfile = { 
+        message: '', success: false, userId: user.id, image: profile.image, firstName: profile.firstName, 
+        lastName: profile.lastName, bio: profile.bio, fullName: profile.fullName, birthDate: profile.birthDate, phone: profile.phone
     }
     const [state, formAction] = useActionState(updateProfile, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
