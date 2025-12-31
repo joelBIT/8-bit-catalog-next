@@ -9,6 +9,5 @@ export const timelineEventsTable = pgTable('timeline', {
     createdAt: timestamp('created_at').notNull().defaultNow()
 });
 
-export type InsertTimelineEvent = typeof timelineEventsTable.$inferInsert;
-export type SelectTimeLineEvent = typeof timelineEventsTable.$inferSelect;
+export type TimelineEvent = typeof timelineEventsTable.$inferInsert;
 

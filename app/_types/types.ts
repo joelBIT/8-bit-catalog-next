@@ -36,13 +36,6 @@ export type SearchResult = {
     count: number
 }
 
-export type TimelineEvent = {
-    year: number,
-    title: string,
-    text: string,
-    image: string
-}
-
 export type User = {
     id: number,
     email: string,
