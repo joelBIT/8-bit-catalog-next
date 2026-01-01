@@ -9,7 +9,7 @@ import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import "./page.css";
 
 /**
- * Form for changing an account password that has been reset. The old password is the password sent to the supplied email address when
+ * Change an account password that has been reset. The old password is the password sent to the supplied email address when
  * performing a reset of an account password.
  */
 export default function ResetPasswordPage(): ReactElement {

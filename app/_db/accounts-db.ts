@@ -29,17 +29,22 @@ export async function getAccountByUserId(userId: number): Promise<Account> {
  * to the folder associated with the activated account.
  */
 export async function activateAccount(activationCode: string): Promise<boolean> {
-    const response = await databaseClient
-        .select()
-        .from(accountsTable)
-        .where(and(eq(accountsTable.activationCode, activationCode), eq(accountsTable.activated, false)));
-    if (response.length === 0) {
+    try {
+        const response = await databaseClient
+            .select()
+            .from(accountsTable)
+            .where(and(eq(accountsTable.activationCode, activationCode), eq(accountsTable.activated, false)));
+        if (response.length === 0) {
+            return false;
+        }
+
+        await databaseClient.update(accountsTable).set({activated: true}).where(eq(accountsTable.activationCode, activationCode));
+        await copyProfileImageToFolder(activationCode);  
+        return true;
+    } catch (error) {
+        console.log(error);
         return false;
     }
-
-    await databaseClient.update(accountsTable).set({activated: true}).where(eq(accountsTable.activationCode, activationCode));
-    await copyProfileImageToFolder(activationCode);  
-    return true;
 }
 
 /**

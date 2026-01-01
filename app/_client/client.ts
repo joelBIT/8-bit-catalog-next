@@ -12,10 +12,6 @@ import { User } from '../_db/schema/users';
 * This file contains functions that make API calls to the Route Handlers in the /api folder *
 ********************************************************************************************/
 
-
-/**
- * Retrieve all games.
- */
 export async function getAllGamesRequest(): Promise<SearchResult> {
     try {
         const response = await fetch("/api/games");
@@ -30,9 +26,6 @@ export async function getAllGamesRequest(): Promise<SearchResult> {
     return {games: [], count: 0};
 }
 
-/**
- * Retrieve all users.
- */
 export async function getUsersRequest(): Promise<User[]> {
     try {
         const response = await fetch(`/api/users`);
@@ -135,9 +128,6 @@ export async function updateFilterValuesRequest(values: string[], filter: Filter
     }
 }
 
-/**
- * Retrieve the timeline for about page.
- */
 export async function getTimelineEventsRequest(): Promise<TimelineEvent[]> {
     try {
         const response = await fetch(`/api/timeline`);
@@ -151,9 +141,6 @@ export async function getTimelineEventsRequest(): Promise<TimelineEvent[]> {
     return [];
 }
 
-/**
- * Retrieve the FAQs for the FAQ page.
- */
 export async function getFAQsRequest(): Promise<FrequentlyAskedQuestion[]> {
     try {
         const response = await fetch(`/api/faq`);
