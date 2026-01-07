@@ -12,14 +12,14 @@ import { News, newsTable } from './schema/news';
  * Retrieve all news.
  */
 export async function getAllNews(): Promise<News[]> {
-    return await databaseClient.select().from(newsTable).orderBy(desc(newsTable.createdAt));
+    return await databaseClient.select().from(newsTable).orderBy(desc(newsTable.published));
 }
 
 /**
  * Retrieve the 6 most viewed news.
  */
 export async function getTopNews(): Promise<News[]> {
-    return await databaseClient.select().from(newsTable).limit(6).orderBy(desc(newsTable.createdAt));
+    return await databaseClient.select().from(newsTable).limit(6).orderBy(desc(newsTable.published));
 }
 
 /**
