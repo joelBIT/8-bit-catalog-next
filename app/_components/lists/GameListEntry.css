@@ -176,5 +176,13 @@
                 top: -12px;
             }
         }
+
+        & .gameListEntry-information {
+            & .gameListEntry-tags {
+                & .gameListEntry-tag {
+                    font-size: 10px;
+                }
+            }
+        }
     }
 }
