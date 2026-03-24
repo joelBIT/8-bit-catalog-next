@@ -19,33 +19,44 @@ export default async function Home(): Promise<ReactElement> {
         <main id="landingPage">
             <section id="firstSection">
                 <section id="catalogDescription">
-                    <section className="landing-title">
-                        <h2 className="landing-heading"> 
+                    <h1 className="landing-title">
                             The 8-bit catalog 
-                        </h2>
-                    </section>
+                    </h1>
 
-                    <p className="landing-title-text">
-                        A place for all things related to the Nintendo Entertainment System, where it is possible to 
-                        connect with other 8-bit enthusiasts.
-                        This catalog is continuously updated with new information and functionality. 
-                        Become a member to connect with other 8-bit enthusiasts.
-                        Test the catalog by entering a game title and clicking on the View button.
-                    </p>
+                    <section className="landing-cards">
+                        <section className="landing-card">
+                            <h3 className="landing-title__heading">Vision</h3>
+                            <p className="landing-card__text">
+                                A place for all things related to the Nintendo Entertainment System, where it is possible to 
+                                connect with other 8-bit enthusiasts.
+                            </p>
+                        </section>
+
+                        <section className="landing-card">
+                            <h3 className="landing-title__heading">Solution</h3>
+                            <p className="landing-card__text">
+                                The 8-bit Catalog.
+                                This catalog is continuously updated with new information and functionality. 
+                                Test the catalog by entering a game title and clicking on the View button.
+                            </p>
+                        </section>
+
+                        <section className="landing-card">
+                            <h3 className="landing-title__heading">Join</h3>
+                            <p className="landing-card__text">
+                                Become a member to connect with other 8-bit enthusiasts.
+                                Membership unlock services including real-time interaction with 
+                                other members, exclusive offers, info about retro events, and more.
+                            </p>
+
+                            <Link href={URL_REGISTER_PAGE} className="signup-button"> Sign up now </Link>
+                        </section>
+                    </section>
                 </section>
 
                 <section id="searchGameArea">
                     <TitleSearch titles={await getAllTitles()} />
                 </section>
-            </section>
-
-            <section id="joinCatalog">
-                <h2 className="joinCatalog-title"> Join the 8-bit family </h2>
-                <p className="joinCatalog-text"> 
-                    Become part of the catalog and unlock services including real-time interaction with other members, exclusive offers, info about retro events, and more.
-                </p>
-                
-                <Link href={URL_REGISTER_PAGE} id="signup-button"> Sign up now </Link>
             </section>
 
             <section id="secondSection">
