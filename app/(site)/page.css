@@ -52,8 +52,8 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1300px;
+            gap: 6rem;
+            max-width: 1500px;
             padding-bottom: 3rem;
 
             & .landing-card {
@@ -149,6 +149,7 @@
         & #catalogDescription {
             & .landing-cards {
                 max-width: 100%;
+                gap: 4rem;
             }
         }
 
@@ -178,6 +179,8 @@
             }
 
             & .landing-cards {
+                gap: 2rem;
+
                 & .landing-card {
                     max-width: 320px;
                     margin-bottom: 1rem;
