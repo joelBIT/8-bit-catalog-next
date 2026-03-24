@@ -227,6 +227,24 @@ textarea {
     }
 }
 
+.signup-button {
+    font-family: 'Rancho', sans-serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: fit-content;
+    color: var(--color-white);
+    border: 2px solid var(--color-white);
+    border-radius: 4px;
+    padding: 0.5rem;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        color: var(--color-link-active);
+        border-color: var(--color-link-active);
+        transition: all 0.2s ease-in-out;
+    }
+}
+
 
 
 
