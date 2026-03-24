@@ -97,6 +97,20 @@
                     }
                 }
 
+                & .nes-figure {
+                    display: flex;
+                    align-self: center;
+                    height: auto;
+                    width: 200px;
+                    padding-bottom: 2rem;
+
+                    & .nes-image {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
                 & .signup-button {
                     align-self: center;
                 }

@@ -2,6 +2,7 @@
 
 import { type ReactElement } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { TopicSelection, TitleSearch } from "@/app/_components/home";
 import { Newsletter } from "../_components/common";
 import { getAllTitles } from "../_db/games-db";
@@ -30,6 +31,18 @@ export default async function Home(): Promise<ReactElement> {
                                 A place for all things related to the Nintendo Entertainment System, where it is possible to 
                                 connect with other 8-bit enthusiasts.
                             </p>
+
+                            <figure className="nes-figure">
+                                <Image 
+                                    src="/architecture/nesconsole.png" 
+                                    className="nes-image" 
+                                    alt="NES console" 
+                                    width={640} 
+                                    height={348} 
+                                    placeholder="blur"
+                                    blurDataURL="/architecture/nesconsole.png" 
+                                />
+                            </figure>
                         </section>
 
                         <section className="landing-card">
