@@ -39,6 +39,10 @@ export default async function Home(): Promise<ReactElement> {
                                 This catalog is continuously updated with new information and functionality. 
                                 Test the catalog by entering a game title and clicking on the View button.
                             </p>
+
+                            <section id="searchGameArea">
+                                <TitleSearch titles={await getAllTitles()} />
+                            </section>
                         </section>
 
                         <section className="landing-card">
@@ -52,10 +56,6 @@ export default async function Home(): Promise<ReactElement> {
                             <Link href={URL_REGISTER_PAGE} className="signup-button"> Sign up now </Link>
                         </section>
                     </section>
-                </section>
-
-                <section id="searchGameArea">
-                    <TitleSearch titles={await getAllTitles()} />
                 </section>
             </section>
 

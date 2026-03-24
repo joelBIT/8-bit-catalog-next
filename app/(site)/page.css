@@ -54,6 +54,7 @@
             flex-wrap: wrap;
             gap: 2rem;
             max-width: 1300px;
+            padding-bottom: 3rem;
 
             & .landing-card {
                 display: flex;
@@ -80,6 +81,22 @@
                     max-width: 1000px;
                 }
 
+                & #searchGameArea {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    position: relative;
+
+                    & .message-failure {
+                        margin-bottom: 1rem;
+                        margin-top: -0.5rem;
+                        position: absolute;
+                        white-space: nowrap;
+                        font-size: 1.1rem;
+                    }
+                }
+
                 & .signup-button {
                     align-self: center;
                 }
@@ -92,25 +109,6 @@
         flex-direction: column;
         gap: 1rem;
         min-width: 40rem;
-
-        & #searchGameArea {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding-top: 5rem;
-            padding-bottom: 2rem;
-            position: relative;
-
-            & .message-failure {
-                margin-bottom: 1rem;
-                margin-top: 0.5rem;
-                position: absolute;
-                top: 3rem;
-                white-space: nowrap;
-                font-size: 1.1rem;
-            }
-        }
     }
 
     & #secondSection {
@@ -134,6 +132,12 @@
 
 @media (max-width: 900px) {
     #landingPage {
+        & #catalogDescription {
+            & .landing-cards {
+                max-width: 100%;
+            }
+        }
+
         & #firstSection {
             min-width: 90%;
             padding-left: 2rem;
@@ -158,6 +162,20 @@
             & .landing-title {
                 font-size: 2.2rem;
             }
+
+            & .landing-cards {
+                & .landing-card {
+                    max-width: 320px;
+                    margin-bottom: 1rem;
+
+                    & #searchGameArea {
+                        & #suggestion-search {
+                            padding: 0;
+                            padding-bottom: 1rem;
+                        }
+                    }
+                }
+            }
         }
 
         & #firstSection {
@@ -165,8 +183,6 @@
             padding-right: 1rem;
 
             & #searchGameArea {
-                padding-top: 2rem;
-
                 & .message-failure {
                     top: 0;
                     font-size: 1rem;

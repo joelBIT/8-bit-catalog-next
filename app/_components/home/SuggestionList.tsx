@@ -27,7 +27,7 @@ export function SuggestionList({ options, setGameTitle }: { options: string[], s
 
             <datalist id="suggestions">
                 {
-                    options.map(title => <option value={title} key={title} />)
+                    options.map((title: string) => <option value={title} key={title} />)
                 }
             </datalist>
 
