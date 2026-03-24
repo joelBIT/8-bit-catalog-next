@@ -19,8 +19,8 @@ export default async function Home(): Promise<ReactElement> {
         <main id="landingPage">
             <section id="firstSection">
                 <section id="catalogDescription">
-                    <h1 className="landing-title">
-                            The 8-bit catalog 
+                    <h1 className="landing-title bit-font">
+                            The <p> 8-bit </p> catalog 
                     </h1>
 
                     <section className="landing-cards">
