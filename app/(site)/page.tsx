@@ -59,7 +59,7 @@ export default async function Home(): Promise<ReactElement> {
                         </section>
 
                         <section className="landing-card">
-                            <h3 className="landing-title__heading">Join</h3>
+                            <h3 className="landing-title__heading">Membership</h3>
                             <p className="landing-card__text">
                                 Become a member to connect with other 8-bit enthusiasts.
                                 Membership unlock services including real-time interaction with 
