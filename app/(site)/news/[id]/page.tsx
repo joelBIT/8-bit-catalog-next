@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { URL_HOME, URL_NEWS_PAGE } from "@/app/_utils/utils";
 import { getNewsById, getTopNews } from "@/app/_db/news-db";
+import { News } from "@/app/_db/schema/news";
 
 import "./page.css";
 
@@ -13,7 +14,7 @@ import "./page.css";
  */
 export default async function NewsPage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
-    let news;
+    let news: News | undefined;
     
     try {
         news = await getNewsById(parseInt(id));
@@ -54,7 +55,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                     <h2 className="top-news-heading"> Top News </h2>
 
                     {
-                        (await getTopNews()).map((news, index) => 
+                        (await getTopNews()).map((news: News, index: number) => 
                             <section className="top-news-list" key={news.id}>
                                 <Link 
                                     href={URL_NEWS_PAGE + `/${news.id}`} 

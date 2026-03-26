@@ -84,6 +84,7 @@
             font-size: 1.2rem;
             white-space: break-spaces;
             padding-right: 3rem;
+            color: var(--color-nintendo-gray);
 
             & .news-text-author {
                 display: flex;
@@ -103,12 +104,12 @@
                 }
 
                 & .article-person {
-                    color: var(--color-tag-text);
+                    color: var(--color-real-white);
                 }
 
                 & .news-author {
                     font-family: "arima", sans-serif;
-                    color: var(--color-tag-text);
+                    color: var(--color-real-white);
                     font-size: 1.2rem;
                 }
 
