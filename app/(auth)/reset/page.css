@@ -7,7 +7,8 @@
     background-image: url("/auth/nes-gaming-set-in-dark.webp");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: center;
+    background-color: var(--color-black);
 
     & .email-parameter {
         font-size: 1.4rem;
