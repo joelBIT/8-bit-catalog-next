@@ -71,7 +71,7 @@
             display: flex;
             align-items: center;
             background-color: var(--color-black);
-            border: 2px solid var(--color-real-white);
+            border: 2px solid var(--color-white);
             color: var(--color-real-white);
             cursor: pointer;
             width: fit-content;
@@ -89,7 +89,8 @@
 
             &:hover {
                 background-color: var(--color-black-light);
-                transition: background-color 0.2s ease-in;
+                border-color: var(--color-link-active);
+                transition: background-color border-color 0.2s ease-in;
             }
 
             &:active {
