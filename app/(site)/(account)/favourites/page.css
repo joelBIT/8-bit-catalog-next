@@ -6,6 +6,10 @@
     padding-top: 8rem;
     padding-bottom: 5rem;
 
+    & .no-favourites__text {
+        color: var(--color-real-white);
+    }
+
     & .show-pagination-toggle {
         display: flex;
         gap: 1rem;

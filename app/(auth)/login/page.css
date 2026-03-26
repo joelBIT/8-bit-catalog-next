@@ -8,8 +8,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--color-black);
-    min-height: 120vh;
+    min-height: 100%;
     overflow-x: hidden;
+    overscroll-behavior: none;
 
     & #loginPage-modal {
         display: flex;
