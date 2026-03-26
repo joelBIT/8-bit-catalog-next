@@ -9,6 +9,7 @@
     background-position: center;
     min-height: 120%;
     overflow: hidden;
+    position: fixed;
 
     & #loginPage-modal {
         display: flex;
