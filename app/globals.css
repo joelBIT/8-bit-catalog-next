@@ -67,6 +67,10 @@ body {
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    main:has(#gameModal) {
+        position: fixed;
+    }
 }
 
 * {
