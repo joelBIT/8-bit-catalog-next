@@ -5,7 +5,7 @@
     border: 1px solid var(--color-black-light);
     border-radius: 9px;
     padding: 0 1rem 1rem;
-    background-color: var(--color-black);
+    background-color: var(--color-link-background);
     max-width: 320px;
     cursor: pointer;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

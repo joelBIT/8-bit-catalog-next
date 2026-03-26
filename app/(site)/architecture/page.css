@@ -128,7 +128,7 @@
             padding-right: 2rem;
             border-bottom: 2px;
             text-align: center;
-            padding: 1rem 0.2rem 2rem 0.2rem;
+            padding: 1rem 0.2rem 3rem 0.2rem;
             line-height: 27px;
         }
 
@@ -187,6 +187,8 @@
 @media (max-width: 500px) {
     #architecturePage {
         & .nintendo-presentation {
+            padding: 0;
+
             & .nintendo-presentation__heading {
                 font-size: 1.7rem;
             }
@@ -195,6 +197,10 @@
         & #architecture-articles {
             & .architecturePage-title {
                 font-size: 2.3rem;
+            }
+
+            & .architecturePage-title-text {
+                font-size: 1.2rem;
             }
         }
     }
