@@ -54,7 +54,7 @@
             flex-wrap: wrap;
             gap: 6rem;
             max-width: 1500px;
-            padding-bottom: 3rem;
+            padding-bottom: 6rem;
 
             & .landing-card {
                 display: flex;

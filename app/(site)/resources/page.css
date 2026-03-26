@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 4rem;
-    padding-bottom: 5rem;
+    padding-bottom: 10rem;
     background-color: var(--color-black);
     background: linear-gradient(to bottom, var(--color-black) 70%, var(--color-black-light));
     position: relative;
@@ -20,9 +20,12 @@
 
     & #sites {
         display: flex;
-        width: 80%;
+        width: 100%;
+        max-width: 1200px;
         gap: 4rem;
         background: transparent;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
 
         & #change-site-content {
             display: flex;
@@ -154,7 +157,6 @@
 @media (max-width: 1000px) {
     #sitesPage {
         & #sites {
-            width: 95%;
             gap: 2rem;
 
             & #change-site-content {
@@ -205,6 +207,7 @@
 @media (max-width: 500px) {
     #sitesPage {
         gap: 2rem;
+        padding-bottom: 5rem;
         
         & .sites-title {
             font-size: 3rem;

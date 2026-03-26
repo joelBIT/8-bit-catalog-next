@@ -46,6 +46,7 @@
                 align-items: center;
                 justify-content: center;
                 gap: 3rem;
+                padding-bottom: 1rem;
             }
 
             & #gameDetailsCard__description {
