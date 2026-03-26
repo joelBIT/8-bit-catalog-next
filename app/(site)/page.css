@@ -179,7 +179,7 @@
             }
 
             & .landing-cards {
-                gap: 2rem;
+                gap: 3rem;
 
                 & .landing-card {
                     max-width: 320px;
