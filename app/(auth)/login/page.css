@@ -8,7 +8,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--color-black);
-    height: 100vh;
+    min-height: 100vh;
 
     & #loginPage-modal {
         display: flex;
