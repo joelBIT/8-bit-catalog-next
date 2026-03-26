@@ -7,7 +7,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: black;
+    background-color: var(--color-black);
 
     & #forgotPage-modal {
         display: flex;
