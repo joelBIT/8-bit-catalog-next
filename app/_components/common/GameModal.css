@@ -3,7 +3,8 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
+    width: 98%;
+    max-width: 1600px;
     border-radius: 8px;
     background-color: black;
     color: var(--color-white);

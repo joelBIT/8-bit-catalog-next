@@ -6,7 +6,7 @@
     background-image: url("/auth/nes-gaming-set-in-dark.webp");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: center;
 
     & #loginPage-modal {
         display: flex;
@@ -60,6 +60,10 @@
 
         & #loginPage-modal {
             padding-top: 5rem;
+
+            & #loginPage-modal-back {
+                padding-left: 0.5rem;
+            }
             
             & #loginPage-form {
                 width: 95vw;

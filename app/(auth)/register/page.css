@@ -63,6 +63,10 @@
         & #registerPage-modal {
             padding-top: 5rem;
 
+            & #registerPage-modal-back {
+                padding-left: 0.5rem;
+            }
+
             & #registerPage-form {
                 width: 95vw;
             }

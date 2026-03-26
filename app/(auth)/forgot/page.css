@@ -6,7 +6,7 @@
     background-image: url("/auth/nes-gaming-set-in-dark.webp");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: center;
 
     & #forgotPage-modal {
         display: flex;
@@ -60,6 +60,10 @@
 
         & #forgotPage-modal {
             padding-top: 5rem;
+
+            & #forgotPage-modal-back {
+                padding-left: 0.5rem;
+            }
 
             & #forgotPage-form {
                 width: 95vw;
