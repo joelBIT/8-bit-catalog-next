@@ -115,16 +115,20 @@
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     #searchPage {
         & #searchFilters__form {
             margin-top: 3rem;
+            width: 100%;
 
             & #searchInput {
                 flex-direction: column;
                 gap: 1rem;
+                width: 95%;
 
                 & .input-wrapper {
+                    width: 100%;
+                    
                     & #searchTitle {
                         margin-right: 2rem;
                         width: 300px;
