@@ -29,7 +29,7 @@ export default function FavouritesPage(): ReactElement {
                             
                             <SlidingToggle />
                         </section>
-                    : <h1 className="no-favourites__text"> No favourites selected </h1>
+                    : <h1 className="no-favourites__text bit-font"> No favourites selected </h1>
             }
 
             { 
