@@ -1,6 +1,5 @@
 #registerPage {
     display: flex;
-    align-items: center;
     justify-content: center;
     background: fixed;
     background-image: url("/auth/nes-gaming-set-in-dark.webp");

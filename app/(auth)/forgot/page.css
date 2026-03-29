@@ -1,6 +1,5 @@
 #forgotPage {
     display: flex;
-    align-items: center;
     justify-content: center;
     background: fixed;
     background-image: url("/auth/nes-gaming-set-in-dark.webp");
@@ -15,6 +14,8 @@
         align-items: center;
         max-width: 400px;
         height: fit-content;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
 
         & #forgotPage-modal-back {
             align-self: flex-start;
