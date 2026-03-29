@@ -59,10 +59,6 @@
         & #forgotPage-modal {
             padding-top: 5rem;
 
-            & #forgotPage-modal-back {
-                padding-left: 0.5rem;
-            }
-
             & #forgotPage-form {
                 width: 95vw;
             }

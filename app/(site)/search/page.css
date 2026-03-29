@@ -67,6 +67,7 @@
 
             & .input-wrapper {
                 display: flex;
+                justify-content: center;
 
                 & .material-symbols-outlined {
                     position: relative;

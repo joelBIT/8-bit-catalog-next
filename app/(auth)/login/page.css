@@ -62,10 +62,6 @@
 
         & #loginPage-modal {
             padding-top: 5rem;
-
-            & #loginPage-modal-back {
-                padding-left: 0.5rem;
-            }
             
             & #loginPage-form {
                 width: 95vw;
