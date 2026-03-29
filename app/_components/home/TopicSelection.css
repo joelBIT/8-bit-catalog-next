@@ -4,7 +4,7 @@
     gap: 2rem;
     background-color: #00000080;
     border-radius: 14px;
-    padding: 1rem;
+    padding: 1rem 0;
 
     & #topic-selection-top {
         display: flex;
@@ -150,8 +150,6 @@
             & #topic-selection-text {
                 padding-right: 0.5rem;
                 padding-left: 0.5rem;
-                margin-right: 1rem;
-                margin-left: 1rem;
                 min-height: 14rem;
             }
 
