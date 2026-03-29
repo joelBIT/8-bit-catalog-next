@@ -117,7 +117,7 @@
         position: fixed;
         top: 0;
 
-        #hamburger {
+        & #hamburger {
             display: inline;
         }
 
@@ -184,6 +184,11 @@
         footer {
             pointer-events: none;
             filter: blur(2px);
+        }
+
+        ~ main {
+            position: fixed;
+            overflow: hidden;
         }
     }
 }

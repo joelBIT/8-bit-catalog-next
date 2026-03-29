@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+    background-color: var(--color-black);
 
     & #timeline-inner {
         display: flex;
