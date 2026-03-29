@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 5rem;
+    width: 100%;
 
     & .search-result-text {
         padding-bottom: 2rem;
