@@ -7,7 +7,7 @@ import { getAllArticles } from "@/app/_db/articles-db";
 import "./page.css";
 
 export default async function ArchitecturePage(): Promise<ReactElement> {
-    let articles = [] as Article[];
+    let articles: Article[] = [];
     
     try {
         articles = await getAllArticles();
@@ -76,14 +76,12 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
                 <section id="articles">
                     {
                         articles.length > 0 ? 
-                            articles?.map(article => <ArticleCard article={article} key={article.title}/>)
+                            articles?.map((article: Article) => <ArticleCard article={article} key={article.title}/>)
                             :
                             <h2 className="message-failure"> Could not load articles </h2>
                     }
                 </section>
             </section>
-
-            <div className="darken-image-bottom" />
         </main>
     )
 }
