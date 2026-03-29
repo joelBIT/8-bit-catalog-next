@@ -6,7 +6,6 @@
     background: var(--color-real-black);
     padding-bottom: 10rem;
     padding-top: 10rem;
-    overflow-x: hidden;
     position: relative;
 
     & .title-section {
