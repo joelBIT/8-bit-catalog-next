@@ -584,11 +584,12 @@ textarea {
     font-family: 'Rancho', sans-serif;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: all 0.25s;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
-        filter: invert(1);
-        transition: all 0.25s;
+        background-color: var(--color-black);
+        color: var(--color-real-white);
+        transition: all 0.2s ease-in-out;
     }
 }
 
