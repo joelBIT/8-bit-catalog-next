@@ -25,7 +25,7 @@ export function Search(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const [numberGamesShowing, setNumberGamesShowing] = useState<number>(50);           // Minimum 50 games visible
+    const [numberGamesShowing, setNumberGamesShowing] = useState<number>(isMobileDevice() ? 1000: 50);
     const { games, getFilteredGames } = useGames();
     const { gridView } = useGame();
     
@@ -54,6 +54,21 @@ export function Search(): ReactElement {
         setShowHeading(true);           // Set to true after first search is executed
     }
 
+    /**
+     * @returns     true if the site is (probably) accessed on a mobile device. False otherwise.
+     */
+    function isMobileDevice(): boolean {
+        const userAgent = navigator.userAgent;
+
+        if (/Mobi|Android/i.test(userAgent)) {
+            return true;
+        } else if (/Tablet|iPad/i.test(userAgent)) {
+            return true;
+        }
+
+        return false;
+    }
+
     return (
         <section id="search">
             {
@@ -63,7 +78,7 @@ export function Search(): ReactElement {
                         <section className="show-pagination-toggle">
                             <GameSorting games={searchResult} setSortedGames={setSearchResult} />
                             
-                            {searchResult.length > 80 ? <RangeSlider min={50} max={searchResult.length} setSliderValue={setNumberGamesShowing} /> : <></>}
+                            {searchResult.length > 80 && !isMobileDevice() ? <RangeSlider min={50} max={searchResult.length} setSliderValue={setNumberGamesShowing} /> : <></>}
 
                             {searchResult.length > 0 ? <SlidingToggle /> : <></>}
                         </section>
