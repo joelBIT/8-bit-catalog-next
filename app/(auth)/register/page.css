@@ -6,6 +6,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
+    background-color: var(--color-black);
 
     & #registerPage-modal {
         display: flex;

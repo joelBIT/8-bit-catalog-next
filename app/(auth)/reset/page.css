@@ -8,6 +8,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: var(--color-black);
 
     & .email-parameter {
         font-size: 1.4rem;
