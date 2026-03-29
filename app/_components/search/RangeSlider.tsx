@@ -22,6 +22,7 @@ export function RangeSlider({min, max, setSliderValue}: {min: number, max: numbe
                 className="slider" 
                 onInput={(e) => setValue(parseInt((e.target as HTMLInputElement).value))} 
                 onMouseUp={(e) => setSliderValue(parseInt((e.target as HTMLInputElement).value))} 
+                onTouchEnd={(e) => setSliderValue(parseInt((e.target as HTMLInputElement).value))}
             />
 
             <h2 className="slider-text"> Showing {value >= max ? max : value} / {max} games</h2>
