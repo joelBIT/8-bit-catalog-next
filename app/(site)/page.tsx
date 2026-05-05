@@ -26,6 +26,7 @@ export default async function Home(): Promise<ReactElement> {
 
                     <section className="landing-cards">
                         <section className="landing-card">
+                            <h3 className="landing-title__number"> .01 </h3>
                             <h3 className="landing-title__heading">Vision</h3>
                             <p className="landing-card__text">
                                 A place for all things related to the Nintendo Entertainment System, where it is possible to 
@@ -46,6 +47,7 @@ export default async function Home(): Promise<ReactElement> {
                         </section>
 
                         <section className="landing-card">
+                            <h3 className="landing-title__number"> .02 </h3>
                             <h3 className="landing-title__heading">Solution</h3>
                             <p className="landing-card__text">
                                 The 8-bit Catalog.
@@ -59,6 +61,7 @@ export default async function Home(): Promise<ReactElement> {
                         </section>
 
                         <section className="landing-card">
+                            <h3 className="landing-title__number"> .03 </h3>
                             <h3 className="landing-title__heading">Membership</h3>
                             <p className="landing-card__text">
                                 Become a member to connect with other 8-bit enthusiasts.
