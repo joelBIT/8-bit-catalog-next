@@ -26,6 +26,7 @@
             align-self: flex-start;
             gap: 0.3rem;
             padding: 1rem;
+            margin-left: 5rem;
             text-align: center;
             color: var(--color-real-white);
             font-size: 1.5rem;
@@ -162,12 +163,6 @@
 @media (max-width: 750px) {
     #landingPage {
         padding-top: 5rem;
-
-        & #catalogDescription {
-            & .landing-title {
-                font-size: 2rem;
-            }
-        }
     }
 }
 

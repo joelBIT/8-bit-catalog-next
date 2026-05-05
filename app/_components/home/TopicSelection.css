@@ -13,7 +13,8 @@
         & #topic-selection-list {
             display: flex;
             flex-direction: column;
-            padding-left: 0.5rem;
+            align-self: center;
+            padding-left: 2rem;
 
             & .topic-selection-list__item {
                 display: flex;
@@ -28,7 +29,7 @@
 
                 & .item-title {
                     font-family: "iceland", sans-serif;
-                    font-size: 3rem;
+                    font-size: 2.7rem;
                     font-weight: 100;
                     white-space: nowrap;
                     transition: all 0.5s ease-in-out;
@@ -123,6 +124,10 @@
             gap: 0;
             padding-bottom: 0;
 
+            & #topic-selection-list {
+                align-self: flex-start;
+            }
+
             & #topic-selection-text {
                 align-content: flex-start;
                 padding-top: 1rem;
@@ -153,6 +158,8 @@
             }
 
             & #topic-selection-list {
+                padding-left: 0.5rem;
+
                 & .topic-selection-list__item {
                     & .item-title {
                         font-size: 2rem;
