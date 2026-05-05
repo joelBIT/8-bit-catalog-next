@@ -22,20 +22,25 @@
 
         & .landing-title {
             display: flex;
-            justify-content: center;
-            align-self: center;
-            flex-wrap: wrap;
-            padding: 0 1rem 2rem 1rem;
+            flex-direction: column;
+            align-self: flex-start;
+            gap: 0.3rem;
+            padding: 1rem;
             text-align: center;
             color: var(--color-real-white);
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 100;
-            line-height: 4rem;
-            max-width: 900px;
             z-index: 6;
+            border: 1px solid white;
+            border-left: solid;
+            border-bottom: solid;
+            clip-path: border-box;
+            border-width: thin;
+            border-right-style: outset;
+            transform: skewX(10deg);
+            letter-spacing: 6px;
 
             & > p {
-                white-space: nowrap;
                 padding-right: 2rem;
                 padding-left: 2rem;
                 color: var(--color-list-border);
