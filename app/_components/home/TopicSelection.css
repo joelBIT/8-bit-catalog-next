@@ -7,6 +7,7 @@
 
     & #topic-selection-top {
         display: flex;
+        align-self: center;
         gap: 6rem;
         padding-bottom: 3rem;
 
