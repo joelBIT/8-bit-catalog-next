@@ -20,6 +20,10 @@ export function ScrollTopButton(): ReactElement {
         };
     }, []);
 
+    if (isVisible && window.scrollY < 1500) {
+        setIsVisible(false);
+    }
+
     function scroll(): void {
         if ((position > 1500) && !isVisible && (window.scrollY < position)) {
             setIsVisible(true);
@@ -31,6 +35,7 @@ export function ScrollTopButton(): ReactElement {
     }
 
     function scrollToTop(): void {
+        console.log("SCROLL TOP")
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
