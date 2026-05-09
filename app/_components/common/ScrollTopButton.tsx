@@ -35,7 +35,6 @@ export function ScrollTopButton(): ReactElement {
     }
 
     function scrollToTop(): void {
-        console.log("SCROLL TOP")
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
