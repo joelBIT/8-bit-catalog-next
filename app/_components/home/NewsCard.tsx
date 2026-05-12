@@ -22,7 +22,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
                     <h2 className="news-date"> {news.published?.toString()} </h2>
                 </section>
 
-                <h2 className="news-text"> {adjustTextLength(news.text, 200)} </h2>
+                <h2 className="news-text"> {adjustTextLength(news.text, 130)} </h2>
                 <Link href={URL_NEWS_PAGE + `/${news.id}`} className="news-read-button"> Read More </Link>
             </section>
         </section>

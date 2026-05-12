@@ -3,7 +3,7 @@
     flex-direction: column;
     background-color: var(--color-real-black);
     border-radius: 9px;
-    width: 47rem;
+    width: 40rem;
     height: 18rem;
     position: relative;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -45,6 +45,7 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            gap: 0.3rem;
 
             & .news-date {
                 color: var(--color-footer-heading);
@@ -56,7 +57,7 @@
             & .news-heading {
                 font-family: "iceland", sans-serif;
                 color: var(--color-real-white);
-                font-size: 1.8rem;
+                font-size: 1.7rem;
                 padding-right: 0.2rem;
             }
         }

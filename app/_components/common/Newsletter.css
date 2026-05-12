@@ -18,8 +18,9 @@
 
     & .newsletter-text {
         font-family: "arima", sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: var(--color-nintendo-gray);
+        text-align: center;
     }
 
     & #newsletterSignup {
