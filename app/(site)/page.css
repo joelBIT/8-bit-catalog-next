@@ -26,6 +26,7 @@
 
         & #landingCards {
             min-height: 40rem;
+            max-width: 1200px;
         }
     }
 

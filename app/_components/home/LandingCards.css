@@ -9,7 +9,7 @@
     & .card-navigation {
         display: flex;
         align-items: center;
-        align-self: center;
+        align-self: flex-end;
         gap: 3rem;
 
         & .landing-title__number {
@@ -152,6 +152,7 @@
     #landingCards {
         & .card-navigation {
             gap: 1rem;
+            align-self: center;
         }
 
         & .landing-cards {
