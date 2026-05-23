@@ -1,0 +1,27 @@
+.landingButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: auto;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 1px solid var(--color-real-white);
+    color: var(--color-real-white);
+    transition-duration: 0.5s;
+
+    & .arrow {
+        position: relative;
+        font-size: 3rem;
+        padding: 0.4rem;
+        font-weight: 300;
+        border-radius: 100%;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: var(--color-link-active);
+        border: 1px solid var(--color-link-active);
+        transition-duration: 0.3s;
+    }
+}

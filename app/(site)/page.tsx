@@ -1,13 +1,10 @@
 'use server';
 
 import { type ReactElement } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { TopicSelection, TitleSearch, LandingCards } from "@/app/_components/home";
+import { TopicSelection, LandingCards } from "@/app/_components/home";
 import { Newsletter } from "../_components/common";
 import { getAllTitles } from "../_db/games-db";
 import { getAllNews } from "../_db/news-db";
-import { URL_REGISTER_PAGE } from "../_utils/utils";
 
 import "./page.css";
 
@@ -21,12 +18,12 @@ export default async function Home(): Promise<ReactElement> {
             <section id="firstSection">
                 <section id="catalogDescription">
                     <h1 className="landing-title bit-font">
-                            The <p> 8-Bit </p> Catalog 
+                        The <p> 8-Bit </p> Catalog 
                     </h1>
 
-                    <LandingCards />
+                    <LandingCards allGameTitles={await getAllTitles()} />
 
-                    <section className="landing-cards">
+                    {/* <section className="landing-cards">
                         <section className="landing-card">
                             <h3 className="landing-title__number"> .01 </h3>
                             <h3 className="landing-title__heading">Vision</h3>
@@ -73,7 +70,7 @@ export default async function Home(): Promise<ReactElement> {
 
                             <Link href={URL_REGISTER_PAGE} className="signup-button"> Sign up now </Link>
                         </section>
-                    </section>
+                    </section> */}
                 </section>
             </section>
 
