@@ -107,8 +107,7 @@
         justify-content: center;
         flex-wrap: wrap;
         gap: 2rem;
-        padding-left: 0.3rem;
-        padding-right: 0.3rem;
+        width: 99%;
     }
 }
 
