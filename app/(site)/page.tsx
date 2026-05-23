@@ -3,7 +3,7 @@
 import { type ReactElement } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { TopicSelection, TitleSearch } from "@/app/_components/home";
+import { TopicSelection, TitleSearch, LandingCards } from "@/app/_components/home";
 import { Newsletter } from "../_components/common";
 import { getAllTitles } from "../_db/games-db";
 import { getAllNews } from "../_db/news-db";
@@ -23,6 +23,8 @@ export default async function Home(): Promise<ReactElement> {
                     <h1 className="landing-title bit-font">
                             The <p> 8-Bit </p> Catalog 
                     </h1>
+
+                    <LandingCards />
 
                     <section className="landing-cards">
                         <section className="landing-card">
