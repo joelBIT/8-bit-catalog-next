@@ -16,36 +16,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10rem;
+        gap: 5rem;
         flex-wrap: wrap;
         margin-top: 2rem;
 
-        & .landing-title {
-            display: flex;
-            flex-direction: column;
+        & #logo {
             align-self: flex-start;
-            gap: 0.3rem;
-            padding: 1rem;
-            margin-left: 5rem;
-            text-align: center;
-            color: var(--color-real-white);
-            font-size: 1.5rem;
-            font-weight: 100;
-            z-index: 6;
-            border: 1px solid white;
-            border-left: solid;
-            border-bottom: solid;
-            clip-path: border-box;
-            border-width: thin;
-            border-right-style: outset;
-            transform: skewX(10deg);
-            letter-spacing: 6px;
-
-            & > p {
-                padding-right: 2rem;
-                padding-left: 2rem;
-                color: var(--color-list-border);
-            }
         }
 
         & #landingCards {
@@ -103,8 +79,8 @@
             align-items: center;
             gap: 3rem;
 
-            & .landing-title {
-                display: none;
+            & #logo {
+                align-self: center;
             }
         }
     }

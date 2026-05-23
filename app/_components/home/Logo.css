@@ -1,0 +1,7 @@
+#logo {
+    display: flex;
+
+    & .logo-image {
+        width: 200px;
+    }
+}
