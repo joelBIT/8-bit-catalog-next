@@ -9,6 +9,7 @@
     background-position: bottom;
 
     & .newsletter-heading {
+        font-family: Playfair Display, sans-serif;
         font-size: 2.5rem;
         text-transform: uppercase;
         color: var(--color-real-white);
