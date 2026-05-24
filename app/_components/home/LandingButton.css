@@ -6,7 +6,7 @@
     height: auto;
     border-radius: 100%;
     background-color: transparent;
-    border: 1px solid var(--color-real-white);
+    border: 1px solid var(--color-white);
     color: var(--color-real-white);
     transition-duration: 0.5s;
 
