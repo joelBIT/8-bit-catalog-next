@@ -28,24 +28,34 @@ export default function FaqPage(): ReactElement {
 
     return (
         <main id="faqPage">
-            <section className="title-section">
-                <h1 className="faqPage-title"> Frequently Asked Questions </h1>
-                <h2 className="title-text"> The most popular questions are gathered here. If you do not find what you are looking for, let me know, and I will be happy to assist you. </h2>
+            <div className="faq-title">
+                Help Center
+            </div>
+
+            <section className="faq-content">
+                <section className="faq-details">
+                    <h2 className="faq-heading">Frequently Asked Questions</h2>
+                    <p className="faq-text">
+                        The most popular questions are gathered here. 
+                        If you do not find what you are looking for, let me know, and I will be happy to assist you.
+                    </p>
+
+                    <section className="faq-toggle-topics">
+                        <button className={faqPage === FAQ_GENERAL ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage(FAQ_GENERAL)}> General </button>
+                        <button className={faqPage === FAQ_ACCOUNT ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage(FAQ_ACCOUNT)}> Account </button>
+                        <button className={faqPage === FAQ_GAMES ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage(FAQ_GAMES)}> Games </button>
+                    </section>
+                </section>
+
+                <section className="faq-answers">
+                    { faqPage === FAQ_GENERAL ? faqs?.filter(faq => faq.type === FAQ_GENERAL).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
+
+                    { faqPage === FAQ_ACCOUNT ? faqs?.filter(faq => faq.type === FAQ_ACCOUNT).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
+
+                    { faqPage === FAQ_GAMES ? faqs?.filter(faq => faq.type === FAQ_GAMES).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
+                </section>
             </section>
 
-            <section className="faq-toggle-topics">
-                <button className={faqPage === FAQ_GENERAL ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage(FAQ_GENERAL)}> General </button>
-                <button className={faqPage === FAQ_ACCOUNT ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage(FAQ_ACCOUNT)}> Account </button>
-                <button className={faqPage === FAQ_GAMES ? "toggle-button active-button" : "toggle-button"} onClick={() => setFaqPage(FAQ_GAMES)}> Games </button>
-            </section>
-
-            { faqPage === FAQ_GENERAL ? faqs?.filter(faq => faq.type === FAQ_GENERAL).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
-
-            { faqPage === FAQ_ACCOUNT ? faqs?.filter(faq => faq.type === FAQ_ACCOUNT).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
-
-            { faqPage === FAQ_GAMES ? faqs?.filter(faq => faq.type === FAQ_GAMES).map(faq => <FAQ faq={faq} key={faq.question} />) : <></> }
-   
-            <img src="/faq/faq.png" alt="Catalog FAQ background image" id="faq-background" />
             <div className="darken-image-bottom" />
         </main>
     );

@@ -1,8 +1,7 @@
 .faq {
     display: flex;
     flex-direction: column;
-    width: 50rem;
-    padding-bottom: 2rem;
+    padding: 1rem;
     border-bottom: 1px solid #f0cca430;
     z-index: 1;
 
