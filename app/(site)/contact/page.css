@@ -2,35 +2,81 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
     background-color: var(--color-black);
+    position: relative;
     padding: 4rem 2rem;
-    padding-top: 10rem;
+    padding-top: 11rem;
+    background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
 
-    & .contact-details {
+    & .contact-title {
+        position: absolute;
+        top: 0;
+        color: #ffffff10;
+        font-family: "iceland", sans-serif;
+        font-size: 10rem;
+        margin-top: 5rem;
+    }
+
+    & .contact-content {
         display: flex;
-        flex-direction: column;
-        flex: 1;
+        align-items: flex-end;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 1rem;
-        max-width: 600px;
+        width: 100%;
+        padding-bottom: 10rem;
 
-        & .contact-heading {
-            font-family: "iceland", sans-serif;
-            color: var(--color-real-white);
-            font-size: 3rem;
-            letter-spacing: 1px;
+        & .contact-details {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 1rem;
+            max-width: 600px;
+            min-width: 300px;
+
+            & .contact-heading {
+                font-family: "iceland", sans-serif;
+                color: var(--color-real-white);
+                font-size: 3rem;
+                letter-spacing: 1px;
+            }
+
+            & .contact-text {
+                color: var(--color-nintendo-gray);
+                max-width: 400px;
+                font-size: 1rem;
+            }
         }
 
-        & .contact-text {
-            color: var(--color-nintendo-gray);
-            max-width: 400px;
-            font-size: 1rem;
+        & .contact-form {
+            display: flex;
+            flex: 1;
+            max-width: 600px;
+            min-width: 300px;
         }
     }
 
-    & .contact-form {
-        display: flex;
-        flex: 1;
-        max-width: 600px;
+    & .darken-image-bottom {
+        position: absolute;
+        bottom: 0;
+        height: 11rem;
+        width: 100%;
+        background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
+    }
+}
+
+@media (max-width: 550px) {
+    #contactPage {
+        & .contact-title {
+            font-size: 9rem;
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    #contactPage {
+        & .contact-title {
+            font-size: 6rem;
+        }
     }
 }
