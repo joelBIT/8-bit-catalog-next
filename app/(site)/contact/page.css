@@ -87,7 +87,7 @@
                 & .contact-link {
                     position: absolute;
                     right: 1rem;
-                    color: var(--color-real-white);
+                    color: var(--color-white);
                     padding: 1rem;
                     border: 1px solid #ffffff20;
                     border-radius: 99px;
