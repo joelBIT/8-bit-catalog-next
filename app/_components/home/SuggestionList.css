@@ -18,9 +18,13 @@
         width: 100%;
     }
 
-    & #viewButton {
-        &:active {
-            filter: brightness(0.3);
+    & .button-container {
+        min-width: 8rem;
+
+        & #viewButton {
+            &:active {
+                filter: brightness(0.3);
+            }
         }
     }
 }

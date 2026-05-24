@@ -31,7 +31,9 @@ export function SuggestionList({ options, setGameTitle }: { options: string[], s
                 }
             </datalist>
 
-            <button id="viewButton" className="arrowButton" onClick={selectGame}> <h2>View</h2> <img src="/arrow-right-bg.png" /> </button>
+            <section className="button-container">
+                <button id="viewButton" className="arrowButton" onClick={selectGame}> <h2>View</h2> <img src="/arrow-right-bg.png" /> </button>
+            </section>
         </section>
     );
 }
