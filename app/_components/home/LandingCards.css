@@ -108,9 +108,16 @@
                 }
             }
 
-            & .signup-button {
+            & .navigation-link {
                 align-self: flex-end;
                 margin-top: 1rem;
+                background: transparent;
+                letter-spacing: 2px;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    transition: all 0.2s ease-in-out;
+                }
             }
         }
     }

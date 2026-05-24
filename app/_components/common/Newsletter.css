@@ -48,35 +48,13 @@
             }
         }
 
-        & #newsletterButton {
-            display: flex;
-            align-items: center;
-            background-color: transparent;
-            border: 2px solid var(--color-real-white);
-            color: var(--color-real-white);
-            cursor: pointer;
-            width: fit-content;
-            height: 3rem;
-            justify-content: center;
-            line-height: 24px;
-            padding: 0 17px;
-            text-align: center;
-            text-transform: uppercase;
-            font-family: 'Playfair Display', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.15s ease;
+        & .navigation-link {
+            background: transparent;
+            letter-spacing: 2px;
+            transition: all 0.2s ease-in-out;
 
             &:hover {
-                border-color: var(--color-white);
-                color: var(--color-white);
-                transition: all 0.15s ease;
-            }
-
-            &:active {
-                border: 2px solid var(--color-black);
-                color: var(--color-black);
+                transition: all 0.2s ease-in-out;
             }
         }
     }

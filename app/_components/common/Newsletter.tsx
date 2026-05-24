@@ -27,7 +27,7 @@ export function Newsletter(): ReactElement {
             <form id="newsletterSignup" action={formAction}>
                 <input id="subscribeEmail" type="email" name="email" placeholder="Enter Email" required={true} autoComplete="off" />
 
-                <button id="newsletterButton">
+                <button className="navigation-link">
                     Subscribe 
                 </button>
             </form>

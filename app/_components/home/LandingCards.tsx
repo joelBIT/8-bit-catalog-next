@@ -100,7 +100,7 @@ export function LandingCards({allGameTitles}: {allGameTitles: string[]}): ReactE
                 </section>
 
                 <section className="landing-content">
-                    <Link href={URL_REGISTER_PAGE} className="signup-button"> Sign up now </Link>
+                    <Link href={URL_REGISTER_PAGE} className="navigation-link"> Sign Up </Link>
                 </section>
             </section>
         );
