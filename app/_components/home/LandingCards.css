@@ -46,8 +46,10 @@
             }
 
             & .landing-content {
-                min-width: 400px;
                 align-content: center;
+                justify-items: center;
+                text-align: center;
+                min-width: 400px;
             }
 
             & .landing-title__number {
@@ -80,6 +82,7 @@
                 text-align: center;
                 position: relative;
                 padding-top: 1rem;
+                width: 100%;
 
                 & .message-failure {
                     margin-bottom: 1rem;
