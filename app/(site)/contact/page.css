@@ -32,7 +32,7 @@
             flex: 1;
             gap: 1rem;
             max-width: 600px;
-            min-width: 300px;
+            min-width: 400px;
 
             & .contact-heading {
                 font-family: "iceland", sans-serif;
@@ -45,6 +45,58 @@
                 color: var(--color-nintendo-gray);
                 max-width: 400px;
                 font-size: 1rem;
+                margin-bottom: 3rem;
+            }
+
+            & .contactCard {
+                display: flex;
+                align-items: center;
+                gap: 3rem;
+                padding: 1.5rem;
+                border: 1px solid #ffffff20;
+                border-radius: 12px;
+                box-shadow: 0 1px 2px #00000026;
+                backdrop-filter: blur(2px);
+                background: #ffffff16;
+                position: relative;
+
+                & .contact-icon {
+                    color: var(--color-real-white);
+                    padding: 1rem;
+                    border: 1px solid #ffffff20;
+                    border-radius: 6px;
+                }
+
+                & .contact-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    & .contact-info__heading {
+                        font-family: "iceland", sans-serif;
+                        color: var(--color-real-white);
+                        font-size: 1.5rem;
+                    }
+
+                    & .contact-info__text {
+                        color: var(--color-nintendo-gray);
+                        font-size: 1rem;
+                    }
+                }
+
+                & .contact-link {
+                    position: absolute;
+                    right: 1rem;
+                    color: var(--color-real-white);
+                    padding: 1rem;
+                    border: 1px solid #ffffff20;
+                    border-radius: 99px;
+
+                    & .material-symbols-outlined {
+                        display: flex;
+                        font-size: 20px;
+                    }
+                }
             }
         }
 
@@ -75,8 +127,30 @@
 
 @media (max-width: 460px) {
     #contactPage {
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+
         & .contact-title {
             font-size: 6rem;
+        }
+
+        & .contact-content {
+            & .contact-details {
+                min-width: 100%;
+
+                & .contactCard {
+                    gap: 1rem;
+                    padding: 1rem;
+
+                    & .contact-icon {
+                        padding: 0.5rem;
+                    }
+
+                    & .contact-link {
+                        padding: 0.5rem;
+                    }
+                }
+            }
         }
     }
 }
