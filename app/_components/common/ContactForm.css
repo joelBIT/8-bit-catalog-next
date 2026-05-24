@@ -1,0 +1,71 @@
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    border: 1px solid #ffffff20;
+    box-shadow: 0 1px 2px #00000026;
+    padding: 0.4rem;
+    border-radius: 6px;
+    width: 100%;
+    backdrop-filter: blur(2px);
+    background: #ffffff16;
+    scrollbar-color: var(--color-black) #FFFFFF20;
+
+    .input:first-of-type {
+        border-radius: 6px 6px 0 0;
+        border-bottom: 0.5px solid var(--color-form);
+    }
+
+    .input:last-of-type {
+        border-radius: 0 0 6px 6px;
+        border-top: 0;
+    }
+
+    & .information-input {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        color: var(--color-real-white);
+
+        & .input-field {
+            color: var(--color-real-white);
+            padding-left: 1rem;
+            height: 50px;
+            font-size: 1rem;
+            background: #f0e0f000;
+            backdrop-filter: blur(10px);
+            border-radius: 6px;
+            transition: all 0.5s;
+
+            &::placeholder {
+                color: var(--color-real-white);
+            }
+        }
+
+        & #message {
+            margin: 0;
+            box-sizing: border-box;
+            resize: none;
+            min-height: 15rem;
+            font-size: 1rem;
+            padding-top: 0.5rem;
+            padding-left: 1rem;
+        }
+    }
+
+    & .message-success, 
+    .message-failure {
+        margin-top: 1rem;
+    }
+
+    & #sendButton {
+        width: 100%;
+        background: #ffffff16;
+        margin-top: 1rem;
+
+        &:active {
+            opacity: 0.5;
+        }
+    }
+}

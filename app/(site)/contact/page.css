@@ -1,177 +1,156 @@
 #contactPage {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
     background-color: var(--color-black);
+    position: relative;
     padding: 4rem 2rem;
+    padding-top: 11rem;
+    background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
 
-    & #contact-presentation {
-        display: flex;
-        align-items: center;
-        gap: 8rem;
-        padding-top: 5rem;
-
-        & #contact-heading {
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid var(--color-link-background);
-            padding-top: 3rem;
-            padding-bottom: 8rem;
-            padding-right: 1rem;
-            max-width: 600px;
-            height: fit-content;
-
-            & #contactPage-title {
-                font-family: Playfair Display, sans-serif;
-                font-size: 3rem;
-                text-shadow: 0 0 2px azure, 0 0 0 var(--color-footer-heading), 0 0 40px var(--color-footer-heading), 0 0 60px var(--color-footer-heading);
-                filter: saturate(60%);
-                color: var(--color-real-white);
-                font-weight: 300;
-                align-self: center;
-                text-align: center;
-                text-transform: uppercase;
-                border-style: solid;
-                border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
-                border-top: 0;
-                border-bottom-width: 2px;
-            }
-
-            & #information-text {
-                font-size: 1.3rem;
-                color: var(--color-nintendo-gray);
-                letter-spacing: 1px;
-                padding-top: 1rem;
-            }
-        }
-
-        & .contact-figure {
-            max-width: 600px;
-            
-            & .contact-image {
-                max-width: 25rem;
-                width: 100%;
-                height: auto;
-                object-fit: cover;
-            }
-        }
+    & .contact-title {
+        position: absolute;
+        top: 0;
+        color: #ffffff10;
+        font-family: "iceland", sans-serif;
+        font-size: 10rem;
+        margin-top: 5rem;
     }
 
-    & #contactPage-information {
+    & .contact-content {
         display: flex;
-        flex-wrap: wrap;
+        align-items: flex-end;
         justify-content: center;
-        gap: 3rem;
-        padding-top: 2rem;
-        max-width: 1600px;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+        padding-bottom: 10rem;
 
-        & .contact__info {
+        & .contact-details {
             display: flex;
-            align-items: center;
-            text-align: center;
-            width: 580px;
-            height: 160px;
-            border: 1px solid var(--color-list-border);
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            background-color: var(--color-link-background);
-
-            & .contact__info-figure {
-                width: 220px;
-                height: 100%;
-
-                & .contact__info-image {
-                    width: 100%;
-                    height: 100%;
-                    filter: brightness(0.9);
-                }
-            }
-
-            & .contact__info-right {
-                display: flex;
-                flex-direction: column;
-                align-self: flex-start;
-                gap: 0.5rem;
-                flex: 2;
-                padding: 1rem;
-                text-align: left;
-
-                & .contact__info-heading {
-                    font-family: "iceland", sans-serif;
-                    color: var(--color-real-white);
-                    font-size: 2rem;
-                    font-weight: 600;
-                }
-
-                & .contact__info-text {
-                    color: var(--color-nintendo-gray);
-                    font-size: 1.2rem;
-                    font-weight: 100;
-                    letter-spacing: 1px;
-
-                    & > a {
-                        color: var(--color-white);
-                        text-decoration: none;
-
-                        &:hover {
-                            color: var(--color-link-active);
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 1300px) {
-    #contactPage {
-        & #contact-presentation {
-            gap: 2rem;
-        }
-    }
-}
-
-@media (max-width: 900px) {
-    #contactPage {
-        & #contact-presentation {
             flex-direction: column;
-            padding-top: 0;
+            flex: 1;
+            gap: 1rem;
+            max-width: 600px;
+            min-width: 400px;
 
-            & #contact-heading {
-                border-right: 0;
-                padding-bottom: 2rem;
+            & .contact-heading {
+                font-family: "iceland", sans-serif;
+                color: var(--color-real-white);
+                font-size: 3rem;
+                letter-spacing: 1px;
             }
-        }
-    }
-}
 
-@media (max-width: 600px) {
-    #contactPage {
-        & #contactPage-information {
-            & .contact__info {
-                width: 95vw;
-                height: fit-content;
-                padding: 0.5rem;
+            & .contact-text {
+                color: var(--color-nintendo-gray);
+                max-width: 400px;
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
 
-                & .contact__info-figure {
-                    display: none;
+            & .contactCard {
+                display: flex;
+                align-items: center;
+                gap: 3rem;
+                padding: 1.5rem;
+                border: 1px solid #ffffff20;
+                border-radius: 12px;
+                box-shadow: 0 1px 2px #00000026;
+                backdrop-filter: blur(2px);
+                background: #ffffff16;
+                position: relative;
+
+                & .contact-icon {
+                    color: var(--color-real-white);
+                    padding: 1rem;
+                    border: 1px solid #ffffff20;
+                    border-radius: 6px;
                 }
-                
-                & .contact__info-right {
-                    padding: 0.2rem;
 
-                    & .contact__info-text {
+                & .contact-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    & .contact-info__heading {
+                        font-family: "iceland", sans-serif;
+                        color: var(--color-real-white);
+                        font-size: 1.5rem;
+                    }
+
+                    & .contact-info__text {
+                        color: var(--color-nintendo-gray);
                         font-size: 1rem;
                     }
                 }
+
+                & .contact-link {
+                    position: absolute;
+                    right: 1rem;
+                    color: var(--color-real-white);
+                    padding: 1rem;
+                    border: 1px solid #ffffff20;
+                    border-radius: 99px;
+
+                    & .material-symbols-outlined {
+                        display: flex;
+                        font-size: 20px;
+                    }
+                }
             }
+        }
+
+        & .contact-form {
+            display: flex;
+            flex: 1;
+            max-width: 600px;
+            min-width: 300px;
+        }
+    }
+
+    & .darken-image-bottom {
+        position: absolute;
+        bottom: 0;
+        height: 11rem;
+        width: 100%;
+        background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
+    }
+}
+
+@media (max-width: 550px) {
+    #contactPage {
+        & .contact-title {
+            font-size: 9rem;
         }
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 460px) {
     #contactPage {
-        padding: 3rem 0.5rem;
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+
+        & .contact-title {
+            font-size: 6rem;
+        }
+
+        & .contact-content {
+            & .contact-details {
+                min-width: 100%;
+
+                & .contactCard {
+                    gap: 1rem;
+                    padding: 1rem;
+
+                    & .contact-icon {
+                        padding: 0.5rem;
+                    }
+
+                    & .contact-link {
+                        padding: 0.5rem;
+                    }
+                }
+            }
+        }
     }
 }

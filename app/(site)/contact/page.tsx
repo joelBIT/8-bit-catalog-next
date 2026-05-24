@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
-import Image from "next/image";
+import Link from "next/link";
+import { ContactForm } from "@/app/_components/common";
 
 import "./page.css";
 
@@ -8,74 +9,51 @@ import "./page.css";
  */
 export default function ContactPage(): ReactElement {
 
+    const CONTACT = [
+        {icon: 'mail', title: 'Email', text: 'contact@joel-rollny.eu', link: 'mailto:contact@joel-rollny.eu'},
+        {icon: 'location_on', title: 'Location', text: 'Karlstad, Sweden', link: 'https://maps.app.goo.gl/gDzYq4uLUqTVSyV8A'},
+        {icon: 'globe', title: 'Website', text: 'http://www.joel-rollny.eu', link: 'http://www.joel-rollny.eu'}
+    ]
+
     return (
         <main id="contactPage">
-            <section id="contact-presentation">
-                <article id="contact-heading">
-                    <h1 id="contactPage-title">
-                        Contact
-                    </h1>
+            <div className="contact-title">
+                Contact
+            </div>
 
-                    <p id="information-text">
-                        Please contact me if you have any questions or wishes about the 8-bit catalog. I will get back to
-                        you as soon as possible.
+            <section className="contact-content">
+                <section className="contact-details">
+                    <h2 className="contact-heading">Get in touch</h2>
+                    <p className="contact-text">
+                        Please contact me if you have any questions or wishes about the 8-bit catalog. 
+                        I will get back to you as soon as possible.
                     </p>
-                </article>
 
-                <figure className="contact-figure">
-                    <Image 
-                        src="/contact/contact.png" 
-                        alt="Contact Image" 
-                        className="contact-image" 
-                        width={600} 
-                        height={626}
-                        loading="eager"
-                        placeholder="blur"
-                        blurDataURL="/contact/contact.png" 
-                    />
-                </figure>
-            </section>
-
-            <section id="contactPage-information">
-                <section className="contact__info">
-                    <figure className="contact__info-figure">
-                        <img src="/contact/location.png" className="contact__info-image" alt="Location Contact Image" />
-                    </figure>
-
-                    <section className="contact__info-right">
-                        <h2 className="contact__info-heading"> Location </h2>
-                        <p className="contact__info-text">I reside in Karlstad, Sweden. Visit me if you are in the neighborhood.</p>
-                    </section>
+                    {CONTACT.map(contact => <ContactCard icon={contact.icon} title={contact.title} text={contact.text} link={contact.link} />)}
                 </section>
 
-                <section className="contact__info">
-                    <figure className="contact__info-figure">
-                        <img src="/contact/email.jpeg" className="contact__info-image" alt="Email Contact Image" />
-                    </figure>
-
-                    <section className="contact__info-right">
-                        <h2 className="contact__info-heading"> Email </h2>
-                        <p className="contact__info-text">
-                            Please send an email to <a href="mailto:contact@joel-rollny.eu"> contact@joel-rollny.eu </a> for anything 
-                            related to the 8-bit Catalog.
-                        </p>
-                    </section>
-                </section>
-
-                <section className="contact__info">
-                    <figure className="contact__info-figure">
-                        <img src="/contact/website.jpeg" className="contact__info-image" alt="Website Contact Image" />
-                    </figure>
-
-                    <section className="contact__info-right">
-                        <h2 className="contact__info-heading"> Website </h2>
-                        <p className="contact__info-text">
-                            You can find contact information at <a href="https://www.joel-rollny.eu" target="_blank"> www.joel-rollny.eu</a>.
-                            That site also contains a form that you can use to send me a direct message.
-                        </p>
-                    </section>
+                <section className="contact-form">
+                    <ContactForm />
                 </section>
             </section>
+            <div className="darken-image-bottom" />
         </main>
     );
+
+    function ContactCard({icon, title, text, link}: {icon: string, title: string, text: string, link: string}): ReactElement {
+        return (
+            <section className="contactCard">
+                <section className="contact-icon material-symbols-outlined">{icon}</section>
+                
+                <section className="contact-info">
+                    <h2 className="contact-info__heading"> {title} </h2>
+                    <p className="contact-info__text"> {text} </p>
+                </section>
+
+                <Link className="contact-link" target="_blank" href={link}>
+                    <span className="material-symbols-outlined"> open_in_new </span>
+                </Link> 
+            </section>
+        );
+    }
 }
