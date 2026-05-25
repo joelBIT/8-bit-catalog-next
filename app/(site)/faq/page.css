@@ -4,8 +4,7 @@
     align-items: center;
     justify-content: center;
     background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
-    padding: 4rem 2rem;
-    padding-top: 11rem;
+    padding: 11rem 2rem 10rem 2rem;
     position: relative;
 
     & .faq-title {
@@ -17,7 +16,7 @@
         margin-top: 5rem;
     }
 
-     & .faq-content {
+    & .faq-content {
         display: flex;
         align-items: flex-start;
         justify-content: center;

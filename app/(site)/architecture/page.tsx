@@ -66,6 +66,8 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
                     }
                 </section>
             </section>
+
+            <div className="darken-image-bottom" />
         </main>
     )
 }

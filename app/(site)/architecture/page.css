@@ -4,8 +4,7 @@
     align-items: center;
     justify-content: center;
     background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
-    padding: 4rem 2rem;
-    padding-top: 11rem;
+    padding: 11rem 2rem 10rem 2rem;
     position: relative;
 
     & .architecture-title {
@@ -75,6 +74,14 @@
             padding-top: 2rem;
         }
     }
+
+    & .darken-image-bottom {
+        position: absolute;
+        bottom: 0;
+        height: 11rem;
+        width: 100%;
+        background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
+    }
 }
 
 @media (max-width: 1200px) {
@@ -85,8 +92,20 @@
     }
 }
 
+@media (max-width: 850px) {
+    #architecturePage {
+        & .architecture-title {
+            font-size: 7rem;
+        }
+    }
+}
+
 @media (max-width: 700px) {
     #architecturePage {
+        & .architecture-title {
+            font-size: 6rem;
+        }
+
         & .architecture-video {
             width: 100%;
         }
@@ -95,6 +114,13 @@
 
 @media (max-width: 500px) {
     #architecturePage {
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+
+        & .architecture-title {
+            font-size: 3.8rem;
+        }
+
         & #architecture-articles {
             & .architecturePage-title {
                 font-size: 2.3rem;
