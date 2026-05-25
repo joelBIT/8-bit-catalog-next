@@ -26,36 +26,38 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
 
     return (
         <main id="articlePage">
-            <figure id="article-image">
-                <Image 
-                    src="/articles/architecture.avif"
-                    className="article-image" 
-                    alt="Article image" 
-                    width={1232} 
-                    height={480} 
-                    loading="eager" 
-                    placeholder="blur"
-                    blurDataURL="/articles/architecture.avif"
-                />
+            <section className="article-body">
+                <figure id="article-image">
+                    <Image 
+                        src={"/articles/" + article.image}
+                        className="article-image" 
+                        alt="Article image" 
+                        width={1232} 
+                        height={480} 
+                        loading="eager" 
+                        placeholder="blur"
+                        blurDataURL={"/articles/" + article.image}
+                    />
 
-                <section id="article-title">
-                    <h2 className="article-title"> {article.title} </h2>
-                    <p className="article-title-text"> {article.introduction} </p>
-                </section>
-
-                <div className="darken-image-bottom" />
-            </figure>
-
-            <h2 className="article-text"> {article.text} </h2>
-
-            {
-                article.articleContents?.map(content => 
-                    <section key={content.heading} className="article-content">
-                        <h2 className="article-content__heading"> {content.heading} </h2>
-                        <p className="article-content__text"> {content.text} </p>
+                    <section className="article-heading">
+                        <h2 className="article-title">{article.title}</h2>
+                        <p className="article-title-text">{article.introduction}</p>
                     </section>
-                )
-            }
+                </figure>
+
+                <h2 className="article-text">{article.text}</h2>
+
+                {
+                    article.articleContents?.map(content => 
+                        <section key={content.heading} className="article-content">
+                            <h2 className="article-content__heading">{content.heading}</h2>
+                            <p className="article-content__text">{content.text}</p>
+                        </section>
+                    )
+                }
+            </section>
+
+            <div className="darken-image-bottom" />
         </main>
     )
 }
