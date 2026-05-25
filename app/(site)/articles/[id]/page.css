@@ -29,9 +29,34 @@
         flex-direction: column;
         border-radius: 12px;
         box-shadow: 0 1px 2px #00000026;
-        background: #ffffff16;
-        backdrop-filter: blur(2px);
         max-width: 1200px;
+
+        & .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            letter-spacing: 0.05rem;
+            gap: 0.4rem;
+            width: 100%;
+
+            & .material-symbols-outlined {
+                font-size: 0.7rem;
+                color: var(--color-white);
+
+                &:visited {
+                    color: var(--color-white);
+                }
+            }
+
+            & .back-link__text {
+                text-transform: uppercase;
+                color: var(--color-white);
+                font-size: 1rem;
+                font-family: "poppins", sans-serif;
+                font-weight: 100;
+                
+            }
+        }
     }
 
     & #article-image {
@@ -81,7 +106,8 @@
         color: var(--color-nintendo-gray);
         font-size: 1.3rem;
         font-weight: 100;
-        
+        background: #ffffff16;
+        backdrop-filter: blur(2px);
         padding: 1rem;
         white-space: break-spaces;
         font-family: arima, sans-serif;
@@ -91,8 +117,11 @@
     & .article-content {
         display: flex;
         flex-direction: column;
-        
+        background: #ffffff16;
+        backdrop-filter: blur(2px);
         padding: 2rem 1rem;
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 9px;
 
         & .article-content__heading {
             font-family: "iceland", sans-serif;

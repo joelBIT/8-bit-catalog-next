@@ -27,6 +27,11 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
     return (
         <main id="articlePage">
             <section className="article-body">
+                <Link href="/architecture" className="back-link">
+                    <span className="material-symbols-outlined"> arrow_back_ios </span> 
+                    <h1 className="back-link__text"> Back to Architecture page </h1>
+                </Link>
+
                 <figure id="article-image">
                     <Image 
                         src={"/articles/" + article.image}
