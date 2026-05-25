@@ -623,14 +623,14 @@ textarea {
         font-weight: 900;
         font-size: 1.2rem;
         font-family: "arima", sans-serif;
-        color: var(--color-footer-heading);
+        color: var(--color-real-white);
     }
 
     & .selectSection__select {
-        border: 2px solid var(--color-white);
+        border: 1px solid var(--color-white);
         outline: 0;
         border-radius: 9px;
-        background-color: transparent;
+        background-color: var(--color-black);
         color: #ffffffa0;
         font-size: 1.2rem;
         padding: 0.3rem;

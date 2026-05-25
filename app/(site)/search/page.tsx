@@ -15,6 +15,8 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
 
     return (
         <main id="searchPage">
+            <h1 className="search-title"> Search </h1>
+
             <section id="search-presentation">
                 <h1 className="search__subtitle"> Discover the catalog </h1>
                 <h1 className="search__title"> Search Games </h1>
@@ -65,6 +67,8 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                 </search>
             </Form>
             <Search />
+
+            <div className="darken-image-bottom" />
         </main>
     );
 }
