@@ -1,36 +1,24 @@
-'use server';
+'use client';
 
-import { type ReactElement } from "react";
-import { Resend } from "resend";
-import ContactMessageEmail from "../email/ContactMessageEmail";
+import { useActionState, useEffect, useState, type ReactElement } from "react";
+import { sendContactEmail } from "@/app/_actions/contact";
 
 import "./ContactForm.css";
 
-export async function ContactForm(): Promise<ReactElement> {
+export function ContactForm(): ReactElement {
+    const [state, formAction, pending] = useActionState(sendContactEmail, {message: '', success: false});
+    const [message, setMessage] = useState<string>(state.message);
 
-    async function sendMessage(formData: FormData): Promise<void> {
-        'use server';
-
-        const email = formData.get('email') as string;
-        const from = formData.get('name') as string;
-        const message = formData.get('message') as string;
-
-        try {
-            const resend = new Resend(process.env.RESEND_API_KEY as string);
-
-            await resend.emails.send({
-                from: '8bit <onboarding@joel-rollny.eu>',
-                to: "joel.rollny@gmail.com",
-                subject: 'Contact question',
-                react: ContactMessageEmail(email, from, message),
-            });
-        } catch (error) {
-            console.log(error);
+    useEffect(() => {
+        if (state.success) {
+            setMessage(state.message);
+        } else if (!state.success && state.message.length > 0) {
+            setMessage(state.message);
         }
-    }
+    }, [state]);    
     
     return (
-        <form id="contactForm" action={sendMessage}>
+        <form id="contactForm" action={formAction}>
             <section className="information-input">
                 <input 
                     id="name"
@@ -59,9 +47,11 @@ export async function ContactForm(): Promise<ReactElement> {
                 <textarea id="message" name="message" placeholder="Message" className={`input-field`} required />
             </section>
 
-            <button id="sendButton" className="authButton" type="submit">
+            <button id="sendButton" className="authButton" type="submit" disabled={pending}>
                 <span> Send </span>
             </button>
+
+            { message.length > 0 ? <h2 className={state.success ? "message-success" : "message-failure"}> {message} </h2> : <></> }
         </form>
     );
 }
