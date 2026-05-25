@@ -139,8 +139,8 @@
 
 @media (max-width: 450px) {
     #faqPage {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
         
         & .faq-content {
             & .faq-details {

@@ -1,57 +1,70 @@
 #sitesPage {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
     justify-content: center;
     align-items: center;
-    padding-top: 7rem;
-    padding-bottom: 10rem;
-    background-color: var(--color-black);
-    background: linear-gradient(to bottom, var(--color-black) 70%, var(--color-black-light));
+    background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
+    padding: 4rem 2rem;
+    padding-top: 11rem;
     position: relative;
 
     & .sites-title {
-        font-family: Playfair Display, sans-serif;
-        font-size: 5rem;
-        padding-top: 2rem;
-        color: var(--color-footer-heading);
-        font-weight: 100;
+        position: absolute;
+        top: 0;
+        color: #ffffff10;
+        font-family: "iceland", sans-serif;
+        font-size: 10rem;
+        margin-top: 5rem;
     }
 
     & #sites {
         display: flex;
         width: 100%;
         max-width: 1200px;
-        gap: 4rem;
+        gap: 2rem;
         background: transparent;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding-bottom: 10rem;
 
         & #change-site-content {
             display: flex;
             flex-direction: column;
+            max-width: 400px;
+
+            & .sites-heading {
+                font-family: "iceland", sans-serif;
+                color: var(--color-real-white);
+                font-size: 3rem;
+                letter-spacing: 1px;
+            }
+
+            & .sites-text {
+                color: var(--color-nintendo-gray);
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
 
             & .site-content-link {
                 display: flex;
                 align-items: baseline;
                 gap: 1rem;
+                font-family: "iceland", sans-serif;
                 text-transform: uppercase;
                 color: #ffffff50;
                 border-bottom: 1px solid #ffffff50;
                 padding: 1.5rem 0;
                 transition: all 0.5s ease;
 
-                & > p {
+                & .number {
                     font-size: 1.5rem;
                 }
 
-                & > h1 {
+                & .link-title {
                     font-weight: 100;
-                    font-size: 3rem;
+                    font-size: 2rem;
 
                     &:hover {
                         cursor: pointer;
-                        color: var(--color-real-white);
+                        color: var(--color-link-active);
                         transition: all 0.5s ease;
                     }
                 }
@@ -62,7 +75,7 @@
             }
 
             .active {
-                color: var(--color-real-white);
+                color: var(--color-link-active);
             }
         }
 
@@ -79,7 +92,7 @@
                 justify-content: space-around;
                 color: #ffffff40;
                 padding: 1.5rem 0;
-                background-color: #ffffff10;
+                background-color: #ffffff0a;
                 border-bottom: 1px solid #ffffff20;
                 border-top-left-radius: 12px;
                 border-top-right-radius: 12px;
@@ -92,7 +105,7 @@
 
                     &:hover {
                         cursor: pointer;
-                        color: var(--color-real-white);
+                        color: var(--color-link-active);
                         transition: all 0.5s ease;
                     }
                 }
@@ -103,7 +116,7 @@
                 }
 
                 .active {
-                    color: var(--color-real-white);
+                    color: var(--color-link-active);
                 }
             }
 
@@ -114,14 +127,14 @@
                 gap: 2rem;
 
                 & .site-title {
-                    font-family: 'Playfair Display', sans-serif;
-                    color: var(--color-footer-heading);
-                    font-size: 2rem;
+                    font-family: "iceland", sans-serif;
+                    color: var(--color-real-white);
+                    font-size: 3rem;
                     letter-spacing: 1px;
                 }
 
                 & .site-description {
-                    color: var(--color-real-white);
+                    color: var(--color-nintendo-gray);
                     font-size: 1.4rem;
                 }
 
@@ -178,6 +191,10 @@
 
 @media (max-width: 700px) {
     #sitesPage {
+        & .sites-title {
+            font-size: 7rem;
+        }
+
         & #sites {
             flex-direction: column;
 
@@ -207,11 +224,11 @@
 @media (max-width: 500px) {
     #sitesPage {
         gap: 2rem;
-        padding-bottom: 5rem;
-        padding-top: 4rem;
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
         
         & .sites-title {
-            font-size: 3rem;
+            font-size: 4.7rem;
         }
     }
 }
