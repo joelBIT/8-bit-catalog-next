@@ -29,7 +29,7 @@ export default function ContactPage(): ReactElement {
                         I will get back to you as soon as possible.
                     </p>
 
-                    {CONTACT.map(contact => <ContactCard icon={contact.icon} title={contact.title} text={contact.text} link={contact.link} />)}
+                    {CONTACT.map(contact => <ContactCard key={contact.link} icon={contact.icon} title={contact.title} text={contact.text} link={contact.link} />)}
                 </section>
 
                 <section className="contact-form">

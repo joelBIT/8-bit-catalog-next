@@ -10,18 +10,30 @@ import "./ArticleCard.css";
  */
 export function ArticleCard({ article }: { article: Article }): ReactElement {
     return (
-        <Link href={URL_ARTICLES_PAGE + "/" + article.id} className="articleCard" title={`Article about ${article.title}`}>
-            <img src={"/articles/" + article.image} alt="Article image" className="article-image" />
+        <section className="articleCard">
+            <Link href={URL_ARTICLES_PAGE + "/" + article.id} className="article-image-link" title={`Article about ${article.title}`}>
+                <article className="article-image-container">
+                    <img src={"/articles/" + article.image} className="article-image" alt="Article image" />
+                </article>
+            </Link>
 
-            <h2 className="article-title"> {article.title} </h2>
+            <section className="content">
+                <h1 className="content-title">{ article.title }</h1>
 
-            <section id="article-tags">
-                {
-                    article.tags?.map((tag: string) => <div className="article-tag" key={tag}> {tag} </div>)
-                }
+                <section className="article-tags">
+                    {
+                        article.tags?.map((tag: string) => <div className="article-tag" key={tag}> {tag} </div>)
+                    }
+                </section>
+
+                <p className="content-text">{ article.introduction }</p>
             </section>
             
-            <p className="article-text"> {article.introduction} </p>
-        </Link>
+            <section className="article-bottom">
+                <Link href={URL_ARTICLES_PAGE + "/" + article.id} className="article-link">
+                    READ MORE
+                </Link>
+            </section>
+        </section>
     )
 }
