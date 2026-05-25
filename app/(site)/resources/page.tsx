@@ -19,26 +19,50 @@ export default function SitesPage(): ReactElement {
     const [currentSite, setCurrentSite] = useState<{title: string, description: string, image: string, link: string}>(sites[0]);
     const [overview, setOverview] = useState<boolean>(true);
 
+    let content = (
+        <Link href={currentSite.image} target="_blank" className="site-image-link">
+            <img src={currentSite.image} className="site-image" />
+        </Link>
+    );
+
+    if (overview) {
+        content = (
+            <section className="other-information">
+                <h2 className="site-title"> { currentSite.title } </h2>
+                <div className="site-description"> { currentSite.description } </div>
+
+                <Link className="button__link" href={currentSite.link} target="_blank">
+                    Visit <span className="material-symbols-outlined"> open_in_new </span> 
+                </Link> 
+            </section>
+        );
+    }
+
     return (
         <main id="sitesPage">
             <h1 className="sites-title"> Resources </h1>
 
             <section id="sites">
                 <section id="change-site-content">
+                    <h2 className="sites-heading">Resources</h2>
+                    <p className="sites-text">
+                        Resources related to the NES are gathered here. 
+                    </p>
+
                     <article className={currentSite.title === sites[0].title ? "site-content-link active" : "site-content-link"}>
-                         <p>01.</p> <h1 onClick={() => setCurrentSite(sites[0])}> Nesdev </h1> 
+                         <p className="number">01.</p> <h1 onClick={() => setCurrentSite(sites[0])} className="link-title"> Nesdev </h1> 
                     </article>
 
                     <article className={currentSite.title === sites[1].title ? "site-content-link active" : "site-content-link"}> 
-                        <p>02.</p> <h1 onClick={() => setCurrentSite(sites[1])}> CartDB </h1> 
+                        <p className="number">02.</p> <h1 onClick={() => setCurrentSite(sites[1])} className="link-title"> CartDB </h1> 
                     </article>
                     
                     <article className={currentSite.title === sites[2].title ? "site-content-link active" : "site-content-link"}> 
-                        <p>03.</p> <h1 onClick={() => setCurrentSite(sites[2])}> Ninja </h1> 
+                        <p className="number">03.</p> <h1 onClick={() => setCurrentSite(sites[2])} className="link-title"> Ninja </h1> 
                     </article>
                     
                     <article className={currentSite.title === sites[3].title ? "site-content-link active" : "site-content-link"}> 
-                        <p>04.</p> <h1 onClick={() => setCurrentSite(sites[3])}> NESmakers </h1> 
+                        <p className="number">04.</p> <h1 onClick={() => setCurrentSite(sites[3])} className="link-title"> NESmakers </h1> 
                     </article>
                 </section>
 
@@ -61,21 +85,7 @@ export default function SitesPage(): ReactElement {
                         </h1>
                     </section>
 
-                    {
-                        overview ?
-                            <section className="other-information">
-                                <h2 className="site-title"> { currentSite.title } </h2>
-                                <div className="site-description"> { currentSite.description } </div>
-
-                                <Link className="button__link" href={currentSite.link} target="_blank">
-                                    Visit <span className="material-symbols-outlined"> open_in_new </span> 
-                                </Link> 
-                            </section>
-                            :
-                            <Link href={currentSite.image} target="_blank" className="site-image-link">
-                                <img src={currentSite.image} className="site-image" />
-                            </Link>
-                    }
+                    {content}
                 </section>
             </section>
             
