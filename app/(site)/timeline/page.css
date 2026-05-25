@@ -124,16 +124,17 @@
                 animation: 0.5s fadeInText ease-in-out;
 
                 & .timeline-text__title {
-                    font-size: 3rem;
+                    color: var(--color-real-white);
                     padding-bottom: 1rem;
-                    color: var(--color-footer-heading);
+                    font-size: 4rem;
+                    font-family: 'Iceland', sans-serif;
                 }
 
                 & .timelinePage__paragraph {
                     font-size: 1.5rem;
                     font-weight: 100;
                     line-height: 1.8rem;
-                    color: var(--color-real-white);
+                    color: var(--color-nintendo-gray);
                 }
 
                 & .button__link {
