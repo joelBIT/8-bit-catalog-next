@@ -2,72 +2,109 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    background: var(--color-real-black);
-    padding-bottom: 10rem;
-    padding-top: 10rem;
+    justify-content: center;
+    background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
+    padding: 4rem 2rem;
+    padding-top: 11rem;
     position: relative;
 
-    & .title-section {
-        display: flex;
-        flex-direction: column;
-        max-width: 50rem;
-        align-self: center;
-        justify-items: center;
-        z-index: 1;
-
-        & .faqPage-title {
-            font-family: 'Playfair Display', sans-serif;
-            font-size: 3rem;
-            text-align: center;
-            padding-bottom: 1rem;
-            line-height: 65px;
-            color: var(--color-footer-heading);
-        }
-
-        & .title-text {
-            max-width: 800px;
-            font-weight: 100;
-            color: var(--color-real-white);
-            text-align: center;
-        }
+    & .faq-title {
+        position: absolute;
+        top: 0;
+        color: #ffffff10;
+        font-family: "iceland", sans-serif;
+        font-size: 10rem;
+        margin-top: 5rem;
     }
 
-    & .faq-toggle-topics {
+     & .faq-content {
         display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 2rem;
-        padding: 2rem 0;
-        z-index: 1;
+        width: 100%;
+        min-height: 32rem;
+        padding-bottom: 10rem;
 
-        & .toggle-button {
-            padding: 0.2rem 1rem;
-            border-radius: 24px;
-            font-size: 1.5rem;
-            font-family: arima;
-            background-color: var(--color-black);
-            color: var(--color-white);
-            border-color: var(--color-white);
-            transition: all 0.5s;
+        & .faq-details {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 1rem;
+            max-width: 400px;
 
-            &:hover {
-                background-color: #CC8B21c0;
-                color: var(--color-black);
-                transition: all 0.5s;
+            & .faq-heading {
+                font-family: "iceland", sans-serif;
+                color: var(--color-real-white);
+                font-size: 3rem;
+                letter-spacing: 1px;
+            }
+
+            & .faq-text {
+                color: var(--color-nintendo-gray);
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
+
+            & .faq-toggle-topics {
+                display: flex;
+                justify-content: space-between;
+                gap: 2rem;
+                padding: 1.5rem;
+                border: 1px solid #ffffff20;
+                border-radius: 12px;
+                box-shadow: 0 1px 2px #00000026;
+                backdrop-filter: blur(2px);
+                background: #ffffff16;
+
+                & .toggle-button {
+                    font-family: "iceland", sans-serif;
+                    color: var(--color-white);
+                    font-size: 1.5rem;
+                    padding-top: 0.5rem;
+                    padding-bottom: 0.5rem;
+                    border: 1px solid #ffffff20;
+                    border-radius: 12px;
+                    box-shadow: 0 1px 2px #00000026;
+                    backdrop-filter: blur(2px);
+                    background: #ffffff16;
+                    width: 120px;
+                    transition: all 0.5s;
+
+                    &:hover {
+                        background-color: #CC8B21c0;
+                        color: var(--color-real-white);
+                        transition: all 0.5s;
+                    }
+                }
+
+                & .active-button {
+                    cursor: default;
+                    pointer-events: none;
+                    color: var(--color-link-active);
+                    border-color: var(--color-link-active);
+                    outline: 2px solid transparent;
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                }
             }
         }
 
-        & .active-button {
-            background-color: #CC8B21c0;
-            color: var(--color-black);
-            border-color: var(--color-link-active);
+        & .faq-answers {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 600px;
+            max-width: 900px;
+            gap: 0.3rem;
+            border: 1px solid #ffffff20;
+            box-shadow: 0 1px 2px #00000026;
+            padding: 0.4rem;
+            border-radius: 6px;
+            width: 100%;
+            backdrop-filter: blur(2px);
+            background: #ffffff16;
         }
-    }
-
-    & #faq-background {
-        position: fixed;
-        top: 0;
-        filter: brightness(0.2);
-        height: 100%;
     }
 
     & .faq:last-of-type {
@@ -77,42 +114,44 @@
     & .darken-image-bottom {
         position: absolute;
         bottom: 0;
-        height: 6rem;
+        height: 11rem;
         width: 100%;
         background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 650px) {
     #faqPage {
-        & .title-section {
-            width: 95%;
+        padding-left: 1rem;
+        padding-right: 1rem;
 
-            & .faqPage-title {
-                font-size: 2.5rem;
-            }
+        & .faq-title {
+            font-size: 7rem;
         }
 
-        & .faq {
-            width: 95%;
+        & .faq-content {
+            & .faq-answers {
+                min-width: 100%;
+            }
         }
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 450px) {
     #faqPage {
-        padding-top: 5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        
+        & .faq-content {
+            & .faq-details {
+                max-width: 100%;
 
-        & .title-section {
-            & .faqPage-title {
-                font-size: 1.8rem;
-                line-height: 35px;
+                & .faq-toggle-topics {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                }
             }
-        }
-
-        & .faq-toggle-topics {
-            justify-content: center;
-            flex-wrap: wrap;
         }
     }
 }

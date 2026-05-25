@@ -146,6 +146,10 @@
                         padding: 0.5rem;
                     }
 
+                    & .contact-info {
+                        gap: 0;
+                    }
+
                     & .contact-link {
                         padding: 0.5rem;
                     }

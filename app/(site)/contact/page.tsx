@@ -36,6 +36,7 @@ export default function ContactPage(): ReactElement {
                     <ContactForm />
                 </section>
             </section>
+            
             <div className="darken-image-bottom" />
         </main>
     );
