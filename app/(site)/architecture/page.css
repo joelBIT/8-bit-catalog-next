@@ -72,6 +72,8 @@
             gap: 3rem;
             flex-wrap: wrap;
             padding-top: 2rem;
+            border-top: 1px solid #ffffff20;
+            margin-top: 1rem;
         }
     }
 
@@ -122,12 +124,8 @@
         }
 
         & #architecture-articles {
-            & .architecturePage-title {
-                font-size: 2.3rem;
-            }
-
-            & .architecturePage-title-text {
-                font-size: 1.2rem;
+            & .articles-heading {
+                align-self: flex-start;
             }
         }
     }
