@@ -13,7 +13,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
 
     return (
         <section className="news-card">
-            <Image src={`/news/${news.image}`} alt="News Card image" className="news-card-image" width={200} height={200} />
+            <Image src={`/news/${news.image}`} unoptimized={true} alt="News Card image" className="news-card-image" width={200} height={200} quality={100} />
             <div className="darken-image-right" />
 
             <section className="news-card-text">
