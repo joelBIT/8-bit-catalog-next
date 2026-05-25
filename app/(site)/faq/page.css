@@ -119,3 +119,39 @@
         background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
     }
 }
+
+@media (max-width: 650px) {
+    #faqPage {
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        & .faq-title {
+            font-size: 7rem;
+        }
+
+        & .faq-content {
+            & .faq-answers {
+                min-width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    #faqPage {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        
+        & .faq-content {
+            & .faq-details {
+                max-width: 100%;
+
+                & .faq-toggle-topics {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                }
+            }
+        }
+    }
+}
