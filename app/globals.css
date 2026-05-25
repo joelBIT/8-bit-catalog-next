@@ -580,7 +580,7 @@ textarea {
     align-items: center;
     background-color: var(--color-black);
     border: 2px solid var(--color-white);
-    color: var(--color-real-white);
+    color: var(--color-white);
     cursor: pointer;
     width: fit-content;
     height: 3rem;
