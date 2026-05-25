@@ -1,19 +1,36 @@
-'use client';
+'use server';
 
-import { type ReactElement, useActionState } from "react";
+import { type ReactElement } from "react";
+import { Resend } from "resend";
+import ContactMessageEmail from "../email/ContactMessageEmail";
 
 import "./ContactForm.css";
 
-export function ContactForm(): ReactElement {
-    const [ state, formAction ] = useActionState(sendMessage,  null);
+export async function ContactForm(): Promise<ReactElement> {
 
-    function sendMessage(): void {
-        console.log("sent");
-        console.log(state);
+    async function sendMessage(formData: FormData): Promise<void> {
+        'use server';
+
+        const email = formData.get('email') as string;
+        const from = formData.get('name') as string;
+        const message = formData.get('message') as string;
+
+        try {
+            const resend = new Resend(process.env.RESEND_API_KEY as string);
+
+            await resend.emails.send({
+                from: '8bit <onboarding@joel-rollny.eu>',
+                to: "joel.rollny@gmail.com",
+                subject: 'Contact question',
+                react: ContactMessageEmail(email, from, message),
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
     
     return (
-        <form id="contactForm" action={formAction}>
+        <form id="contactForm" action={sendMessage}>
             <section className="information-input">
                 <input 
                     id="name"
@@ -22,6 +39,7 @@ export function ContactForm(): ReactElement {
                     placeholder="Name"
                     className={`input-field`}
                     autoComplete="none" 
+                    required
                 />
             </section>
 
