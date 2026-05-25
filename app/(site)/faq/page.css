@@ -22,7 +22,7 @@
         align-items: flex-start;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 2rem;
         width: 100%;
         min-height: 32rem;
         padding-bottom: 10rem;
@@ -32,8 +32,7 @@
             flex-direction: column;
             flex: 1;
             gap: 1rem;
-            max-width: 600px;
-            min-width: 400px;
+            max-width: 400px;
 
             & .faq-heading {
                 font-family: "iceland", sans-serif;
@@ -44,7 +43,6 @@
 
             & .faq-text {
                 color: var(--color-nintendo-gray);
-                max-width: 400px;
                 font-size: 1rem;
                 margin-bottom: 3rem;
             }
@@ -96,9 +94,21 @@
             display: flex;
             flex-direction: column;
             flex: 1;
-            max-width: 600px;
-            min-width: 300px;
+            min-width: 600px;
+            max-width: 900px;
+            gap: 0.3rem;
+            border: 1px solid #ffffff20;
+            box-shadow: 0 1px 2px #00000026;
+            padding: 0.4rem;
+            border-radius: 6px;
+            width: 100%;
+            backdrop-filter: blur(2px);
+            background: #ffffff16;
         }
+    }
+
+    & .faq:last-of-type {
+        border: none;
     }
 
     & .darken-image-bottom {

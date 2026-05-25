@@ -12,14 +12,12 @@
         align-items: center;
 
         & .faq-card__question {
-            font-family: 'Playfair Display', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
+            font-family: "iceland", sans-serif;
+            color: var(--color-real-white);
+            font-size: 1.4rem;
             text-align: left;
-
-            &:hover {
-                cursor: pointer;
-            }
+            letter-spacing: 1px;
+            cursor: pointer;
         }
 
         & .faq-open,
@@ -60,10 +58,10 @@
         transition: max-height 0.35s ease-out;
 
         & .accordion__text {
-            font-size: 1.3rem;
+            color: var(--color-nintendo-gray);
+            font-size: 1rem;
             margin-top: 1rem;
             white-space-collapse: preserve-breaks;
-            color: var(--color-real-white);
         }
     }
 
