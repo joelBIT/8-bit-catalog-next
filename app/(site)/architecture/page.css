@@ -17,7 +17,7 @@
         margin-top: 5rem;
     }
 
-    & #architecture-introduction {
+    & .architecture-introduction {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -53,32 +53,18 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        z-index: 2;
+        padding-top: 2rem;
 
-        & .architecturePage-title {
-            font-family: "playfair display", sans-serif;
-            font-size: 3rem;
+        & .articles-heading {
+            font-family: "iceland", sans-serif;
             color: var(--color-real-white);
+            font-size: 3rem;
             letter-spacing: 1px;
-            text-align: center;
-            font-weight: 100;
         }
 
-        & .architecturePage-title-text {
-            font-family: "arima", sans-serif;
+        & .articles-text {
             color: var(--color-nintendo-gray);
-            font-size: 1.5rem;
-            max-width: 900px;
-            font-weight: 100;
-            border-top: 2px;
-            border-style: solid;
-            border-image: linear-gradient(to left, #181818, #eee, #181818) 1 0;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            border-bottom: 2px;
-            text-align: center;
-            padding: 1rem 0.2rem 3rem 0.2rem;
-            line-height: 27px;
+            font-size: 1.2rem;
         }
 
         & #articles {
@@ -86,6 +72,7 @@
             justify-content: center;
             gap: 3rem;
             flex-wrap: wrap;
+            padding-top: 2rem;
         }
     }
 }
@@ -98,27 +85,8 @@
     }
 }
 
-@media (max-width: 1000px) {
-    #architecturePage {
-        & #nes-introduction {
-            flex-direction: column;
-        }
-    }
-}
-
 @media (max-width: 700px) {
     #architecturePage {
-        & #nes-introduction {
-            padding-top: 3rem;
-        }
-
-        .nintendo-presentation {
-            & .nintendo-presentation__text {
-                column-count: 1;
-                column-gap: 0;
-            }
-        }
-
         & .architecture-video {
             width: 100%;
         }
@@ -127,14 +95,6 @@
 
 @media (max-width: 500px) {
     #architecturePage {
-        & .nintendo-presentation {
-            padding: 0;
-
-            & .nintendo-presentation__heading {
-                font-size: 1.7rem;
-            }
-        }
-
         & #architecture-articles {
             & .architecturePage-title {
                 font-size: 2.3rem;

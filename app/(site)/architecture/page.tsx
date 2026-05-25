@@ -20,7 +20,7 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
         <main id="architecturePage">
             <h1 className="architecture-title"> Architecture </h1>
 
-            <section id="architecture-introduction">
+            <section className="architecture-introduction">
                 <h2 className="architecture-heading">NES Architecture</h2>
                     <p className="architecture-text">
                         It is regarded as one of the most influential gaming consoles.
@@ -52,10 +52,10 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
             />
 
             <section id="architecture-articles">
-                <h2 className="architecturePage-title"> NES Architecture </h2>
-                <h3 className="architecturePage-title-text">
+                <h2 className="articles-heading">NES Articles</h2>
+                <p className="articles-text">
                     Read about the NES architecture. You can find an overview in the articles below.
-                </h3>
+                </p>
 
                 <section id="articles">
                     {
