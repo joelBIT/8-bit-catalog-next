@@ -56,6 +56,8 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
                     )
                 }
             </section>
+
+            <div className="darken-image-bottom" />
         </main>
     )
 }
