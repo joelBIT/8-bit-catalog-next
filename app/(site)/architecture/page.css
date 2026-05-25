@@ -2,92 +2,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    background-color: var(--color-black);
-    padding: 4rem 1rem;
+    justify-content: center;
+    background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
+    padding: 4rem 2rem;
+    padding-top: 11rem;
+    position: relative;
 
-    & .architecturePage-error {
-        font-size: 3rem;
-        padding-top: 5rem;
-        padding-bottom: 3rem;
+    & .architecture-title {
+        position: absolute;
+        top: 0;
+        color: #ffffff10;
+        font-family: "iceland", sans-serif;
+        font-size: 10rem;
+        margin-top: 5rem;
     }
 
-    & .not-found__link {
-        padding: 1rem;
-        backdrop-filter: brightness(0.3);
-        border-radius: 25px;
-        transition: all 0.5s;
-
-        &:hover {
-            filter: brightness(1.5);
-        }
-    }
-
-    & #nes-introduction {
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-        padding-top: 5rem;
-
-        & .nes-introduction__content {
-            display: flex;
-            flex-direction: column;
-
-            & .nes-introduction__subheading {
-                font-family: 'Arima', sans-serif;
-                font-weight: 100;
-                font-size: 1.2rem;
-                line-height: 1px;
-                color: var(--color-nintendo-gray);
-            }
-
-            & .nes-introduction__heading {
-                font-family: 'Playfair Display', sans-serif;
-                font-size: 2.7rem;
-                font-weight: 300;
-                color: var(--color-real-white);
-            }
-        }
-
-        & .architecture-figure {
-            display: flex;
-            align-self: flex-end;
-            height: auto;
-            max-width: 40rem;
-
-            & .architecture-image {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-    }
-
-    & .nintendo-presentation {
+    & #architecture-introduction {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-        border-radius: 19px;
-        padding: 2rem;
-        max-width: 1200px;
-        background-color: #00000050;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        max-width: 1000px;
+        padding-bottom: 2rem;
 
-        & .nintendo-presentation__heading {
-            align-self: center;
-            font-family: 'Playfair Display', sans-serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--color-footer-heading);
+        & .architecture-heading {
+            font-family: "iceland", sans-serif;
+            color: var(--color-real-white);
+            font-size: 3rem;
             letter-spacing: 1px;
         }
 
-        & .nintendo-presentation__text {
-            font-family: "arima", sans-serif;
+        & .architecture-text {
             color: var(--color-nintendo-gray);
-            font-size: 1.3rem;
-            line-height: 1.7rem;
-            column-count: 2;
-            column-gap: 2rem;
+            font-size: 1.2rem;
         }
     }
 
