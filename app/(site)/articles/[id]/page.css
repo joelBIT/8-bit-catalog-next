@@ -120,8 +120,6 @@
         background: #ffffff16;
         backdrop-filter: blur(2px);
         padding: 2rem 1rem;
-        border-bottom-left-radius: 9px;
-        border-bottom-right-radius: 9px;
 
         & .article-content__heading {
             font-family: "iceland", sans-serif;
@@ -144,6 +142,11 @@
             line-height: 1.7rem;
             padding-top: 0.4rem;
         }
+    }
+
+    & .article-content:last-of-type {
+        border-bottom-left-radius: 9px;
+        border-bottom-right-radius: 9px;
     }
 
     & .darken-image-bottom {
