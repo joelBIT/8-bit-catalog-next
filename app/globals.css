@@ -248,6 +248,7 @@ textarea {
 
 .message-success, 
 .message-failure {
+    font-family: "iceland", sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
     border-radius: 3px;
@@ -262,6 +263,7 @@ textarea {
 .message-success {
     background-color: var(--color-neon-green);
     color: var(--color-black);
+    letter-spacing: 1px;
 }
 
 .message-failure {
