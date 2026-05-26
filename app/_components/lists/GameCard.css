@@ -10,6 +10,7 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 4px;
     cursor: pointer;
+    background-color: var(--color-real-black);
     transition: all 0.3s;
 
     & .gameCard-figure {
@@ -87,7 +88,7 @@
         transition: all 0.3s ease;
 
         & > h3 {
-            color: var(--color-real-white);
+            color: var(--color-white);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 100;
