@@ -7,11 +7,14 @@
     padding-bottom: 5rem;
 
     & .no-favourites__text {
-        font-size: 1rem;
+        align-content: center;
+        font-family: iceland, sans-serif;
+        font-size: 3rem;
         font-weight: 100;
         letter-spacing: 1px;
         color: var(--color-real-white);
         text-align: center;
+        height: 100%;
     }
 
     & .show-pagination-toggle {
