@@ -54,7 +54,20 @@
                 font-size: 1rem;
                 font-family: "poppins", sans-serif;
                 font-weight: 100;
-                
+            }
+
+            &:hover {
+                & .material-symbols-outlined {
+                    color: var(--color-link-active);
+
+                    &:visited {
+                        color: var(--color-link-active);
+                    }
+                }
+
+                & .back-link__text {
+                    color: var(--color-link-active);
+                }
             }
         }
     }
