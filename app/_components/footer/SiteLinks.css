@@ -3,9 +3,10 @@
     flex-direction: column;
 
     & .siteLinks-heading {
+        font-family: iceland, sans-serif;
         color: var(--color-footer-heading);
         padding-bottom: 0.5rem;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         letter-spacing: 1px;
     }
 
