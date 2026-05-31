@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { URL_HOME } from "@/app/_utils/utils";
+import { URL_ARCHITECTURE_PAGE, URL_ARTICLES_PAGE, URL_HOME } from "@/app/_utils/utils";
 import { getArticleById } from "@/app/_db/articles-db";
 
 import "./page.css";
@@ -27,21 +27,21 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
     return (
         <main id="articlePage">
             <section className="article-body">
-                <Link href="/architecture" className="back-link">
+                <Link href={URL_ARCHITECTURE_PAGE} className="back-link">
                     <span className="material-symbols-outlined"> arrow_back_ios </span> 
                     <h1 className="back-link__text"> Back to Architecture page </h1>
                 </Link>
 
                 <figure id="article-image">
                     <Image 
-                        src={"/articles/" + article.image}
+                        src={URL_ARTICLES_PAGE + "/" + article.image}
                         className="article-image" 
                         alt="Article image" 
                         width={1232} 
                         height={480} 
                         loading="eager" 
                         placeholder="blur"
-                        blurDataURL={"/articles/" + article.image}
+                        blurDataURL={URL_ARTICLES_PAGE + "/" + article.image}
                     />
 
                     <section className="article-heading">
