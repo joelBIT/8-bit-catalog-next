@@ -563,8 +563,9 @@ textarea {
     align-items: center;
     gap: 0.7rem;
     padding: 0.5rem 1rem;
-    background-color: var(--color-real-white);
-    color: var(--color-black);
+    color: var(--color-white);
+    background-color: transparent;
+    border: 1px solid var(--color-white);
     border-radius: 9px;
     font-family: 'Rancho', sans-serif;
     font-size: 1.5rem;
@@ -572,8 +573,8 @@ textarea {
     transition: all 0.2s ease-in-out;
 
     &:hover {
-        background-color: var(--color-black);
-        color: var(--color-real-white);
+        color: var(--color-link-active);
+        border: 1px solid var(--color-link-active);
         transition: all 0.2s ease-in-out;
     }
 }
