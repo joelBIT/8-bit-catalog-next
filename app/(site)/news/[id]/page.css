@@ -111,14 +111,13 @@
 
                 & .news-author {
                     font-family: "arima", sans-serif;
-                    color: var(--color-tag-text);
+                    color: var(--color-real-white);
                     font-size: 1.2rem;
                 }
 
                 & .news-published {
                     font-family: "arima", sans-serif;
                     font-size: 1.2rem;
-                    color: var(--color-tag-text);
                 }
             }
         }
@@ -166,7 +165,6 @@
                     & .top-news-published {
                         font-weight: 100;
                         font-size: 1rem;
-                        color: var(--color-tag-text);
                     }
 
                     & .material-symbols-outlined {
