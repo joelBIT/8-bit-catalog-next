@@ -221,26 +221,26 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1450px) {
     #newsPage {
-        padding: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
         padding-bottom: 3rem;
 
-        & #news-top {
-            margin-top: 3rem;
-        }
+        & .news-body {
+            & #news-bottom {
+                flex-direction: column-reverse;
+                gap: 3rem;
 
-        & #news-bottom {
-            flex-direction: column-reverse;
-            gap: 3rem;
+                & #news-text {
+                    align-self: center;
+                    padding-right: 0.3rem;
+                    padding-left: 0.3rem;
+                }
 
-            & #news-text {
-                padding-right: 0;
-                align-self: center;
-            }
-
-            & #top-news {
-                align-self: center;
+                & #top-news {
+                    align-self: center;
+                }
             }
         }
     }
@@ -252,28 +252,37 @@
         padding-right: 0.5rem;
         gap: 0;
 
-        & #news-bottom {
-            & #top-news {
-                min-width: 100%;
-                
-                & .top-news-heading {
-                    font-size: 1.5rem;
-                    text-align: center;
+        & .news-body {
+            & #news-bottom {
+                & #top-news {
+                    min-width: 100%;
+                    
+                    & .top-news-heading {
+                        font-size: 1.5rem;
+                        text-align: center;
+                    }
+
+                    & .top-news-list {
+                        text-align: center;
+
+                        & .top-news-list__heading {
+                            align-self: center;
+                        }
+
+                        & .top-news-list__calendar {
+                            align-self: center;
+                        }
+
+                        & .top-news-list-number {
+                            left: 45%;
+                        }
+                    }
                 }
 
-                & .top-news-list {
-                    text-align: center;
-
-                    & .top-news-list__heading {
-                        align-self: center;
-                    }
-
-                    & .top-news-list__calendar {
-                        align-self: center;
-                    }
-
-                    & .top-news-list-number {
-                        left: 45%;
+                & #news-text {
+                    & .news-text-author {
+                        flex-direction: column;
+                        gap: 0;
                     }
                 }
             }
