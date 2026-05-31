@@ -20,6 +20,16 @@
             font-size: 1.8rem;
             text-align: center;
         }
+
+        & .landingButton:nth-child(1) {
+            border-bottom-left-radius: 20px;
+            border-top-left-radius: 20px;
+        }
+
+        & .landingButton:last-child {
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 20px;
+        }
     }
 
     & .landing-cards {

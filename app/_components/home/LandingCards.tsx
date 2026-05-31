@@ -24,9 +24,9 @@ export function LandingCards({allGameTitles}: {allGameTitles: string[]}): ReactE
     return (
         <section id="landingCards">
             <section className="card-navigation">
-                <LandingButton icon='chevron_left' onClick={() => setPage(((page - 1) % 4) === 0 ? 3 : ((page - 1) % 4))} />
+                <LandingButton text='Previous' onClick={() => setPage(((page - 1) % 4) === 0 ? 3 : ((page - 1) % 4))} />
                 <h3 className="landing-title__number">{page}/3</h3>
-                <LandingButton icon='chevron_right' onClick={() => setPage(((page + 1) % 4) === 0 ? 1 : ((page + 1) % 4))} />
+                <LandingButton text='Next' onClick={() => setPage(((page + 1) % 4) === 0 ? 1 : ((page + 1) % 4))} />
             </section>
 
             <section className="landing-cards">
