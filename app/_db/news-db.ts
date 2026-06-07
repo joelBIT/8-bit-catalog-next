@@ -19,7 +19,7 @@ export async function getAllNews(): Promise<News[]> {
  * Retrieve the 6 most viewed news.
  */
 export async function getTopNews(): Promise<News[]> {
-    return await databaseClient.select().from(newsTable).limit(6).orderBy(desc(newsTable.published));
+    return await databaseClient.select().from(newsTable).limit(4).orderBy(desc(newsTable.published));
 }
 
 /**

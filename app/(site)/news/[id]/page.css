@@ -154,13 +154,14 @@
                     font-family: 'Iceland', sans-serif;
                     font-size: 2rem;
                     text-decoration: underline;
-                    padding-bottom: 1rem;
+                    padding-bottom: 2rem;
                 }
 
                 & .top-news-list {
                     display: flex;
                     flex-direction: column;
                     position: relative;
+                    margin-bottom: 1rem;
 
                     & .top-news-list__heading {
                         font-family: "iceland", sans-serif;
