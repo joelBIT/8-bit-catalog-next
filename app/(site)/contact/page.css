@@ -91,10 +91,16 @@
                     padding: 1rem;
                     border: 1px solid #ffffff20;
                     border-radius: 99px;
+                    transition: color .2s;
 
                     & .material-symbols-outlined {
                         display: flex;
                         font-size: 20px;
+                    }
+
+                    &:hover {
+                        color: var(--color-link-active);
+                        transition: color .2s;
                     }
                 }
             }
