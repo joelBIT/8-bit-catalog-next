@@ -40,6 +40,11 @@
 @media (max-width: 500px) {
     #aboutPage {
         padding-left: 0.5rem;
-        padding-right: 0.5rem
+        padding-right: 0.5rem;
+        padding-bottom: 10rem;
+
+        & .about-title {
+            font-size: 7rem;
+        }
     }
 }
