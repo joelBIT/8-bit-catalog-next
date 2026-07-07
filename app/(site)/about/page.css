@@ -1,0 +1,45 @@
+#aboutPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: var(--color-black);
+    position: relative;
+    padding: 4rem 2rem;
+    padding-top: 11rem;
+    background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
+
+    & .about-title {
+        position: absolute;
+        top: 0;
+        color: #ffffff10;
+        font-family: "iceland", sans-serif;
+        font-size: 10rem;
+        margin-top: 5rem;
+    }
+
+    & .about-text {
+        color: var(--color-real-white);
+        max-width: 40rem;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
+
+    & .darken-image-bottom {
+        position: absolute;
+        bottom: 0;
+        height: 11rem;
+        width: 100%;
+        background: linear-gradient(to bottom, #10101000 0%, #101010FF 80%);
+    }
+}
+
+@media (max-width: 500px) {
+    #aboutPage {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem
+    }
+}
