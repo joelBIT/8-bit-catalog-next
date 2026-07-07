@@ -78,9 +78,7 @@ export function LandingCards({allGameTitles}: {allGameTitles: string[]}): ReactE
                 </section>
 
                 <section className="landing-content">
-                    <section id="searchGameArea">
-                        <TitleSearch titles={allGameTitles} />
-                    </section>
+                    
                 </section>
             </section>
         );
