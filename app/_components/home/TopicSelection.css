@@ -152,7 +152,6 @@
 
 @media (max-width: 500px) {
     #topicSelection {
-        padding: 0;
         padding-top: 1rem;
 
         & #topic-selection-top {

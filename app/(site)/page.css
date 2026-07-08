@@ -20,10 +20,6 @@
         flex-wrap: wrap;
         margin-bottom: 5rem;
 
-        & #logo {
-            align-self: flex-start;
-        }
-
         & #searchGameArea {
             display: flex;
             flex-direction: column;
@@ -102,10 +98,6 @@
             flex-direction: column;
             align-items: center;
             gap: 3rem;
-
-            & #logo {
-                align-self: center;
-            }
         }
     }
 }
