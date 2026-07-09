@@ -2,6 +2,6 @@
     display: flex;
 
     & .logo-image {
-        width: 230px;
+        width: 320px;
     }
 }
