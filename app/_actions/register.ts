@@ -33,9 +33,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
         
         return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {
-        if (error instanceof Error) {
-            return { message: error.message, success: false };
-        }
+        console.log(error);
         return { message: 'Could not create account', success: false };
     }
 }

@@ -31,6 +31,9 @@ export const FAQ_GENERAL = "General";
 export const FAQ_ACCOUNT = "Account";
 export const FAQ_GAMES = "Games";
 
+export const PROFILE_BUCKET = "catalog";        // The bucket used to store profile images
+export const DEFAULT_PROFILE_IMAGE = 'profile.png';
+
 /**
  * Adds the 'All' option to the list so that a search can be performed on all games. The 'All' value is not added
  * if the list already contains it.
@@ -130,4 +133,14 @@ export function adjustTextLength(text: string, maxLength: number): string {
     }
 
     return text;
+}
+
+/**
+ * Used to rename uploaded profile images to profile.png in order to replace the old profile.png files in storage.
+ */
+export function renameFile(originalFile: File, newName: string) {
+    return new File([originalFile], newName, {
+        type: originalFile.type,
+        lastModified: originalFile.lastModified
+    });
 }

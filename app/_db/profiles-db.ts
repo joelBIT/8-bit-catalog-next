@@ -32,7 +32,7 @@ export async function updateProfileByUserId(profile: InsertProfile): Promise<voi
  * The profile image is stored in a folder named as the user's id.
  */
 export async function updateProfileImageById(id: number, image: File): Promise<void> {
-    await uploadFile(image.name, image, PROFILE_IMAGES_STORAGE, id.toString() + "/");   // uploads the image file to a bucket.
+    await uploadFile(image, PROFILE_IMAGES_STORAGE, id.toString() + "/");   // uploads the image file to a bucket.
     await updateUserImage(id, image.name);  // updates the image name since this name is used to reference the uploaded image file.
 }
 

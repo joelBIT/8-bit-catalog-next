@@ -15,7 +15,6 @@
         "@oslojs/crypto": "^1.0.1",
         "@oslojs/encoding": "^1.1.0",
         "@react-email/components": "^1.0.1",
-        "@supabase/supabase-js": "^2.46.1",
         "drizzle-orm": "^0.45.1",
         "next": "^16.0.10",
         "postgres": "^3.4.7",
