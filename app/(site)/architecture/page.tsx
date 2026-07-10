@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { ArticleCard } from "@/app/_components/common";
+import { ArticleCard } from "@/app/_components/architecture";
 import { Article } from "@/app/_types/types";
 import { getAllArticles } from "@/app/_db/articles-db";
 

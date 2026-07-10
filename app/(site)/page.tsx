@@ -1,8 +1,7 @@
 'use server';
 
 import { type ReactElement } from "react";
-import { TopicSelection, Logo, TitleSearch } from "@/app/_components/home";
-import { Newsletter } from "../_components/common";
+import { TopicSelection, Logo, TitleSearch, Newsletter } from "@/app/_components/home";
 import { getAllTitles } from "../_db/games-db";
 import { getAllNews } from "../_db/news-db";
 

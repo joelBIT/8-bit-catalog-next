@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { ContactForm } from "@/app/_components/common";
+import { ContactForm } from "@/app/_components/contact";
 
 import "./page.css";
 
