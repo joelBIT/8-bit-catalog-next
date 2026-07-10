@@ -2,7 +2,6 @@ import 'server-only';
 
 import postgres from 'postgres';
 import { drizzle } from 'drizzle-orm/postgres-js';
-import { createClient } from '@supabase/supabase-js';
 
 const connectionString = process.env.DATABASE_URL!;
 
@@ -11,12 +10,10 @@ const client = postgres(connectionString, { prepare: false })
 
 export const databaseClient = drizzle(client);      // Used for communication with the database (containing metadata)
 
-export const storageClient = createClient(databaseURL(), databaseKey());    // Used for communication with storage (containing images/files)
-
-function databaseURL() {
+export function databaseURL() {
     return process.env?.SUPABASE_URL as string;
 }
 
-function databaseKey() {
+export function databaseKey() {
     return process.env?.SUPABASE_KEY as string;
 }

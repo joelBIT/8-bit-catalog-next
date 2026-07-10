@@ -1,15 +1,12 @@
 import 'server-only';
 
 import { eq, and } from 'drizzle-orm';
-import { databaseClient, storageClient } from './db';
+import { databaseClient } from './db';
 import { Account, accountsTable } from './schema/accounts';
 import { usersTable } from './schema/users';
 import { profilesTable } from './schema/profiles';
 import { addressesTable } from './schema/addresses';
-
-
-const PROFILE_IMAGES_STORAGE = "catalog";
-
+import { copyDefaultProfileImageToFolder } from './files-db';
 
 
 /**
@@ -54,7 +51,7 @@ export async function activateAccount(activationCode: string): Promise<boolean> 
 export async function copyProfileImageToFolder(activationCode: string): Promise<void> {
     try {
         const response = await databaseClient.select().from(accountsTable).where(eq(accountsTable.activationCode, activationCode)).limit(1);
-        await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${response[0]?.userId}/profile.png`);
+        await copyDefaultProfileImageToFolder(`${response[0]?.userId}/profile.png`);
     } catch (error) {
         console.log(error);
     }
@@ -74,6 +71,6 @@ export async function createActivatedAccount(userEmail: string, passwordHash: st
         await tx.insert(addressesTable).values({userId});
 
         await tx.insert(accountsTable).values({ userId, activated: true, activationCode: "created by admin" });
-        await storageClient.storage.from(PROFILE_IMAGES_STORAGE).copy('profile.png', `${userId}/profile.png`);
+        await copyDefaultProfileImageToFolder(`${userId}/profile.png`);
     });
 }

@@ -15,7 +15,7 @@ import { Game, gamesTable, InsertGame } from './schema/games';
  */
 export async function updateGameById(gameId: number, game: InsertGame, file: File): Promise<void> {
     if (file.name !== 'undefined') {                            // New game cover was chosen so the cover file must be uploaded to the storage bucket
-        await uploadFile(game.cover, file);
+        await uploadFile(file);
         await databaseClient.update(gamesTable).set({ cover: game.cover }).where(eq(gamesTable.id, gameId));     // Update game cover name
     } 
     
