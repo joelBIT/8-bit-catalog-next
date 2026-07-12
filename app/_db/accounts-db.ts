@@ -2,24 +2,12 @@ import 'server-only';
 
 import { eq, and } from 'drizzle-orm';
 import { databaseClient } from './db';
-import { Account, accountsTable } from './schema/accounts';
+import { accountsTable } from './schema/accounts';
 import { usersTable } from './schema/users';
 import { profilesTable } from './schema/profiles';
 import { addressesTable } from './schema/addresses';
 import { copyDefaultProfileImageToFolder } from './files-db';
 
-
-/**
- * Retrieve account information for user with supplied user ID.
- */
-export async function getAccountByUserId(userId: number): Promise<Account> {
-    const response = await databaseClient.select().from(accountsTable).where(eq(accountsTable.userId, userId)).limit(1);
-    if (response?.length !== 1) {
-        console.log(`Could not find account for user with ID ${userId}`);
-        throw new Error(`Could not find account for user with ID ${userId}`);
-    }
-    return response[0];
-}
 
 /**
  * First a check is done to see if the activation code is valid. Then the corresponding account is activated. A default profile image is copied

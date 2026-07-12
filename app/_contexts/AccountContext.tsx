@@ -4,8 +4,8 @@ import { createContext, ReactElement, ReactNode, useEffect, useState } from "rea
 import { User } from "../_db/schema/users";
 import { Address } from "../_db/schema/addresses";
 import { Profile } from "../_db/schema/profiles";
-import { getUserFromSession } from "@/app/_session/sessionUtils";
 import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "../_client/client";
+import { authClient } from "../auth-client";
 
 export interface AccountContextProvider {
     user: User;
@@ -23,19 +23,20 @@ export function AccountProvider({ children }: { children: ReactNode }): ReactEle
     const [user, setUser] = useState<User>({} as User);
     const [profile, setProfile] = useState<Profile>({} as Profile);
     const [address, setAddress] = useState<Address>({} as Address);
+    const { data: session } = authClient.useSession();
 
     useEffect(() => {
         addUser();
     }, []);
 
     async function addUser(): Promise<void> {
-        const authenticatedUser = await getUserFromSession();
-        if (authenticatedUser) {
-            setUser(authenticatedUser);
+        if (session) {
+            const userId = parseInt(session.user.id);
+            //setUser();
             try {
-                const profile = await getProfileByUserIdRequest(authenticatedUser.id);
+                const profile = await getProfileByUserIdRequest(userId);
                 setProfile(profile);
-                const address = await getAddressByUserIdRequest(authenticatedUser.id);
+                const address = await getAddressByUserIdRequest(userId);
                 setAddress(address);
             } catch (error) {
                 console.log(error);

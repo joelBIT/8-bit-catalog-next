@@ -4,7 +4,8 @@ import { createContext, ReactElement, ReactNode, useEffect, useState } from "rea
 import { Game } from "../_db/schema/games";
 import { isLocalStorageAvailable } from "@/app/_utils/utils";
 import { addFavouriteGameToDatabaseRequest, deleteFavouriteGameFromDatabaseRequest, getFavouritesRequest } from "@/app/_client/client";
-import { isAuthenticated } from "@/app/_session/sessionUtils";
+import { isAuthenticated } from "../_auth/client-functions";
+import { authClient } from "../auth-client";
 
 export interface FavouritesContextProvider {
     favouritesList: Game[];
@@ -22,6 +23,7 @@ export const FavouritesContext = createContext<FavouritesContextProvider>({} as 
  */
 export function FavouritesProvider({ children }: { children: ReactNode }): ReactElement {
     const [favouritesList, setFavouritesList] = useState<Game[]>([]);
+    const { data: session } = authClient.useSession();
     const STORAGE_KEY = 'favouriteGames';
 
     useEffect(() => {
@@ -31,9 +33,8 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
     /**
      * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.
      */
-    async function loadFavouriteGames(): Promise<void> {
-        const authenticated = await isAuthenticated();      // Check if user has an active session
-        if (authenticated) {
+    function loadFavouriteGames(): void {
+        if (session) {
             getFavouriteGames();
         } else if (isLocalStorageAvailable()) {
             if (localStorage.getItem(STORAGE_KEY)) {
@@ -61,10 +62,10 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
      * Adds a game as a favourite in localstorage if localstorage is available. Updates the total number of favourite pages
      * to be consistent with the number of favourite games.
      */
-    async function addFavouriteGame(game: Game): Promise<void> {
+    function addFavouriteGame(game: Game): void {
         const games = sortFavourites([...favouritesList, game]);
 
-        const authenticated = await isAuthenticated();
+        const authenticated = isAuthenticated();
         if (authenticated) {
             setFavouritesList(games);
             addFavouriteGameToDatabaseRequest(game.id);
@@ -78,10 +79,10 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
      * Removes a game from the list of favourites in localstorage if localstorage is available. Updates the total number of favourite pages
      * to be consistent with the number of favourite games.
      */
-    async function removeFavouriteGame(game: Game): Promise<void> {
+    function removeFavouriteGame(game: Game): void {
         const games = favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id);
 
-        const authenticated = await isAuthenticated();
+        const authenticated = isAuthenticated();
         if (authenticated) {
             setFavouritesList(games);
             deleteFavouriteGameFromDatabaseRequest(game.id);

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
+import { auth } from "@/app/auth";
 import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
 
 /**
@@ -8,9 +9,11 @@ import { URL_DASHBOARD_PAGE } from "@/app/_utils/utils";
  * Usually used for login and register pages.
  */
 export async function GuestOnly({ children }: { children: ReactNode }) {
-    const cookie = (await cookies()).get("session")?.value ?? null;
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
 
-    if (cookie) {
+    if (session) {
         redirect(URL_DASHBOARD_PAGE);
     }
     

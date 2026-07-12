@@ -8,7 +8,6 @@ import { InsertProfile, profilesTable } from './schema/profiles';
 import { addressesTable, InsertAddress } from './schema/addresses';
 import { Resend } from 'resend';
 import ActivationEmail from '../_components/email/ActivationEmail';
-import { accountsTable } from './schema/accounts';
 
 
 
@@ -45,13 +44,6 @@ export async function getUserById(userId: number): Promise<User> {
  */
 export async function getAllUsers(): Promise<User[]> {
     return await databaseClient.select().from(usersTable);
-}
-
-/**
- * Update password by replacing the existing password hash with the hash of the new password.
- */
-export async function updatePasswordByUserId(id: number, passwordHash: string): Promise<void> {
-    await databaseClient.update(usersTable).set({passwordHash}).where(eq(usersTable.id, id));
 }
 
 /**
@@ -110,17 +102,17 @@ export async function isCurrentPassword(email: string, passwordHash: string): Pr
  * to login/search members due to character(s) being mixed uppercase and lowercase. Also, as default the email is also stored as
  * the username since it is unique. A user can change the username to something else when logged in.
  */
-export async function createUserAndAccount(passwordHash: string, userEmail: string, profile: InsertProfile, address: InsertAddress): Promise<void> {
+export async function createAddressAndProfile(userId: number, userEmail: string, profile: InsertProfile, address: InsertAddress): Promise<void> {
     await databaseClient.transaction(async (tx) => {
         const email = userEmail.toLowerCase();
-        const user = await tx.insert(usersTable).values({email, passwordHash, username: email, role: "regular"})
-            .returning({'id': usersTable.id, 'email': usersTable.email});
+        // const user = await tx.insert(usersTable).values({email, passwordHash, username: email, role: "regular"})
+        //     .returning({'id': usersTable.id, 'email': usersTable.email});
         
-        const userId = user[0].id;
+        // const userId = user[0].id;
         await tx.insert(profilesTable).values({...profile, userId});
         await tx.insert(addressesTable).values({...address, userId});
         const activationCode = uuidv4();
-        await tx.insert(accountsTable).values({ userId, activationCode });
+        //await tx.insert(accountsTable).values({ userId, activationCode });
         sendActivationMail(email, activationCode);
     });
 }

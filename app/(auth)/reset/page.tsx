@@ -1,10 +1,8 @@
 'use client';
 
-import { ReactElement, useActionState, useEffect, useState, Suspense } from "react";
+import { ReactElement, useState, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
-import Link from "next/link";
-import { changePassword } from "@/app/_actions/password";
-import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
+import { authClient } from "@/app/auth-client";
 
 import "./page.css";
 
@@ -13,49 +11,82 @@ import "./page.css";
  * performing a reset of an account password.
  */
 export default function ResetPasswordPage(): ReactElement {
-    const [state, formAction] = useActionState(changePassword, { message: '', success: false });
     const [isVisible, setVisible] = useState<boolean>(false);
     const [isVisibleRepeat, setVisibleRepeat] = useState<boolean>(false);
-    const [isOldVisible, setOldVisible] = useState<boolean>(false);
+    const [isCurrentVisible, setCurrentVisible] = useState<boolean>(false);
+    const [newPassword, setNewPassword] = useState<string>('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
+    const [currentPassword, setCurrentPassword] = useState<string>('');
+    const [success, setSuccess] = useState<boolean>(false);
+    const [message, setMessage] = useState<string>('');
     const [showMessage, setShowMessage] = useState<boolean>(false);
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
 
-    useEffect(() => {
-        if (state?.message && !showMessage) {       // Show message for a fixed amount of time
-            setShowMessage(true);
-            setTimeout(() => {
-                setShowMessage(false);
-            }, 5000);
+    if (!token) {
+        
+    }
+
+    async function resetPassword() {
+        if (!token) {
+            return;
         }
-    }, [state]);
+
+        const { data, error } = await authClient.resetPassword({
+            newPassword,
+            token
+        });
+
+        if (error) {
+            setSuccess(false);
+            setMessage("Could not update password");
+        } else {
+            setSuccess(true);
+            setMessage("Password updated");
+        }
+
+        setShowMessage(true);
+        setTimeout(() => {
+            setShowMessage(false);
+            setMessage('');
+        }, 5000);
+    }
+
+    let messageContent = <></>;
+
+    if (showMessage) {
+        messageContent =
+            <>
+                <h2 className={success ? "message-success message-fade" : "message-failure message-fade"}>
+                    {message}
+                </h2>
+            </>
+    }
 
     function PasswordForm(): ReactElement {
-        const searchParams = useSearchParams();
-        const email = searchParams.get('email') as string;
-
         return (
-            <form id="resetPasswordForm" action={formAction}>
-                <input type="hidden" name="email" value={email ? email : ""} />
-                { !email ? <h2 className="message-failure email-parameter"> Email parameter is missing </h2> : <></> }
-                
+            <form id="resetPasswordForm" action={resetPassword}>               
                 <h1 className="resetPasswordForm__title"> Change Password </h1>
                 <section id="password-inputs">
                     <section className="input">
                         <input 
-                            id="oldPassword"
-                            name="oldPassword"
-                            type={isOldVisible ? "text" : "password"}
-                            placeholder="OLD PASSWORD"
+                            id="currentPassword"
+                            name="currentPassword"
+                            type={isCurrentVisible ? "text" : "password"}
+                            placeholder="CURRENT PASSWORD"
                             className="form__field"
+                            value={currentPassword}
+                            onChange={event => setCurrentPassword(event.target.value)}
                             autoComplete="none" 
                             required 
                         />
     
                         <span className="form__field-label">
-                            Old Password
+                            Current Password
                         </span>
     
-                        <span className="material-symbols-outlined password-show" onClick={() => setOldVisible(!isOldVisible)}>
-                            {isOldVisible ? "visibility_off" : "visibility"}
+                        <span className="material-symbols-outlined password-show" onClick={() => setCurrentVisible(!isCurrentVisible)}>
+                            {isCurrentVisible ? "visibility_off" : "visibility"}
                         </span>
                     </section>
     
@@ -71,6 +102,8 @@ export default function ResetPasswordPage(): ReactElement {
                             type={isVisible ? "text" : "password"}
                             placeholder="SET NEW PASSWORD"
                             className="form__field"
+                            value={newPassword}
+                            onChange={event => setNewPassword(event.target.value)}
                             autoComplete="none" 
                             required 
                         />
@@ -91,6 +124,8 @@ export default function ResetPasswordPage(): ReactElement {
                             type={isVisibleRepeat ? "text" : "password"}
                             placeholder="CONFIRM PASSWORD"
                             className="form__field"
+                            value={confirmNewPassword}
+                            onChange={event => setConfirmNewPassword(event.target.value)}
                             autoComplete="none" 
                             required 
                         />
@@ -105,24 +140,11 @@ export default function ResetPasswordPage(): ReactElement {
                     </section>
                 </section>
     
-                <button className="authButton" type="submit">
+                <button className="authButton" type="submit" disabled={!token && confirmNewPassword !== newPassword && currentPassword.length < 1}>
                     <span className="authButton__text"> Update </span>
                 </button>
-
-                { 
-                    state.success ? 
-                        <section id="login-link-section" className="input">
-                            <Link id="login-link" href={URL_LOGIN_PAGE} className="form__field"> Sign in </Link>
-                        </section>
-                        : <></> 
-                }
     
-                { 
-                    showMessage ? 
-                        <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                            {state?.message}
-                        </h2> : <></> 
-                }
+                {messageContent}
             </form>
         );
     }

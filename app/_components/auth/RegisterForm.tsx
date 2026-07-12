@@ -152,6 +152,7 @@ export function RegisterForm(): ReactElement {
                             onChange={e => setFullName(e.target.value)} 
                             type="text"
                             className="input-field"
+                            required
                             autoComplete="none" 
                         />
                     </section>

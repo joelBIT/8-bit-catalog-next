@@ -4,9 +4,9 @@ import { ReactElement, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useFavourites } from "@/app/_hooks";
-import { signOut } from "@/app/_session/session";
 import { URL_TIMELINE_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { Hamburger } from ".";
+import { authClient } from "@/app/auth-client";
 
 import "./NavBar.css";
 
@@ -55,7 +55,13 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
      * Log out and update header to only show navbar links that are available to unauthenticated users.
      */
     async function logout(): Promise<void> {
-        signOut();
+        await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    router.push(URL_LOGIN_PAGE);
+                }
+            }
+        });
         setIsChecked(false);
         router.refresh();
     }
