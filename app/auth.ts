@@ -22,7 +22,7 @@ export const auth = betterAuth({
                 from: '8bit <onboarding@joel-rollny.eu>',
                 to: user.email,
                 subject: 'Password Reset',
-                react: ResetPasswordEmail(url, user.email),
+                react: ResetPasswordEmail(url, user.email, token),
             });
         }
     },

@@ -3,7 +3,7 @@ import { Section, Row, Text, Link } from "@react-email/components";
 /**
  * This email is sent to the email address supplied when requesting a new password.
  */
-export default function ResetPasswordEmail(url: string, email: string) {
+export default function ResetPasswordEmail(url: string, email: string, token: string) {
     return (
         <Section>
             <Section>
@@ -22,7 +22,7 @@ export default function ResetPasswordEmail(url: string, email: string) {
                 </Row>
                 <Row>
                     <Text style={{ fontSize: "1.3rem"}}>
-                        Please click on the following link to change your password: <Link href={`${url}?email=${email}`}> Change Password </Link>
+                        Please click on the following link to change your password: <Link href={`${url}?token=${token}`}> Change Password </Link>
                     </Text>
                 </Row>
                 <Row>
