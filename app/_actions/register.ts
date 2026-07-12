@@ -2,7 +2,6 @@
 
 import { createAddressAndProfile } from "../_db/users-db";
 import { ActionState } from "../_types/types";
-import { URL_DASHBOARD_PAGE } from "../_utils/utils";
 import { auth } from "../auth";
 
 export async function register(_prevState: ActionState, formData: FormData): Promise<ActionState> {
@@ -37,8 +36,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
             body: {
                 name,
                 email,
-                password,
-                callbackURL: `${process.env.DOMAIN_URL}/${URL_DASHBOARD_PAGE}`,
+                password
             },
         });
 

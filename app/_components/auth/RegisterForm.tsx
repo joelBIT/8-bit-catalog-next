@@ -66,7 +66,7 @@ export function RegisterForm(): ReactElement {
                         required 
                     />
 
-                    <span className="form__field-label">
+                    <span className="form__field-label required">
                         Email
                     </span>
                 </section>
@@ -90,7 +90,7 @@ export function RegisterForm(): ReactElement {
                             required 
                         />
 
-                        <span className="form__field-label">
+                        <span className="form__field-label required">
                             Password
                         </span>
 
@@ -112,7 +112,7 @@ export function RegisterForm(): ReactElement {
                             required 
                         />
 
-                        <span className="form__field-label">
+                        <span className="form__field-label required">
                             Confirm Password
                         </span>
 
@@ -134,14 +134,14 @@ export function RegisterForm(): ReactElement {
                         required
                     />
 
-                    <span className="form__field-label">
+                    <span className="form__field-label required">
                         Date of Birth
                     </span>
                 </section>
 
                 <section id="personalInformation">
                     <section className="information-input">
-                        <label className="input-label" htmlFor="full_name">
+                        <label className="input-label required" htmlFor="full_name">
                             Full name
                         </label>
 

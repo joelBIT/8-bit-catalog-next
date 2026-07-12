@@ -1,28 +1,46 @@
-import { betterAuth } from "better-auth";
+import { betterAuth, User } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { Resend } from "resend";
 import { databaseClient } from "./_db/db";
 import ResetPasswordEmail from "./_components/email/ResetPasswordEmail";
+import ActivationEmail from "./_components/email/ActivationEmail";
+import { usersTable } from "./_db/schema/users";
+
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 export const auth = betterAuth({
     baseURL: process.env.BETTER_AUTH_URL, 
+    experimental: { joins: true },
     database: drizzleAdapter(databaseClient, {
-        provider: "pg"
+        provider: "pg",
+        schema: {
+            user: usersTable
+        }
     }),
     emailAndPassword: { 
         enabled: true,
         revokeSessionsOnPasswordReset: true,
+        requireEmailVerification: true,
+        emailVerification: {
+            sendVerificationEmail: async ( { user, url, token }: { user: User, url: string, token: string }, request: any) => {
+                await resend.emails.send({
+                    from: '8bit <onboarding@joel-rollny.eu>',
+                    to: user.email,
+                    subject: 'Finish registration',
+                    react: ActivationEmail(token)
+                });
+            }
+        },
         minPasswordLength: 8,
-        sendResetPassword: async ({ user, url, token }, request) => {
+        sendResetPassword: async ({ user, url, token }: { user: User, url: string, token: string }, request: any) => {
             // Send the reset link (url) to the user's email
             await resend.emails.send({
                 from: '8bit <onboarding@joel-rollny.eu>',
                 to: user.email,
                 subject: 'Password Reset',
-                react: ResetPasswordEmail(url, user.email, token),
+                react: ResetPasswordEmail(url, user.email, token)
             });
         }
     },

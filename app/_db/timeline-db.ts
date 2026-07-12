@@ -2,7 +2,7 @@ import 'server-only';
 
 import { asc } from 'drizzle-orm';
 import { databaseClient } from './db';
-import { TimelineEvent, timelineEventsTable } from './schema/timelineEvents';
+import { TimelineEvent, timelineEventsTable } from './schema/timeline_events';
 
 
 /**

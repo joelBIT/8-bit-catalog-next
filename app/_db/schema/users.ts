@@ -1,12 +1,13 @@
-import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { boolean, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 
 export const usersTable = pgTable('users', {
-    id: serial('id').primaryKey(),
-    email: text('email').notNull().unique(),
-    createdAt: timestamp('created_at').notNull().defaultNow(),
-    passwordHash: text('password_hash').notNull(),
-    username: text('username').notNull(),
-    role: text('role').notNull()
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    email: text("email").notNull().unique(),
+    emailVerified: boolean("email_verified").notNull(),
+    image: text("image"),
+    createdAt: timestamp("created_at").notNull(),
+    updatedAt: timestamp("updated_at").notNull(),
 });
 
 export type User = typeof usersTable.$inferSelect;
