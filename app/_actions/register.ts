@@ -40,8 +40,8 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
             },
         });
 
-        const userId = parseInt(data.user.id);
-        await createAddressAndProfile(userId, email, {userId, phone, birthDate: new Date(birthDate)}, {userId, street, city, country});       // TODO: userID is set to 0 because this value is not used in the function but required by the type. Fix this.
+        //const userId = parseInt(data.user.id);
+        //await createAddressAndProfile(userId, email, {userId, phone, birthDate: new Date(birthDate)}, {userId, street, city, country});       // TODO: userID is set to 0 because this value is not used in the function but required by the type. Fix this.
         
         return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {

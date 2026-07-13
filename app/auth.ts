@@ -5,18 +5,20 @@ import { Resend } from "resend";
 import { databaseClient } from "./_db/db";
 import ResetPasswordEmail from "./_components/email/ResetPasswordEmail";
 import ActivationEmail from "./_components/email/ActivationEmail";
-import { usersTable } from "./_db/schema/users";
+import { account, session, users, verification } from "@/auth-schema";
 
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 export const auth = betterAuth({
     baseURL: process.env.BETTER_AUTH_URL, 
-    experimental: { joins: true },
     database: drizzleAdapter(databaseClient, {
         provider: "pg",
         schema: {
-            user: usersTable
+            user: users,
+            session: session,
+            verification: verification,
+            account: account
         }
     }),
     emailAndPassword: { 
@@ -44,12 +46,12 @@ export const auth = betterAuth({
             });
         }
     },
-    socialProviders: {
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID as string,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
-        }
-    },
+    // socialProviders: {
+    //     google: { 
+    //         clientId: process.env.GOOGLE_CLIENT_ID as string,
+    //         clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+    //     }
+    // },
     session: {
         expiresIn: 60 * 60 * 24 * 7,        // 7 days
         updateAge: 60 * 60 * 24             // 1 day (every 1 day the session expiration is updated)

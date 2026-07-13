@@ -1,9 +1,9 @@
 import { integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
-import { usersTable } from './users';
+import { user } from '@/auth-schema';
 
 export const addressesTable = pgTable('addresses', {
     id: serial('id').primaryKey(),
-    userId: integer('user_id').notNull().unique().references(() => usersTable.id),
+    userId: integer('user_id').notNull().unique().references(() => user.id),
     street: text('street').notNull().default(''),
     city: text('city').notNull().default(''),
     zipCode: text('zip_code').notNull().default(''),
