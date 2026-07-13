@@ -6,7 +6,7 @@ import { auth } from "@/app/auth";
 import { ActionState } from "../_types/types";
 import { URL_DASHBOARD_PAGE } from "../_utils/utils";
 
-export async function login(_prevState: ActionState, formData: FormData): Promise<ActionState | undefined> {
+export async function login(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
@@ -26,4 +26,5 @@ export async function login(_prevState: ActionState, formData: FormData): Promis
     }
 
     revalidatePath('/', 'layout');
+    return { message: 'Signing in', success: true };
 }

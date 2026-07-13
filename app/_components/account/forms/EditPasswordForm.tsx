@@ -20,7 +20,7 @@ export function EditPasswordForm(): ReactElement {
         const { data, error } = await authClient.changePassword({
             newPassword,
             currentPassword,
-            revokeOtherSessions: true,
+            revokeOtherSessions: true
         });
 
         if (error) {
@@ -39,7 +39,7 @@ export function EditPasswordForm(): ReactElement {
     if (showMessage) {
         messageContent =
             <>
-                <h2 className={success ? "message-success message-fade" : "message-failure message-fade"}>
+                <h2 className={success ? "message-success" : "message-failure"}>
                     {message}
                 </h2>
             </>

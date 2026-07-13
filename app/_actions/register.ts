@@ -1,5 +1,6 @@
 'use server';
 
+import { headers } from "next/headers";
 import { createAddressAndProfile } from "../_db/users-db";
 import { ActionState } from "../_types/types";
 import { auth } from "../auth";
@@ -38,10 +39,10 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
                 email,
                 password
             },
+            headers: await headers()        // This endpoint requires session cookies.
         });
 
-        //const userId = parseInt(data.user.id);
-        //await createAddressAndProfile(userId, email, {userId, phone, birthDate: new Date(birthDate)}, {userId, street, city, country});       // TODO: userID is set to 0 because this value is not used in the function but required by the type. Fix this.
+        //await createAddressAndProfile(userId, email, {data.user.id, phone, birthDate: new Date(birthDate)}, {data.user.id, street, city, country});       // TODO: userID is set to 0 because this value is not used in the function but required by the type. Fix this.
         
         return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {

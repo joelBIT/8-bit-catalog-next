@@ -34,8 +34,10 @@ export async function uploadFile(file: File, storage: string = COVERS_STORAGE, f
 /**
  * The default profile image is always located in the same place with the same name. Only supply the destination path to where
  * the default profile image should be copied. A signed-in user may change his/hers profile image at any later time.
+ * 
+ * Returns true if the profile images transfer was a success, false otherwise.
  */
-export async function copyDefaultProfileImageToFolder(destinationPath: string) {
+export async function copyDefaultProfileImageToFolder(destinationPath: string): Promise<boolean> {
     const response = await fetch(`${databaseURL()}/storage/v1/object/copy`, {
         method: 'POST',
         headers: {
@@ -51,6 +53,8 @@ export async function copyDefaultProfileImageToFolder(destinationPath: string) {
     });
 
     if (!response.ok) {
-        throw new Error("Failed to copy default profile image to new folder");
+        return false;
     }
+
+    return true;
 }
