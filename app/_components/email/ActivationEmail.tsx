@@ -1,11 +1,10 @@
-import { URL_ACTIVATION_PAGE } from "@/app/_utils/utils";
 import { Section, Row, Text, Link } from "@react-email/components";
 
 /**
  * This email is sent to the email address used when registering for an account. The supplied link must be clicked in order for the
  * newly created account to be activated. After that it is possible to login to the account.
  */
-export default function ActivationEmail(userId: string) {
+export default function ActivationEmail(url: string) {
     return (
         <Section>
             <Section>
@@ -16,7 +15,7 @@ export default function ActivationEmail(userId: string) {
                 </Row>
                 <Row>
                     <Text style={{ fontSize: "1.3rem"}}>
-                        Please click on the following link to verify your email: <Link href={`${process.env.DOMAIN_URL}${URL_ACTIVATION_PAGE}/${userId}`}> verify </Link>
+                        Please click on the following link to verify your email: <Link href={`${url}`}> verify </Link>
                     </Text>
                 </Row>
             </Section>

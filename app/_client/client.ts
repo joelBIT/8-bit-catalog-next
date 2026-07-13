@@ -5,7 +5,7 @@ import { Game } from '../_db/schema/games';
 import { News } from '../_db/schema/news';
 import { Profile } from '../_db/schema/profiles';
 import { TimelineEvent } from '../_db/schema/timeline_events';
-import { User } from '../_db/schema/users';
+import { User } from '../_db/schema/auth/users';
 
 
 /********************************************************************************************
@@ -42,9 +42,9 @@ export async function getUsersRequest(): Promise<User[]> {
 /**
  * Retrieve profile for supplied user ID.
  */
-export async function getProfileByUserIdRequest(user_id: number): Promise<Profile> {
+export async function getProfileByUserIdRequest(userId: string): Promise<Profile> {
     try {
-        const response = await fetch(`/api/profile?user_id=${user_id}`);
+        const response = await fetch(`/api/profile?user_id=${userId}`);
         if (response.ok) {
             return await response.json();
         }
@@ -53,12 +53,12 @@ export async function getProfileByUserIdRequest(user_id: number): Promise<Profil
         throw error;
     }
 
-    throw new Error(`Could not find profile for user id ${user_id}`);
+    throw new Error(`Could not find profile for user id ${userId}`);
 }
 
-export async function getAddressByUserIdRequest(user_id: number): Promise<Address> {
+export async function getAddressByUserIdRequest(userId: string): Promise<Address> {
     try {
-        const response = await fetch(`/api/address?user_id=${user_id}`);
+        const response = await fetch(`/api/address?user_id=${userId}`);
         if (response.ok) {
             return await response.json();
         }
@@ -67,7 +67,7 @@ export async function getAddressByUserIdRequest(user_id: number): Promise<Addres
         throw error;
     }
 
-    throw new Error(`Could not find address for user id ${user_id}`);
+    throw new Error(`Could not find address for user id ${userId}`);
 }
 
 /**

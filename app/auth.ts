@@ -13,8 +13,8 @@ import * as profileSchema from "./_db/schema/profiles";
 import * as addressesSchema from "./_db/schema/addresses";
 import { profilesTable } from "./_db/schema/profiles";
 import { addressesTable } from "./_db/schema/addresses";
-
 import { DEFAULT_PROFILE_IMAGE } from "./_utils/utils";
+import { copyDefaultProfileImageToFolder } from "./_db/files-db";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
@@ -43,7 +43,8 @@ export const auth = betterAuth({
                     await databaseClient.insert(addressesTable).values({
                         userId: user.id
                     });
-                },
+                    await copyDefaultProfileImageToFolder(`${user.id}/${DEFAULT_PROFILE_IMAGE}`)
+                }
             }
         }
     },
@@ -56,11 +57,13 @@ export const auth = betterAuth({
         sendOnSignUp: true,
         autoSignInAfterVerification: true,
         sendVerificationEmail: async ( { user, url, token }: { user: User, url: string, token: string }, request: any) => {
+            console.log("URL")
+            console.log(url)
             await resend.emails.send({
-                from: '8bit <onboarding@joel-rollny.eu>',
+                from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
                 to: user.email,
                 subject: 'Finish registration',
-                react: ActivationEmail(user.id)
+                react: ActivationEmail(url)
             });
         }
     },

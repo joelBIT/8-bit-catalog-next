@@ -9,7 +9,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const id = searchParams.get('user_id') as string;
 
     try {
-        const address = await getAddressByUserId(parseInt(id));
+        const address = await getAddressByUserId(id);
         return NextResponse.json(address);
     } catch (error) {
         console.log(error);

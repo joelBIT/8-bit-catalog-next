@@ -8,7 +8,7 @@ import "./EditUsernameForm.css";
 
 export function EditUsernameForm(): ReactElement {
     const { user } = useAccount();
-    const [state, formAction] = useActionState(updateUsername.bind(null, user.id), { message: '', success: false, username: user?.username });
+    const [state, formAction] = useActionState(updateUsername.bind(null, user.id), { message: '', success: false, username: user?.name });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     
     useEffect(() => {
@@ -31,7 +31,7 @@ export function EditUsernameForm(): ReactElement {
                     type="text"
                     placeholder="SET USERNAME"
                     className="form__field"
-                    defaultValue={state?.username ? state.username : user?.username} 
+                    defaultValue={state?.username ?? ''} 
                     autoComplete="off" 
                     required 
                 />

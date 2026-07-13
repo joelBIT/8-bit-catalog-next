@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
-import { getValidatedSession } from "@/app/_session/cookie";
 import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/app/_db/favourites-db";
+import { authClient } from "@/app/auth-client";
+
 
 /**
  * Retrieves the authenticated user's favourite games.
  */
 export async function GET(): Promise<NextResponse> {
-    const session = await getValidatedSession();
+    const { data: session, error } = await authClient.getSession();
 
     if (session) {
-        const games = await getFavouritesByUserId(session.userId);
+        const games = await getFavouritesByUserId(session.user.id);
         return NextResponse.json(games);
     }
 
@@ -20,12 +21,12 @@ export async function GET(): Promise<NextResponse> {
  * Adds a game to the authenticated user's list of favourite games.
  */
 export async function POST(request: Request): Promise<NextResponse> {
+    const { data: session, error } = await authClient.getSession();
     const { game_id } = await request.json();
-    const session = await getValidatedSession();
 
     if (session) {
         try {
-            await addFavouriteForUserId(session.userId, game_id);
+            await addFavouriteForUserId(session.user.id, game_id);
             return NextResponse.json({ message: 'Game added to favourites' }, { status: 200 });
         } catch (error) {
             console.log(error);
@@ -40,12 +41,11 @@ export async function POST(request: Request): Promise<NextResponse> {
  * Deletes a game from the authenticated user's list of favourite games.
  */
 export async function DELETE(request: Request): Promise<NextResponse> {
+    const { data: session, error } = await authClient.getSession();
     const { game_id } = await request.json();
-    const session = await getValidatedSession();
-
     if (session) {
         try {
-            await deleteFavouriteForUserId(session.userId, game_id);
+            await deleteFavouriteForUserId(session.user.id, game_id);
             return NextResponse.json({ message: 'Game removed from favourites' }, { status: 200 });
         } catch (error) {
             console.log(error);

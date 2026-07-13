@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
-import { User } from "../_db/schema/users";
+import { User } from "../_db/schema/auth/users";
 import { Address } from "../_db/schema/addresses";
 import { Profile } from "../_db/schema/profiles";
 import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "../_client/client";
@@ -31,7 +31,7 @@ export function AccountProvider({ children }: { children: ReactNode }): ReactEle
 
     async function addUser(): Promise<void> {
         if (session) {
-            const userId = parseInt(session.user.id);
+            const userId = session.user.id;
             //setUser();
             try {
                 const profile = await getProfileByUserIdRequest(userId);

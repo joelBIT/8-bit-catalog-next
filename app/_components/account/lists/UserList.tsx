@@ -2,7 +2,7 @@
 
 import {ReactElement, useEffect, useState} from "react";
 import {useSearchParams} from "next/navigation";
-import { User } from "@/app/_db/schema/users";
+import { User } from "@/app/_db/schema/auth/users";
 import { UserModal } from "../modals";
 import { UserListEntry } from ".";
 
@@ -56,7 +56,7 @@ export function UserList({ users }: { users: User[] }): ReactElement {
                 }
             </section>
 
-            { openModal && Object.keys(selectedUser).length > 0 ? <UserModal user_id={selectedUser.id} close={() => closeUserModal()} /> : <></> }
+            { openModal && Object.keys(selectedUser).length > 0 ? <UserModal userId={selectedUser.id} close={() => closeUserModal()} /> : <></> }
 
             { currentUsers.length > 0 ? currentUsers.map(user => <UserListEntry user={user} active={true} key={user.id} click={openUserModal} />) : <></> }
         </ul>

@@ -1,7 +1,6 @@
 'use server';
 
 import { headers } from "next/headers";
-import { createAddressAndProfile } from "../_db/users-db";
 import { ActionState } from "../_types/types";
 import { auth } from "../auth";
 

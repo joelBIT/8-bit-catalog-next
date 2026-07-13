@@ -10,11 +10,11 @@ import "./UserModal.css";
 /**
  * Modal showing metadata about the supplied user.
  */
-export function UserModal({ user_id, close }: { user_id: number, close: () => void }): ReactElement {
+export function UserModal({ userId, close }: { userId: string, close: () => void }): ReactElement {
     const [profile, setProfile] = useState<Profile>();
     const [address, setAddress] = useState<Address>();
     const dialogRef = useRef<HTMLDialogElement>(null);
-    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user_id}/`;
+    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${userId}/`;
 
     useEffect(() => {
         getUserInformation();
@@ -25,9 +25,9 @@ export function UserModal({ user_id, close }: { user_id: number, close: () => vo
 
     async function getUserInformation(): Promise<void> {
         try {
-            const profile = await getProfileByUserIdRequest(user_id);
+            const profile = await getProfileByUserIdRequest(userId);
             setProfile(profile);
-            const address = await getAddressByUserIdRequest(user_id);
+            const address = await getAddressByUserIdRequest(userId);
             setAddress(address);
         } catch (error) {
             console.log(error);

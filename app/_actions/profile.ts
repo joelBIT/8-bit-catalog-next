@@ -13,17 +13,17 @@ export async function updateProfile(_prevState: InsertProfile, formData: FormDat
         const phone = formData.get('phone') as string;
         const bio = formData.get('bio') as string;
         const userId = _prevState.userId;
-        await updateProfileByUserId({userId, fullName, phone, birthDate, lastName, firstName, bio, image: ''});
+        await updateProfileByUserId({userId, phone, birthDate, lastName, firstName, bio, image: ''});
 
         return { message: 'The account was successfully updated', success: true, userId, image: '', firstName, lastName, 
-            bio, birthDate, fullName, phone };
+            bio, birthDate, phone };
     } catch (error) {
         console.log(error);
         return { message: 'The account could not be updated', success: false, ..._prevState };
     }
 }
 
-export async function updateProfileImage(userId: number, _prevState: ActionState & {image: string}, formData: FormData): Promise<ActionState & {image: string}> {
+export async function updateProfileImage(userId: string, _prevState: ActionState & {image: string}, formData: FormData): Promise<ActionState & {image: string}> {
     try {
         const profileImage = formData.get('profileImage') as File;
         if (profileImage.name !== 'undefined') {                        // Profile image has been changed

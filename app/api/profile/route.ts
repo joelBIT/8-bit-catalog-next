@@ -9,7 +9,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const id = searchParams.get('user_id') as string;
 
     try {
-        const profile = await getProfileByUserId(parseInt(id));
+        const profile = await getProfileByUserId(id);
         return NextResponse.json(profile);
     } catch (error) {
         console.log(error);

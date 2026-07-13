@@ -34,11 +34,9 @@ export async function uploadFile(file: File, storage: string = COVERS_STORAGE, f
 /**
  * The default profile image is always located in the same place with the same name. Only supply the destination path to where
  * the default profile image should be copied. A signed-in user may change his/hers profile image at any later time.
- * 
- * Returns true if the profile images transfer was a success, false otherwise.
  */
-export async function copyDefaultProfileImageToFolder(destinationPath: string): Promise<boolean> {
-    const response = await fetch(`${databaseURL()}/storage/v1/object/copy`, {
+export async function copyDefaultProfileImageToFolder(destinationPath: string): Promise<void> {
+    await fetch(`${databaseURL()}/storage/v1/object/copy`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -51,10 +49,4 @@ export async function copyDefaultProfileImageToFolder(destinationPath: string): 
             destinationKey: destinationPath     // e.g. 'userId/image.png'
         })
     });
-
-    if (!response.ok) {
-        return false;
-    }
-
-    return true;
 }

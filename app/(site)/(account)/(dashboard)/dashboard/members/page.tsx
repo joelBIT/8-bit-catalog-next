@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useRef, useState } from "react";
 import { useAccount } from "@/app/_hooks";
-import { User } from "@/app/_db/schema/users";
+import { User } from "@/app/_db/schema/auth/users";
 import { getUsersRequest } from "@/app/_client/client";
 import { USER_ROLE_ADMIN } from "@/app/_utils/utils";
 import { AddUserModal } from "@/app/_components/account/modals";
@@ -68,11 +68,11 @@ export default function MembersPage(): ReactElement {
                     />
                 </search>
 
-                {
-                    user?.role === USER_ROLE_ADMIN ?
+                {/* {
+                    user?.role === USER_ROLE_ADMIN ?        // TODO: Implement admin role
                         <button className="button__link add-member__button" onClick={() => setModal(true)}> + Add member </button>
                         : <></>
-                }
+                } */}
 
             </section>
 

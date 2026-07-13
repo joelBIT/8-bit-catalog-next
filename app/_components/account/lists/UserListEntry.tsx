@@ -2,7 +2,7 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import Image from "next/image";
-import { User } from "@/app/_db/schema/users";
+import { User } from "@/app/_db/schema/auth/users";
 import { Profile } from "@/app/_db/schema/profiles";
 import { getMonthText } from "@/app/_utils/utils";
 import { getProfileByUserIdRequest } from "@/app/_client/client";
@@ -73,7 +73,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
 
             <section className="role-section">
                 <h2 className="userCard-role__heading"> Role </h2>
-                <h2 className="userCard-role"> {user.role} </h2>
+                {/* <h2 className="userCard-role"> {user.role} </h2> */}
             </section>
 
             <section className="account-section">
