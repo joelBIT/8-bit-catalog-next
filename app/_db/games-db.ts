@@ -45,3 +45,42 @@ export async function getAllTitles(): Promise<string[]> {
 export async function getAllGames(): Promise<Game[]> {
     return await databaseClient.select().from(gamesTable).orderBy(asc(gamesTable.title));
 }
+
+/**
+ * Retrieves all game categories.
+ */
+export async function getAllCategories(): Promise<string[]> {
+    try {
+        const uniqueCategories = (await databaseClient.selectDistinct({ category: gamesTable.category }).from(gamesTable).orderBy(gamesTable.category));
+        return uniqueCategories.map(object => object.category);
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+/**
+ * Retrieves all game developers.
+ */
+export async function getAllDevelopers(): Promise<string[]> {
+    try {
+        const uniqueDevelopers = (await databaseClient.selectDistinct({ developer: gamesTable.developer }).from(gamesTable).orderBy(gamesTable.developer));
+        return uniqueDevelopers.map(object => object.developer);
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
+
+/**
+ * Retrieves all game publishers.
+ */
+export async function getAllPublishers(): Promise<string[]> {
+    try {
+        const uniquePublishers = (await databaseClient.selectDistinct({ publisher: gamesTable.publisher }).from(gamesTable).orderBy(gamesTable.publisher));
+        return uniquePublishers.map(object => object.publisher);
+    } catch (error) {
+        console.log(error);
+        return [];
+    }
+}
