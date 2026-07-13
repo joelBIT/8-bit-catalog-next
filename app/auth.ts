@@ -9,22 +9,44 @@ import * as verificationSchema from "./_db/schema/auth/verifications";
 import * as sessionSchema from "./_db/schema/auth/sessions";
 import * as accountSchema from "./_db/schema/auth/accounts";
 import * as userSchema from "./_db/schema/auth/users";
+import * as profileSchema from "./_db/schema/profiles";
+import * as addressesSchema from "./_db/schema/addresses";
+import { profilesTable } from "./_db/schema/profiles";
+import { addressesTable } from "./_db/schema/addresses";
+
+import { DEFAULT_PROFILE_IMAGE } from "./_utils/utils";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 export const auth = betterAuth({
     baseURL: process.env.BETTER_AUTH_URL, 
-
     database: drizzleAdapter(databaseClient, {
         provider: "pg",
         schema: {
+            ...addressesSchema,
+            ...profileSchema,
             ...sessionSchema,
             ...verificationSchema,
             ...userSchema,
             ...accountSchema
         },
-        usePlural: true,
+        usePlural: true
     }),
+    databaseHooks: {
+        user: {
+            create: {
+                after: async (user, ctx) => {
+                    await databaseClient.insert(profilesTable).values({
+                        userId: user.id,
+                        image: DEFAULT_PROFILE_IMAGE
+                    });
+                    await databaseClient.insert(addressesTable).values({
+                        userId: user.id
+                    });
+                },
+            }
+        }
+    },
     emailAndPassword: { 
         enabled: true,
         revokeSessionsOnPasswordReset: true,
