@@ -7,7 +7,7 @@ import { InsertProfile, profilesTable } from './schema/profiles';
 import { addressesTable, InsertAddress } from './schema/addresses';
 import { Resend } from 'resend';
 import ActivationEmail from '../_components/email/ActivationEmail';
-import { users, User } from '@/auth-schema';
+import { users, User } from '@/app/_db/schema/auth/users';
 
 
 /**

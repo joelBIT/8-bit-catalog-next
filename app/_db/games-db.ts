@@ -16,12 +16,18 @@ import { Game, gamesTable, InsertGame } from './schema/games';
 export async function updateGameById(gameId: number, game: InsertGame, file: File): Promise<void> {
     if (file.name !== 'undefined') {                            // New game cover was chosen so the cover file must be uploaded to the storage bucket
         await uploadFile(file);
-        await databaseClient.update(gamesTable).set({ cover: game.cover }).where(eq(gamesTable.id, gameId));     // Update game cover name
+        await databaseClient
+            .update(gamesTable)
+            .set({ cover: game.cover })
+            .where(eq(gamesTable.id, gameId));     // Update game cover name
     } 
     
     const { cover, ...data } = game;             // Remove cover property since the cover is already taken care of (not updated if not changed)
     console.log(`cover ${cover} not updated`);
-    await databaseClient.update(gamesTable).set(data).where(eq(gamesTable.id, gameId));
+    await databaseClient
+        .update(gamesTable)
+        .set(data)
+        .where(eq(gamesTable.id, gameId));
     console.log(`Updated game ${game.title} successfully`);
 }
 
@@ -51,7 +57,10 @@ export async function getAllGames(): Promise<Game[]> {
  */
 export async function getAllCategories(): Promise<string[]> {
     try {
-        const uniqueCategories = (await databaseClient.selectDistinct({ category: gamesTable.category }).from(gamesTable).orderBy(gamesTable.category));
+        const uniqueCategories = (await databaseClient
+            .selectDistinct({ category: gamesTable.category })
+            .from(gamesTable)
+            .orderBy(gamesTable.category));
         return uniqueCategories.map(object => object.category);
     } catch (error) {
         console.log(error);
@@ -64,7 +73,10 @@ export async function getAllCategories(): Promise<string[]> {
  */
 export async function getAllDevelopers(): Promise<string[]> {
     try {
-        const uniqueDevelopers = (await databaseClient.selectDistinct({ developer: gamesTable.developer }).from(gamesTable).orderBy(gamesTable.developer));
+        const uniqueDevelopers = (await databaseClient
+            .selectDistinct({ developer: gamesTable.developer })
+            .from(gamesTable)
+            .orderBy(gamesTable.developer));
         return uniqueDevelopers.map(object => object.developer);
     } catch (error) {
         console.log(error);
@@ -77,7 +89,10 @@ export async function getAllDevelopers(): Promise<string[]> {
  */
 export async function getAllPublishers(): Promise<string[]> {
     try {
-        const uniquePublishers = (await databaseClient.selectDistinct({ publisher: gamesTable.publisher }).from(gamesTable).orderBy(gamesTable.publisher));
+        const uniquePublishers = (await databaseClient
+            .selectDistinct({ publisher: gamesTable.publisher })
+            .from(gamesTable)
+            .orderBy(gamesTable.publisher));
         return uniquePublishers.map(object => object.publisher);
     } catch (error) {
         console.log(error);

@@ -5,21 +5,25 @@ import { Resend } from "resend";
 import { databaseClient } from "./_db/db";
 import ResetPasswordEmail from "./_components/email/ResetPasswordEmail";
 import ActivationEmail from "./_components/email/ActivationEmail";
-import { account, session, users, verification } from "@/auth-schema";
-
+import * as verificationSchema from "./_db/schema/auth/verifications";
+import * as sessionSchema from "./_db/schema/auth/sessions";
+import * as accountSchema from "./_db/schema/auth/accounts";
+import * as userSchema from "./_db/schema/auth/users";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
 export const auth = betterAuth({
     baseURL: process.env.BETTER_AUTH_URL, 
+    experimental: { joins: true },
     database: drizzleAdapter(databaseClient, {
         provider: "pg",
         schema: {
-            user: users,
-            session: session,
-            verification: verification,
-            account: account
-        }
+            ...sessionSchema,
+            ...verificationSchema,
+            ...userSchema,
+            ...accountSchema
+        },
+        usePlural: true,
     }),
     emailAndPassword: { 
         enabled: true,
