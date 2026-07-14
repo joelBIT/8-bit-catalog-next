@@ -13,7 +13,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const street = formData.get('street') as string;
     const city = formData.get('city') as string;
     const country = formData.get('country') as string;
-    const name = formData.get('username') as string;
+    const name = formData.get('name') as string;
     const birthDate = formData.get('birth_date') as string;
 
     if (password !== passwordRepeat) {

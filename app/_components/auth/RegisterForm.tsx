@@ -20,7 +20,7 @@ export function RegisterForm(): ReactElement {
     const [password, setPassword] = useState<string>('');
     const [passwordRepeat, setPasswordRepeat] = useState<string>('');
     const [email, setEmail] = useState<string>('');
-    const [username, setUsername] = useState<string>('');
+    const [name, setName] = useState<string>('');
     const [street, setStreet] = useState<string>('');
     const [city, setCity] = useState<string>('');
     const [birthDate, setBirthDate] = useState<string>('');
@@ -34,7 +34,7 @@ export function RegisterForm(): ReactElement {
             setPassword('');
             setPasswordRepeat('');
             setStreet('');
-            setUsername('');
+            setName('');
             setBirthDate('');
             setCity('');
         }
@@ -131,10 +131,9 @@ export function RegisterForm(): ReactElement {
                         value={birthDate}
                         onChange={e => setBirthDate(e.target.value)}
                         className="form__field"
-                        required
                     />
 
-                    <span className="form__field-label required">
+                    <span className="form__field-label">
                         Date of Birth
                     </span>
                 </section>
@@ -142,14 +141,14 @@ export function RegisterForm(): ReactElement {
                 <section id="personalInformation">
                     <section className="information-input">
                         <label className="input-label required" htmlFor="full_name">
-                            Username
+                            Name
                         </label>
 
                         <input 
-                            id="username"
-                            name="username"
-                            value={username}
-                            onChange={e => setUsername(e.target.value)} 
+                            id="name"
+                            name="name"
+                            value={name}
+                            onChange={e => setName(e.target.value)} 
                             type="text"
                             className="input-field"
                             required
