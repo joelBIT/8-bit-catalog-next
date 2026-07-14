@@ -4,7 +4,6 @@ import { createContext, ReactElement, ReactNode, useEffect, useState } from "rea
 import { Game } from "../_db/schema/games";
 import { isLocalStorageAvailable } from "@/app/_utils/utils";
 import { addFavouriteGameToDatabaseRequest, deleteFavouriteGameFromDatabaseRequest, getFavouritesRequest } from "@/app/_client/client";
-import { isAuthenticated } from "../_auth/client-functions";
 import { authClient } from "../auth-client";
 
 export interface FavouritesContextProvider {
@@ -65,8 +64,7 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
     function addFavouriteGame(game: Game): void {
         const games = sortFavourites([...favouritesList, game]);
 
-        const authenticated = isAuthenticated();
-        if (authenticated) {
+        if (session) {
             setFavouritesList(games);
             addFavouriteGameToDatabaseRequest(game.id);
         } else if (isLocalStorageAvailable()) {
@@ -82,8 +80,7 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
     function removeFavouriteGame(game: Game): void {
         const games = favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id);
 
-        const authenticated = isAuthenticated();
-        if (authenticated) {
+        if (session) {
             setFavouritesList(games);
             deleteFavouriteGameFromDatabaseRequest(game.id);
         } else if (isLocalStorageAvailable()) {

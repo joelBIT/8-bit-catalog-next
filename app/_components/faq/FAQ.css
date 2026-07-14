@@ -59,7 +59,7 @@
 
         & .accordion__text {
             color: var(--color-nintendo-gray);
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-top: 1rem;
             white-space-collapse: preserve-breaks;
         }
