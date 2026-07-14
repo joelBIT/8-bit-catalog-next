@@ -2,13 +2,13 @@
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { useAccount } from "@/app/_hooks";
-import { updateUsername } from "@/app/_actions/user";
+import { updateName } from "@/app/_actions/user";
 
-import "./EditUsernameForm.css";
+import "./EditNameForm.css";
 
-export function EditUsernameForm(): ReactElement {
+export function EditNameForm(): ReactElement {
     const { user } = useAccount();
-    const [state, formAction] = useActionState(updateUsername.bind(null, user.id), { message: '', success: false, username: user?.name });
+    const [state, formAction] = useActionState(updateName.bind(null, user.id), { message: '', success: false, name: user?.name });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     
     useEffect(() => {
@@ -22,22 +22,22 @@ export function EditUsernameForm(): ReactElement {
     
     return (
         <form id="editUsernameForm" action={formAction}>
-            <h1 className="editUsernameForm__title"> Change Username </h1>
+            <h1 className="editUsernameForm__title"> Change name </h1>
 
             <section className="input">
                 <input 
-                    id="username"
-                    name="username" 
+                    id="name"
+                    name="name" 
                     type="text"
-                    placeholder="SET USERNAME"
+                    placeholder="SET NAME"
                     className="form__field"
-                    defaultValue={state?.username ?? ''} 
+                    defaultValue={state?.name ?? ''} 
                     autoComplete="off" 
                     required 
                 />
 
                 <span className="form__field-label">
-                    Username
+                    Name
                 </span>
             </section>
 

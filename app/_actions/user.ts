@@ -7,6 +7,6 @@ export async function updateEmail(userId: string, _prevState: ActionState & {ema
 }
 
 
-export async function updateUsername(userId: string, _prevState: ActionState & {username: string}, formData: FormData): Promise<ActionState & {username: string}> {
-    return {message: '', success: false, username: ''};           // TODO: Implement this operation
+export async function updateName(userId: string, _prevState: ActionState & {name: string}, formData: FormData): Promise<ActionState & {name: string}> {
+    return {message: '', success: false, name: ''};           // TODO: Implement this operation
 }
