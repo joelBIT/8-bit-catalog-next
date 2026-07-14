@@ -2,11 +2,11 @@
 
 import { ReactElement } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { LoginForm } from "@/app/_components/auth/LoginForm";
 import { authClient } from "@/app/auth-client";
 
 import "./page.css";
-import Image from "next/image";
 
 /**
  * Page for signing in to an account.
