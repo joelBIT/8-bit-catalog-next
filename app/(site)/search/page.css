@@ -43,16 +43,6 @@
             filter: saturate(60%);
             color: var(--color-real-white);
         }
-
-        & .search__text {
-            font-family: 'Arima', sans-serif;
-            font-weight: 100;
-            font-size: 1.5rem;
-            color: var(--color-real-white);
-            max-width: 400px;
-            line-height: 27px;
-            padding-left: 2rem;
-        }
     }
 
     & #searchFilters__form {
@@ -171,10 +161,6 @@
 
             & .search__title {
                 font-size: 4rem;
-            }
-
-            & .search__text {
-                font-size: 1.2rem;
             }
         }
     }

@@ -18,11 +18,8 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
             <h1 className="search-title"> Search </h1>
 
             <section id="search-presentation">
-                <h1 className="search__subtitle"> Discover the catalog </h1>
+                <h1 className="search__subtitle"> Discover the NES catalog </h1>
                 <h1 className="search__title"> Search Games </h1>
-                <p className="search__text">
-                    Browse through the catalog to find games that match your needs.
-                </p>
             </section>
 
             <Form id="searchFilters__form" action="" scroll={false}>
