@@ -8,7 +8,7 @@ import { Address, InsertAddress, addressesTable } from './schema/addresses';
 /**
  * Retrieve the addess for user with supplied user ID.
  */
-export async function getAddressByUserId(userId: number): Promise<Address> {
+export async function getAddressByUserId(userId: string): Promise<Address> {
     const response = await databaseClient.select().from(addressesTable).where(eq(addressesTable.userId, userId)).limit(1);
     if (response?.length !== 1) {
         console.log(`Could not find address for user with ID ${userId}`);

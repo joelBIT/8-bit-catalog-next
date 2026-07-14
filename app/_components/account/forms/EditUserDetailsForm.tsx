@@ -14,7 +14,7 @@ export function EditUserDetailsForm(): ReactElement {
     const { user, profile } = useAccount();
     const initialState: ActionState & InsertProfile = { 
         message: '', success: false, userId: user.id, image: profile.image, firstName: profile.firstName, 
-        lastName: profile.lastName, bio: profile.bio, fullName: profile.fullName, birthDate: profile.birthDate, phone: profile.phone
+        lastName: profile.lastName, bio: profile.bio, birthDate: profile.birthDate, phone: profile.phone
     }
     const [state, formAction] = useActionState(updateProfile, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
@@ -42,7 +42,7 @@ export function EditUserDetailsForm(): ReactElement {
                         type="text"
                         className="input-field"
                         autoComplete="none"
-                        defaultValue={state.firstName ? state.firstName : profile.firstName} 
+                        defaultValue={state.firstName ?? ''} 
                     />
                 </section>
 
@@ -57,7 +57,7 @@ export function EditUserDetailsForm(): ReactElement {
                         type="text"
                         className="input-field"
                         autoComplete="none"
-                        defaultValue={state.lastName ? state.lastName : profile.lastName} 
+                        defaultValue={state.lastName ?? ''} 
                     />
                 </section>
 
@@ -70,7 +70,7 @@ export function EditUserDetailsForm(): ReactElement {
                         id="bio"
                         name="bio" 
                         className="input-field edit-profile__bio"
-                        defaultValue={state.bio ? state.bio : profile.bio} 
+                        defaultValue={state.bio ?? ''} 
                         placeholder="About me" 
                     />
                 </section>
@@ -88,21 +88,6 @@ export function EditUserDetailsForm(): ReactElement {
                     <span className="form__field-label">
                         Date of Birth
                     </span>
-                </section>
-
-                <section className="information-input">
-                    <label className="input-label" htmlFor="full_name">
-                        Full name
-                    </label>
-
-                    <input 
-                        id="fullName"
-                        name="full_name"
-                        defaultValue={state.fullName ? state.fullName : profile?.fullName} 
-                        type="text"
-                        className="input-field"
-                        autoComplete="none" 
-                    />
                 </section>
 
                 <section className="information-input">

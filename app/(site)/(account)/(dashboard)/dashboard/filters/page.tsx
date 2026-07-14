@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { EditFilterForm } from "@/app/_components/account/forms";
-import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/filters-db";
+import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/games-db";
 
 import "./page.css";
 

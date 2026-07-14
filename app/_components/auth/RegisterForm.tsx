@@ -20,7 +20,7 @@ export function RegisterForm(): ReactElement {
     const [password, setPassword] = useState<string>('');
     const [passwordRepeat, setPasswordRepeat] = useState<string>('');
     const [email, setEmail] = useState<string>('');
-    const [fullName, setFullName] = useState<string>('');
+    const [username, setUsername] = useState<string>('');
     const [street, setStreet] = useState<string>('');
     const [city, setCity] = useState<string>('');
     const [birthDate, setBirthDate] = useState<string>('');
@@ -34,7 +34,7 @@ export function RegisterForm(): ReactElement {
             setPassword('');
             setPasswordRepeat('');
             setStreet('');
-            setFullName('');
+            setUsername('');
             setBirthDate('');
             setCity('');
         }
@@ -66,7 +66,7 @@ export function RegisterForm(): ReactElement {
                         required 
                     />
 
-                    <span className="form__field-label">
+                    <span className="form__field-label required">
                         Email
                     </span>
                 </section>
@@ -90,7 +90,7 @@ export function RegisterForm(): ReactElement {
                             required 
                         />
 
-                        <span className="form__field-label">
+                        <span className="form__field-label required">
                             Password
                         </span>
 
@@ -112,7 +112,7 @@ export function RegisterForm(): ReactElement {
                             required 
                         />
 
-                        <span className="form__field-label">
+                        <span className="form__field-label required">
                             Confirm Password
                         </span>
 
@@ -134,24 +134,25 @@ export function RegisterForm(): ReactElement {
                         required
                     />
 
-                    <span className="form__field-label">
+                    <span className="form__field-label required">
                         Date of Birth
                     </span>
                 </section>
 
                 <section id="personalInformation">
                     <section className="information-input">
-                        <label className="input-label" htmlFor="full_name">
-                            Full name
+                        <label className="input-label required" htmlFor="full_name">
+                            Username
                         </label>
 
                         <input 
-                            id="full_name"
-                            name="full_name"
-                            value={fullName}
-                            onChange={e => setFullName(e.target.value)} 
+                            id="username"
+                            name="username"
+                            value={username}
+                            onChange={e => setUsername(e.target.value)} 
                             type="text"
                             className="input-field"
+                            required
                             autoComplete="none" 
                         />
                     </section>

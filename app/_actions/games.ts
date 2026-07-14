@@ -1,15 +1,15 @@
 'use server';
 
 import { ActionState } from "@/app/_types/types";
-import { isAuthenticatedAdmin } from '@/app/_session/sessionUtils';
 import { updateGameById } from "../_db/games-db";
 import { InsertGame } from "../_db/schema/games";
+import { isAuthenticated } from "../_auth/client-functions";
 
 /**
  * Updates an existing game's metadata. 
  */
 export async function updateGame(_prevState: ActionState, formData: FormData): Promise<ActionState> {
-    const isAdmin = await isAuthenticatedAdmin();
+    const isAdmin = isAuthenticated();          // TODO: Only admin should be allowed
     if (!isAdmin) {
         return { message: 'Only admins may update games', success: false };
     }

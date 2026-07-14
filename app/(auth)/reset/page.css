@@ -10,6 +10,17 @@
     background-position: center;
     background-color: var(--color-black);
 
+    & .no-token__text {
+        align-content: center;
+        font-family: iceland, sans-serif;
+        font-size: 3rem;
+        font-weight: 100;
+        letter-spacing: 1px;
+        color: var(--color-real-white);
+        text-align: center;
+        height: 100%;
+    }
+
     & .email-parameter {
         font-size: 1.4rem;
         margin-bottom: 3rem;
@@ -25,18 +36,15 @@
 
         & .resetPasswordForm__title {
             align-self: center;
-            font-size: 1rem;
+            font-size: 2rem;
+            font-family: "iceland";
+            color: var(--color-real-white);
         }
         
         & #password-inputs {
-            & .input:first-of-type {
+            & .input {
                 margin-bottom: 1rem;
                 border-radius: 6px;
-            }
-
-            & .input:nth-of-type(2) {
-                border-radius: 6px 6px 0 0;
-                border-bottom: 0.5px solid var(--color-auth-border-bottom);
             }
         }
 

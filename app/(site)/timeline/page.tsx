@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useEffect, useRef, useState } from "react";
-import { TimelineEvent } from "@/app/_db/schema/timelineEvents";
+import { TimelineEvent } from "@/app/_db/schema/timeline_events";
 import { getTimelineEventsRequest } from "@/app/_client/client";
 
 import "./page.css";

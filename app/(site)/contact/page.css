@@ -44,7 +44,7 @@
             & .contact-text {
                 color: var(--color-nintendo-gray);
                 max-width: 400px;
-                font-size: 1rem;
+                font-size: 1.1rem;
                 margin-bottom: 3rem;
             }
 

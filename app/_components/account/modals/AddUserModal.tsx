@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useActionState, useEffect, useRef, useState } from "react";
-import { createUserAndAccountAsAdmin } from "@/app/_actions/account";
 
 import "./AddUserModal.css";
 
@@ -10,7 +9,7 @@ import "./AddUserModal.css";
  * verification process.
  */
 export function AddUserModal({ close }: { close: () => void }): ReactElement {
-    const [state, formAction] = useActionState(createUserAndAccountAsAdmin, { message: '', success: false });
+    //const [state, formAction] = useActionState(createUserAndAccountAsAdmin, { message: '', success: false });
     const [isVisible, setVisible] = useState<boolean>(false);
     const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -22,16 +21,18 @@ export function AddUserModal({ close }: { close: () => void }): ReactElement {
     
     function closeModal(): void {
         modalRef.current?.close();
-        state.message = '';
+        //state.message = '';
         close();
+    }
+
+    async function createUser(): Promise<void> {
+            // TODO: Implement this operation
     }
 
     return (
         <dialog id="addUserModal" ref={modalRef} className="modal-dialog">
-            <form action={formAction} className="modal-content">
+            <form action={createUser} className="modal-content">
                 <h1 className="modal__text"> Add member </h1>
-
-                { state.message ? <h2 className={state.success ? "message-success" : "message-failure"}> {state.message} </h2> : <></> }
 
                 <section className="input">
                     <input 

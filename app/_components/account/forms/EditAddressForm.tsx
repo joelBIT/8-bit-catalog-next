@@ -28,7 +28,7 @@ export function EditAddressForm(): ReactElement {
     return (
         <>
             <form id="userAddressForm" action={formAction}>
-                <SelectCountry selected={state.country ? state.country : address.country} />
+                <SelectCountry selected={state.country ?? ''} />
 
                 <section className="information-input">
                     <label className="input-label" htmlFor="zip_code">
@@ -39,7 +39,7 @@ export function EditAddressForm(): ReactElement {
                         id="zip_code"
                         name="zip_code" 
                         type="text"
-                        defaultValue={state.zipCode ? state.zipCode : address?.zipCode} 
+                        defaultValue={state.zipCode ?? ''} 
                         className="input-field"
                         autoComplete="none"
                     />
@@ -54,7 +54,7 @@ export function EditAddressForm(): ReactElement {
                         id="city"
                         name="city" 
                         type="text"
-                        defaultValue={state.city ? state.city : address?.city} 
+                        defaultValue={state.city ?? ''} 
                         className="input-field"
                         autoComplete="none"
                     />

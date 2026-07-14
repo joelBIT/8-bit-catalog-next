@@ -1,8 +1,9 @@
 'use server';
 
-import { createUserAndAccount } from "../_db/users-db";
-import { hashPassword } from "../_session/password";
+import { headers } from "next/headers";
 import { ActionState } from "../_types/types";
+import { auth } from "../auth";
+import { createAddressAndProfile } from "../_db/users-db";
 
 export async function register(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const password = formData.get('password') as string;
@@ -12,7 +13,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const street = formData.get('street') as string;
     const city = formData.get('city') as string;
     const country = formData.get('country') as string;
-    const fullName = formData.get('full_name') as string;
+    const name = formData.get('username') as string;
     const birthDate = formData.get('birth_date') as string;
 
     if (password !== passwordRepeat) {
@@ -27,9 +28,21 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
         return { message: 'Password must contain at least 1 number', success: false };
     }
 
+    if (!name || name.length < 1) {
+        return { message: 'Must supply a name', success: false };
+    }
+
     try {
-        const passwordHash = await hashPassword(password);
-        await createUserAndAccount(passwordHash, email, {userId: 0, phone, fullName, birthDate: new Date(birthDate)}, {userId: 0, street, city, country});       // TODO: userID is set to 0 because this value is not used in the function but required by the type. Fix this.
+        const data = await auth.api.signUpEmail({
+            body: {
+                name,
+                email,
+                password
+            },
+            headers: await headers()        // This endpoint requires session cookies.
+        });
+
+        await createAddressAndProfile(data.user.id, {userId: data.user.id, phone, birthDate: new Date(birthDate)}, {userId: data.user.id, street, city, country});
         
         return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {

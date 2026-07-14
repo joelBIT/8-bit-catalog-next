@@ -3,7 +3,7 @@ import Form from 'next/form';
 import { SearchFilter } from "@/app/_types/types";
 import { Search, SearchButton } from "@/app/_components/search";
 import { addAllOption } from "@/app/_utils/utils";
-import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/filters-db";
+import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/games-db";
 
 import "./page.css";
 

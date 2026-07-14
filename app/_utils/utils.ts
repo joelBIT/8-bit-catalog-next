@@ -1,7 +1,6 @@
 export const ALL_OPTION_VALUE = "All";
 
 export const URL_ABOUT_PAGE = "/about";
-export const URL_ACTIVATION_PAGE = "/activate";
 export const URL_ARCHITECTURE_PAGE = "/architecture";
 export const URL_ARTICLES_PAGE = "/articles";
 export const URL_CONTACT_PAGE = "/contact";

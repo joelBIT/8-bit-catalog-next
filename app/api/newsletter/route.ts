@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import NewsletterEmail from "@/app/_components/email/NewsletterEmail";
-import { isAuthenticatedAdmin } from "@/app/_session/sessionUtils";
 import { getAllNewsletterSubscribers } from "@/app/_db/newsletter-db";
+import { isAuthenticated } from "@/app/_auth/server-functions";
 
 /**
  * Send the chosen news as a newsletter to all subscribed email addresses.
  */
 export async function POST(request: Request): Promise<NextResponse> {
     const { text, heading } = await request.json();
-    const isAdmin = await isAuthenticatedAdmin();
+    const isAdmin = await isAuthenticated();          // TODO: Only users with role: Admin are allowed to run this operation
 
     if (isAdmin) {
         try {
