@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { auth } from "@/app/auth";
 import { ActionState } from "../_types/types";
 import { URL_DASHBOARD_PAGE } from "../_utils/utils";
@@ -11,20 +12,20 @@ export async function login(_prevState: ActionState, formData: FormData): Promis
     const password = formData.get('password') as string;
 
     try {
-        const data = await auth.api.signInEmail({
+        await auth.api.signInEmail({
             body: {
                 email,
                 password,
-                rememberMe: true,
-                callbackURL: `${process.env.DOMAIN_URL}/${URL_DASHBOARD_PAGE}`
+                rememberMe: true
             },
-            headers: await headers()        // This endpoint requires session cookies.
+            headers: await headers()
         });
+
     } catch (error) {
         console.log(error);
         return { message: 'Could not log in', success: false };
     }
 
     revalidatePath('/', 'layout');
-    return { message: 'Signing in', success: true };
+    redirect(URL_DASHBOARD_PAGE);
 }

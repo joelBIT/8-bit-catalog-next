@@ -3,6 +3,7 @@
 import { headers } from "next/headers";
 import { ActionState } from "../_types/types";
 import { auth } from "../auth";
+import { createAddressAndProfile } from "../_db/users-db";
 
 export async function register(_prevState: ActionState, formData: FormData): Promise<ActionState> {
     const password = formData.get('password') as string;
@@ -12,7 +13,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const street = formData.get('street') as string;
     const city = formData.get('city') as string;
     const country = formData.get('country') as string;
-    const name = formData.get('full_name') as string;
+    const name = formData.get('username') as string;
     const birthDate = formData.get('birth_date') as string;
 
     if (password !== passwordRepeat) {
@@ -41,7 +42,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
             headers: await headers()        // This endpoint requires session cookies.
         });
 
-        //await createAddressAndProfile(userId, email, {data.user.id, phone, birthDate: new Date(birthDate)}, {data.user.id, street, city, country});       // TODO: userID is set to 0 because this value is not used in the function but required by the type. Fix this.
+        await createAddressAndProfile(data.user.id, {userId: data.user.id, phone, birthDate: new Date(birthDate)}, {userId: data.user.id, street, city, country});
         
         return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {
