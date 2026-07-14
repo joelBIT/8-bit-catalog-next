@@ -32,7 +32,7 @@ export default function ResetPasswordEmail(url: string, email: string, token: st
                 </Row>
                 <Row>
                     <Text style={{ fontSize: "1.3rem"}}>
-                        You can find answers to many questions and get in touch with me at <Link href={`${process.env.DOMAIN_URL}/contact`}> 8bit-catalog.joel-rollny.eu/contact</Link>. 
+                        You can find answers to many questions and get in touch with me at <Link href={`${process.env.DOMAIN_URL}/contact`}> contact info </Link>. 
                         I am here to help you at any step along the way.
                     </Text>
                 </Row>

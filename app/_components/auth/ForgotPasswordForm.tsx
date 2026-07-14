@@ -5,30 +5,30 @@ import Link from "next/link";
 import { authClient } from "@/app/auth-client";
 import { URL_LOGIN_PAGE, URL_REGISTER_PAGE, URL_RESET_PAGE } from "@/app/_utils/utils";
 
-import "./ResetPasswordForm.css";
+import "./ForgotPasswordForm.css";
 
 /**
  * Form used when resetting a forgotten password for an account. An email containing the new password 
  * is sent to the supplied mail address.
  */
-export function ResetPasswordForm(): ReactElement {
+export function ForgotPasswordForm(): ReactElement {
     const [email, setEmail] = useState<string>('');
     const [success, setSuccess] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     async function resetPassword() {
-        const { data, error } = await authClient.requestPasswordReset({
+        const { error } = await authClient.requestPasswordReset({
             email,
-            redirectTo: `${process.env.DOMAIN_URL}${URL_RESET_PAGE}`
+            redirectTo: `${process.env.NEXT_PUBLIC_DOMAIN_URL}${URL_RESET_PAGE}`
         });
 
         if (error) {
             setSuccess(false);
-            setMessage("Could not update password");
+            setMessage("Could not reset password");
         } else {
             setSuccess(true);
-            setMessage("Password updated");
+            setMessage("Password changed. Check email for link.");
         }
         setShowMessage(true);
     }

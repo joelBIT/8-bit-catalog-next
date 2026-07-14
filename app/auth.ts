@@ -51,14 +51,20 @@ export const auth = betterAuth({
     emailAndPassword: { 
         enabled: true,
         revokeSessionsOnPasswordReset: true,
-        requireEmailVerification: true
+        requireEmailVerification: true,
+        sendResetPassword: async ({ user, url, token }: { user: User, url: string, token: string }, request: any) => {
+            await resend.emails.send({
+                from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
+                to: user.email,
+                subject: 'Password Reset',
+                react: ResetPasswordEmail(url, user.email, token)
+            });
+        }
     },
     emailVerification: {
         sendOnSignUp: true,
         autoSignInAfterVerification: true,
         sendVerificationEmail: async ( { user, url, token }: { user: User, url: string, token: string }, request: any) => {
-            console.log("URL")
-            console.log(url)
             await resend.emails.send({
                 from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
                 to: user.email,
@@ -68,15 +74,6 @@ export const auth = betterAuth({
         }
     },
     minPasswordLength: 8,
-    sendResetPassword: async ({ user, url, token }: { user: User, url: string, token: string }, request: any) => {
-        // Send the reset link (url) to the user's email
-        await resend.emails.send({
-            from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
-            to: user.email,
-            subject: 'Password Reset',
-            react: ResetPasswordEmail(url, user.email, token)
-        });
-    },
     // socialProviders: {
     //     google: { 
     //         clientId: process.env.GOOGLE_CLIENT_ID as string,

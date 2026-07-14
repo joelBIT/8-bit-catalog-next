@@ -17,27 +17,30 @@ export default function FavouritesPage(): ReactElement {
     const { gridView } = useGame();
 
     useEffect(() => {
-        setFavourites(favouritesList);  // Handle page refresh
+        setFavourites(favouritesList);
     }, [favouritesList])
+
+    if (favourites.length < 1) {
+        return (
+            <main id="favouritesPage">
+                <h1 className="no-favourites__text"> No favourite selected </h1>
+            </main>
+        );
+    }
 
     return (
         <main id="favouritesPage">
-            {
-                favourites.length > 0 ?
-                        <section className="show-pagination-toggle">
-                            <GameSorting games={favourites} setSortedGames={setFavourites} />
-                            
-                            <SlidingToggle />
-                        </section>
-                    : <h1 className="no-favourites__text"> No favourites selected </h1>
-            }
+            <section className="show-pagination-toggle">
+                <GameSorting games={favourites} setSortedGames={setFavourites} />
+                
+                <SlidingToggle />
+            </section>
 
             { 
-                favourites.length === 0 ? <></> : 
-                        gridView ?  
-                            <GameGrid games={favourites} />
-                                    :
-                            <GameList games={favourites} />
+                gridView ?  
+                    <GameGrid games={favourites} />
+                            :
+                    <GameList games={favourites} />
             }
 
             <ScrollTopButton />
