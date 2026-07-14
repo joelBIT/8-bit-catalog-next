@@ -34,7 +34,7 @@ export default function ResetPasswordPage(): ReactElement {
             return;
         }
 
-        const { data, error } = await authClient.resetPassword({
+        const { error } = await authClient.resetPassword({
             newPassword,
             token
         });
@@ -44,7 +44,7 @@ export default function ResetPasswordPage(): ReactElement {
             setMessage("Could not update password");
         } else {
             setSuccess(true);
-            setMessage("Password updated");
+            setMessage("Password updated. You can close the window.");
         }
 
         setShowMessage(true);
