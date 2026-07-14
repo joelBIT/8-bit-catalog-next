@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { getAllUsers } from "@/app/_db/users-db";
-import { isAuthenticated } from "@/app/_auth/client-functions";
+import { isAuthenticated } from "@/app/_auth/server-functions";
 
 /**
  * Used to retrieve a list of all existing users. 
  */
 export async function GET(): Promise<NextResponse> {
-    const authenticated = isAuthenticated();
+    const authenticated = await isAuthenticated();
     if (authenticated) {
         try {
             const users = await getAllUsers();

@@ -28,7 +28,7 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
 
     useEffect(() => {
         loadFavouriteGames();     
-    }, []);
+    }, [session]);
 
     /**
      * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.

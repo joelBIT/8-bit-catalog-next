@@ -27,12 +27,12 @@ export function AccountProvider({ children }: { children: ReactNode }): ReactEle
 
     useEffect(() => {
         addUser();
-    }, []);
+    }, [session]);
 
     async function addUser(): Promise<void> {
         if (session) {
             const userId = session.user.id;
-            //setUser();
+            setUser(session.user as User);
             try {
                 const profile = await getProfileByUserIdRequest(userId);
                 setProfile(profile);
@@ -41,6 +41,8 @@ export function AccountProvider({ children }: { children: ReactNode }): ReactEle
             } catch (error) {
                 console.log(error);
             }
+        } else {
+            setUser({} as User);
         }
     }
 

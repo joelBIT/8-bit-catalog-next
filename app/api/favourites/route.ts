@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/app/_db/favourites-db";
-import { authClient } from "@/app/auth-client";
-
+import { auth } from "@/app/auth";
 
 /**
  * Retrieves the authenticated user's favourite games.
  */
 export async function GET(): Promise<NextResponse> {
-    const { data: session, error } = await authClient.getSession();
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
 
     if (session) {
         const games = await getFavouritesByUserId(session.user.id);
@@ -21,11 +23,13 @@ export async function GET(): Promise<NextResponse> {
  * Adds a game to the authenticated user's list of favourite games.
  */
 export async function POST(request: Request): Promise<NextResponse> {
-    const { data: session, error } = await authClient.getSession();
-    const { game_id } = await request.json();
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
 
     if (session) {
         try {
+            const { game_id } = await request.json();
             await addFavouriteForUserId(session.user.id, game_id);
             return NextResponse.json({ message: 'Game added to favourites' }, { status: 200 });
         } catch (error) {
@@ -41,10 +45,13 @@ export async function POST(request: Request): Promise<NextResponse> {
  * Deletes a game from the authenticated user's list of favourite games.
  */
 export async function DELETE(request: Request): Promise<NextResponse> {
-    const { data: session, error } = await authClient.getSession();
-    const { game_id } = await request.json();
+    const session = await auth.api.getSession({
+        headers: await headers()
+    });
+
     if (session) {
         try {
+            const { game_id } = await request.json();
             await deleteFavouriteForUserId(session.user.id, game_id);
             return NextResponse.json({ message: 'Game removed from favourites' }, { status: 200 });
         } catch (error) {
