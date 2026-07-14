@@ -56,6 +56,13 @@
         & .searchFilters__filters {
             display: flex;
             gap: 3rem;
+
+            & .selectSection {
+                & .selectSection__title {
+                    letter-spacing: 1px;
+                    font-weight: 100;
+                }
+            }
         }
 
         & #searchInput {
