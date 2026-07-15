@@ -2,17 +2,19 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 30%;
     margin-bottom: 1rem;
 
-    & .editUsernameForm__title {
-        color: var(--color-footer-heading);
-        align-self: center;
-        font-size: 1rem;
+    & .editNameForm__title {
+        font-family: iceland, sans-serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--color-real-white);
+        text-align: center;
+        padding: 1rem;
     }
 
     & .input {
-        & #username {
+        & #name {
             font-family: "arima", sans-serif;
         }
     }
@@ -20,17 +22,5 @@
     .message-success,
     .message-failure {
         margin-top: 2rem;
-    }
-}
-
-@media (max-width: 1200px) {
-    #editNameForm {
-        width: 50%;
-    }
-}
-
-@media (max-width: 1000px) {
-    #editNameForm {
-        width: 80%;
     }
 }
