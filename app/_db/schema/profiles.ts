@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp, date } from 'drizzle-orm/pg-core';
 import { users } from '@/app/_db/schema/auth/users';
 
 export const profilesTable = pgTable('profiles', {
@@ -11,7 +11,7 @@ export const profilesTable = pgTable('profiles', {
     lastName: text('last_name').default(''),
     firstName: text('first_name').default(''),
     image: text('image').notNull().default(''),
-    birthDate: timestamp('birth_date'),
+    birthDate: date('birth_date', { mode: "date" }),
     phone: text('phone').default(''),
     bio: text('bio').default(''),
     createdAt: timestamp('created_at')

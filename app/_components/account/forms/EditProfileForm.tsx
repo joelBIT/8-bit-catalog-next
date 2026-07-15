@@ -11,7 +11,7 @@ import "./EditProfileForm.css";
 
 export function EditProfileForm({ profile }: { profile: Profile }): ReactElement {
     const initialState: ActionState & InsertProfile = { 
-        message: '', success: false, userId: profile.userId, image: profile.image, firstName: profile.firstName, 
+        message: '', success: false, userId: profile.userId, firstName: profile.firstName, 
         lastName: profile.lastName, bio: profile.bio, birthDate: profile.birthDate, phone: profile.phone
     }
     const [state, formAction] = useActionState(updateProfile, initialState);
@@ -75,11 +75,11 @@ export function EditProfileForm({ profile }: { profile: Profile }): ReactElement
 
                 <section className="input">
                     <input 
-                        id="birthDate"
+                        id="birth_date"
                         name="birth_date" 
                         type="date"
                         max={new Date().toLocaleDateString('en-ca')}
-                        defaultValue={state.birthDate ? state.birthDate.toString() : profile.birthDate?.toString()} 
+                        defaultValue={`${state.birthDate?.toLocaleDateString('en-ca')}`}
                         className="form__field"
                     />
 
