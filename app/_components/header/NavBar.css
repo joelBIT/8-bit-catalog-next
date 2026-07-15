@@ -78,8 +78,9 @@
             }
 
             & .material-symbols-outlined {
-                font-size: 2rem;
-                vertical-align: text-bottom;
+                font-size: 20px;
+                vertical-align: middle;
+                padding-left: 0.3rem;
             }
         }
     }
