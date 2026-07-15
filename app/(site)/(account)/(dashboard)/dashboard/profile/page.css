@@ -10,7 +10,7 @@
 @media (max-width: 500px) {
     #profilePage {
         padding-top: 5rem;
-        padding-left: 2rem;
+        padding-left: 3rem;
 
         .message-success, .message-failure {
             font-size: 1rem;

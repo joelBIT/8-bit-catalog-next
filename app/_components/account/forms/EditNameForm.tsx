@@ -20,8 +20,8 @@ export function EditNameForm({ user }: { user: User }): ReactElement {
     }, [state]);
     
     return (
-        <form id="editUsernameForm" action={formAction}>
-            <h1 className="editUsernameForm__title"> Change name </h1>
+        <form id="editNameForm" action={formAction}>
+            <h1 className="editNameForm__title"> Change name </h1>
 
             <section className="input">
                 <input 

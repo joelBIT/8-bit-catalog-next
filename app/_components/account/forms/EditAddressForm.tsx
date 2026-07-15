@@ -26,7 +26,7 @@ export function EditAddressForm({address}: {address: Address}): ReactElement {
 
     return (
         <>
-            <form id="userAddressForm" action={formAction}>
+            <form id="editAddressForm" action={formAction}>
                 <SelectCountry selected={state.country ?? ''} />
 
                 <section className="information-input">

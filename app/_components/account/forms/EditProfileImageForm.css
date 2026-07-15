@@ -58,13 +58,12 @@
 }
 
 @media (max-width: 410px) {
-    #editProfileForm {
-        width: 95vw;
-        padding-right: 0.6rem;
+    #profileImageForm {
+        padding-right: 0.1rem;
 
         & .edit-profile-image {
             & .edit-profile__change-image {
-                & > h1 {
+                & .edit-image__title {
                     font-size: 1.6rem;
                 }
 
