@@ -1,5 +1,6 @@
 import { betterAuth, User } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { admin } from "better-auth/plugins";
 import { nextCookies } from "better-auth/next-js";
 import { Resend } from "resend";
 import { databaseClient } from "./_db/db";
@@ -52,6 +53,16 @@ export const auth = betterAuth({
         enabled: true,
         revokeSessionsOnPasswordReset: true,
         requireEmailVerification: true,
+        customSyntheticUser: ({ coreFields, additionalFields, id }) => ({
+            ...coreFields,
+            // Admin plugin fields (in schema order)
+            role: "user", // or the configured defaultRole
+            banned: false,
+            banReason: null,
+            banExpires: null,
+            ...additionalFields,
+            id
+        }),
         sendResetPassword: async ({ user, url, token }: { user: User, url: string, token: string }, request: any) => {
             await resend.emails.send({
                 from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
@@ -87,6 +98,10 @@ export const auth = betterAuth({
         }
     },
     plugins: [
+        admin({
+            defaultRole: "user", // role assigned to new users
+            adminRoles: ["admin"], // which roles count as "admin"
+        }),
         nextCookies()       // make sure this is the last plugin in the array
     ]
 });
