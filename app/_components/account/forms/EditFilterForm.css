@@ -8,6 +8,8 @@
         text-align: center;
         font-weight: 600;
         margin-top: 2rem;
+        font-weight: 200;
+        letter-spacing: 1px;
 
         & .material-symbols-outlined {
             color: var(--color-white);
@@ -44,7 +46,7 @@
 @media (max-width: 400px) {
     #editFilterForm {
         align-items: center;
-        margin-left: 2rem;
+        margin-left: 1rem;
 
         & .filter-wrapper {
             gap: 0.2rem;

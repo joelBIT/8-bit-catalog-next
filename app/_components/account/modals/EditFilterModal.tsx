@@ -32,7 +32,7 @@ export function EditFilterModal({ filterValue, confirm, close }: { filterValue: 
     }
     
     return (
-        <dialog id="inputModal" ref={modalRef} className="modal-dialog">
+        <dialog id="editFilterModal" ref={modalRef} className="modal-dialog">
             <form method="dialog" className="modal-content">
                 <h1 className="modal__text"> Update filter value </h1>
                 
@@ -54,7 +54,7 @@ export function EditFilterModal({ filterValue, confirm, close }: { filterValue: 
                 />
                 
                 <span onClick={closeModal} className="closeButton" />
-                <button type="reset" onClick={confirmAdd} className="button__link"> Update </button>
+                <button type="reset" onClick={confirmAdd} className="authButton"> Update </button>
             </form>
         </dialog>
     );
