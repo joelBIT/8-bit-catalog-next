@@ -14,7 +14,7 @@ import * as profileSchema from "./_db/schema/profiles";
 import * as addressesSchema from "./_db/schema/addresses";
 import { profilesTable } from "./_db/schema/profiles";
 import { addressesTable } from "./_db/schema/addresses";
-import { DEFAULT_PROFILE_IMAGE } from "./_utils/utils";
+import { DEFAULT_PROFILE_IMAGE, ROLE_ADMIN, ROLE_USER } from "./_utils/utils";
 import { copyDefaultProfileImageToFolder } from "./_db/files-db";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
@@ -99,8 +99,8 @@ export const auth = betterAuth({
     },
     plugins: [
         admin({
-            defaultRole: "user", // role assigned to new users
-            adminRoles: ["admin"], // which roles count as "admin"
+            defaultRole: ROLE_USER, // role assigned to new users
+            adminRoles: [ROLE_ADMIN], // which roles count as "admin"
         }),
         nextCookies()       // make sure this is the last plugin in the array
     ]

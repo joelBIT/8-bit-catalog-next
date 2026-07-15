@@ -23,8 +23,8 @@ export const URL_SEARCH_PAGE = "/search";
 export const URL_RESOURCES_PAGE = "/resources";
 export const URL_TIMELINE_PAGE = "/timeline";
 
-export const USER_ROLE_ADMIN = "admin";
-export const USER_ROLE_REGULAR = "regular";
+export const ROLE_ADMIN = "admin";
+export const ROLE_USER = "user";
 
 export const FAQ_GENERAL = "General";
 export const FAQ_ACCOUNT = "Account";

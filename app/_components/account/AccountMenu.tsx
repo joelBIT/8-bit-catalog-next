@@ -4,8 +4,9 @@ import { useState, ReactElement } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/app/auth-client";
-import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_MEMBERS_PAGE, URL_PROFILE_PAGE, URL_SETTINGS_PAGE, USER_ROLE_ADMIN, URL_NEWSLETTER_PAGE, URL_LOGIN_PAGE } from "@/app/_utils/utils";
+import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_MEMBERS_PAGE, URL_PROFILE_PAGE, URL_SETTINGS_PAGE, URL_NEWSLETTER_PAGE, URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { User } from "@/app/_db/schema/auth/users";
+import { isAuthenticatedAdmin } from "@/app/_auth/client-functions";
 
 import "./AccountMenu.css";
 
@@ -21,8 +22,8 @@ export function AccountMenu({ user }: { user: User }): ReactElement {
         {url: URL_DASHBOARD_PAGE, title: 'Dashboard', icon: 'dashboard', render: true},
         {url: URL_PROFILE_PAGE, title: 'Profile', icon: 'person', render: true},
         {url: URL_SETTINGS_PAGE, title: 'Settings', icon: 'settings', render: true},
-        {url: URL_FILTERS_PAGE, title: 'Filters', icon: 'manage_search', render: true},     // TODO: user?.role === USER_ROLE_ADMIN
-        {url: URL_NEWSLETTER_PAGE, title: 'Newsletter', icon: 'news', render: true},        // TODO: user?.role === USER_ROLE_ADMIN
+        {url: URL_FILTERS_PAGE, title: 'Filters', icon: 'manage_search', render: isAuthenticatedAdmin()},
+        {url: URL_NEWSLETTER_PAGE, title: 'Newsletter', icon: 'news', render: isAuthenticatedAdmin()},
         {url: URL_MEMBERS_PAGE, title: 'Members', icon: 'group', render: true}
     ];
 
