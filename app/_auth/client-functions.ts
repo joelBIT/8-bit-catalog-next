@@ -36,3 +36,16 @@ export function getUser(): User {
 
     throw new Error("No authenticated user found");
 }
+
+/**
+ * @param onSuccess is executed if the signOut process is successful.
+ */
+export async function signOut(onSuccess: () => void): Promise<void> {
+    await authClient.signOut({
+        fetchOptions: {
+            onSuccess: () => {
+                onSuccess();
+            }
+        }
+    });
+}
