@@ -10,10 +10,9 @@ import { getProfileByUserIdRequest } from "@/app/_client/client";
 import "./UserListEntry.css";
 
 /**
- * Corresponds to an entry in a user list. The 'active' parameter is true is the user's account is activated, false otherwise.
- * The 'enrolled' parameter is the date when the user was registered.
+ * Corresponds to an entry in a user list. The 'enrolled' parameter is the date when the user was registered.
  */
-export function UserListEntry({ user, active, click } : { user: User, active: boolean, click: (user: User) => void }): ReactElement {
+export function UserListEntry({ user, onSelect } : { user: User, onSelect: (user: User) => void }): ReactElement {
     const [showModal, setShowModal] = useState<boolean>(false);
     const [profile, setProfile] = useState<Profile>();
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
@@ -43,7 +42,7 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
                 className="listEntry-figure__cover"
                 onMouseEnter={() => setShowModal(true)}
                 onMouseLeave={() => setShowModal(false)}
-                onClick={() => click(user)}
+                onClick={() => onSelect(user)}
                 alt="Member profile image"
                 width={100}
                 height={100}
@@ -60,30 +59,38 @@ export function UserListEntry({ user, active, click } : { user: User, active: bo
                 />
             </section>
 
-            <h2 className="userCard-email">
-                <section className="userCard-email__link" onClick={() => click(user)}>
-                    {user.email}
+            <section className="userListEntry-information">
+                <h2 className="user-email">
+                    <section className="user-email__link" onClick={() => onSelect(user)}>
+                        {user.email}
+                    </section>
+                </h2>
+
+                <section className="userListEntry-details">
+                    <article className="details-column">
+                        <section className="details-section">
+                            <h2 className="details__heading"> Name: </h2>
+                            <h2 className="details__text"> {user.name} </h2>
+                        </section>
+
+                        <section className="details-section">
+                            <h2 className="details__heading"> Role: </h2>
+                            <h2 className="details__text"> {user.role} </h2>
+                        </section>
+                    </article>
+                    
+                    <article className="details-column">
+                        <section className="details-section">
+                            <h2 className="details__heading"> Account: </h2>
+                            <h2 className="details__text"> {user.banned ? "Inactive" : "Active"} </h2>
+                        </section>
+
+                        <section className="details-section">
+                            <h2 className="details__heading"> Enrolled: </h2>
+                            <h2 className="details__text"> {convertDate(new Date(user.createdAt))} </h2>
+                        </section>
+                    </article>
                 </section>
-            </h2>
-
-            <section className="name-section">
-                <h2 className="userCard-name__heading"> Name </h2>
-                <h2 className="userCard-name"> {`${profile?.firstName} ${profile?.lastName}`} </h2>
-            </section>
-
-            <section className="role-section">
-                <h2 className="userCard-role__heading"> Role </h2>
-                {/* <h2 className="userCard-role"> {user.role} </h2> */}
-            </section>
-
-            <section className="account-section">
-                <h2 className="userCard-account__heading"> Account </h2>
-                <h2 className="userCard-account"> {active ? "Active" : "Inactive"} </h2>
-            </section>
-
-            <section className="enrolled-section">
-                <h2 className="userCard-enrolled__heading"> Enrolled </h2>
-                <h2 className="userCard-enrolled"> {convertDate(new Date(user.createdAt))} </h2>
             </section>
         </li>
     );
