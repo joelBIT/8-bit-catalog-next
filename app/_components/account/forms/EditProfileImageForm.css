@@ -25,25 +25,34 @@
             gap: 1rem;
             width: fit-content;
 
-            & > h1 {
-                color: var(--color-footer-heading);
+            & .edit-image__title {
+                color: var(--color-real-white);
                 font-size: 2rem;
-                width: fit-content;
+                font-family: iceland, sans-serif;
             }
 
             & .edit-profile__input {
                 height: 2rem;
                 font-size: 1.2rem;
+                color: var(--color-nintendo-gray);
+                font-family: iceland, sans-serif;
+                cursor: pointer;
+                max-width: 15rem;
+                width: 100%;
+            }
 
-                &:hover {
-                    cursor: pointer;
-                }
+            & input::file-selector-button {
+                font-family: iceland, sans-serif;
+                border: thin solid grey;
+                border-radius: 3px;
+                cursor: pointer;
             }
         }
     }
 
-    & .button__link {
+    & .authButton {
         padding: .3rem 1rem;
+        width: 10rem;
         align-self: center;
     }
 }

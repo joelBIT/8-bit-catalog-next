@@ -28,12 +28,12 @@ export function EditProfileImageForm({ profile }: { profile: Profile }): ReactEl
                     <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + profile.image} className="profile-image" alt="Profile image" />
 
                     <section className="edit-profile__change-image"> 
-                        <h1> Change profile image </h1> 
+                        <h1 className="edit-image__title"> Change profile image </h1> 
                         <input name="profileImage" className="edit-profile__input" type="file" accept={fileTypes.toString()} />
                     </section>
                 </section>
 
-                <button className="button__link" > Update </button>
+                <button className="authButton" > Update </button>
             </form>
 
             { 

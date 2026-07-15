@@ -27,12 +27,12 @@ export async function updateProfileImage(userId: string, _prevState: ActionState
         const profileImage = formData.get('profileImage') as File;
         if (profileImage.name !== 'undefined') {                        // Profile image has been changed
             await updateProfileImageById(userId, profileImage);             // Upload new profile image
-            return { message: 'The account was successfully updated', success: true, image: profileImage.name };
+            return { message: 'The profile image was successfully updated', success: true, image: profileImage.name };
         } else {
-            return { message: 'The account was successfully updated', success: true, image: _prevState.image };
+            return { message: 'The profile image was successfully updated', success: true, image: _prevState.image };
         }
     } catch (error) {
         console.log(error);
-        return { message: 'The account could not be updated', success: false, image: _prevState.image };
+        return { message: 'The profile image could not be updated', success: false, image: _prevState.image };
     }
 }
