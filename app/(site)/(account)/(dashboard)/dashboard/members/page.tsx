@@ -53,7 +53,7 @@ export default function MembersPage(): ReactElement {
                 }
             </h1>
 
-            <section id="heading">
+            <section id="memberSearch">
                 <search className="search-members">
                     <span className="material-symbols-outlined"> search </span>
                     <input

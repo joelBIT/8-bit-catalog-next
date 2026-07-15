@@ -15,13 +15,6 @@ export function UserList({ users }: { users: User[] }): ReactElement {
     const [openModal, setOpenModal] = useState<boolean>(showModal);
     const [selectedUser, setSelectedUser] = useState<User>({} as User);
     const [currentUsers, setCurrentUsers] = useState<User[]>([]);
-    const USER_NAME = "user-name";
-    const USER_EMAIL = "user-email";
-    const USER_ROLE = "user-role";
-    const USER_ACCOUNT = "user-account";
-    const USER_JOINED = "user-joined";
-    const HEADING_CLASSES = [USER_EMAIL, USER_NAME, USER_ROLE, USER_ACCOUNT, USER_JOINED];
-    const HEADINGS = ["Email", "Name", "Role", "Account", "Joined"];
 
     useEffect(() => {
         setCurrentUsers(users);
@@ -48,17 +41,9 @@ export function UserList({ users }: { users: User[] }): ReactElement {
 
     return (
         <ul id="userList">
-            <section id="listHeading">
-                {
-                    HEADING_CLASSES.map((heading, index) =>
-                        <h2 className={heading} key={heading}> {HEADINGS[index]} </h2>
-                    )
-                }
-            </section>
-
             { openModal && Object.keys(selectedUser).length > 0 ? <UserModal userId={selectedUser.id} close={() => closeUserModal()} /> : <></> }
 
-            { currentUsers.length > 0 ? currentUsers.map(user => <UserListEntry user={user} active={true} key={user.id} click={openUserModal} />) : <></> }
+            { currentUsers.length > 0 ? currentUsers.map(user => <UserListEntry user={user} key={user.id} onSelect={openUserModal} />) : <></> }
         </ul>
     );
 }
