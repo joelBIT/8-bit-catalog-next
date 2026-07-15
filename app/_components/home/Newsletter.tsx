@@ -29,6 +29,7 @@ export function Newsletter(): ReactElement {
 
                 <button className="navigation-link">
                     Subscribe 
+                    <span className="material-symbols-outlined">notifications_active</span>
                 </button>
             </form>
 

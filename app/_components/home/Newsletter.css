@@ -49,7 +49,9 @@
 
         & .navigation-link {
             background: transparent;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            border-radius: 88px;
+            gap: 0.5rem;
             transition: all 0.2s ease-in-out;
 
             &:hover {
