@@ -1,5 +1,6 @@
 'use server';
 
+import { isAuthenticatedAdmin } from "../_auth/server-functions";
 import { createNews } from "../_db/news-db";
 import { ActionState } from "../_types/types";
 
@@ -7,7 +8,11 @@ import { ActionState } from "../_types/types";
  * Create news. It is possible to send out news as a newsletter. Only Admin is allowed to create news.
  */
 export async function createNewsAction(_prevState: ActionState, formData: FormData): Promise<ActionState> {
-    // TODO: Make a check if user is admin
+    const isAdmin = isAuthenticatedAdmin();
+    if (!isAdmin) {
+        return { message: 'Only admins may create news', success: false };
+    }
+        
     const heading = formData.get('heading') as string;
     const text = formData.get('message') as string;
     if (!heading || !text) {

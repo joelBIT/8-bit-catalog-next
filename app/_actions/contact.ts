@@ -16,8 +16,8 @@ export async function sendContactEmail(_prevState: ActionState, formData: FormDa
         const resend = new Resend(process.env.RESEND_API_KEY as string);
 
         await resend.emails.send({
-            from: '8bit <onboarding@joel-rollny.eu>',
-            to: "joel.rollny@gmail.com",
+            from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
+            to: `${process.env.CONTACT_EMAIL}`,
             subject: 'Contact question',
             react: ContactMessageEmail(email, from, message),
         });
