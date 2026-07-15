@@ -7,6 +7,8 @@
     & #listHeading {
         display: flex;
         justify-content: space-around;
+        font-family: iceland, sans-serif;
+        color: var(--color-real-white);
 
         & .user-email {
             width: 34%;

@@ -9,10 +9,11 @@
     padding-bottom: 5rem;
 
     & .title {
+        font-family: iceland, sans-serif;
         font-size: 3rem;
         font-weight: 300;
         padding-bottom: 1rem;
-        color: var(--color-footer-heading);
+        color: var(--color-real-white);
         position: relative;
 
         & #members-count {

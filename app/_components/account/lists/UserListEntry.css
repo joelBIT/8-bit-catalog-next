@@ -100,7 +100,8 @@
         .userCard-account__heading,
         .userCard-enrolled__heading {
             display: block;
-            color: var(--color-footer-heading);
+            font-family: iceland, sans-serif;
+            color: var(--color-real-white);
             font-weight: 100;
             font-size: 1rem;
             grid-row: 2;
