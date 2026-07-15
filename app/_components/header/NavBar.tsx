@@ -67,15 +67,26 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     }
 
     const LINKS_FIRST = [
-        {url: URL_HOME, render: true, title: "Home", icon: null},
-        {url: URL_SEARCH_PAGE, render: true, title: "Games", icon: null}
+        {url: URL_HOME, render: true, title: "Home"},
+        {url: URL_SEARCH_PAGE, render: true, title: "Games"}
     ];
 
     const LINKS_LAST = [
-        {url: URL_TIMELINE_PAGE, render: true, title: "Timeline", icon: null},
-        {url: URL_LOGIN_PAGE, render: !authenticated, title: "Login", icon: "login"},
-        {url: URL_DASHBOARD_PAGE, render: authenticated, title: "Account", icon: "account_circle"}
+        {url: URL_TIMELINE_PAGE, render: true, title: "Timeline"},
+        {url: URL_LOGIN_PAGE, render: !authenticated, title: "Sign in"},
+        {url: URL_DASHBOARD_PAGE, render: authenticated, title: "Dashboard"}
     ];
+
+    let logoutOption = <></>
+
+    if (authenticated) {
+        logoutOption = 
+            <li className="navbar__list-element" onClick={logout}>
+                <Link href={URL_HOME} className="navbar__list-element-link" title="Logout">
+                    <h2 className="navbar__list-element-title"> Logout </h2>
+                </Link>
+            </li>
+    }
     
     return (
         <nav className="navbar">
@@ -87,8 +98,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                                 href={link.url}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                             >
-                                { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
-                                <h2 className={`navbar__list-element-title ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>
+                                <h2 className="navbar__list-element-title"> {link.title} </h2>
                             </Link>
                         </li>
                     )
@@ -119,23 +129,13 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
                                 title={link.url !== URL_TIMELINE_PAGE ? link.title : ""}
                             >
-                                { link.icon ? <span className="material-symbols-outlined wideScreen"> {link.icon} </span> : <></> }
-                                <h2 className={`navbar__list-element-title ${link.icon ? "smallScreen" : ""}`}> {link.title} </h2>
+                                <h2 className="navbar__list-element-title"> {link.title} </h2>
                             </Link>
                         </li>
                     )
                 }
 
-                { 
-                    authenticated ?
-                        <li className="navbar__list-element" onClick={logout}>
-                            <Link href={URL_HOME} className="navbar__list-element-link" title="Logout">
-                                <span className="material-symbols-outlined wideScreen">logout</span>
-                                <h2 className="navbar__list-element-title smallScreen"> Logout </h2>
-                            </Link>
-                        </li>
-                    : <></>
-                }
+                { logoutOption }
             </ul>
 
             <Hamburger checked={isChecked} setCheck={setIsChecked}/>
