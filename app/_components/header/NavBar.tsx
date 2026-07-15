@@ -82,7 +82,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     if (authenticated) {
         logoutOption = 
             <li className="navbar__list-element" onClick={logout}>
-                <Link href={URL_HOME} className="navbar__list-element-link" title="Logout">
+                <Link href={URL_HOME} className="navbar__list-element-link">
                     <h2 className="navbar__list-element-title"> 
                         Sign Out
                         <span className="material-symbols-outlined"> logout </span>
@@ -130,7 +130,6 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                             <Link 
                                 href={link.url}
                                 className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
-                                title={link.url !== URL_TIMELINE_PAGE ? link.title : ""}
                             >
                                 <h2 className="navbar__list-element-title"> 
                                     {link.title}
