@@ -20,9 +20,7 @@ export default async function Home(): Promise<ReactElement> {
 
                     <section id="searchGameArea">
                         <p className="search-text">Choose among approximately <b>1000</b> games released for the <b>NES</b></p>
-                        <Suspense>
-                            <TitleSearch titles={await getAllTitles()} />
-                        </Suspense>
+                        <TitleSearch titles={await getAllTitles()} />
                     </section>
                 </section>
             </section>
