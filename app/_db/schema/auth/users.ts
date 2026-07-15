@@ -4,12 +4,25 @@ import { sessions } from "./sessions";
 import { accounts } from "./accounts";
 
 export const users = pgTable("users", {
-    id: text("id").primaryKey(),
-    name: text("name").notNull(),
-    email: text("email").notNull().unique(),
-    emailVerified: boolean("email_verified").default(false).notNull(),
+    id: text("id")
+        .primaryKey(),
+    name: text("name")
+        .notNull(),
+    email: text("email")
+        .notNull()
+        .unique(),
+    emailVerified: boolean("email_verified")
+        .default(false)
+        .notNull(),
     image: text("image"),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
+    role: text("role"),
+    banned: boolean("banned")
+        .default(false),
+    banReason: text("ban_reason"),
+    banExpires: timestamp("ban_expires", { precision: 6, withTimezone: true }),
+    createdAt: timestamp("created_at")
+        .defaultNow()
+        .notNull(),
     updatedAt: timestamp("updated_at")
         .defaultNow()
         .$onUpdate(() => /* @__PURE__ */ new Date())

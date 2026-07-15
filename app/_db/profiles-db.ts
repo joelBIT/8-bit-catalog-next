@@ -18,7 +18,7 @@ export async function getProfileByUserId(userId: string): Promise<Profile> {
         throw new Error(`Could not find profile for user with ID ${userId}`)
     }
 
-    return response[0];
+    return response[0] as Profile;
 }
 
 /**

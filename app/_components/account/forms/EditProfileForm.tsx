@@ -1,17 +1,21 @@
 'use client';
 
-import { ReactElement, useActionState, useEffect, useState } from "react";
-import { useAccount } from "@/app/_hooks";
-import { fileTypes } from "@/app/_utils/utils";
-import { updateProfileImage } from "@/app/_actions/profile";
+import { ReactElement, useActionState, useState, useEffect } from "react";
+import { updateProfile } from "@/app/_actions/profile";
+import PhoneInput from "react-phone-input-2";
+import { ActionState } from "@/app/_types/types";
+import { InsertProfile, Profile } from "@/app/_db/schema/profiles";
 
+import 'react-phone-input-2/lib/style.css';
 import "./EditProfileForm.css";
 
-export function EditProfileForm(): ReactElement {
-    const { user, profile } = useAccount();
-    const [state, formAction] = useActionState(updateProfileImage.bind(null, user.id), { message: '', success: false, image: profile?.image });
+export function EditProfileForm({ profile }: { profile: Profile }): ReactElement {
+    const initialState: ActionState & InsertProfile = { 
+        message: '', success: false, userId: profile.userId, firstName: profile.firstName, 
+        lastName: profile.lastName, bio: profile.bio, birthDate: profile.birthDate, phone: profile.phone
+    }
+    const [state, formAction] = useActionState(updateProfile, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
-    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${user.id}/`;
 
     useEffect(() => {
         if (state?.message && !showMessage) {       // Show message for a fixed amount of time
@@ -24,17 +28,77 @@ export function EditProfileForm(): ReactElement {
 
     return (
         <>
-            <form id="editProfileForm" action={formAction}>
-                <section className="edit-profile-image">
-                    <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + profile?.image} className="profile-image" alt="Profile image" />
+            <form id="profileForm" action={formAction}>
+                <section className="information-input">
+                    <label className="input-label" htmlFor="first_name">
+                        First name
+                    </label>
 
-                    <section className="edit-profile__change-image"> 
-                        <h1> Change profile image </h1> 
-                        <input name="profileImage" className="edit-profile__input" type="file" accept={fileTypes.toString()} />
-                    </section>
+                    <input 
+                        id="first_name"
+                        name="first_name"
+                        type="text"
+                        className="input-field"
+                        autoComplete="none"
+                        defaultValue={state.firstName ?? ''} 
+                    />
                 </section>
 
-                <button className="button__link" > Update </button>
+                <section className="information-input">
+                    <label className="input-label" htmlFor="last_name">
+                        Last name
+                    </label>
+
+                    <input 
+                        id="last_name"
+                        name="last_name"
+                        type="text"
+                        className="input-field"
+                        autoComplete="none"
+                        defaultValue={state.lastName ?? ''} 
+                    />
+                </section>
+
+                <section className="information-input">
+                    <label className="input-label" htmlFor="bio">
+                        Bio
+                    </label>
+
+                    <textarea 
+                        id="bio"
+                        name="bio" 
+                        className="input-field edit-profile__bio"
+                        defaultValue={state.bio ?? ''} 
+                        placeholder="About me" 
+                    />
+                </section>
+
+                <section className="input">
+                    <input 
+                        id="birth_date"
+                        name="birth_date" 
+                        type="date"
+                        max={new Date().toLocaleDateString('en-ca')}
+                        defaultValue={`${state.birthDate?.toLocaleDateString('en-ca')}`}
+                        className="form__field"
+                    />
+
+                    <span className="form__field-label">
+                        Date of Birth
+                    </span>
+                </section>
+
+                <section className="information-input">
+                    <label className="input-label" htmlFor="phone">
+                        Phone number
+                    </label>
+
+                    <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone', autoComplete: "none"}} />
+                </section>
+                
+                <button className="authButton" type="submit">
+                    <span className="authButton__text"> Save </span>
+                </button>
             </form>
 
             { 

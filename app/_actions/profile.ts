@@ -7,15 +7,14 @@ import { ActionState } from "../_types/types";
 export async function updateProfile(_prevState: InsertProfile, formData: FormData): Promise<InsertProfile & ActionState> {
     try {
         const firstName = formData.get('first_name') as string;
-        const fullName = formData.get('full_name') as string;
         const lastName = formData.get('last_name') as string;
-        const birthDate = new Date(formData.get('birth_date') as string);
+        const birthDate = formData.get('birth_date') ? new Date(formData.get('birth_date') as string) : null;
         const phone = formData.get('phone') as string;
         const bio = formData.get('bio') as string;
         const userId = _prevState.userId;
-        await updateProfileByUserId({userId, phone, birthDate, lastName, firstName, bio, image: ''});
+        await updateProfileByUserId({userId, phone, birthDate, lastName, firstName, bio});
 
-        return { message: 'The account was successfully updated', success: true, userId, image: '', firstName, lastName, 
+        return { message: 'The account was successfully updated', success: true, userId, firstName, lastName, 
             bio, birthDate, phone };
     } catch (error) {
         console.log(error);

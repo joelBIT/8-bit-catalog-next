@@ -1,13 +1,12 @@
 'use client';
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
-import { useAccount } from "@/app/_hooks";
 import { updateEmail } from "@/app/_actions/user";
+import { User } from "@/app/_db/schema/auth/users";
 
 import "./EditEmailForm.css";
 
-export function EditEmailForm(): ReactElement {
-    const { user } = useAccount();
+export function EditEmailForm({ user }: { user: User }): ReactElement {
     const [state, formAction] = useActionState(updateEmail.bind(null, user.id), { message: '', success: false, email: user?.email });
     const [showMessage, setShowMessage] = useState<boolean>(false);
 

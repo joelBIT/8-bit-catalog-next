@@ -1,18 +1,17 @@
 'use client';
 
 import { ReactElement, useActionState, useState, useEffect } from "react";
-import { useAccount } from "@/app/_hooks";
 import { updateAddress } from "@/app/_actions/address";
 import { SelectCountry } from "../../common";
 import { ActionState } from "@/app/_types/types";
-import { InsertAddress } from "@/app/_db/schema/addresses";
+import { Address, InsertAddress } from "@/app/_db/schema/addresses";
+import { getUser } from "@/app/_auth/client-functions";
 
 import "./EditAddressForm.css";
 
-export function EditAddressForm(): ReactElement {
-    const { user, address } = useAccount();
+export function EditAddressForm({address}: {address: Address}): ReactElement {
     const initialState: ActionState & InsertAddress = {message: '', success: false, zipCode: address.zipCode, 
-        country: address.country, city: address.city, street: address.street, userId: user.id};
+        country: address.country, city: address.city, street: address.street, userId: getUser().id};
     const [state, formAction] = useActionState(updateAddress, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 

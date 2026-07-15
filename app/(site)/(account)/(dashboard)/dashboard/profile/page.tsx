@@ -1,12 +1,15 @@
 import { ReactElement } from "react";
-import { EditProfileForm } from "@/app/_components/account/forms";
+import { EditProfileImageForm } from "@/app/_components/account/forms";
+import { getUser } from "@/app/_auth/server-functions";
+import { getProfileByUserId } from "@/app/_db/profiles-db";
 
 import "./page.css";
 
-export default function AccountProfilePage(): ReactElement {
+export default async function AccountProfilePage(): Promise<ReactElement> {
+
     return (
         <main id="profilePage">
-            <EditProfileForm />
+            <EditProfileImageForm profile={await getProfileByUserId((await getUser()).id)} />
         </main>
     );
 }
