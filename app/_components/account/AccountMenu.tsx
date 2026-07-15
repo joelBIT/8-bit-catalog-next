@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/app/auth-client";
 import { URL_DASHBOARD_PAGE, URL_FILTERS_PAGE, URL_MEMBERS_PAGE, URL_PROFILE_PAGE, URL_SETTINGS_PAGE, URL_NEWSLETTER_PAGE, URL_LOGIN_PAGE } from "@/app/_utils/utils";
-import { User } from "@/app/_db/schema/auth/users";
 import { isAuthenticatedAdmin } from "@/app/_auth/client-functions";
 
 import "./AccountMenu.css";
@@ -13,7 +12,7 @@ import "./AccountMenu.css";
 /**
  * Used to navigate between account-specific sections. Some links are only visible for users with the admin role.
  */
-export function AccountMenu({ user }: { user: User }): ReactElement {
+export function AccountMenu(): ReactElement {
     const [showMenu, setShowMenu] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();

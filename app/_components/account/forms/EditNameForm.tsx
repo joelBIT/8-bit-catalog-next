@@ -1,13 +1,12 @@
 'use client';
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
-import { useAccount } from "@/app/_hooks";
 import { updateName } from "@/app/_actions/user";
+import { User } from "@/app/_db/schema/auth/users";
 
 import "./EditNameForm.css";
 
-export function EditNameForm(): ReactElement {
-    const { user } = useAccount();
+export function EditNameForm({ user }: { user: User }): ReactElement {
     const [state, formAction] = useActionState(updateName.bind(null, user.id), { message: '', success: false, name: user?.name });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     

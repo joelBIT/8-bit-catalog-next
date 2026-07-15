@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactElement, useEffect, useRef, useState } from "react";
-import { useAccount } from "@/app/_hooks";
 import { User } from "@/app/_db/schema/auth/users";
 import { getUsersRequest } from "@/app/_client/client";
 import { AddUserModal } from "@/app/_components/account/modals";
@@ -18,7 +17,6 @@ export default function MembersPage(): ReactElement {
     const [result, setResult] = useState<User[]>([]);
     const [modal, setModal] = useState<boolean>(false);
     const searchRef = useRef<HTMLInputElement>(null);
-    const { user } = useAccount();
 
     useEffect(() => {
         getAllMembers();

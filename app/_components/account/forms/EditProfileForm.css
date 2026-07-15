@@ -1,66 +1,94 @@
-#editProfileForm {
+#profileForm {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 2rem;
+    gap: 1rem;
 
-    & .edit-profile-image {
+    #birthDate {
+        padding-right: 12px;
+    }
+
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+
+    & .information-input {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 3rem;
+        color: var(--color-real-white);
 
-        & .profile-image {
-            border-radius: 100%;
-            width: 15rem;
-            max-width: 15rem;
-            height: 15rem;
+        & .input-label {
+            text-transform: uppercase;
+            font-size: .63rem;
+            font-weight: 300;
+            padding: 6px 12px;
         }
 
-        & .edit-profile__change-image {
-            display: flex;
-            flex-direction: column;
-            text-align-last: center;
-            align-items: center;
-            gap: 1rem;
-            width: fit-content;
+        & .edit-profile__bio {
+            white-space-collapse: preserve-breaks;
+            line-height: 1;
+            margin-top: 0;
+        }
 
-            & > h1 {
-                color: var(--color-footer-heading);
-                font-size: 2rem;
-                width: fit-content;
+        & .react-tel-input {
+            & .form-control,
+            .flag-dropdown {
+                background-color: var(--color-real-black);
+                border-color: var(--color-real-black);
+                color: var(--color-real-white);
+                border-style: none;
+                appearance: none;
+                border-radius: 6px;
+                box-shadow: none;
+                height: 50px;
+                font-size: 1rem;
+                transition: all 0.5s;
             }
 
-            & .edit-profile__input {
-                height: 2rem;
-                font-size: 1.2rem;
+            & .flag-dropdown:hover {
+                background-color: var(--color-black);
+                
+                .selected-flag {
+                    background-color: var(--color-black);
+                }
+            }
 
-                &:hover {
-                    cursor: pointer;
+            & .country-list {
+                background-color: var(--color-real-black);
+                color: var(--color-real-white);
+
+                & li:hover {
+                    background-color: var(--color-black);
+                }
+
+                .highlight {
+                    background-color: var(--color-black);
                 }
             }
         }
     }
 
-    & .button__link {
-        padding: .3rem 1rem;
-        align-self: center;
+    .input-field,
+    .form__field {
+        font-family: "arima", sans-serif;
     }
 }
 
-@media (max-width: 410px) {
-    #editProfileForm {
-        width: 95vw;
-        padding-right: 0.6rem;
+@media (max-width: 550px) {
+    #userDetailsForm {
+        width: 75vw;
+        margin-left: 3rem;
 
-        & .edit-profile-image {
-            & .edit-profile__change-image {
-                & > h1 {
-                    font-size: 1.6rem;
-                }
+        > input {
+            font-size: 1.3rem;
+            padding-left: 0.3rem;
+            height: 2rem;
+        }
 
-                & .edit-profile__input {
-                    font-size: 0.9rem;
+        & .information-input {
+            & .react-tel-input {
+                & .form-control,
+                .flag-dropdown {
+                    width: 90%;
                 }
             }
         }

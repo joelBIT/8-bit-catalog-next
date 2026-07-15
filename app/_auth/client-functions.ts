@@ -2,6 +2,7 @@
 
 import { authClient } from "@/app/auth-client";
 import { ROLE_ADMIN } from "../_utils/utils";
+import { User } from "../_db/schema/auth/users";
 
 export function isAuthenticated(): boolean {
     const { data: session } = authClient.useSession();
@@ -21,4 +22,17 @@ export function isAuthenticatedAdmin(): boolean {
     }
 
     return false;
+}
+
+/**
+ * @returns the signed in user
+ */
+export function getUser(): User {
+    const { data: session } = authClient.useSession();
+
+    if (session?.user) {
+        return session.user as User;
+    }
+
+    throw new Error("No authenticated user found");
 }
