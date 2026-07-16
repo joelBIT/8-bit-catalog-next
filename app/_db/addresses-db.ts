@@ -4,7 +4,6 @@ import { eq } from 'drizzle-orm';
 import { databaseClient } from './db';
 import { Address, InsertAddress, addressesTable } from './schema/addresses';
 
-
 /**
  * Retrieve the addess for user with supplied user ID.
  */
@@ -17,9 +16,6 @@ export async function getAddressByUserId(userId: string): Promise<Address> {
     return response[0];
 }
 
-/**
- * Update address for user with supplied user ID.
- */
-export async function updateAddressByUserId(address: InsertAddress): Promise<void> {
+export async function updateUserAddress(address: InsertAddress): Promise<void> {
     await databaseClient.update(addressesTable).set({...address}).where(eq(addressesTable.userId, address.userId));
 }

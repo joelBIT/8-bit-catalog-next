@@ -30,6 +30,21 @@ export function EditAddressForm({address}: {address: Address}): ReactElement {
                 <SelectCountry selected={state.country ?? ''} />
 
                 <section className="information-input">
+                    <label className="input-label" htmlFor="street">
+                        Street
+                    </label>
+
+                    <input 
+                        id="street"
+                        name="street" 
+                        type="text"
+                        defaultValue={state.street ?? ''} 
+                        className="input-field"
+                        autoComplete="none"
+                    />
+                </section>
+
+                <section className="information-input">
                     <label className="input-label" htmlFor="zip_code">
                         Zip code
                     </label>

@@ -17,7 +17,7 @@ export function EditPasswordForm(): ReactElement {
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     async function updatePassword() {
-        const { data, error } = await authClient.changePassword({
+        const { error } = await authClient.changePassword({
             newPassword,
             currentPassword,
             revokeOtherSessions: true
