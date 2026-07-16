@@ -6,17 +6,12 @@
     background-color: var(--color-black);
     min-height: 90vh;
     padding-top: 5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
 @media (max-width: 1300px) {
     #newsletterPage {
         flex-direction: column;
-    }
-}
-
-@media (max-width: 500px) {
-    #newsletterPage {
-        align-items: flex-end;
-        padding-right: 1rem;
     }
 }

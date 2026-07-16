@@ -78,8 +78,6 @@
 
 @media (max-width: 1100px) {
     #membersPage {
-        padding-left: 3rem;
-
         #heading {
             flex-wrap: wrap;
             justify-content: center;

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useFavourites } from "@/app/_hooks";
 import { URL_TIMELINE_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
-import { Hamburger } from ".";
+import { DashboardDropdown, Hamburger } from ".";
 import { signOut } from "@/app/_auth/client-functions";
 
 import "./NavBar.css";
@@ -14,8 +14,9 @@ import "./NavBar.css";
  * Different NavBar options will be available depending on if the user is authenticated or not. Links for Search Page and
  * Favourites Page are always rendered. The remaining links are rendered depending on if the user is authenticated or not.
  */
-export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
+export function NavBar({ authenticated, isAdmin } : { authenticated: boolean, isAdmin: boolean }): ReactElement {
     const { favouritesList } = useFavourites();
+    const [showDashboardDropdown, setShowDashboardDropdown] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const [scrollPosition, setScrollPosition] = useState<number>(0);
     const pathname = usePathname();
@@ -57,12 +58,14 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     async function logout(): Promise<void> {
         await signOut(() => router.push(URL_LOGIN_PAGE));
         setIsChecked(false);
+        router.refresh();
     }
 
     /**
      * Close Hamburger menu when choosing a menu alternative.
      */
     function closeMenu(): void  {
+        setShowDashboardDropdown(false);
         setIsChecked(!isChecked);
     }
 
@@ -85,7 +88,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                 <Link href={URL_HOME} className="navbar__list-element-link">
                     <h2 className="navbar__list-element-title"> 
                         Sign Out
-                        <span className="material-symbols-outlined"> logout </span>
+                        <span className="material-symbols-outlined logout-icon"> logout </span>
                     </h2>
                 </Link>
             </li>
@@ -126,17 +129,35 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
 
                 {
                     LINKS_LAST.filter(link => link.render).map(link =>
-                        <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
-                            <Link 
-                                href={link.url}
-                                className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
-                            >
-                                <h2 className="navbar__list-element-title"> 
-                                    {link.title}
-                                    {link.url === URL_LOGIN_PAGE ? <span className="material-symbols-outlined"> login </span> : ""}
-                                </h2>
-                            </Link>
-                        </li>
+                        link.url === URL_DASHBOARD_PAGE 
+                            ?
+                                <li className="navbar__list-element" key={link.url}>
+                                    <div className="navbar__list-element-link">
+                                        <h2 
+                                            id="dashboard-title" 
+                                            className="navbar__list-element-title"
+                                            onClick={() => setShowDashboardDropdown(!showDashboardDropdown)}
+                                        > 
+                                            {link.title} 
+                                            <span className={`material-symbols-outlined ${showDashboardDropdown ? "rotate-down" : "rotate-up"}`}>
+                                                keyboard_arrow_down 
+                                            </span>
+                                        </h2>
+                                        <DashboardDropdown show={showDashboardDropdown} isAdmin={isAdmin} closeMenu={closeMenu} />
+                                    </div>
+                                </li>
+                            :
+                                <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
+                                    <Link 
+                                        href={link.url}
+                                        className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                                    >
+                                        <h2 className="navbar__list-element-title"> 
+                                            {link.title}
+                                            {link.url === URL_LOGIN_PAGE ? <span className="material-symbols-outlined login-icon"> login </span> : ""}
+                                        </h2>
+                                    </Link>
+                                </li>
                     )
                 }
 

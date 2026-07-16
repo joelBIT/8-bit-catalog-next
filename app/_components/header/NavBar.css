@@ -24,22 +24,7 @@
             & .navbar__list-element-link {
                 font-size: 1.2rem;
                 text-decoration: none;
-
-                :after {
-                    content: '';
-                    position: absolute;
-                    left: 50%;
-                    bottom: -2px;
-                    width: 0px;
-                    height: 2px;
-                    background: var(--color-white);
-                    transition: all 0.45s;
-                }
-
-                :not(.material-symbols-outlined):hover:after {
-                    width: 100%;
-                    left: 0;
-                }
+                position: relative;
 
                 & #favourite-link {
                     position: relative;
@@ -59,25 +44,54 @@
                 & .navbar__list-element-title {
                     font-family: "iceland", sans-serif;
                     font-weight: 100;
+                    cursor: pointer;
+                    transition: all 0.3s;
+
+                    &:hover:not(#dashboard-title) {
+                        color: var(--color-link-active);
+                        transition: all 0.3s;
+                    }
+
+                    &:hover {
+                        & .material-symbols-outlined {
+                            color: var(--color-link-active);
+                            transition: all 0.3s;
+                        }
+                    }
+                }
+
+                .rotate-down {
+                    font-size: 25px;
+                    transform: scaleY(-1);
+                    vertical-align: bottom;
+                    color: var(--color-link-active);
+                }
+
+                @-moz-document url-prefix() {
+                    .rotate-down {
+                        vertical-align: center;
+                    }
+                }
+
+                .rotate-up {
+                    font-size: 25px;
+                    transform: scaleY(1);
+                    vertical-align: bottom;
+                }
+
+                @-moz-document url-prefix() {
+                    .rotate-up {
+                        vertical-align: center;
+                    }
                 }
             }
 
             & .navbar__list-element-link.active {
                 color: var(--color-link-active);
-
-                :after {
-                    content: '';
-                    position: absolute;
-                    left: 50%;
-                    bottom: -2px;
-                    width: 0px;
-                    height: 2px;
-                    background: var(--color-link-active);
-                    transition: all 0.45s;
-                }
             }
 
-            & .material-symbols-outlined {
+            & .login-icon,
+            & .logout-icon {
                 font-size: 20px;
                 vertical-align: middle;
                 padding-left: 0.3rem;
@@ -139,10 +153,6 @@
 
                 & .navbar__list-element-link,
                  .navbar__list-element-link.active {
-                    ::after {
-                        content: none;
-                    }
-
                     &:hover {
                         color: var(--color-link-active);
                     }
