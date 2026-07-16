@@ -75,7 +75,6 @@
 
 @media (max-width: 550px) {
     #userDetailsForm {
-        width: 75vw;
         margin-left: 3rem;
 
         > input {
