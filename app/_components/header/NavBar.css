@@ -44,11 +44,44 @@
                 & .navbar__list-element-title {
                     font-family: "iceland", sans-serif;
                     font-weight: 100;
+                    cursor: pointer;
                     transition: all 0.3s;
 
                     &:hover:not(#dashboard-title) {
                         color: var(--color-link-active);
                         transition: all 0.3s;
+                    }
+
+                    &:hover {
+                        & .material-symbols-outlined {
+                            color: var(--color-link-active);
+                            transition: all 0.3s;
+                        }
+                    }
+                }
+
+                .rotate-down {
+                    font-size: 25px;
+                    transform: scaleY(-1);
+                    vertical-align: bottom;
+                    color: var(--color-link-active);
+                }
+
+                @-moz-document url-prefix() {
+                    .rotate-down {
+                        vertical-align: center;
+                    }
+                }
+
+                .rotate-up {
+                    font-size: 25px;
+                    transform: scaleY(1);
+                    vertical-align: bottom;
+                }
+
+                @-moz-document url-prefix() {
+                    .rotate-up {
+                        vertical-align: center;
                     }
                 }
             }
@@ -57,7 +90,8 @@
                 color: var(--color-link-active);
             }
 
-            & .material-symbols-outlined {
+            & .login-icon,
+            & .logout-icon {
                 font-size: 20px;
                 vertical-align: middle;
                 padding-left: 0.3rem;

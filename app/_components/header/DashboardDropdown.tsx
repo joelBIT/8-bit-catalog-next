@@ -11,80 +11,53 @@ import "./DashboardDropdown.css";
  */
 export function DashboardDropdown({show, setShowDropdown}: {show: boolean, setShowDropdown: (show: boolean) => void}): ReactElement {
     const [isShowing, setIsShowing] = useState<boolean>(show);
-    const [scrollPosition, setScrollPosition] = useState<number>(0);
+    const [isAdmin] = useState<boolean>(isAuthenticatedAdmin());
 
     useEffect(() => {
         setIsShowing(show);
     }, [show]);
 
-        /**
-     * Increase/reduce opacity when scrolling up/down at the top of the page. Should not be used when screen width is below 500px.
-     */
-    useEffect(() => {
-        const dashboardElement = document.getElementById("dashboard-dropdown");
-        if (dashboardElement && window.screenY < 10 && window.screen.width > 500) {
-            dashboardElement.style.setProperty('background-color', `rgba(0,0,0,0)`);
-        }
-        if (scrollPosition <= 700 && dashboardElement && window.screen.width > 500) {
-            dashboardElement.style.setProperty('background-color', `rgba(0,0,0,${scrollPosition / 700})`);
-        } else if (dashboardElement) {
-            dashboardElement.style.setProperty('background-color', `rgba(0,0,0,1)`);
-        }
-    })
-
-    useEffect(() => {
-        window.addEventListener("scroll", trackVerticalScroll, false);
-
-        return () => {
-            window.removeEventListener("scroll", trackVerticalScroll, false);
-        };
-    }, []);
-
-    /**
-     * Keep track of vertical scroll in order to increase/decrease header opacity.
-     */
-    function trackVerticalScroll(): void {
-        setScrollPosition(window.scrollY);
-    }
-
-    /**
-     * Clear the input field when closing the dropdown.
-     */
-    function closeDropdown(): void {
-        setShowDropdown(false);
-    }
-
     let adminLinks = <></>;
 
-    if (isAuthenticatedAdmin()) {
+    if (isAdmin) {
         adminLinks =
             <>
-                <li className="dashboard-list__item">
-                    <Link href={"/dashboard/newsletter"} className="dashboard-link">Newsletter</Link>
-                </li>
-                <li className="dashboard-list__item">
-                    <Link href={"/dashboard/filters"} className="dashboard-link">Filters</Link>
-                </li>
+                <Link href={"/dashboard/newsletter"} className="dashboard-list__item" onClick={() => setShowDropdown(false)}>
+                    <span className="material-symbols-outlined"> news </span> 
+                    <h2 className="dashboard-link__text"> Newsletter </h2>
+                </Link>
+
+                <Link href={"/dashboard/filters"} className="dashboard-list__item" onClick={() => setShowDropdown(false)}>
+                    <span className="material-symbols-outlined"> manage_search </span> 
+                    <h2 className="dashboard-link__text">Filters</h2>
+                </Link>
             </>
     }
 
     return (
-        <section id="dashboard-dropdown" onMouseLeave={closeDropdown}>
-            <section id="dashboard-inner-content" className={isShowing ? "dropdown" : "accordion-panel"}>
+        <section id="dashboard-dropdown">
+            <section id="dashboard-inner-content" className={isShowing ? `dropdown ${isAdmin ? " isAdmin" : ""}` : "accordion-panel"}>
 
                 <ul className="dashboard-list">
-                    <li className="dashboard-list__item">
-                        <Link href={"/dashboard"} className="dashboard-link">Profile</Link>
-                    </li>
-                    <li className="dashboard-list__item">
-                        <Link href={"/dashboard/profile"} className="dashboard-link">Image</Link>
-                    </li>
-                    <li className="dashboard-list__item">
-                        <Link href={"/dashboard/members"} className="dashboard-link">Members</Link>
-                    </li>
-                    <li className="dashboard-list__item">
-                        <Link href={"/dashboard/settings"} className="dashboard-link">Settings</Link>
-                    </li>
+                    <Link href={"/dashboard"} className="dashboard-list__item" onClick={() => setShowDropdown(false)}>
+                        <span className="material-symbols-outlined"> dashboard </span> 
+                        <h2 className="dashboard-link__text">Profile</h2>
+                    </Link>
+
+                    <Link href={"/dashboard/profile"} className="dashboard-list__item" onClick={() => setShowDropdown(false)}>
+                        <span className="material-symbols-outlined"> person </span> 
+                        <h2 className="dashboard-link__text">Image</h2>
+                    </Link>
+
+                    <Link href={"/dashboard/members"} className="dashboard-list__item" onClick={() => setShowDropdown(false)}>
+                        <span className="material-symbols-outlined"> group </span> 
+                        <h2 className="dashboard-link__text">Members</h2>
+                    </Link>
+
+                    <Link href={"/dashboard/settings"} className="dashboard-list__item" onClick={() => setShowDropdown(false)}>
+                        <span className="material-symbols-outlined"> settings </span> 
+                        <h2 className="dashboard-link__text">Settings</h2>
+                    </Link>
 
                     {adminLinks}
                 </ul>

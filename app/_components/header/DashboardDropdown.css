@@ -4,8 +4,6 @@
     position: absolute;
     top: 2rem;
     width: 100%;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
 
     & .accordion-panel {
         display: flex;
@@ -15,10 +13,10 @@
     }
 
     & .dropdown {
-        min-height: 10rem;
-        height: fit-content;
+        min-height: 11rem;
         z-index: 10;
         overflow: hidden;
+        position: relative;
         transition: height 0.5s;
 
         & .dashboard-list {
@@ -28,22 +26,57 @@
             left: 0;
             list-style-type: none;
             width: 100%;
-            padding: 1rem;
 
             & .dashboard-list__item {
-                font-family: iceland, sans-serif;
-                font-size: 1.4rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                cursor: pointer;
+                background-color: var(--color-black);
 
-                & .dashboard-link:hover {
+                & .dashboard-link__text {
+                    font-family: iceland, sans-serif;
+                    font-size: 1.4rem;
+                    font-weight: 100;
+                }
+
+                & .material-symbols-outlined {
+                    font-size: 1.3rem;
+                }
+
+                &:hover {
                     color: var(--color-link-active);
+                    filter: brightness(1.2);
+
+                    > .dashboard-link {
+                        color: var(--color-link-active);
+                    }
                 }
             }
+
+            & .dashboard-list__item:first-child {
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+            }
+
+            & .dashboard-list__item:last-child {
+                border-bottom-left-radius: 6px;
+                border-bottom-right-radius: 6px;
+            }
         }
+    }
+
+    & .isAdmin {
+        min-height: 15rem;
     }
 }
 
 @media (max-width: 700px) {
     #dashboard-dropdown {
+        position: static;
+
         & .dropdown {
             height: fit-content;
         }

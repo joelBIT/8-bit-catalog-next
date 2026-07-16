@@ -64,6 +64,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
      * Close Hamburger menu when choosing a menu alternative.
      */
     function closeMenu(): void  {
+        setShowDashboardDropdown(false);
         setIsChecked(!isChecked);
     }
 
@@ -86,7 +87,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                 <Link href={URL_HOME} className="navbar__list-element-link">
                     <h2 className="navbar__list-element-title"> 
                         Sign Out
-                        <span className="material-symbols-outlined"> logout </span>
+                        <span className="material-symbols-outlined logout-icon"> logout </span>
                     </h2>
                 </Link>
             </li>
@@ -127,33 +128,35 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
 
                 {
                     LINKS_LAST.filter(link => link.render).map(link =>
-                        <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
-                            {
-                                link.url === URL_DASHBOARD_PAGE 
-                                    ?
-                                        <div className="navbar__list-element-link">
-                                            <h2 
-                                                id="dashboard-title" 
-                                                className="navbar__list-element-title" 
-                                                onMouseEnter={() => setShowDashboardDropdown(true)}
-                                            > 
-                                                {link.title} 
-                                                <span className="material-symbols-outlined"> keyboard_arrow_down </span>
-                                            </h2>
-                                            <DashboardDropdown show={showDashboardDropdown} setShowDropdown={setShowDashboardDropdown} />
-                                        </div>
-                                    : 
-                                <Link 
-                                    href={link.url}
-                                    className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
-                                >
-                                    <h2 className="navbar__list-element-title"> 
-                                        {link.title}
-                                        {link.url === URL_LOGIN_PAGE ? <span className="material-symbols-outlined"> login </span> : ""}
-                                    </h2>
-                                </Link>
-                            }
-                        </li>
+                        link.url === URL_DASHBOARD_PAGE 
+                            ?
+                                <li className="navbar__list-element" key={link.url}>
+                                    <div className="navbar__list-element-link">
+                                        <h2 
+                                            id="dashboard-title" 
+                                            className="navbar__list-element-title"
+                                            onClick={() => setShowDashboardDropdown(!showDashboardDropdown)}
+                                        > 
+                                            {link.title} 
+                                            <span className={`material-symbols-outlined ${showDashboardDropdown ? "rotate-down" : "rotate-up"}`}>
+                                                keyboard_arrow_down 
+                                            </span>
+                                        </h2>
+                                        <DashboardDropdown show={showDashboardDropdown} setShowDropdown={setShowDashboardDropdown} />
+                                    </div>
+                                </li>
+                            :
+                                <li className="navbar__list-element" key={link.url} onClick={closeMenu}>
+                                    <Link 
+                                        href={link.url}
+                                        className={pathname === link.url ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                                    >
+                                        <h2 className="navbar__list-element-title"> 
+                                            {link.title}
+                                            {link.url === URL_LOGIN_PAGE ? <span className="material-symbols-outlined login-icon"> login </span> : ""}
+                                        </h2>
+                                    </Link>
+                                </li>
                     )
                 }
 
