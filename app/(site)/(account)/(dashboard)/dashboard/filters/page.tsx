@@ -10,6 +10,8 @@ import "./page.css";
 export default async function FiltersPage(): Promise<ReactElement> {
     return (
         <main id="filtersPage">
+            <h1 className="filters-title"> Filters </h1>
+
             <EditFilterForm 
                 filterValues={await getAllCategories()} 
                 title="Category" 

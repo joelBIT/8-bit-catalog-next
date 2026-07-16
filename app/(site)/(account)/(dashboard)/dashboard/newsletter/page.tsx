@@ -14,9 +14,13 @@ import "./page.css";
 export default async function NewsletterPage(): Promise<ReactElement> {
     return (
         <main id="newsletterPage">
-            <NewsList news={await getAllNews()} />
+            <h1 className="newsletter-title"> Newsletter </h1>
 
-            <NewsletterForm />
+            <section id="newsletter-content">
+                <NewsList news={await getAllNews()} />
+
+                <NewsletterForm />
+            </section>
         </main>
     );
 }

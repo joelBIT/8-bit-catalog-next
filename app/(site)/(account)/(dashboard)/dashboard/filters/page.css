@@ -6,6 +6,15 @@
     min-height: 90vh;
     padding-top: 10rem;
     padding-bottom: 5rem;
+
+    & .filters-title {
+        font-family: iceland, sans-serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--color-real-white);
+        text-align: center;
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 500px) {

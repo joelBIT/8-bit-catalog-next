@@ -1,16 +1,34 @@
 #newsletterPage {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 4rem;
     background-color: var(--color-black);
-    min-height: 90vh;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 5rem 0.5rem;
+
+    & .newsletter-title {
+        font-family: iceland, sans-serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--color-real-white);
+        text-align: center;
+        padding: 1rem;
+    }
+
+    & #newsletter-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        width: 100%;
+    }
 }
 
 @media (max-width: 1300px) {
     #newsletterPage {
-        flex-direction: column;
+        & #newsletter-content {
+            flex-direction: column;
+        }
     }
 }
