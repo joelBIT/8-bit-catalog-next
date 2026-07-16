@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--color-black);
-    min-height: 90vh;
     padding: 10rem 1rem 5rem;
 
     & .dashboard-title {
