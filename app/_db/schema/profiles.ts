@@ -1,5 +1,7 @@
 import { relations } from "drizzle-orm";
 import { pgTable, serial, text, timestamp, date } from 'drizzle-orm/pg-core';
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 import { users } from '@/app/_db/schema/auth/users';
 
 export const profilesTable = pgTable('profiles', {
@@ -21,12 +23,15 @@ export const profilesTable = pgTable('profiles', {
         .$onUpdate(() => /* @__PURE__ */ new Date())
 });
 
-export type InsertProfile = typeof profilesTable.$inferInsert;
-export type Profile = typeof profilesTable.$inferSelect;
-
 export const profilesRelations = relations(profilesTable, ({ one }) => ({
     users: one(users, {
         fields: [profilesTable.userId],
         references: [users.id]
     })
 }));
+
+export const insertProfileSchema = createInsertSchema(profilesTable);
+export const selectProfileSchema = createSelectSchema(profilesTable);
+
+export type InsertProfile = z.infer<typeof insertProfileSchema>;
+export type Profile = z.infer<typeof selectProfileSchema>;
