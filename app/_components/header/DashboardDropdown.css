@@ -78,7 +78,7 @@
         position: static;
 
         & .dropdown {
-            height: fit-content;
+            min-height: 8rem;
 
              & .dashboard-list {
                 padding-left: 2rem;
