@@ -7,7 +7,7 @@ import { User } from "@/app/_db/schema/auth/users";
 import "./EditNameForm.css";
 
 export function EditNameForm({ user }: { user: User }): ReactElement {
-    const [state, formAction] = useActionState(updateName.bind(null, user.id), { message: '', success: false, name: user?.name });
+    const [state, formAction] = useActionState(updateName, { message: '', success: false, name: user?.name });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     
     useEffect(() => {
@@ -21,7 +21,7 @@ export function EditNameForm({ user }: { user: User }): ReactElement {
     
     return (
         <form id="editNameForm" action={formAction}>
-            <h1 className="editNameForm__title"> Change name </h1>
+            <h1 className="editNameForm__title"> Change Name </h1>
 
             <section className="input">
                 <input 

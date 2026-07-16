@@ -11,6 +11,5 @@
 @media (max-width: 500px) {
     #filtersPage {
         padding-top: 5rem;
-        align-items: flex-end;
     }
 }
