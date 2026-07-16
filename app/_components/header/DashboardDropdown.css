@@ -79,6 +79,14 @@
 
         & .dropdown {
             height: fit-content;
+
+             & .dashboard-list {
+                padding-left: 2rem;
+             }
+        }
+
+        & .isAdmin {
+            min-height: 13rem;
         }
     }
 }

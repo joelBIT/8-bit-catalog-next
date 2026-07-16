@@ -19,19 +19,13 @@
     #settingsPage {
         padding-top: 5rem;
         align-items: flex-end;
-        padding-right: 1rem;
-        padding-left: 4rem;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
 
         .message-success, .message-failure {
             font-size: 1rem;
             text-align: center;
             margin-left: 3rem;
         }
-    }
-}
-
-@media (max-width: 400px) {
-    #settingsPage {
-        padding-right: 0.5rem;
     }
 }

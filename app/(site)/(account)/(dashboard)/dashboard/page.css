@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 5rem;
     background-color: var(--color-black);
     padding: 10rem 1rem 5rem;
 
@@ -14,11 +15,11 @@
         padding: 1rem;
     }
 
-    & .user-information {
-        color: var(--color-footer-heading);
-        margin-bottom: 3rem;
+    & #dashboardContent {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 5rem;
         width: 100%;
-        text-align: right;
     }
 }
 

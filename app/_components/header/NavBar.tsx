@@ -14,7 +14,7 @@ import "./NavBar.css";
  * Different NavBar options will be available depending on if the user is authenticated or not. Links for Search Page and
  * Favourites Page are always rendered. The remaining links are rendered depending on if the user is authenticated or not.
  */
-export function NavBar({ authenticated } : { authenticated: boolean }): ReactElement {
+export function NavBar({ authenticated, isAdmin } : { authenticated: boolean, isAdmin: boolean }): ReactElement {
     const { favouritesList } = useFavourites();
     const [showDashboardDropdown, setShowDashboardDropdown] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -58,6 +58,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
     async function logout(): Promise<void> {
         await signOut(() => router.push(URL_LOGIN_PAGE));
         setIsChecked(false);
+        router.refresh();
     }
 
     /**
@@ -142,7 +143,7 @@ export function NavBar({ authenticated } : { authenticated: boolean }): ReactEle
                                                 keyboard_arrow_down 
                                             </span>
                                         </h2>
-                                        <DashboardDropdown show={showDashboardDropdown} setShowDropdown={setShowDashboardDropdown} />
+                                        <DashboardDropdown show={showDashboardDropdown} isAdmin={isAdmin} closeMenu={closeMenu} />
                                     </div>
                                 </li>
                             :
