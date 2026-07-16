@@ -1,5 +1,7 @@
 import { relations } from "drizzle-orm";
 import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 import { users } from '@/app/_db/schema/auth/users';
 
 export const addressesTable = pgTable('addresses', {
@@ -19,12 +21,15 @@ export const addressesTable = pgTable('addresses', {
         .$onUpdate(() => /* @__PURE__ */ new Date())
 });
 
-export type Address = typeof addressesTable.$inferSelect;
-export type InsertAddress = typeof addressesTable.$inferInsert;
-
 export const addressesRelations = relations(addressesTable, ({ one }) => ({
     users: one(users, {
         fields: [addressesTable.userId],
         references: [users.id]
     })
 }));
+
+export const insertAddressSchema = createInsertSchema(addressesTable);
+export const selectAddressSchema = createSelectSchema(addressesTable);
+
+export type InsertAddress = z.infer<typeof insertAddressSchema>;
+export type Address = z.infer<typeof selectAddressSchema>;

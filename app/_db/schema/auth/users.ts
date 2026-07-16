@@ -1,5 +1,7 @@
 import { relations } from "drizzle-orm";
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
+import { z } from 'zod';
 import { sessions } from "./sessions";
 import { accounts } from "./accounts";
 
@@ -29,10 +31,13 @@ export const users = pgTable("users", {
         .notNull()
 });
 
-export type InsertUser = typeof users.$inferInsert;
-export type User = typeof users.$inferSelect;
-
 export const usersRelations = relations(users, ({ many }) => ({
     sessions: many(sessions),
     accounts: many(accounts)
 }));
+
+export const insertUserSchema = createInsertSchema(users);
+export const selectUserSchema = createSelectSchema(users);
+
+export type InsertUser = z.infer<typeof insertUserSchema>;
+export type User = z.infer<typeof selectUserSchema>;
