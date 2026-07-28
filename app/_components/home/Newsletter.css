@@ -16,9 +16,11 @@
     }
 
     & .newsletter-text {
-        font-family: "arima", sans-serif;
-        font-size: 1.3rem;
-        color: var(--color-nintendo-gray);
+        font-family: poppins, sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 28px;
+        color: rgba(255, 255, 255, 0.8);
         text-align: center;
     }
 
