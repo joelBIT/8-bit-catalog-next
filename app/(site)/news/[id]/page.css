@@ -114,6 +114,7 @@
                     font-size: 3rem;
                     color: var(--color-real-white);
                     font-family: "iceland", sans-serif;
+                    letter-spacing: 1px;
                     text-align: center;
                     padding-bottom: 2rem;
                 }

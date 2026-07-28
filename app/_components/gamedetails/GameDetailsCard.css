@@ -56,8 +56,9 @@
                 white-space-collapse: preserve-breaks;
                 text-align: left;
                 padding-bottom: 2rem;
-                font-family: "Playfair Display", serif;
-                color: var(--color-nintendo-gray);
+                font-family: poppins, serif;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 28px;
                 font-weight: 400;
                 
                 & .gameDetailsCard__description-paragraph {

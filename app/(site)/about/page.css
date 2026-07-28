@@ -20,9 +20,11 @@
     }
 
     & .about-text {
-        color: var(--color-real-white);
-        max-width: 40rem;
-        letter-spacing: 1px;
+        font-family: poppins, sans-serif;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 55rem;
+        font-weight: 400;
+        line-height: 28px;
         font-size: 1.2rem;
         padding-left: 0.2rem;
         padding-right: 0.2rem;
