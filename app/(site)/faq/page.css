@@ -41,7 +41,9 @@
             }
 
             & .faq-text {
-                color: var(--color-nintendo-gray);
+                font-family: poppins, sans-serif;
+                color: #9D99A0b0;
+                max-width: 400px;
                 font-size: 1.1rem;
                 margin-bottom: 3rem;
             }

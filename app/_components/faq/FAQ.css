@@ -58,7 +58,8 @@
         transition: max-height 0.35s ease-out;
 
         & .accordion__text {
-            color: var(--color-nintendo-gray);
+            font-family: poppins, sans-serif;
+            color: rgba(255, 255, 255, 0.6);
             font-size: 1.1rem;
             margin-top: 1rem;
             white-space-collapse: preserve-breaks;
