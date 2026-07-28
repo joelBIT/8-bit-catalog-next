@@ -12,7 +12,7 @@ export default function ContactPage(): ReactElement {
     const CONTACT = [
         {icon: 'mail', title: 'Email', text: 'contact@joel-rollny.eu', link: 'mailto:contact@joel-rollny.eu'},
         {icon: 'location_on', title: 'Location', text: 'Karlstad, Sweden', link: 'https://maps.app.goo.gl/gDzYq4uLUqTVSyV8A'},
-        {icon: 'globe', title: 'Website', text: 'http://www.joel-rollny.eu', link: 'http://www.joel-rollny.eu'}
+        {icon: 'globe', title: 'Website', text: 'www.joel-rollny.eu', link: 'http://www.joel-rollny.eu'}
     ]
 
     return (

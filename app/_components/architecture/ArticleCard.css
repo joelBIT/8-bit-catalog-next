@@ -70,10 +70,11 @@
         }
     
         & .content-text {
-            line-height: 1.6rem;
-            color: var(--color-nintendo-gray);
+            font-family: poppins, sans-serif;
+            font-weight: 400;
             font-size: 1.1rem;
-            font-weight: 100;
+            line-height: 28px;
+            color: rgba(255, 255, 255, 0.6);
         }
     }
 

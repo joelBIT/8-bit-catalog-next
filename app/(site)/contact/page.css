@@ -42,7 +42,8 @@
             }
 
             & .contact-text {
-                color: var(--color-nintendo-gray);
+                font-family: poppins, sans-serif;
+                color: #9D99A0b0;
                 max-width: 400px;
                 font-size: 1.1rem;
                 margin-bottom: 3rem;
@@ -79,7 +80,8 @@
                     }
 
                     & .contact-info__text {
-                        color: var(--color-nintendo-gray);
+                        font-family: poppins, sans-serif;
+                        color: rgba(255, 255, 255, 0.6);
                         font-size: 1rem;
                     }
                 }
