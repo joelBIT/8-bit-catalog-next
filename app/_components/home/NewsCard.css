@@ -67,10 +67,11 @@
         }
     
         & .content-text {
-            line-height: 1.6rem;
-            color: var(--color-nintendo-gray);
-            font-size: 1.1rem;
-            font-weight: 100;
+            font-family: poppins, sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 28px;
+            color: rgba(255, 255, 255, 0.8);
         }
     }
 
