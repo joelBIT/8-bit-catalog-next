@@ -65,7 +65,7 @@
             align-content: center;
             font-family: poppins, sans-serif;
             font-weight: 400;
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 28px;
             color: rgba(255, 255, 255, 0.8);
             max-width: 55rem;
@@ -76,6 +76,7 @@
 	        border-style: solid;
             border-image: linear-gradient(to bottom, #181818, #eee, #181818) 1 100%;
             padding-left: 2rem;
+            padding-right: 0.2rem;
         }
     }
 

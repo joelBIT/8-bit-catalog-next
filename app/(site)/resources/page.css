@@ -134,8 +134,9 @@
                 }
 
                 & .site-description {
-                    color: var(--color-nintendo-gray);
+                    color: rgba(255, 255, 255, 0.8);
                     font-size: 1.4rem;
+                    line-height: 30px;
                 }
 
                 & .button__link {
@@ -203,7 +204,7 @@
                     padding: 1rem;
 
                     & .site-description {
-                        font-size: 1rem;
+                        font-size: 1.2rem;
                     }
 
                     & .button__link {
