@@ -112,8 +112,8 @@
             background-size: cover;
             background-position: bottom;
             position: relative;
-            height: 330px;
-            width: 250px;
+            height: 400px;
+            width: 300px;
             z-index: 10;
             border-radius: 9px;
 
@@ -130,7 +130,7 @@
 
                 & .metadata-type {
                     font-family: iceland, sans-serif;
-                    font-size: 1.3rem;
+                    font-size: 1.5rem;
                     align-self: center;
                     letter-spacing: 1px;
                     padding-top: 0.3rem;
@@ -145,7 +145,7 @@
                 & .metadata-description {
                     font-family: iceland, sans-serif;
                     padding: 1rem 0.5rem;
-                    font-size: 1rem;
+                    font-size: 1.3rem;
                 }
             }
         }
