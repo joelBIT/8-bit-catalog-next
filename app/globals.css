@@ -28,10 +28,12 @@
     --color-contact-icon: #A49F9F;
     --color-footer-heading: #D23C3C;
     --color-form: #D9D9D9;
+    --color-heading: rgba(255, 255, 255, 0.8);
     --color-link: #064D61;
     --color-link-active: #CC8B21;
     --color-link-background: #62626240;
     --color-list-border: #d23c3c80;
+    --color-list-item-heading: rgb(106 126 133 / 1);
     --color-modal-background: #19251F;
     --color-neon-blue: #3646ff;
     --color-neon-green: #36ff46;
@@ -43,6 +45,7 @@
     --color-success: #45ca4e;
     --color-tag-background: #D3D3D3;
     --color-tag-text: #666666;
+    --color-text: rgba(255, 255, 255, 0.6);
     --color-warning: #ff3737;
     --color-warning-text: #cb6f6f;
     --color-white: #f0cca4;

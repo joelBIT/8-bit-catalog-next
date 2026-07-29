@@ -29,31 +29,46 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
 
     return (
         <main id="newsPage">
-            <section className="news-body">
-                <Link href={URL_HOME} className="back-link">
-                    <span className="material-symbols-outlined"> arrow_back_ios </span> 
-                    <h1 className="back-link__text"> Back to start page </h1>
-                </Link>
+            <figure id="news-figure">
+                <Image 
+                    src={`${URL_NEWS_PAGE}/${news.image}`} 
+                    className="news-image" 
+                    alt="News Image" 
+                    width={1228} 
+                    height={480} 
+                    loading="eager" 
+                    placeholder="blur"
+                    blurDataURL={`${URL_NEWS_PAGE}/${news.image}`}
+                />
+            </figure>
 
-                <section id="news-top">
-                    <Image 
-                        src={`${URL_NEWS_PAGE}/${news.image}`} 
-                        className="news-top-image" 
-                        alt="News Image" 
-                        width={1228} 
-                        height={480} 
-                        loading="eager" 
-                        placeholder="blur"
-                        blurDataURL={`${URL_NEWS_PAGE}/${news.image}`}
-                    />
-                </section>
+            <section className="news-content">
+                <article id="news-article">
+                    <h2 className="news-heading">{news.heading} </h2>
+                    
+                    <p className="news-text">
+                        {news.text}
+                    </p>
+                </article>
 
-                <section id="news-bottom">
-                    <article id="top-news">
-                        <h2 className="top-news-heading"> Top News </h2>
+                <section className="news-lists">
+                    <ul className="news-list">
+                        <li className="list-item">
+                            <h3 className="item-heading"> WRITTEN BY </h3>
+                            <h3 className="item-text"> {news.author} </h3>
+                        </li>
 
+                        <li className="list-item">
+                            <h3 className="item-heading"> PUBLISHED </h3>
+                            <h3 className="item-text"> {new Date(news.published).toDateString()} </h3>
+                        </li>
+                    </ul>
+
+                    <h2 className="top-news-heading"> Other News </h2>
+
+                    <ul className="news-list">
                         {
-                            (await getTopNews()).map((news: News, index: number) => 
+                            (await getTopNews()).map((news: News) => 
                                 <section className="top-news-list" key={news.id}>
                                     <Link 
                                         href={URL_NEWS_PAGE + `/${news.id}`} 
@@ -62,33 +77,19 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                                         {news.heading}
                                     </Link>
                                     
-                                    <article className="top-news-list__calendar">
-                                        <span className="material-symbols-outlined"> calendar_month </span>
-                                        <h3 className="top-news-published">{new Date(news.published).toDateString()}</h3>
-                                    </article>
+                                    <li className="list-item">
+                                        <h3 className="item-heading"> WRITTEN BY </h3>
+                                        <h3 className="item-text"> {news.author} </h3>
+                                    </li>
 
-                                    <h2 className="top-news-list-number">{"0" + (index + 1)}</h2>
+                                    <li className="list-item">
+                                        <h3 className="item-heading"> PUBLISHED </h3>
+                                        <h3 className="item-text"> {new Date(news.published).toDateString()} </h3>
+                                    </li>
                                 </section>
                             )
                         }
-                    </article>
-
-                    <article id="news-text">
-                        <h2 className="news-heading"> {news.heading} </h2>
-                        <section className="news-text-author">
-                            <article title="Author">
-                                <span className="material-symbols-outlined article-person"> article_person </span>
-                                <h3 className="news-author"> {news.author} </h3>
-                            </article>
-
-                            <article title="Published">
-                                <span className="material-symbols-outlined"> calendar_month </span>
-                                <h3 className="news-published"> {new Date(news.published).toDateString()} </h3>
-                            </article>
-                        </section>
-                        
-                        {news.text}
-                    </article>
+                    </ul>
                 </section>
             </section>
 

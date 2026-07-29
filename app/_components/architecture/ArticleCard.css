@@ -74,7 +74,7 @@
             font-weight: 400;
             font-size: 1.1rem;
             line-height: 28px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--color-text);
         }
     }
 
@@ -107,11 +107,5 @@
                 color: var(--color-real-white);
             }
         }
-    }
-}
-
-@media (max-width: 350px) {
-    .articleCard {
-        width: 100%;
     }
 }

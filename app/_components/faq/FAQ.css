@@ -59,7 +59,7 @@
 
         & .accordion__text {
             font-family: poppins, sans-serif;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--color-text);
             font-size: 1.1rem;
             margin-top: 1rem;
             white-space-collapse: preserve-breaks;
