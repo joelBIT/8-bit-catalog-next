@@ -13,6 +13,7 @@
     border-left: none;
     scrollbar-color: var(--color-black) #FFFFFF20;
     overflow-x: hidden;
+    padding-top: 5rem;
 
     & .carousel-container {
         display: flex;
