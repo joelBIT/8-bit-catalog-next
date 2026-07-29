@@ -67,7 +67,7 @@
             font-weight: 400;
             font-size: 1.1rem;
             line-height: 28px;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--color-heading);
             max-width: 55rem;
             height: auto;
             min-height: 10rem;

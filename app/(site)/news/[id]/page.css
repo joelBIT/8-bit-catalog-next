@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     color: var(--color-real-white);
-    background: radial-gradient(circle at left, rgba(39, 99, 61, 1) -100%, rgba(16, 16, 16, 1) 100%);
+    background: radial-gradient(circle at left, rgba(39, 99, 61, 1) -170%, rgba(16, 16, 16, 1) 100%);
     position: relative;
 
     & .newsPage-error {
@@ -31,6 +31,7 @@
     & .news-content {
         display: flex;
         justify-content: space-between;
+        gap: 4rem;
         max-width: 1600px;
         width: 100%;
         border-radius: 9px;
@@ -44,7 +45,9 @@
             white-space: break-spaces;
             max-width: 800px;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--color-heading);
+            padding-bottom: 10rem;
+            padding-top: 3rem;
 
             & .news-heading {
                 font-size: 3rem;
@@ -56,52 +59,66 @@
 
             & .news-text {
                 font-family: poppins, sans-serif;
-                color: rgba(255, 255, 255, 0.6);
+                color: var(--color-text);
                 font-weight: 400;
+                line-height: 28px;
+                font-size: 1.1rem;
             }
         }
 
-        & #top-news {
-            min-width: 400px;
-
-            & .news-text-author {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                margin-bottom: 1rem;
-
-                & > article {
-                    display: flex;
-                    align-items: center;
-                    color: var(--color-footer-heading);
-
-                    & .material-symbols-outlined {
-                        font-size: 1.1rem;
-                    }
-                }
-
-                & .article-person {
-                    color: var(--color-tag-text);
-                }
-
-                & .news-author {
-                    font-family: poppins, sans-serif;
-                    color: var(--color-tag-text);
-                    font-size: 1rem;
-                }
-
-                & .news-published {
-                    font-family: poppins, sans-serif;
-                    font-size: 1rem;
-                }
-            }
+        & .news-lists {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            width: 100%;
 
             & .top-news-heading {
                 font-family: 'Iceland', sans-serif;
                 font-size: 2rem;
-                text-decoration: underline;
-                padding-bottom: 2rem;
+                padding-top: 5rem;
+            }
+
+            & .news-list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                align-self: flex-start;
+                gap: 2rem;
+                margin-bottom: 1rem;
+                padding-top: 8rem;
+                list-style-type: none;
+                max-width: 300px;
+                width: 100%;
+
+                & .list-item {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    border-bottom: 1px solid #ffffff14;
+
+                    & .item-heading,
+                    & .item-text {
+                        font-family: poppins, sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+
+                    & .item-heading {
+                        color: var(--color-list-item-heading);
+                        letter-spacing: 1px;
+                    }
+
+                    & .item-text {
+                        color: var(--color-real-white);
+                    }
+                }
+            }
+
+            & .news-list:last-of-type {
+                padding-top: 0;
+                padding-bottom: 4rem;
+                gap: 0;
             }
 
             & .top-news-list {
@@ -109,6 +126,8 @@
                 flex-direction: column;
                 position: relative;
                 margin-bottom: 1rem;
+                max-width: 300px;
+                width: 100%;
 
                 & .top-news-list__heading {
                     font-family: "iceland", sans-serif;
@@ -126,34 +145,6 @@
                     pointer-events: none;
                     color: var(--color-link-active);
                 }
-
-                & .top-news-list__calendar {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.1rem;
-                    color: var(--color-footer-heading);
-                    font-size: 1rem;
-                    z-index: 2;
-
-                    & .top-news-published {
-                        font-weight: 100;
-                        font-size: 1rem;
-                    }
-
-                    & .material-symbols-outlined {
-                        font-size: 0.9rem;
-                    }
-                }
-
-                & .top-news-list-number {
-                    position: absolute;
-                    bottom: 0;
-                    color: var(--color-auth-border);
-                    left: -60px;
-                    font-size: 4rem;
-                    opacity: 0.6;
-                    z-index: 0;
-                }
             }
         }
     }
@@ -168,55 +159,25 @@
     }
 }
 
-@media (max-width: 1450px) {
-    #newsPage {
-        padding-left: 2rem;
-        padding-right: 2rem;
-        padding-bottom: 3rem;
-
-        & .news-content {
-            & #top-news {
-                min-width: 100%;
-                
-                & .top-news-heading {
-                    font-size: 1.5rem;
-                    text-align: center;
-                }
-
-                & .top-news-list {
-                    text-align: center;
-
-                    & .top-news-list__heading {
-                        align-self: center;
-                    }
-
-                    & .top-news-list__calendar {
-                        align-self: center;
-                    }
-
-                    & .top-news-list-number {
-                        left: 45%;
-                    }
-                }
-            }
-
-            & #news-article {
-                align-self: center;
-                padding-right: 0.3rem;
-                padding-left: 0.3rem;
-            }
-
-            & #top-news {
-                align-self: center;
-            }
-        }
-    }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     #newsPage {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         gap: 0;
+
+        & .news-content {
+            flex-direction: column;
+            padding: 0;
+
+            & #news-article {
+                padding-bottom: 0;
+            }
+
+            & .news-lists {
+                & .news-list {
+                    padding-top: 0;
+                }
+            }
+        }
     }
 }

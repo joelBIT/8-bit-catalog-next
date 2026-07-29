@@ -57,7 +57,7 @@
                 text-align: left;
                 padding-bottom: 2rem;
                 font-family: poppins, serif;
-                color: rgba(255, 255, 255, 0.8);
+                color: var(--color-heading);
                 line-height: 28px;
                 font-weight: 400;
                 
