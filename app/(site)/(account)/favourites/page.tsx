@@ -24,6 +24,7 @@ export default function FavouritesPage(): ReactElement {
         return (
             <main id="favouritesPage">
                 <h1 className="no-favourites__text"> No favourite selected </h1>
+                <div className="darken-image-bottom" />
             </main>
         );
     }
@@ -44,6 +45,7 @@ export default function FavouritesPage(): ReactElement {
             }
 
             <ScrollTopButton />
+            <div className="darken-image-bottom" />
         </main>
     );
 }

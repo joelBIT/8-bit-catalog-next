@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: radial-gradient(circle,rgba(39, 99, 61, 1) -63%, rgba(16, 16, 16, 1) 100%);
+    background: radial-gradient(circle at left,rgba(39, 99, 61, 1) -170%, rgba(16, 16, 16, 1) 100%);
     position: relative;
     padding-bottom: 6rem;
 
