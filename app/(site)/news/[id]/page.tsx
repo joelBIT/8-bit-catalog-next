@@ -40,30 +40,20 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                     placeholder="blur"
                     blurDataURL={`${URL_NEWS_PAGE}/${news.image}`}
                 />
+
+                <section className="news-heading">
+                    <h3 className="news-published"> {new Date(news.published).toDateString()} </h3>
+                    <h2 className="news-title">{news.heading} </h2>
+                    <h3 className="news-publisher"> By {news.author} </h3>
+                </section>
             </figure>
 
             <section className="news-content">
-                <article id="news-article">
-                    <h2 className="news-heading">{news.heading} </h2>
-                    
-                    <p className="news-text">
-                        {news.text}
-                    </p>
-                </article>
+                <p className="news-text">
+                    {news.text}
+                </p>
 
                 <section className="news-lists">
-                    <ul className="news-list">
-                        <li className="list-item">
-                            <h3 className="item-heading"> WRITTEN BY </h3>
-                            <h3 className="item-text"> {news.author} </h3>
-                        </li>
-
-                        <li className="list-item">
-                            <h3 className="item-heading"> PUBLISHED </h3>
-                            <h3 className="item-text"> {new Date(news.published).toDateString()} </h3>
-                        </li>
-                    </ul>
-
                     <h2 className="top-news-heading"> Other News </h2>
 
                     <ul className="news-list">
