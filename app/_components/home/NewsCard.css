@@ -57,13 +57,24 @@
 
         & .news-date {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            color: var(--color-footer-heading);
+            justify-content: space-between;
+            width: 100%;
+            border-bottom: 1px solid #ffffff14;
 
-            & .material-symbols-outlined {
-                font-size: 1rem;
+            & .date-heading,
+            & .date-text {
+                font-family: poppins, sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+            }
+
+            & .date-heading {
+                color: var(--color-list-item-heading);
+                letter-spacing: 1px;
+            }
+
+            & .date-text {
+                color: var(--color-footer-heading);
             }
         }
     

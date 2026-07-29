@@ -21,10 +21,10 @@ export function NewsCard({ news }: { news: News }): ReactElement {
             <section className="content">
                 <h1 className="content-title">{ news.heading }</h1>
 
-                <p className="news-date">
-                    <span className="material-symbols-outlined"> calendar_month </span>
-                    {new Date(news.published).toDateString().slice(4)} 
-                </p>
+                <section className="news-date">
+                    <h3 className="date-heading">PUBLISHED </h3>
+                    <h3 className="date-text"> {new Date(news.published).toDateString().slice(4)} </h3>
+                </section>
 
                 <p className="content-text">{ news.text.slice(0, 100) + "..." }</p>
             </section>
