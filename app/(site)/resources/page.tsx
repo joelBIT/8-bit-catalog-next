@@ -44,7 +44,7 @@ export default function SitesPage(): ReactElement {
 
             <section id="sites">
                 <section id="change-site-content">
-                    <h2 className="sites-heading">Resources</h2>
+                    <h2 className="sites-heading">Sites</h2>
                     <p className="sites-text">
                         Resources related to the NES are gathered here. 
                     </p>

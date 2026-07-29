@@ -1,7 +1,8 @@
 .newsCard {
     display: flex;
     flex-direction: column;
-    width: 22rem;
+    max-width: 25rem;
+    width: 100%;
     justify-content: space-between;
     border-radius: 4px;
     border: 1px solid #ffffff20;
@@ -104,11 +105,5 @@
                 color: var(--color-real-white);
             }
         }
-    }
-}
-
-@media (max-width: 350px) {
-    .newsCard {
-        width: 100%;
     }
 }
