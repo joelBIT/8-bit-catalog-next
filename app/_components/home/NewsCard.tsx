@@ -23,7 +23,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
 
                 <p className="news-date">
                     <span className="material-symbols-outlined"> calendar_month </span>
-                    {new Date(news.published).toDateString()} 
+                    {new Date(news.published).toDateString().slice(4)} 
                 </p>
 
                 <p className="content-text">{ news.text.slice(0, 100) + "..." }</p>
