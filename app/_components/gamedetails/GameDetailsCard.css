@@ -87,6 +87,8 @@
         gap: 2rem;
         justify-content: center;
         padding-top: 3rem;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
 
         & .Released {
             background-image: url("/game/released.webp");
@@ -113,7 +115,8 @@
             background-position: bottom;
             position: relative;
             height: 400px;
-            width: 300px;
+            max-width: 400px;
+            width: 100%;
             z-index: 10;
             border-radius: 9px;
 
@@ -140,12 +143,14 @@
                 & .metadata-text {
                     font-family: iceland, sans-serif;
                     font-size: 2rem;
+                    padding-left: 0.2rem;
+                    padding-right: 0.2rem;
                 }
 
                 & .metadata-description {
                     font-family: iceland, sans-serif;
                     padding: 1rem 0.5rem;
-                    font-size: 1.3rem;
+                    font-size: 1.8rem;
                 }
             }
         }
@@ -177,6 +182,8 @@
                 width: 100%;
                 max-width: 100%;
                 padding-top: 2rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
 
                 & #titleLink {
                     flex-direction: column;
@@ -185,14 +192,14 @@
                 }
             }
         }
-    }
-}
 
-@media (max-width: 400px) {
-    #gameDetailsCard {
-        & #game-cover-tags {
-            & #gameDetails {
-                padding: 0px 1rem;
+        & .metadata-cards {
+            & .metadata-card {
+                & #metadata-information {
+                    & .metadata-description {
+                        font-size: 1.3rem;
+                    }
+                }
             }
         }
     }
