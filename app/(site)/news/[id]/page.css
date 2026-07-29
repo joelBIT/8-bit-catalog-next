@@ -131,6 +131,10 @@
                     & .item-text {
                         color: var(--color-real-white);
                     }
+
+                    & .published {
+                        color: var(--color-footer-heading);
+                    }
                 }
             }
 

@@ -122,6 +122,10 @@ export function getMonthText(month: number): string {
     }
 }
 
+export function convertDateToString(date: Date) {
+    return `${getMonthText(date.getMonth())} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
 /**
  * Text should not be longer than 'maxLength' characters. If it is, replace the remaining characters with three dots.
  */

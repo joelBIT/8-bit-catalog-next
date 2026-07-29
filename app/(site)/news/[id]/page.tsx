@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { URL_HOME, URL_NEWS_PAGE } from "@/app/_utils/utils";
+import { convertDateToString, URL_HOME, URL_NEWS_PAGE } from "@/app/_utils/utils";
 import { getNewsById, getTopNews } from "@/app/_db/news-db";
 import { News } from "@/app/_db/schema/news";
 
@@ -42,7 +42,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                 />
 
                 <section className="news-heading">
-                    <h3 className="news-published"> {new Date(news.published).toDateString().slice(4)} </h3>
+                    <h3 className="news-published"> {convertDateToString(new Date(news.published))} </h3>
                     <h2 className="news-title">{news.heading} </h2>
                     <h3 className="news-publisher"> By {news.author} </h3>
                 </section>
@@ -74,7 +74,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
 
                                     <li className="list-item">
                                         <h3 className="item-heading"> PUBLISHED </h3>
-                                        <h3 className="item-text"> {new Date(news.published).toDateString().slice(4)} </h3>
+                                        <h3 className="item-text published"> {convertDateToString(new Date(news.published))} </h3>
                                     </li>
                                 </section>
                             )

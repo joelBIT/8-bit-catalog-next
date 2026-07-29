@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { News } from "@/app/_db/schema/news";
-import { URL_NEWS_PAGE } from "@/app/_utils/utils";
+import { convertDateToString, URL_NEWS_PAGE } from "@/app/_utils/utils";
 
 import "./NewsCard.css";
 
@@ -23,7 +23,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
 
                 <section className="news-date">
                     <h3 className="date-heading">PUBLISHED </h3>
-                    <h3 className="date-text"> {new Date(news.published).toDateString().slice(4)} </h3>
+                    <h3 className="date-text"> {convertDateToString(new Date(news.published))} </h3>
                 </section>
 
                 <p className="content-text">{ news.text.slice(0, 100) + "..." }</p>
