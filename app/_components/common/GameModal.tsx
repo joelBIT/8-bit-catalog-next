@@ -20,9 +20,9 @@ export function GameModal({ game, close }: { game: Game, close: () => void }): R
 
     return (
         <dialog id="gameModal" ref={dialogRef}>
-            <section id="slide-space" className={"slide"} key={game.id}>
+            <section id="modal-content" className={"slide"} key={game.id}>
                 <div className="darken-image-top" />
-                <img id="slide-background" src="/game/playing.webp" alt="Playing nintendo" />
+                <img id="modal-background" src="/game/playing.webp" alt="Playing nintendo" />
                 <div className="darken-image-bottom" />
                 <GameDetailsCard game={game} />
             </section>

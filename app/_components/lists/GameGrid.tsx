@@ -14,7 +14,7 @@ export function GameGrid({ games }: { games: Game[] }): ReactElement {
 
     useEffect(() => {
         setCurrentGames(games);
-    })
+    }, [games]);
 
     return (
         <section id="gameGrid"> 

@@ -57,10 +57,11 @@
                 width: fit-content;
                 padding: 0.3rem 0.5rem;
                 border-radius: 6px;
+                backdrop-filter: brightness(0.5);
             }
 
             & .game-title {
-                font-size: 3rem;
+                font-size: 5rem;
                 color: var(--color-real-white);
                 font-family: "iceland", sans-serif;
                 letter-spacing: 1px;

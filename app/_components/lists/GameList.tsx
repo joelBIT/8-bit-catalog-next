@@ -14,7 +14,7 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
 
     useEffect(() => {
         setCurrentGames(games);
-    })
+    }, [games])
 
     return (
         <ul id="gameList">

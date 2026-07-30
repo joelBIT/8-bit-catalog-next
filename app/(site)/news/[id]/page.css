@@ -59,6 +59,7 @@
                 width: fit-content;
                 padding: 0.3rem 0.5rem;
                 border-radius: 6px;
+                backdrop-filter: brightness(0.5);
             }
 
             & .news-title {
