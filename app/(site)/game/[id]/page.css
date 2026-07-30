@@ -168,3 +168,46 @@
         z-index: 1;
     }
 }
+
+@media (max-width: 800px) {
+    #gamePage {
+        & .game-content {
+            flex-direction: column-reverse;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 0;
+
+            & .game-metadata {
+                align-self: center;
+                max-width: 100%;
+
+                & .metadata-list {
+                    padding-bottom: 0;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #gamePage {
+        & .gamePage-figure {
+            & .game-heading {
+                left: 1rem;
+                
+                & .game-title {
+                    font-size: 3rem;
+                }
+            }
+        }
+
+        & .game-content {
+            & .game-overview {
+                & .game-description {
+                    font-size: 0.95rem;
+                }
+            }
+        }
+    }
+}
