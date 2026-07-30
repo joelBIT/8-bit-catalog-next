@@ -18,63 +18,59 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
         <main id="searchPage">
             <figure id="search-figure">
                 <Image 
-                    src={URL_SEARCH_PAGE + "/" + "nes-game-cartridges-hero.avif"}
+                    src={URL_SEARCH_PAGE + "/nes-game-cartridges-hero.avif"}
                     className="search-image" 
                     alt="Search image" 
                     width={1232} 
                     height={480} 
                     loading="eager" 
                     placeholder="blur"
-                    blurDataURL={URL_SEARCH_PAGE + "/" + "nes-game-cartridges-hero.avif"}
+                    blurDataURL={URL_SEARCH_PAGE + "/nes-game-cartridges-hero.avif"}
                 />
+
+                <Form id="searchFilters__form" action="" scroll={false}>
+                    <search id="searchInput">
+                        <section className="input-wrapper">
+                            <span className="material-symbols-outlined"> search </span>
+                            <input 
+                                id="searchTitle"
+                                name="title"
+                                type="text"
+                                placeholder="Game Title"
+                            />
+                        </section>
+
+                        <SearchButton />
+                    </search>
+                    
+                    <article className="searchFilters__filters">
+                        <section className="selectSection">
+                            <h2 className="selectSection__title"> Category </h2>
+                
+                            <select className="selectSection__select" name="category" defaultValue={params.category}>
+                                { addAllOption(await getAllCategories()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                            </select>
+                        </section>
+
+                        <section className="selectSection">
+                            <h2 className="selectSection__title"> Publisher </h2>
+                
+                            <select className="selectSection__select" name="publisher" defaultValue={params.publisher}>
+                                { addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                            </select>
+                        </section>
+                        
+                        <section className="selectSection">
+                            <h2 className="selectSection__title"> Developer </h2>
+                
+                            <select className="selectSection__select" name="developer" defaultValue={params.developer}>
+                                { addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                            </select>
+                        </section>
+                    </article>
+                </Form>
             </figure>
 
-            <section id="search-presentation">
-                <h1 className="search__subtitle"> Discover the NES catalog </h1>
-                <h1 className="search__title"> Search Games </h1>
-            </section>
-
-            <Form id="searchFilters__form" action="" scroll={false}>
-                <article className="searchFilters__filters">
-                    <section className="selectSection">
-                        <h2 className="selectSection__title"> Category </h2>
-            
-                        <select className="selectSection__select" name="category" defaultValue={params.category}>
-                            { addAllOption(await getAllCategories()).map((element, index) => <option key={index} value={element}> {element} </option>) }
-                        </select>
-                    </section>
-
-                    <section className="selectSection">
-                        <h2 className="selectSection__title"> Publisher </h2>
-            
-                        <select className="selectSection__select" name="publisher" defaultValue={params.publisher}>
-                            { addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
-                        </select>
-                    </section>
-                    
-                    <section className="selectSection">
-                        <h2 className="selectSection__title"> Developer </h2>
-            
-                        <select className="selectSection__select" name="developer" defaultValue={params.developer}>
-                            { addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
-                        </select>
-                    </section>
-                </article>
-
-                <search id="searchInput">
-                    <section className="input-wrapper">
-                        <span className="material-symbols-outlined"> search </span>
-                        <input 
-                            id="searchTitle"
-                            name="title"
-                            type="text"
-                            placeholder="Game Title"
-                        />
-                    </section>
-
-                    <SearchButton />
-                </search>
-            </Form>
             <Search />
 
             <div className="darken-image-bottom" />
