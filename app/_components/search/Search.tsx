@@ -74,7 +74,7 @@ export function Search(): ReactElement {
             {
                 searchResult.length > 0 ? 
                     <>
-                        <h1 className="search-result-text"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
+                        <h1 className="search-result-text message-success"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
                         <section className="show-pagination-toggle">
                             <GameSorting games={searchResult} setSortedGames={setSearchResult} />
                             
@@ -93,7 +93,7 @@ export function Search(): ReactElement {
                 :   <>
                         { 
                             showHeading ? 
-                                <h1 className="search-result-text"> No games found </h1>
+                                <h1 className="search-result-text message-failure"> No games found </h1>
                             : <></>
                         }
                     </>   

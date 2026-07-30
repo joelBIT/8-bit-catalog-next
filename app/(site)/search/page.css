@@ -4,15 +4,35 @@
     align-items: center;
     background: radial-gradient(circle at left,rgba(39, 99, 61, 1) -170%, rgba(16, 16, 16, 1) 100%);
     position: relative;
-    padding-bottom: 6rem;
+    padding-bottom: 15rem;
 
-    & .search-title {
-        position: absolute;
-        top: 0;
-        color: #ffffff10;
-        font-family: "iceland", sans-serif;
-        font-size: 10rem;
-        margin-top: 5rem;
+    & #search-figure {
+        display: flex;
+        justify-content: center;
+        max-height: 30rem;
+        width: 100%;
+        position: relative;
+        border-bottom: 1px solid #ffffff14;
+
+        & .search-image {
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.4);
+            width: 100%;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+        }
+
+        & .searchPage-title {
+            position: absolute;
+            left: 2rem;
+            top: 10rem;
+            font-family: poppins, sans-serif;
+            font-weight: 800;
+            font-size: 59px;
+            letter-spacing: -4px;
+            text-transform: uppercase;
+            color: var(--color-real-white);
+        }
     }
 
     & #search-presentation {
@@ -49,13 +69,16 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 3rem;
         align-self: center;
-        padding-bottom: 0.5rem;
+        position: absolute;
+        bottom: -20%;
+        background-color: var(--color-modal-background);
+        border-radius: 6px;
 
         & .searchFilters__filters {
             display: flex;
             gap: 3rem;
+            padding: 1rem;
 
             & .selectSection {
                 & .selectSection__title {
@@ -70,8 +93,10 @@
             align-self: center;
             align-items: center;
             gap: 2rem;
-            margin-top: 3rem;
-            width: 40rem;
+            max-width: 40rem;
+            width: 100%;
+            border-bottom: 1px solid #ffffff14;
+            padding: 1rem;
 
             & .input-wrapper {
                 display: flex;
@@ -117,6 +142,12 @@
 
 @media (max-width: 950px) {
     #searchPage {
+        & #search-figure {
+            & .searchPage-title {
+                font-size: 3rem;
+            }
+        }
+
         & #search-presentation {
             align-self: center;
             padding-left: 0;
@@ -124,9 +155,14 @@
 
         & #searchFilters__form {
             text-align: center;
+            bottom: -44%;
 
             & .searchFilters__filters {
                 flex-direction: column;
+            }
+
+            & #searchInput {
+                padding-right: 3rem;
             }
         }
     }
@@ -134,6 +170,14 @@
 
 @media (max-width: 700px) {
     #searchPage {
+        & #search-figure {
+            & .searchPage-title {
+                font-size: 1.9rem;
+                top: 5rem;
+                letter-spacing: 0;
+            }
+        }
+
         & #searchFilters__form {
             margin-top: 3rem;
             width: 100%;
@@ -141,7 +185,8 @@
             & #searchInput {
                 flex-direction: column;
                 gap: 1rem;
-                width: 95%;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
 
                 & .input-wrapper {
                     width: 100%;
@@ -158,10 +203,6 @@
 
 @media (max-width: 500px) {
     #searchPage {
-        & .search-title {
-            font-size: 6.5rem;
-        }
-
         & #search-presentation {
             margin-top: 7rem;
             margin-bottom: 0;

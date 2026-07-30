@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 5rem;
     width: 100%;
+    padding-top: 10rem;
 
     & .search-result-text {
-        padding-bottom: 2rem;
-        font-size: 1.1rem;
-        color: var(--color-nintendo-gray);
+        font-family: poppins, sans-serif;
+        font-size: 1.3rem;
         font-weight: 100;
     }
     
@@ -24,8 +23,10 @@
     }
 }
 
-@media (max-width: 900px) {
-    #search {    
+@media (max-width: 950px) {
+    #search {
+        padding-top: 18rem;
+
         & .show-pagination-toggle {
             display: flex;
             flex-direction: column-reverse;
