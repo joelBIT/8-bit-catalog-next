@@ -60,7 +60,7 @@ export function TitleSearch({ titles }: { titles: string[] }): ReactElement {
 
             { message.length > 0 ? <h2 className="message-failure"> {message} </h2> : <></> }
 
-            { openModal && Object.keys(selectedGame).length > 0 ? <GameModal games={[selectedGame]} game={selectedGame} close={() => closeGameModal()} /> : <></> }
+            { openModal && Object.keys(selectedGame).length > 0 ? <GameModal game={selectedGame} close={() => closeGameModal()} /> : <></> }
         </>
     )
 }

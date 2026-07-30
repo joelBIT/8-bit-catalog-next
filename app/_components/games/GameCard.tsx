@@ -14,7 +14,7 @@ import "./GameCard.css";
  * Represents a card containing information about a game. The card is clickable so that
  * a user can navigate to the game's detail page if interested. This game card is used in Grid Views.
  */
-export function GameCard({ game, openModal }: { game: Game, openModal: (game: Game) => void }): ReactElement {
+export function GameCard({ game }: { game: Game }): ReactElement {
     const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
     const [removeCard, setRemoveCard] = useState<boolean>(false);
     const [isShowingTitle, setIsShowingTitle] = useState<boolean>(false);

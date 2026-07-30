@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import Image from 'next/image';
 import Link from "next/link";
-import { URL_HOME } from "@/app/_utils/utils";
+import { convertDateToString, URL_HOME } from "@/app/_utils/utils";
 import { getGameById } from "@/app/_db/games-db";
 import { Game } from "@/app/_db/schema/games";
 
@@ -41,7 +41,7 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
                 />
 
                 <section className="game-heading">
-                    <h2 className="game-released"> {game.releaseDate} </h2>
+                    <h2 className="game-released"> {convertDateToString(new Date(game.releaseDate))} </h2>
                     <h2 className="game-title"> {game.title} </h2>
                 </section>
             </figure>
