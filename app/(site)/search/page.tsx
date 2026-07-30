@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
+import Image from "next/image";
 import Form from 'next/form';
 import { SearchFilter } from "@/app/_types/types";
 import { Search, SearchButton } from "@/app/_components/search";
-import { addAllOption } from "@/app/_utils/utils";
+import { addAllOption, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/games-db";
 
 import "./page.css";
@@ -15,7 +16,18 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
 
     return (
         <main id="searchPage">
-            <h1 className="search-title"> Search </h1>
+            <figure id="search-figure">
+                <Image 
+                    src={URL_SEARCH_PAGE + "/" + "nes-game-cartridges-hero.avif"}
+                    className="search-image" 
+                    alt="Search image" 
+                    width={1232} 
+                    height={480} 
+                    loading="eager" 
+                    placeholder="blur"
+                    blurDataURL={URL_SEARCH_PAGE + "/" + "nes-game-cartridges-hero.avif"}
+                />
+            </figure>
 
             <section id="search-presentation">
                 <h1 className="search__subtitle"> Discover the NES catalog </h1>

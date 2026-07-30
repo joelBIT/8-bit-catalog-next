@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { URL_ARCHITECTURE_PAGE, URL_ARTICLES_PAGE, URL_HOME } from "@/app/_utils/utils";
+import { URL_ARTICLES_PAGE, URL_HOME } from "@/app/_utils/utils";
 import { getArticleById } from "@/app/_db/articles-db";
 
 import "./page.css";
@@ -27,22 +27,22 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
     return (
         <main id="articlePage">
             <figure id="article-figure">
-                    <Image 
-                        src={URL_ARTICLES_PAGE + "/" + article.image}
-                        className="article-image" 
-                        alt="Article image" 
-                        width={1232} 
-                        height={480} 
-                        loading="eager" 
-                        placeholder="blur"
-                        blurDataURL={URL_ARTICLES_PAGE + "/" + article.image}
-                    />
+                <Image 
+                    src={URL_ARTICLES_PAGE + "/" + article.image}
+                    className="article-image" 
+                    alt="Article image" 
+                    width={1232} 
+                    height={480} 
+                    loading="eager" 
+                    placeholder="blur"
+                    blurDataURL={URL_ARTICLES_PAGE + "/" + article.image}
+                />
 
-                    <section className="article-heading">
-                        <h2 className="article-title">{article.title}</h2>
-                        <p className="article-introduction">{article.introduction}</p>
-                    </section>
-                </figure>
+                <section className="article-heading">
+                    <h2 className="article-title">{article.title}</h2>
+                    <p className="article-introduction">{article.introduction}</p>
+                </section>
+            </figure>
 
             <section className="article-contents">
                 <h2 className="article-text">{article.text}</h2>
