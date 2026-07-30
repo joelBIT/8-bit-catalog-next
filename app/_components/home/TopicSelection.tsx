@@ -13,9 +13,9 @@ export function TopicSelection({news}: {news: News[]}): ReactElement {
     const [active, setActive] = useState<number>(0);
 
     const text: string[] = [
-        "News is published every now and then. An email is sent to those who have an active newsletter subscription at the time of publication. A subscription can always be discontinued when desired.",
+        "Subscribe to the newsletter. An email is sent to those who have an active newsletter subscription at the time of publication. A subscription can always be discontinued when desired.",
         "Select your favourite games. You can label a game as a favourite by clicking on its heart-shaped icon. The game is stored permanently in a database if you have signed in to your account. Otherwise local storage is used. Those are easily accessed by visiting the Favourites page.",
-        "Connect with other retro enthusiasts. When logged in, you can scan through existing profiles and interact with people. Create an account and make your own profile today!"
+        "Connect with other retro enthusiasts. When signed in, you can scan through existing profiles and interact with people. Create an account and make your own profile today!"
     ]
     
     return (

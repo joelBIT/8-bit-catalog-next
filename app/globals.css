@@ -584,6 +584,10 @@ textarea {
         border: 1px solid var(--color-link-active);
         transition: all 0.2s ease-in-out;
     }
+
+    &:focus-visible {
+        outline: none;
+    }
 }
 
 .navigation-link {
@@ -637,7 +641,7 @@ textarea {
     }
 
     & .selectSection__select {
-        border: 1px solid var(--color-white);
+        border: 1px solid #f0cca480;
         outline: 0;
         border-radius: 9px;
         background-color: var(--color-black);
