@@ -114,7 +114,7 @@
         & .game-metadata {
             display: flex;
             flex-direction: column;
-            max-width: 300px;
+            max-width: 350px;
             width: 100%;
 
             & .metadata-list {
@@ -124,7 +124,6 @@
                 justify-content: center;
                 align-self: flex-start;
                 list-style-type: none;
-                max-width: 300px;
                 width: 100%;
                 position: sticky;
                 top: 0;
@@ -183,7 +182,6 @@
 
                 & .metadata-list {
                     padding-bottom: 0;
-                    max-width: 100%;
                 }
             }
         }
@@ -195,7 +193,7 @@
         & .gamePage-figure {
             & .game-heading {
                 left: 1rem;
-                
+
                 & .game-title {
                     font-size: 3rem;
                 }
@@ -206,6 +204,17 @@
             & .game-overview {
                 & .game-description {
                     font-size: 0.95rem;
+                }
+            }
+
+            & .game-metadata {
+                & .metadata-list {
+                    & .list-item {
+                        & .item-heading,
+                        & .item-text {
+                            font-size: 0.75rem;
+                        }
+                    }
                 }
             }
         }
