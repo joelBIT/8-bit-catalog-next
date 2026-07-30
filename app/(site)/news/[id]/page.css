@@ -108,7 +108,7 @@
                 list-style-type: none;
                 max-width: 300px;
                 width: 100%;
-                padding-bottom: 4rem;
+                padding-bottom: 7rem;
 
                 & .list-item {
                     display: flex;
@@ -178,13 +178,14 @@
 
 @media (max-width: 800px) {
     #newsPage {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        background: radial-gradient(circle at 0, #27633d -280%, #101010 100%);
         gap: 0;
 
         & .news-content {
             flex-direction: column;
             padding: 0;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
 
             & .news-text {
                 padding-bottom: 0;
