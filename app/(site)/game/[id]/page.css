@@ -5,6 +5,7 @@
     color: var(--color-real-white);
     background: radial-gradient(circle at left, rgba(39, 99, 61, 1) -170%, rgba(16, 16, 16, 1) 100%);
     position: relative;
+    padding-bottom: 10rem;
 
     & .newsPage-error {
         font-size: 3rem;
@@ -66,6 +67,94 @@
                 font-family: "iceland", sans-serif;
                 letter-spacing: 1px;
                 font-weight: 100;
+            }
+        }
+    }
+
+    & .game-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 4rem;
+        max-width: 1600px;
+        width: 100%;
+        border-radius: 9px;
+        background: transparent;
+        padding: 2rem;
+        padding-top: 5rem;
+
+        & .game-overview {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 900px;
+            width: 100%;
+
+            & .overview-title {
+                font-family: iceland, sans-serif;
+                font-size: 2.5rem;
+                font-weight: 100;
+                color: var(--color-real-white);
+            }
+
+            & .game-description {
+                display: flex;
+                flex-direction: column;
+                font-size: 1.1rem;
+                white-space-collapse: preserve-breaks;
+                text-align: left;
+                padding-bottom: 2rem;
+                font-family: poppins, serif;
+                color: var(--color-heading);
+                line-height: 28px;
+                font-weight: 400;
+                color: rgb(157 173 178 / 1);
+            }
+        }
+
+        & .game-metadata {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            width: 100%;
+
+            & .metadata-list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                align-self: flex-start;
+                list-style-type: none;
+                max-width: 300px;
+                width: 100%;
+                position: sticky;
+                top: 0;
+                padding-top: 5rem;
+                padding-bottom: 7rem;
+
+                & .list-item {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    border-bottom: 1px solid #ffffff14;
+                    padding-bottom: 1rem;
+                    padding-top: 1rem;
+
+                    & .item-heading,
+                    & .item-text {
+                        font-family: poppins, sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+
+                    & .item-heading {
+                        color: var(--color-list-item-heading);
+                        letter-spacing: 1px;
+                    }
+
+                    & .item-text {
+                        color: var(--color-real-white);
+                    }
+                }
             }
         }
     }

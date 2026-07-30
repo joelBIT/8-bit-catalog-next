@@ -46,6 +46,45 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
                 </section>
             </figure>
 
+            <section className="game-content">
+                <section className="game-overview">
+                    <h1 className="overview-title">Overview</h1>
+
+                    <p className="game-description">
+                        {game.description}
+                    </p>
+                </section>
+
+                <section className="game-metadata">
+                    <ul className="metadata-list">
+                        <li className="list-item">
+                            <h3 className="item-heading"> RELEASE DATE </h3>
+                            <h3 className="item-text published"> {convertDateToString(new Date(game.releaseDate))} </h3>
+                        </li>
+                                    
+                        <li className="list-item">
+                            <h3 className="item-heading"> MAX PLAYERS </h3>
+                            <h3 className="item-text"> {game.players} </h3>
+                        </li>
+
+                        <li className="list-item">
+                            <h3 className="item-heading"> GENRE </h3>
+                            <h3 className="item-text"> {game.category} </h3>
+                        </li>
+
+                        <li className="list-item">
+                            <h3 className="item-heading"> PUBLISHER </h3>
+                            <h3 className="item-text"> {game.publisher} </h3>
+                        </li>
+
+                        <li className="list-item">
+                            <h3 className="item-heading"> DEVELOPER </h3>
+                            <h3 className="item-text"> {game.developer} </h3>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
             <div className="darken-image-bottom" />
         </main>
     )
