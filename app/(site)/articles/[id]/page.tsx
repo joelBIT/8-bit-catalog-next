@@ -26,13 +26,7 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
 
     return (
         <main id="articlePage">
-            <section className="article-body">
-                <Link href={URL_ARCHITECTURE_PAGE} className="back-link">
-                    <span className="material-symbols-outlined"> arrow_back_ios </span> 
-                    <h1 className="back-link__text"> Back to Architecture page </h1>
-                </Link>
-
-                <figure id="article-image">
+            <figure id="article-figure">
                     <Image 
                         src={URL_ARTICLES_PAGE + "/" + article.image}
                         className="article-image" 
@@ -46,17 +40,18 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
 
                     <section className="article-heading">
                         <h2 className="article-title">{article.title}</h2>
-                        <p className="article-title-text">{article.introduction}</p>
+                        <p className="article-introduction">{article.introduction}</p>
                     </section>
                 </figure>
 
+            <section className="article-contents">
                 <h2 className="article-text">{article.text}</h2>
 
                 {
                     article.articleContents?.map(content => 
-                        <section key={content.heading} className="article-content">
-                            <h2 className="article-content__heading">{content.heading}</h2>
-                            <p className="article-content__text">{content.text}</p>
+                        <section key={content.heading} className="content-section">
+                            <h2 className="content__heading">{content.heading}</h2>
+                            <p className="content__text">{content.text}</p>
                         </section>
                     )
                 }
