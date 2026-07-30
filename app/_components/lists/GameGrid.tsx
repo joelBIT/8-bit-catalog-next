@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { GameModal } from "../common";
-import { GameCard } from ".";
+import { GameCard } from "../games";
 
 import "./GameGrid.css";
 
