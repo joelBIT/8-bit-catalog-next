@@ -136,7 +136,7 @@
                 }
 
                 & .site-description {
-                    color: var(--color-heading);
+                    color: var(--color-text);
                     font-size: 1.4rem;
                     line-height: 30px;
                 }
