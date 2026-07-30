@@ -2,10 +2,10 @@
 
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useFavourites } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
-import { URL_FAVOURITES_PAGE } from "@/app/_utils/utils";
+import { URL_FAVOURITES_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
 import "./GameListEntry.css";
 
@@ -13,11 +13,12 @@ import "./GameListEntry.css";
  * An entry in a list of games. Corresponds to a row in a regular list in List View.
  * When hovering a game cover that cover will appear enlarged in a modal.
  */
-export function GameListEntry({ game, openModal }: { game: Game, openModal: (game: Game) => void }): ReactElement {
+export function GameListEntry({ game }: { game: Game }): ReactElement {
     const [removeCard, setRemoveCard] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
     const pathname = usePathname();
+    const router = useRouter();
     const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
     const favourite = isFavourite(game.id);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
@@ -48,7 +49,7 @@ export function GameListEntry({ game, openModal }: { game: Game, openModal: (gam
                     className="gameListEntry-figure__cover"
                     onMouseEnter={() => setShowModal(true)}
                     onMouseLeave={() => setShowModal(false)}
-                    onClick={() => openModal(game)}
+                    onClick={() => router.push(URL_GAME_PAGE + `/${game.id}`)}
                     alt="Game Cover"
                     width={100}
                     height={100}
@@ -66,7 +67,7 @@ export function GameListEntry({ game, openModal }: { game: Game, openModal: (gam
                 </section>
 
                 <section className="gameListEntry-information">
-                    <section className="gameListEntry-title__link" onClick={() => openModal(game)}> 
+                    <section className="gameListEntry-title__link" onClick={() => router.push(URL_GAME_PAGE + `/${game.id}`)}> 
                         {game.title} 
                     </section> 
 
