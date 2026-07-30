@@ -6,6 +6,7 @@ export const URL_ARTICLES_PAGE = "/articles";
 export const URL_CONTACT_PAGE = "/contact";
 export const URL_DASHBOARD_PAGE = "/dashboard";
 export const URL_FILTERS_PAGE = URL_DASHBOARD_PAGE + "/filters";
+export const URL_GAME_PAGE = "/game";
 export const URL_SETTINGS_PAGE = URL_DASHBOARD_PAGE + "/settings";
 export const URL_MEMBERS_PAGE = URL_DASHBOARD_PAGE + "/members";
 export const URL_NEWSLETTER_PAGE = URL_DASHBOARD_PAGE + "/newsletter";

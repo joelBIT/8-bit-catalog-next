@@ -2,32 +2,34 @@
 
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useFavourites, useGame } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
-import { URL_FAVOURITES_PAGE } from "@/app/_utils/utils";
+import { URL_FAVOURITES_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
 import "./GameCard.css";
+
 
 /**
  * Represents a card containing information about a game. The card is clickable so that
  * a user can navigate to the game's detail page if interested. This game card is used in Grid Views.
  */
-export function GameCard({ game, openModal }: { game: Game, openModal: (game: Game) => void }): ReactElement {
+export function GameCard({ game }: { game: Game }): ReactElement {
     const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
     const [removeCard, setRemoveCard] = useState<boolean>(false);
     const [isShowingTitle, setIsShowingTitle] = useState<boolean>(false);
+    const router = useRouter();
+    const pathname = usePathname();
     const { setSelectedGame } = useGame();
     const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
     const favourite = isFavourite(game.id);
-    const pathname = usePathname();
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
-    
+
     function showGame(): void {
         setSelectedGame(game);
-        openModal(game);
+        router.push(URL_GAME_PAGE + `/${game.id}`);
     }
-
+    
     /**
      * Adds or removes a game from the list of favourites. The event is prevented so
      * that a user is not redirected to the game details page when clicking on the favourite button.

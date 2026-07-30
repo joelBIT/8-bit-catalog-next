@@ -25,7 +25,7 @@ export function Search(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const [numberGamesShowing, setNumberGamesShowing] = useState<number>(isMobileDevice() ? 1000: 50);
+    const [numberGamesShowing, setNumberGamesShowing] = useState<number>(isMobileDevice() ? 1000 : 50);
     const { games, getFilteredGames } = useGames();
     const { gridView } = useGame();
     

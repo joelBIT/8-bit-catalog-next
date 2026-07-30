@@ -1,10 +1,11 @@
-#newsPage {
+#gamePage {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--color-real-white);
     background: radial-gradient(circle at left, rgba(39, 99, 61, 1) -170%, rgba(16, 16, 16, 1) 100%);
     position: relative;
+    padding-bottom: 10rem;
 
     & .newsPage-error {
         font-size: 3rem;
@@ -23,22 +24,24 @@
         }
     }
 
-    & #news-figure {
+    & .gamePage-figure {
         display: flex;
         justify-content: center;
         max-height: 30rem;
+        height: 100%;
         width: 100%;
         position: relative;
         border-bottom: 1px solid #ffffff14;
 
-        & .news-image {
+        & .gamePage-image {
             object-fit: cover;
             filter: brightness(0.4);
             width: 100%;
+            height: 100%;
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
         }
 
-        & .news-heading {
+        & .game-heading {
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -46,14 +49,10 @@
             bottom: 25%;
             padding-bottom: 2rem;
 
-            & .news-published,
-            & .news-publisher {
+            & .game-released {
                 font-family: poppins, sans-serif;
                 font-weight: 100;
                 font-size: 1rem;
-            }
-
-            & .news-published {
                 color: var(--color-footer-heading);
                 border: 1px solid #ffffff14;
                 width: fit-content;
@@ -62,22 +61,17 @@
                 backdrop-filter: brightness(0.5);
             }
 
-            & .news-title {
-                font-size: 3rem;
+            & .game-title {
+                font-size: 5rem;
                 color: var(--color-real-white);
                 font-family: "iceland", sans-serif;
                 letter-spacing: 1px;
                 font-weight: 100;
             }
-
-            & .news-publisher {
-                color: var(--color-text);
-                align-self: center;
-            }
         }
     }
 
-    & .news-content {
+    & .game-content {
         display: flex;
         justify-content: space-between;
         gap: 4rem;
@@ -86,32 +80,44 @@
         border-radius: 9px;
         background: transparent;
         padding: 2rem;
+        padding-top: 5rem;
 
-        & .news-text {
-            font-family: poppins, sans-serif;
-            color: var(--color-text);
-            font-weight: 400;
-            line-height: 28px;
-            font-size: 1.1rem;
-            max-width: 800px;
+        & .game-overview {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 900px;
             width: 100%;
-            padding-bottom: 5rem;
-            padding-top: 3rem;
+
+            & .overview-title {
+                font-family: iceland, sans-serif;
+                font-size: 2.5rem;
+                font-weight: 100;
+                color: var(--color-real-white);
+            }
+
+            & .game-description {
+                display: flex;
+                flex-direction: column;
+                font-size: 1.1rem;
+                white-space-collapse: preserve-breaks;
+                text-align: left;
+                padding-bottom: 2rem;
+                font-family: poppins, serif;
+                color: var(--color-heading);
+                line-height: 28px;
+                font-weight: 400;
+                color: rgb(157 173 178 / 1);
+            }
         }
 
-        & .news-lists {
+        & .game-metadata {
             display: flex;
             flex-direction: column;
             max-width: 300px;
             width: 100%;
 
-            & .top-news-heading {
-                font-family: 'Iceland', sans-serif;
-                font-size: 2rem;
-                font-weight: 100;
-            }
-
-            & .news-list {
+            & .metadata-list {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -120,6 +126,9 @@
                 list-style-type: none;
                 max-width: 300px;
                 width: 100%;
+                position: sticky;
+                top: 0;
+                padding-top: 5rem;
                 padding-bottom: 7rem;
 
                 & .list-item {
@@ -127,6 +136,8 @@
                     justify-content: space-between;
                     width: 100%;
                     border-bottom: 1px solid #ffffff14;
+                    padding-bottom: 1rem;
+                    padding-top: 1rem;
 
                     & .item-heading,
                     & .item-text {
@@ -143,36 +154,6 @@
                     & .item-text {
                         color: var(--color-real-white);
                     }
-
-                    & .published {
-                        color: var(--color-footer-heading);
-                    }
-                }
-            }
-
-            & .top-news-list {
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                margin-bottom: 1rem;
-                max-width: 300px;
-                width: 100%;
-
-                & .top-news-list__heading {
-                    font-family: "iceland", sans-serif;
-                    margin-top: 1.8rem;
-                    font-size: 1.5rem;
-                    width: fit-content;
-                    z-index: 2;
-
-                    &:hover {
-                        color: var(--color-link-active);
-                    }
-                }
-
-                & .disabled-link {
-                    pointer-events: none;
-                    color: var(--color-link-active);
                 }
             }
         }
@@ -189,23 +170,42 @@
 }
 
 @media (max-width: 800px) {
-    #newsPage {
-        background: radial-gradient(circle at 0, #27633d -280%, #101010 100%);
-        gap: 0;
+    #gamePage {
+        & .game-content {
+            flex-direction: column-reverse;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 0;
 
-        & .news-content {
-            flex-direction: column;
-            padding: 0;
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
+            & .game-metadata {
+                align-self: center;
+                max-width: 100%;
 
-            & .news-text {
-                padding-bottom: 0;
+                & .metadata-list {
+                    padding-bottom: 0;
+                    max-width: 100%;
+                }
             }
+        }
+    }
+}
 
-            & .news-lists {
-                & .news-list {
-                    padding-top: 0;
+@media (max-width: 500px) {
+    #gamePage {
+        & .gamePage-figure {
+            & .game-heading {
+                left: 1rem;
+                
+                & .game-title {
+                    font-size: 3rem;
+                }
+            }
+        }
+
+        & .game-content {
+            & .game-overview {
+                & .game-description {
+                    font-size: 0.95rem;
                 }
             }
         }

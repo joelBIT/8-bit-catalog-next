@@ -15,92 +15,13 @@
     overflow-x: hidden;
     padding-top: 5rem;
 
-    & .carousel-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-height: 35rem;
-        gap: 3rem;
-        flex-flow: column;
-        position: relative;
-        margin-top: 3rem;
-
-        & .carousel {
-            max-width: 80%;
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            margin-top: 5rem;
-            margin-bottom: 10rem;
-
-            & > img:not(.selected-game) {
-                cursor: pointer;
-                border-radius: 4px;
-            }
-
-            & .item {
-                width: 20%;
-                height: 250px;
-                max-width: 250px;
-                margin: 2px;
-                transition: all 0.5s;
-                object-fit: cover;
-            }
-
-            & .selected-game {
-                filter: brightness(1);
-                transform: translateZ(170px);
-                width: 25%;
-                max-width: 12rem;
-                height: 270px;
-                border-radius: 4px;
-                box-shadow: inset 0 1px 3px #FFFFFF20, 0 0 100px 1px #FFFFFF80;
-            }
-
-            & .cards-1 {
-                width: 100%;
-            }
-
-            & .cards-2 {
-                width: 80%;
-            }
-
-            & .cards-3 {
-                width: 50%;
-            }
-
-            & .selected-game + * {
-                filter: brightness(0.6);
-                transform: translateZ(120px) rotateY(25deg);
-            }
-
-            & .selected-game + * + * {
-                filter: brightness(0.4);
-                transform: translateZ(50px) rotateY(15deg);
-            }
-
-            & .previous-game {
-                filter: brightness(0.6);
-                transform: translateZ(120px) rotateY(-25deg);
-            }
-
-            & .first-game {
-                filter: brightness(0.4);
-                transform: translateZ(50px) rotateY(-15deg);
-            }
-        }
-    }
-
     & .closeButton {
         position: absolute;
         top: 0;
         right: 0;
     }
 
-    & #slide-space {
+    & #modal-content {
         position: relative;
         margin-top: 3rem;
         padding-bottom: 3rem;
@@ -123,7 +44,7 @@
             z-index: 1;
         }
 
-        & #slide-background {
+        & #modal-background {
             background-position: center;
             position: absolute;
             width: 100%;
@@ -136,21 +57,9 @@
 
 @media (max-width: 1150px) {
     #gameModal {
-        & #slide-space {
-            & #slide-background {
+        & #modal-content {
+            & #modal-background {
                 width: auto;
-            }
-        }
-    }
-}
-
-@media (max-width: 800px) {
-    #gameModal {
-        & .carousel-container {
-            height: 1rem;
-
-            & .carousel {
-                display: none;
             }
         }
     }
@@ -159,9 +68,5 @@
 @media (max-width: 500px) {
     #gameModal {
         width: 100%;
-
-        & .carousel-container {
-            display: none;
-        }
     }
 }

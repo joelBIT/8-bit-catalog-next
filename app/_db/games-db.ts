@@ -52,6 +52,15 @@ export async function getAllGames(): Promise<Game[]> {
     return await databaseClient.select().from(gamesTable).orderBy(asc(gamesTable.title));
 }
 
+export async function getGameById(id: number): Promise<Game> {
+    const game = await databaseClient.select().from(gamesTable).where(eq(gamesTable.id, id));
+    if (!game) {
+        throw new Error(`Game with id ${id} not found`);
+    }
+
+    return game[0];
+}
+
 /**
  * Retrieves all game categories.
  */
