@@ -28,6 +28,8 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                     blurDataURL={URL_SEARCH_PAGE + "/nes-game-cartridges-hero.avif"}
                 />
 
+                <h1 className="searchPage-title">SEARCH THE GAMES DATABASE</h1>
+
                 <Form id="searchFilters__form" action="" scroll={false}>
                     <search id="searchInput">
                         <section className="input-wrapper">
@@ -42,7 +44,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
 
                         <SearchButton />
                     </search>
-                    
+
                     <article className="searchFilters__filters">
                         <section className="selectSection">
                             <h2 className="selectSection__title"> Category </h2>

@@ -21,6 +21,18 @@
             width: 100%;
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
         }
+
+        & .searchPage-title {
+            position: absolute;
+            left: 2rem;
+            top: 10rem;
+            font-family: poppins, sans-serif;
+            font-weight: 800;
+            font-size: 59px;
+            letter-spacing: -4px;
+            text-transform: uppercase;
+            color: var(--color-real-white);
+        }
     }
 
     & #search-presentation {
@@ -130,6 +142,12 @@
 
 @media (max-width: 950px) {
     #searchPage {
+        & #search-figure {
+            & .searchPage-title {
+                font-size: 3rem;
+            }
+        }
+
         & #search-presentation {
             align-self: center;
             padding-left: 0;
@@ -152,6 +170,14 @@
 
 @media (max-width: 700px) {
     #searchPage {
+        & #search-figure {
+            & .searchPage-title {
+                font-size: 1.9rem;
+                top: 5rem;
+                letter-spacing: 0;
+            }
+        }
+
         & #searchFilters__form {
             margin-top: 3rem;
             width: 100%;
