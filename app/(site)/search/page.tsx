@@ -28,7 +28,10 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                     blurDataURL={URL_SEARCH_PAGE + "/nes-game-cartridges-hero.avif"}
                 />
 
-                <h1 className="searchPage-title">SEARCH THE GAMES DATABASE</h1>
+                <section className="searchPage-heading">
+                    <h1 className="searchPage-title">SEARCH THE GAMES DATABASE</h1>
+                    <p className="searchPage-text">The 8-bit Catalog provides metadata for all NES games.</p>
+                </section>
 
                 <Form id="searchFilters__form" action="" scroll={false}>
                     <search id="searchInput">

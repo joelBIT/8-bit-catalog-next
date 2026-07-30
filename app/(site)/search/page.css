@@ -22,16 +22,28 @@
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
         }
 
-        & .searchPage-title {
+        & .searchPage-heading {
             position: absolute;
-            left: 2rem;
+            left: 10rem;
             top: 10rem;
-            font-family: poppins, sans-serif;
-            font-weight: 800;
-            font-size: 59px;
-            letter-spacing: -4px;
-            text-transform: uppercase;
-            color: var(--color-real-white);
+
+            & .searchPage-title {
+                font-family: poppins, sans-serif;
+                font-weight: 800;
+                font-size: 59px;
+                letter-spacing: -4px;
+                text-transform: uppercase;
+                color: var(--color-real-white);
+                padding-right: 0.3rem;
+            }
+
+            & .searchPage-text {
+                font-family: poppins, sans-serif;
+                font-weight: 100;
+                font-size: 1rem;
+                color: var(--color-heading);
+                padding-right: 0.3rem;
+            }
         }
     }
 
@@ -144,8 +156,13 @@
 @media (max-width: 950px) {
     #searchPage {
         & #search-figure {
-            & .searchPage-title {
-                font-size: 3rem;
+            & .searchPage-heading {
+                left: 2rem;
+                top: 8rem;
+
+                & .searchPage-title {
+                    font-size: 3rem;
+                }
             }
         }
 
@@ -172,10 +189,12 @@
 @media (max-width: 700px) {
     #searchPage {
         & #search-figure {
-            & .searchPage-title {
-                font-size: 1.9rem;
-                top: 5rem;
-                letter-spacing: 0;
+            & .searchPage-heading {
+                & .searchPage-title {
+                    font-size: 1.9rem;
+                    top: 5rem;
+                    letter-spacing: 0;
+                }
             }
         }
 
@@ -204,6 +223,12 @@
 
 @media (max-width: 500px) {
     #searchPage {
+        & #search-figure {
+            & .searchPage-heading {
+                top: 4rem;
+            }
+        }
+
         & #search-presentation {
             margin-top: 7rem;
             margin-bottom: 0;
