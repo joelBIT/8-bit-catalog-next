@@ -1,4 +1,4 @@
-.favouriteButton {
+.playButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,10 +8,10 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     border-radius: 9999px;
-    border: 1px solid var(--color-text);
+    border: 1px solid #ffffff14;
     cursor: pointer;
-    background-color: transparent;
-    transition: 0.2s background-color ease-in-out;
+    background-color: #ffffff14;
+    transition: 0.2s all ease-in-out;
 
     & .material-symbols-outlined {
         font-size: 1rem;
@@ -20,14 +20,14 @@
     
     & .button-text {
         font-family: poppins, sans-serif;
+        color: var(--color-real-white);
         font-size: .875rem;
         font-weight: 700;
         text-wrap: no-wrap;
-        color: var(--color-real-white);
     }
 
     &:hover {
-        background-color: var(--color-black-light);
+        backdrop-filter: brightness(1.4);
         transition: 0.2s all ease-in-out;
     }
 }

@@ -130,9 +130,14 @@
                 padding-top: 5rem;
                 padding-bottom: 7rem;
 
-                & .favouriteButton {
+                & .favouriteButton,
+                & .playButton {
                     margin-bottom: 1rem;
                     margin-top: 1rem;
+                }
+
+                & .playButton {
+                    margin-top: 3rem;
                 }
 
                 & .list-item {
