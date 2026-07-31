@@ -6,6 +6,7 @@ import Link from "next/link";
 import { convertDateToString, URL_HOME } from "@/app/_utils/utils";
 import { getGameById } from "@/app/_db/games-db";
 import { Game } from "@/app/_db/schema/games";
+import { FavouriteButton } from "@/app/_components/games";
 
 import "./page.css";
 
@@ -57,6 +58,8 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
 
                 <section className="game-metadata">
                     <ul className="metadata-list">
+                        <FavouriteButton game={game} />
+                        
                         <li className="list-item">
                             <h3 className="item-heading"> RELEASE DATE </h3>
                             <h3 className="item-text published"> {convertDateToString(new Date(game.releaseDate))} </h3>
