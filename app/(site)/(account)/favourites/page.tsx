@@ -23,7 +23,9 @@ export default function FavouritesPage(): ReactElement {
     if (favourites.length < 1) {
         return (
             <main id="favouritesPage">
-                <h1 className="no-favourites__text"> No favourite selected </h1>
+                <FavouriteHeading />
+
+                <h1 className="no-favourites__text"> Collection is empty </h1>
                 <div className="darken-image-bottom" />
             </main>
         );
@@ -31,6 +33,8 @@ export default function FavouritesPage(): ReactElement {
 
     return (
         <main id="favouritesPage">
+            <FavouriteHeading />
+
             <section className="show-pagination-toggle">
                 <GameSorting games={favourites} setSortedGames={setFavourites} />
                 
@@ -47,5 +51,19 @@ export default function FavouritesPage(): ReactElement {
             <ScrollTopButton />
             <div className="darken-image-bottom" />
         </main>
+    );
+}
+
+function FavouriteHeading(): ReactElement {
+    return (
+        <section className="favourites-heading">
+            <div className="favourites-title">
+                Favourite Games
+            </div>
+
+            <p className="favourites-text">
+                Build your collection of games
+            </p>
+        </section>
     );
 }
