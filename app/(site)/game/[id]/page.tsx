@@ -59,6 +59,21 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
                 <section className="game-metadata">
                     <ul className="metadata-list">
                         <FavouriteButton game={game} />
+
+                        <li className="list-item">
+                            <h3 className="item-heading"> COVER </h3>
+                            <span className="item-text">
+                                <Link 
+                                    href={STORAGE_URL + game?.cover} 
+                                    target="_blank" 
+                                    className="item-text item-link" 
+                                    title="Open cover in new tab"
+                                >
+                                    {game.cover}
+                                </Link>
+                            </span>
+                            
+                        </li>
                         
                         <li className="list-item">
                             <h3 className="item-heading"> RELEASE DATE </h3>
