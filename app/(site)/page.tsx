@@ -1,7 +1,7 @@
 'use server';
 
 import { Suspense, type ReactElement } from "react";
-import { TopicSelection, Logo, TitleSearch, Newsletter } from "@/app/_components/home";
+import { TopicSelection, Logo, Newsletter, SuggestionList } from "@/app/_components/home";
 import { getAllTitles } from "../_db/games-db";
 import { getAllNews } from "../_db/news-db";
 
@@ -21,7 +21,7 @@ export default async function Home(): Promise<ReactElement> {
                     <section id="searchGameArea">
                         <p className="search-text">Choose among approximately <b>1000</b> games released for the <b>NES</b></p>
                         <Suspense>
-                            <TitleSearch titles={await getAllTitles()} />
+                            <SuggestionList options={await getAllTitles()} />
                         </Suspense>
                     </section>
                 </section>
