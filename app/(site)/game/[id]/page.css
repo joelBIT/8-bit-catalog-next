@@ -162,6 +162,16 @@
 
                     & .item-text {
                         color: var(--color-real-white);
+
+                        & .item-link {
+                            color: var(--color-white);
+                            transition: 0.2s color ease-in-out;
+                            
+                            &:hover {
+                                transition: 0.2s color ease-in-out;
+                                color: var(--color-link-active);
+                            }
+                        }
                     }
                 }
             }
