@@ -3,9 +3,10 @@
 import { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { convertDateToString, URL_HOME, URL_NEWS_PAGE } from "@/app/_utils/utils";
+import { convertDateToString, URL_NEWS_PAGE } from "@/app/_utils/utils";
 import { getNewsById, getTopNews } from "@/app/_db/news-db";
 import { News } from "@/app/_db/schema/news";
+import ErrorPage from "@/app/_components/common/ErrorPage";
 
 import "./page.css";
 
@@ -18,13 +19,11 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
     
     try {
         news = await getNewsById(parseInt(id));
+        if (!news) {
+            return ( <ErrorPage text={`Could not find news with id ${id}`} /> )
+        }
     } catch (error) {
-        return (
-            <main id="newsPage">
-                <h2 className="newsPage-error"> Could not load news </h2>
-                <Link href={URL_HOME} className='not-found__link'> Return Home </Link>
-            </main>
-        )
+        return ( <ErrorPage text={`Could not load news with id ${id}`} /> )
     }
 
     return (

@@ -22,14 +22,10 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
     try {
         game = await getGameById(parseInt(id));
         if (!game) {
-            return (
-                <ErrorPage text={`Could not find game with id ${id}`} />
-            )
+            return ( <ErrorPage text={`Could not find game with id ${id}`} /> )
         }
     } catch (error) {
-        return (
-            <ErrorPage text={`Could not load game with id ${id}`} />
-        )
+        return ( <ErrorPage text={`Could not load game with id ${id}`} /> )
     }
 
     return (
