@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { URL_ARTICLES_PAGE, URL_HOME } from "@/app/_utils/utils";
+import { URL_ARTICLES_PAGE } from "@/app/_utils/utils";
 import { getArticleById } from "@/app/_db/articles-db";
+import ErrorPage from "@/app/_components/common/ErrorPage";
 
 import "./page.css";
 
@@ -15,13 +15,11 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
     
     try {
         article = await getArticleById(parseInt(id));
+        if (!article) {
+            return ( <ErrorPage text={`Could not find article with id ${id}`} /> )
+        }
     } catch (error) {
-        return (
-            <main id="articlePage">
-                <h2 className="articlePage-error"> Could not load article </h2>
-                <Link href={URL_HOME} className='not-found__link'> Return Home </Link>
-            </main>
-        )
+        return ( <ErrorPage text={`Could not load article with id ${id}`} /> )
     }
 
     return (
