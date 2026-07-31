@@ -7,23 +7,6 @@
     position: relative;
     padding-bottom: 10rem;
 
-    & .newsPage-error {
-        font-size: 3rem;
-        padding-top: 5rem;
-        padding-bottom: 3rem;
-    }
-
-    & .not-found__link {
-        padding: 1rem;
-        backdrop-filter: brightness(0.3);
-        border-radius: 25px;
-        transition: all 0.5s;
-
-        &:hover {
-            filter: brightness(1.5);
-        }
-    }
-
     & .gamePage-figure {
         display: flex;
         justify-content: center;

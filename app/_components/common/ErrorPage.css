@@ -1,0 +1,32 @@
+#errorPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-real-white);
+    background: radial-gradient(circle at left, rgba(39, 99, 61, 1) -170%, rgba(16, 16, 16, 1) 100%);
+    position: relative;
+
+    & .errorPage-text {
+        font-family: sans, sans-serif;
+        color: var(--color-real-white);
+        font-size: 2rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    & .home-link {
+        font-family: iceland, sans-serif;
+        font-size: 1.5rem;
+        padding: 1rem;
+        background-color: #ffffff14;
+        border-radius: 25px;
+        border: 1px solid #ffffff14;
+        transition: all 0.5s;
+
+        &:hover {
+            backdrop-filter: brightness(1.4);
+            transition: 0.2s all ease-in-out;
+        }
+    }
+}

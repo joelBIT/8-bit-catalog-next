@@ -3,10 +3,11 @@
 import { ReactElement } from "react";
 import Image from 'next/image';
 import Link from "next/link";
-import { convertDateToString, URL_HOME } from "@/app/_utils/utils";
+import { convertDateToString } from "@/app/_utils/utils";
 import { getGameById } from "@/app/_db/games-db";
 import { Game } from "@/app/_db/schema/games";
 import { FavouriteButton, PlayButton } from "@/app/_components/games";
+import ErrorPage from "@/app/_components/common/ErrorPage";
 
 import "./page.css";
 
@@ -20,12 +21,14 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
     
     try {
         game = await getGameById(parseInt(id));
+        if (!game) {
+            return (
+                <ErrorPage text={`Could not find game with id ${id}`} />
+            )
+        }
     } catch (error) {
         return (
-            <main id="gamePage">
-                <h2 className="gamePage-error"> Could not load game </h2>
-                <Link href={URL_HOME} className='not-found__link'> Return Home </Link>
-            </main>
+            <ErrorPage text={`Could not load game with id ${id}`} />
         )
     }
 
