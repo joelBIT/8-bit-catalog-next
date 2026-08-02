@@ -1,11 +1,10 @@
 #loginPage {
     display: flex;
     justify-content: center;
-    background: fixed;
-    background-image: url("/auth/nes-gaming-set-in-dark.webp");
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/auth/nes-gaming-set-in-dark.webp');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-attachment: fixed;
     background-color: var(--color-black);
 
     & #loginPage-modal {
