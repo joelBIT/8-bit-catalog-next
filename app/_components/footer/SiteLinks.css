@@ -33,3 +33,15 @@
         padding-top: 2rem;
     }
 }
+
+@media (max-width: 600px) {
+    #siteLinks {
+        & .siteLinks-heading {
+            text-align: center;
+        }
+
+        & #links {
+            align-items: center;
+        }
+    }
+}
