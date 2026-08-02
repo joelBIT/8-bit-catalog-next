@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     width: 18rem;
-    height: 27rem;
+    height: 24rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 4px;
     cursor: pointer;
@@ -25,7 +25,7 @@
             top: 2rem;
             box-shadow: 0 0 6px 0 var(--color-real-black);
             background-color: #d3deea;
-            padding: 0.1rem 0.7rem;
+            padding: .1rem .7rem 0.3rem;
 
             & > img {
                 width: 12px;
@@ -45,7 +45,7 @@
         & .gameCard-figure__cover {
             width: 100%;
             border-radius: 4px;
-            height: 24rem;
+            height: 21rem;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
