@@ -9,9 +9,9 @@ import { Game } from "@/app/_db/schema/games";
 import "./page.css";
 
 /**
- * Renders the current user's favourite games as game cards either in Grid view or List view.
+ * Renders the current user's game collection as game cards either in Grid view or List view.
  */
-export default function FavouritesPage(): ReactElement {
+export default function CollectionPage(): ReactElement {
     const { favouritesList } = useFavourites();
     const [favourites, setFavourites] = useState<Game[]>(favouritesList);
     const { gridView } = useGame();
@@ -58,7 +58,7 @@ function FavouriteHeading(): ReactElement {
     return (
         <section className="favourites-heading">
             <div className="favourites-title">
-                Favourite Games
+                Game Collection
             </div>
 
             <p className="favourites-text">

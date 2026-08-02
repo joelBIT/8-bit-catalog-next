@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useFavourites } from "@/app/_hooks";
-import { URL_TIMELINE_PAGE, URL_DASHBOARD_PAGE, URL_FAVOURITES_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
+import { URL_TIMELINE_PAGE, URL_DASHBOARD_PAGE, URL_COLLECTION_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { DashboardDropdown, Hamburger } from ".";
 import { signOut } from "@/app/_auth/client-functions";
 
@@ -110,13 +110,13 @@ export function NavBar({ authenticated, isAdmin } : { authenticated: boolean, is
                     )
                 }
 
-                <li className="navbar__list-element" key={URL_FAVOURITES_PAGE} onClick={closeMenu}>
+                <li className="navbar__list-element" key={URL_COLLECTION_PAGE} onClick={closeMenu}>
                     <Link 
-                        href={URL_FAVOURITES_PAGE}
-                        className={pathname === URL_FAVOURITES_PAGE ? `active navbar__list-element-link` : `navbar__list-element-link`}
+                        href={URL_COLLECTION_PAGE}
+                        className={pathname === URL_COLLECTION_PAGE ? `active navbar__list-element-link` : `navbar__list-element-link`}
                     >
                         <h2 id="favourite-link" className="navbar__list-element-title"> 
-                            Favourites
+                            Collection
                             { 
                                 favouritesList?.length > 0 ? 
                                     <p id="favourites-amount" className="material-symbols-outlined"> 

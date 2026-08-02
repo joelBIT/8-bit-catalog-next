@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from "next/navigation";
 import { useFavourites, useGame } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
-import { URL_FAVOURITES_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
+import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
 import "./GameCard.css";
 
@@ -31,7 +31,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
     }
     
     /**
-     * Adds or removes a game from the list of favourites. The event is prevented so
+     * Adds or removes a game from the list of games. The event is prevented so
      * that a user is not redirected to the game details page when clicking on the favourite button.
      */
     function handleFavourites(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
@@ -39,7 +39,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
         event.stopPropagation();
 
         if (favourite) {
-            if (pathname === URL_FAVOURITES_PAGE) {           // If a game card is removed from favourites page, it fades out
+            if (pathname === URL_COLLECTION_PAGE) {           // If a game card is removed from collection page, it fades out
                 setIsFadingOut(true);
                 setTimeout(() => removeFavouriteGame(game), 300);
                 setTimeout(() => { setRemoveCard(true) }, 500);
@@ -59,7 +59,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                         favourite ? 
                             <section className="game-favourite">
                                 <img src="/isFavourite.png" /> 
-                                <h3 className="game-favourite__text"> A favourite </h3> 
+                                <h3 className="game-favourite__text"> In collection </h3> 
                             </section> 
                         : <></>
                     }
@@ -80,7 +80,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
 
                 <button className="gameCard-favourite" onClick={handleFavourites}>
                     {
-                        favourite ? <h3 className="game-is-favourite"> Remove favourite </h3> : <h3> Add as favourite </h3>
+                        favourite ? <h3 className="game-is-favourite"> Remove from collection </h3> : <h3> Add to collection </h3>
                     }
                 </button>
             </section>

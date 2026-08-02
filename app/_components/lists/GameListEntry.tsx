@@ -5,12 +5,12 @@ import Image from 'next/image';
 import { usePathname, useRouter } from "next/navigation";
 import { useFavourites } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
-import { URL_FAVOURITES_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
+import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
 import "./GameListEntry.css";
 
 /**
- * An entry in a list of games. Corresponds to a row in a regular list in List View.
+ * An entry in a collection of games. Corresponds to a row in a regular list in List View.
  * When hovering a game cover that cover will appear enlarged in a modal.
  */
 export function GameListEntry({ game }: { game: Game }): ReactElement {
@@ -24,11 +24,11 @@ export function GameListEntry({ game }: { game: Game }): ReactElement {
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     /**
-     * Adds or removes a game from the list of favourites.
+     * Adds or removes a game from the list of games.
      */
     function handleFavourites(): void {
         if (favourite) {
-            if (pathname === URL_FAVOURITES_PAGE) {           // If a game card is removed from favourites page, it fades out
+            if (pathname === URL_COLLECTION_PAGE) {           // If a game card is removed from collection page, it fades out
                 setIsFadingOut(true);
                 setTimeout(() => removeFavouriteGame(game), 300);
                 setTimeout(() => { setRemoveCard(true) }, 500);
