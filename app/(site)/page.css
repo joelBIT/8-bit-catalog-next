@@ -141,6 +141,18 @@
     }
 }
 
+@media (max-width: 600px) {
+    #landingPage {
+        & #catalogDescription {
+            & #searchGameArea {
+                & .message-failure {
+                    margin-top: -1.5rem;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 500px) {
     #landingPage {
         & #catalogDescription {
