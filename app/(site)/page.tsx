@@ -1,9 +1,10 @@
 'use server';
 
 import { Suspense, type ReactElement } from "react";
-import { TopicSelection, Logo, Newsletter, SuggestionList } from "@/app/_components/home";
+import { Logo, Newsletter, SuggestionList, NewsCard } from "@/app/_components/home";
 import { getAllTitles } from "../_db/games-db";
 import { getAllNews } from "../_db/news-db";
+import { News } from "../_db/schema/news";
 
 import "./page.css";
 
@@ -21,7 +22,6 @@ export default async function Home(): Promise<ReactElement> {
                         <hr className="line" />
                     </h1>
                     
-
                     <Logo />
 
                     <section id="searchGameArea">
@@ -34,9 +34,15 @@ export default async function Home(): Promise<ReactElement> {
             </section>
 
             <section id="secondSection">
-                <Suspense>
-                    <TopicSelection news={await getAllNews()} />
-                </Suspense>
+                <h2 className="recent-news__heading">
+                    Most recent news
+                </h2>
+
+                <section id="newsCards">
+                    {
+                        (await getAllNews()).map((news: News) => <NewsCard key={news.text} news={news} />)
+                    }
+                </section>
             </section>
 
             <Newsletter />
