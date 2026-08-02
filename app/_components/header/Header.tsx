@@ -5,6 +5,7 @@ import Link from "next/link";
 import { NavBar } from ".";
 import { URL_HOME } from "@/app/_utils/utils";
 import { isAuthenticated, isAuthenticatedAdmin } from "@/app/_auth/client-functions";
+import { Logo } from "../home";
 
 import "./Header.css";
 
@@ -12,7 +13,7 @@ export function Header(): ReactElement {
     return (
         <header id="header">
             <Link href={URL_HOME} id="logoLink">
-                <h1 className="header__title"> The 8-bit Catalog </h1>
+                <Logo />
             </Link>
             <NavBar authenticated={isAuthenticated()} isAdmin={isAuthenticatedAdmin()} />
         </header>
