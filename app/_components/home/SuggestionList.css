@@ -1,6 +1,5 @@
 #suggestion-search {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 1rem;
     padding: 1rem;
@@ -26,6 +25,12 @@
                 filter: brightness(0.3);
             }
         }
+    }
+}
+
+@media (max-width: 600px) {
+    #suggestion-search {
+        flex-direction: column;
     }
 }
 

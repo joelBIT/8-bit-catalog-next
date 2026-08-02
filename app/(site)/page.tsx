@@ -16,10 +16,16 @@ export default async function Home(): Promise<ReactElement> {
         <main id="landingPage">
             <section id="firstSection">
                 <section id="catalogDescription">
+                    <h1 className="welcome-text">
+                        Welcome to
+                        <hr className="line" />
+                    </h1>
+                    
+
                     <Logo />
 
                     <section id="searchGameArea">
-                        <p className="search-text">Choose among approximately <b>1000</b> games released for the <b>NES</b></p>
+                        <p className="search-text">Choose among approximately <b>1000</b> games released for the <b>Nintendo Entertainment System</b></p>
                         <Suspense>
                             <SuggestionList options={await getAllTitles()} />
                         </Suspense>
