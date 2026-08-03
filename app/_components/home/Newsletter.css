@@ -69,6 +69,10 @@
             background: transparent;
             letter-spacing: 3px;
             border-radius: 88px;
+
+            &:active {
+                filter: brightness(0.7);
+            }
         }
     }
 
