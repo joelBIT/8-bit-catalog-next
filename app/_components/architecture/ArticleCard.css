@@ -107,6 +107,10 @@
                 background-color: var(--color-link-active);
                 color: var(--color-real-white);
             }
+
+            &:active {
+                filter: brightness(0.5);
+            }
         }
     }
 }
