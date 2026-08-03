@@ -151,6 +151,10 @@
                     &:hover {
                         color: var(--color-link-active);
                     }
+
+                    &:active {
+                        filter: brightness(0.7);
+                    }
                 }
 
                 & .disabled-link {

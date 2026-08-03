@@ -156,10 +156,6 @@
 
 @media (max-width: 1000px) {
     #landingPage {
-        & #catalogDescription {
-            margin: 3rem;
-        }
-
         & .presentation {
             width: 100%;
             border-top-left-radius: 24px;
