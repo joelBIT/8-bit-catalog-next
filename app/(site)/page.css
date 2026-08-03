@@ -21,7 +21,8 @@
         flex-wrap: wrap;
         min-height: 80vh;
         border: 1px solid var(--color-auth-border);
-        margin: 5rem;
+        margin: 3rem;
+        margin-bottom: 5rem;
         border-radius: 24px;
 
         & .welcome-text {
