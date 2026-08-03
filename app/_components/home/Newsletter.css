@@ -50,15 +50,25 @@
         }
 
         & .navigation-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: 2px solid var(--color-white);
+            color: var(--color-white);
+            cursor: pointer;
+            width: fit-content;
+            height: 3rem;
+            line-height: 24px;
+            padding: 0 17px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: "rancho", sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
             background: transparent;
             letter-spacing: 3px;
             border-radius: 88px;
-            gap: 0.5rem;
-            transition: all 0.2s ease-in-out;
-
-            &:hover {
-                transition: all 0.2s ease-in-out;
-            }
         }
     }
 
