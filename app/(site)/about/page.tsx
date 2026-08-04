@@ -10,15 +10,14 @@ export default function AboutPage(): ReactElement {
             </div>
 
             <p className="about-text">
-                The 8-bit Catalog is a place for all things related to the Nintendo Entertainment System, where it is possible to 
-                connect with other 8-bit enthusiasts. It was created in 2024 and is an ongoing hobby project.
-                This catalog is continuously updated with new information and functionality.
+                The 8-bit Catalog is a home for everything Nintendo Entertainment System: a place to browse, remember, and connect 
+                with people who still care about 8 bits.
+                Started in 2024 as a hobby project, it's grown one release at a time, with new games, facts, 
+                and features added whenever there's time to add them.
             </p>
 
             <p className="about-text">
-                Become a member to connect with other 8-bit enthusiasts.
-                Membership unlock services including real-time interaction with 
-                other members, exclusive offers, info about retro events, and more.
+                Sign in to chat with other collectors in real time, hear about retro meetups first, and pick up member perks as they roll out.
             </p>
 
             <div className="darken-image-bottom" />
