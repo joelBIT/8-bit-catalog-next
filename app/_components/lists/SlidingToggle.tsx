@@ -1,7 +1,7 @@
 'use client';
 
-import { ReactElement, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { ReactElement, useLayoutEffect} from "react";
+import { LayoutGrid, List } from "lucide-react";
 import { useGame } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 
@@ -11,29 +11,33 @@ import "./SlidingToggle.css";
  * Used for toggling between Grid and List views. The view state is kept in the GameContext and is used in different places in the application.
  */
 export function SlidingToggle(): ReactElement {
-    const searchParams = useSearchParams();
-    const params = new URLSearchParams(searchParams);
     const { gridView, toggleGridView, setSelectedGame } = useGame();
-    const [grid, setGrid] = useState<boolean>(gridView);
 
-    function toggleView(): void {
-        setSelectedGame({} as Game);
+    useLayoutEffect(() => {
+        const container: HTMLDivElement | null = document.querySelector(".toggle");
+        if (!gridView && container) {
+            container.style.setProperty("--bg-offset", `50%`);
+        }
+    }, [gridView]);
 
-        if (grid) {
-            setGrid(!grid);
-            params.delete('show');
-            window.history.pushState(null, '', `?${params.toString()}`);        // Remove 'show' so no modal is active when changing games list view
+    function slideBackground(n: number) {
+        const container: HTMLDivElement | null = document.querySelector(".toggle");
+        if (container) {
+            container.style.setProperty("--bg-offset", `${50 * n}%`);
+            setSelectedGame({} as Game);
             toggleGridView();
-        } else {
-            setGrid(!grid);
         }
     }
 
     return (
-        <label id="slidingToggle" className="toggle" htmlFor="toggle-input" onClick={toggleView}>
-            <input id="toggle-input" name="toggle-input" type="checkbox" defaultChecked={gridView}/>
-            <span className="slider" />
-            <span className="labels" toggle-off="List" toggle-on="Grid" />
-        </label>
+        <div className='toggle'>
+            <button onClick={() => slideBackground(0)}>
+                <LayoutGrid size={20} color="#ffffff" />
+            </button>
+
+            <button onClick={() => slideBackground(1)}>
+                <List size={20} color="#ffffff" />
+            </button>
+        </div>
     );
 }
