@@ -16,14 +16,14 @@ export function SlidingToggle(): ReactElement {
     useLayoutEffect(() => {
         const container: HTMLDivElement | null = document.querySelector(".toggle");
         if (!gridView && container) {
-            container.style.setProperty("--bg-offset", `50%`);
+            container.style.setProperty("--bg-offset", `52%`);
         }
     }, [gridView]);
 
     function slideBackground(n: number) {
         const container: HTMLDivElement | null = document.querySelector(".toggle");
         if (container) {
-            container.style.setProperty("--bg-offset", `${50 * n}%`);
+            container.style.setProperty("--bg-offset", `${6 + (50 * n)}%`);
             setSelectedGame({} as Game);
             toggleGridView();
         }
@@ -31,11 +31,11 @@ export function SlidingToggle(): ReactElement {
 
     return (
         <div className='toggle'>
-            <button onClick={() => slideBackground(0)}>
+            <button onClick={() => slideBackground(0)} disabled={gridView}>
                 <LayoutGrid size={20} color="#ffffff" />
             </button>
 
-            <button onClick={() => slideBackground(1)}>
+            <button onClick={() => slideBackground(1)} disabled={!gridView}>
                 <List size={20} color="#ffffff" />
             </button>
         </div>

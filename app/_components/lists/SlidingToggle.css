@@ -1,32 +1,36 @@
 
 .toggle {
-  --bg-offset: 0%;
-  display: flex;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  position: relative;
-  background: transparent;
+    --bg-offset: 6%;
+    display: flex;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+    background: #0F1815;
+    width: 110px;
+    height: 50px;
+
+    & > button {
+        width: 50px;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        background: transparent;
+        cursor: pointer;
+        z-index: 5;
+
+        &:disabled {
+            cursor: default;
+        }
+    }
 }
 
 .toggle::after {
-  content: "";
-  width: 50%;
-  height: 100%;
-  background: #ffffff80;
-  position: absolute;
-  top: 0;
-  left: var(--bg-offset);
-  transition: left 0.3s;
-}
-
-.toggle > button {
-  width: 150px;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  background: transparent;
-  cursor: pointer;
-}
-
-.toggle > button:not(:last-of-type) {
-  border-right: 1px solid #eee;
+    content: "";
+    width: 35%;
+    height: 65%;
+    margin: 0.5rem;
+    background: #2B323D;
+    border-radius: 8px;
+    position: absolute;
+    left: var(--bg-offset);
+    transition: left 0.7s;
 }
