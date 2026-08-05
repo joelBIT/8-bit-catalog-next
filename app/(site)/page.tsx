@@ -28,11 +28,10 @@ export default async function Home(): Promise<ReactElement> {
                             <h1 className="logo-text">Every cartridge tells a story</h1>
                         </section>
                         
-
                         <section id="searchGameArea">
                             <p className="search-text">
                                 A catalog, an archive, and a clubhouse. All built for one console that never really left.
-                                Choose among approximately <b>1000</b> games released for the <b>Nintendo Entertainment System</b>
+                                Choose among approximately <b>1000</b> games released for the <b>Nintendo Entertainment System</b>.
                                 </p>
                             <Suspense>
                                 <SuggestionList options={await getAllTitles()} />

@@ -13,9 +13,10 @@
     
     & .show-pagination-toggle {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
         gap: 1rem;
         width: 93%;
-        justify-content: space-between;
         padding-bottom: 1rem;
         padding-top: 1rem;
         border-bottom: 1px solid var(--color-auth-border);
@@ -30,7 +31,6 @@
         & .show-pagination-toggle {
             display: flex;
             flex-direction: column-reverse;
-            align-items: center;
             gap: 2rem;
         }
     }
