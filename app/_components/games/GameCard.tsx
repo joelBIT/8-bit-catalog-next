@@ -3,7 +3,7 @@
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
 import { usePathname, useRouter } from "next/navigation";
-import { useCollection, useGame } from "@/app/_hooks";
+import { useCollection } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
@@ -20,16 +20,10 @@ export function GameCard({ game }: { game: Game }): ReactElement {
     const [isShowingTitle, setIsShowingTitle] = useState<boolean>(false);
     const router = useRouter();
     const pathname = usePathname();
-    const { setSelectedGame } = useGame();
     const { addFavouriteGame, removeFavouriteGame, isFavourite } = useCollection();
     const favourite = isFavourite(game.id);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
-    function showGame(): void {
-        setSelectedGame(game);
-        router.push(URL_GAME_PAGE + `/${game.id}`);
-    }
-    
     /**
      * Adds or removes a game from the list of games. The event is prevented so
      * that a user is not redirected to the game details page when clicking on the favourite button.
@@ -52,7 +46,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
     }
     
     return (
-        <section className={isFadingOut ? "is-fading" : ""} onClick={showGame}>
+        <section className={isFadingOut ? "is-fading" : ""} onClick={() => router.push(URL_GAME_PAGE + `/${game.id}`)}>
             <section className={removeCard ? "hidden" : "gameCard"}>
                 <figure className="gameCard-figure" onMouseEnter={() => setIsShowingTitle(true)} onMouseLeave={() => setIsShowingTitle(false)}>
                     {

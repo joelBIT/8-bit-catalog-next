@@ -10,12 +10,18 @@ export interface GamesContextProvider {
     games: Game[];
     getFilteredGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
+    gridView: boolean;
+    toggleGridView: () => void;
 }
 
 export const GamesContext = createContext<GamesContextProvider>({} as GamesContextProvider);
 
+/**
+ * Keeps state about games (list sorting, grid or list view, etc).
+ */
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
+    const [ gridView, setGridView ] = useState<boolean>(true);              // The chosen list view for game lists
 
     useEffect(() => {
         loadGames();
@@ -55,9 +61,13 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     function getGameByTitle(title: string): Game | undefined {
         return games.find(game => game.title === title);
     }
+
+    function toggleGridView(): void {
+        setGridView(!gridView);
+    }
     
     return (
-        <GamesContext.Provider value={{ games, getFilteredGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ games, gridView, toggleGridView, getFilteredGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );

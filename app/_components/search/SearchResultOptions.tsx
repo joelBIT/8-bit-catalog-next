@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import { useGame } from "@/app/_hooks";
+import { useGames } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { GameSorting } from "../common";
 import { RangeSlider } from ".";
@@ -13,7 +13,7 @@ import "./SearchResultOptions.css";
 export function SearchResultOptions({searchResult, setSortedGames}: {searchResult: Game[], setSortedGames: (games: Game[]) => void}): ReactElement {
     const [numberGamesShowing, setNumberGamesShowing] = useState<number>(50);
     const [showOptions, setShowOptions] = useState<boolean>(false);
-    const { gridView } = useGame();
+    const { gridView } = useGames();
     
     return (
         <section className="searchResultOptions">

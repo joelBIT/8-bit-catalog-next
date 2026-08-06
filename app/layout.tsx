@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
-import { GameProvider, GamesProvider } from "./_contexts";
+import { GamesProvider } from "./_contexts";
 import { blinker } from "./_fonts/fonts";
 
 import "./globals.css";
@@ -23,9 +23,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <html lang="en">
             <body className={`${blinker.className}`}>
                 <GamesProvider>
-                    <GameProvider>
-                        {children} 
-                    </GameProvider>
+                    {children} 
                 </GamesProvider>
             </body>
         </html>
