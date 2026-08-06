@@ -4,8 +4,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 4rem 2rem;
-    padding-top: 11rem;
+    padding: 11rem 2rem;
     position: relative;
     background: radial-gradient(circle,rgba(39, 99, 61, 1) -170%, rgba(16, 16, 16, 1) 100%);
 
@@ -70,6 +69,86 @@
                 color: var(--color-text);
                 letter-spacing: 1px;
             }
+        }
+    }
+
+    & .about-journey {
+        padding: 2rem 1.5rem 2.5rem;
+        position: relative;
+        padding-left: 28px;
+
+        & .journey-heading {
+            font-family: iceland, sans-serif;
+            color: var(--color-real-white);
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0 0 1.75rem;
+        }
+
+        & .journey-timeline {
+            position: relative;
+            padding-left: 28px;
+
+            & .timeline-item {
+                position: relative;
+                padding-bottom: 5rem;
+
+                & .timeline-dot {
+                    position: absolute;
+                    left: -28px;
+                    top: 7px;
+                    width: 11px;
+                    height: 11px;
+                    border-radius: 50%;
+                    background: var(--color-heading);
+                    border: 2px solid #c9c7bc;
+                }
+
+                & .timeline-year {
+                    font-size: 1.2rem;
+                    color: #888780;
+                    margin: 0 0 4px;
+                }
+
+                & .timeline-title {
+                    font-family: poppins, sans-serif;
+                    color: var(--color-real-white);
+                    font-size: 1.4rem;
+                    font-weight: 100;
+                    margin: 0 0 4px;
+                }
+
+                & .timeline-desc {
+                    font-size: 1.4rem;
+                    color: #5f5e5a;
+                    line-height: 1.6;
+                    margin: 0;
+                    font-weight: 100;
+                }
+            }
+
+            & .timeline-item:last-child {
+                padding-bottom: 0;
+            }
+
+            .timeline-item.current .timeline-dot {
+                background: var(--color-footer-heading);
+                border-color: var(--color-footer-heading);
+            }
+
+            .timeline-item.first .timeline-dot {
+                border-color: var(--color-footer-heading);
+            }
+        }
+
+        & .journey-timeline::before {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 16px;
+            bottom: 6px;
+            width: 1px;
+            background: #c9c7bc;
         }
     }
 
