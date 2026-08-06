@@ -41,7 +41,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                                 id="searchTitle"
                                 name="title"
                                 type="text"
-                                placeholder="Game Title"
+                                placeholder={(params.title && params.title.length > 0) ? params.title : "Game Title"}
                             />
                         </section>
 
