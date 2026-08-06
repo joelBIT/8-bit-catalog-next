@@ -68,7 +68,7 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
                                     className="item-text item-link" 
                                     title="Open cover in new tab"
                                 >
-                                    {game.cover}
+                                    {game.cover.slice(0, 30)}
                                 </Link>
                             </span>
                             
