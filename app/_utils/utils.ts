@@ -1,3 +1,6 @@
+import { Game } from "../_db/schema/games";
+import { SortOrder } from "../_types/types";
+
 export const ALL_OPTION_VALUE = "All";
 
 export const URL_ABOUT_PAGE = "/about";
@@ -146,4 +149,35 @@ export function renameFile(originalFile: File, newName: string) {
         type: originalFile.type,
         lastModified: originalFile.lastModified
     });
+}
+
+/**
+ * Sort games according to selected option.
+ */
+export function sortGames(games: Game[], sort: SortOrder): Game[] {
+    const gamesToSort = [...games];
+
+    if (sort === "titleAsc") {
+        return gamesToSort.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sort === "titleDes") {
+        return gamesToSort.sort((a, b) => b.title.localeCompare(a.title));
+    } else if (sort === "playersAsc") {
+        return gamesToSort.sort((a, b) => a.players - b.players);
+    } else if (sort === "playersDes") {
+        return gamesToSort.sort((a, b) => b.players - a.players);
+    } else if (sort === "publisherAsc") {
+        return gamesToSort.sort((a, b) => a.publisher.localeCompare(b.publisher));
+    } else if (sort === "publisherDes") {
+        return gamesToSort.sort((a, b) => b.publisher.localeCompare(a.publisher));
+    } else if (sort === "developerAsc") {
+        return gamesToSort.sort((a, b) => a.developer.localeCompare(b.developer));
+    } else if (sort === "developerDes") {
+        return gamesToSort.sort((a, b) => b.developer.localeCompare(a.developer));
+    } else if (sort === "categoryAsc") {
+        return gamesToSort.sort((a, b) => a.category.localeCompare(b.category));
+    } else if (sort === "categoryDes") {
+        return gamesToSort.sort((a, b) => b.category.localeCompare(a.category));
+    }
+
+    return games;
 }

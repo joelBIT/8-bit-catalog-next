@@ -16,15 +16,17 @@ export function GameList({ games }: { games: Game[] }): ReactElement {
         setCurrentGames(games);
     }, [games])
 
+    let content = <></>;
+
+    if (currentGames.length > 0) {
+        content = <>
+            { currentGames.map(game => <GameListEntry game={game} key={game.id} />) }
+        </>
+    }
+
     return (
         <ul id="gameList">
-            { 
-                currentGames.length > 0 
-                    ? 
-                        currentGames.map(game => <GameListEntry game={game} key={game.id} />) 
-                    : 
-                <></> 
-            }
+            {content}
         </ul>
     );
 }

@@ -16,15 +16,17 @@ export function GameGrid({ games }: { games: Game[] }): ReactElement {
         setCurrentGames(games);
     }, [games]);
 
+    let content = <></>;
+
+    if (currentGames.length > 0) {
+        content = <>
+            { currentGames.map(game => <GameCard game={game} key={game.id} />) }
+        </>
+    }
+
     return (
         <section id="gameGrid"> 
-            { 
-                currentGames.length > 0 
-                    ? 
-                        currentGames.map(game => <GameCard game={game} key={game.id} />) 
-                    : 
-                <></> 
-            }
+            {content}
         </section>
     );
 }

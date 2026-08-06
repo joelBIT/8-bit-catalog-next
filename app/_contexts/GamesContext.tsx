@@ -1,13 +1,15 @@
 'use client';
 
 import { createContext, type ReactElement, type ReactNode, useEffect, useState } from "react";
-import { SearchFilter } from "../_types/types";
+import { SearchFilter, SortOrder } from "../_types/types";
 import { Game } from "../_db/schema/games";
 import { getAllGamesRequest } from "../_client/client";
 import { ALL_OPTION_VALUE } from "../_utils/utils";
 
 export interface GamesContextProvider {
     games: Game[];
+    sortOrder: SortOrder;
+    setSortOrder: (order: SortOrder) => void;
     getFilteredGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
     gridView: boolean;
@@ -21,6 +23,7 @@ export const GamesContext = createContext<GamesContextProvider>({} as GamesConte
  */
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
+    const [sortOrder, setSortOrder] = useState<SortOrder>("titleAsc");
     const [ gridView, setGridView ] = useState<boolean>(true);              // The chosen list view for game lists
 
     useEffect(() => {
@@ -67,7 +70,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     }
     
     return (
-        <GamesContext.Provider value={{ games, gridView, toggleGridView, getFilteredGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ games, gridView, sortOrder, setSortOrder, toggleGridView, getFilteredGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );

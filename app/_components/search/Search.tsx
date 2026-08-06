@@ -6,6 +6,7 @@ import { useGames } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { ScrollTopButton } from "../common";
 import { SearchResultOptions } from "./SearchResultOptions";
+import { sortGames } from "@/app/_utils/utils";
 
 import "./Search.css";
 
@@ -24,7 +25,7 @@ export function Search(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const { games, getFilteredGames } = useGames();
+    const { games, getFilteredGames, sortOrder } = useGames();
     
     
     useEffect(() => {
@@ -47,27 +48,23 @@ export function Search(): ReactElement {
      */
     async function search(): Promise<void> {
         const filteredGames = getFilteredGames({title, category, developer, publisher});
-        setSearchResult(filteredGames);
+        setSearchResult(sortGames(filteredGames, sortOrder));
         setTotalCount(filteredGames.length);
         setShowHeading(true);           // Set to true after first search is executed
     }
 
+    let content = <> { showHeading ? <h1 className="search-result-text message-failure"> No games found </h1> : <></> } </>;
+
+    if (searchResult.length > 0) {
+        content = <>
+            <h1 className="search-result-text message-success"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
+            <SearchResultOptions searchResult={searchResult} setSortedGames={setSearchResult} />
+        </>
+    }
+
     return (
         <section id="search">
-            {
-                searchResult.length > 0 ? 
-                    <>
-                        <h1 className="search-result-text message-success"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
-                        <SearchResultOptions searchResult={searchResult} setSortedGames={setSearchResult} />
-                    </>
-                :   <>
-                        { 
-                            showHeading ? 
-                                <h1 className="search-result-text message-failure"> No games found </h1>
-                            : <></>
-                        }
-                    </>   
-            }
+            {content}
         
             <ScrollTopButton />
         </section>
