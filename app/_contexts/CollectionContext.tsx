@@ -6,21 +6,20 @@ import { isLocalStorageAvailable } from "@/app/_utils/utils";
 import { addFavouriteGameToDatabaseRequest, deleteFavouriteGameFromDatabaseRequest, getFavouritesRequest } from "@/app/_client/client";
 import { authClient } from "../auth-client";
 
-export interface FavouritesContextProvider {
+export interface CollectionContextProvider {
     favouritesList: Game[];
     addFavouriteGame: (game: Game) => void;
     removeFavouriteGame: (game: Game) => void;
     isFavourite: (gameId: number) => boolean;
 }
 
-export const FavouritesContext = createContext<FavouritesContextProvider>({} as FavouritesContextProvider);
+export const CollectionContext = createContext<CollectionContextProvider>({} as CollectionContextProvider);
 
 /**
  * Favourite games are kept in a database for users with active sessions. Localstorage is used if there is no active session.
- * Favourite games are placed in localstorage if localstorage is available. If not available, the favourite games
- * are only temporarily stored in this Context's favouritesList variable.
+ * If local storage is not available, the colelction of games are only temporarily stored in this Context's favouritesList variable.
  */
-export function FavouritesProvider({ children }: { children: ReactNode }): ReactElement {
+export function CollectionProvider({ children }: { children: ReactNode }): ReactElement {
     const [favouritesList, setFavouritesList] = useState<Game[]>([]);
     const { data: session } = authClient.useSession();
     const STORAGE_KEY = 'favouriteGames';
@@ -94,8 +93,8 @@ export function FavouritesProvider({ children }: { children: ReactNode }): React
     }
 
     return (
-        <FavouritesContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, isFavourite }}>
+        <CollectionContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, isFavourite }}>
             { children }
-        </FavouritesContext.Provider>
+        </CollectionContext.Provider>
     );
 }

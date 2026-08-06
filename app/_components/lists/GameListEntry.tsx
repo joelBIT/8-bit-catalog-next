@@ -3,7 +3,7 @@
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
 import { usePathname, useRouter } from "next/navigation";
-import { useFavourites } from "@/app/_hooks";
+import { useCollection } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
@@ -19,7 +19,7 @@ export function GameListEntry({ game }: { game: Game }): ReactElement {
     const [isFadingOut, setIsFadingOut] = useState<boolean>(false);
     const pathname = usePathname();
     const router = useRouter();
-    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
+    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useCollection();
     const favourite = isFavourite(game.id);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
