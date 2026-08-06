@@ -2,11 +2,10 @@
 
 import { ReactElement, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useGame, useGames } from "@/app/_hooks";
+import { useGames } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
-import { GameSorting, ScrollTopButton } from "../common";
-import { RangeSlider } from ".";
-import { GameGrid, GameList, SlidingToggle } from "../lists";
+import { ScrollTopButton } from "../common";
+import { SearchResultOptions } from "./SearchResultOptions";
 
 import "./Search.css";
 
@@ -25,9 +24,8 @@ export function Search(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const [numberGamesShowing, setNumberGamesShowing] = useState<number>(50);
     const { games, getFilteredGames } = useGames();
-    const { gridView } = useGame();
+    
     
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params
@@ -60,20 +58,7 @@ export function Search(): ReactElement {
                 searchResult.length > 0 ? 
                     <>
                         <h1 className="search-result-text message-success"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
-                        <section className="show-pagination-toggle">
-                            <GameSorting games={searchResult} setSortedGames={setSearchResult} />
-                            
-                            {searchResult.length > 80 ? <RangeSlider min={50} max={searchResult.length} setSliderValue={setNumberGamesShowing} /> : <></>}
-
-                            {searchResult.length > 0 ? <SlidingToggle /> : <></>}
-                        </section>
-
-                        { 
-                            gridView ?
-                                <GameGrid games={searchResult.slice(0, numberGamesShowing)} />
-                                :
-                                <GameList games={searchResult.slice(0, numberGamesShowing)} />
-                        }
+                        <SearchResultOptions searchResult={searchResult} setSortedGames={setSearchResult} />
                     </>
                 :   <>
                         { 

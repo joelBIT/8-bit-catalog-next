@@ -1,10 +1,10 @@
 'use client';
 
 import { ReactElement, useEffect, useState } from "react";
-import { useFavourites, useGame } from "@/app/_hooks";
-import { GameSorting, ScrollTopButton } from "@/app/_components/common";
-import { GameGrid, GameList, SlidingToggle } from "@/app/_components/lists";
+import { useFavourites } from "@/app/_hooks";
+import { ScrollTopButton } from "@/app/_components/common";
 import { Game } from "@/app/_db/schema/games";
+import { SearchResultOptions } from "@/app/_components/search/SearchResultOptions";
 
 import "./page.css";
 
@@ -13,40 +13,28 @@ import "./page.css";
  */
 export default function CollectionPage(): ReactElement {
     const { favouritesList } = useFavourites();
-    const [favourites, setFavourites] = useState<Game[]>(favouritesList);
-    const { gridView } = useGame();
+    const [collection, setCollection] = useState<Game[]>(favouritesList);
 
     useEffect(() => {
-        setFavourites(favouritesList);
+        setCollection(favouritesList);
     }, [favouritesList])
 
-    if (favourites.length < 1) {
+    if (collection.length < 1) {
         return (
-            <main id="favouritesPage">
-                <FavouriteHeading />
+            <main id="collectionPage">
+                <CollectionHeading />
 
-                <h1 className="no-favourites__text"> Collection is empty </h1>
+                <h1 className="no-collection__text"> Collection is empty </h1>
                 <div className="darken-image-bottom" />
             </main>
         );
     }
 
     return (
-        <main id="favouritesPage">
-            <FavouriteHeading />
+        <main id="collectionPage">
+            <CollectionHeading />
 
-            <section className="show-pagination-toggle">
-                <GameSorting games={favourites} setSortedGames={setFavourites} />
-                
-                <SlidingToggle />
-            </section>
-
-            { 
-                gridView ?  
-                    <GameGrid games={favourites} />
-                            :
-                    <GameList games={favourites} />
-            }
+            <SearchResultOptions searchResult={collection} setSortedGames={setCollection} />
 
             <ScrollTopButton />
             <div className="darken-image-bottom" />
@@ -54,14 +42,14 @@ export default function CollectionPage(): ReactElement {
     );
 }
 
-function FavouriteHeading(): ReactElement {
+function CollectionHeading(): ReactElement {
     return (
-        <section className="favourites-heading">
-            <div className="favourites-title">
+        <section className="collection-heading">
+            <div className="collection-title">
                 Game Collection
             </div>
 
-            <p className="favourites-text">
+            <p className="collection-text">
                 Build your collection of games
             </p>
         </section>
