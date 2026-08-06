@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useEffect, useState } from "react";
-import { useFavourites } from "@/app/_hooks";
+import { useCollection } from "@/app/_hooks";
 import { ScrollTopButton } from "@/app/_components/common";
 import { Game } from "@/app/_db/schema/games";
 import { SearchResultOptions } from "@/app/_components/search/SearchResultOptions";
@@ -12,7 +12,7 @@ import "./page.css";
  * Renders the current user's game collection as game cards either in Grid view or List view.
  */
 export default function CollectionPage(): ReactElement {
-    const { favouritesList } = useFavourites();
+    const { favouritesList } = useCollection();
     const [collection, setCollection] = useState<Game[]>(favouritesList);
 
     useEffect(() => {

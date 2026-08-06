@@ -3,7 +3,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useFavourites } from "@/app/_hooks";
+import { useCollection } from "@/app/_hooks";
 import { URL_TIMELINE_PAGE, URL_DASHBOARD_PAGE, URL_COLLECTION_PAGE, URL_HOME, URL_LOGIN_PAGE, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { DashboardDropdown, Hamburger } from ".";
 import { signOut } from "@/app/_auth/client-functions";
@@ -15,7 +15,7 @@ import "./NavBar.css";
  * Favourites Page are always rendered. The remaining links are rendered depending on if the user is authenticated or not.
  */
 export function NavBar({ authenticated, isAdmin } : { authenticated: boolean, isAdmin: boolean }): ReactElement {
-    const { favouritesList } = useFavourites();
+    const { favouritesList } = useCollection();
     const [showDashboardDropdown, setShowDashboardDropdown] = useState<boolean>(false);
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const [scrollPosition, setScrollPosition] = useState<number>(0);

@@ -1,13 +1,13 @@
 'use client';
 
 import { ReactElement } from "react";
-import { useFavourites } from "@/app/_hooks";
+import { useCollection } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 
 import "./FavouriteButton.css";
 
 export function FavouriteButton({game}: {game: Game}): ReactElement {
-    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
+    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useCollection();
     const favourite = isFavourite(game.id);
 
     if (favourite) {

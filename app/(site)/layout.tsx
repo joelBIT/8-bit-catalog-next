@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Header } from "@/app/_components/header";
 import { Footer } from "@/app/_components/footer";
-import { FavouritesProvider } from "@/app/_contexts";
+import { CollectionProvider } from "@/app/_contexts";
 
 import "../globals.css";
 
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
-        <FavouritesProvider>
+        <CollectionProvider>
             <Header />
             {children} 
             <Footer />
-        </FavouritesProvider>
+        </CollectionProvider>
     );
 }

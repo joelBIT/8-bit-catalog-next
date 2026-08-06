@@ -3,7 +3,7 @@
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
 import { usePathname, useRouter } from "next/navigation";
-import { useFavourites, useGame } from "@/app/_hooks";
+import { useCollection, useGame } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
@@ -21,7 +21,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
     const router = useRouter();
     const pathname = usePathname();
     const { setSelectedGame } = useGame();
-    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useFavourites();
+    const { addFavouriteGame, removeFavouriteGame, isFavourite } = useCollection();
     const favourite = isFavourite(game.id);
     const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
