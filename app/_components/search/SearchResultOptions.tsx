@@ -3,7 +3,8 @@ import { useGames } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { GameSorting } from "../common";
 import { RangeSlider } from ".";
-import { GameGrid, GameList, SlidingToggle } from "../lists";
+import { GameListEntry, SlidingToggle } from "../lists";
+import { GameCard } from "../games";
 
 import "./SearchResultOptions.css";
 
@@ -34,12 +35,14 @@ export function SearchResultOptions({searchResult, setSortedGames}: {searchResul
                 {searchResult.length > 0 ? <SlidingToggle /> : <></>}
             </section>
 
-            { 
-                gridView ?
-                    <GameGrid games={searchResult.slice(0, numberGamesShowing)} />
-                    :
-                    <GameList games={searchResult.slice(0, numberGamesShowing)} />
-            }
+            <section className={gridView ? "grid" : "list"}>
+                {
+                    gridView ?
+                        searchResult.slice(0, numberGamesShowing).map(game => <GameCard game={game} key={game.id} />)
+                        :
+                        searchResult.slice(0, numberGamesShowing).map(game => <GameListEntry game={game} key={game.id} />)
+                }
+            </section>
         </section>
     );
 }

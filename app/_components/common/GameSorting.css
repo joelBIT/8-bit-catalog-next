@@ -44,6 +44,10 @@
                 background-color: var(--color-real-black);
                 border-radius: 4px;
             }
+
+            &:focus-visible {
+                outline: none;
+            }
         }
 
         & option::checkmark {
