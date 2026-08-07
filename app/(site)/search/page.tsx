@@ -9,6 +9,8 @@ import { SearchButton, SearchResultOptions } from "@/app/_components/search";
 import { addAllOption, sortGames, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { Game } from "@/app/_db/schema/games";
 import { ScrollTopButton } from "@/app/_components/common";
+import { GameCard } from "@/app/_components/games";
+import { GameListEntry } from "@/app/_components/lists";
 
 import "./page.css";
 
@@ -19,7 +21,7 @@ export default function SearchPage(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const { filterValues, sortOrder } = useOptions();
+    const { filterValues, sortOrder, numberGamesShowing, gridView } = useOptions();
     const { games, getFilteredGames } = useGames();
 
     const searchParams = useSearchParams();
@@ -127,6 +129,12 @@ export default function SearchPage(): ReactElement {
 
             <section id="search">
                 {content}
+
+                <section className={gridView ? "grid" : "list"}>
+                    {
+                        searchResult.slice(0, numberGamesShowing).map(game => <>{gridView ? <GameCard game={game} key={game.id}/> : <GameListEntry game={game} key={game.id} /> }</>)
+                    }
+                </section>
                     
                 <ScrollTopButton />
             </section>

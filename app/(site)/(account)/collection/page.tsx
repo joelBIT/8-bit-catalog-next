@@ -6,6 +6,8 @@ import { ScrollTopButton } from "@/app/_components/common";
 import { Game } from "@/app/_db/schema/games";
 import { SearchResultOptions } from "@/app/_components/search";
 import { sortGames } from "@/app/_utils/utils";
+import { GameCard } from "@/app/_components/games";
+import { GameListEntry } from "@/app/_components/lists";
 
 import "./page.css";
 
@@ -14,12 +16,12 @@ import "./page.css";
  */
 export default function CollectionPage(): ReactElement {
     const { favouritesList } = useCollection();
-    const { sortOrder } = useOptions();
+    const { sortOrder, gridView, numberGamesShowing } = useOptions();
     const [collection, setCollection] = useState<Game[]>(sortGames(favouritesList, sortOrder));
 
     useEffect(() => {
         setCollection(sortGames(favouritesList, sortOrder));
-    }, [favouritesList])
+    }, [favouritesList, sortOrder])
 
     if (collection.length < 1) {
         return (
@@ -37,6 +39,12 @@ export default function CollectionPage(): ReactElement {
             <CollectionHeading />
 
             <SearchResultOptions searchResult={collection} setSortedGames={setCollection} />
+
+            <section className={gridView ? "grid" : "list"}>
+                {
+                    collection.slice(0, numberGamesShowing).map(game => <>{gridView ? <GameCard game={game} key={game.id}/> : <GameListEntry game={game} key={game.id} /> }</>)
+                }
+            </section>
 
             <ScrollTopButton />
             <div className="darken-image-bottom" />
