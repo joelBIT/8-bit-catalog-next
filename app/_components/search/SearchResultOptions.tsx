@@ -35,7 +35,7 @@ export function SearchResultOptions({searchResult, setSortedGames}: {searchResul
             <section className={showOptions ? "pagination-toggle show-options" : "pagination-toggle hide-options"}>
                 <GameSorting games={games} setSortedGames={setSortedGames} />
                 
-                {games.length > 80 ? <RangeSlider min={50} max={games.length} setSliderValue={setNumberGamesShowing} /> : <></>}
+                {searchResult.length > 80 ? <RangeSlider min={50} max={searchResult.length} setSliderValue={setNumberGamesShowing} /> : <></>}
 
                 {games.length > 0 ? <SlidingToggle /> : <></>}
             </section>

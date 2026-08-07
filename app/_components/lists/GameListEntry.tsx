@@ -2,6 +2,7 @@
 
 import { ReactElement, useState } from "react";
 import Image from 'next/image';
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCollection } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
@@ -67,9 +68,9 @@ export function GameListEntry({ game }: { game: Game }): ReactElement {
                 </section>
 
                 <section className="gameListEntry-information">
-                    <section className="gameListEntry-title__link" onClick={() => router.push(URL_GAME_PAGE + `/${game.id}`)}> 
+                    <Link className="gameListEntry-title__link" href={URL_GAME_PAGE + `/${game.id}`}> 
                         {game.title} 
-                    </section> 
+                    </Link> 
 
                     <section className="gameListEntry-tags">
                         <h2 className="gameListEntry-tag" title="Category"> {game.category} </h2>
