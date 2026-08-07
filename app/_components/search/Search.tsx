@@ -27,9 +27,8 @@ export function Search(): ReactElement {
     const [totalCount, setTotalCount] = useState<number>();
     const { games, getFilteredGames, sortOrder } = useGames();
     
-    
     useEffect(() => {
-        if ((title || category || developer || publisher)) {    // Query params
+        if ((title || category || developer || publisher)) {    // Query params (These exists only if a search has already been performed)
             search();                   // Perform a search on query params
         }
     }, [title, category, developer, publisher])

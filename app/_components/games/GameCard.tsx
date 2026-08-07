@@ -9,7 +9,6 @@ import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
 import "./GameCard.css";
 
-
 /**
  * Represents a card containing information about a game. The card is clickable so that
  * a user can navigate to the game's detail page if interested. This game card is used in Grid Views.
