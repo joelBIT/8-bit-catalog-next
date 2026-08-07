@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { useCollection, useOptions } from "@/app/_hooks";
 import { ScrollTopButton } from "@/app/_components/common";
 import { Game } from "@/app/_db/schema/games";
-import { SearchResultOptions } from "@/app/_components/search/SearchResultOptions";
+import { SearchResultOptions } from "@/app/_components/search";
 import { sortGames } from "@/app/_utils/utils";
 
 import "./page.css";

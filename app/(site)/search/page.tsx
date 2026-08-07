@@ -1,12 +1,14 @@
 'use client';
 
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import Image from "next/image";
 import Form from 'next/form';
 import { useSearchParams } from "next/navigation";
-import { useOptions } from "@/app/_hooks";
-import { Search, SearchButton } from "@/app/_components/search";
-import { addAllOption, URL_SEARCH_PAGE } from "@/app/_utils/utils";
+import { useGames, useOptions } from "@/app/_hooks";
+import { SearchButton, SearchResultOptions } from "@/app/_components/search";
+import { addAllOption, sortGames, URL_SEARCH_PAGE } from "@/app/_utils/utils";
+import { Game } from "@/app/_db/schema/games";
+import { ScrollTopButton } from "@/app/_components/common";
 
 import "./page.css";
 
@@ -14,13 +16,52 @@ import "./page.css";
  * The search params are used to get the desired search results/page.
  */
 export default function SearchPage(): ReactElement {
+    const [searchResult, setSearchResult] = useState<Game[]>([]);
+    const [showHeading, setShowHeading] = useState<boolean>(false);
+    const [totalCount, setTotalCount] = useState<number>();
+    const { filterValues, sortOrder } = useOptions();
+    const { games, getFilteredGames } = useGames();
+
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const title = params.get('title') || '';
     const category = params.get('category') as string;
     const developer = params.get('developer') as string;
     const publisher = params.get('publisher') as string;
-    const { filterValues } = useOptions();
+
+    useEffect(() => {
+        if ((title || category || developer || publisher)) {    // Query params (These exists only if a search has already been performed)
+            search();                   // Perform a search on query params
+        }
+    }, [title, category, developer, publisher])
+
+    /**
+     * Handle page refresh.
+     */
+    useEffect(() => {
+        if (games.length && showHeading) {      // When showHeading is true a search has taken place earlier.
+            search();           // Perform a search again when page is refreshed to show the same results as before the refresh
+        }
+    }, [games.length])          // Length of games become 0 when refreshing the page because the context is emptied and must retrieve games again.
+
+    /**
+     * Performs a search based on given title text and filters.
+     */
+    async function search(): Promise<void> {
+        const filteredGames = getFilteredGames({title, category, developer, publisher});
+        setSearchResult(sortGames(filteredGames, sortOrder));
+        setTotalCount(filteredGames.length);
+        setShowHeading(true);           // Set to true after first search is executed
+    }
+
+    let content = <> { showHeading ? <h1 className="search-result-text message-failure"> No games found </h1> : <></> } </>;
+
+    if (searchResult.length > 0) {
+        content = <>
+            <h1 className="search-result-text message-success"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
+            <SearchResultOptions searchResult={searchResult} setSortedGames={setSearchResult} />
+        </>
+    }
 
     return (
         <main id="searchPage">
@@ -84,7 +125,11 @@ export default function SearchPage(): ReactElement {
                 </Form>
             </figure>
 
-            <Search params={{ title, category, publisher, developer }} />
+            <section id="search">
+                {content}
+                    
+                <ScrollTopButton />
+            </section>
 
             <div className="darken-image-bottom" />
         </main>

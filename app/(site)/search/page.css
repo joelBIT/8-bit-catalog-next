@@ -144,6 +144,20 @@
         }
     }
 
+    & #search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding-top: 10rem;
+
+        & .search-result-text {
+            font-family: poppins, sans-serif;
+            font-size: 1rem;
+            font-weight: 100;
+        }
+    }
+
     & .darken-image-bottom {
         position: absolute;
         bottom: 0;
@@ -182,6 +196,10 @@
             & #searchInput {
                 padding-right: 3rem;
             }
+        }
+
+        & #search {
+            padding-top: 18rem;
         }
     }
 }
