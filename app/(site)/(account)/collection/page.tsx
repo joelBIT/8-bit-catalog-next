@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useEffect, useState } from "react";
-import { useCollection, useGames } from "@/app/_hooks";
+import { useCollection, useOptions } from "@/app/_hooks";
 import { ScrollTopButton } from "@/app/_components/common";
 import { Game } from "@/app/_db/schema/games";
 import { SearchResultOptions } from "@/app/_components/search/SearchResultOptions";
@@ -14,7 +14,7 @@ import "./page.css";
  */
 export default function CollectionPage(): ReactElement {
     const { favouritesList } = useCollection();
-    const { sortOrder } = useGames();
+    const { sortOrder } = useOptions();
     const [collection, setCollection] = useState<Game[]>(sortGames(favouritesList, sortOrder));
 
     useEffect(() => {

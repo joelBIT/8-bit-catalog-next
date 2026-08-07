@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import type { Metadata } from "next";
 import { Header } from "@/app/_components/header";
 import { Footer } from "@/app/_components/footer";
-import { CollectionProvider } from "@/app/_contexts";
+import { CollectionProvider, OptionsProvider } from "@/app/_contexts";
 
 import "../globals.css";
 
@@ -13,10 +13,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
-        <CollectionProvider>
-            <Header />
-            {children} 
-            <Footer />
-        </CollectionProvider>
+        <Suspense>
+            <OptionsProvider>
+                <CollectionProvider>
+                    <Header />
+                    {children} 
+                    <Footer />
+                </CollectionProvider>
+            </OptionsProvider>
+        </Suspense>
     );
 }

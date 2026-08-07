@@ -1,18 +1,26 @@
+'use client';
+
 import { ReactElement } from "react";
 import Image from "next/image";
 import Form from 'next/form';
-import { SearchFilter } from "@/app/_types/types";
+import { useSearchParams } from "next/navigation";
+import { useOptions } from "@/app/_hooks";
 import { Search, SearchButton } from "@/app/_components/search";
 import { addAllOption, URL_SEARCH_PAGE } from "@/app/_utils/utils";
-import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/games-db";
 
 import "./page.css";
 
 /**
  * The search params are used to get the desired search results/page.
  */
-export default async function SearchPage({ searchParams } : { searchParams: Promise<SearchFilter> }): Promise<ReactElement> {
-    const params = await searchParams;
+export default function SearchPage(): ReactElement {
+    const searchParams = useSearchParams();
+    const params = new URLSearchParams(searchParams);
+    const title = params.get('title') || '';
+    const category = params.get('category') as string;
+    const developer = params.get('developer') as string;
+    const publisher = params.get('publisher') as string;
+    const { filterValues } = useOptions();
 
     return (
         <main id="searchPage">
@@ -41,7 +49,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                                 id="searchTitle"
                                 name="title"
                                 type="text"
-                                placeholder={(params.title && params.title.length > 0) ? params.title : "Game Title"}
+                                placeholder={(title && title.length > 0) ? title : "Game Title"}
                             />
                         </section>
 
@@ -52,31 +60,31 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         <section className="selectSection">
                             <h2 className="selectSection__title"> Category </h2>
                 
-                            <select className="selectSection__select" name="category" defaultValue={params.category}>
-                                { addAllOption(await getAllCategories()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                            <select className="selectSection__select" name="category" defaultValue={category}>
+                                { addAllOption(filterValues.categories).map((element, index) => <option key={index} value={element}> {element} </option>) }
                             </select>
                         </section>
 
                         <section className="selectSection">
                             <h2 className="selectSection__title"> Publisher </h2>
                 
-                            <select className="selectSection__select" name="publisher" defaultValue={params.publisher}>
-                                { addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                            <select className="selectSection__select" name="publisher" defaultValue={publisher}>
+                                { addAllOption(filterValues.publishers).map((element, index) => <option key={index} value={element}> {element} </option>) }
                             </select>
                         </section>
                         
                         <section className="selectSection">
                             <h2 className="selectSection__title"> Developer </h2>
                 
-                            <select className="selectSection__select" name="developer" defaultValue={params.developer}>
-                                { addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
+                            <select className="selectSection__select" name="developer" defaultValue={developer}>
+                                { addAllOption(filterValues.developers).map((element, index) => <option key={index} value={element}> {element} </option>) }
                             </select>
                         </section>
                     </article>
                 </Form>
             </figure>
 
-            <Search />
+            <Search params={{ title, category, publisher, developer }} />
 
             <div className="darken-image-bottom" />
         </main>

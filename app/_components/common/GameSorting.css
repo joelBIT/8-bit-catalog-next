@@ -3,6 +3,7 @@
         align-items: center;
         gap: 0.5rem;
         font-family: "arima", sans-serif;
+        min-width: 240px;
 
         & #games-sort-label {
             font-weight: 600;

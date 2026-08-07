@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { useGames } from "@/app/_hooks";
+import { useOptions } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { SortOrder } from "@/app/_types/types";
 import { sortGames } from "@/app/_utils/utils";
@@ -10,7 +10,7 @@ import "./GameSorting.css";
  * Sort games. The chosen sort order is stored in the games context so a user is able to navigate the site without the sort order resetting.
  */
 export function GameSorting({games, setSortedGames}: {games: Game[], setSortedGames: (games: Game[]) => void}): ReactElement {
-    const { sortOrder, setSortOrder } = useGames();
+    const { sortOrder, setSortOrder } = useOptions();
 
     /**
      * Sort games according to selected option.

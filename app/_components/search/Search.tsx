@@ -1,12 +1,13 @@
 'use client';
 
 import { ReactElement, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { useGames } from "@/app/_hooks";
+import { useOptions } from "@/app/_hooks/useOptions";
 import { Game } from "@/app/_db/schema/games";
 import { ScrollTopButton } from "../common";
 import { SearchResultOptions } from "./SearchResultOptions";
 import { sortGames } from "@/app/_utils/utils";
+import { SearchFilter } from "@/app/_types/types";
 
 import "./Search.css";
 
@@ -15,23 +16,18 @@ import "./Search.css";
  * The searchResult state contains the games that matches the search query. The showHeading state
  * is set to inform the user that no games matched the search query.
  */
-export function Search(): ReactElement {
-    const searchParams = useSearchParams();
-    const params = new URLSearchParams(searchParams);
-    const title = params.get('title') || '';
-    const category = params.get('category') as string;
-    const developer = params.get('developer') as string;
-    const publisher = params.get('publisher') as string;
+export function Search({ params }: { params: SearchFilter}): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>([]);
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const { games, getFilteredGames, sortOrder } = useGames();
+    const { games, getFilteredGames } = useGames();
+    const { sortOrder } = useOptions();
     
     useEffect(() => {
-        if ((title || category || developer || publisher)) {    // Query params (These exists only if a search has already been performed)
+        if ((params.title || params.category || params.developer || params.publisher)) {    // Query params (These exists only if a search has already been performed)
             search();                   // Perform a search on query params
         }
-    }, [title, category, developer, publisher])
+    }, [params.title, params.category, params.developer, params.publisher])
 
     /**
      * Handle page refresh.
@@ -46,7 +42,7 @@ export function Search(): ReactElement {
      * Performs a search based on given title text and filters.
      */
     async function search(): Promise<void> {
-        const filteredGames = getFilteredGames({title, category, developer, publisher});
+        const filteredGames = getFilteredGames(params);
         setSearchResult(sortGames(filteredGames, sortOrder));
         setTotalCount(filteredGames.length);
         setShowHeading(true);           // Set to true after first search is executed

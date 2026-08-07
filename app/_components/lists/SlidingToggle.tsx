@@ -2,7 +2,7 @@
 
 import { ReactElement, useLayoutEffect} from "react";
 import { LayoutGrid, List } from "lucide-react";
-import { useGames } from "@/app/_hooks";
+import { useOptions } from "@/app/_hooks";
 
 import "./SlidingToggle.css";
 
@@ -10,7 +10,7 @@ import "./SlidingToggle.css";
  * Used for toggling between Grid and List views. The view state is kept in the GameContext and is used in different places in the application.
  */
 export function SlidingToggle(): ReactElement {
-    const { gridView, toggleGridView } = useGames();
+    const { gridView, toggleGridView } = useOptions();
 
     useLayoutEffect(() => {
         const container: HTMLDivElement | null = document.querySelector(".toggle");
