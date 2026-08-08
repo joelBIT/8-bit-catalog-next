@@ -21,13 +21,14 @@
         padding-left: 0.2rem;
         padding-right: 0.2rem;
         font-weight: 400;
-        max-width: 40rem;
+        max-width: 46rem;
     }
 
     & .about-heading {
+        font-family: iceland, sans-serif;
         color: var(--color-real-white);
         text-transform: uppercase;
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     & .about-text {
