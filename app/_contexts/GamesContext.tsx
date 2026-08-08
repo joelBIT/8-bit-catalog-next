@@ -8,6 +8,7 @@ import { ALL_OPTION_VALUE } from "../_utils/utils";
 
 export interface GamesContextProvider {
     games: Game[];
+    filteredGames: Game[];
     getFilteredGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
 }
@@ -19,6 +20,7 @@ export const GamesContext = createContext<GamesContextProvider>({} as GamesConte
  */
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
+    const [filteredGames, setFilteredGames] = useState<Game[]>([]);     // Filtered games are stored to facilitate scroll positions in lists when navigating
 
     useEffect(() => {
         loadGames();
@@ -52,6 +54,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
             filteredGames = word !== "" ? filteredGames.filter(game => game.title.toLowerCase().includes(word.toLowerCase())) : filteredGames;
         }
 
+        setFilteredGames(filteredGames);
         return filteredGames;
     }
 
@@ -60,7 +63,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     }
 
     return (
-        <GamesContext.Provider value={{ games, getFilteredGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ games, filteredGames, getFilteredGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );

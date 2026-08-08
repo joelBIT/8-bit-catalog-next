@@ -13,11 +13,11 @@ import { sortGames } from "@/app/_utils/utils";
 import "./SearchResult.css";
 
 export function SearchResult(): ReactElement {
-    const [searchResult, setSearchResult] = useState<Game[]>([]);
+    const { games, filteredGames, getFilteredGames } = useGames();
+    const { sortOrder, numberGamesShowing, gridView } = useOptions();
+    const [searchResult, setSearchResult] = useState<Game[]>(sortGames(filteredGames, sortOrder));      // Filtered games are set so that scroll position is the same when navigating back from game page via browser button
     const [showHeading, setShowHeading] = useState<boolean>(false);
     const [totalCount, setTotalCount] = useState<number>();
-    const { sortOrder, numberGamesShowing, gridView } = useOptions();
-    const { games, getFilteredGames } = useGames();
 
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);

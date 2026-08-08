@@ -21,7 +21,7 @@ export default function CollectionPage(): ReactElement {
 
     useEffect(() => {
         setCollection(sortGames(favouritesList, sortOrder));
-    }, [favouritesList, sortOrder])
+    }, [favouritesList, sortOrder]);
 
     if (collection.length < 1) {
         return (
