@@ -17,7 +17,6 @@ export function SearchResult(): ReactElement {
     const { sortOrder, numberGamesShowing, gridView } = useOptions();
     const [searchResult, setSearchResult] = useState<Game[]>(sortGames(filteredGames, sortOrder));      // Filtered games are set so that scroll position is the same when navigating back from game page via browser button
     const [showHeading, setShowHeading] = useState<boolean>(false);
-    const [totalCount, setTotalCount] = useState<number>();
 
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
@@ -47,7 +46,6 @@ export function SearchResult(): ReactElement {
     async function search(): Promise<void> {
         const filteredGames = getFilteredGames({title, category, developer, publisher});
         setSearchResult(sortGames(filteredGames, sortOrder));
-        setTotalCount(filteredGames.length);
         setShowHeading(true);           // Set to true after first search is executed
     }
 
@@ -55,7 +53,7 @@ export function SearchResult(): ReactElement {
 
     if (searchResult.length > 0) {
         content = <>
-            <h1 className="search-result-text message-success"> {`Found ${totalCount} game${searchResult.length > 1 ? "s" : ""}`} </h1>
+            <h1 className="search-result-text message-success"> {`Found ${searchResult.length} game${searchResult.length > 1 ? "s" : ""}`} </h1>
             <SearchResultOptions searchResult={searchResult} setSortedGames={setSearchResult} />
         </>
     }
