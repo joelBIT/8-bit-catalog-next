@@ -13,7 +13,7 @@ import { sortGames } from "@/app/_utils/utils";
 import "./SearchResult.css";
 
 export function SearchResult(): ReactElement {
-    const { games, filteredGames, getFilteredGames } = useGames();
+    const { games, filteredGames, filterGames } = useGames();
     const { sortOrder, numberGamesShowing, gridView } = useOptions();
     const [searchResult, setSearchResult] = useState<Game[]>(sortGames(filteredGames, sortOrder));      // Filtered games are set so that scroll position is the same when navigating back from game page via browser button
     const [showHeading, setShowHeading] = useState<boolean>(false);
@@ -44,7 +44,7 @@ export function SearchResult(): ReactElement {
      * Performs a search based on given title text and filters.
      */
     async function search(): Promise<void> {
-        const filteredGames = getFilteredGames({title, category, developer, publisher});
+        const filteredGames = filterGames({title, category, developer, publisher});
         setSearchResult(sortGames(filteredGames, sortOrder));
         setShowHeading(true);           // Set to true after first search is executed
     }

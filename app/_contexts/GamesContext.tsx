@@ -9,7 +9,7 @@ import { ALL_OPTION_VALUE } from "../_utils/utils";
 export interface GamesContextProvider {
     games: Game[];
     filteredGames: Game[];
-    getFilteredGames: (filters: SearchFilter) => Game[];
+    filterGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
 }
 
@@ -42,7 +42,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
      * Applies chosen filters to the list of all playable games. The first selected filter type is marked because all other filter values should
      * be updated with how many games that matches the first selected filter type and the other filter.
      */
-    function getFilteredGames(filters: SearchFilter): Game[] {
+    function filterGames(filters: SearchFilter): Game[] {
         let filteredGames = [...games];
         filteredGames = filters.developer !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.developer === filters.developer) : filteredGames;
         filteredGames = filters.publisher !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.publisher === filters.publisher) : filteredGames;
@@ -63,7 +63,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     }
 
     return (
-        <GamesContext.Provider value={{ games, filteredGames, getFilteredGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ games, filteredGames, filterGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );
