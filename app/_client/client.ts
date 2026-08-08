@@ -1,6 +1,5 @@
 import { SearchResult, Filter } from '@/app/_types/types';
 import { Address } from '../_db/schema/addresses';
-import { FrequentlyAskedQuestion } from '../_db/schema/faqs';
 import { Game } from '../_db/schema/games';
 import { News } from '../_db/schema/news';
 import { Profile } from '../_db/schema/profiles';
@@ -131,19 +130,6 @@ export async function updateFilterValuesRequest(values: string[], filter: Filter
 export async function getTimelineEventsRequest(): Promise<TimelineEvent[]> {
     try {
         const response = await fetch(`/api/timeline`);
-        if (response.ok) {
-            return await response.json();
-        }
-    } catch (error) {
-        console.error(error);
-    }
-
-    return [];
-}
-
-export async function getFAQsRequest(): Promise<FrequentlyAskedQuestion[]> {
-    try {
-        const response = await fetch(`/api/faq`);
         if (response.ok) {
             return await response.json();
         }
