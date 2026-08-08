@@ -56,7 +56,7 @@
         flex-direction: column;
         padding-left: 0.3rem;
         padding-right: 0.3rem;
-        max-width: 1800px;
+        max-width: 1500px;
         width: 100%;
 
         & .article-text {
