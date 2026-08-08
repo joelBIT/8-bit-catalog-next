@@ -16,12 +16,6 @@ export type Article = {
     image: string
 }
 
-export type FilterValues = {
-    categories: string[],
-    publishers: string[],
-    developers: string[]
-}
-
 export type Filter = "category" | "publisher" | "developer" | "title";
 
 export type SortOrder = "titleAsc" | "titleDes" | "playersAsc" | "playersDes" | "publisherAsc" | "publisherDes" | "developerAsc" | "developerDes" | "categoryAsc" | "categoryDes";

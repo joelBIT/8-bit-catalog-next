@@ -1,4 +1,4 @@
-import { SearchResult, Filter, FilterValues } from '@/app/_types/types';
+import { SearchResult, Filter } from '@/app/_types/types';
 import { Address } from '../_db/schema/addresses';
 import { FrequentlyAskedQuestion } from '../_db/schema/faqs';
 import { Game } from '../_db/schema/games';
@@ -166,20 +166,4 @@ export async function sendNewsLetterRequest(news: News): Promise<void> {
     } catch (error) {
         console.error(error);
     }
-}
-
-/**
- * Retrieve search filters.
- */
-export async function getFilters(): Promise<FilterValues> {
-    try {
-        const response = await fetch(`/api/filters`);
-        if (response.ok) {
-            return await response.json();
-        }
-    } catch (error) {
-        console.error(error);
-    }
-
-    return {developers: [], publishers: [], categories: []};
 }
