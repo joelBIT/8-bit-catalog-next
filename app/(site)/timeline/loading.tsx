@@ -10,6 +10,8 @@ export default function Loading(): ReactElement {
                 <section className="loading-spinner-inner">
                     <div>
                     </div>
+
+                    <h2 className="loading-text">Loading</h2>
                 </section>
             </section>
         </main>
