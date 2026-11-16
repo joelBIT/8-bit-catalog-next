@@ -17,6 +17,16 @@ export function EditPasswordForm(): ReactElement {
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     async function updatePassword() {
+        setSuccess(false);
+        setShowMessage(false);
+        setMessage("");
+
+        if (newPassword !== confirmNewPassword) {
+            setMessage("New password must be the same as confirmed password.");
+            setShowMessage(true);
+            return;
+        }
+
         const { error } = await authClient.changePassword({
             newPassword,
             currentPassword,
@@ -24,7 +34,6 @@ export function EditPasswordForm(): ReactElement {
         });
 
         if (error) {
-            setSuccess(false);
             setMessage("Could not update password");
         } else {
             setSuccess(true);

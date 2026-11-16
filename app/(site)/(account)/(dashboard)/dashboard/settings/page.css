@@ -32,7 +32,6 @@
         .message-success, .message-failure {
             font-size: 1rem;
             text-align: center;
-            margin-left: 3rem;
         }
     }
 }
