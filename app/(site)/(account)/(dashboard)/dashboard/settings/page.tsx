@@ -1,8 +1,9 @@
 'use client';
 
 import { ReactElement } from "react";
+import { notFound } from "next/navigation";
 import { EditPasswordForm, EditNameForm } from "@/app/_components/account/forms";
-import { getUser } from "@/app/_auth/client-functions";
+import { useUser } from "@/app/_auth/client-functions";
 
 import "./page.css";
 
@@ -10,7 +11,11 @@ import "./page.css";
  * Change password and account-related settings.
  */
 export default function AccountSettingsPage(): ReactElement {
-    const user = getUser();
+    const user = useUser();
+
+    if (!user) {
+        notFound();
+    }
 
     return (
         <main id="settingsPage">
