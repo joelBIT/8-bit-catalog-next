@@ -24,8 +24,6 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                     width={1232} 
                     height={480} 
                     loading="eager" 
-                    placeholder="blur"
-                    blurDataURL={URL_SEARCH_PAGE + "/nes-game-cartridges-hero.avif"}
                 />
 
                 <section className="searchPage-heading">

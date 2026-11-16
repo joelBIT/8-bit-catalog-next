@@ -1,6 +1,5 @@
-'use server';
-
 import { ReactElement } from "react";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { convertDateToString, URL_NEWS_PAGE } from "@/app/_utils/utils";
@@ -20,7 +19,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
     try {
         news = await getNewsById(parseInt(id));
         if (!news) {
-            return ( <ErrorPage text={`Could not find news with id ${id}`} /> )
+            notFound();
         }
     } catch (error) {
         return ( <ErrorPage text={`Could not load news with id ${id}`} /> )
@@ -36,8 +35,6 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                     width={1228} 
                     height={480} 
                     loading="eager" 
-                    placeholder="blur"
-                    blurDataURL={`${URL_NEWS_PAGE}/${news.image}`}
                 />
 
                 <section className="news-heading">

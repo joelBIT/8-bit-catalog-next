@@ -1,6 +1,5 @@
-'use server';
-
 import { ReactElement } from "react";
+import { notFound } from "next/navigation";
 import Image from 'next/image';
 import Link from "next/link";
 import { convertDateToString } from "@/app/_utils/utils";
@@ -17,12 +16,12 @@ import "./page.css";
 export default async function GamePage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
     let game: Game | undefined;
-    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
+    const STORAGE_URL = process.env.COVER;
     
     try {
         game = await getGameById(parseInt(id));
         if (!game) {
-            return ( <ErrorPage text={`Could not find game with id ${id}`} /> )
+            notFound();
         }
     } catch (error) {
         return ( <ErrorPage text={`Could not load game with id ${id}`} /> )
