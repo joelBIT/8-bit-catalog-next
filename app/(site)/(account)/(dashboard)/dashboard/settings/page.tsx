@@ -16,7 +16,7 @@ export default function AccountSettingsPage(): ReactElement {
         <main id="settingsPage">
             <h1 className="settings-title"> Settings </h1>
 
-            <EditNameForm user={user} />
+            <EditNameForm username={user.name} />
             <EditPasswordForm />
         </main>
     );

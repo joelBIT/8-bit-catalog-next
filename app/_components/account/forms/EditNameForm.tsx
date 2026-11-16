@@ -2,12 +2,11 @@
 
 import { ReactElement, useActionState, useEffect, useState } from "react";
 import { updateName } from "@/app/_actions/user";
-import { User } from "@/app/_db/schema/auth/users";
 
 import "./EditNameForm.css";
 
-export function EditNameForm({ user }: { user: User }): ReactElement {
-    const [state, formAction] = useActionState(updateName, { message: '', success: false, name: user?.name });
+export function EditNameForm({ username }: { username: string }): ReactElement {
+    const [state, formAction] = useActionState(updateName, { message: '', success: false, name: username });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     
     useEffect(() => {

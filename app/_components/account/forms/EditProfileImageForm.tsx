@@ -8,7 +8,7 @@ import { Profile } from "@/app/_db/schema/profiles";
 import "./EditProfileImageForm.css";
 
 export function EditProfileImageForm({ profile }: { profile: Profile }): ReactElement {
-    const [state, formAction] = useActionState(updateProfileImage.bind(null, profile.userId), { message: '', success: false, image: profile.image });
+    const [state, formAction] = useActionState(updateProfileImage.bind(null), { message: '', success: false, image: profile.image });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${profile.userId}/`;
 
@@ -22,19 +22,17 @@ export function EditProfileImageForm({ profile }: { profile: Profile }): ReactEl
     }, [state]);
 
     return (
-        <>
-            <form id="profileImageForm" action={formAction}>
-                <section className="edit-profile-image">
-                    <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + profile.image} className="profile-image" alt="Profile image" />
+        <form id="profileImageForm" action={formAction}>
+            <section className="edit-profile-image">
+                <img src={state.image ? STORAGE_URL + state.image : STORAGE_URL + profile.image} className="profile-image" alt="Profile image" />
 
-                    <section className="edit-profile__change-image"> 
-                        <h1 className="edit-image__title"> Change profile image </h1> 
-                        <input name="profileImage" className="edit-profile__input" type="file" accept={fileTypes.toString()} />
-                    </section>
+                <section className="edit-profile__change-image"> 
+                    <h1 className="edit-image__title"> Change profile image </h1> 
+                    <input name="profileImage" className="edit-profile__input" type="file" accept={fileTypes.toString()} />
                 </section>
+            </section>
 
-                <button className="authButton" > Update </button>
-            </form>
+            <button className="authButton" > Update </button>
 
             { 
                 showMessage ? 
@@ -42,6 +40,6 @@ export function EditProfileImageForm({ profile }: { profile: Profile }): ReactEl
                         {state?.message}
                     </h2> : <></> 
             }
-        </>
+        </form>
     );
 }

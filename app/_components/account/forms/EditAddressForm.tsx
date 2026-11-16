@@ -3,14 +3,12 @@
 import { ReactElement, useActionState, useState, useEffect } from "react";
 import { updateAddress } from "@/app/_actions/address";
 import { SelectCountry } from "../../common";
-import { ActionState } from "@/app/_types/types";
-import { Address, InsertAddress } from "@/app/_db/schema/addresses";
+import { Address } from "@/app/_db/schema/addresses";
 
 import "./EditAddressForm.css";
 
 export function EditAddressForm({address}: {address: Address}): ReactElement {
-    const initialState: ActionState & InsertAddress = {message: '', success: false, zipCode: address.zipCode, 
-        country: address.country, city: address.city, street: address.street, userId: address.userId};
+    const initialState = {message: '', success: false, zipCode: address.zipCode, country: address.country, city: address.city, street: address.street};
     const [state, formAction] = useActionState(updateAddress, initialState);
     const [showMessage, setShowMessage] = useState<boolean>(false);
 

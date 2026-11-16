@@ -3,19 +3,15 @@
 import { ReactElement, useActionState, useState, useEffect } from "react";
 import { updateProfile } from "@/app/_actions/profile";
 import PhoneInput from "react-phone-input-2";
-import { ActionState } from "@/app/_types/types";
-import { InsertProfile, Profile } from "@/app/_db/schema/profiles";
+import { Profile } from "@/app/_db/schema/profiles";
 import { toDateInputValue } from "@/app/_utils/utils";
 
 import 'react-phone-input-2/lib/style.css';
 import "./EditProfileForm.css";
 
 export function EditProfileForm({ profile }: { profile: Profile }): ReactElement {
-    const initialState: ActionState & InsertProfile = { 
-        message: '', success: false, userId: profile.userId, firstName: profile.firstName, 
-        lastName: profile.lastName, bio: profile.bio, birthDate: profile.birthDate, phone: profile.phone
-    }
-    const [state, formAction] = useActionState(updateProfile, initialState);
+    const initalState = {firstName: profile.firstName, lastName: profile.lastName, phone: profile.phone, bio: profile.bio, birthDate: profile.birthDate};
+    const [state, formAction] = useActionState(updateProfile.bind(null), {message: '', success: false, ...initalState});
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {
@@ -93,7 +89,7 @@ export function EditProfileForm({ profile }: { profile: Profile }): ReactElement
                     Phone number
                 </label>
 
-                <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone', autoComplete: "none"}} />
+                <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone', autoComplete: "none"}} value={state.phone} />
             </section>
             
             <button className="authButton" type="submit">
