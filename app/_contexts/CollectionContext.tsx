@@ -13,7 +13,7 @@ export interface CollectionContextProvider {
     isFavourite: (gameId: number) => boolean;
 }
 
-export const CollectionContext = createContext<CollectionContextProvider>({} as CollectionContextProvider);
+export const CollectionContext = createContext<CollectionContextProvider | undefined>(undefined);
 
 /**
  * Favourite games are kept in a database for users with active sessions. Localstorage is used if there is no active session.

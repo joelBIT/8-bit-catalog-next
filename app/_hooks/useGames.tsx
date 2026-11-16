@@ -1,12 +1,4 @@
-import { useContext } from "react";
-import { GamesContext, GamesContextProvider } from "../_contexts";
+import { GamesContext } from "../_contexts";
+import { useRequiredContext } from "./useRequiredContext";
 
-export function useGames(): GamesContextProvider {
-    const context = useContext<GamesContextProvider>(GamesContext);
-
-    if (!context) {
-        throw new Error("useGames must be used within a GamesProvider");
-    }
-
-    return context;
-}
+export const useGames = () => useRequiredContext(GamesContext, "useGames", "GamesProvider");

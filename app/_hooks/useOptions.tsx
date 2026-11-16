@@ -1,12 +1,4 @@
-import { useContext } from "react";
-import { OptionsContext, OptionsContextProvider } from "../_contexts";
+import { OptionsContext } from "../_contexts";
+import { useRequiredContext } from "./useRequiredContext";
 
-export function useOptions(): OptionsContextProvider {
-    const context = useContext<OptionsContextProvider>(OptionsContext);
-
-    if (!context) {
-        throw new Error("useOptions must be used within a OptionsProvider");
-    }
-
-    return context;
-}
+export const useOptions = () => useRequiredContext(OptionsContext, "useOptions", "OptionsProvider");

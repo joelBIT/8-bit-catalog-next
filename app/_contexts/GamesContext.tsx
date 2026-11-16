@@ -13,7 +13,7 @@ export interface GamesContextProvider {
     getGameByTitle: (title: string) => Game | undefined;
 }
 
-export const GamesContext = createContext<GamesContextProvider>({} as GamesContextProvider);
+export const GamesContext = createContext<GamesContextProvider | undefined>(undefined);
 
 /**
  * Performs actions related to games (filtering, etc).

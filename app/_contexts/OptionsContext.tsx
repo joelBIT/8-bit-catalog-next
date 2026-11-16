@@ -12,7 +12,7 @@ export interface OptionsContextProvider {
     toggleGridView: () => void;
 }
 
-export const OptionsContext = createContext<OptionsContextProvider>({} as OptionsContextProvider);
+export const OptionsContext = createContext<OptionsContextProvider | undefined>(undefined);
 
 /**
  * Keeps state about options made by the user (list sorting, grid or list view, etc).

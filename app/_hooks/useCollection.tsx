@@ -1,12 +1,4 @@
-import { useContext } from "react";
-import { CollectionContext, CollectionContextProvider } from "../_contexts";
+import { CollectionContext } from "../_contexts";
+import { useRequiredContext } from "./useRequiredContext";
 
-export function useCollection(): CollectionContextProvider {
-    const context = useContext<CollectionContextProvider>(CollectionContext);
-
-    if (!context) {
-        throw new Error("useCollection must be used within a CollectionProvider");
-    }
-
-    return context;
-}
+export const useCollection = () => useRequiredContext(CollectionContext, "useCollection", "CollectionProvider");
