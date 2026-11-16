@@ -118,7 +118,7 @@ export async function deleteFavouriteGameFromDatabaseRequest(game_id: number): P
  */
 export async function updateFilterValuesRequest(values: string[], filter: Filter): Promise<void> {
     try {
-        await fetch(`/api/filter`, {
+        await fetch(`/api/filter`, {            // TODO: Create this route
             method: "PUT",
             body: JSON.stringify({ values: values, filter: filter })
         });

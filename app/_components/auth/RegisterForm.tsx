@@ -140,7 +140,7 @@ export function RegisterForm(): ReactElement {
 
                 <section id="personalInformation">
                     <section className="information-input">
-                        <label className="input-label required" htmlFor="full_name">
+                        <label className="input-label required" htmlFor="name">
                             Name
                         </label>
 

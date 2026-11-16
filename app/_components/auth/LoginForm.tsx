@@ -18,10 +18,6 @@ export function LoginForm(): ReactElement {
     const [email, setEmail] = useState<string>('');
     const formRef = useRef<HTMLFormElement>(null);
 
-    if (formRef.current) {
-        formRef.current?.reset();
-    }
-
     return (
         <section id="loginCard">
             <form id="loginForm" ref={formRef} action={formAction}>
