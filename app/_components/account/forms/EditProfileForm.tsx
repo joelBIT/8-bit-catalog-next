@@ -5,6 +5,7 @@ import { updateProfile } from "@/app/_actions/profile";
 import PhoneInput from "react-phone-input-2";
 import { ActionState } from "@/app/_types/types";
 import { InsertProfile, Profile } from "@/app/_db/schema/profiles";
+import { toDateInputValue } from "@/app/_utils/utils";
 
 import 'react-phone-input-2/lib/style.css';
 import "./EditProfileForm.css";
@@ -78,7 +79,7 @@ export function EditProfileForm({ profile }: { profile: Profile }): ReactElement
                     name="birth_date" 
                     type="date"
                     max={new Date().toLocaleDateString('en-ca')}
-                    defaultValue={`${state.birthDate?.toLocaleDateString('en-ca')}`}
+                    defaultValue={toDateInputValue(state.birthDate)}
                     className="form__field"
                 />
 

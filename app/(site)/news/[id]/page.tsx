@@ -38,7 +38,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
                 />
 
                 <section className="news-heading">
-                    <h3 className="news-published"> {convertDateToString(new Date(news.published))} </h3>
+                    <h3 className="news-published"> {convertDateToString(news.published)} </h3>
                     <h2 className="news-title">{news.heading} </h2>
                     <h3 className="news-publisher"> By {news.author} </h3>
                 </section>
@@ -70,7 +70,7 @@ export default async function NewsPage({params}: {params: Promise<{ id: string }
 
                                     <li className="list-item">
                                         <h3 className="item-heading"> PUBLISHED </h3>
-                                        <h3 className="item-text published"> {convertDateToString(new Date(news.published))} </h3>
+                                        <h3 className="item-text published"> {convertDateToString(news.published)} </h3>
                                     </li>
                                 </section>
                             )

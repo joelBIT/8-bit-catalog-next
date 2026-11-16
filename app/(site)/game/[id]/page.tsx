@@ -40,7 +40,7 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
                 />
 
                 <section className="game-heading">
-                    <h2 className="game-released"> {convertDateToString(new Date(game.releaseDate))} </h2>
+                    <h2 className="game-released"> {convertDateToString(game.releaseDate)} </h2>
                     <h2 className="game-title"> {game.title} </h2>
                 </section>
             </figure>
@@ -75,7 +75,7 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
                         
                         <li className="list-item">
                             <h3 className="item-heading"> RELEASE DATE </h3>
-                            <h3 className="item-text published"> {convertDateToString(new Date(game.releaseDate))} </h3>
+                            <h3 className="item-text published"> {convertDateToString(game.releaseDate)} </h3>
                         </li>
                                     
                         <li className="list-item">

@@ -23,7 +23,7 @@ export function NewsCard({ news }: { news: News }): ReactElement {
 
                 <section className="news-date">
                     <h3 className="date-heading">PUBLISHED </h3>
-                    <h3 className="date-text"> {convertDateToString(new Date(news.published))} </h3>
+                    <h3 className="date-text"> {convertDateToString(news.published)} </h3>
                 </section>
 
                 <p className="content-text">{ news.text.slice(0, 100) + "..." }</p>

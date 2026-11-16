@@ -126,8 +126,22 @@ export function getMonthText(month: number): string {
     }
 }
 
-export function convertDateToString(date: Date) {
-    return `${getMonthText(date.getMonth())} ${date.getDate()}, ${date.getFullYear()}`;
+/**
+ * Formats a date-only value (a Postgres `date` column, as a "YYYY-MM-DD" string or a
+ * Date at UTC midnight) as e.g. "September 13, 1985". UTC getters are used on purpose:
+ * local getters would show the previous day in timezones west of UTC.
+ */
+export function convertDateToString(date: Date | string): string {
+    const d = typeof date === "string" ? new Date(date) : date;
+    return `${getMonthText(d.getUTCMonth())} ${d.getUTCDate()}, ${d.getUTCFullYear()}`;
+}
+
+/**
+ * Converts a date-only value to the "YYYY-MM-DD" string an <input type="date"> expects.
+ * Returns an empty string when there is no date.
+ */
+export function toDateInputValue(date: Date | null | undefined): string {
+    return date ? date.toISOString().slice(0, 10) : '';
 }
 
 /**
