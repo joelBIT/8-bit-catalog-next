@@ -6,6 +6,7 @@ import { Resend } from "resend";
 import { ContactState } from "@/app/_types/types";
 import ContactMessageEmail from "../_components/email/ContactMessageEmail";
 import { countRecentContactRequests, recordContactRequest } from "../_db/contact-db";
+import { readFormValues } from "../_utils/utils";
 
 const MAX_REQUESTS_PER_HOUR = 3;
 
@@ -32,11 +33,7 @@ export async function sendContactEmail(_prevState: ContactState, formData: FormD
     }
 
     // What the user typed. Returned with every failure so the form can show it again.
-    const values = {
-        name: String(formData.get('name') ?? ''),
-        email: String(formData.get('email') ?? ''),
-        message: String(formData.get('message') ?? '')
-    };
+    const values = readFormValues(formData, ['name', 'email', 'message'] as const);
 
     const parsed = contactSchema.safeParse(values);
     if (!parsed.success) {

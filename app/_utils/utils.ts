@@ -207,3 +207,10 @@ export function sortGames(games: Game[], sort: SortOrder): Game[] {
 
     return games;
 }
+
+/**
+ * Helper for extracting values from formData in actions.
+ */
+export function readFormValues<K extends string>(formData: FormData, keys: readonly K[]): Record<K, string> {
+    return Object.fromEntries(keys.map(key => [key, String(formData.get(key) ?? '')])) as Record<K, string>;
+}
