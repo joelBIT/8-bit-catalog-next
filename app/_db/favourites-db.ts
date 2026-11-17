@@ -28,7 +28,10 @@ export async function getFavouritesByUserId(userId: string): Promise<Game[]> {
  * Store the supplied game ID as a favourite game for user with supplied user ID.
  */
 export async function addFavouriteForUserId(userId: string, gameId: number): Promise<void> {
-    await databaseClient.insert(favouritesTable).values({ userId, gameId }).onConflictDoNothing();
+    await databaseClient
+        .insert(favouritesTable)
+        .values({ userId, gameId })
+        .onConflictDoNothing({ target: [favouritesTable.userId, favouritesTable.gameId] });
 }
 
 /**

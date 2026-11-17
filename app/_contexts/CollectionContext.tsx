@@ -35,7 +35,7 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
             return;
         }
 
-        let cancelled = false;
+        let cancelled = false;                  // If a user logs out while getFavouritesRequest is still in flight, the late response would otherwise re-populate the list with the account’s favourites after logout.
         getFavouritesRequest().then(games => {
             if (!cancelled && games) {      // ignore the response if the user logged out meanwhile
                 setFavouritesList(games ?? []);
@@ -74,6 +74,10 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
      * to be consistent with the number of favourite games.
      */
     function addFavouriteGame(game: Game): void {
+        if (favouritesList.some(favourite => favourite.id === game.id)) {
+            return;
+        }
+
         const games = sortFavourites([...favouritesList, game]);
 
         if (isLoggedIn) {
