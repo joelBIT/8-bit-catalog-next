@@ -69,10 +69,7 @@ export async function getAddressByUserIdRequest(userId: string): Promise<Address
     throw new Error(`Could not find address for user id ${userId}`);
 }
 
-/**
- * Retrieve favourite games for user with an active session.
- */
-export async function getFavouritesRequest(): Promise<Game[]> {
+export async function getFavouritesRequest(): Promise<Game[] | null> {
     try {
         const response = await fetch(`/api/favourites`);
         if (response.ok) {
@@ -82,34 +79,34 @@ export async function getFavouritesRequest(): Promise<Game[]> {
         console.error(error);
     }
 
-    return [];
+    return null;        // null = failed to load, so the caller can keep what it has instead of wiping the list
 }
 
-/**
- * Persist a favourite game in the database for user with an active session.
- */
-export async function addFavouriteGameToDatabaseRequest(game_id: number): Promise<void> {
+export async function addFavouriteGameToDatabaseRequest(game_id: number): Promise<boolean> {
     try {
-        await fetch(`/api/favourites`, {
+        const response = await fetch(`/api/favourites`, {
             method: "POST",
-            body: JSON.stringify({ game_id: game_id })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ game_id })
         });
+        return response.ok;
     } catch (error) {
         console.error(error);
+        return false;
     }
 }
 
-/**
- * Delete a favourite game in the database for user with an active session.
- */
-export async function deleteFavouriteGameFromDatabaseRequest(game_id: number): Promise<void> {
+export async function deleteFavouriteGameFromDatabaseRequest(game_id: number): Promise<boolean> {
     try {
-        await fetch(`/api/favourites`, {
+        const response = await fetch(`/api/favourites`, {
             method: "DELETE",
-            body: JSON.stringify({ game_id: game_id })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ game_id })
         });
+        return response.ok;
     } catch (error) {
         console.error(error);
+        return false;
     }
 }
 

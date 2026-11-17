@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
+import z from "zod";
 import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/app/_db/favourites-db";
 import { auth } from "@/app/auth";
 
@@ -29,7 +30,12 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     if (session) {
         try {
-            const { game_id } = await request.json();
+            const favouriteBody = z.object({ game_id: z.number().int().positive() });
+            const parsed = favouriteBody.safeParse(await request.json().catch(() => null));
+            if (!parsed.success) {
+                return NextResponse.json({ error: 'Invalid game_id' }, { status: 400 });
+            }
+            const { game_id } = parsed.data;
             await addFavouriteForUserId(session.user.id, game_id);
             return NextResponse.json({ message: 'Game added to favourites' }, { status: 200 });
         } catch (error) {
@@ -51,7 +57,12 @@ export async function DELETE(request: Request): Promise<NextResponse> {
 
     if (session) {
         try {
-            const { game_id } = await request.json();
+            const favouriteBody = z.object({ game_id: z.number().int().positive() });
+            const parsed = favouriteBody.safeParse(await request.json().catch(() => null));
+            if (!parsed.success) {
+                return NextResponse.json({ error: 'Invalid game_id' }, { status: 400 });
+            }
+            const { game_id } = parsed.data;
             await deleteFavouriteForUserId(session.user.id, game_id);
             return NextResponse.json({ message: 'Game removed from favourites' }, { status: 200 });
         } catch (error) {

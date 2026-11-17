@@ -50,7 +50,7 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
      */
     async function getFavouriteGames(): Promise<void> {
         const games = await getFavouritesRequest();
-        setFavouritesList(games);
+        setFavouritesList(games ?? []);
     }
 
     function sortFavourites(favourites: Game[]): Game[] {
