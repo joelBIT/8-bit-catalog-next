@@ -2,6 +2,8 @@
 
 import { ReactElement, useState } from "react";
 import { authClient } from "@/app/auth-client";
+import { ActionState } from "@/app/_types/types";
+import { FlashMessage } from "../../common";
 
 import "./EditPasswordForm.css";
 
@@ -12,18 +14,11 @@ export function EditPasswordForm(): ReactElement {
     const [newPassword, setNewPassword] = useState<string>('');
     const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
     const [currentPassword, setCurrentPassword] = useState<string>('');
-    const [success, setSuccess] = useState<boolean>(false);
-    const [message, setMessage] = useState<string>('');
-    const [showMessage, setShowMessage] = useState<boolean>(false);
+    const [feedback, setFeedback] = useState<ActionState>({ message: '', success: false });
 
     async function updatePassword() {
-        setSuccess(false);
-        setShowMessage(false);
-        setMessage("");
-
         if (newPassword !== confirmNewPassword) {
-            setMessage("New password must be the same as confirmed password.");
-            setShowMessage(true);
+            setFeedback({ message: "New password must be the same as confirmed password.", success: false });
             return;
         }
 
@@ -34,24 +29,13 @@ export function EditPasswordForm(): ReactElement {
         });
 
         if (error) {
-            setMessage("Could not update password");
+            setFeedback({ message: error.message ?? "Could not update password", success: false });
         } else {
-            setSuccess(true);
-            setMessage("Password updated");
+            setFeedback({ message: "Password updated", success: true });
+            setCurrentPassword('');
+            setNewPassword('');
+            setConfirmNewPassword('');
         }
-
-        setShowMessage(true);
-    }
-
-    let messageContent = <></>;
-
-    if (showMessage) {
-        messageContent =
-            <>
-                <h2 className={success ? "message-success" : "message-failure"}>
-                    {message}
-                </h2>
-            </>
     }
 
     return (
@@ -135,7 +119,7 @@ export function EditPasswordForm(): ReactElement {
                 <span className="authButton__text"> Update </span>
             </button>
 
-            {messageContent}
+            <FlashMessage state={feedback} />
         </form>
     );
 }
