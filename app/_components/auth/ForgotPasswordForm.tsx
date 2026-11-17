@@ -18,18 +18,13 @@ export function ForgotPasswordForm(): ReactElement {
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     async function resetPassword() {
-        const { error } = await authClient.requestPasswordReset({
+        await authClient.requestPasswordReset({
             email,
             redirectTo: `${process.env.NEXT_PUBLIC_DOMAIN_URL}${URL_RESET_PAGE}`
         });
 
-        if (error) {
-            setSuccess(false);
-            setMessage("Could not reset password");
-        } else {
-            setSuccess(true);
-            setMessage("Password changed. Check email for link.");
-        }
+        setSuccess(true);
+        setMessage("If an account exists for that email, a reset link has been sent.");
         setShowMessage(true);
     }
 

@@ -24,6 +24,7 @@ export function RegisterForm(): ReactElement {
     const [street, setStreet] = useState<string>('');
     const [city, setCity] = useState<string>('');
     const [birthDate, setBirthDate] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
     const [showInputs, setShowInputs] = useState<boolean>(false);
     const formRef = useRef<HTMLFormElement>(null);
 
@@ -37,6 +38,7 @@ export function RegisterForm(): ReactElement {
             setName('');
             setBirthDate('');
             setCity('');
+            setPhone('');
         }
     }, [state])
 
@@ -196,7 +198,12 @@ export function RegisterForm(): ReactElement {
                                 Phone number
                             </label>
 
-                            <PhoneInput country={state.success ? "se" : undefined} inputProps={{id: 'phone', name: 'phone', autoComplete: "none"}} />
+                            <PhoneInput 
+                                country="se"
+                                value={phone}
+                                onChange={setPhone}
+                                inputProps={{ id: 'phone', name: 'phone', autoComplete: 'tel' }}
+                            />
                         </section>
                     </section>
                 </section>

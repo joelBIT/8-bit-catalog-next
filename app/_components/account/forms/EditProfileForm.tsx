@@ -11,7 +11,7 @@ import "./EditProfileForm.css";
 
 export function EditProfileForm({ profile }: { profile: Profile }): ReactElement {
     const initalState = {firstName: profile.firstName, lastName: profile.lastName, phone: profile.phone, bio: profile.bio, birthDate: profile.birthDate};
-    const [state, formAction] = useActionState(updateProfile.bind(null), {message: '', success: false, ...initalState});
+    const [state, formAction] = useActionState(updateProfile, {message: '', success: false, ...initalState});
     const [showMessage, setShowMessage] = useState<boolean>(false);
 
     useEffect(() => {

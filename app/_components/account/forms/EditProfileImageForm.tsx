@@ -8,7 +8,7 @@ import { Profile } from "@/app/_db/schema/profiles";
 import "./EditProfileImageForm.css";
 
 export function EditProfileImageForm({ profile }: { profile: Profile }): ReactElement {
-    const [state, formAction] = useActionState(updateProfileImage.bind(null), { message: '', success: false, image: profile.image });
+    const [state, formAction] = useActionState(updateProfileImage, { message: '', success: false, image: profile.image });
     const [showMessage, setShowMessage] = useState<boolean>(false);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${profile.userId}/`;
 
