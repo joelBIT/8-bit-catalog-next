@@ -21,36 +21,48 @@ export const CollectionContext = createContext<CollectionContextProvider | undef
  */
 export function CollectionProvider({ children }: { children: ReactNode }): ReactElement {
     const [favouritesList, setFavouritesList] = useState<Game[]>([]);
-    const { data: session } = authClient.useSession();
+    const { data: session, isPending } = authClient.useSession();
     const isLoggedIn = !!session;           // a boolean is stable; the session object may change identity on refresh
     const STORAGE_KEY = 'favouriteGames';
 
     useEffect(() => {
-        loadFavouriteGames();     
-    }, [isLoggedIn]);
-
-    /**
-     * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.
-     */
-    function loadFavouriteGames(): void {
-        if (isLoggedIn) {
-            getFavouriteGames();
-        } else if (isLocalStorageAvailable()) {
-            if (localStorage.getItem(STORAGE_KEY)) {
-                const games = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-                setFavouritesList(games);
-            } else {
-                localStorage.setItem(STORAGE_KEY, '[]');
-            }
+        if (isPending) {
+            return;                         // wait until we know whether there is a session
         }
-    }
 
-    /**
-     * Get the favourite games for a user (with an active session) from the DB.
+        if (!isLoggedIn) {
+            setFavouritesList(readGuestFavourites());   // always reset: clears the previous user's list on logout
+            return;
+        }
+
+        let cancelled = false;
+        getFavouritesRequest().then(games => {
+            if (!cancelled && games) {      // ignore the response if the user logged out meanwhile
+                setFavouritesList(games ?? []);
+            }
+        });
+
+        return () => { cancelled = true; };
+    }, [isLoggedIn, isPending]);
+
+    /** 
+     * Reads the guest's favourites from localStorage. Returns [] if unavailable or corrupt. 
      */
-    async function getFavouriteGames(): Promise<void> {
-        const games = await getFavouritesRequest();
-        setFavouritesList(games ?? []);
+    function readGuestFavourites(): Game[] {
+        if (!isLocalStorageAvailable()) {
+            return [];
+        }
+        try {
+            const games = localStorage.getItem(STORAGE_KEY);
+            if (games) {
+                return JSON.parse(games);
+            }
+            localStorage.setItem(STORAGE_KEY, '[]');        // Create storage since it did not exist
+        } catch {
+            return [];
+        }
+
+        return [];
     }
 
     function sortFavourites(favourites: Game[]): Game[] {
