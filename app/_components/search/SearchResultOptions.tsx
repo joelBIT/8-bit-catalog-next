@@ -4,7 +4,7 @@ import { ReactElement, useState } from "react";
 import { useOptions } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
 import { GameSorting } from "../common";
-import { RangeSlider } from ".";
+import { RangeSlider } from "./RangeSlider";
 import { SlidingToggle } from "../lists";
 
 import "./SearchResultOptions.css";

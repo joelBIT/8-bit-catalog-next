@@ -6,7 +6,7 @@ import { Game } from "../_db/schema/games";
 import { getAllGamesRequest } from "../_client/client";
 import { ALL_OPTION_VALUE } from "../_utils/utils";
 
-export interface GamesContextProvider {
+export interface GamesContextProvider {         // TODO: expose a isLoading so that SearchResult can show suitable message
     games: Game[];
     filteredGames: Game[];
     filterGames: (filters: SearchFilter) => Game[];

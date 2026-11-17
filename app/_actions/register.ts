@@ -14,7 +14,11 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     const city = formData.get('city') as string;
     const country = formData.get('country') as string;
     const name = formData.get('name') as string;
-    const birthDate = formData.get('birth_date') as string;
+    let birthDateValue: string | null = formData.get('birth_date') as string;
+
+    if (birthDateValue.length == 0 || birthDateValue.includes("null")) {
+        birthDateValue = null;
+    }
 
     if (password !== passwordRepeat) {
         return { message: 'Passwords must be equal', success: false };
@@ -33,7 +37,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
     }
 
     try {
-        const data = await auth.api.signUpEmail({
+        const data = await auth.api.signUpEmail({       // TODO: Handle when user trying to sign up with existing email and other problems
             body: {
                 name,
                 email,
@@ -42,7 +46,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
             headers: await headers()        // This endpoint requires session cookies.
         });
 
-        await createAddressAndProfile(data.user.id, {userId: data.user.id, phone, birthDate: new Date(birthDate)}, {userId: data.user.id, street, city, country});
+        await createAddressAndProfile(data.user.id, {userId: data.user.id, phone, birthDate: birthDateValue ? new Date(birthDateValue) : null}, {userId: data.user.id, street, city, country});
         
         return { message: 'Registration successful. Check email for activation link.', success: true };
     } catch (error) {

@@ -8,22 +8,22 @@ import { ScrollTopButton } from "@/app/_components/common";
 import { GameCard } from "@/app/_components/games";
 import { GameListEntry } from "@/app/_components/lists";
 import { SearchResultOptions } from "@/app/_components/search";
-import { sortGames } from "@/app/_utils/utils";
+import { ALL_OPTION_VALUE, sortGames } from "@/app/_utils/utils";
 
 import "./SearchResult.css";
 
 export function SearchResult(): ReactElement {
     const { games, filteredGames, filterGames } = useGames();
     const { sortOrder, numberGamesShowing, gridView } = useOptions();
-    const [searchResult, setSearchResult] = useState<Game[]>(sortGames(filteredGames, sortOrder));      // Filtered games are set so that scroll position is the same when navigating back from game page via browser button
+    const [searchResult, setSearchResult] = useState<Game[]>(() => sortGames(filteredGames, sortOrder));      // Filtered games are set so that scroll position is the same when navigating back from game page via browser button
     const [showHeading, setShowHeading] = useState<boolean>(false);
 
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const title = params.get('title') || '';
-    const category = params.get('category') as string;
-    const developer = params.get('developer') as string;
-    const publisher = params.get('publisher') as string;
+    const category = searchParams.get('category') ?? ALL_OPTION_VALUE;
+    const developer = searchParams.get('developer') ?? ALL_OPTION_VALUE;
+    const publisher = searchParams.get('publisher') ?? ALL_OPTION_VALUE;
 
     useEffect(() => {
         if ((title || category || developer || publisher)) {    // Query params (These exists only if a search has already been performed)
@@ -43,9 +43,9 @@ export function SearchResult(): ReactElement {
     /**
      * Performs a search based on given title text and filters.
      */
-    async function search(): Promise<void> {
-        const filteredGames = filterGames({title, category, developer, publisher});
-        setSearchResult(sortGames(filteredGames, sortOrder));
+    function search(): void {
+        const result = filterGames({title, category, developer, publisher});
+        setSearchResult(sortGames(result, sortOrder));
         setShowHeading(true);           // Set to true after first search is executed
     }
 
