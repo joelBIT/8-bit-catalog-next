@@ -2,6 +2,7 @@
 
 import { useActionState, type ReactElement } from "react";
 import { sendContactEmail } from "@/app/_actions/contact";
+import { StateMessage } from "../common";
 
 import "./ContactForm.css";
 
@@ -67,7 +68,7 @@ export function ContactForm(): ReactElement {
                 <span> Send </span>
             </button>
 
-            { state.message.length > 0 ? <h2 className={state.success ? "message-success" : "message-failure"}> {state.message} </h2> : <></> }
+            <StateMessage state={state} />
         </form>
     );
 }

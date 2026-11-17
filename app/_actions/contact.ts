@@ -10,19 +10,6 @@ import { readFormValues } from "../_utils/utils";
 
 const MAX_REQUESTS_PER_HOUR = 3;
 
-const contactSchema = z.object({
-    name: z.string().trim().min(1, 'Name is required').max(100, 'Name is too long'),
-    email: z.email('Enter a valid email address').max(254),
-    message: z.string().trim().min(10, 'Message is too short').max(2000, 'Message is too long (max 2000 characters)')
-});
-
-async function getClientIp(): Promise<string> {
-    const requestHeaders = await headers();
-    return requestHeaders.get('x-forwarded-for')?.split(',')[0].trim()
-        ?? requestHeaders.get('x-real-ip')
-        ?? 'unknown';
-}
-
 /**
  * Send an email using the contact form.
  */
@@ -68,4 +55,20 @@ export async function sendContactEmail(_prevState: ContactState, formData: FormD
         console.log(error);
         return { message: 'The message could not be sent', success: false, values };
     }
+}
+
+const contactSchema = z.object({
+    name: z.string().trim().min(1, 'Name is required').max(100, 'Name is too long'),
+    email: z.email('Enter a valid email address').max(254),
+    message: z.string().trim().min(10, 'Message is too short').max(2000, 'Message is too long (max 2000 characters)')
+});
+
+/**
+ * Keep track of client IP to limit requests per hour.
+ */
+async function getClientIp(): Promise<string> {
+    const requestHeaders = await headers();
+    return requestHeaders.get('x-forwarded-for')?.split(',')[0].trim()
+        ?? requestHeaders.get('x-real-ip')
+        ?? 'unknown';
 }

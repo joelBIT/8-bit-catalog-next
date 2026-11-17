@@ -2,7 +2,7 @@
 
 import { ReactElement, useActionState, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { SelectCountry } from "../common";
+import { SelectCountry, StateMessage } from "../common";
 import PhoneInput from "react-phone-input-2";
 import { URL_LOGIN_PAGE } from "@/app/_utils/utils";
 import { register } from "@/app/_actions/register";
@@ -208,12 +208,7 @@ export function RegisterForm(): ReactElement {
                     </section>
                 </section>
 
-                { 
-                    state?.message ? 
-                        <h2 className={state?.success ? "message-success" : "message-failure"}>
-                            {state?.message}
-                        </h2> : <></> 
-                }
+                <StateMessage state={state} />
 
                 <button className="authButton" type="submit" disabled={!email || !password || !passwordRepeat}>
                     <span className="authButton__text"> Register </span>

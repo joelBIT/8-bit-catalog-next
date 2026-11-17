@@ -2,6 +2,7 @@
 
 import { ReactElement, useActionState } from "react";
 import { createNewsAction } from "@/app/_actions/news";
+import { StateMessage } from "../../common";
 
 import "./NewsletterForm.css";
 
@@ -26,12 +27,7 @@ export function NewsletterForm(): ReactElement {
                 <textarea id="message" name="message" placeholder="Text" className="input-field" required />
             </section>
 
-            {
-                state?.message ?
-                    <h2 className={state?.success ? "message-success" : "message-failure"}>
-                        {state?.message}
-                    </h2> : <></>
-            }
+            <StateMessage state={state} />
 
             <button id="createButton" className="authButton" type="submit">
                 <span className="authButton__text"> Create </span>

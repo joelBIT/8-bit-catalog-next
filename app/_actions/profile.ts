@@ -5,6 +5,9 @@ import { updateProfileByUserId, updateProfileImageById } from "../_db/profiles-d
 import { InsertProfile, insertProfileSchema } from "../_db/schema/profiles";
 import { ActionState } from "../_types/types";
 
+/**
+ * Updates profile information.
+ */
 export async function updateProfile(_prevState: ActionState, formData: FormData): Promise<ActionState & Omit<InsertProfile, "userId">> {
     const user = await getUser();
     const rawData: InsertProfile = {
@@ -31,6 +34,9 @@ export async function updateProfile(_prevState: ActionState, formData: FormData)
     }
 }
 
+/**
+ * Update profile image.
+ */
 export async function updateProfileImage(_prevState: ActionState & {image: string}, formData: FormData): Promise<ActionState & {image: string}> {
     const user = await getUser();
     try {
