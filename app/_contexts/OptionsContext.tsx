@@ -2,6 +2,7 @@
 
 import { createContext, type ReactElement, type ReactNode, useState } from "react";
 import { SortOrder } from "../_types/types";
+import { TITLE_ASC } from "../_utils/utils";
 
 export interface OptionsContextProvider {
     sortOrder: SortOrder;
@@ -19,11 +20,11 @@ export const OptionsContext = createContext<OptionsContextProvider | undefined>(
  */
 export function OptionsProvider({ children }: { children: ReactNode }): ReactElement {
     const [numberGamesShowing, setNumberGamesShowing] = useState<number>(50);
-    const [sortOrder, setSortOrder] = useState<SortOrder>("titleAsc");
+    const [sortOrder, setSortOrder] = useState<SortOrder>(TITLE_ASC);
     const [gridView, setGridView] = useState<boolean>(true);              // The chosen list view for game lists
 
     function toggleGridView(): void {
-        setGridView(!gridView);
+        setGridView(previous => !previous);
     }
     
     return (

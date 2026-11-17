@@ -36,6 +36,18 @@ export const FAQ_GAMES = "Games";
 export const PROFILE_BUCKET = "catalog";        // The bucket used to store profile images
 export const DEFAULT_PROFILE_IMAGE = 'profile.png';
 
+// Sort orders
+export const TITLE_ASC = "titleAsc";
+export const TITLE_DES = "titleDes";
+export const CATEGORY_ASC = "categoryAsc";
+export const CATEGORY_DES = "categoryDes";
+export const DEVELOPER_ASC = "developerAsc";
+export const DEVELOPER_DES = "developerDes";
+export const PLAYERS_ASC = "playersAsc";
+export const PLAYERS_DES = "playersDes";
+export const PUBLISHER_ASC = "publisherAsc";
+export const PUBLISHER_DES = "publisherDes";
+
 /**
  * Adds the 'All' option to the list so that a search can be performed on all games. The 'All' value is not added
  * if the list already contains it.
@@ -171,25 +183,25 @@ export function renameFile(originalFile: File, newName: string) {
 export function sortGames(games: Game[], sort: SortOrder): Game[] {
     const gamesToSort = [...games];
 
-    if (sort === "titleAsc") {
+    if (sort === TITLE_ASC) {
         return gamesToSort.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sort === "titleDes") {
+    } else if (sort === TITLE_DES) {
         return gamesToSort.sort((a, b) => b.title.localeCompare(a.title));
-    } else if (sort === "playersAsc") {
+    } else if (sort === PLAYERS_ASC) {
         return gamesToSort.sort((a, b) => a.players - b.players);
-    } else if (sort === "playersDes") {
+    } else if (sort === PLAYERS_DES) {
         return gamesToSort.sort((a, b) => b.players - a.players);
-    } else if (sort === "publisherAsc") {
+    } else if (sort === PUBLISHER_ASC) {
         return gamesToSort.sort((a, b) => a.publisher.localeCompare(b.publisher));
-    } else if (sort === "publisherDes") {
+    } else if (sort === PUBLISHER_DES) {
         return gamesToSort.sort((a, b) => b.publisher.localeCompare(a.publisher));
-    } else if (sort === "developerAsc") {
+    } else if (sort === DEVELOPER_ASC) {
         return gamesToSort.sort((a, b) => a.developer.localeCompare(b.developer));
-    } else if (sort === "developerDes") {
+    } else if (sort === DEVELOPER_DES) {
         return gamesToSort.sort((a, b) => b.developer.localeCompare(a.developer));
-    } else if (sort === "categoryAsc") {
+    } else if (sort === CATEGORY_ASC) {
         return gamesToSort.sort((a, b) => a.category.localeCompare(b.category));
-    } else if (sort === "categoryDes") {
+    } else if (sort === CATEGORY_DES) {
         return gamesToSort.sort((a, b) => b.category.localeCompare(a.category));
     }
 

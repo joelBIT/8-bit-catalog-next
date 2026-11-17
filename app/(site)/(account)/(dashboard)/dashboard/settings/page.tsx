@@ -11,9 +11,9 @@ import "./page.css";
  * Change password and account-related settings.
  */
 export default function AccountSettingsPage(): ReactElement {
-    const user = useUser();
+    const currentUser = useUser();
 
-    if (!user) {
+    if (!currentUser.user) {
         notFound();
     }
 
@@ -21,7 +21,7 @@ export default function AccountSettingsPage(): ReactElement {
         <main id="settingsPage">
             <h1 className="settings-title"> Settings </h1>
 
-            <EditNameForm username={user.name} />
+            <EditNameForm username={currentUser.user.name} />
             <EditPasswordForm />
         </main>
     );

@@ -1,5 +1,6 @@
 import { ArticleContent } from "../_db/schema/article_contents";
 import { Game } from "../_db/schema/games";
+import { CATEGORY_ASC, CATEGORY_DES, DEVELOPER_ASC, DEVELOPER_DES, PLAYERS_ASC, PLAYERS_DES, PUBLISHER_ASC, PUBLISHER_DES, TITLE_ASC, TITLE_DES } from "../_utils/utils";
 
 export type ActionState = {
     message: string,
@@ -18,7 +19,7 @@ export type Article = {
 
 export type Filter = "category" | "publisher" | "developer" | "title";
 
-export type SortOrder = "titleAsc" | "titleDes" | "playersAsc" | "playersDes" | "publisherAsc" | "publisherDes" | "developerAsc" | "developerDes" | "categoryAsc" | "categoryDes";
+export type SortOrder = typeof TITLE_ASC | typeof TITLE_DES | typeof PLAYERS_ASC | typeof PLAYERS_DES | typeof PUBLISHER_ASC | typeof PUBLISHER_ASC | typeof PUBLISHER_DES | typeof DEVELOPER_DES | typeof DEVELOPER_ASC | typeof CATEGORY_ASC | typeof CATEGORY_DES;
 
 export type SearchFilter = {
     title: string,

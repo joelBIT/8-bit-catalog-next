@@ -23,9 +23,9 @@ export function useIsAdmin(): boolean {
 /**
  * @returns the signed in user, or null while the session is loading or when signed out.
  */
-export function useUser(): User | null {
-    const { data: session } = authClient.useSession();
-    return (session?.user as User | undefined) ?? null;
+export function useUser(): { user: User | null; isPending: boolean } {
+    const { data: session, isPending } = authClient.useSession();
+    return { user: (session?.user as User | undefined) ?? null, isPending };
 }
 
 /**

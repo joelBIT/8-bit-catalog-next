@@ -43,19 +43,17 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
      * be updated with how many games that matches the first selected filter type and the other filter.
      */
     function filterGames(filters: SearchFilter): Game[] {
-        let filteredGames = [...games];
-        filteredGames = filters.developer !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.developer === filters.developer) : filteredGames;
-        filteredGames = filters.publisher !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.publisher === filters.publisher) : filteredGames;
-        filteredGames = filters.category !== ALL_OPTION_VALUE ? filteredGames.filter(game => game.category === filters.category) : filteredGames;
+        let result = [...games];
+        result = filters.developer !== ALL_OPTION_VALUE ? result.filter(game => game.developer === filters.developer) : result;
+        result = filters.publisher !== ALL_OPTION_VALUE ? result.filter(game => game.publisher === filters.publisher) : result;
+        result = filters.category !== ALL_OPTION_VALUE ? result.filter(game => game.category === filters.category) : result;
 
-        const titleWords = filters.title.split(" ");
-        for (let i = 0; i < titleWords.length; i++) {       // If search string consists of several words, title must include all words
-            const word = titleWords[i].trim();
-            filteredGames = word !== "" ? filteredGames.filter(game => game.title.toLowerCase().includes(word.toLowerCase())) : filteredGames;
+        for (const word of filters.title.split(" ").map(w => w.trim()).filter(Boolean)) {
+            result = result.filter(game => game.title.toLowerCase().includes(word.toLowerCase()));
         }
 
-        setFilteredGames(filteredGames);
-        return filteredGames;
+        setFilteredGames(result);
+        return result;
     }
 
     function getGameByTitle(title: string): Game | undefined {
