@@ -13,6 +13,14 @@
     scrollbar-color: var(--color-black) #FFFFFF20;
     position: relative;
 
+    & .honeypot {
+        position: absolute;
+        left: -9999px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
     .input:first-of-type {
         border-radius: 6px 6px 0 0;
         border-bottom: 0.5px solid var(--color-form);

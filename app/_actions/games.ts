@@ -9,7 +9,7 @@ import { isAuthenticatedAdmin } from "../_auth/server-functions";
  * Updates an existing game's metadata. 
  */
 export async function updateGame(_prevState: ActionState, formData: FormData): Promise<ActionState> {
-    const isAdmin = isAuthenticatedAdmin();
+    const isAdmin = await isAuthenticatedAdmin();
     if (!isAdmin) {
         return { message: 'Only admins may update games', success: false };
     }
