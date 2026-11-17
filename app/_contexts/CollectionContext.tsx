@@ -22,17 +22,18 @@ export const CollectionContext = createContext<CollectionContextProvider | undef
 export function CollectionProvider({ children }: { children: ReactNode }): ReactElement {
     const [favouritesList, setFavouritesList] = useState<Game[]>([]);
     const { data: session } = authClient.useSession();
+    const isLoggedIn = !!session;           // a boolean is stable; the session object may change identity on refresh
     const STORAGE_KEY = 'favouriteGames';
 
     useEffect(() => {
         loadFavouriteGames();     
-    }, [session]);
+    }, [isLoggedIn]);
 
     /**
      * Load favourite games from database if user is logged in. Otherwise, load favourite games from localstorage if localstorage is available.
      */
     function loadFavouriteGames(): void {
-        if (session) {
+        if (isLoggedIn) {
             getFavouriteGames();
         } else if (isLocalStorageAvailable()) {
             if (localStorage.getItem(STORAGE_KEY)) {
@@ -63,7 +64,7 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
     function addFavouriteGame(game: Game): void {
         const games = sortFavourites([...favouritesList, game]);
 
-        if (session) {
+        if (isLoggedIn) {
             setFavouritesList(games);
             addFavouriteGameToDatabaseRequest(game.id);
         } else if (isLocalStorageAvailable()) {
@@ -79,7 +80,7 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
     function removeFavouriteGame(game: Game): void {
         const games = favouritesList.filter((favourite: { id: number; }) => favourite.id !== game.id);
 
-        if (session) {
+        if (isLoggedIn) {
             setFavouritesList(games);
             deleteFavouriteGameFromDatabaseRequest(game.id);
         } else if (isLocalStorageAvailable()) {
