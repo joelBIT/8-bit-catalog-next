@@ -4,6 +4,8 @@ import { ReactElement, useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/app/auth-client";
 import { URL_LOGIN_PAGE, URL_REGISTER_PAGE, URL_RESET_PAGE } from "@/app/_utils/utils";
+import { FlashMessage } from "../common";
+import { ActionState } from "@/app/_types/types";
 
 import "./ForgotPasswordForm.css";
 
@@ -13,30 +15,20 @@ import "./ForgotPasswordForm.css";
  */
 export function ForgotPasswordForm(): ReactElement {
     const [email, setEmail] = useState<string>('');
-    const [success, setSuccess] = useState<boolean>(false);
-    const [message, setMessage] = useState<string>('');
-    const [showMessage, setShowMessage] = useState<boolean>(false);
+    const [feedback, setFeedback] = useState<ActionState>({ message: '', success: false });
 
     async function resetPassword() {
-        await authClient.requestPasswordReset({
+        const { error } = await authClient.requestPasswordReset({
             email,
             redirectTo: `${process.env.NEXT_PUBLIC_DOMAIN_URL}${URL_RESET_PAGE}`
         });
 
-        setSuccess(true);
-        setMessage("If an account exists for that email, a reset link has been sent.");
-        setShowMessage(true);
-    }
-
-    let messageContent = <></>;
-
-    if (showMessage) {
-        messageContent =
-            <>
-                <h2 className={success ? "message-success message-fade" : "message-failure message-fade"}>
-                    {message}
-                </h2>
-            </>
+        if (error) {
+            setFeedback({ message: error.message ?? "Could not update password", success: false });
+        } else {
+            setFeedback({ message: "If an account exists for that email, a reset link has been sent.", success: true });
+            setEmail('');
+        }
     }
 
     return (
@@ -62,7 +54,7 @@ export function ForgotPasswordForm(): ReactElement {
                     </section>
                 </section>
 
-                {messageContent}
+                <FlashMessage state={feedback} />
                 
                 <button className="authButton" type="submit" disabled={!email}>
                     <span className="authButton__text"> Send Reset Mail </span>
