@@ -2,29 +2,24 @@
 
 import { getUser } from "../_auth/server-functions";
 import { updateUserAddress } from "../_db/addresses-db";
-import { InsertAddress, insertAddressSchema } from "../_db/schema/addresses";
-import { ActionState } from "../_types/types";
+import { insertAddressSchema } from "../_db/schema/addresses";
+import { AddressState } from "../_types/types";
+import { readFormValues } from "../_utils/utils";
 
-export async function updateAddress(_prevState: ActionState, formData: FormData): Promise<ActionState & Omit<InsertAddress, "userId" | "id">> {
-    const user = await getUser();
-    const rawData = {
-        zipCode: formData.get("zip_code"),
-        city: formData.get("city"),
-        country: formData.get("country"),
-        street: formData.get("street"),
-        userId: user.id
-    };
-
-    const validatedFields = insertAddressSchema.safeParse(rawData);
+export async function updateAddress(_prevState: AddressState, formData: FormData): Promise<AddressState> {
+    // What the user typed. Returned with every failure so the form can show it again.
+    const values = readFormValues(formData, ['zip_code', 'city', 'country', 'street'] as const);
+    const validatedFields = insertAddressSchema.safeParse(values);
     if (!validatedFields.success) {
-        return { message: 'The address could not be updated', success: false };
+        return { message: 'The address could not be updated', success: false, ...values };
     }
-
+    
     try {
-        await updateUserAddress({...validatedFields.data});
-        return { message: 'The address was successfully updated', success: true, ...validatedFields.data };
+        const user = await getUser();
+        await updateUserAddress({userId: user.id, ...values});
+        return { message: 'The address was successfully updated', success: true, ...values };
     } catch (error) {
         console.log(error);
-        return { message: 'The address could not be updated', success: false };
+        return { message: 'The address could not be updated', success: false, ...values };
     }
 }

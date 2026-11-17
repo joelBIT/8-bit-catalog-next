@@ -36,3 +36,12 @@ export type SearchResult = {
 export type ContactState = ActionState & {
     values?: { name: string; email: string; message: string };
 };
+
+export type AddressState = ActionState & Address;
+
+export type Address = {
+    zip_code: string,
+    city: string,
+    country: string,
+    street: string
+}

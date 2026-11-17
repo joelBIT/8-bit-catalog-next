@@ -16,17 +16,18 @@ export async function updateProfile(_prevState: ActionState, formData: FormData)
         userId: user.id
     }
 
+    const { userId, ...values } = rawData;
     const validatedFields = insertProfileSchema.safeParse(rawData);
     if (!validatedFields.success) {
-        return { message: 'The account could not be updated', success: false };
+        return { message: 'The account could not be updated', success: false, ...values };
     }
 
     try {
         await updateProfileByUserId({...validatedFields.data});
-        return { message: 'The account was successfully updated', success: true, ...validatedFields.data };
+        return { message: 'The account was successfully updated', success: true, ...values };
     } catch (error) {
         console.log(error);
-        return { message: 'The account could not be updated', success: false};
+        return { message: 'The account could not be updated', success: false, ...values};
     }
 }
 
