@@ -26,8 +26,11 @@ export function ContactForm(): ReactElement {
                     name="name"
                     type="text"
                     placeholder="Name"
+                    aria-label="Name"
                     className={`input-field`}
                     autoComplete="none" 
+                    maxLength={100}
+                    defaultValue={state.values?.name}
                     required
                 />
             </section>
@@ -38,14 +41,26 @@ export function ContactForm(): ReactElement {
                     name="email" 
                     type="email"
                     placeholder="Email"
+                    aria-label="Email"
                     className={`input-field`}
                     autoComplete="off" 
+                    maxLength={254}
+                    defaultValue={state.values?.email}
                     required 
                 />
             </section>
 
             <section className="information-input">
-                <textarea id="message" name="message" placeholder="Message" className={`input-field`} required />
+                <textarea 
+                    id="message" 
+                    name="message" 
+                    placeholder="Message" 
+                    aria-label="Message"
+                    className={`input-field`} 
+                    maxLength={2000}
+                    defaultValue={state.values?.message}
+                    required 
+                />
             </section>
 
             <button id="sendButton" className="authButton" type="submit" disabled={pending}>

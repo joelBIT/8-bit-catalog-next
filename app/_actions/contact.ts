@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { z } from "zod";
 import { Resend } from "resend";
-import { ActionState } from "@/app/_types/types";
+import { ContactState } from "@/app/_types/types";
 import ContactMessageEmail from "../_components/email/ContactMessageEmail";
 import { countRecentContactRequests, recordContactRequest } from "../_db/contact-db";
 
@@ -25,19 +25,22 @@ async function getClientIp(): Promise<string> {
 /**
  * Send an email using the contact form.
  */
-export async function sendContactEmail(_prevState: ActionState, formData: FormData): Promise<ActionState> {
+export async function sendContactEmail(_prevState: ContactState, formData: FormData): Promise<ContactState> {
     // Honeypot: real users never see or fill this field. Pretend success so bots get no signal.
     if (formData.get('website')) {
         return { message: 'The message was sent', success: true };
     }
 
-    const parsed = contactSchema.safeParse({
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-    });
+    // What the user typed. Returned with every failure so the form can show it again.
+    const values = {
+        name: String(formData.get('name') ?? ''),
+        email: String(formData.get('email') ?? ''),
+        message: String(formData.get('message') ?? '')
+    };
+
+    const parsed = contactSchema.safeParse(values);
     if (!parsed.success) {
-        return { message: parsed.error.issues[0].message, success: false };
+        return { message: parsed.error.issues[0].message, success: false, values };
     }
     const { name, email, message } = parsed.data;
 
@@ -45,7 +48,7 @@ export async function sendContactEmail(_prevState: ActionState, formData: FormDa
         const ip = await getClientIp();
         const recent = await countRecentContactRequests(ip, new Date(Date.now() - 60 * 60 * 1000));
         if (recent >= MAX_REQUESTS_PER_HOUR) {
-            return { message: 'Too many messages. Please try again later.', success: false };
+            return { message: 'Too many messages. Please try again later.', success: false, values };
         }
         await recordContactRequest(ip);         // counted before sending so failed sends count too
 
@@ -60,12 +63,12 @@ export async function sendContactEmail(_prevState: ActionState, formData: FormDa
 
         if (error) {                            // Resend returns errors instead of throwing
             console.log(error);
-            return { message: 'The message could not be sent', success: false };
+            return { message: 'The message could not be sent', success: false, values };
         }
 
-        return { message: 'The message was sent', success: true };
+        return { message: 'The message was sent', success: true };      // no `values`: the form clears
     } catch (error) {
         console.log(error);
-        return { message: 'The message could not be sent', success: false };
+        return { message: 'The message could not be sent', success: false, values };
     }
 }

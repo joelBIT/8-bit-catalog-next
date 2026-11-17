@@ -32,3 +32,7 @@ export type SearchResult = {
     games: Game[],
     count: number
 }
+
+export type ContactState = ActionState & {
+    values?: { name: string; email: string; message: string };
+};
