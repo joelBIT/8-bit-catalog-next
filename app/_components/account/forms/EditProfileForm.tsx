@@ -1,10 +1,11 @@
 'use client';
 
-import { ReactElement, useActionState, useState, useEffect } from "react";
+import { ReactElement, useActionState, useState } from "react";
 import { updateProfile } from "@/app/_actions/profile";
 import PhoneInput from "react-phone-input-2";
 import { Profile } from "@/app/_db/schema/profiles";
 import { toDateInputValue } from "@/app/_utils/utils";
+import { FlashMessage } from "../../common";
 
 import 'react-phone-input-2/lib/style.css';
 import "./EditProfileForm.css";
@@ -12,16 +13,7 @@ import "./EditProfileForm.css";
 export function EditProfileForm({ profile }: { profile: Profile }): ReactElement {
     const initalState = {firstName: profile.firstName, lastName: profile.lastName, phone: profile.phone, bio: profile.bio, birthDate: profile.birthDate};
     const [state, formAction] = useActionState(updateProfile, {message: '', success: false, ...initalState});
-    const [showMessage, setShowMessage] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (state?.message && !showMessage) {       // Show message for a fixed amount of time
-            setShowMessage(true);
-            setTimeout(() => {
-                setShowMessage(false);
-            }, 5000);
-        }
-    }, [state]);
+    const [phone, setPhone] = useState<string>(state.phone ?? '');
 
     return (
         <form id="profileForm" action={formAction}>
@@ -89,19 +81,19 @@ export function EditProfileForm({ profile }: { profile: Profile }): ReactElement
                     Phone number
                 </label>
 
-                <PhoneInput country={state.success ? "se" : undefined} inputProps={{name: 'phone', autoComplete: "none"}} value={state.phone} />
+                <PhoneInput 
+                    country="se"
+                    value={phone}
+                    onChange={setPhone}
+                    inputProps={{ id: 'phone', name: 'phone', autoComplete: 'tel' }}
+                />
             </section>
             
             <button className="authButton" type="submit">
                 <span className="authButton__text"> Save </span>
             </button>
 
-            { 
-                showMessage ? 
-                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                        {state?.message}
-                    </h2> : <></> 
-            }
+            <FlashMessage state={state} />
         </form>
     );
 }

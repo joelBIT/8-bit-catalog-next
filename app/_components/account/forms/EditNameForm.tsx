@@ -1,22 +1,13 @@
 'use client';
 
-import { ReactElement, useActionState, useEffect, useState } from "react";
+import { ReactElement, useActionState } from "react";
 import { updateName } from "@/app/_actions/user";
+import { FlashMessage } from "../../common";
 
 import "./EditNameForm.css";
 
 export function EditNameForm({ username }: { username: string }): ReactElement {
     const [state, formAction] = useActionState(updateName, { message: '', success: false, name: username });
-    const [showMessage, setShowMessage] = useState<boolean>(false);
-    
-    useEffect(() => {
-        if (state?.message && !showMessage) {       // Show message for a fixed amount of time
-            setShowMessage(true);
-            setTimeout(() => {
-                setShowMessage(false);
-            }, 5000);
-        }
-    }, [state]);
     
     return (
         <form id="editNameForm" action={formAction}>
@@ -43,12 +34,7 @@ export function EditNameForm({ username }: { username: string }): ReactElement {
                 <span className="authButton__text"> Update </span>
             </button>
 
-            { 
-                showMessage ? 
-                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                        {state?.message}
-                    </h2> : <></> 
-            }
+            <FlashMessage state={state} />
         </form>
     );
 }

@@ -37,9 +37,9 @@ export type ContactState = ActionState & {
     values?: { name: string; email: string; message: string };
 };
 
-export type AddressState = ActionState & Address;
+export type AddressState = ActionState & AddressFormData;
 
-export type Address = {
+type AddressFormData = {
     zip_code: string,
     city: string,
     country: string,

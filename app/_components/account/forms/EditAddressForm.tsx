@@ -1,8 +1,8 @@
 'use client';
 
-import { ReactElement, useActionState, useState, useEffect } from "react";
+import { ReactElement, useActionState } from "react";
 import { updateAddress } from "@/app/_actions/address";
-import { SelectCountry } from "../../common";
+import { FlashMessage, SelectCountry } from "../../common";
 import { Address } from "@/app/_db/schema/addresses";
 import { AddressState } from "@/app/_types/types";
 
@@ -15,16 +15,6 @@ export function EditAddressForm({ address }: { address: Address }): ReactElement
         city: address.city ?? '', street: address.street ?? ''
     };
     const [state, formAction] = useActionState(updateAddress, initialState);
-    const [showMessage, setShowMessage] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (state?.message && !showMessage) {       // Show message for a fixed amount of time
-            setShowMessage(true);
-            setTimeout(() => {
-                setShowMessage(false);
-            }, 5000);
-        }
-    }, [state]);
 
     return (
         <>
@@ -81,12 +71,7 @@ export function EditAddressForm({ address }: { address: Address }): ReactElement
                 </button>
             </form>
 
-            { 
-                showMessage ? 
-                    <h2 className={state?.success ? "message-success message-fade" : "message-failure message-fade"}>
-                        {state?.message}
-                    </h2> : <></> 
-            }
+            <FlashMessage state={state} />
         </>
     );
 }

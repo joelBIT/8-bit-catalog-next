@@ -1,4 +1,4 @@
 import { GamesContext } from "../_contexts";
-import { useRequiredContext } from "./useRequiredContext";
+import { useRequiredContext } from ".";
 
 export const useGames = () => useRequiredContext(GamesContext, "useGames", "GamesProvider");
