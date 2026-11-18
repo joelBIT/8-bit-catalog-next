@@ -1,10 +1,7 @@
-'use server';
-
 import { Suspense, type ReactElement } from "react";
 import { Logo, Newsletter, SuggestionList, NewsCard } from "@/app/_components/home";
 import { getAllTitles } from "../_db/games-db";
 import { getAllNews } from "../_db/news-db";
-import { News } from "../_db/schema/news";
 
 import "./page.css";
 
@@ -32,9 +29,9 @@ export default async function Home(): Promise<ReactElement> {
                             <p className="search-text">
                                 A catalog, an archive, and a clubhouse. All built for one console that never really left.
                                 Choose among approximately <b>1000</b> games released for the <b>Nintendo Entertainment System</b>.
-                                </p>
-                            <Suspense>
-                                <SuggestionList options={await getAllTitles()} />
+                            </p>
+                            <Suspense fallback={<p className="search-text"> Loading games... </p>}>
+                                <GameSuggestions />
                             </Suspense>
                         </section>
                     </article>
@@ -47,9 +44,9 @@ export default async function Home(): Promise<ReactElement> {
                 </h2>
 
                 <section id="newsCards">
-                    {
-                        (await getAllNews()).map((news: News) => <NewsCard key={news.text} news={news} />)
-                    }
+                    <Suspense fallback={null}>
+                        <RecentNews />
+                    </Suspense>
                 </section>
             </section>
 
@@ -57,4 +54,17 @@ export default async function Home(): Promise<ReactElement> {
             <div className="darken-image-bottom" />
         </main>
     );
+}
+
+async function GameSuggestions(): Promise<ReactElement> {
+    return <SuggestionList options={await getAllTitles()} />;
+}
+
+/**
+ * 
+ * @returns all news at the moment, change in the future to a limit of 9 news items.
+ */
+async function RecentNews(): Promise<ReactElement> {
+    const latest = await getAllNews();
+    return <>{latest.map(item => <NewsCard key={item.id} news={item} />)}</>;
 }
