@@ -13,7 +13,7 @@ import { ALL_OPTION_VALUE, SEARCH_KEYS, sortGames } from "@/app/_utils/utils";
 import "./SearchResult.css";
 
 export function SearchResult(): ReactElement {
-    const { filteredGames, isLoading, filterGames } = useGames();
+    const { filteredGames, isLoading, loadError, reloadGames, filterGames } = useGames();
     const { sortOrder, numberGamesShowing, gridView } = useOptions();
 
     const searchParams = useSearchParams();
@@ -28,10 +28,10 @@ export function SearchResult(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>(() => hasSearch ? sortGames(filteredGames, sortOrder) : []);
 
     useEffect(() => {
-        if (hasSearch && !isLoading) {
+        if (hasSearch && !isLoading && !loadError) {
             search();
         }
-    }, [hasSearch, isLoading, title, category, developer, publisher]);
+    }, [hasSearch, isLoading, loadError, title, category, developer, publisher]);
 
     /**
      * Performs a search based on given title text and filters.
@@ -43,7 +43,14 @@ export function SearchResult(): ReactElement {
 
     let content = <></>;
 
-    if (hasSearch && isLoading && searchResult.length === 0) {
+    if (loadError) {
+        content = <>
+            <p role="alert" className="search-result-text message-failure"> Could not load games. </p>
+            <button type="button" className="authButton" onClick={reloadGames}>
+                <span className="authButton__text"> Try again </span>
+            </button>
+        </>;
+    } else if (hasSearch && isLoading && searchResult.length === 0) {
         content = <p role="status" className="search-result-text"> Loading games... </p>;
     } else if (searchResult.length > 0) {
         content = <>

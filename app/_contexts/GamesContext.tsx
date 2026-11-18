@@ -9,6 +9,8 @@ import { ALL_OPTION_VALUE } from "../_utils/utils";
 export interface GamesContextProvider {
     filteredGames: Game[];
     isLoading: boolean;
+    loadError: boolean;
+    reloadGames: () => void;
     filterGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
 }
@@ -21,24 +23,36 @@ export const GamesContext = createContext<GamesContextProvider | undefined>(unde
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);      // true until the first request has finished
+    const [loadError, setLoadError] = useState<boolean>(false);
     const [filteredGames, setFilteredGames] = useState<Game[]>([]);     // Filtered games are stored to facilitate scroll positions in lists when navigating
 
     useEffect(() => {
-        loadGames();
+        fetchGames();
     }, []);
 
     /**
-     * Retrieve all games. Store games in local storage if available.
+     * Retrieve all games.
      */
-    async function loadGames(): Promise<void> {
-        try {
-            const result = await getAllGamesRequest();
+    async function fetchGames(): Promise<void> {
+        const result = await getAllGamesRequest();
+
+        if (result) {
             setGames(result.games);
-        } catch (error) {
-            setGames([]);
-        } finally {
-            setIsLoading(false);
+            setLoadError(false);
+        } else {
+            setLoadError(true);
         }
+        
+        setIsLoading(false);
+    }
+
+    /** 
+     * Used by the "Try again" button. 
+     */
+    function reloadGames(): void {
+        setIsLoading(true);
+        setLoadError(false);
+        fetchGames();
     }
 
     /**
@@ -66,7 +80,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     }
 
     return (
-        <GamesContext.Provider value={{ filteredGames, isLoading, filterGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ filteredGames, isLoading, loadError, reloadGames, filterGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );

@@ -11,18 +11,19 @@ import { User } from '../_db/schema/auth/users';
 * This file contains functions that make API calls to the Route Handlers in the /api folder *
 ********************************************************************************************/
 
-export async function getAllGamesRequest(): Promise<SearchResult> {
+
+export async function getAllGamesRequest(): Promise<SearchResult | null> {
     try {
         const response = await fetch("/api/games");
         if (response.ok) {
             const games = await response.json();
-            return {games: games, count: games.length};
+            return { games, count: games.length };
         }
     } catch (error) {
         console.error(error);
     }
 
-    return {games: [], count: 0};
+    return null;
 }
 
 export async function getUsersRequest(): Promise<User[]> {
