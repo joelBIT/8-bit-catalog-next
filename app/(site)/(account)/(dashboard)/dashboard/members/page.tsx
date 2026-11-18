@@ -35,9 +35,9 @@ export default function MembersPage(): ReactElement {
     }
 
     // When the modal is closed the list of all members is updated (in case new members were added)
-    function close(): void {
+    async function close(): Promise<void> {
         setModal(false);
-        getAllMembers();
+        await getAllMembers();
     }
 
     return (
