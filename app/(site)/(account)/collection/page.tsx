@@ -17,37 +17,47 @@ import "./page.css";
 export default function CollectionPage(): ReactElement {
     const { favouritesList, isLoading } = useCollection();
     const { sortOrder, gridView, numberGamesShowing } = useOptions();
+    const dataKey = `${sortOrder}:${favouritesList.map(game => game.id).join(',')}`;        // Identifies "this data, sorted this way"
     const [collection, setCollection] = useState<Game[]>(() => sortGames(favouritesList, sortOrder));
-
+    const [syncedKey, setSyncedKey] = useState<string>(dataKey);
+    const isSynced = syncedKey === dataKey;
+    
     useEffect(() => {
         setCollection(sortGames(favouritesList, sortOrder));
-    }, [favouritesList, sortOrder, isLoading]);
+        setSyncedKey(dataKey);
+    }, [favouritesList, sortOrder, dataKey]);
 
-    let content = <></>;
+    if (collection.length < 1) {
+        return (
+            <main id="collectionPage">
+                <CollectionHeading />
 
-    if (isLoading) {
-        content = <h1 className="no-collection__text"> Collection is loading </h1>;
-    } else if (collection.length > 0 && !isLoading) {
-        content = <>
-            <SearchResultOptions searchResult={collection} setSortedGames={setCollection} />
-
-            <section className={gridView ? "grid" : "list"}>
                 {
-                    collection.slice(0, numberGamesShowing).map(game => gridView ? <GameCard game={game} key={game.id}/> : <GameListEntry game={game} key={game.id} /> )
+                    isLoading || !isSynced
+                        ? <p role="status" className="no-collection__text"> Loading collection... </p>
+                        : <h1 className="no-collection__text"> Collection is empty </h1>
                 }
-            </section>
 
-            <ScrollTopButton />
-        </>
-    } else if (collection.length < 1 && !isLoading) {
-        content = <h1 className="no-collection__text"> Collection is empty </h1>;
+                <div className="darken-image-bottom" />
+            </main>
+        );
     }
 
     return (
         <main id="collectionPage">
             <CollectionHeading />
 
-            {content}
+            <SearchResultOptions searchResult={collection} setSortedGames={setCollection} />
+
+            <section className={gridView ? "grid" : "list"}>
+                {
+                    collection.slice(0, numberGamesShowing).map(game =>
+                        gridView ? <GameCard key={game.id} game={game} /> : <GameListEntry key={game.id} game={game} />
+                    )
+                }
+            </section>
+
+            <ScrollTopButton />
             <div className="darken-image-bottom" />
         </main>
     );

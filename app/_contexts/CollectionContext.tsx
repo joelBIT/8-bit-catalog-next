@@ -22,10 +22,14 @@ export const CollectionContext = createContext<CollectionContextProvider | undef
  */
 export function CollectionProvider({ children }: { children: ReactNode }): ReactElement {
     const [favouritesList, setFavouritesList] = useState<Game[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);      // true until the first request has finished
+    const [loadedFor, setLoadedFor] = useState<boolean | null>(null);       // which login state the list was loaded for
     const { data: session, isPending } = authClient.useSession();
     const isLoggedIn = !!session;           // a boolean is stable; the session object may change identity on refresh
     const STORAGE_KEY = 'favouriteGames';
+
+    // Loading until the session is known and the list for that login state has arrived.
+    // Derived, so logging in or out automatically goes back to "loading" for the new list.
+    const isLoading = isPending || loadedFor !== isLoggedIn;
 
     useEffect(() => {
         if (isPending) {
@@ -33,18 +37,21 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
         }
 
         if (!isLoggedIn) {
-            setFavouritesList(readGuestFavourites());   // always reset: clears the previous user's list on logout
-            setIsLoading(false);
+            setFavouritesList(readGuestFavourites());
+            setLoadedFor(false);
             return;
         }
 
         let cancelled = false;                  // If a user logs out while getFavouritesRequest is still in flight, the late response would otherwise re-populate the list with the account’s favourites after logout.
         getFavouritesRequest().then(games => {
-            if (!cancelled && games) {      // ignore the response if the user logged out meanwhile
-                setFavouritesList(games ?? []);
+            if (cancelled) {
+                return;
             }
+            if (games) {
+                setFavouritesList(games);
+            }
+            setLoadedFor(true);
         });
-        setIsLoading(false);
 
         return () => { cancelled = true; };
     }, [isLoggedIn, isPending]);
