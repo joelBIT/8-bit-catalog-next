@@ -10,6 +10,7 @@ export interface GamesContextProvider {
     filteredGames: Game[];
     isLoading: boolean;
     loadError: boolean;
+    games: Game[];
     reloadGames: () => void;
     filterGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
@@ -80,7 +81,7 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
     }
 
     return (
-        <GamesContext.Provider value={{ filteredGames, isLoading, loadError, reloadGames, filterGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ filteredGames, isLoading, loadError, games, reloadGames, filterGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );
