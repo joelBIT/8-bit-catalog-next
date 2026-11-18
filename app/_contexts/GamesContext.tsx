@@ -7,8 +7,8 @@ import { getAllGamesRequest } from "../_client/client";
 import { ALL_OPTION_VALUE } from "../_utils/utils";
 
 export interface GamesContextProvider {
-    games: Game[];
     filteredGames: Game[];
+    isLoading: boolean;
     filterGames: (filters: SearchFilter) => Game[];
     getGameByTitle: (title: string) => Game | undefined;
 }
@@ -20,6 +20,7 @@ export const GamesContext = createContext<GamesContextProvider | undefined>(unde
  */
 export function GamesProvider({ children }: { children: ReactNode }): ReactElement {
     const [games, setGames] = useState<Game[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);      // true until the first request has finished
     const [filteredGames, setFilteredGames] = useState<Game[]>([]);     // Filtered games are stored to facilitate scroll positions in lists when navigating
 
     useEffect(() => {
@@ -35,6 +36,8 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
             setGames(result.games);
         } catch (error) {
             setGames([]);
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -56,14 +59,14 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
         return result;
     }
 
-    const isAll = (value: string | null | undefined): boolean => !value || value === ALL_OPTION_VALUE;
+    const isAll = (value: string | null | undefined): boolean => !value || value === ALL_OPTION_VALUE || value === ALL_OPTION_VALUE.toLowerCase();
 
     function getGameByTitle(title: string): Game | undefined {
         return games.find(game => game.title === title);
     }
 
     return (
-        <GamesContext.Provider value={{ games, filteredGames, filterGames, getGameByTitle }}>
+        <GamesContext.Provider value={{ filteredGames, isLoading, filterGames, getGameByTitle }}>
             { children }
         </GamesContext.Provider>
     );

@@ -13,7 +13,7 @@ import { ALL_OPTION_VALUE, SEARCH_KEYS, sortGames } from "@/app/_utils/utils";
 import "./SearchResult.css";
 
 export function SearchResult(): ReactElement {
-    const { games, filteredGames, filterGames } = useGames();
+    const { filteredGames, isLoading, filterGames } = useGames();
     const { sortOrder, numberGamesShowing, gridView } = useOptions();
 
     const searchParams = useSearchParams();
@@ -28,19 +28,10 @@ export function SearchResult(): ReactElement {
     const [searchResult, setSearchResult] = useState<Game[]>(() => hasSearch ? sortGames(filteredGames, sortOrder) : []);
 
     useEffect(() => {
-        if (hasSearch) {
+        if (hasSearch && !isLoading) {
             search();
         }
-    }, [hasSearch, title, category, developer, publisher]);
-
-    /**
-     * Handle page refresh.
-     */
-    useEffect(() => {
-        if (games.length && hasSearch) {
-            search();           // Perform a search again when page is refreshed to show the same results as before the refresh
-        }
-    }, [games.length]);         // Length of games become 0 when refreshing the page because the context is emptied and must retrieve games again.     
+    }, [hasSearch, isLoading, title, category, developer, publisher]);
 
     /**
      * Performs a search based on given title text and filters.
@@ -50,13 +41,17 @@ export function SearchResult(): ReactElement {
         setSearchResult(sortGames(result, sortOrder));
     }
 
-    let content = <> { hasSearch ? <h1 className="search-result-text message-failure"> No games found </h1> : <></> } </>;
+    let content = <></>;
 
-    if (searchResult.length > 0) {
+    if (hasSearch && isLoading && searchResult.length === 0) {
+        content = <p role="status" className="search-result-text"> Loading games... </p>;
+    } else if (searchResult.length > 0) {
         content = <>
             <h1 className="search-result-text message-success"> {`Found ${searchResult.length} game${searchResult.length > 1 ? "s" : ""}`} </h1>
             <SearchResultOptions searchResult={searchResult} setSortedGames={setSearchResult} />
-        </>
+        </>;
+    } else if (hasSearch) {
+        content = <h1 className="search-result-text message-failure"> No games found </h1>;
     }
 
     return (

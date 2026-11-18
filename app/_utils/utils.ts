@@ -216,11 +216,3 @@ export function sortGames(games: Game[], sort: SortOrder): Game[] {
 export function readFormValues<K extends string>(formData: FormData, keys: readonly K[]): Record<K, string> {
     return Object.fromEntries(keys.map(key => [key, String(formData.get(key) ?? '')])) as Record<K, string>;
 }
-
-/**
- * Make first letter in a string capitalized (e.g., query params that should match input values in search page).
- */
-export function capitalize(str: string | undefined): string {
-    if (!str) return "";
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}
