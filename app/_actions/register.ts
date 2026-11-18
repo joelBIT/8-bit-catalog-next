@@ -47,8 +47,7 @@ export async function register(_prevState: ActionState, formData: FormData): Pro
         });
 
         await createAddressAndProfile(data.user.id, {userId: data.user.id, phone, birthDate: birthDateValue ? new Date(birthDateValue) : null}, {userId: data.user.id, street, city, country});
-        
-        return { message: 'Registration successful. Check email for activation link.', success: true };
+        return { message: 'If this email can be used, an activation link has been sent. Check your inbox.', success: true };
     } catch (error) {
         console.log(error);
         return { message: 'Could not create account', success: false };

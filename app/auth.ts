@@ -53,6 +53,10 @@ export const auth = betterAuth({
         enabled: true,
         revokeSessionsOnPasswordReset: true,
         requireEmailVerification: true,
+        // requireEmailVerification: true together with customSyntheticUser. That combination tells Better Auth not to reveal whether an 
+        // email is already registered. When someone signs up with an existing email, auth.api.signUpEmail doesn’t throw an error. 
+        // It returns a synthetic user: a fake user object with a generated ID, built from the configured customSyntheticUser function. 
+        // The response looks like a normal successful sign-up, but nothing is written to the database.
         customSyntheticUser: ({ coreFields, additionalFields, id }) => ({
             ...coreFields,
             // Admin plugin fields (in schema order)
