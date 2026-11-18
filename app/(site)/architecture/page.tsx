@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { ArticleCard } from "@/app/_components/architecture";
+import { ArticleCard, YouTubeEmbed } from "@/app/_components/architecture";
 import { Article } from "@/app/_types/types";
 import { getAllArticles } from "@/app/_db/articles-db";
 
@@ -32,17 +32,7 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
                     </p>
             </section>
 
-            <iframe 
-                width="1120" 
-                height="630" 
-                src="https://www.youtube-nocookie.com/embed/PwZEBE66an0?si=vpFN433xh8l4Dptt" 
-                title="NES Hacker's NES architecture video" 
-                className="architecture-video"
-                loading="lazy"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen 
-            />
+            <YouTubeEmbed />
 
             <section id="architecture-articles">
                 <h2 className="articles-heading">NES Articles</h2>

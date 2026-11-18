@@ -1,0 +1,7 @@
+.architecture-video {
+    margin: 3rem 1rem;
+    border-radius: 8px;
+    border-left-style: none;
+    border-right-style: none;
+    z-index: 2;
+}
