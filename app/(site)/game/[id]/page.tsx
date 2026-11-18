@@ -15,16 +15,22 @@ import "./page.css";
  */
 export default async function GamePage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
+    const gameId = Number(id);
+    if (!Number.isInteger(gameId)) {
+        notFound();
+    }
     let game: Game | undefined;
     const STORAGE_URL = process.env.COVER;
     
     try {
-        game = await getGameById(parseInt(id));
-        if (!game) {
-            notFound();
-        }
+        game = await getGameById(gameId);
     } catch (error) {
+        console.log(error);
         return ( <ErrorPage text={`Could not load game with id ${id}`} /> )
+    }
+
+    if (!game) {
+        notFound();
     }
 
     return (

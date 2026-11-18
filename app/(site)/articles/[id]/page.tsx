@@ -1,5 +1,7 @@
 import { ReactElement } from "react";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { Article } from "@/app/_types/types";
 import { URL_ARTICLES_PAGE } from "@/app/_utils/utils";
 import { getArticleById } from "@/app/_db/articles-db";
 import ErrorPage from "@/app/_components/common/ErrorPage";
@@ -11,15 +13,21 @@ import "./page.css";
  */
 export default async function ArticlePage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
-    let article;
+    const articleId = Number(id);
+    if (!Number.isInteger(articleId)) {
+        notFound();
+    }
+    let article: Article | undefined;
     
     try {
-        article = await getArticleById(parseInt(id));
-        if (!article) {
-            return ( <ErrorPage text={`Could not find article with id ${id}`} /> )
-        }
+        article = await getArticleById(articleId);
     } catch (error) {
+        console.log(error);
         return ( <ErrorPage text={`Could not load article with id ${id}`} /> )
+    }
+
+    if (!article) {
+        notFound();
     }
 
     return (

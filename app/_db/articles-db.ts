@@ -30,24 +30,18 @@ export async function getAllArticles(): Promise<Article[]> {
 }
 
 /**
- * Send a GET request and retrieve article.
+ * Retrieve an article and its contents.
  */
-export async function getArticleById(articleId: number): Promise<Article> {
-    try {
-        const articles = await databaseClient.select().from(articlesTable).where(eq(articlesTable.id, articleId)).limit(1);
+export async function getArticleById(articleId: number): Promise<Article | undefined> {
+    const [article] = await databaseClient.select().from(articlesTable).where(eq(articlesTable.id, articleId)).limit(1);
 
-        if (articles.length !== 1) {
-            console.log(`Could not find article with ID ${articleId}`);
-            throw new Error(`Could not find article with ID ${articleId}`)
-        }
-
-        const contents = await databaseClient.select().from(articleContentsTable).where(eq(articleContentsTable.articleId, articleId));
-        const article: Article = {...articles[0], articleContents: []};
-
-        article.articleContents = contents;
+    if (!article) {
         return article;
-    } catch (error) {
-        console.log(error);
-        throw error;
     }
+
+    const contents = await databaseClient.select().from(articleContentsTable).where(eq(articleContentsTable.articleId, articleId));
+    const fullArticle: Article = {...article, articleContents: []};
+
+    fullArticle.articleContents = contents;
+    return fullArticle;
 }

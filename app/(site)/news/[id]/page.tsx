@@ -14,15 +14,21 @@ import "./page.css";
  */
 export default async function NewsPage({params}: {params: Promise<{ id: string }>}): Promise<ReactElement> {
     const { id } = await params;
+    const newsId = Number(id);
+    if (!Number.isInteger(newsId)) {
+        notFound();
+    }
     let news: News | undefined;
     
     try {
-        news = await getNewsById(parseInt(id));
-        if (!news) {
-            notFound();
-        }
+        news = await getNewsById(newsId);
     } catch (error) {
+        console.log(error);
         return ( <ErrorPage text={`Could not load news with id ${id}`} /> )
+    }
+
+    if (!news) {
+        notFound();
     }
 
     return (

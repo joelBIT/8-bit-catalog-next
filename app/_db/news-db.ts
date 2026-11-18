@@ -25,14 +25,9 @@ export async function getTopNews(): Promise<News[]> {
 /**
  * Get news with the supplied news ID.
  */
-export async function getNewsById(id: number): Promise<News> {
-    const response = await databaseClient.select().from(newsTable).where(eq(newsTable.id, id)).limit(1);
-    if (response.length !== 1) {
-        console.log(`Could not find news with ID ${id}`);
-        throw new Error(`Could not find news with ID ${id}`)
-    }
-
-    return response[0];
+export async function getNewsById(id: number): Promise<News | undefined> {
+    const [news] = await databaseClient.select().from(newsTable).where(eq(newsTable.id, id)).limit(1);
+    return news;
 }
 
 /**
