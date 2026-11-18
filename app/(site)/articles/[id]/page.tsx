@@ -40,8 +40,6 @@ export default async function ArticlePage({params}: {params: Promise<{ id: strin
                     width={1232} 
                     height={480} 
                     loading="eager" 
-                    placeholder="blur"
-                    blurDataURL={URL_ARTICLES_PAGE + "/" + article.image}
                 />
 
                 <section className="article-heading">

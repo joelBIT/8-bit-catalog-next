@@ -1,8 +1,9 @@
 import 'server-only';
 
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { auth } from "../auth";
-import { ROLE_ADMIN } from "../_utils/utils";
+import { ROLE_ADMIN, URL_LOGIN_PAGE } from "../_utils/utils";
 import { User } from "../_db/schema/auth/users";
 
 export async function isAuthenticated(): Promise<boolean> {
@@ -33,13 +34,9 @@ export async function isAuthenticatedAdmin(): Promise<boolean> {
  * @returns the signed in user
  */
 export async function getUser(): Promise<User> {
-    const session = await auth.api.getSession({
-        headers: await headers()
-    });
-
-    if (session?.user) {
-        return session.user as User;
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session) {
+        redirect(URL_LOGIN_PAGE);
     }
-
-    throw new Error("No authenticated user found");
+    return session.user as User;
 }
