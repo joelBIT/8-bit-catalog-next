@@ -35,9 +35,10 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
             <iframe 
                 width="1120" 
                 height="630" 
-                src="https://www.youtube.com/embed/PwZEBE66an0?si=vpFN433xh8l4Dptt" 
+                src="https://www.youtube-nocookie.com/embed/PwZEBE66an0?si=vpFN433xh8l4Dptt" 
                 title="NES Hacker's NES architecture video" 
                 className="architecture-video"
+                loading="lazy"
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 referrerPolicy="strict-origin-when-cross-origin" 
                 allowFullScreen 
@@ -49,17 +50,23 @@ export default async function ArchitecturePage(): Promise<ReactElement> {
                     Read about the NES architecture. You can find an overview in the articles below.
                 </p>
 
-                <section id="articles">
-                    {
-                        articles.length > 0 ? 
-                            articles?.map((article: Article) => <ArticleCard article={article} key={article.title}/>)
-                            :
-                            <h2 className="message-failure"> Could not load articles </h2>
-                    }
-                </section>
+                <Articles articles={articles} />
             </section>
 
             <div className="darken-image-bottom" />
         </main>
     )
+}
+
+async function Articles({articles}: {articles: Article[]}): Promise<ReactElement> {
+    return (
+        <section id="articles">
+            {
+                articles.length > 0 ? 
+                    articles.map((article: Article) => <ArticleCard article={article} key={article.title}/>)
+                    :
+                    <h2 className="message-failure"> Could not load articles </h2>
+            }
+        </section>
+    );
 }
