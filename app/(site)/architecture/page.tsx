@@ -6,16 +6,8 @@ import { getAllArticles } from "@/app/_db/articles-db";
 import "./page.css";
 
 export default async function ArchitecturePage(): Promise<ReactElement> {
-    let articles: Article[] = [];
+    let articles: Article[] = await getAllArticles();
     
-    try {
-        if (!articles.length) {
-            articles = await getAllArticles();
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
     return (
         <main id="architecturePage">
             <h1 className="architecture-title"> Architecture </h1>
