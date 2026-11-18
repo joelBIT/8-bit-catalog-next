@@ -67,7 +67,7 @@ export function SearchResult(): ReactElement {
 
             <section className={gridView ? "grid" : "list"}>
                 {
-                    searchResult.slice(0, numberGamesShowing).map(game => <>{gridView ? <GameCard game={game} key={game.id}/> : <GameListEntry game={game} key={game.id} /> }</>)
+                    searchResult.slice(0, numberGamesShowing).map(game => gridView ? <GameCard game={game} key={game.id}/> : <GameListEntry game={game} key={game.id} />)
                 }
             </section>
                 

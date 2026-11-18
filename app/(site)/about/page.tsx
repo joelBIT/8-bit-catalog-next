@@ -57,7 +57,7 @@ export default function AboutPage(): ReactElement {
                         <div className="timeline-dot"></div>
                         <p className="timeline-year">2026</p>
                         <p className="timeline-title">Today</p>
-                        <p className="timeline-desc">Released the catalog as an mobile app.</p>
+                        <p className="timeline-desc">Released the catalog as a mobile app.</p>
                     </div>
                 </section>
             </section>

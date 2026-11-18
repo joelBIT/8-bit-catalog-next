@@ -17,7 +17,7 @@ import "./page.css";
 export default function CollectionPage(): ReactElement {
     const { favouritesList } = useCollection();
     const { sortOrder, gridView, numberGamesShowing } = useOptions();
-    const [collection, setCollection] = useState<Game[]>(sortGames(favouritesList, sortOrder));
+    const [collection, setCollection] = useState<Game[]>(() => sortGames(favouritesList, sortOrder));
 
     useEffect(() => {
         setCollection(sortGames(favouritesList, sortOrder));
@@ -42,7 +42,7 @@ export default function CollectionPage(): ReactElement {
 
             <section className={gridView ? "grid" : "list"}>
                 {
-                    collection.slice(0, numberGamesShowing).map(game => <>{gridView ? <GameCard game={game} key={game.id}/> : <GameListEntry game={game} key={game.id} /> }</>)
+                    collection.slice(0, numberGamesShowing).map(game => gridView ? <GameCard game={game} key={game.id}/> : <GameListEntry game={game} key={game.id} /> )
                 }
             </section>
 
