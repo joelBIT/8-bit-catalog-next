@@ -21,7 +21,7 @@ export default function SitesPage(): ReactElement {
 
     let content = (
         <Link href={currentSite.image} target="_blank" className="site-image-link">
-            <img src={currentSite.image} className="site-image" />
+            <img src={currentSite.image} className="site-image" alt="Image of the selected site" />
         </Link>
     );
 

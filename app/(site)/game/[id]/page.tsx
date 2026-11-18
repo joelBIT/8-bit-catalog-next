@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { notFound } from "next/navigation";
 import Image from 'next/image';
 import Link from "next/link";
-import { convertDateToString } from "@/app/_utils/utils";
+import { convertDateToString, coverUrl } from "@/app/_utils/utils";
 import { getGameById } from "@/app/_db/games-db";
 import { Game } from "@/app/_db/schema/games";
 import { FavouriteButton, PlayButton } from "@/app/_components/games";
@@ -20,7 +20,6 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
         notFound();
     }
     let game: Game | undefined;
-    const STORAGE_URL = process.env.COVER;
     
     try {
         game = await getGameById(gameId);
@@ -37,7 +36,7 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
         <main id="gamePage">
             <figure className="gamePage-figure">
                 <Image 
-                    src={STORAGE_URL + game.cover}
+                    src={coverUrl(game.cover)}
                     unoptimized
                     className="gamePage-image"
                     alt="Game Cover"
@@ -68,7 +67,7 @@ export default async function GamePage({params}: {params: Promise<{ id: string }
                             <h3 className="item-heading"> COVER </h3>
                             <span className="item-text">
                                 <Link 
-                                    href={STORAGE_URL + game?.cover} 
+                                    href={coverUrl(game.cover)} 
                                     target="_blank" 
                                     className="item-text item-link" 
                                     title="Open cover in new tab"

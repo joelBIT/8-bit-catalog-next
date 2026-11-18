@@ -216,3 +216,18 @@ export function sortGames(games: Game[], sort: SortOrder): Game[] {
 export function readFormValues<K extends string>(formData: FormData, keys: readonly K[]): Record<K, string> {
     return Object.fromEntries(keys.map(key => [key, String(formData.get(key) ?? '')])) as Record<K, string>;
 }
+
+/**
+ * Builds the public URL of a game cover in the covers bucket. It reads only NEXT_PUBLIC_COVER,
+ * so it works in both server and client components. The file name is encoded so names with
+ * spaces or special characters still work.
+ */
+export function coverUrl(fileName: string): string {
+    const base = process.env.NEXT_PUBLIC_COVER;
+
+    if (!base) {
+        throw new Error("NEXT_PUBLIC_COVER is not set");        // fail loudly instead of rendering "undefinedcover.png"
+    }
+
+    return `${base.replace(/\/+$/, '')}/${encodeURIComponent(fileName)}`;      // exactly one slash between base and file
+}

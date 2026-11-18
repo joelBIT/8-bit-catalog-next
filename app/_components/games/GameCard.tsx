@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from "next/navigation";
 import { useCollection } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
-import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
+import { coverUrl, URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
 import "./GameCard.css";
 
@@ -21,7 +21,6 @@ export function GameCard({ game }: { game: Game }): ReactElement {
     const pathname = usePathname();
     const { addFavouriteGame, removeFavouriteGame, isFavourite } = useCollection();
     const favourite = isFavourite(game.id);
-    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     /**
      * Adds or removes a game from the list of games. The event is prevented so
@@ -58,7 +57,7 @@ export function GameCard({ game }: { game: Game }): ReactElement {
                     }
 
                     <Image 
-                        src={STORAGE_URL + game.cover}
+                        src={coverUrl(game.cover)}
                         unoptimized
                         className="gameCard-figure__cover"
                         alt="Game Cover"

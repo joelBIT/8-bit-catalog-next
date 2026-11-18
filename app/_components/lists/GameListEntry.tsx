@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCollection } from "@/app/_hooks";
 import { Game } from "@/app/_db/schema/games";
-import { URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
+import { coverUrl, URL_COLLECTION_PAGE, URL_GAME_PAGE } from "@/app/_utils/utils";
 
 import "./GameListEntry.css";
 
@@ -22,7 +22,6 @@ export function GameListEntry({ game }: { game: Game }): ReactElement {
     const router = useRouter();
     const { addFavouriteGame, removeFavouriteGame, isFavourite } = useCollection();
     const favourite = isFavourite(game.id);
-    const STORAGE_URL = process.env.NEXT_PUBLIC_COVER;
 
     /**
      * Adds or removes a game from the list of games.
@@ -45,7 +44,7 @@ export function GameListEntry({ game }: { game: Game }): ReactElement {
         <section className={isFadingOut ? "is-fading" : ""} key={game.id}>
             <li className={removeCard ? "hidden" : "gameListEntry"}>
                 <Image 
-                    src={STORAGE_URL + game.cover}
+                    src={coverUrl(game.cover)}
                     unoptimized
                     className="gameListEntry-figure__cover"
                     onMouseEnter={() => setShowModal(true)}
@@ -58,7 +57,7 @@ export function GameListEntry({ game }: { game: Game }): ReactElement {
 
                 <section className={showModal ? "image-modal-show" : "hidden"}>
                     <Image 
-                        src={STORAGE_URL + game.cover}
+                        src={coverUrl(game.cover)}
                         unoptimized
                         className="gameListEntry-figure__cover"
                         alt="Game Cover"
