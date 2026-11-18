@@ -36,6 +36,8 @@ export const FAQ_GAMES = "Games";
 export const PROFILE_BUCKET = "catalog";        // The bucket used to store profile images
 export const DEFAULT_PROFILE_IMAGE = 'profile.png';
 
+export const SEARCH_KEYS = ['title', 'category', 'developer', 'publisher'];
+
 // Sort orders
 export const TITLE_ASC = "titleAsc";
 export const TITLE_DES = "titleDes";
@@ -213,4 +215,12 @@ export function sortGames(games: Game[], sort: SortOrder): Game[] {
  */
 export function readFormValues<K extends string>(formData: FormData, keys: readonly K[]): Record<K, string> {
     return Object.fromEntries(keys.map(key => [key, String(formData.get(key) ?? '')])) as Record<K, string>;
+}
+
+/**
+ * Make first letter in a string capitalized (e.g., query params that should match input values in search page).
+ */
+export function capitalize(str: string | undefined): string {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }

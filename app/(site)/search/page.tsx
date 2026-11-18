@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import Image from "next/image";
 import Form from 'next/form';
 import { SearchButton, SearchResult } from "@/app/_components/search";
-import { addAllOption, URL_SEARCH_PAGE } from "@/app/_utils/utils";
+import { addAllOption, capitalize, URL_SEARCH_PAGE } from "@/app/_utils/utils";
 import { SearchFilter } from "@/app/_types/types";
 import { getAllCategories, getAllDevelopers, getAllPublishers } from "@/app/_db/games-db";
 
@@ -11,7 +11,7 @@ import "./page.css";
 /**
  * The search params are used to get the desired search results/page.
  */
-export default async function SearchPage({ searchParams } : { searchParams: Promise<SearchFilter> }): Promise<ReactElement> {
+export default async function SearchPage({ searchParams } : { searchParams: Promise<Partial<SearchFilter>> }): Promise<ReactElement> {
     const params = await searchParams;
 
     return (
@@ -50,7 +50,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         <section className="selectSection">
                             <h2 className="selectSection__title"> Category </h2>
                 
-                            <select className="selectSection__select" name="category" defaultValue={params.category}>
+                            <select className="selectSection__select" name="category" defaultValue={capitalize(params.category)}>
                                 { addAllOption(await getAllCategories()).map((element, index) => <option key={index} value={element}> {element} </option>) }
                             </select>
                         </section>
@@ -58,7 +58,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         <section className="selectSection">
                             <h2 className="selectSection__title"> Publisher </h2>
                 
-                            <select className="selectSection__select" name="publisher" defaultValue={params.publisher}>
+                            <select className="selectSection__select" name="publisher" defaultValue={capitalize(params.publisher)}>
                                 { addAllOption(await getAllPublishers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
                             </select>
                         </section>
@@ -66,7 +66,7 @@ export default async function SearchPage({ searchParams } : { searchParams: Prom
                         <section className="selectSection">
                             <h2 className="selectSection__title"> Developer </h2>
                 
-                            <select className="selectSection__select" name="developer" defaultValue={params.developer}>
+                            <select className="selectSection__select" name="developer" defaultValue={capitalize(params.developer)}>
                                 { addAllOption(await getAllDevelopers()).map((element, index) => <option key={index} value={element}> {element} </option>) }
                             </select>
                         </section>

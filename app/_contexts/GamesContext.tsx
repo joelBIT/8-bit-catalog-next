@@ -6,7 +6,7 @@ import { Game } from "../_db/schema/games";
 import { getAllGamesRequest } from "../_client/client";
 import { ALL_OPTION_VALUE } from "../_utils/utils";
 
-export interface GamesContextProvider {         // TODO: expose a isLoading so that SearchResult can show suitable message
+export interface GamesContextProvider {
     games: Game[];
     filteredGames: Game[];
     filterGames: (filters: SearchFilter) => Game[];
@@ -44,9 +44,9 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
      */
     function filterGames(filters: SearchFilter): Game[] {
         let result = [...games];
-        result = filters.developer !== ALL_OPTION_VALUE ? result.filter(game => game.developer.toLowerCase() === filters.developer.toLowerCase()) : result;
-        result = filters.publisher !== ALL_OPTION_VALUE ? result.filter(game => game.publisher.toLowerCase() === filters.publisher.toLowerCase()) : result;
-        result = filters.category !== ALL_OPTION_VALUE ? result.filter(game => game.category.toLowerCase() === filters.category.toLowerCase()) : result;
+        if (!isAll(filters.developer)) result = result.filter(game => game.developer.toLowerCase() === filters.developer.toLowerCase());
+        if (!isAll(filters.publisher)) result = result.filter(game => game.publisher.toLowerCase() === filters.publisher.toLowerCase());
+        if (!isAll(filters.category)) result = result.filter(game => game.category.toLowerCase() === filters.category.toLowerCase());
 
         for (const word of filters.title.split(" ").map(w => w.trim()).filter(Boolean)) {
             result = result.filter(game => game.title.toLowerCase().includes(word.toLowerCase()));
@@ -55,6 +55,8 @@ export function GamesProvider({ children }: { children: ReactNode }): ReactEleme
         setFilteredGames(result);
         return result;
     }
+
+    const isAll = (value: string | null | undefined): boolean => !value || value === ALL_OPTION_VALUE;
 
     function getGameByTitle(title: string): Game | undefined {
         return games.find(game => game.title === title);
