@@ -641,7 +641,8 @@ textarea {
 * Styling for not-found.tsx *
 ****************************/
 
-#notFoundPage {
+#notFoundPage,
+#errorPage {
     background-image: url("/auth/nes-gaming-set-in-dark.webp");
     display: flex;
     flex-direction: column;
@@ -649,7 +650,8 @@ textarea {
     justify-content: center;
     gap: 2rem;
 
-    & .not-found__title {
+    & .not-found__title,
+    & .error-page__title {
         font-family: "iceland", sans-serif;
         font-size: 4rem;
         backdrop-filter: brightness(0.3);
