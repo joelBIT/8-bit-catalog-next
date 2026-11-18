@@ -15,29 +15,20 @@ import "./page.css";
  * Renders the current user's game collection as game cards either in Grid view or List view.
  */
 export default function CollectionPage(): ReactElement {
-    const { favouritesList } = useCollection();
+    const { favouritesList, isLoading } = useCollection();
     const { sortOrder, gridView, numberGamesShowing } = useOptions();
     const [collection, setCollection] = useState<Game[]>(() => sortGames(favouritesList, sortOrder));
 
     useEffect(() => {
         setCollection(sortGames(favouritesList, sortOrder));
-    }, [favouritesList, sortOrder]);
+    }, [favouritesList, sortOrder, isLoading]);
 
-    if (collection.length < 1) {
-        return (
-            <main id="collectionPage">
-                <CollectionHeading />
+    let content = <></>;
 
-                <h1 className="no-collection__text"> Collection is empty </h1>
-                <div className="darken-image-bottom" />
-            </main>
-        );
-    }
-
-    return (
-        <main id="collectionPage">
-            <CollectionHeading />
-
+    if (isLoading) {
+        content = <h1 className="no-collection__text"> Collection is loading </h1>;
+    } else if (collection.length > 0 && !isLoading) {
+        content = <>
             <SearchResultOptions searchResult={collection} setSortedGames={setCollection} />
 
             <section className={gridView ? "grid" : "list"}>
@@ -47,6 +38,16 @@ export default function CollectionPage(): ReactElement {
             </section>
 
             <ScrollTopButton />
+        </>
+    } else if (collection.length < 1 && !isLoading) {
+        content = <h1 className="no-collection__text"> Collection is empty </h1>;
+    }
+
+    return (
+        <main id="collectionPage">
+            <CollectionHeading />
+
+            {content}
             <div className="darken-image-bottom" />
         </main>
     );

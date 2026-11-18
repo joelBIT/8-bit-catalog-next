@@ -8,6 +8,7 @@ import { authClient } from "../auth-client";
 
 export interface CollectionContextProvider {
     favouritesList: Game[];
+    isLoading: boolean;
     addFavouriteGame: (game: Game) => void;
     removeFavouriteGame: (game: Game) => void;
     isFavourite: (gameId: number) => boolean;
@@ -21,6 +22,7 @@ export const CollectionContext = createContext<CollectionContextProvider | undef
  */
 export function CollectionProvider({ children }: { children: ReactNode }): ReactElement {
     const [favouritesList, setFavouritesList] = useState<Game[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);      // true until the first request has finished
     const { data: session, isPending } = authClient.useSession();
     const isLoggedIn = !!session;           // a boolean is stable; the session object may change identity on refresh
     const STORAGE_KEY = 'favouriteGames';
@@ -32,6 +34,7 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
 
         if (!isLoggedIn) {
             setFavouritesList(readGuestFavourites());   // always reset: clears the previous user's list on logout
+            setIsLoading(false);
             return;
         }
 
@@ -41,6 +44,7 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
                 setFavouritesList(games ?? []);
             }
         });
+        setIsLoading(false);
 
         return () => { cancelled = true; };
     }, [isLoggedIn, isPending]);
@@ -110,7 +114,7 @@ export function CollectionProvider({ children }: { children: ReactNode }): React
     }
 
     return (
-        <CollectionContext.Provider value={{ favouritesList, addFavouriteGame, removeFavouriteGame, isFavourite }}>
+        <CollectionContext.Provider value={{ favouritesList, isLoading, addFavouriteGame, removeFavouriteGame, isFavourite }}>
             { children }
         </CollectionContext.Provider>
     );
