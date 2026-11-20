@@ -8,7 +8,7 @@ import { getSessionUser } from "@/app/_auth/api-guards";
  * Usually used for login and register pages.
  */
 export async function GuestOnly({ children }: { children: ReactNode }) {
-    if (!(await getSessionUser())) {
+    if (await getSessionUser()) {
         redirect(URL_DASHBOARD_PAGE);
     }
     return children;
