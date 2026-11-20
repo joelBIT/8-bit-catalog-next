@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { RegisterForm } from "@/app/_components/auth/RegisterForm";
 import { authClient } from "@/app/auth-client";
+import { URL_HOME } from "@/app/_utils/utils";
 
 import "./page.css";
 
@@ -23,7 +24,7 @@ export default function RegisterPage(): ReactElement {
         <main id="registerPage">
             <section id="registerPage-modal">
                 <section id="registerPage-modal-back">
-                    <Link href={"/"} className="registerPage-link"> 
+                    <Link href={URL_HOME} className="registerPage-link"> 
                         <span className="material-symbols-outlined"> arrow_back </span> 
                         <h2 className="registerPage-link__text"> Back to catalog </h2> 
                     </Link>

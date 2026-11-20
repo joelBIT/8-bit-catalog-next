@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import Link from "next/link";
 import { ForgotPasswordForm } from "@/app/_components/auth/ForgotPasswordForm";
+import { URL_HOME } from "@/app/_utils/utils";
 
 import "./page.css";
 
@@ -12,7 +13,7 @@ export default function ForgotPage(): ReactElement {
         <main id="forgotPage">
             <section id="forgotPage-modal">
                 <section id="forgotPage-modal-back">
-                    <Link href={"/"} className="forgotPage-link"> 
+                    <Link href={URL_HOME} className="forgotPage-link"> 
                         <span className="material-symbols-outlined"> arrow_back </span> 
                         <h2 className="forgotPage-link__text"> Back to catalog </h2> 
                     </Link>

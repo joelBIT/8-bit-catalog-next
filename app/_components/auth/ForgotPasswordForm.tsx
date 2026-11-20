@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useActionState, useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/app/auth-client";
 import { URL_LOGIN_PAGE, URL_REGISTER_PAGE, URL_RESET_PAGE } from "@/app/_utils/utils";
@@ -15,21 +15,25 @@ import "./ForgotPasswordForm.css";
  */
 export function ForgotPasswordForm(): ReactElement {
     const [email, setEmail] = useState<string>('');
-    const [feedback, setFeedback] = useState<ActionState>({ message: '', success: false });
+    const [feedback, resetPassword, isPending] = useActionState(
+        async (_previous: ActionState): Promise<ActionState> => {
+            const { error } = await authClient.requestPasswordReset({
+                email: email.trim(),
+                redirectTo: URL_RESET_PAGE
+            });
 
-    async function resetPassword() {
-        const { error } = await authClient.requestPasswordReset({
-            email,
-            redirectTo: `${process.env.NEXT_PUBLIC_DOMAIN_URL}${URL_RESET_PAGE}`
-        });
+            if (error) {
+                return {
+                    message: error.status === 400 ? 'Enter a valid email address' : 'Something went wrong. Please try again.',
+                    success: false
+                };
+            }
 
-        if (error) {
-            setFeedback({ message: error.message ?? "Could not update password", success: false });
-        } else {
-            setFeedback({ message: "If an account exists for that email, a reset link has been sent.", success: true });
             setEmail('');
-        }
-    }
+            return { message: 'If an account exists for that email, a reset link has been sent.', success: true };
+        },
+        { message: '', success: false }
+    );
 
     return (
         <section id="resetPasswordCard">
@@ -56,8 +60,8 @@ export function ForgotPasswordForm(): ReactElement {
 
                 <FlashMessage state={feedback} />
                 
-                <button className="authButton" type="submit" disabled={!email}>
-                    <span className="authButton__text"> Send Reset Mail </span>
+                <button className="authButton" type="submit" disabled={!email || isPending}>
+                    <span className="authButton__text"> {isPending ? 'Sending...' : 'Send Reset Mail'} </span>
                 </button>
             </form>
 

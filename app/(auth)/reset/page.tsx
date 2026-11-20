@@ -94,9 +94,14 @@ export default function ResetPasswordPage(): ReactElement {
                                 New Password
                             </span>
         
-                            <span className="material-symbols-outlined password-show" onClick={() => setVisible(!isVisible)}>
+                            <button 
+                                type="button" 
+                                className="material-symbols-outlined password-show" 
+                                aria-label={isVisible ? "Hide password" : "Show password"}
+                                onClick={() => setVisible(!isVisible)}
+                            >
                                 {isVisible ? "visibility_off" : "visibility"}
-                            </span>
+                            </button>
                         </section>
         
                         <section className="input">
@@ -116,9 +121,14 @@ export default function ResetPasswordPage(): ReactElement {
                                 Confirm New Password
                             </span>
         
-                            <span className="material-symbols-outlined password-show" onClick={() => setVisibleRepeat(!isVisibleRepeat)}>
+                            <button 
+                                type="button" 
+                                className="material-symbols-outlined password-show" 
+                                aria-label={isVisibleRepeat ? "Hide password" : "Show password"}
+                                onClick={() => setVisibleRepeat(!isVisibleRepeat)}
+                            >
                                 {isVisibleRepeat ? "visibility_off" : "visibility"}
-                            </span>
+                            </button>
                         </section>
                     </section>
         

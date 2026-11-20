@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { LoginForm } from "@/app/_components/auth/LoginForm";
 import { authClient } from "@/app/auth-client";
+import { URL_HOME } from "@/app/_utils/utils";
 
 import "./page.css";
 
@@ -23,7 +24,7 @@ export default function LoginPage(): ReactElement {
         <main id="loginPage">
             <section id="loginPage-modal">
                 <section id="loginPage-modal-back">
-                    <Link href={"/"} className="loginPage-link"> 
+                    <Link href={URL_HOME} className="loginPage-link"> 
                         <span className="material-symbols-outlined"> arrow_back </span> 
                         <h2 className="loginPage-link__text"> Back to catalog </h2>
                     </Link>
