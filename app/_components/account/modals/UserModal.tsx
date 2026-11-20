@@ -4,6 +4,7 @@ import {ReactElement, useEffect, useRef, useState} from "react";
 import { Profile } from "@/app/_db/schema/profiles";
 import { Address } from "@/app/_db/schema/addresses";
 import { getAddressByUserIdRequest, getProfileByUserIdRequest } from "@/app/_client/client";
+import { profileImageUrl } from "@/app/_utils/utils";
 
 import "./UserModal.css";
 
@@ -11,42 +12,48 @@ import "./UserModal.css";
  * Modal showing metadata about the supplied user.
  */
 export function UserModal({ userId, close }: { userId: string, close: () => void }): ReactElement {
-    const [profile, setProfile] = useState<Profile>();
-    const [address, setAddress] = useState<Address>();
+    const [profile, setProfile] = useState<Profile | null>(null);
+    const [address, setAddress] = useState<Address | null>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
     const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${userId}/`;
 
     useEffect(() => {
-        getUserInformation();
-        if (!dialogRef.current?.open) {
-            dialogRef.current?.showModal();
-        }
+        dialogRef.current?.showModal();
     }, []);
 
-    async function getUserInformation(): Promise<void> {
-        try {
-            const profile = await getProfileByUserIdRequest(userId);
-            setProfile(profile);
-            const address = await getAddressByUserIdRequest(userId);
-            setAddress(address);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    useEffect(() => {
+        let cancelled = false;
+
+        Promise.all([getProfileByUserIdRequest(userId), getAddressByUserIdRequest(userId)])
+            .then(([loadedProfile, loadedAddress]) => {
+                if (!cancelled) {
+                    setProfile(loadedProfile ?? null);
+                    setAddress(loadedAddress ?? null);
+                }
+            })
+            .catch(console.log);
+
+        return () => { cancelled = true; };
+    }, [userId]);
+
+    const fullName = [profile?.firstName, profile?.lastName].filter(Boolean).join(' ');
+    const cityLine = [address?.city, address?.country].filter(Boolean).join(', ');
 
     return (
         <dialog id="userModal" ref={dialogRef}>
             <span onClick={close} className="closeButton" />
 
             <section id="user-information">
-                <img src={STORAGE_URL + profile?.image} className="profile-image" alt="Profile image" />
+                {
+                    profile?.image && <img src={profileImageUrl(userId, profile.image)} className="profile-image" alt="Profile image" />
+                }
 
                 <section id="user-details">
-                    <h1 id="user-name"> {profile?.firstName + " " + profile?.lastName} </h1>
+                    <h1 id="user-name"> {fullName} </h1>
 
                     <section id="user-address">
                         <h2> {address?.street} </h2>
-                        <h2> {address?.city + ", " + address?.country} </h2>
+                        <h2> {cityLine} </h2>
                     </section>
 
                     <button id="private-message" className="button__link">

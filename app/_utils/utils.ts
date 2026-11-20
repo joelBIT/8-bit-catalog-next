@@ -231,3 +231,11 @@ export function coverUrl(fileName: string): string {
 
     return `${base.replace(/\/+$/, '')}/${encodeURIComponent(fileName)}`;      // exactly one slash between base and file
 }
+
+export function profileImageUrl(userId: string, fileName: string): string {
+    const base = process.env.NEXT_PUBLIC_IMAGE;
+    if (!base) {
+        throw new Error("NEXT_PUBLIC_IMAGE is not set");
+    }
+    return `${base.replace(/\/+$/, '')}/${encodeURIComponent(userId)}/${encodeURIComponent(fileName)}`;
+}
