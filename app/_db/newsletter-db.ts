@@ -12,7 +12,7 @@ import { newsletterTable } from './schema/newsletter';
  */
 export async function subscribeNewsletter(email: string): Promise<void> {
     try {
-        await databaseClient.insert(newsletterTable).values({ email });
+        await databaseClient.insert(newsletterTable).values({ email }).onConflictDoNothing();
     } catch (error) {
         console.log(error);
         throw new Error(`Could not subscribe`);
