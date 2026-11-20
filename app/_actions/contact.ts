@@ -2,11 +2,11 @@
 
 import { headers } from "next/headers";
 import { z } from "zod";
-import { Resend } from "resend";
 import { ContactState } from "@/app/_types/types";
 import ContactMessageEmail from "../_components/email/ContactMessageEmail";
 import { countRecentContactRequests, recordContactRequest } from "../_db/contact-db";
 import { readFormValues } from "../_utils/utils";
+import { sendEmail } from "../_utils/email";
 
 const MAX_REQUESTS_PER_HOUR = 3;
 
@@ -36,19 +36,7 @@ export async function sendContactEmail(_prevState: ContactState, formData: FormD
         }
         await recordContactRequest(ip);         // counted before sending so failed sends count too
 
-        const resend = new Resend(process.env.RESEND_API_KEY as string);
-        const { error } = await resend.emails.send({
-            from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
-            to: `${process.env.CONTACT_EMAIL}`,
-            replyTo: email,                     // replying in your mail client goes to the sender
-            subject: 'Contact question',
-            react: ContactMessageEmail(email, name, message),
-        });
-
-        if (error) {                            // Resend returns errors instead of throwing
-            console.log(error);
-            return { message: 'The message could not be sent', success: false, values };
-        }
+        sendEmail({to: `${process.env.CONTACT_EMAIL}`, subject: 'Contact question', react: ContactMessageEmail(email, name, message)});
 
         return { message: 'The message was sent', success: true };      // no `values`: the form clears
     } catch (error) {
