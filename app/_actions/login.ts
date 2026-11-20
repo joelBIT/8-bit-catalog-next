@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { APIError } from "better-auth/api";
 import { auth } from "@/app/auth";
 import { ActionState } from "../_types/types";
 import { URL_DASHBOARD_PAGE } from "../_utils/utils";
@@ -23,6 +24,9 @@ export async function login(_prevState: ActionState, formData: FormData): Promis
 
     } catch (error) {
         console.log(error);
+        if (error instanceof APIError && error.body?.code === 'EMAIL_NOT_VERIFIED') {
+            return { message: 'Please verify your email first. We have sent you a new link.', success: false };
+        }
         return { message: 'Could not log in', success: false };
     }
 

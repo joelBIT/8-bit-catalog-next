@@ -13,7 +13,7 @@ import "./LoginForm.css";
  * It is also possible to navigate to the register page as well as the 'forgot password' page.
  */
 export function LoginForm(): ReactElement {
-    const [state, formAction] = useActionState(login, { message: '', success: false });
+    const [state, formAction, isPending] = useActionState(login, { message: '', success: false });
     const [isVisible, setVisible] = useState<boolean>(false);
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -58,16 +58,21 @@ export function LoginForm(): ReactElement {
                             Password
                         </span>
 
-                        <span className="material-symbols-outlined password-show" onClick={() => setVisible(!isVisible)}>
+                        <button 
+                            type="button" 
+                            className="material-symbols-outlined password-show" 
+                            aria-label={isVisible ? "Hide password" : "Show password"}
+                            onClick={() => setVisible(!isVisible)}
+                        >
                             {isVisible ? "visibility_off" : "visibility"}
-                        </span>
+                        </button>
                     </section>
                 </section>
 
                 <StateMessage state={state} />
                 
-                <button className="authButton" type="submit" disabled={!password || !email}>
-                    <span className="authButton__text"> Sign in </span>
+                <button className="authButton" type="submit" disabled={!password || !email || isPending}>
+                    <span className="authButton__text"> {isPending ? 'Signing in...' : 'Sign in'} </span>
                 </button>
             </form>
 
