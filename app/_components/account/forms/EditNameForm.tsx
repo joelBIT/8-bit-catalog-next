@@ -20,6 +20,7 @@ export function EditNameForm({ username }: { username: string }): ReactElement {
                     type="text"
                     placeholder="SET NAME"
                     className="form__field"
+                    maxLength={100}
                     defaultValue={state?.name ?? ''} 
                     autoComplete="off" 
                     required 
