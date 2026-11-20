@@ -10,7 +10,7 @@
     & .gamePage-figure {
         display: flex;
         justify-content: center;
-        max-height: 30rem;
+        max-height: 40rem;
         height: 100%;
         width: 100%;
         position: relative;

@@ -65,9 +65,14 @@ export function AddUserModal({ close }: { close: () => void }): ReactElement {
                         Password
                     </span>
 
-                    <span className="material-symbols-outlined password-show" onClick={() => setVisible(!isVisible)}>
+                    <button 
+                        type="button" 
+                        className="material-symbols-outlined password-show" 
+                        aria-label={isVisible ? "Hide password" : "Show password"}
+                        onClick={() => setVisible(!isVisible)}
+                    >
                         {isVisible ? "visibility_off" : "visibility"}
-                    </span>
+                    </button>
                 </section>
                 
                 <span onClick={closeModal} className="closeButton" />
