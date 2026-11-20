@@ -159,6 +159,7 @@ export function RegisterForm(): ReactElement {
                             value={name}
                             onChange={e => setName(e.target.value)} 
                             type="text"
+                            maxLength={100}
                             className="input-field"
                             required
                             autoComplete="none" 
