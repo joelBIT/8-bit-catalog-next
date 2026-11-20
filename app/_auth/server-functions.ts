@@ -1,10 +1,10 @@
 import 'server-only';
 
+import { cache } from 'react';
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { auth } from "../auth";
 import { ROLE_ADMIN, URL_LOGIN_PAGE } from "../_utils/utils";
-import { User } from "../_db/schema/auth/users";
 
 export async function isAuthenticated(): Promise<boolean> {
     const session = await auth.api.getSession({
@@ -30,13 +30,26 @@ export async function isAuthenticatedAdmin(): Promise<boolean> {
     return false;
 }
 
-/**
- * @returns the signed in user
+/** 
+ * Current user, or null. cache() means one session lookup per request however often this is called. 
  */
-export async function getUser(): Promise<User> {
+const getSessionUser = cache(async () => {
     const session = await auth.api.getSession({ headers: await headers() });
-    if (!session) {
+    return session?.user ?? null;
+});
+
+export async function requireUser() {
+    const user = await getSessionUser();
+    if (!user) {
         redirect(URL_LOGIN_PAGE);
     }
-    return session.user as User;
+    return user;
+}
+
+export async function requireAdmin() {
+    const user = await requireUser();
+    if (user.role !== ROLE_ADMIN) {
+        notFound();                         // non-admins get a 404 instead of learning the page exists
+    }
+    return user;
 }

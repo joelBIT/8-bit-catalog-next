@@ -1,9 +1,8 @@
-'use server';
-
 import { ReactElement } from "react";
 import { NewsletterForm } from "@/app/_components/account/forms";
 import { NewsList } from "@/app/_components/lists";
 import { getAllNews } from "@/app/_db/news-db";
+import { requireAdmin } from "@/app/_auth/server-functions";
 
 import "./page.css";
 
@@ -12,6 +11,8 @@ import "./page.css";
  * in a list of email addresses subscribed for the newsletter.
  */
 export default async function NewsletterPage(): Promise<ReactElement> {
+    await requireAdmin();
+    
     return (
         <main id="newsletterPage">
             <h1 className="newsletter-title"> Newsletter </h1>

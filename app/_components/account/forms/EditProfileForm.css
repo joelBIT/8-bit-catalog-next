@@ -73,6 +73,12 @@
     .form__field {
         font-family: "arima", sans-serif;
     }
+
+    & .input {
+        & #birth_date {
+            padding-right: 12px;
+        }
+    }
 }
 
 @media (max-width: 550px) {

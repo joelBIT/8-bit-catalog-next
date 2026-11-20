@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { getUser } from "@/app/_auth/server-functions";
+import { requireUser } from "@/app/_auth/server-functions";
 import { EditPasswordForm, EditNameForm } from "@/app/_components/account/forms";
 
 import "./page.css";
@@ -8,7 +8,7 @@ import "./page.css";
  * Change password and account-related settings.
  */
 export default async function AccountSettingsPage(): Promise<ReactElement> {
-    const currentUser = await getUser();
+    const currentUser = await requireUser();
 
     return (
         <main id="settingsPage">

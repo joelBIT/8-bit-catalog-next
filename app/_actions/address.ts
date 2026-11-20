@@ -1,6 +1,6 @@
 'use server';
 
-import { getUser } from "../_auth/server-functions";
+import { requireUser } from "../_auth/server-functions";
 import { updateUserAddress } from "../_db/addresses-db";
 import { insertAddressSchema } from "../_db/schema/addresses";
 import { AddressState } from "../_types/types";
@@ -15,7 +15,7 @@ export async function updateAddress(_prevState: AddressState, formData: FormData
     }
     
     try {
-        const user = await getUser();
+        const user = await requireUser();
         await updateUserAddress({userId: user.id, ...values});
         return { message: 'The address was successfully updated', success: true, ...values };
     } catch (error) {

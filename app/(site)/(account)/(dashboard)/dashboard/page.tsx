@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { EditProfileForm, EditProfileImageForm } from "@/app/_components/account/forms";
-import { getUser } from "@/app/_auth/server-functions";
+import { requireUser } from "@/app/_auth/server-functions";
 import { getProfileByUserId } from "@/app/_db/profiles-db";
 
 import "./page.css";
@@ -9,7 +9,8 @@ import "./page.css";
  * The dashboard of the account section.
  */
 export default async function DashboardPage(): Promise<ReactElement> {
-    const profile = await getProfileByUserId((await getUser()).id);
+    const currentUser = await requireUser();
+    const profile = await getProfileByUserId(currentUser.id);
 
     return (
         <main id="dashboardPage">

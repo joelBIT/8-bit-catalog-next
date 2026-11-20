@@ -1,10 +1,7 @@
-'use client';
-
-import { ReactElement, useEffect, useRef, useState } from "react";
-import { User } from "@/app/_db/schema/auth/users";
-import { getUsersRequest } from "@/app/_client/client";
-import { AddUserModal } from "@/app/_components/account/modals";
-import { UserList } from "@/app/_components/account/lists";
+import { ReactElement } from "react";
+import { requireAdmin } from "@/app/_auth/server-functions";
+import { getAllUsers } from "@/app/_db/users-db";
+import { MembersView } from "@/app/_components/account/MembersView";
 
 import "./page.css";
 
@@ -12,70 +9,7 @@ import "./page.css";
  * Enables an admin to modify current members and add new members. All members are listed and an admin can reduce this list
  * by entering letters in the search input. The list is updated instantly and users matching the combination of letters are listed.
  */
-export default function MembersPage(): ReactElement {
-    const [members, setMembers] = useState<User[]>([]);
-    const [result, setResult] = useState<User[]>([]);
-    const [modal, setModal] = useState<boolean>(false);
-    const searchRef = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        getAllMembers();
-    }, [])
-
-    async function getAllMembers(): Promise<void> {
-        const users = await getUsersRequest();
-        setMembers(users);
-        setResult(users);
-    }
-
-    // Updates the result list matching the input character sequence (using lowercase since system stores lowercase emails)
-    function updateMemberList(): void {
-        const characters = searchRef.current?.value as string;
-        setResult(members.filter(member => member.email.includes(characters.toLowerCase())));
-    }
-
-    // When the modal is closed the list of all members is updated (in case new members were added)
-    async function close(): Promise<void> {
-        setModal(false);
-        await getAllMembers();
-    }
-
-    return (
-        <main id="membersPage">
-            <h1 className="title">
-                Members 
-                {
-                    members?.length > 0 ?
-                        <p id="members-count" className="material-symbols-outlined">
-                            {members?.length}
-                        </p> 
-                    : <></>
-                }
-            </h1>
-
-            <section id="memberSearch">
-                <search className="search-members">
-                    <span className="material-symbols-outlined"> search </span>
-                    <input
-                        id="searchMember"
-                        type="text" 
-                        placeholder="Search by email" 
-                        ref={searchRef} 
-                        onChange={updateMemberList} 
-                    />
-                </search>
-
-                {/* {
-                    user?.role === USER_ROLE_ADMIN ?        // TODO: Implement admin role
-                        <button className="button__link add-member__button" onClick={() => setModal(true)}> + Add member </button>
-                        : <></>
-                } */}
-
-            </section>
-
-            { modal ? <AddUserModal close={close} /> : <></> }
-
-            <UserList users={result} />
-        </main>
-    );
+export default async function MembersPage(): Promise<ReactElement> {
+    await requireAdmin();
+    return <MembersView users={await getAllUsers()} />;
 }
