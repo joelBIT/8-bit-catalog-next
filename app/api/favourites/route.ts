@@ -1,26 +1,21 @@
 import { NextResponse } from "next/server";
-import { headers } from "next/headers";
 import z from "zod";
 import { addFavouriteForUserId, deleteFavouriteForUserId, getFavouritesByUserId } from "@/app/_db/favourites-db";
-import { auth } from "@/app/auth";
+import { getSessionUser } from "@/app/_auth/api-guards";
 
 const favouriteBody = z.object({ game_id: z.coerce.number().int().positive() });
-
-async function getSession() {
-    return auth.api.getSession({ headers: await headers() });
-}
 
 /**
  * Retrieves the authenticated user's favourite games.
  */
 export async function GET(): Promise<NextResponse> {
-    const session = await getSession();
-    if (!session) {
+    const user = await getSessionUser();
+    if (!user) {
         return NextResponse.json({ error: 'Unauthorized to access favourites' }, { status: 401 });
     }
 
     try {
-        return NextResponse.json(await getFavouritesByUserId(session.user.id));
+        return NextResponse.json(await getFavouritesByUserId(user.id));
     } catch (error) {
         console.log(error);
         return NextResponse.json({ error: 'Could not retrieve favourites' }, { status: 500 });
@@ -31,8 +26,8 @@ export async function GET(): Promise<NextResponse> {
  * Adds a game to the authenticated user's list of favourite games.
  */
 export async function POST(request: Request): Promise<NextResponse> {
-    const session = await getSession();
-    if (!session) {
+    const user = await getSessionUser();
+    if (!user) {
         return NextResponse.json({ error: 'Unauthorized to access favourites' }, { status: 401 });
     }
 
@@ -42,7 +37,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     }
 
     try {
-        await addFavouriteForUserId(session.user.id, result.gameId);
+        await addFavouriteForUserId(user.id, result.gameId);
         return NextResponse.json({ message: 'Game added to favourites' }, { status: 200 });
     } catch (error) {
         console.log(error);
@@ -54,8 +49,8 @@ export async function POST(request: Request): Promise<NextResponse> {
  * Deletes a game from the authenticated user's list of favourite games.
  */
 export async function DELETE(request: Request): Promise<NextResponse> {
-    const session = await getSession();
-    if (!session) {
+    const user = await getSessionUser();
+    if (!user) {
         return NextResponse.json({ error: 'Unauthorized to access favourites' }, { status: 401 });
     }
 
@@ -65,7 +60,7 @@ export async function DELETE(request: Request): Promise<NextResponse> {
     }
 
     try {
-        await deleteFavouriteForUserId(session.user.id, result.gameId);
+        await deleteFavouriteForUserId(user.id, result.gameId);
         return NextResponse.json({ message: 'Game removed from favourites' }, { status: 200 });
     } catch (error) {
         console.log(error);
@@ -86,7 +81,7 @@ async function parseGameId(request: Request): Promise<{ gameId: number } | { err
 
     const parsed = favouriteBody.safeParse(body);
     if (!parsed.success) {
-        console.log("Invalid favourites body:", body, parsed.error.issues);     // remove once it works
+        console.log("Invalid favourites body:", body, parsed.error.issues);
         return { error: NextResponse.json({ error: 'Invalid game_id', issues: parsed.error.issues }, { status: 400 }) };
     }
 
