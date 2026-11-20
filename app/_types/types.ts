@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { ArticleContent } from "../_db/schema/article_contents";
 import { Game } from "../_db/schema/games";
 import { CATEGORY_ASC, CATEGORY_DES, DEVELOPER_ASC, DEVELOPER_DES, PLAYERS_ASC, PLAYERS_DES, PUBLISHER_ASC, PUBLISHER_DES, TITLE_ASC, TITLE_DES } from "../_utils/utils";
@@ -45,3 +46,5 @@ type AddressFormData = {
     country: string,
     street: string
 }
+
+export type BatchEmail = { to: string; subject: string; react: ReactNode };
