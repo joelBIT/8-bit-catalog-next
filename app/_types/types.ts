@@ -48,3 +48,5 @@ type AddressFormData = {
 }
 
 export type BatchEmail = { to: string; subject: string; react: ReactNode };
+
+export type Country = { value: string; label: string };

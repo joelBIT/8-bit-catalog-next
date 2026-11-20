@@ -1,37 +1,20 @@
 'use client';
 
-import { ChangeEvent, ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
+import { Country } from "@/app/_types/types";
+import countryData from "@/app/_db/countries.json"; 
 
 import "./SelectCountry.css";
+
+// Sorted once when the module loads. The label starts with a flag emoji (4 UTF-16 code units), so skip it when sorting.
+const COUNTRIES: Country[] = [...(countryData.countries as Country[])]
+    .sort((a, b) => a.label.substring(4).trim().localeCompare(b.label.substring(4).trim()));
 
 /**
  * A Select list containing various countries and their flags. The 'selected' parameter corresponds to the chosen initial country.
  */
 export function SelectCountry({ selected }: { selected: string }): ReactElement {
-    const [countries, setCountries] = useState<{"value": string, "label": string}[]>([]);
-    const [selectedCountry, setSelectedCountry] = useState<{"value": string, "label": string}>({value: "SE", label: "🇸🇪 Sweden"});
-
-    useEffect(() => {
-        fetch(
-            "https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code"
-        )
-        .then((response) => response.json())
-        .then((data) => {
-            data.countries.sort((a: { label: string; }, b: { label: string; }) => a.label.substring(4).localeCompare(b.label.substring(4)));
-            setCountries(data.countries);
-            setSelectedCountry(data.countries.find((country: { value: string; }) => country.value === selected));
-        });
-    }, []);
-
-    /**
-     * Update selected country.
-     */
-    function selectCountry(event: ChangeEvent<HTMLSelectElement>): void {
-        const country = countries.find(country => country.value === event.target.value);
-        if (country) {
-            setSelectedCountry(country);
-        }
-    }
+    const [country, setCountry] = useState<string>(selected);
 
     return (
         <section id="selectCountry" className="information-input">
@@ -39,24 +22,17 @@ export function SelectCountry({ selected }: { selected: string }): ReactElement 
                 Country or Region
             </label>
 
-            <select 
-                id="country" 
-                name="country" 
-                value={selectedCountry?.value ? selectedCountry?.value : selected}
-                onChange={selectCountry} 
-                autoComplete="off"
+            <select
+                id="country"
+                name="country"
+                value={country}
+                onChange={event => setCountry(event.target.value)}
+                autoComplete="country"
                 className="input-field"
             >
-                
-            { 
-                countries.length > 0 ?
-                <>
-                    <option value={selectedCountry?.value} key="DEFAULT"> {selectedCountry?.label} </option>
-                    {countries.map(country => <option value={country.value} key={country.value}> {country.label} </option>)}
-                </>
-                    :
-                    <></>
-            }
+                {COUNTRIES.map(({ value, label }) => (
+                    <option value={value} key={value}> {label} </option>
+                ))}
             </select>
         </section>
     );
