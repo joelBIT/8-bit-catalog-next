@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useActionState, useEffect, useRef, useState } from "react";
+import { ReactElement, useActionState, useState } from "react";
 import Link from "next/link";
 import { SelectCountry, StateMessage } from "../common";
 import PhoneInput from "react-phone-input-2";
@@ -14,7 +14,7 @@ import "./RegisterForm.css";
  * Enter information and submit form in order to register a new user.
  */
 export function RegisterForm(): ReactElement {
-    const [state, formAction] = useActionState(register, { message: '', success: false });
+    const [state, formAction, isPending] = useActionState(register, { message: '', success: false });
     const [isVisible, setVisible] = useState<boolean>(false);
     const [isVisibleRepeat, setVisibleRepeat] = useState<boolean>(false);
     const [password, setPassword] = useState<string>('');
@@ -25,22 +25,19 @@ export function RegisterForm(): ReactElement {
     const [city, setCity] = useState<string>('');
     const [birthDate, setBirthDate] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
+    const [maxDate] = useState<string>(() => new Date().toLocaleDateString('en-ca'));
     const [showInputs, setShowInputs] = useState<boolean>(false);
-    const formRef = useRef<HTMLFormElement>(null);
 
-    useEffect(() => {     
-        if (formRef.current && state.success) {     // Reset the form when registration is successful.
-            formRef.current?.reset();
-            setEmail('');
-            setPassword('');
-            setPasswordRepeat('');
-            setStreet('');
-            setName('');
-            setBirthDate('');
-            setCity('');
-            setPhone('');
-        }
-    }, [state])
+    if (state.success) {
+        return (
+            <section id="registerCard">
+                <StateMessage state={state} />
+                <section id="login-link-section" className="input">
+                    <Link id="login-link" href={URL_LOGIN_PAGE} className="form__field"> Back to sign in </Link>
+                </section>
+            </section>
+        );
+    }
 
     /**
      * If a user enters more than 2 characters in the address field, extra input fields are shown in an extension of the input area.
@@ -54,7 +51,7 @@ export function RegisterForm(): ReactElement {
 
     return (
         <section id="registerCard">
-            <form id="registerForm" ref={formRef} action={formAction}>                        
+            <form id="registerForm" action={formAction}>                        
                 <section className="input">
                     <input 
                         id="email"
@@ -129,7 +126,7 @@ export function RegisterForm(): ReactElement {
                         id="birth_date"
                         name="birth_date" 
                         type="date"
-                        max={new Date().toLocaleDateString('en-ca')}
+                        max={maxDate}
                         value={birthDate}
                         onChange={e => setBirthDate(e.target.value)}
                         className="form__field"
@@ -210,7 +207,7 @@ export function RegisterForm(): ReactElement {
 
                 <StateMessage state={state} />
 
-                <button className="authButton" type="submit" disabled={!email || !password || !passwordRepeat}>
+                <button className="authButton" type="submit" disabled={!email || !password || !passwordRepeat || isPending}>
                     <span className="authButton__text"> Register </span>
                 </button>
             </form>

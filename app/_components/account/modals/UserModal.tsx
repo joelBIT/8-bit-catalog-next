@@ -15,7 +15,6 @@ export function UserModal({ userId, close }: { userId: string, close: () => void
     const [profile, setProfile] = useState<Profile | null>(null);
     const [address, setAddress] = useState<Address | null>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
-    const STORAGE_URL = process.env.NEXT_PUBLIC_IMAGE + `${userId}/`;
 
     useEffect(() => {
         dialogRef.current?.showModal();
