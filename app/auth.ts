@@ -2,7 +2,6 @@ import { betterAuth, User } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin } from "better-auth/plugins";
 import { nextCookies } from "better-auth/next-js";
-import { Resend } from "resend";
 import { databaseClient } from "./_db/db";
 import ResetPasswordEmail from "./_components/email/ResetPasswordEmail";
 import ActivationEmail from "./_components/email/ActivationEmail";
@@ -16,8 +15,7 @@ import { profilesTable } from "./_db/schema/profiles";
 import { addressesTable } from "./_db/schema/addresses";
 import { DEFAULT_PROFILE_IMAGE, ROLE_ADMIN, ROLE_USER } from "./_utils/utils";
 import { copyDefaultProfileImageToFolder } from "./_db/files-db";
-
-const resend = new Resend(process.env.RESEND_API_KEY as string);
+import { sendEmail } from "./_utils/email";
 
 export const auth = betterAuth({
     baseURL: process.env.BETTER_AUTH_URL,
@@ -51,6 +49,7 @@ export const auth = betterAuth({
     },
     emailAndPassword: { 
         enabled: true,
+        minPasswordLength: 8,
         revokeSessionsOnPasswordReset: true,
         requireEmailVerification: true,
         // requireEmailVerification: true together with customSyntheticUser. That combination tells Better Auth not to reveal whether an 
@@ -67,21 +66,25 @@ export const auth = betterAuth({
             ...additionalFields,
             id
         }),
-        sendResetPassword: async ({ user, url, token }: { user: User, url: string, token: string }, request: any) => {
-            await resend.emails.send({
-                from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
-                to: user.email,
-                subject: 'Password Reset',
-                react: ResetPasswordEmail(url, user.email, token)
-            });
+        sendResetPassword: async ({ user, url, token }) => {
+            try {
+                await sendEmail({
+                    to: user.email,
+                    subject: 'Password Reset',
+                    react: ResetPasswordEmail(url, user.email, token)
+                });
+            } catch (error) {
+                // Logged, not rethrown: this callback only runs for emails that exist, so an error response here
+                // would reveal which addresses are registered
+                console.error(error);
+            }
         }
     },
     emailVerification: {
         sendOnSignUp: true,
         autoSignInAfterVerification: true,
-        sendVerificationEmail: async ( { user, url, token }: { user: User, url: string, token: string }, request: any) => {
-            await resend.emails.send({
-                from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM_ADDRESS}>`,
+        sendVerificationEmail: async ({ user, url }) => {
+            await sendEmail({
                 to: user.email,
                 subject: 'Finish registration',
                 react: ActivationEmail(url)
