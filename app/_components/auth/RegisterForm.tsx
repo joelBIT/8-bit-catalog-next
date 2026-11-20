@@ -209,7 +209,7 @@ export function RegisterForm(): ReactElement {
                                 country="se"
                                 value={phone}
                                 onChange={setPhone}
-                                inputProps={{ id: 'phone', name: 'phone', autoComplete: 'tel' }}
+                                inputProps={{ id: 'phone', name: 'phone', autoComplete: 'off' }}
                             />
                         </section>
                     </section>
