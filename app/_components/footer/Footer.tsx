@@ -15,7 +15,7 @@ export function Footer(): ReactElement {
             </section>
             
             <article id="copyright">
-                <h4 className="copyright__text"> &#169; 2026 Joel Rollny </h4>
+                <h4 className="copyright__text"> &#169; {new Date().getFullYear()} Joel Rollny </h4>
             </article>
         </footer>
     );
